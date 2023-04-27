@@ -10,7 +10,7 @@
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "serve": "docusaurus serve --host 0.0.0.0 --port 80",
-    "cleanAndGen": "docusaurus clean-api-docs all && docusaurus gen-api-docs all",
+    "cleanAndGen": "docusaurus clean-api-docs all && docusaurus gen-api-docs all && node generatesidebar.js",
     "sidebarchanges": "node generatesidebar.js"
   },
   "dependencies": {
