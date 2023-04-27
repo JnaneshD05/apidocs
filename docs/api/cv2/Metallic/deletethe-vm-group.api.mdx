@@ -1,0 +1,38 @@
+---
+id: deletethe-vm-group
+title: "Delete the VM Group"
+description: "This Api is to delete the vm group , you cannot perform restores from vm group which is deleted"
+sidebar_label: "Delete the VM Group"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["Common Operations"],"description":"This Api is to delete the vm group , you cannot perform restores from vm group which is deleted\n\n**Response Body:**\n\n| **Field** | **Type** |\n| --- | --- |\n| Warning Message | string |\n| Errorcode | Integer |\n| Error message | string |","operationId":"DeletetheVMGroup","responses":{"default":{"description":"","content":{"application/json":{"schema":{"allOf":[{"title":"DeletetheVMGroup","required":["errorCode","errorMessage","warningMessage"],"type":"object","properties":{"errorCode":{"type":"integer","format":"int32"},"errorMessage":{"type":"string"},"warningMessage":{"type":"string"}},"example":{"errorCode":0,"errorMessage":"","warningMessage":"Restore cannot be performed from jobs ran on this subclient"}},{"example":{"errorCode":0,"errorMessage":"","warningMessage":"Restore cannot be performed from jobs ran on this subclient"}}]},"example":{"errorCode":0,"errorMessage":"","warningMessage":"Restore cannot be performed from jobs ran on this subclient"}}}}},"deprecated":false,"parameters":[{"name":"vmGroupId","in":"path","description":"","required":true,"style":"simple","schema":{"type":"string"}}],"method":"delete","path":"/core/azurevm/vmgroup/{vmGroupId}","servers":[{"url":"https://api.metallic.io/api/v1","variables":{}}],"security":[{"bearer":[]}],"securitySchemes":{"bearer":{"type":"http","scheme":"bearer"}},"info":{"title":"Metallic REST API Reference","description":"This API documentation covers all the APIs exposed by metallic for all the partner customers as well as standalone customers.\n\n> Invoke Authentication - `/api/v1/authenticate` API using `username` and `password` provided by metallic to obtain `authToken`. All subsequent requests should pass `authToken` obtained as `Bearer token` as part of `Authorization` header.\n\n> Contact Metallic Customer support for any further assistance.\n\n## HTTP Codes\n\nFollowing are the generic HTTP codes returned by APIs. These HTTP codes are not documented again at each API level to improve the overall documentation readability.\n\n| **HTTP Error Code** | **Description** |\n| --- | --- |\n| 200 | OK - Success |\n| 201 | Created - Record created successfully |\n| 204 | Success No Content -Usually returned for DELETE operation response. |\n| 400 | Bad Request - Correct the request and resubmit. |\n| 401 | Unauthorized - Authentication Failed. User credentials are incorrect or authToken is incorrect/expired. |\n| 403 | Forbidden - Logged in user does not have permission to requested API. |\n| 404 | Not Found - No records found matching the request. |\n| 409 | Conflict - In case of business errors where resource can not be created/updated due to conflict. |\n| 429 | Too Many Requests - API invocation quota exceeded. |\n| 500 | Internal Server Error - Unexpected error from server. Something went wrong on server. |","contact":{},"version":"1.0"},"postman":{"name":"Delete the VM Group","description":{"content":"This Api is to delete the vm group , you cannot perform restores from vm group which is deleted\n\n**Response Body:**\n\n| **Field** | **Type** |\n| --- | --- |\n| Warning Message | string |\n| Errorcode | Integer |\n| Error message | string |","type":"text/plain"},"url":{"path":["core","azurevm","vmgroup",":vmGroupId"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"vmGroupId"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"DELETE"}}
+sidebar_class_name: "delete api-method"
+info_path: docs/api/cv2/Metallic/metallic-rest-api-reference
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Delete the VM Group
+
+
+
+This Api is to delete the vm group , you cannot perform restores from vm group which is deleted
+
+**Response Body:**
+
+| **Field** | **Type** |
+| --- | --- |
+| Warning Message | string |
+| Errorcode | Integer |
+| Error message | string |
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"vmGroupId","in":"path","description":"","required":true,"style":"simple","schema":{"type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"default"} value={"default"}><div></div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"errorCode"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"errorMessage"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"warningMessage"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"errorCode\": 0,\n  \"errorMessage\": \"\",\n  \"warningMessage\": \"Restore cannot be performed from jobs ran on this subclient\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"errorCode\": 0,\n  \"errorMessage\": \"\",\n  \"warningMessage\": \"Restore cannot be performed from jobs ran on this subclient\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

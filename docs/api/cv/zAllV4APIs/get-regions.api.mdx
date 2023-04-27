@@ -1,0 +1,46 @@
+---
+id: get-regions
+title: "Get Regions"
+description: "Get list of regions"
+sidebar_label: "Get Regions"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["Regions"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"description":"List of regions","properties":{"regions":{"description":"Regions list","items":{"description":"Summary of the region","properties":{"associatedRegionBasedPlans":{"description":"Number of plans associated to the region","format":"int32","type":"integer"},"associatedServers":{"description":"Number of servers associated to the region","format":"int32","type":"integer"},"displayName":{"type":"string"},"id":{"description":"","format":"int32","type":"integer"},"locations":{"description":"List of locations in the region","items":{"description":"Summary of a location in a region","properties":{"city":{"type":"string"},"country":{"type":"string"},"state":{"type":"string"}},"title":"LocationSummary","type":"object"},"minItems":1,"type":"array","uniqueItems":true},"name":{"type":"string"},"regionType":{"description":"Type of region","enum":["DEFAULT","AZURE","AWS","USER_CREATED","OCI","GCP"],"title":"RegionType","type":"string"}},"title":"RegionSummary","type":"object"},"type":"array","uniqueItems":true}},"title":"RegionsListResp","type":"object"}}}}},"operationId":"GetRegions","description":"Get list of regions ","parameters":[{"name":"type","in":"query","schema":{"description":"Type of region","enum":["DEFAULT","AZURE","AWS","USER_CREATED","OCI","GCP"],"title":"RegionType","type":"string"},"description":"Region type to be filtered","required":false}],"method":"get","path":"/V4/Regions","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"securitySchemes":{"token":{"in":"header","name":"Authtoken","type":"apiKey"}},"info":{"version":"1.0.0","contact":{},"description":"## Welcome\n\nWelcome to Commvault's Rest APIs. You can explore our APIs in [Postman](https://getpostman.com) using the predefined requests we created\n\nThe current version of this documentation is **Commvault Platform Release 2022E**.\n\nYou can access LTS documentation here:\n\n[Feature Release 11.20](https://documenter.getpostman.com/view/2046098/UVR7KoPJ)\n\n[Feature Release 11.24](https://documenter.getpostman.com/view/2046098/UVR7KoPL)\n\nFor more V2 and Latest APIs, please visit your API Explorer page.  \n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=107350_1.htm)\n\n## Setup\n\nTo get started, [create an environment in Postman](https://www.getpostman.com/docs/environments), select that environment, and set your environment variables by entering necessary values in the `0 - Setup/Environment Setup` pre-request script ([documentation on pre-request scripts](http://www.getpostman.com/docs/pre_request_scripts)). Also, Some of our calls might have dependencies. `GET`/`PUT`/`DELETE` may only work after an item is created with a `POST`.\n\nThe same set of APIs can be used for both XML and JSON. If you want to get equivalent JSON for the XML, use our [API](https://api.commvault.com/#fe2fa795-dd7c-4416-857d-75704b52be8c) for conversion.\n\n**Note:** Swagger Documentation for V2/Latest APIs are present in the following URL:  \n`{ServerURL}/sandbox/apiexplorer`\n\n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=45551.htm)","title":"Commvault Rest API - Public"},"postman":{"name":"Get Regions","description":{"content":"Get list of regions ","type":"text/plain"},"url":{"path":["V4","Regions"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"Region type to be filtered","type":"text/plain"},"key":"type","value":""}],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/zAllV4APIs/commvault-rest-api-public
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get Regions
+
+
+
+Get list of regions 
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"type","in":"query","schema":{"description":"Type of region","enum":["DEFAULT","AZURE","AWS","USER_CREATED","OCI","GCP"],"title":"RegionType","type":"string"},"description":"Region type to be filtered","required":false}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>regions</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+Regions list
+
+</div><SchemaItem collapsible={false} name={"associatedRegionBasedPlans"} required={false} deprecated={undefined} schemaDescription={"Number of plans associated to the region"} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"associatedServers"} required={false} deprecated={undefined} schemaDescription={"Number of servers associated to the region"} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"displayName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"id"} required={false} deprecated={undefined} schemaDescription={""} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>locations</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+**Possible values:** `>= 1`
+
+</div><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+List of locations in the region
+
+</div><SchemaItem collapsible={false} name={"city"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"country"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"state"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"regionType"} required={false} deprecated={undefined} schemaDescription={"Type of region"} schemaName={"RegionType"} qualifierMessage={"**Possible values:** [`DEFAULT`, `AZURE`, `AWS`, `USER_CREATED`, `OCI`, `GCP`]"} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"regions\": [\n    {\n      \"associatedRegionBasedPlans\": 0,\n      \"associatedServers\": 0,\n      \"displayName\": \"string\",\n      \"id\": 0,\n      \"locations\": [\n        {\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"state\": \"string\"\n        }\n      ],\n      \"name\": \"string\",\n      \"regionType\": \"DEFAULT\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

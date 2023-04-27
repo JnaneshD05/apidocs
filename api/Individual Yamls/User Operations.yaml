@@ -1,0 +1,2472 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables:
+    hostname:
+      default: localhost
+      description: Webconsole
+tags:
+- name: User Operations
+paths:
+  '/User/{UserId}/Disable':
+    put:
+      deprecated: false
+      description: |
+        This operation disables a User
+      operationId: Disable User
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: UserId
+        required: true
+        schema:
+          type: string
+      summary: Disable User
+      tags:
+      - User Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorString:
+                          type: string
+                        errorCode:
+                          type: integer
+                        entity:
+                          type: object
+                          properties:
+                            userId:
+                              type: integer
+                            userName:
+                              type: string
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorString: ''
+                      errorCode: 0
+                      entity:
+                        userId: 53
+                        userName: GDPR_User
+              examples:
+                Example 1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorString: ''
+                      errorCode: 0
+                      entity:
+                        userId: 53
+                        userName: GDPR_User
+  '/User/{UserId}/Enable':
+    put:
+      deprecated: false
+      description: |
+        This operation enables a User
+      operationId: Enable User
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: UserId
+        required: true
+        schema:
+          type: string
+      summary: Enable User
+      tags:
+      - User Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorString:
+                          type: string
+                        errorCode:
+                          type: integer
+                        entity:
+                          type: object
+                          properties:
+                            userId:
+                              type: integer
+                            userName:
+                              type: string
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorString: ''
+                      errorCode: 0
+                      entity:
+                        userId: 53
+                        userName: GDPR_User
+              examples:
+                Example 1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorString: ''
+                      errorCode: 0
+                      entity:
+                        userId: 53
+                        userName: GDPR_User
+  /Sessions:
+    delete:
+      deprecated: false
+      description: |
+        This operation logs off users from Web Server and the command line interface.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/delete_user_session.htm)
+      operationId: Sessions
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          enum:
+          - application/json
+          example: application/json
+          type: string
+      summary: Sessions
+      tags:
+      - User Operations
+      responses:
+        '200':
+          description: OK
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorMessage: Something is not right. Please check web service logs for details
+                      errorCode: 500
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      errorMessage: Something is not right. Please check web service logs for details
+                      errorCode: 500
+    get:
+      summary: Get Session Details
+      operationId: get-Sessions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                x-examples:
+                  Example 1:
+                    sessions:
+                    - lastAccessedTime: 1496116622
+                      logoutTime: 0
+                      loginTime: 1496116609
+                      host: firewalltestcs
+                      location: ''
+                      sessionId: 48670D87-CA90-4966-9D97-14CA3782A688
+                      browserSessionId: 0
+                      consoleType: 0
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496116145
+                      loginTime: 1496116139
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 2E1C7303-360B-4787-A09E-93C8189EBC59
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 1496117912
+                      logoutTime: 0
+                      loginTime: 1496115991
+                      host: firewalltestcs
+                      location: ''
+                      sessionId: F4A9CBA3-FFA4-4B58-8E38-FDA6A9A19076
+                      browserSessionId: 13
+                      consoleType: 0
+                      isCurrentSession: true
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496112589
+                      loginTime: 1496112540
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 42D04E16-EB6D-491B-B314-CAC80CC91291
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496108991
+                      loginTime: 1496108940
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: CF4CAE1E-2427-4367-9BCA-FD490BDED370
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496105428
+                      loginTime: 1496105340
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 4669671A-471B-40DF-B546-022F955449AF
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496101788
+                      loginTime: 1496101740
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 2104185A-5E67-470D-8516-73971FB7F827
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496098189
+                      loginTime: 1496098139
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: A3FBCE3E-BA49-4D20-8202-D1023CE59CCB
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496094588
+                      loginTime: 1496094539
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 1BCB95E3-1653-4F8F-AA36-159528B62721
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496090990
+                      loginTime: 1496090940
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 0A5FFAAF-5E13-420F-9384-7A6F622A902F
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496087389
+                      loginTime: 1496087340
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 79317E22-69ED-4C9C-A256-F1CF8A8C4BAD
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496083790
+                      loginTime: 1496083739
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 3008427A-3547-4692-8D4B-C86D7D2B4ABC
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496080190
+                      loginTime: 1496080140
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: D4797A16-C10A-4932-A95E-1BE547D5723E
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496076595
+                      loginTime: 1496076539
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 6EFF2B45-5C8C-46EA-B6E1-F520A5691070
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496072998
+                      loginTime: 1496072940
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 7E68A0C7-EC42-495B-B266-3E0F085096C5
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496069390
+                      loginTime: 1496069340
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 49E65FB3-FC4E-45CF-8A84-57100FDCC355
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496065792
+                      loginTime: 1496065740
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 6850045A-7C2F-4C1B-AA1F-7EE8A7A46220
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496062190
+                      loginTime: 1496062139
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 83A19E5C-0D27-4EA8-81EE-8E32C583DE7D
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496058545
+                      loginTime: 1496058539
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 0D2597C2-DC2F-48D7-A440-BD38CE045D79
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496059808
+                      loginTime: 1496057306
+                      host: firewalltestcs
+                      location: ''
+                      sessionId: 017BEE79-1121-4C2C-9591-3FB8DE91988E
+                      browserSessionId: 0
+                      consoleType: 0
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496057108
+                      loginTime: 1496054979
+                      host: firewalltestcs
+                      location: ''
+                      sessionId: 3C12FCEB-0989-4407-9136-43AAE781A8ED
+                      browserSessionId: 0
+                      consoleType: 0
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496054991
+                      loginTime: 1496054940
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: F07E8048-5C9C-49A6-8C5F-8237303B5352
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496051390
+                      loginTime: 1496051339
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 3834AE7A-FF2C-49D5-8AC4-B1C3FA1281DD
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496047791
+                      loginTime: 1496047740
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 4556E12D-A6A9-417D-A839-3113A82845E7
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496044190
+                      loginTime: 1496044139
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 7CE0D42F-947E-43F3-8A15-28833A195C50
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496044104
+                      loginTime: 1496044057
+                      host: FirewallTestCS
+                      location: ''
+                      sessionId: 4EEAC9BC-741E-4BA5-9E71-ABFB7213342F
+                      browserSessionId: 5
+                      consoleType: 13
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496043886
+                      loginTime: 1496043861
+                      host: FirewallTestCS
+                      location: ''
+                      sessionId: 8234CF93-0AFD-42CB-880F-09D5897EF94A
+                      browserSessionId: 4
+                      consoleType: 13
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496041887
+                      loginTime: 1496041805
+                      host: FirewallTestCS
+                      location: ''
+                      sessionId: 190E93C5-8F5F-4749-93F2-3AC58B2EBDD4
+                      browserSessionId: 3
+                      consoleType: 13
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496041762
+                      loginTime: 1496041705
+                      host: FirewallTestCS
+                      location: ''
+                      sessionId: 1C35F1A5-0E94-4EF9-805C-DDF5CCB83D52
+                      browserSessionId: 2
+                      consoleType: 13
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 0
+                      loginTime: 1496040990
+                      host: FirewallTestCS
+                      location: ''
+                      sessionId: EMCEC97AFD9-0B9D-45F6-A3C0-245DFD6A5F97
+                      browserSessionId: 1
+                      consoleType: 5
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496043304
+                      loginTime: 1496040665
+                      host: firewalltestcs
+                      location: ''
+                      sessionId: DDF0CB47-628B-467A-AF31-86064FE3049B
+                      browserSessionId: 0
+                      consoleType: 0
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496040810
+                      loginTime: 1496040545
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 364C2DD2-01F6-4EAE-83D3-09EDDDF24AF6
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496041198
+                      loginTime: 1496040406
+                      host: FirewallTestCS.test.com
+                      location: ''
+                      sessionId: C866C6B6-324A-4ED1-8543-6FCD7EF83BF1
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496042104
+                      loginTime: 1496039961
+                      host: firewalltestcs
+                      location: ''
+                      sessionId: 67EA1B78-D2EB-4021-8DBD-843F66651EF3
+                      browserSessionId: 0
+                      consoleType: 0
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496040898
+                      loginTime: 1496039555
+                      host: FirewallTestCS.test.com
+                      location: ''
+                      sessionId: F2E2BB04-AB8B-44E5-85ED-847644ABF19D
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496039895
+                      loginTime: 1496037065
+                      host: FirewallTestCS.test.com
+                      location: ''
+                      sessionId: 097C4B4B-8BCB-4E34-A4EE-853DF8CA9ED2
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496035771
+                      loginTime: 1496033434
+                      host: FirewallTestCS
+                      location: ''
+                      sessionId: EMCBC189BC3-E861-4D59-86CA-BB552F8F8A02
+                      browserSessionId: 2
+                      consoleType: 5
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496035771
+                      loginTime: 1496033387
+                      host: FirewallTestCS
+                      location: ''
+                      sessionId: EMC73A5BFD2-3303-4650-AAB6-A897C1E48F0B
+                      browserSessionId: 1
+                      consoleType: 5
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496033954
+                      loginTime: 1496033299
+                      host: FirewallTestCS.test.com
+                      location: ''
+                      sessionId: C4BE18D6-4511-4561-AECF-36085593436F
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496032482
+                      loginTime: 1496032437
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 9C8A6044-0E76-403F-B7A5-3753748F248F
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496028886
+                      loginTime: 1496028838
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: C043C3A7-73DE-46E0-A467-A3D73545F7F9
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496025291
+                      loginTime: 1496025238
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: D9E986D0-880E-4F78-9E64-13BED10577FF
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496021689
+                      loginTime: 1496021637
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: C05EDEF8-BD85-4810-A069-35BFC995BDB8
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496018088
+                      loginTime: 1496018037
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 13038FEF-59C0-4EE3-ABD7-0417296E3BD5
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496014491
+                      loginTime: 1496014437
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 08BF9C12-3FAB-467D-9DE5-27DE937C623F
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496010890
+                      loginTime: 1496010838
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 14262311-D543-4355-BDE0-B715B7FE4E87
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496007289
+                      loginTime: 1496007237
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 607E9781-AE01-492A-983D-5AC5E0CC81D4
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496003688
+                      loginTime: 1496003638
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 22CF5C7B-6BBF-47EB-81E4-7725E3E7A63A
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496000089
+                      loginTime: 1496000037
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: C0BA9F1E-FD33-46D5-BBF4-E651DB6CD875
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1495996489
+                      loginTime: 1495996437
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: B797BAF8-D490-4259-B55A-41264BDB2DDA
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                properties:
+                  sessions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        lastAccessedTime:
+                          type: integer
+                        logoutTime:
+                          type: integer
+                        loginTime:
+                          type: integer
+                        host:
+                          type: string
+                        location:
+                          type: string
+                        sessionId:
+                          type: string
+                        browserSessionId:
+                          type: integer
+                        consoleType:
+                          type: integer
+                        user:
+                          type: object
+                          properties:
+                            userName:
+                              type: string
+                            userId:
+                              type: integer
+              examples:
+                Example 1:
+                  value:
+                    sessions:
+                    - lastAccessedTime: 1496116622
+                      logoutTime: 0
+                      loginTime: 1496116609
+                      host: firewalltestcs
+                      location: ''
+                      sessionId: 48670D87-CA90-4966-9D97-14CA3782A688
+                      browserSessionId: 0
+                      consoleType: 0
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496116145
+                      loginTime: 1496116139
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 2E1C7303-360B-4787-A09E-93C8189EBC59
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 1496117912
+                      logoutTime: 0
+                      loginTime: 1496115991
+                      host: firewalltestcs
+                      location: ''
+                      sessionId: F4A9CBA3-FFA4-4B58-8E38-FDA6A9A19076
+                      browserSessionId: 13
+                      consoleType: 0
+                      isCurrentSession: true
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496112589
+                      loginTime: 1496112540
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 42D04E16-EB6D-491B-B314-CAC80CC91291
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496108991
+                      loginTime: 1496108940
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: CF4CAE1E-2427-4367-9BCA-FD490BDED370
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496105428
+                      loginTime: 1496105340
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 4669671A-471B-40DF-B546-022F955449AF
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496101788
+                      loginTime: 1496101740
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 2104185A-5E67-470D-8516-73971FB7F827
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496098189
+                      loginTime: 1496098139
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: A3FBCE3E-BA49-4D20-8202-D1023CE59CCB
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496094588
+                      loginTime: 1496094539
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 1BCB95E3-1653-4F8F-AA36-159528B62721
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496090990
+                      loginTime: 1496090940
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 0A5FFAAF-5E13-420F-9384-7A6F622A902F
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496087389
+                      loginTime: 1496087340
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 79317E22-69ED-4C9C-A256-F1CF8A8C4BAD
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496083790
+                      loginTime: 1496083739
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 3008427A-3547-4692-8D4B-C86D7D2B4ABC
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496080190
+                      loginTime: 1496080140
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: D4797A16-C10A-4932-A95E-1BE547D5723E
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496076595
+                      loginTime: 1496076539
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 6EFF2B45-5C8C-46EA-B6E1-F520A5691070
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496072998
+                      loginTime: 1496072940
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 7E68A0C7-EC42-495B-B266-3E0F085096C5
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496069390
+                      loginTime: 1496069340
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 49E65FB3-FC4E-45CF-8A84-57100FDCC355
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496065792
+                      loginTime: 1496065740
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 6850045A-7C2F-4C1B-AA1F-7EE8A7A46220
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496062190
+                      loginTime: 1496062139
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 83A19E5C-0D27-4EA8-81EE-8E32C583DE7D
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496058545
+                      loginTime: 1496058539
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 0D2597C2-DC2F-48D7-A440-BD38CE045D79
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496059808
+                      loginTime: 1496057306
+                      host: firewalltestcs
+                      location: ''
+                      sessionId: 017BEE79-1121-4C2C-9591-3FB8DE91988E
+                      browserSessionId: 0
+                      consoleType: 0
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496057108
+                      loginTime: 1496054979
+                      host: firewalltestcs
+                      location: ''
+                      sessionId: 3C12FCEB-0989-4407-9136-43AAE781A8ED
+                      browserSessionId: 0
+                      consoleType: 0
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496054991
+                      loginTime: 1496054940
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: F07E8048-5C9C-49A6-8C5F-8237303B5352
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496051390
+                      loginTime: 1496051339
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 3834AE7A-FF2C-49D5-8AC4-B1C3FA1281DD
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496047791
+                      loginTime: 1496047740
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 4556E12D-A6A9-417D-A839-3113A82845E7
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496044190
+                      loginTime: 1496044139
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 7CE0D42F-947E-43F3-8A15-28833A195C50
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496044104
+                      loginTime: 1496044057
+                      host: FirewallTestCS
+                      location: ''
+                      sessionId: 4EEAC9BC-741E-4BA5-9E71-ABFB7213342F
+                      browserSessionId: 5
+                      consoleType: 13
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496043886
+                      loginTime: 1496043861
+                      host: FirewallTestCS
+                      location: ''
+                      sessionId: 8234CF93-0AFD-42CB-880F-09D5897EF94A
+                      browserSessionId: 4
+                      consoleType: 13
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496041887
+                      loginTime: 1496041805
+                      host: FirewallTestCS
+                      location: ''
+                      sessionId: 190E93C5-8F5F-4749-93F2-3AC58B2EBDD4
+                      browserSessionId: 3
+                      consoleType: 13
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496041762
+                      loginTime: 1496041705
+                      host: FirewallTestCS
+                      location: ''
+                      sessionId: 1C35F1A5-0E94-4EF9-805C-DDF5CCB83D52
+                      browserSessionId: 2
+                      consoleType: 13
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 0
+                      loginTime: 1496040990
+                      host: FirewallTestCS
+                      location: ''
+                      sessionId: EMCEC97AFD9-0B9D-45F6-A3C0-245DFD6A5F97
+                      browserSessionId: 1
+                      consoleType: 5
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496043304
+                      loginTime: 1496040665
+                      host: firewalltestcs
+                      location: ''
+                      sessionId: DDF0CB47-628B-467A-AF31-86064FE3049B
+                      browserSessionId: 0
+                      consoleType: 0
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496040810
+                      loginTime: 1496040545
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 364C2DD2-01F6-4EAE-83D3-09EDDDF24AF6
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496041198
+                      loginTime: 1496040406
+                      host: FirewallTestCS.test.com
+                      location: ''
+                      sessionId: C866C6B6-324A-4ED1-8543-6FCD7EF83BF1
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496042104
+                      loginTime: 1496039961
+                      host: firewalltestcs
+                      location: ''
+                      sessionId: 67EA1B78-D2EB-4021-8DBD-843F66651EF3
+                      browserSessionId: 0
+                      consoleType: 0
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496040898
+                      loginTime: 1496039555
+                      host: FirewallTestCS.test.com
+                      location: ''
+                      sessionId: F2E2BB04-AB8B-44E5-85ED-847644ABF19D
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496039895
+                      loginTime: 1496037065
+                      host: FirewallTestCS.test.com
+                      location: ''
+                      sessionId: 097C4B4B-8BCB-4E34-A4EE-853DF8CA9ED2
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496035771
+                      loginTime: 1496033434
+                      host: FirewallTestCS
+                      location: ''
+                      sessionId: EMCBC189BC3-E861-4D59-86CA-BB552F8F8A02
+                      browserSessionId: 2
+                      consoleType: 5
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496035771
+                      loginTime: 1496033387
+                      host: FirewallTestCS
+                      location: ''
+                      sessionId: EMC73A5BFD2-3303-4650-AAB6-A897C1E48F0B
+                      browserSessionId: 1
+                      consoleType: 5
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496033954
+                      loginTime: 1496033299
+                      host: FirewallTestCS.test.com
+                      location: ''
+                      sessionId: C4BE18D6-4511-4561-AECF-36085593436F
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496032482
+                      loginTime: 1496032437
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 9C8A6044-0E76-403F-B7A5-3753748F248F
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496028886
+                      loginTime: 1496028838
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: C043C3A7-73DE-46E0-A467-A3D73545F7F9
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496025291
+                      loginTime: 1496025238
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: D9E986D0-880E-4F78-9E64-13BED10577FF
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496021689
+                      loginTime: 1496021637
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: C05EDEF8-BD85-4810-A069-35BFC995BDB8
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496018088
+                      loginTime: 1496018037
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 13038FEF-59C0-4EE3-ABD7-0417296E3BD5
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496014491
+                      loginTime: 1496014437
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 08BF9C12-3FAB-467D-9DE5-27DE937C623F
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496010890
+                      loginTime: 1496010838
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 14262311-D543-4355-BDE0-B715B7FE4E87
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496007289
+                      loginTime: 1496007237
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 607E9781-AE01-492A-983D-5AC5E0CC81D4
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496003688
+                      loginTime: 1496003638
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: 22CF5C7B-6BBF-47EB-81E4-7725E3E7A63A
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1496000089
+                      loginTime: 1496000037
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: C0BA9F1E-FD33-46D5-BBF4-E651DB6CD875
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+                    - lastAccessedTime: 0
+                      logoutTime: 1495996489
+                      loginTime: 1495996437
+                      host: FirewallTestCS.test.com
+                      location: 'fe80:0:0:0:e82c:472a:1b6:c161%14'
+                      sessionId: B797BAF8-D490-4259-B55A-41264BDB2DDA
+                      browserSessionId: 0
+                      consoleType: 19
+                      user:
+                        userName: Administrator
+                        userId: 1
+      description: |
+        This operation returns a list of sessions for a user. The API applies to all Commvault consoles, all mobile applications, and the command line interface.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_user_active_sessions_details.htm)
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: userId
+      tags:
+      - User Operations
+  /UsersAndGroups:
+    get:
+      deprecated: false
+      description: |
+        This operation returns a list of users and user groups.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_users_usergroups.htm)
+      operationId: Get Users and User Groups
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Users and User Groups
+      tags:
+      - User Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userGroups:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fullName:
+                          type: string
+                        description:
+                          type: string
+                        email:
+                          type: string
+                        associatedUserOrUserGroup:
+                          type: object
+                          properties:
+                            userGroupName:
+                              type: string
+                            userGroupId:
+                              type: integer
+                            _type_:
+                              type: integer
+                  users:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fullName:
+                          type: string
+                        description:
+                          type: string
+                        email:
+                          type: string
+                        associatedUserOrUserGroup:
+                          type: object
+                          properties:
+                            userId:
+                              type: integer
+                            _type_:
+                              type: integer
+                            userName:
+                              type: string
+                x-examples:
+                  Example 1:
+                    userGroups:
+                    - fullName: ''
+                      description: Administrative Group
+                      email: ''
+                      associatedUserOrUserGroup:
+                        userGroupName: master
+                        userGroupId: 1
+                        _type_: 15
+                    - fullName: ''
+                      description: 'Members of this group can see all Commcell Objects, regardless of (other) group associations'
+                      email: ''
+                      associatedUserOrUserGroup:
+                        userGroupName: View All
+                        userGroupId: 3
+                        _type_: 15
+                    users:
+                    - fullName: Administrator
+                      description: Administrator
+                      email: snasim@commvault.com
+                      associatedUserOrUserGroup:
+                        userId: 1
+                        _type_: 13
+                        userName: testadmin
+                    - fullName: ''
+                      description: ''
+                      email: test@commvault.com
+                      associatedUserOrUserGroup:
+                        userId: 3
+                        _type_: 13
+                        userName: ObjectStoreUser
+                    - fullName: ''
+                      description: ''
+                      email: test@cv.com
+                      associatedUserOrUserGroup:
+                        userId: 4
+                        _type_: 13
+                        userName: edgeuser
+              examples:
+                Users and User Groups:
+                  value:
+                    userGroups:
+                    - fullName: ''
+                      description: Administrative Group
+                      email: ''
+                      associatedUserOrUserGroup:
+                        userGroupName: master
+                        userGroupId: 1
+                        _type_: 15
+                    - fullName: ''
+                      description: 'Members of this group can see all Commcell Objects, regardless of (other) group associations'
+                      email: ''
+                      associatedUserOrUserGroup:
+                        userGroupName: View All
+                        userGroupId: 3
+                        _type_: 15
+                    users:
+                    - fullName: Administrator
+                      description: Administrator
+                      email: snasim@commvault.com
+                      associatedUserOrUserGroup:
+                        userId: 1
+                        _type_: 13
+                        userName: testadmin
+                    - fullName: ''
+                      description: ''
+                      email: test@commvault.com
+                      associatedUserOrUserGroup:
+                        userId: 3
+                        _type_: 13
+                        userName: ObjectStoreUser
+                    - fullName: ''
+                      description: ''
+                      email: test@cv.com
+                      associatedUserOrUserGroup:
+                        userId: 4
+                        _type_: 13
+                        userName: edgeuser
+  /User:
+    post:
+      deprecated: true
+      description: |
+        This operation creates a user.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_user.htm)
+      operationId: Create an User
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Create User (Deprecated)
+      tags:
+      - User Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+            examples:
+              User:
+                value:
+                  users:
+                  - description: backup testadmin user
+                    agePasswordDays: 10
+                    password: '##########'
+                    email: jdoe@company.com
+                    fullName: Jane Doe
+                    enableUser: true
+                    associatedUserGroups:
+                    - userGroupName: View
+                    userEntity:
+                      userName: jdoe
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorString:
+                          type: string
+                        errorCode:
+                          type: integer
+                        entity:
+                          type: object
+                          properties:
+                            userId:
+                              type: integer
+                            userName:
+                              type: string
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorString: Successful
+                      errorCode: 0
+                      entity:
+                        userId: 8
+                        userName: jdoe
+              examples:
+                Example 1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorString: Successful
+                      errorCode: 0
+                      entity:
+                        userId: 8
+                        userName: jdoe
+    get:
+      deprecated: true
+      description: |
+        This operation returns a list of users.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_user.htm)
+      operationId: Get all Users
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get all Users (Deprecated)
+      tags:
+      - User Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        removeOtherActiveSessions:
+                          type: boolean
+                        associatedUserGroupsOperationType:
+                          type: integer
+                        idleTime:
+                          type: integer
+                        lastLogIntime:
+                          type: integer
+                        associatedExternalUserGroupsOperationType:
+                          type: integer
+                        loggedInMode:
+                          type: integer
+                        userEntity:
+                          type: object
+                          properties:
+                            userGUID:
+                              type: string
+                            userName:
+                              type: string
+                            userId:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    users:
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 3583
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 3
+                      userEntity:
+                        userGUID: AB0335D1-9923-4248-8740-6C36132C857A
+                        userName: testadmin
+                        userId: 1
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: DDB1A347-9F34-4DCD-9CA0-DF1E4F31DFF1
+                        userName: commvault-nj/gbuilder
+                        userId: 254
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: BE302EC3-5203-4909-8574-BFBD4B9E9E7B
+                        userName: commvault-nj/ypolishetty
+                        userId: 255
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: 050E4D25-A47C-4EE6-AE19-59AE7ADFD828
+                        userName: viewuser
+                        userId: 282
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: 65D5F498-8437-4364-B91F-126E9858DDD5
+                        userName: commvault-nj/ddega
+                        userId: 295
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 1416
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 2
+                      userEntity:
+                        userGUID: 73833189-E0FB-4BE8-8719-9E863132A3EC
+                        userName: test/ypolishetty
+                        userId: 321
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: 3AE27B30-5B3D-4C86-95E2-DCBB095F026C
+                        userName: test\testuser
+                        userId: 323
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: C0F80B28-804C-46FE-8C22-7ECF1F8C26F6
+                        userName: test/ut1
+                        userId: 359
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: 89AD527B-FEB6-46B0-B539-BE0E06FD5B30
+                        userName: test/ut2
+                        userId: 360
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: 76008A95-5103-4159-83EF-EED3838F3085
+                        userName: test\testuser3
+                        userId: 380
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: 28E5D1BF-9AFE-4113-B28A-1DAE42B92E0D
+                        userName: test2/email
+                        userId: 384
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: 28E2555B-7DB9-4C97-A4F6-A2AA128788F6
+                        userName: testuser
+                        userId: 401
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 99
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 2
+                      userEntity:
+                        userGUID: 9676467D-4194-4364-A535-012AE3FD5634
+                        userName: jdoe
+                        userId: 408
+              examples:
+                User:
+                  value:
+                    users:
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 3583
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 3
+                      userEntity:
+                        userGUID: AB0335D1-9923-4248-8740-6C36132C857A
+                        userName: testadmin
+                        userId: 1
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: DDB1A347-9F34-4DCD-9CA0-DF1E4F31DFF1
+                        userName: commvault-nj/gbuilder
+                        userId: 254
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: BE302EC3-5203-4909-8574-BFBD4B9E9E7B
+                        userName: commvault-nj/ypolishetty
+                        userId: 255
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: 050E4D25-A47C-4EE6-AE19-59AE7ADFD828
+                        userName: viewuser
+                        userId: 282
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: 65D5F498-8437-4364-B91F-126E9858DDD5
+                        userName: commvault-nj/ddega
+                        userId: 295
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 1416
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 2
+                      userEntity:
+                        userGUID: 73833189-E0FB-4BE8-8719-9E863132A3EC
+                        userName: test/ypolishetty
+                        userId: 321
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: 3AE27B30-5B3D-4C86-95E2-DCBB095F026C
+                        userName: test\testuser
+                        userId: 323
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: C0F80B28-804C-46FE-8C22-7ECF1F8C26F6
+                        userName: test/ut1
+                        userId: 359
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: 89AD527B-FEB6-46B0-B539-BE0E06FD5B30
+                        userName: test/ut2
+                        userId: 360
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: 76008A95-5103-4159-83EF-EED3838F3085
+                        userName: test\testuser3
+                        userId: 380
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: 28E5D1BF-9AFE-4113-B28A-1DAE42B92E0D
+                        userName: test2/email
+                        userId: 384
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 0
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: 28E2555B-7DB9-4C97-A4F6-A2AA128788F6
+                        userName: testuser
+                        userId: 401
+                    - removeOtherActiveSessions: true
+                      associatedUserGroupsOperationType: 2
+                      idleTime: 99
+                      lastLogIntime: 0
+                      associatedExternalUserGroupsOperationType: 2
+                      loggedInMode: 2
+                      userEntity:
+                        userGUID: 9676467D-4194-4364-A535-012AE3FD5634
+                        userName: jdoe
+                        userId: 408
+  '/User/{UserId}':
+    get:
+      deprecated: true
+      description: "This operation returns the properties associated with a user.\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_user_properties.htm)\n<h3>\n Information returned with different levels:\n</h3>\n1: ListOnly\n10: Basic Properties\n30: All Properties\n40: Returns associatedUserGroups, associatedExternalUserGroups, SecurityAssociations + all other properties \n50: Returns associatedUserGroups, associatedExternalUserGroups, SecurityAssociations, UserSecurity + all other properties\n"
+      operationId: Get User Properties
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: level
+        schema:
+          example: 1
+          format: int32
+          type: integer
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: UserId
+        required: true
+        schema:
+          type: string
+      summary: Get User Properties (Deprecated)
+      tags:
+      - User Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  users:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        description:
+                          type: string
+                        enforceFSQuota:
+                          type: boolean
+                        idleTime:
+                          type: integer
+                        agePasswordDays:
+                          type: integer
+                        inheritGroupEdgeDriveQuotaSettings:
+                          type: boolean
+                        email:
+                          type: string
+                        edgeDriveQuotaLimitInGB:
+                          type: integer
+                        lastLogIntime:
+                          type: integer
+                        enforceEdgeDriveQuota:
+                          type: boolean
+                        fullName:
+                          type: string
+                        quotaLimitInGB:
+                          type: integer
+                        loggedInMode:
+                          type: integer
+                        inheritGroupQuotaSettings:
+                          type: boolean
+                        enableUser:
+                          type: boolean
+                        userEntity:
+                          type: object
+                          properties:
+                            userGUID:
+                              type: string
+                            userName:
+                              type: string
+                            userId:
+                              type: integer
+                        LinkedCommvaultUser:
+                          type: object
+                          properties: {}
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    users:
+                    - description: backup testadmin user
+                      enforceFSQuota: false
+                      idleTime: 0
+                      agePasswordDays: 10
+                      inheritGroupEdgeDriveQuotaSettings: true
+                      email: jdoe@company.com
+                      edgeDriveQuotaLimitInGB: 100
+                      lastLogIntime: 0
+                      enforceEdgeDriveQuota: false
+                      fullName: Jane Doe
+                      quotaLimitInGB: 100
+                      loggedInMode: 0
+                      inheritGroupQuotaSettings: true
+                      enableUser: true
+                      userEntity:
+                        userGUID: A08662B0-4F76-4939-BCAB-0D8B223A585C
+                        userName: jdoe
+                        userId: 19
+                      LinkedCommvaultUser: {}
+              examples:
+                'Example 1 /User/{{UserId}}?level=30':
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    users:
+                    - description: backup testadmin user
+                      enforceFSQuota: false
+                      idleTime: 0
+                      agePasswordDays: 10
+                      inheritGroupEdgeDriveQuotaSettings: true
+                      email: jdoe@company.com
+                      edgeDriveQuotaLimitInGB: 100
+                      lastLogIntime: 0
+                      enforceEdgeDriveQuota: false
+                      fullName: Jane Doe
+                      quotaLimitInGB: 100
+                      loggedInMode: 0
+                      inheritGroupQuotaSettings: true
+                      enableUser: true
+                      userEntity:
+                        userGUID: A08662B0-4F76-4939-BCAB-0D8B223A585C
+                        userName: jdoe
+                        userId: 19
+                      LinkedCommvaultUser: {}
+                'Example 2 /User/{{UserId}}?level=1':
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    users:
+                    - idleTime: 0
+                      loggedInMode: 0
+                      userEntity:
+                        userGUID: A08662B0-4F76-4939-BCAB-0D8B223A585C
+                        userName: jdoe
+                        userId: 19
+                'Example 3 /User/{{UserId}}?level=40':
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    users:
+                    - description: backup testadmin user
+                      enforceFSQuota: false
+                      idleTime: 0
+                      agePasswordDays: 10
+                      inheritGroupEdgeDriveQuotaSettings: true
+                      email: jdoe@company.com
+                      edgeDriveQuotaLimitInGB: 100
+                      lastLogIntime: 0
+                      enforceEdgeDriveQuota: false
+                      fullName: Jane Doe
+                      quotaLimitInGB: 100
+                      loggedInMode: 0
+                      inheritGroupQuotaSettings: true
+                      enableUser: true
+                      securityAssociations: {}
+                      associatedUserGroups:
+                      - userGroupId: 3
+                        userGroupName: View All
+                      userEntity:
+                        userGUID: A08662B0-4F76-4939-BCAB-0D8B223A585C
+                        userName: jdoe
+                        userId: 19
+                      LinkedCommvaultUser: {}
+                'Example 1 /User/{{UserId}}?level=50':
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    users:
+                    - description: backup testadmin user
+                      enforceFSQuota: false
+                      idleTime: 0
+                      agePasswordDays: 10
+                      inheritGroupEdgeDriveQuotaSettings: true
+                      email: jdoe@company.com
+                      edgeDriveQuotaLimitInGB: 100
+                      lastLogIntime: 0
+                      enforceEdgeDriveQuota: false
+                      fullName: Jane Doe
+                      quotaLimitInGB: 100
+                      loggedInMode: 0
+                      inheritGroupQuotaSettings: true
+                      enableUser: true
+                      securityAssociations: {}
+                      associatedUserGroups:
+                      - userGroupId: 3
+                        userGroupName: View All
+                      userEntity:
+                        userGUID: A08662B0-4F76-4939-BCAB-0D8B223A585C
+                        userName: jdoe
+                        userId: 19
+                      userSecurity:
+                        ownerAssociations: {}
+                      LinkedCommvaultUser: {}
+                '/User/{{UserId}}?level=10':
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    users:
+                    - description: backup testadmin user
+                      idleTime: 0
+                      email: jdoe@company.com
+                      lastLogIntime: 0
+                      fullName: Jane Doe
+                      loggedInMode: 0
+                      enableUser: true
+                      userEntity:
+                        userGUID: A08662B0-4F76-4939-BCAB-0D8B223A585C
+                        userName: jdoe
+                        userId: 19
+    post:
+      deprecated: true
+      description: |
+        This operation updates the properties associated with a user.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_user_properties.htm)
+      operationId: Update User Properties
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: UserId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              users:
+              - agePasswordDays: 120
+                associatedUserGroups:
+                - userGroupName: View All
+                associatedUserGroupsOperationType: 2
+                description: Modifying description
+                email: jdoe@company.com
+                enableUser: true
+                fullName: Jane Doe
+                password: '########'
+                userEntity:
+                  userName: jdoe
+                validationParameters:
+                  password: '########'
+            schema:
+              allOf:
+              - example:
+                  users:
+                  - agePasswordDays: 120
+                    associatedUserGroups:
+                    - userGroupName: View All
+                    associatedUserGroupsOperationType: 2
+                    description: Modifying description
+                    email: jdoe@company.com
+                    enableUser: true
+                    fullName: Jane Doe
+                    password: '########'
+                    userEntity:
+                      userName: jdoe
+                    validationParameters:
+                      password: '########'
+                title: UserPropertiesRequest
+                properties:
+                  users:
+                    type: array
+                    items:
+                      example:
+                        agePasswordDays: 120
+                        associatedUserGroups:
+                        - userGroupName: View All
+                        associatedUserGroupsOperationType: 2
+                        description: Modifying description
+                        email: jdoe@company.com
+                        enableUser: true
+                        fullName: Jane Doe
+                        password: '########'
+                        userEntity:
+                          userName: jdoe
+                        validationParameters:
+                          password: '########'
+                      title: User11
+                      type: object
+                      properties:
+                        agePasswordDays:
+                          format: int32
+                          type: integer
+                        associatedUserGroups:
+                          type: array
+                          items:
+                            example:
+                              userGroupName: View
+                            title: AssociatedUserGroup
+                            type: object
+                            properties:
+                              userGroupName:
+                                type: string
+                        associatedUserGroupsOperationType:
+                          format: int32
+                          type: integer
+                        description:
+                          type: string
+                        email:
+                          type: string
+                        enableUser:
+                          type: boolean
+                        fullName:
+                          type: string
+                        password:
+                          type: string
+                        userEntity:
+                          example:
+                            userName: jdoe
+                          title: UserEntity
+                          type: object
+                          properties:
+                            userName:
+                              type: string
+                        validationParameters:
+                          example:
+                            password: '########'
+                          title: ValidationParameters
+                          type: object
+                          properties:
+                            password:
+                              type: string
+              type: object
+        description: ''
+        required: true
+      summary: Update User Properties (Deprecated)
+      tags:
+      - User Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorString:
+                          type: string
+                        errorCode:
+                          type: integer
+                        entity:
+                          type: object
+                          properties:
+                            userId:
+                              type: integer
+                            userName:
+                              type: string
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorString: ''
+                      errorCode: 0
+                      entity:
+                        userId: 8
+                        userName: jdoe
+    delete:
+      summary: Delete User (Deprecated)
+      operationId: delete-User-UserId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorString:
+                          type: string
+                        errorCode:
+                          type: integer
+                        warningMessage:
+                          type: string
+                        entity:
+                          type: object
+                          properties:
+                            userId:
+                              type: integer
+                            userName:
+                              type: string
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorString: Success
+                      errorCode: 0
+                      warningMessage: ''
+                      entity:
+                        userId: 1047
+                        userName: postmanUser
+              examples:
+                'User deletion ':
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorString: Success
+                      errorCode: 0
+                      warningMessage: ''
+                      entity:
+                        userId: 1047
+                        userName: postmanUser
+      description: |
+        This operation deletes a user.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/delete_user.htm)
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: newUserId
+      - schema:
+          type: string
+        in: query
+        name: newUserGroupId
+      - schema:
+          type: string
+        in: header
+        name: AuthToken
+      tags:
+      - User Operations
+      deprecated: true
+    parameters:
+    - schema:
+        type: string
+      name: UserId
+      in: path
+      required: true

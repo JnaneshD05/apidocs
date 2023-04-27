@@ -1,0 +1,3309 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Failover Group Operations
+paths:
+  /FailoverGroups:
+    get:
+      deprecated: false
+      description: |
+        This operation returns a list of Failover groups.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=46435.htm)
+      operationId: Get Failover Groups
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: advanced
+        schema:
+          example: false
+          type: boolean
+      - description: ''
+        explode: true
+        in: query
+        name: operationType
+        required: true
+        schema:
+          example: 16
+          format: int32
+          type: integer
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Failover Groups
+      tags:
+      - Failover Group Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vApp:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        description:
+                          type: string
+                        isVirtualLab:
+                          type: boolean
+                        operationType:
+                          type: integer
+                        vAppEntity:
+                          type: object
+                          properties:
+                            vAppId:
+                              type: integer
+                            vAppName:
+                              type: string
+                        clientList:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              clientName:
+                                type: string
+                              backupsetId:
+                                type: integer
+                              clientId:
+                                type: integer
+                              GUID:
+                                type: string
+                              backupsetName:
+                                type: string
+                              _type_:
+                                type: integer
+                              entityId:
+                                type: integer
+                x-examples:
+                  Example 1:
+                    vApp:
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 31
+                        vAppName: AdminConsole FGRegression
+                      clientList:
+                      - clientName: ACVM1
+                        backupsetId: 7
+                        clientId: 17
+                        GUID: 5026fad1-aa4d-8aed-9274-8f0bc7671163
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 5
+                      - clientName: ACVM2
+                        backupsetId: 7
+                        clientId: 18
+                        GUID: 5026fb51-a607-e08c-3a55-878469ba0e1a
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 6
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 32
+                        vAppName: Bucketting
+                      clientList:
+                      - clientName: JGVM1
+                        backupsetId: 10
+                        clientId: 9
+                        GUID: 50263e4e-7723-75be-c00d-df9db3631fe9
+                        backupsetName: TestFailoverGroups
+                        _type_: 3
+                        entityId: 7
+                      - clientName: JGVM2
+                        backupsetId: 10
+                        clientId: 10
+                        GUID: 50266f17-f19b-f7cf-7717-31b9d6638a78
+                        backupsetName: TestFailoverGroups
+                        _type_: 3
+                        entityId: 8
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 33
+                        vAppName: checkbucketting
+                      clientList:
+                      - clientName: DEVVM1
+                        backupsetId: 11
+                        clientId: 11
+                        GUID: 5026c5df-d073-6288-80d6-929c351962a4
+                        backupsetName: Dev_TestGroups
+                        _type_: 28
+                        entityId: 14
+                      - clientName: DEVVM2
+                        backupsetId: 11
+                        clientId: 12
+                        GUID: 50265eac-6e0e-e496-78b3-464f0ef4afc5
+                        backupsetName: Dev_TestGroups
+                        _type_: 28
+                        entityId: 13
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 30
+                        vAppName: TestBoot
+                      clientList:
+                      - clientName: TFVM1
+                        backupsetId: 7
+                        clientId: 15
+                        GUID: 502679db-98b0-ecfb-a338-f2823d27b818
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: TFVM2
+                        backupsetId: 7
+                        clientId: 16
+                        GUID: 50267ac4-b0e5-9a85-3a1c-f3990f89761d
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 11
+                        vAppName: TestFG
+                      clientList:
+                      - clientName: DRAutoVM2
+                        backupsetId: 7
+                        clientId: 6
+                        GUID: 50264181-4746-d482-4eaa-f3cb55266b48
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 1
+                      - clientName: DRautoVM1
+                        backupsetId: 7
+                        clientId: 5
+                        GUID: 50265248-1749-602d-2878-323029cfeab7
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 2
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 12
+                        vAppName: TestRegression
+                      clientList:
+                      - clientName: JGVM1
+                        backupsetId: 10
+                        clientId: 9
+                        GUID: 50263e4e-7723-75be-c00d-df9db3631fe9
+                        backupsetName: TestFailoverGroups
+                        _type_: 3
+                        entityId: 7
+              examples:
+                Get list of Failover Groups /FailoverGroups?advanced=false&operationType=16:
+                  value:
+                    vApp:
+                    - description: string
+                      isVirtualLab: true
+                      operationType: 0
+                      vAppEntity:
+                        vAppId: 0
+                        vAppName: string
+                      clientList:
+                      - clientName: string
+                        backupsetId: 0
+                        clientId: 0
+                        GUID: string
+                        backupsetName: string
+                        _type_: 0
+                        entityId: 0
+    post:
+      deprecated: false
+      description: |
+        This operation creates a Failover group of virtual machines.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=46490.htm)
+      operationId: Create Failover Group
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Create Failover Group
+      tags:
+      - Failover Group Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  resp:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                  entity:
+                    type: object
+                    properties:
+                      vAppId:
+                        type: integer
+                      vAppName:
+                        type: string
+                x-examples:
+                  Example 1:
+                    resp:
+                      errorMessage: ''
+                      errorCode: 0
+                    entity:
+                      vAppId: 47
+                      vAppName: NewFailoverGroup1
+              examples:
+                Create Failover Group:
+                  value:
+                    resp:
+                      errorMessage: ''
+                      errorCode: 0
+                    entity:
+                      vAppId: 47
+                      vAppName: NewFailoverGroup1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: integer
+                vApp:
+                  type: object
+                  properties:
+                    source:
+                      type: integer
+                    isClientGroup:
+                      type: boolean
+                    approvalRequired:
+                      type: boolean
+                    operationType:
+                      type: integer
+                    selectedEntities:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          instanceId:
+                            type: integer
+                          clientId:
+                            type: integer
+                          entityName:
+                            type: string
+                          _type_:
+                            type: integer
+                          entityId:
+                            type: integer
+                    vAppEntity:
+                      type: object
+                      properties:
+                        vAppName:
+                          type: string
+                    clientList:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          clientName:
+                            type: string
+                          backupsetId:
+                            type: integer
+                          clientId:
+                            type: integer
+                          GUID:
+                            type: string
+                          backupsetName:
+                            type: string
+                          _type_:
+                            type: integer
+                          entityId:
+                            type: integer
+                    config:
+                      type: object
+                      properties:
+                        vmGroups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              delay:
+                                type: integer
+                              groupId:
+                                type: integer
+                              vmSequence:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    copyPrecedence:
+                                      type: integer
+                                    replicationId:
+                                      type: integer
+                                    delay:
+                                      type: integer
+                                    createPublicIp:
+                                      type: boolean
+                                    vmInfo:
+                                      type: object
+                                      properties:
+                                        vmName:
+                                          type: string
+                                        vmGUID:
+                                          type: string
+              x-examples:
+                Example 1:
+                  action: 0
+                  vApp:
+                    source: 1
+                    isClientGroup: false
+                    approvalRequired: false
+                    operationType: 16
+                    selectedEntities:
+                    - instanceId: 4
+                      clientId: 3
+                      entityName: vsa-vc6
+                      _type_: 3
+                      entityId: 3
+                    vAppEntity:
+                      vAppName: NewFailoverGroup
+                    clientList:
+                    - clientName: testboot
+                      backupsetId: 6
+                      clientId: 62
+                      GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                      backupsetName: defaultBackupSet
+                      _type_: 3
+                      entityId: 3
+                    - clientName: testboot1
+                      backupsetId: 6
+                      clientId: 63
+                      GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                      backupsetName: defaultBackupSet
+                      _type_: 3
+                      entityId: 4
+                    config:
+                      vmGroups:
+                      - delay: 2
+                        groupId: 1
+                        vmSequence:
+                        - copyPrecedence: 0
+                          replicationId: 3
+                          delay: 1
+                          createPublicIp: false
+                          vmInfo:
+                            vmName: testboot
+                            vmGUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        - copyPrecedence: 0
+                          replicationId: 4
+                          delay: 1
+                          createPublicIp: false
+                          vmInfo:
+                            vmName: testboot1
+                            vmGUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+            examples:
+              Example 1:
+                value:
+                  action: 0
+                  vApp:
+                    source: 1
+                    isClientGroup: false
+                    approvalRequired: false
+                    operationType: 16
+                    selectedEntities:
+                    - instanceId: 4
+                      clientId: 3
+                      entityName: vsa-vc6
+                      _type_: 3
+                      entityId: 3
+                    vAppEntity:
+                      vAppName: NewFailoverGroup
+                    clientList:
+                    - clientName: testboot
+                      backupsetId: 6
+                      clientId: 62
+                      GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                      backupsetName: defaultBackupSet
+                      _type_: 3
+                      entityId: 3
+                    - clientName: testboot1
+                      backupsetId: 6
+                      clientId: 63
+                      GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                      backupsetName: defaultBackupSet
+                      _type_: 3
+                      entityId: 4
+                    config:
+                      vmGroups:
+                      - delay: 2
+                        groupId: 1
+                        vmSequence:
+                        - copyPrecedence: 0
+                          replicationId: 3
+                          delay: 1
+                          createPublicIp: false
+                          vmInfo:
+                            vmName: testboot
+                            vmGUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        - copyPrecedence: 0
+                          replicationId: 4
+                          delay: 1
+                          createPublicIp: false
+                          vmInfo:
+                            vmName: testboot1
+                            vmGUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+        description: ''
+  '/FailoverGroups/{FailoverGroupId}':
+    put:
+      deprecated: false
+      description: |
+        This operation updates the properties associated with a Failover group.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=46500.htm)
+      operationId: Update Failover Group
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: FailoverGroupId
+        required: true
+        schema:
+          type: string
+      summary: Update Failover Group
+      tags:
+      - Failover Group Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: integer
+                vApp:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                    source:
+                      type: integer
+                    isClientGroup:
+                      type: boolean
+                    operationType:
+                      type: integer
+                    selectedEntities:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          clientId:
+                            type: integer
+                          entityName:
+                            type: string
+                          entityId:
+                            type: integer
+                          instanceId:
+                            type: integer
+                    workflow:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          type:
+                            type: integer
+                          entity:
+                            type: object
+                            properties:
+                              workflowId:
+                                type: integer
+                    autofailover:
+                      type: object
+                      properties:
+                        timeThresholdBeforeFailover:
+                          type: integer
+                        status:
+                          type: integer
+                    vAppEntity:
+                      type: object
+                      properties:
+                        vAppId:
+                          type: integer
+                        vAppName:
+                          type: string
+                    clientList:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          clientId:
+                            type: integer
+                          GUID:
+                            type: string
+                          entityId:
+                            type: integer
+                          clientName:
+                            type: string
+                          backupsetId:
+                            type: integer
+                          backupsetName:
+                            type: string
+                    config:
+                      type: object
+                      properties:
+                        vmGroups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              delay:
+                                type: integer
+                              groupId:
+                                type: integer
+                              continueOnFailure:
+                                type: boolean
+                              vmSequence:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    copyPrecedence:
+                                      type: integer
+                                    replicationId:
+                                      type: integer
+                                    vmInfo:
+                                      type: object
+                                      properties:
+                                        vmName:
+                                          type: string
+                                        vmGUID:
+                                          type: string
+              x-examples:
+                Example 1:
+                  action: 1
+                  vApp:
+                    description: ''
+                    source: 1
+                    isClientGroup: false
+                    operationType: 16
+                    selectedEntities:
+                    - clientId: 7
+                      entityName: test.company.com
+                      entityId: 7
+                      instanceId: 4
+                    workflow:
+                    - type: 7
+                      entity:
+                        workflowId: 49
+                    - type: 1
+                      entity:
+                        workflowId: 50
+                    autofailover:
+                      timeThresholdBeforeFailover: 2
+                      status: 7
+                    vAppEntity:
+                      vAppId: 14
+                      vAppName: TestNotAfterBackup
+                    clientList:
+                    - clientId: 262
+                      GUID: 50390ba9-721b-00ab-563d-93c28017c3gh
+                      entityId: 19
+                      clientName: FGVM2
+                      backupsetId: 59
+                      backupsetName: TestFailoverSarath
+                    - clientId: 330
+                      GUID: 50394cfc-00b5-c98b-96a9-8cda9543af59
+                      entityId: 20
+                      clientName: FGVM1
+                      backupsetId: 59
+                      backupsetName: TestFailover
+                    config:
+                      vmGroups:
+                      - delay: 10
+                        groupId: 1
+                        continueOnFailure: true
+                        vmSequence:
+                        - copyPrecedence: 0
+                          replicationId: 19
+                          vmInfo:
+                            vmName: FGVM2
+                            vmGUID: 50390ba9-721b-00ab-563d-93c28017c3ij
+                      - delay: 1
+                        groupId: 2
+                        continueOnFailure: true
+                        vmSequence:
+                        - copyPrecedence: 0
+                          replicationId: 20
+                          vmInfo:
+                            vmName: FGVM1
+                            vmGUID: 50394cfc-00b5-c98b-96a9-8cda9543af69
+            examples:
+              Update Failover Groups:
+                value:
+                  action: 1
+                  vApp:
+                    description: ''
+                    source: 1
+                    isClientGroup: false
+                    operationType: 16
+                    selectedEntities:
+                    - clientId: 7
+                      entityName: test.company.com
+                      entityId: 7
+                      instanceId: 4
+                    workflow:
+                    - type: 7
+                      entity:
+                        workflowId: 49
+                    - type: 1
+                      entity:
+                        workflowId: 50
+                    autofailover:
+                      timeThresholdBeforeFailover: 2
+                      status: 7
+                    vAppEntity:
+                      vAppId: 14
+                      vAppName: TestNotAfterBackup
+                    clientList:
+                    - clientId: 262
+                      GUID: 50390ba9-721b-00ab-563d-93c28017c3gh
+                      entityId: 19
+                      clientName: FGVM2
+                      backupsetId: 59
+                      backupsetName: TestFailoverSarath
+                    - clientId: 330
+                      GUID: 50394cfc-00b5-c98b-96a9-8cda9543af59
+                      entityId: 20
+                      clientName: FGVM1
+                      backupsetId: 59
+                      backupsetName: TestFailover
+                    config:
+                      vmGroups:
+                      - delay: 10
+                        groupId: 1
+                        continueOnFailure: true
+                        vmSequence:
+                        - copyPrecedence: 0
+                          replicationId: 19
+                          vmInfo:
+                            vmName: FGVM2
+                            vmGUID: 50390ba9-721b-00ab-563d-93c28017c3ij
+                      - delay: 1
+                        groupId: 2
+                        continueOnFailure: true
+                        vmSequence:
+                        - copyPrecedence: 0
+                          replicationId: 20
+                          vmInfo:
+                            vmName: FGVM1
+                            vmGUID: 50394cfc-00b5-c98b-96a9-8cda9543af69
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  resp:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                  entity:
+                    type: object
+                    properties:
+                      vAppId:
+                        type: integer
+                      vAppName:
+                        type: string
+                x-examples:
+                  Example 1:
+                    resp:
+                      errorMessage: ''
+                      errorCode: 0
+                    entity:
+                      vAppId: 14
+                      vAppName: TestNotAfterBackup
+              examples:
+                Update Failover Groups:
+                  value:
+                    resp:
+                      errorMessage: ''
+                      errorCode: 0
+                    entity:
+                      vAppId: 14
+                      vAppName: TestNotAfterBackup
+    get:
+      summary: Get Failover Group Properties
+      operationId: get-FailoverGroups-FailoverGroupId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vApp:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        source:
+                          type: integer
+                        isClientGroup:
+                          type: boolean
+                        version:
+                          type: integer
+                        approvalRequired:
+                          type: boolean
+                        operationType:
+                          type: integer
+                        selectedEntities:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              instanceId:
+                                type: integer
+                              clientId:
+                                type: integer
+                              entityName:
+                                type: string
+                              _type_:
+                                type: integer
+                              entityId:
+                                type: integer
+                        workflow:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              type:
+                                type: integer
+                              entity:
+                                type: object
+                                properties:
+                                  workflowId:
+                                    type: integer
+                        vAppEntity:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            vAppId:
+                              type: integer
+                            vAppName:
+                              type: string
+                        clientList:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              clientName:
+                                type: string
+                              backupsetId:
+                                type: integer
+                              clientId:
+                                type: integer
+                              GUID:
+                                type: string
+                              backupsetName:
+                                type: string
+                              _type_:
+                                type: integer
+                              entityId:
+                                type: integer
+                        config:
+                          type: object
+                          properties:
+                            vmGroups:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  delay:
+                                    type: integer
+                                  groupId:
+                                    type: integer
+                                  vmSequence:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        copyPrecedence:
+                                          type: integer
+                                        replicationId:
+                                          type: integer
+                                        delay:
+                                          type: integer
+                                        createPublicIp:
+                                          type: boolean
+                                        vmInfo:
+                                          type: object
+                                          properties:
+                                            vmName:
+                                              type: string
+                                            _type_:
+                                              type: integer
+                                            vmGUID:
+                                              type: string
+                x-examples:
+                  Example 1:
+                    vApp:
+                    - source: 1
+                      isClientGroup: false
+                      version: 2
+                      approvalRequired: false
+                      operationType: 16
+                      selectedEntities:
+                      - instanceId: 4
+                        clientId: 3
+                        entityName: vsa-vc6
+                        _type_: 3
+                        entityId: 3
+                      workflow:
+                      - type: 7
+                        entity:
+                          workflowId: 49
+                      - type: 1
+                        entity:
+                          workflowId: 50
+                      vAppEntity:
+                        _type_: 164
+                        vAppId: 47
+                        vAppName: NewFailoverGroup1
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                      config:
+                        vmGroups:
+                        - delay: 2
+                          groupId: 1
+                          vmSequence:
+                          - copyPrecedence: 0
+                            replicationId: 3
+                            delay: 1
+                            createPublicIp: false
+                            vmInfo:
+                              vmName: testboot
+                              _type_: 88
+                              vmGUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                          - copyPrecedence: 0
+                            replicationId: 4
+                            delay: 1
+                            createPublicIp: false
+                            vmInfo:
+                              vmName: testboot1
+                              _type_: 88
+                              vmGUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+              examples:
+                Get Failover Group Properties:
+                  value:
+                    vApp:
+                    - source: 1
+                      isClientGroup: false
+                      version: 2
+                      approvalRequired: false
+                      operationType: 16
+                      selectedEntities:
+                      - instanceId: 4
+                        clientId: 3
+                        entityName: vsa-vc6
+                        _type_: 3
+                        entityId: 3
+                      workflow:
+                      - type: 7
+                        entity:
+                          workflowId: 49
+                      - type: 1
+                        entity:
+                          workflowId: 50
+                      vAppEntity:
+                        _type_: 164
+                        vAppId: 47
+                        vAppName: NewFailoverGroup1
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                      config:
+                        vmGroups:
+                        - delay: 2
+                          groupId: 1
+                          vmSequence:
+                          - copyPrecedence: 0
+                            replicationId: 3
+                            delay: 1
+                            createPublicIp: false
+                            vmInfo:
+                              vmName: testboot
+                              _type_: 88
+                              vmGUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                          - copyPrecedence: 0
+                            replicationId: 4
+                            delay: 1
+                            createPublicIp: false
+                            vmInfo:
+                              vmName: testboot1
+                              _type_: 88
+                              vmGUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+      description: |
+        This operation returns the properties associated with a Failover group.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=46444.htm)
+      tags:
+      - Failover Group Operations
+    delete:
+      summary: Delete Failover Group
+      operationId: delete-FailoverGroups-FailoverGroupId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  resp:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                  entity:
+                    type: object
+                    properties:
+                      vAppId:
+                        type: integer
+                      vAppName:
+                        type: string
+                x-examples:
+                  Example 1:
+                    resp:
+                      errorMessage: ''
+                      errorCode: 0
+                    entity:
+                      vAppId: 45
+                      vAppName: ''
+              examples:
+                Example 1:
+                  value:
+                    resp:
+                      errorMessage: ''
+                      errorCode: 0
+                    entity:
+                      vAppId: 45
+                      vAppName: ''
+      description: |
+        This operation deletes Failover group
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=46510.htm)
+      tags:
+      - Failover Group Operations
+    parameters:
+    - schema:
+        type: string
+      name: FailoverGroupId
+      in: path
+      required: true
+  '/FailoverGroups/{failoverGroupId}/Schedules':
+    get:
+      deprecated: false
+      description: |
+        This operation returns the schedules associated with a Failover group
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=93145.htm)
+      operationId: Get Failover Group Schedules
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: failoverGroupId
+        required: true
+        schema:
+          type: string
+      summary: Get Failover Group Schedules
+      tags:
+      - Failover Group Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskDetail:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        taskOperation:
+                          type: integer
+                        associations:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              srmReportSet:
+                                type: integer
+                              srmTemplateId:
+                                type: integer
+                              subclientId:
+                                type: integer
+                              clientGroupId:
+                                type: integer
+                              storagePolicyId:
+                                type: integer
+                              copyId:
+                                type: integer
+                              applicationId:
+                                type: integer
+                              backupsetId:
+                                type: integer
+                              instanceId:
+                                type: integer
+                              sidbStoreId:
+                                type: integer
+                              clientId:
+                                type: integer
+                              sidbStoreName:
+                                type: string
+                              agentlessPolicyId:
+                                type: integer
+                              mediaAgentId:
+                                type: integer
+                              workflowId:
+                                type: integer
+                              _type_:
+                                type: integer
+                              appName:
+                                type: string
+                              flags:
+                                type: object
+                                properties:
+                                  exclude:
+                                    type: boolean
+                        task:
+                          type: object
+                          properties:
+                            ownerId:
+                              type: integer
+                            runUserId:
+                              type: integer
+                            taskType:
+                              type: integer
+                            ownerName:
+                              type: string
+                            alertId:
+                              type: integer
+                            GUID:
+                              type: string
+                            policyType:
+                              type: integer
+                            taskId:
+                              type: integer
+                            originalCC:
+                              type: object
+                              properties:
+                                commCellId:
+                                  type: integer
+                            taskFlags:
+                              type: object
+                              properties:
+                                isEdgeDrive:
+                                  type: boolean
+                                isEZOperation:
+                                  type: boolean
+                                uninstalled:
+                                  type: boolean
+                                disabled:
+                                  type: boolean
+                            task:
+                              type: object
+                              properties:
+                                taskId:
+                                  type: integer
+                        appGroup:
+                          type: object
+                          properties: {}
+                        subTasks:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              relativeTime:
+                                type: integer
+                              subTaskOperation:
+                                type: integer
+                              subTask:
+                                type: object
+                                properties:
+                                  subTaskOrder:
+                                    type: integer
+                                  subTaskName:
+                                    type: string
+                                  subTaskType:
+                                    type: integer
+                                  flags:
+                                    type: integer
+                                  operationType:
+                                    type: integer
+                                  subTaskId:
+                                    type: integer
+                              pattern:
+                                type: object
+                                properties:
+                                  active_end_occurence:
+                                    type: integer
+                                  freq_subday_interval:
+                                    type: integer
+                                  freq_type:
+                                    type: integer
+                                  patternId:
+                                    type: integer
+                                  flags:
+                                    type: integer
+                                  description:
+                                    type: string
+                                  active_end_time:
+                                    type: integer
+                                  skipOccurence:
+                                    type: integer
+                                  skipDayNumber:
+                                    type: integer
+                                  active_start_time:
+                                    type: integer
+                                  freq_restart_interval:
+                                    type: integer
+                                  active_start_date:
+                                    type: integer
+                                  freq_interval:
+                                    type: integer
+                                  freq_relative_interval:
+                                    type: integer
+                                  name:
+                                    type: string
+                                  freq_recurrence_factor:
+                                    type: integer
+                                  calendar:
+                                    type: object
+                                    properties:
+                                      calendarId:
+                                        type: integer
+                                  timeZone:
+                                    type: object
+                                    properties:
+                                      TimeZoneID:
+                                        type: integer
+                              options:
+                                type: object
+                                properties:
+                                  adminOpts:
+                                    type: object
+                                    properties:
+                                      drOrchestrationOption:
+                                        type: object
+                                        properties:
+                                          operationType:
+                                            type: integer
+                                          initiatedfromMonitor:
+                                            type: boolean
+                                          replicationInfo:
+                                            type: object
+                                            properties:
+                                              replicationId:
+                                                type: array
+                                                items:
+                                                  type: integer
+                                          advancedOptions:
+                                            type: object
+                                            properties:
+                                              skipDisableNetworkAdapter:
+                                                type: boolean
+                                          vApp:
+                                            type: object
+                                            properties:
+                                              _type_:
+                                                type: integer
+                                              vAppId:
+                                                type: integer
+                                              vAppName:
+                                                type: string
+                                      vmProvisioningOption:
+                                        type: object
+                                        properties:
+                                          operationType:
+                                            type: integer
+                                          vAppEntity:
+                                            type: object
+                                            properties:
+                                              _type_:
+                                                type: integer
+                                              vAppId:
+                                                type: integer
+                                              vAppName:
+                                                type: string
+                x-examples:
+                  Example 1:
+                    taskDetail:
+                    - taskOperation: 1
+                      associations:
+                      - srmReportSet: 0
+                        srmTemplateId: 0
+                        subclientId: 0
+                        clientGroupId: 0
+                        storagePolicyId: 0
+                        copyId: 0
+                        applicationId: 0
+                        backupsetId: 0
+                        instanceId: 0
+                        sidbStoreId: 0
+                        clientId: 0
+                        sidbStoreName: N/A
+                        agentlessPolicyId: 0
+                        mediaAgentId: 0
+                        workflowId: 0
+                        _type_: 0
+                        appName: Default Application Type Name
+                        flags:
+                          exclude: false
+                      task:
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 2
+                        ownerName: testadmin
+                        alertId: 0
+                        GUID: 0cccb93d-77c2-4d16-90c2-d51600caa1eb
+                        policyType: 0
+                        taskId: 401
+                        originalCC:
+                          commCellId: 2
+                        taskFlags:
+                          isEdgeDrive: false
+                          isEZOperation: false
+                          uninstalled: false
+                          disabled: false
+                        task:
+                          taskId: 401
+                      appGroup: {}
+                      subTasks:
+                      - relativeTime: 40726
+                        subTaskOperation: 1
+                        subTask:
+                          subTaskOrder: 0
+                          subTaskName: TestBootSchedule
+                          subTaskType: 1
+                          flags: 0
+                          operationType: 4046
+                          subTaskId: 406
+                        pattern:
+                          active_end_occurence: 0
+                          freq_subday_interval: 0
+                          freq_type: 4
+                          patternId: 43
+                          flags: 0
+                          description: testadmin Console schedule pattern 2018-03-27 18.11.34.935
+                          active_end_time: 0
+                          skipOccurence: 0
+                          skipDayNumber: 0
+                          active_start_time: 76320
+                          freq_restart_interval: 0
+                          active_start_date: 1522108800
+                          freq_interval: 1
+                          freq_relative_interval: 0
+                          name: TestBootSchedule
+                          freq_recurrence_factor: 1
+                          calendar:
+                            calendarId: 1
+                          timeZone:
+                            TimeZoneID: 1000
+                        options:
+                          adminOpts:
+                            drOrchestrationOption:
+                              operationType: 7
+                              initiatedfromMonitor: false
+                              replicationInfo:
+                                replicationId:
+                                - 5
+                                - 6
+                              advancedOptions:
+                                skipDisableNetworkAdapter: false
+                              vApp:
+                                _type_: 164
+                                vAppId: 31
+                                vAppName: AdminConsole FGRegression
+                            vmProvisioningOption:
+                              operationType: 39
+                              vAppEntity:
+                                _type_: 164
+                                vAppId: 31
+                                vAppName: AdminConsole FGRegression
+              examples:
+                Get Failover Group Schedules:
+                  value:
+                    taskDetail:
+                    - taskOperation: 1
+                      associations:
+                      - srmReportSet: 0
+                        srmTemplateId: 0
+                        subclientId: 0
+                        clientGroupId: 0
+                        storagePolicyId: 0
+                        copyId: 0
+                        applicationId: 0
+                        backupsetId: 0
+                        instanceId: 0
+                        sidbStoreId: 0
+                        clientId: 0
+                        sidbStoreName: N/A
+                        agentlessPolicyId: 0
+                        mediaAgentId: 0
+                        workflowId: 0
+                        _type_: 0
+                        appName: Default Application Type Name
+                        flags:
+                          exclude: false
+                      task:
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 2
+                        ownerName: testadmin
+                        alertId: 0
+                        GUID: 0cccb93d-77c2-4d16-90c2-d51600caa1eb
+                        policyType: 0
+                        taskId: 401
+                        originalCC:
+                          commCellId: 2
+                        taskFlags:
+                          isEdgeDrive: false
+                          isEZOperation: false
+                          uninstalled: false
+                          disabled: false
+                        task:
+                          taskId: 401
+                      appGroup: {}
+                      subTasks:
+                      - relativeTime: 40726
+                        subTaskOperation: 1
+                        subTask:
+                          subTaskOrder: 0
+                          subTaskName: TestBootSchedule
+                          subTaskType: 1
+                          flags: 0
+                          operationType: 4046
+                          subTaskId: 406
+                        pattern:
+                          active_end_occurence: 0
+                          freq_subday_interval: 0
+                          freq_type: 4
+                          patternId: 43
+                          flags: 0
+                          description: testadmin Console schedule pattern 2018-03-27 18.11.34.935
+                          active_end_time: 0
+                          skipOccurence: 0
+                          skipDayNumber: 0
+                          active_start_time: 76320
+                          freq_restart_interval: 0
+                          active_start_date: 1522108800
+                          freq_interval: 1
+                          freq_relative_interval: 0
+                          name: TestBootSchedule
+                          freq_recurrence_factor: 1
+                          calendar:
+                            calendarId: 1
+                          timeZone:
+                            TimeZoneID: 1000
+                        options:
+                          adminOpts:
+                            drOrchestrationOption:
+                              operationType: 7
+                              initiatedfromMonitor: false
+                              replicationInfo:
+                                replicationId:
+                                - 5
+                                - 6
+                              advancedOptions:
+                                skipDisableNetworkAdapter: false
+                              vApp:
+                                _type_: 164
+                                vAppId: 31
+                                vAppName: AdminConsole FGRegression
+                            vmProvisioningOption:
+                              operationType: 39
+                              vAppEntity:
+                                _type_: 164
+                                vAppId: 31
+                                vAppName: AdminConsole FGRegression
+  /FailoverGroups/ClientList:
+    get:
+      deprecated: false
+      description: |
+        This operation returns the list of VM/u2019s that can be replicated and can be added to a Failover Group
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=46466.htm)
+      operationId: Get Failover Group Clientlist
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: source
+        schema:
+          example: 1
+          format: int32
+          type: integer
+      - description: 'entityType 3 if the source is a Hypervisor, 2 if the source is Server group'
+        explode: true
+        in: query
+        name: entityType
+        schema:
+          example: '{entityType}'
+          type: string
+      - description: entityId id of the source hypervisor or the server group
+        explode: true
+        in: query
+        name: entityId
+        schema:
+          example: '{entityId}'
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Failover Group Clientlist
+      tags:
+      - Failover Group Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  source:
+                    type: integer
+                  client:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        scheduleName:
+                          type: string
+                        copyPrecedence:
+                          type: integer
+                        destVendor:
+                          type: integer
+                        failoverStatus:
+                          type: integer
+                        supportedOperation:
+                          type: integer
+                        replicationId:
+                          type: integer
+                        isVM:
+                          type: boolean
+                        vendor:
+                          type: integer
+                        syncStatus:
+                          type: integer
+                        lastbackuptime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                        lastSyncTime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                        backupSet:
+                          type: object
+                          properties:
+                            backupsetId:
+                              type: integer
+                            backupsetName:
+                              type: string
+                            applicationId:
+                              type: integer
+                        destinationClient:
+                          type: object
+                          properties:
+                            clientName:
+                              type: string
+                            clientId:
+                              type: integer
+                            _type_:
+                              type: integer
+                        destClient:
+                          type: object
+                          properties:
+                            clientName:
+                              type: string
+                            GUID:
+                              type: string
+                            _type_:
+                              type: integer
+                        client:
+                          type: object
+                          properties:
+                            subclientId:
+                              type: integer
+                            clientName:
+                              type: string
+                            instanceId:
+                              type: integer
+                            clientId:
+                              type: integer
+                            GUID:
+                              type: string
+                            _type_:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    source: 1
+                    client:
+                    - scheduleName: DRAuto_Immediately after the backup job completes
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 0
+                      supportedOperation: 1
+                      replicationId: 2
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 1
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522857858
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522828916
+                      backupSet:
+                        backupsetId: 7
+                        backupsetName: defaultBackupSet
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: DRautoVM1DRAuto
+                        GUID: 50268f3c-4dad-ae43-a1c9-a78521577137
+                        _type_: 3
+                      client:
+                        subclientId: 9
+                        clientName: DRautoVM1
+                        instanceId: 3
+                        clientId: 5
+                        GUID: 50265248-1749-602d-2878-323029cfeab7
+                        _type_: 3
+                    - scheduleName: TestFailover_Immediately after the backup job completes
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 1
+                      supportedOperation: 1
+                      replicationId: 3
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 6
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522857690
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522827488
+                      backupSet:
+                        backupsetId: 7
+                        backupsetName: defaultBackupSet
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: TFVM1TestFailover
+                        GUID: 502633dd-1bbf-e449-0cb9-5a56726f0305
+                        _type_: 3
+                      client:
+                        subclientId: 19
+                        clientName: TFVM1
+                        instanceId: 3
+                        clientId: 15
+                        GUID: 502679db-98b0-ecfb-a338-f2823d27b818
+                        _type_: 3
+                    - scheduleName: TestFailover_Immediately after the backup job completes
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 1
+                      supportedOperation: 1
+                      replicationId: 4
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 6
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522857267
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522119775
+                      backupSet:
+                        backupsetId: 7
+                        backupsetName: defaultBackupSet
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: TFVM2TestFailover
+                        GUID: 5026e779-53c3-e522-b827-4c6d79edd549
+                        _type_: 3
+                      client:
+                        subclientId: 19
+                        clientName: TFVM2
+                        instanceId: 3
+                        clientId: 16
+                        GUID: 50267ac4-b0e5-9a85-3a1c-f3990f89761d
+                        _type_: 3
+                    - scheduleName: TestFailoverGroups_Immediately after the backup job completes
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 4
+                      supportedOperation: 1
+                      replicationId: 5
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 1
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522333311
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522303501
+                      backupSet:
+                        backupsetId: 7
+                        backupsetName: defaultBackupSet
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: ACVM1FailoverGroups
+                        GUID: 50262f25-af46-e579-c376-ac464130d0b4
+                        _type_: 3
+                      client:
+                        subclientId: 20
+                        clientName: ACVM1
+                        instanceId: 3
+                        clientId: 17
+                        GUID: 5026fad1-aa4d-8aed-9274-8f0bc7671163
+                        _type_: 3
+                    - scheduleName: TestFailoverGroups_Immediately after the backup job completes
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 8
+                      supportedOperation: 1
+                      replicationId: 6
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 6
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522855525
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522306964
+                      backupSet:
+                        backupsetId: 7
+                        backupsetName: defaultBackupSet
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: ACVM2FailoverGroups
+                        GUID: 5026b787-bf15-1fd3-9796-c2a2a0fcbebf
+                        _type_: 3
+                      client:
+                        subclientId: 20
+                        clientName: ACVM2
+                        instanceId: 3
+                        clientId: 18
+                        GUID: 5026fb51-a607-e08c-3a55-878469ba0e1a
+                        _type_: 3
+                    - scheduleName: JAvaGUISC1FG
+                      copyPrecedence: 2
+                      destVendor: 1
+                      failoverStatus: 8
+                      supportedOperation: 1
+                      replicationId: 7
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 6
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522348726
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1521531100
+                      backupSet:
+                        backupsetId: 10
+                        backupsetName: TestFailoverGroups
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: JGVM1_FGjavaGUI
+                        GUID: 5026e4dd-47c7-efdb-77b8-1029be25d842
+                        _type_: 3
+                      client:
+                        subclientId: 14
+                        clientName: JGVM1
+                        instanceId: 3
+                        clientId: 9
+                        GUID: 50263e4e-7723-75be-c00d-df9db3631fe9
+                        _type_: 3
+                    - scheduleName: JAvaGUISC1FG
+                      copyPrecedence: 2
+                      destVendor: 1
+                      failoverStatus: 8
+                      supportedOperation: 1
+                      replicationId: 8
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 6
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522281945
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522242268
+                      backupSet:
+                        backupsetId: 10
+                        backupsetName: TestFailoverGroups
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: JGVM2_FGJavaGUI
+                        GUID: 5026f17f-ac68-750e-9fca-2185c718dc63
+                        _type_: 3
+                      client:
+                        subclientId: 14
+                        clientName: JGVM2
+                        instanceId: 3
+                        clientId: 10
+                        GUID: 50266f17-f19b-f7cf-7717-31b9d6638a78
+                        _type_: 3
+                    - scheduleName: FGJavaGUISC2
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 1
+                      supportedOperation: 1
+                      replicationId: 9
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 6
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522854334
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522767769
+                      backupSet:
+                        backupsetId: 10
+                        backupsetName: TestFailoverGroups
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: JGVM3_FGJAVAGUI
+                        GUID: 5026d8c0-c6ca-21b5-37d8-1f3c8ba51c8a
+                        _type_: 3
+                      client:
+                        subclientId: 18
+                        clientName: JGVM3
+                        instanceId: 3
+                        clientId: 13
+                        GUID: 50262a09-aaf6-1da0-e605-5b2eea6b78d9
+                        _type_: 3
+                    - scheduleName: FGJavaGUISC2
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 1
+                      supportedOperation: 1
+                      replicationId: 10
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 6
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522199264
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522170144
+                      backupSet:
+                        backupsetId: 10
+                        backupsetName: TestFailoverGroups
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: JGVM4_FGJAVAGUI
+                        GUID: 50262db5-d201-0126-dff1-9ca11cdf8b91
+                        _type_: 3
+                      client:
+                        subclientId: 18
+                        clientName: JGVM4
+                        instanceId: 3
+                        clientId: 14
+                        GUID: 502641d1-ec3b-ddb6-3aea-4f64c0c33bc4
+                        _type_: 3
+                    - scheduleName: TestBucketting
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 8
+                      supportedOperation: 1
+                      replicationId: 13
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 1
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522358605
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522329673
+                      backupSet:
+                        backupsetId: 11
+                        backupsetName: Dev_TestGroups
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: DEVVM2_testBucketting
+                        GUID: 50266f9c-f5de-e2ea-3862-bfcfbbc8cfbb
+                        _type_: 3
+                      client:
+                        subclientId: 17
+                        clientName: DEVVM2
+                        instanceId: 3
+                        clientId: 12
+                        GUID: 50265eac-6e0e-e496-78b3-464f0ef4afc5
+                        _type_: 3
+              examples:
+                Get Failover Group Clients list:
+                  value:
+                    source: 1
+                    client:
+                    - scheduleName: DRAuto_Immediately after the backup job completes
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 0
+                      supportedOperation: 1
+                      replicationId: 2
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 1
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522857858
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522828916
+                      backupSet:
+                        backupsetId: 7
+                        backupsetName: defaultBackupSet
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: DRautoVM1DRAuto
+                        GUID: 50268f3c-4dad-ae43-a1c9-a78521577137
+                        _type_: 3
+                      client:
+                        subclientId: 9
+                        clientName: DRautoVM1
+                        instanceId: 3
+                        clientId: 5
+                        GUID: 50265248-1749-602d-2878-323029cfeab7
+                        _type_: 3
+                    - scheduleName: TestFailover_Immediately after the backup job completes
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 1
+                      supportedOperation: 1
+                      replicationId: 3
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 6
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522857690
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522827488
+                      backupSet:
+                        backupsetId: 7
+                        backupsetName: defaultBackupSet
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: TFVM1TestFailover
+                        GUID: 502633dd-1bbf-e449-0cb9-5a56726f0305
+                        _type_: 3
+                      client:
+                        subclientId: 19
+                        clientName: TFVM1
+                        instanceId: 3
+                        clientId: 15
+                        GUID: 502679db-98b0-ecfb-a338-f2823d27b818
+                        _type_: 3
+                    - scheduleName: TestFailover_Immediately after the backup job completes
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 1
+                      supportedOperation: 1
+                      replicationId: 4
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 6
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522857267
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522119775
+                      backupSet:
+                        backupsetId: 7
+                        backupsetName: defaultBackupSet
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: TFVM2TestFailover
+                        GUID: 5026e779-53c3-e522-b827-4c6d79edd549
+                        _type_: 3
+                      client:
+                        subclientId: 19
+                        clientName: TFVM2
+                        instanceId: 3
+                        clientId: 16
+                        GUID: 50267ac4-b0e5-9a85-3a1c-f3990f89761d
+                        _type_: 3
+                    - scheduleName: TestFailoverGroups_Immediately after the backup job completes
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 4
+                      supportedOperation: 1
+                      replicationId: 5
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 1
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522333311
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522303501
+                      backupSet:
+                        backupsetId: 7
+                        backupsetName: defaultBackupSet
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: ACVM1FailoverGroups
+                        GUID: 50262f25-af46-e579-c376-ac464130d0b4
+                        _type_: 3
+                      client:
+                        subclientId: 20
+                        clientName: ACVM1
+                        instanceId: 3
+                        clientId: 17
+                        GUID: 5026fad1-aa4d-8aed-9274-8f0bc7671163
+                        _type_: 3
+                    - scheduleName: TestFailoverGroups_Immediately after the backup job completes
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 8
+                      supportedOperation: 1
+                      replicationId: 6
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 6
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522855525
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522306964
+                      backupSet:
+                        backupsetId: 7
+                        backupsetName: defaultBackupSet
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: ACVM2FailoverGroups
+                        GUID: 5026b787-bf15-1fd3-9796-c2a2a0fcbebf
+                        _type_: 3
+                      client:
+                        subclientId: 20
+                        clientName: ACVM2
+                        instanceId: 3
+                        clientId: 18
+                        GUID: 5026fb51-a607-e08c-3a55-878469ba0e1a
+                        _type_: 3
+                    - scheduleName: JAvaGUISC1FG
+                      copyPrecedence: 2
+                      destVendor: 1
+                      failoverStatus: 8
+                      supportedOperation: 1
+                      replicationId: 7
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 6
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522348726
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1521531100
+                      backupSet:
+                        backupsetId: 10
+                        backupsetName: TestFailoverGroups
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: JGVM1_FGjavaGUI
+                        GUID: 5026e4dd-47c7-efdb-77b8-1029be25d842
+                        _type_: 3
+                      client:
+                        subclientId: 14
+                        clientName: JGVM1
+                        instanceId: 3
+                        clientId: 9
+                        GUID: 50263e4e-7723-75be-c00d-df9db3631fe9
+                        _type_: 3
+                    - scheduleName: JAvaGUISC1FG
+                      copyPrecedence: 2
+                      destVendor: 1
+                      failoverStatus: 8
+                      supportedOperation: 1
+                      replicationId: 8
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 6
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522281945
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522242268
+                      backupSet:
+                        backupsetId: 10
+                        backupsetName: TestFailoverGroups
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: JGVM2_FGJavaGUI
+                        GUID: 5026f17f-ac68-750e-9fca-2185c718dc63
+                        _type_: 3
+                      client:
+                        subclientId: 14
+                        clientName: JGVM2
+                        instanceId: 3
+                        clientId: 10
+                        GUID: 50266f17-f19b-f7cf-7717-31b9d6638a78
+                        _type_: 3
+                    - scheduleName: FGJavaGUISC2
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 1
+                      supportedOperation: 1
+                      replicationId: 9
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 6
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522854334
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522767769
+                      backupSet:
+                        backupsetId: 10
+                        backupsetName: TestFailoverGroups
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: JGVM3_FGJAVAGUI
+                        GUID: 5026d8c0-c6ca-21b5-37d8-1f3c8ba51c8a
+                        _type_: 3
+                      client:
+                        subclientId: 18
+                        clientName: JGVM3
+                        instanceId: 3
+                        clientId: 13
+                        GUID: 50262a09-aaf6-1da0-e605-5b2eea6b78d9
+                        _type_: 3
+                    - scheduleName: FGJavaGUISC2
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 1
+                      supportedOperation: 1
+                      replicationId: 10
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 6
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522199264
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522170144
+                      backupSet:
+                        backupsetId: 10
+                        backupsetName: TestFailoverGroups
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: JGVM4_FGJAVAGUI
+                        GUID: 50262db5-d201-0126-dff1-9ca11cdf8b91
+                        _type_: 3
+                      client:
+                        subclientId: 18
+                        clientName: JGVM4
+                        instanceId: 3
+                        clientId: 14
+                        GUID: 502641d1-ec3b-ddb6-3aea-4f64c0c33bc4
+                        _type_: 3
+                    - scheduleName: TestBucketting
+                      copyPrecedence: 0
+                      destVendor: 1
+                      failoverStatus: 8
+                      supportedOperation: 1
+                      replicationId: 13
+                      isVM: true
+                      vendor: 1
+                      syncStatus: 1
+                      lastbackuptime:
+                        _type_: 55
+                        time: 1522358605
+                      lastSyncTime:
+                        _type_: 55
+                        time: 1522329673
+                      backupSet:
+                        backupsetId: 11
+                        backupsetName: Dev_TestGroups
+                        applicationId: 0
+                      destinationClient:
+                        clientName: vsa-vc6.test.com
+                        clientId: 4
+                        _type_: 3
+                      destClient:
+                        clientName: DEVVM2_testBucketting
+                        GUID: 50266f9c-f5de-e2ea-3862-bfcfbbc8cfbb
+                        _type_: 3
+                      client:
+                        subclientId: 17
+                        clientName: DEVVM2
+                        instanceId: 3
+                        clientId: 12
+                        GUID: 50265eac-6e0e-e496-78b3-464f0ef4afc5
+                        _type_: 3
+  /DR/JobStats:
+    get:
+      deprecated: false
+      description: |
+        This operation returns the Failover group job statistics.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=46454.htm)
+      operationId: Get Failover Group Job Statistics
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: jobId
+        schema:
+          example: '{jobId}'
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: failoverGroupId
+        schema:
+          example: '{{failoverGroupId}}'
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: replicationId
+        schema:
+          example: '{replicationId}'
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: clientId
+        schema:
+          example: '{clientId}'
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Failover Group Job Statistics
+      tags:
+      - Failover Group Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        jobId:
+                          type: integer
+                        replicationId:
+                          type: integer
+                        phase:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              phase:
+                                type: integer
+                              status:
+                                type: integer
+                              startTime:
+                                type: object
+                                properties:
+                                  _type_:
+                                    type: integer
+                                  time:
+                                    type: integer
+                              endTime:
+                                type: object
+                                properties:
+                                  _type_:
+                                    type: integer
+                                  time:
+                                    type: integer
+                              entity:
+                                type: object
+                                properties:
+                                  clientName:
+                                    type: string
+                        client:
+                          type: object
+                          properties:
+                            clientId:
+                              type: integer
+                            clientName:
+                              type: string
+                        vapp:
+                          type: object
+                          properties:
+                            vAppId:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    job:
+                    - jobId: 4677
+                      replicationId: 0
+                      phase:
+                      - phase: 26
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 0
+                        endTime:
+                          _type_: 55
+                          time: 1522200878
+                        entity: {}
+                      - phase: 27
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522199745
+                        endTime:
+                          _type_: 55
+                          time: 1522200548
+                        entity: {}
+                      client:
+                        clientId: 0
+                      vapp:
+                        vAppId: 31
+                    - jobId: 4677
+                      replicationId: 5
+                      phase:
+                      - phase: 15
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522200580
+                        endTime:
+                          _type_: 55
+                          time: 1522200582
+                        entity:
+                          clientName: ACVM1
+                      - phase: 17
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522200582
+                        endTime:
+                          _type_: 55
+                          time: 1522200588
+                        entity:
+                          clientName: ACVM1FailoverGroups
+                      - phase: 20
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522200588
+                        endTime:
+                          _type_: 55
+                          time: 1522200601
+                        entity:
+                          clientName: ACVM1FailoverGroups
+                      - phase: 1
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522200601
+                        endTime:
+                          _type_: 55
+                          time: 1522200713
+                        entity:
+                          clientName: ACVM1FailoverGroups
+                      - phase: 24
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522200713
+                        endTime:
+                          _type_: 55
+                          time: 1522200727
+                        entity:
+                          clientName: ACVM1FailoverGroups
+                      - phase: 19
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522200727
+                        endTime:
+                          _type_: 55
+                          time: 1522200735
+                        entity:
+                          clientName: ACVM1FailoverGroups
+                      - phase: 18
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522200735
+                        endTime:
+                          _type_: 55
+                          time: 1522200740
+                        entity:
+                          clientName: ACVM1FailoverGroups
+                      client:
+                        clientId: 0
+                        clientName: ACVM1
+                      vapp:
+                        vAppId: 31
+              examples:
+                Example 1:
+                  value:
+                    job:
+                    - jobId: 4677
+                      replicationId: 0
+                      phase:
+                      - phase: 26
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 0
+                        endTime:
+                          _type_: 55
+                          time: 1522200878
+                        entity: {}
+                      - phase: 27
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522199745
+                        endTime:
+                          _type_: 55
+                          time: 1522200548
+                        entity: {}
+                      client:
+                        clientId: 0
+                      vapp:
+                        vAppId: 31
+                    - jobId: 4677
+                      replicationId: 5
+                      phase:
+                      - phase: 15
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522200580
+                        endTime:
+                          _type_: 55
+                          time: 1522200582
+                        entity:
+                          clientName: ACVM1
+                      - phase: 17
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522200582
+                        endTime:
+                          _type_: 55
+                          time: 1522200588
+                        entity:
+                          clientName: ACVM1FailoverGroups
+                      - phase: 20
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522200588
+                        endTime:
+                          _type_: 55
+                          time: 1522200601
+                        entity:
+                          clientName: ACVM1FailoverGroups
+                      - phase: 1
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522200601
+                        endTime:
+                          _type_: 55
+                          time: 1522200713
+                        entity:
+                          clientName: ACVM1FailoverGroups
+                      - phase: 24
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522200713
+                        endTime:
+                          _type_: 55
+                          time: 1522200727
+                        entity:
+                          clientName: ACVM1FailoverGroups
+                      - phase: 19
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522200727
+                        endTime:
+                          _type_: 55
+                          time: 1522200735
+                        entity:
+                          clientName: ACVM1FailoverGroups
+                      - phase: 18
+                        status: 0
+                        startTime:
+                          _type_: 55
+                          time: 1522200735
+                        endTime:
+                          _type_: 55
+                          time: 1522200740
+                        entity:
+                          clientName: ACVM1FailoverGroups
+                      client:
+                        clientId: 0
+                        clientName: ACVM1
+                      vapp:
+                        vAppId: 31
+  /getVirtualMachineList:
+    post:
+      deprecated: false
+      description: |
+        ## Request Body
+
+        | **Name** | **Description** |
+        | --- | --- |
+        | vAppId | Failover Group ID |
+      operationId: View Test Failover VM's
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      summary: View Test Failover VM's
+      tags:
+      - Failover Group Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filter:
+                  type: object
+                  properties:
+                    isTestFailOver:
+                      type: boolean
+                    vappEntity:
+                      type: object
+                      properties:
+                        vAppId:
+                          type: integer
+              x-examples:
+                Example 1:
+                  filter:
+                    isTestFailOver: true
+                    vappEntity:
+                      vAppId: 2
+            examples:
+              Example 1:
+                value:
+                  filter:
+                    isTestFailOver: true
+                    vappEntity:
+                      vAppId: 2
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  virtualMachines:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        operatingSystem:
+                          type: string
+                        userCapabilities:
+                          type: integer
+                        numberOfDisks:
+                          type: integer
+                        memory:
+                          type: integer
+                        flags:
+                          type: integer
+                        isVirtualLabGateway:
+                          type: boolean
+                        vmAllocPolicyId:
+                          type: integer
+                        numberOfCPUs:
+                          type: integer
+                        vmState:
+                          type: integer
+                        modifiedTime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                        proxyClient:
+                          type: object
+                          properties:
+                            clientId:
+                              type: integer
+                        ipAddress:
+                          type: object
+                          properties:
+                            subnet:
+                              type: integer
+                            address:
+                              type: string
+                            family:
+                              type: integer
+                        vmLocation:
+                          type: object
+                          properties:
+                            hostName:
+                              type: string
+                            dataCenterName:
+                              type: string
+                            vCenter:
+                              type: string
+                        expirationTime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                        vm:
+                          type: object
+                          properties:
+                            hostName:
+                              type: string
+                            vmName:
+                              type: string
+                            clientId:
+                              type: integer
+                            clientName:
+                              type: string
+                            vmGUID:
+                              type: string
+                        creationTime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                        lastPowerOnTime:
+                          type: object
+                          properties:
+                            time:
+                              type: integer
+                        creator:
+                          type: object
+                          properties:
+                            userGUID:
+                              type: string
+                            userName:
+                              type: string
+                            userId:
+                              type: integer
+                        instanceTypeEntity:
+                          type: object
+                          properties:
+                            vmInstanceTypeName:
+                              type: string
+                        advancedProperties:
+                          type: object
+                          properties:
+                            connectionString:
+                              type: string
+                            additionalFlags:
+                              type: integer
+                        entity:
+                          type: object
+                          properties:
+                            instanceId:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    virtualMachines:
+                    - operatingSystem: Other Linux (64-bit)
+                      userCapabilities: 65535
+                      numberOfDisks: 2
+                      memory: 48
+                      flags: 101
+                      isVirtualLabGateway: false
+                      vmAllocPolicyId: 2
+                      numberOfCPUs: 1
+                      vmState: 1
+                      modifiedTime:
+                        _type_: 55
+                        time: 1651260582
+                      proxyClient:
+                        clientId: 4
+                      ipAddress:
+                        subnet: 0
+                        address: ''
+                        family: 32
+                      vmLocation:
+                        hostName: 172.24.33.2
+                        dataCenterName: Rajesh
+                        vCenter: devvsvc.commvault.com
+                      expirationTime:
+                        _type_: 55
+                        time: 1651264182
+                      vm:
+                        hostName: ''
+                        vmName: tinyvm49DR-Clone-10580-65
+                        clientId: 9
+                        clientName: tinyvm49DR-Clone-10580-65
+                        vmGUID: 591836ee-f414-4082-a391-bf7dcb1e040f
+                      creationTime:
+                        _type_: 55
+                        time: 1651260581
+                      lastPowerOnTime:
+                        time: 0
+                      creator:
+                        userGUID: A492CDFD-8548-4C65-96E1-9D04C2E671AA
+                        userName: testadmin
+                        userId: 1
+                      instanceTypeEntity:
+                        vmInstanceTypeName: ''
+                      advancedProperties:
+                        connectionString: ''
+                        additionalFlags: 3
+                      entity:
+                        instanceId: 4
+                    - operatingSystem: Other Linux (64-bit)
+                      userCapabilities: 65535
+                      numberOfDisks: 2
+                      memory: 48
+                      flags: 101
+                      isVirtualLabGateway: false
+                      vmAllocPolicyId: 2
+                      numberOfCPUs: 1
+                      vmState: 1
+                      modifiedTime:
+                        _type_: 55
+                        time: 1651260582
+                      proxyClient:
+                        clientId: 4
+                      ipAddress:
+                        subnet: 0
+                        address: ''
+                        family: 32
+                      vmLocation:
+                        hostName: 172.24.33.2
+                        dataCenterName: Rajesh
+                        vCenter: devvsvc.commvault.com
+                      expirationTime:
+                        _type_: 55
+                        time: 1651264182
+                      vm:
+                        hostName: ''
+                        vmName: tinyvm50DR-Clone-10580-65
+                        clientId: 10
+                        clientName: tinyvm50DR-Clone-10580-65
+                        vmGUID: f18d0f24-2823-4595-be33-6857a468a044
+                      creationTime:
+                        _type_: 55
+                        time: 1651260581
+                      lastPowerOnTime:
+                        time: 0
+                      creator:
+                        userGUID: A492CDFD-8548-4C65-96E1-9D04C2E671AA
+                        userName: testadmin
+                        userId: 1
+                      instanceTypeEntity:
+                        vmInstanceTypeName: ''
+                      advancedProperties:
+                        connectionString: ''
+                        additionalFlags: 3
+                      entity:
+                        instanceId: 4
+              examples:
+                Example 1:
+                  value:
+                    virtualMachines:
+                    - operatingSystem: Other Linux (64-bit)
+                      userCapabilities: 65535
+                      numberOfDisks: 2
+                      memory: 48
+                      flags: 101
+                      isVirtualLabGateway: false
+                      vmAllocPolicyId: 2
+                      numberOfCPUs: 1
+                      vmState: 1
+                      modifiedTime:
+                        _type_: 55
+                        time: 1651260582
+                      proxyClient:
+                        clientId: 4
+                      ipAddress:
+                        subnet: 0
+                        address: ''
+                        family: 32
+                      vmLocation:
+                        hostName: 172.24.33.2
+                        dataCenterName: Rajesh
+                        vCenter: devvsvc.commvault.com
+                      expirationTime:
+                        _type_: 55
+                        time: 1651264182
+                      vm:
+                        hostName: ''
+                        vmName: tinyvm49DR-Clone-10580-65
+                        clientId: 9
+                        clientName: tinyvm49DR-Clone-10580-65
+                        vmGUID: 591836ee-f414-4082-a391-bf7dcb1e040f
+                      creationTime:
+                        _type_: 55
+                        time: 1651260581
+                      lastPowerOnTime:
+                        time: 0
+                      creator:
+                        userGUID: A492CDFD-8548-4C65-96E1-9D04C2E671AA
+                        userName: testadmin
+                        userId: 1
+                      instanceTypeEntity:
+                        vmInstanceTypeName: ''
+                      advancedProperties:
+                        connectionString: ''
+                        additionalFlags: 3
+                      entity:
+                        instanceId: 4
+                    - operatingSystem: Other Linux (64-bit)
+                      userCapabilities: 65535
+                      numberOfDisks: 2
+                      memory: 48
+                      flags: 101
+                      isVirtualLabGateway: false
+                      vmAllocPolicyId: 2
+                      numberOfCPUs: 1
+                      vmState: 1
+                      modifiedTime:
+                        _type_: 55
+                        time: 1651260582
+                      proxyClient:
+                        clientId: 4
+                      ipAddress:
+                        subnet: 0
+                        address: ''
+                        family: 32
+                      vmLocation:
+                        hostName: 172.24.33.2
+                        dataCenterName: Rajesh
+                        vCenter: devvsvc.commvault.com
+                      expirationTime:
+                        _type_: 55
+                        time: 1651264182
+                      vm:
+                        hostName: ''
+                        vmName: tinyvm50DR-Clone-10580-65
+                        clientId: 10
+                        clientName: tinyvm50DR-Clone-10580-65
+                        vmGUID: f18d0f24-2823-4595-be33-6857a468a044
+                      creationTime:
+                        _type_: 55
+                        time: 1651260581
+                      lastPowerOnTime:
+                        time: 0
+                      creator:
+                        userGUID: A492CDFD-8548-4C65-96E1-9D04C2E671AA
+                        userName: testadmin
+                        userId: 1
+                      instanceTypeEntity:
+                        vmInstanceTypeName: ''
+                      advancedProperties:
+                        connectionString: ''
+                        additionalFlags: 3
+                      entity:
+                        instanceId: 4
+  /CreateTask:
+    post:
+      summary: Failover Tasks
+      tags:
+      - Failover Group Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskId:
+                    type: integer
+                  jobIds:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    taskId: 386
+                    jobIds:
+                    - '5870'
+              examples:
+                Example 1:
+                  value:
+                    taskId: 386
+                    jobIds:
+                    - '5870'
+      operationId: get-CreateTask
+      description: Operations related to Failover groups
+      parameters:
+      - schema:
+          type: string
+        in: header
+        name: AuthToken
+        required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taskInfo:
+                  type: object
+                  properties:
+                    task:
+                      type: object
+                      properties:
+                        taskFlags:
+                          type: object
+                          properties:
+                            disabled:
+                              type: integer
+                        taskType:
+                          type: integer
+                        ownerId:
+                          type: integer
+                        initiatedFrom:
+                          type: integer
+                        sequenceNumber:
+                          type: integer
+                        ownerName:
+                          type: string
+                    subTasks:
+                      type: object
+                      properties:
+                        subTask:
+                          type: object
+                          properties:
+                            subTaskType:
+                              type: integer
+                            operationType:
+                              type: integer
+                        options:
+                          type: object
+                          properties:
+                            adminOpts:
+                              type: object
+                              properties:
+                                drOrchestrationOption:
+                                  type: object
+                                  properties:
+                                    vApp:
+                                      type: object
+                                      properties:
+                                        vAppId:
+                                          type: integer
+                                        vAppName:
+                                          type: string
+                                    advancedOptions:
+                                      type: object
+                                      properties:
+                                        skipDisableNetworkAdapter:
+                                          type: integer
+                                    operationType:
+                                      type: integer
+                                    initiatedfromMonitor:
+                                      type: integer
+                        subTaskOperation:
+                          type: integer
+              x-examples:
+                Example 1:
+                  taskInfo:
+                    task:
+                      taskFlags:
+                        disabled: 0
+                      taskType: 1
+                      ownerId: 1
+                      initiatedFrom: 2
+                      sequenceNumber: 0
+                      ownerName: testadmin
+                    subTasks:
+                      subTask:
+                        subTaskType: 1
+                        operationType: 4046
+                      options:
+                        adminOpts:
+                          drOrchestrationOption:
+                            vApp:
+                              vAppId: 45
+                              vAppName: FailoverGroup
+                            advancedOptions:
+                              skipDisableNetworkAdapter: 0
+                            operationType: 7
+                            initiatedfromMonitor: 0
+                      subTaskOperation: 1
+            examples:
+              Testboot:
+                value:
+                  taskInfo:
+                    task:
+                      taskFlags:
+                        disabled: 0
+                      taskType: 1
+                      ownerId: 1
+                      initiatedFrom: 2
+                      sequenceNumber: 0
+                      ownerName: testadmin
+                    subTasks:
+                      subTask:
+                        subTaskType: 1
+                        operationType: 4046
+                      options:
+                        adminOpts:
+                          drOrchestrationOption:
+                            vApp:
+                              vAppId: 45
+                              vAppName: FailoverGroup
+                            advancedOptions:
+                              skipDisableNetworkAdapter: 0
+                            operationType: 7
+                            initiatedfromMonitor: 0
+                      subTaskOperation: 1
+              Planned Failover:
+                value:
+                  taskInfo:
+                    task:
+                      taskFlags:
+                        disabled: 0
+                      taskType: 1
+                      ownerId: 1
+                      initiatedFrom: 2
+                      sequenceNumber: 0
+                      ownerName: testadmin
+                    subTasks:
+                      subTask:
+                        subTaskType: 1
+                        operationType: 4046
+                      options:
+                        adminOpts:
+                          drOrchestrationOption:
+                            vApp:
+                              vAppId: 45
+                              vAppName: FailoverGroup
+                            advancedOptions:
+                              skipDisableNetworkAdapter: 0
+                            operationType: 1
+                            initiatedfromMonitor: 0
+                      subTaskOperation: 1
+              UnPlanned Failover:
+                value:
+                  taskInfo:
+                    task:
+                      taskFlags:
+                        disabled: 0
+                      taskType: 1
+                      ownerId: 1
+                      initiatedFrom: 2
+                      sequenceNumber: 0
+                      ownerName: testadmin
+                    subTasks:
+                      subTask:
+                        subTaskType: 1
+                        operationType: 4046
+                      options:
+                        adminOpts:
+                          drOrchestrationOption:
+                            vApp:
+                              vAppId: 45
+                              vAppName: FailoverGroup
+                            advancedOptions:
+                              skipDisableNetworkAdapter: 0
+                            operationType: 3
+                            initiatedfromMonitor: 0
+                      subTaskOperation: 1
+              ' Failback on a Failover group':
+                value:
+                  taskInfo:
+                    task:
+                      ownerId: 1
+                      taskType: 1
+                      ownerName: testadmin
+                      sequenceNumber: 0
+                      initiatedFrom: 2
+                      taskFlags:
+                        disabled: false
+                    subTasks:
+                    - subTaskOperation: 1
+                      subTask:
+                        subTaskType: 1
+                        operationType: 4046
+                      options:
+                        adminOpts:
+                          drOrchestrationOption:
+                            operationType: 7
+                            initiatedfromMonitor: false
+                            advancedOptions:
+                              skipDisableNetworkAdapter: false
+                            vApp:
+                              vAppId: 46
+                              vAppName: FailoverGroup
+              Undo Failover:
+                value:
+                  taskInfo:
+                    task:
+                      ownerId: 1
+                      taskType: 1
+                      ownerName: testadmin
+                      sequenceNumber: 0
+                      initiatedFrom: 2
+                      taskFlags:
+                        disabled: false
+                    subTasks:
+                    - subTaskOperation: 1
+                      subTask:
+                        subTaskType: 1
+                        operationType: 4046
+                      options:
+                        adminOpts:
+                          drOrchestrationOption:
+                            operationType: 6
+                            initiatedfromMonitor: false
+                            replicationInfo:
+                              useSelectiveReplication: false
+                              replicationType: 0
+                              replicationId:
+                              - 2
+                              - 1
+                            advancedOptions:
+                              skipDisableNetworkAdapter: false
+                            vApp:
+                              vAppId: 2
+                              vAppName: tinyvms
+              Test Failover:
+                value:
+                  taskInfo:
+                    task:
+                      ownerId: 1
+                      taskType: 1
+                      ownerName: testadmin
+                      sequenceNumber: 0
+                      initiatedFrom: 2
+                      taskFlags:
+                        disabled: false
+                    subTasks:
+                    - subTaskOperation: 1
+                      subTask:
+                        subTaskType: 1
+                        operationType: 4046
+                      options:
+                        adminOpts:
+                          drOrchestrationOption:
+                            operationType: 11
+                            initiatedfromMonitor: false
+                            replicationInfo:
+                              useSelectiveReplication: false
+                              replicationType: 0
+                              replicationId:
+                              - 2
+                              - 1
+                            advancedOptions:
+                              skipDisableNetworkAdapter: false
+                            vApp:
+                              vAppId: 2
+                              vAppName: tinyvms

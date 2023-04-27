@@ -1,0 +1,35 @@
+---
+id: get-vm-nics
+title: "Get VM Nics"
+description: "Get Nics for the backed up VM provided the VM GUID"
+sidebar_label: "Get VM Nics"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"Get Nics for the backed up VM provided the VM GUID\n","operationId":"Get VM Nics","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"path","name":"vmGuid","required":true,"schema":{"type":"string"}}],"tags":["VM Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"nic":{"type":"array","items":{"type":"object","properties":{"subnet":{"type":"string"},"hasPublicIP":{"type":"boolean"},"label":{"type":"string"},"name":{"type":"string"},"id":{"type":"string"}}}}},"x-examples":{"Example 1":{"nic":[{"subnet":"","hasPublicIP":false,"label":"Network adapter 1","name":"VM Network","id":""}]}}},"examples":{"Example 1":{"value":{"nic":[{"subnet":"","hasPublicIP":false,"label":"Network adapter 1","name":"VM Network","id":""}]}}}}}}},"method":"get","path":"/v2/vsa/vm/{vmGuid}/nics","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get VM Nics","description":{"content":"Get Nics for the backed up VM provided the VM GUID\n","type":"text/plain"},"url":{"path":["v2","vsa","vm",":vmGuid","nics"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"vmGuid"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/VirtualizationOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get VM Nics
+
+
+
+Get Nics for the backed up VM provided the VM GUID
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"vmGuid","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>nic</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"subnet"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"hasPublicIP"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"label"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"id"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"nic\": [\n    {\n      \"subnet\": \"string\",\n      \"hasPublicIP\": true,\n      \"label\": \"string\",\n      \"name\": \"string\",\n      \"id\": \"string\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"{\n  \"nic\": [\n    {\n      \"subnet\": \"\",\n      \"hasPublicIP\": false,\n      \"label\": \"Network adapter 1\",\n      \"name\": \"VM Network\",\n      \"id\": \"\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

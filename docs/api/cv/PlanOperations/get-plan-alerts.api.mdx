@@ -1,0 +1,34 @@
+---
+id: get-plan-alerts
+title: "Get Plan Alerts"
+description: "This operation returns information on plan alerts."
+sidebar_label: "Get Plan Alerts"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation returns information on plan alerts.","operationId":"Get Plan Alerts","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"path","name":"PlanId","required":true,"schema":{"type":"string"}}],"tags":["Plan Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"alerts":{"type":"array","items":{"type":"object","properties":{"alertName":{"type":"string"},"alertId":{"type":"integer"}}}}},"x-examples":{"Example 1":{"alerts":[{"alertName":"No backup for last 4 days","alertId":6},{"alertName":"Restore Job failed","alertId":7}]}}},"examples":{"Example 1":{"value":{"alerts":[{"alertName":"No backup for last 4 days","alertId":6},{"alertName":"Restore Job failed","alertId":7}]}}}}}}},"method":"get","path":"/v2/Plan/{PlanId}/Alerts","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get Plan Alerts","description":{"content":"This operation returns information on plan alerts.","type":"text/plain"},"url":{"path":["v2","Plan",":PlanId","Alerts"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"PlanId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/PlanOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get Plan Alerts
+
+
+
+This operation returns information on plan alerts.
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"PlanId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>alerts</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"alertName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"alertId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"alerts\": [\n    {\n      \"alertName\": \"string\",\n      \"alertId\": 0\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"{\n  \"alerts\": [\n    {\n      \"alertName\": \"No backup for last 4 days\",\n      \"alertId\": 6\n    },\n    {\n      \"alertName\": \"Restore Job failed\",\n      \"alertId\": 7\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

@@ -1,0 +1,168 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: CSLiveSync
+paths:
+  /CommServ/Failover:
+    post:
+      deprecated: false
+      description: |
+        This operation is used to disable CSLiveSync.
+      operationId: Disable CSLiveSync
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      summary: CSLiveSync
+      tags:
+      - CSLiveSync
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  refreshClientGroupNode:
+                    type: boolean
+                x-examples:
+                  Example 1:
+                    refreshClientGroupNode: false
+              examples:
+                Enable CSLiveSync:
+                  value:
+                    refreshClientGroupNode: false
+                Disable CSLiveSync:
+                  value:
+                    refreshClientGroupNode: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                csFailoverConfigInfo:
+                  type: object
+                  properties:
+                    configStatus:
+                      type: integer
+                    isAutomaticFailoverEnabled:
+                      type: boolean
+                    backupStoragePolicy:
+                      type: object
+                      properties:
+                        storagePolicyName:
+                          type: string
+                    failoverScheduleDetails:
+                      type: object
+                      properties:
+                        liveSyncRPO:
+                          type: integer
+                        defaultRecoveryMode:
+                          type: integer
+                    networkInfo:
+                      type: object
+                      properties:
+                        externalGrpManualConfig:
+                          type: boolean
+                        connectivityMode:
+                          type: integer
+                        proxyConnectivityOption:
+                          type: integer
+                        proxyEntity:
+                          type: object
+                          properties:
+                            clientGroupName:
+                              type: string
+                        dnsUpdateInfo:
+                          type: object
+                          properties:
+                            specifyDNSServers:
+                              type: boolean
+                            dnsScriptPath:
+                              type: string
+                            updateDNSInfoByScript:
+                              type: boolean
+              x-examples:
+                Example 1:
+                  csFailoverConfigInfo:
+                    configStatus: 1
+                    isAutomaticFailoverEnabled: false
+                    backupStoragePolicy:
+                      storagePolicyName: '{{storagePolicyName}}'
+                    failoverScheduleDetails:
+                      liveSyncRPO: 15
+                      defaultRecoveryMode: 0
+                    networkInfo:
+                      externalGrpManualConfig: false
+                      connectivityMode: 0
+                      proxyConnectivityOption: 0
+                      proxyEntity:
+                        clientGroupName: CVLiveSync
+                      dnsUpdateInfo:
+                        specifyDNSServers: false
+                        dnsScriptPath: ''
+                        updateDNSInfoByScript: false
+            examples:
+              Disable CSLiveSync:
+                value:
+                  csFailoverConfigInfo:
+                    configStatus: 1
+                    isAutomaticFailoverEnabled: false
+                    backupStoragePolicy:
+                      storagePolicyName: '{{storagePolicyName}}'
+                    failoverScheduleDetails:
+                      liveSyncRPO: 15
+                      defaultRecoveryMode: 0
+                    networkInfo:
+                      externalGrpManualConfig: false
+                      connectivityMode: 0
+                      proxyConnectivityOption: 0
+                      proxyEntity:
+                        clientGroupName: CVLiveSync
+                      dnsUpdateInfo:
+                        specifyDNSServers: false
+                        dnsScriptPath: ''
+                        updateDNSInfoByScript: false
+              Enable CSLiveSync:
+                value:
+                  csFailoverConfigInfo:
+                    configStatus: 1
+                    isAutomaticFailoverEnabled: false
+                    backupStoragePolicy:
+                      storagePolicyName: LiveSync_Repl_SP
+                    failoverScheduleDetails:
+                      liveSyncRPO: 30
+                      defaultRecoveryMode: 0
+                    networkInfo:
+                      externalGrpManualConfig: false
+                      connectivityMode: 0
+                      proxyConnectivityOption: 0
+                      proxyEntity:
+                        clientGroupName: CVLiveSync
+                      dnsUpdateInfo:
+                        specifyDNSServers: false
+                        dnsScriptPath: ''
+                        updateDNSInfoByScript: false

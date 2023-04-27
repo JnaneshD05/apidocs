@@ -1,0 +1,53 @@
+---
+id: update-network-topology
+title: "Update Network Topology (Deprecated)"
+description: "'This operation updates a network topology."
+sidebar_label: "Update Network Topology (Deprecated)"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"\"This operation updates a network topology.\n<h2>Request Body</h2>\n<table>\n  <tr>\n    <td>Name</td>\n    <td>Description</td>\n  </tr>\n  <tr>\n    <td>topologyType</td>\n    <td>\n      <p>values - network gateway topology 1 - one-way topology 2 - two-way topology 3 - cascading gateways topology 4</p>\n    </td>\n  </tr>\n  <tr>\n    <td>displayType</td>\n    <td>\n      <p>values - servers 0 - laptops 1</p>\n    </td>\n  </tr>\n</table>\"","operationId":"Update Network Topology","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"path","name":"topologyId","required":true,"schema":{"type":"string"}}],"tags":["Network Topology Operations"],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"pushNWConfigOnTopology":{"type":"boolean"},"firewallTopology":{"type":"object","properties":{"extendedProperties":{"type":"string"},"topologyType":{"type":"integer"},"description":{"type":"string"},"isSmartTopology":{"type":"boolean"},"firewallGroups":{"type":"array","items":{"type":"object","properties":{"fwGroupType":{"type":"integer"},"isMnemonic":{"type":"boolean"},"clientGroup":{"type":"object","properties":{"clientGroupName":{"type":"string"}}}}}},"topologyEntity":{"type":"object","properties":{"topologyName":{"type":"string"},"topologyId":{"type":"integer"}}}}}},"x-examples":{"Example 1":{"pushNWConfigOnTopology":false,"firewallTopology":{"extendedProperties":"","topologyType":4,"description":"Updating Cascading Gateways Topology","isSmartTopology":true,"firewallGroups":[{"fwGroupType":2,"isMnemonic":false,"clientGroup":{"clientGroupName":"T4"}},{"fwGroupType":1,"isMnemonic":true,"clientGroup":{"clientGroupName":"My CommServe Computer"}},{"fwGroupType":3,"isMnemonic":false,"clientGroup":{"clientGroupName":"T2"}},{"fwGroupType":4,"isMnemonic":false,"clientGroup":{"clientGroupName":"T1"}}],"topologyEntity":{"topologyName":"TestTopology","topologyId":1080}}}}},"examples":{"Update Network Topology":{"value":{"pushNWConfigOnTopology":false,"firewallTopology":{"extendedProperties":"","topologyType":4,"description":"Updating Cascading Gateways Topology","isSmartTopology":true,"firewallGroups":[{"fwGroupType":2,"isMnemonic":false,"clientGroup":{"clientGroupName":"T4"}},{"fwGroupType":1,"isMnemonic":true,"clientGroup":{"clientGroupName":"My CommServe Computer"}},{"fwGroupType":3,"isMnemonic":false,"clientGroup":{"clientGroupName":"T2"}},{"fwGroupType":4,"isMnemonic":false,"clientGroup":{"clientGroupName":"T1"}}],"topologyEntity":{"topologyName":"TestTopology","topologyId":1080}}}}}}}},"responses":{"200":{"description":"OK"}},"method":"put","path":"/FirewallTopology/{topologyId}","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"pushNWConfigOnTopology":true,"firewallTopology":{"extendedProperties":"string","topologyType":0,"description":"string","isSmartTopology":true,"firewallGroups":[{"fwGroupType":0,"isMnemonic":true,"clientGroup":{"clientGroupName":"string"}}],"topologyEntity":{"topologyName":"string","topologyId":0}}},"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Update Network Topology (Deprecated)","description":{"content":"\"This operation updates a network topology.\n<h2>Request Body</h2>\n<table>\n  <tr>\n    <td>Name</td>\n    <td>Description</td>\n  </tr>\n  <tr>\n    <td>topologyType</td>\n    <td>\n      <p>values - network gateway topology 1 - one-way topology 2 - two-way topology 3 - cascading gateways topology 4</p>\n    </td>\n  </tr>\n  <tr>\n    <td>displayType</td>\n    <td>\n      <p>values - servers 0 - laptops 1</p>\n    </td>\n  </tr>\n</table>\"","type":"text/plain"},"url":{"path":["FirewallTopology",":topologyId"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"topologyId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/json"}],"method":"PUT","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "put api-method"
+info_path: docs/api/cv/NetworkTopologyOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Update Network Topology (Deprecated)
+
+
+
+"This operation updates a network topology.
+<h2>Request Body</h2>
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Description</td>
+  </tr>
+  <tr>
+    <td>topologyType</td>
+    <td>
+      <p>values - network gateway topology 1 - one-way topology 2 - two-way topology 3 - cascading gateways topology 4</p>
+    </td>
+  </tr>
+  <tr>
+    <td>displayType</td>
+    <td>
+      <p>values - servers 0 - laptops 1</p>
+    </td>
+  </tr>
+</table>"
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"topologyId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"pushNWConfigOnTopology"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>firewallTopology</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"extendedProperties"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"topologyType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"description"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"isSmartTopology"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>firewallGroups</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"fwGroupType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"isMnemonic"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>clientGroup</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"clientGroupName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>topologyEntity</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"topologyName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"topologyId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

@@ -1,0 +1,85 @@
+---
+id: create-an-entity
+title: "Create an Entity"
+description: "This operation creates a new entity"
+sidebar_label: "Create an Entity"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation creates a new entity\n\n<h2>Request Body</h2>\n<table>\n\n<tr>\n<td>Name</td>\n<td>Description</td>\n</tr>\n<tr>\n<td>entityName</td>\n<td>Desired name of the entity</td>\n</tr>\n<tr>\n<td>regularExpression</td>\n<td>\n<p>Desired regular expresssion of entity</p>\n</td>\n</tr>\n<tr>\n<td>parentEntityId</td>\n<td>\n<p>Id value of desired parent entity</p>\n</td>\n</tr>\n<tr>\n<td>flags</td>\n<td>\n<p>Sensitivity value of entity</p>\n<p>values:</p>\n<p>1 - moderate</p>\n<p>3 - high</p>\n<p>5 - critical</p>\n</td>\n</tr>\n<tr>\n<td>enabled</td>\n<td>\n<p>boolean value to represent enable value of entity</p>\n<p>values:</p>\n<p>true - enable entity</p>\n<p>false - disable entity</p>\n</td>\n</tr>\n<tr>\n<td>keywords</td>\n<td>\n<p>String of desired keywords, separated by commas</p>\n</td>\n</tr>\n\n</table>","operationId":"Create an Entity","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/xml","type":"string"}}],"tags":["Entity Operations"],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"entityName":{"type":"string"},"regularExpression":{"type":"string"},"parentEntityId":{"type":"integer"},"flags":{"type":"integer"},"enabled":{"type":"boolean"},"entityXML":{"type":"object","properties":{"keywords":{"type":"string"}}}},"x-examples":{"Example 1":{"entityName":"RestApiEntity","regularExpression":"{\"entity_regex\":\"Sample Regular Expression\"}","parentEntityId":0,"flags":1,"enabled":true,"entityXML":{"keywords":"Sample Keyword, Sample Keyword 2"}}}},"examples":{"Create Entity With Details":{"value":{"entityName":"RestApiEntity","regularExpression":"{\"entity_regex\":\"Sample Regular Expression\"}","parentEntityId":0,"flags":1,"enabled":true,"entityXML":{"keywords":"Sample Keyword, Sample Keyword 2"}}},"Create Entity - Moderate Sensitivity":{"value":{"entityName":"RestApiEntity","enabled":true,"flags":1}},"Create Entity - High Sensitivity":{"value":{"entityName":"RestApiEntity","enabled":true,"flags":3}}}}}},"responses":{"200":{"description":"OK","content":{"text/plain":{"examples":{"Create Entity With Details":{"value":"<DM2ContentIndexing_EntityDetailsResp>\n    <entityDetails regularExpression=\"{&quot;entity_regex&quot;:&quot;Sample Regular Expression&quot;}\" displayName=\"RestApiEntity\" flags=\"1\" parentEntityId=\"0\" categoryName=\"Custom Entity\" enabled=\"1\" entityName=\"RestApiEntity\" entityType=\"2\" entityKey=\"restapientity\" entityId=\"110\">\n        <entityXML keywords=\"Sample Keyword, Sample Keyword 2\" />\n    </entityDetails>\n</DM2ContentIndexing_EntityDetailsResp>"}}}}}},"method":"post","path":"/dcube/entity","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"entityName":"string","regularExpression":"string","parentEntityId":0,"flags":0,"enabled":true,"entityXML":{"keywords":"string"}},"info":{"title":"Commvault Rest API - Public","contact":{},"version":"1.0","description":"## Welcome\n\nWelcome to Commvault's Rest APIs. You can explore our APIs in [Postman](https://getpostman.com) using the predefined requests we created\n\nThe current version of this documentation is **Commvault Platform Release 2022E**.\n\nYou can access LTS documentation here:\n\n[Feature Release 11.20](https://documenter.getpostman.com/view/2046098/UVR7KoPJ)\n\n[Feature Release 11.24](https://documenter.getpostman.com/view/2046098/UVR7KoPL)\n\nFor more V2 and Latest APIs, please visit your API Explorer page.  \n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=107350_1.htm)\n\n"},"postman":{"name":"Create an Entity","description":{"content":"This operation creates a new entity\n\n<h2>Request Body</h2>\n<table>\n\n<tr>\n<td>Name</td>\n<td>Description</td>\n</tr>\n<tr>\n<td>entityName</td>\n<td>Desired name of the entity</td>\n</tr>\n<tr>\n<td>regularExpression</td>\n<td>\n<p>Desired regular expresssion of entity</p>\n</td>\n</tr>\n<tr>\n<td>parentEntityId</td>\n<td>\n<p>Id value of desired parent entity</p>\n</td>\n</tr>\n<tr>\n<td>flags</td>\n<td>\n<p>Sensitivity value of entity</p>\n<p>values:</p>\n<p>1 - moderate</p>\n<p>3 - high</p>\n<p>5 - critical</p>\n</td>\n</tr>\n<tr>\n<td>enabled</td>\n<td>\n<p>boolean value to represent enable value of entity</p>\n<p>values:</p>\n<p>true - enable entity</p>\n<p>false - disable entity</p>\n</td>\n</tr>\n<tr>\n<td>keywords</td>\n<td>\n<p>String of desired keywords, separated by commas</p>\n</td>\n</tr>\n\n</table>","type":"text/plain"},"url":{"path":["dcube","entity"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/json"},{"key":"Accept","value":"text/plain"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/ActivateOperations/commvault-rest-api-public
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Create an Entity
+
+
+
+This operation creates a new entity
+
+<h2>Request Body</h2>
+<table>
+
+<tr>
+<td>Name</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>entityName</td>
+<td>Desired name of the entity</td>
+</tr>
+<tr>
+<td>regularExpression</td>
+<td>
+<p>Desired regular expresssion of entity</p>
+</td>
+</tr>
+<tr>
+<td>parentEntityId</td>
+<td>
+<p>Id value of desired parent entity</p>
+</td>
+</tr>
+<tr>
+<td>flags</td>
+<td>
+<p>Sensitivity value of entity</p>
+<p>values:</p>
+<p>1 - moderate</p>
+<p>3 - high</p>
+<p>5 - critical</p>
+</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>
+<p>boolean value to represent enable value of entity</p>
+<p>values:</p>
+<p>true - enable entity</p>
+<p>false - disable entity</p>
+</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>
+<p>String of desired keywords, separated by commas</p>
+</td>
+</tr>
+
+</table>
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/xml","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"entityName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"regularExpression"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"parentEntityId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"flags"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"enabled"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>entityXML</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"keywords"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={" Create  Entity  With  Details"} value={" Create  Entity  With  Details"}><ResponseSamples responseExample={"<DM2ContentIndexing_EntityDetailsResp>\n    <entityDetails regularExpression=\"{&quot;entity_regex&quot;:&quot;Sample Regular Expression&quot;}\" displayName=\"RestApiEntity\" flags=\"1\" parentEntityId=\"0\" categoryName=\"Custom Entity\" enabled=\"1\" entityName=\"RestApiEntity\" entityType=\"2\" entityKey=\"restapientity\" entityId=\"110\">\n        <entityXML keywords=\"Sample Keyword, Sample Keyword 2\" />\n    </entityDetails>\n</DM2ContentIndexing_EntityDetailsResp>"} language={"shell"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

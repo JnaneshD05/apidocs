@@ -1,0 +1,2161 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables:
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Client Group Operations
+paths:
+  /ClientGroup:
+    get:
+      summary: Get Client Group (Deprecated)
+      tags:
+      - Client Group Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  groups:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        isEDCInstanceDeleted:
+                          type: boolean
+                        flag:
+                          type: integer
+                        activity:
+                          type: integer
+                        isSmartClientGroup:
+                          type: boolean
+                        isAddinClientGroup:
+                          type: boolean
+                        edcSupportedInstanceType:
+                          type: integer
+                        isNetworkThrottleEnabled:
+                          type: boolean
+                        name:
+                          type: string
+                        Id:
+                          type: integer
+                        isEDCInstanceAssociated:
+                          type: boolean
+                x-examples:
+                  Example 1:
+                    groups:
+                    - isEDCInstanceDeleted: false
+                      flag: 528384
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Infrastructure
+                      Id: 1
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 1052672
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Proxy Clients
+                      Id: 2
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Solr Servers
+                      Id: 3
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Media Agents
+                      Id: 4
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Laptop Clients
+                      Id: 5
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Edge Clients
+                      Id: 6
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Recall Enabled
+                      Id: 7
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Physical Nodes of a Cluster
+                      Id: 8
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 6144
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: true
+                      name: Laptop plan clients
+                      Id: 10
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: test
+                      Id: 11
+                      isEDCInstanceAssociated: false
+              examples:
+                GET ClientGroup:
+                  value:
+                    groups:
+                    - isEDCInstanceDeleted: false
+                      flag: 528384
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Infrastructure
+                      Id: 1
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 1052672
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Proxy Clients
+                      Id: 2
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Solr Servers
+                      Id: 3
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Media Agents
+                      Id: 4
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Laptop Clients
+                      Id: 5
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Edge Clients
+                      Id: 6
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Recall Enabled
+                      Id: 7
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Physical Nodes of a Cluster
+                      Id: 8
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 6144
+                      activity: 0
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: true
+                      name: Laptop plan clients
+                      Id: 10
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: test
+                      Id: 11
+                      isEDCInstanceAssociated: false
+      operationId: get-ClientGroup
+      description: |2-
+
+
+
+
+
+
+          This operation returns a list of client computer groups.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_client_group.htm)
+      parameters:
+      - schema:
+          type: string
+        in: header
+        name: AuthToken
+        required: true
+    post:
+      summary: Create Client Group (Deprecated)
+      operationId: post-ClientGroup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clientGroupDetail:
+                    type: object
+                    properties:
+                      clientGroup:
+                        type: object
+                        properties:
+                          _type_:
+                            type: integer
+                          clientGroupId:
+                            type: integer
+                          clientGroupName:
+                            type: string
+                x-examples:
+                  Example 1:
+                    clientGroupDetail:
+                      clientGroup:
+                        _type_: 28
+                        clientGroupId: 18
+                        clientGroupName: VSA
+              examples:
+                Smart Client Group -  Clients discovered using VSA Subclient:
+                  value:
+                    clientGroupDetail:
+                      clientGroup:
+                        _type_: 28
+                        clientGroupId: 18
+                        clientGroupName: VSA
+      description: |-
+        This operation creates a client computer group.
+        <table>
+          <tr>
+            <td>
+              <p>Name</p>
+            </td>
+            <td>
+              <p>Description</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>discoverRulesInfo -&gt; virtualInstanceType</p>
+            </td>
+            <td>
+              <p>Ventory Type.</p>
+              <p>Valid values are:</p>
+              <ul>
+                <li>1, VMware</li>
+                <li>2, Microsoft Hyper-V</li>
+                <li>3,&nbsp;XenServer</li>
+                <li>4,&nbsp;Amazon</li>
+                <li>5,&nbsp;Microsoft Azure</li>
+                <li>6,&nbsp;Red Hat</li>
+                <li>7,&nbsp;Microsoft Azure Resource Manager</li>
+                <li>8,&nbsp;System Center Virtual Machine Manager</li>
+                <li>9,&nbsp;Nutanix</li>
+                <li>10,&nbsp;Oracle VM</li>
+                <li>11,&nbsp;Docker</li>
+                <li>12,&nbsp;OpenStack</li>
+                <li>13,&nbsp;Oracle Cloud</li>
+                <li>14,&nbsp;FusionCompute</li>
+                <li>15,&nbsp;vCloud Director</li>
+                <li>16,&nbsp;Google Cloud Platform</li>
+                <li>17,&nbsp;Microsoft Azure Stack</li>
+                <li>18,&nbsp;Alibaba Cloud</li>
+                <li>19,&nbsp;Oracle Cloud Infrastructure</li>
+                <li>20,&nbsp;Kubernetes</li>
+                <li>21,&nbsp;Red Hat OpenShift</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>discoverRulesInfo -&gt;&nbsp;associationRule -&gt;</p>
+              <p>children -&gt;&nbsp;type</p>
+            </td>
+            <td>
+              <p>Rule Type.</p>
+              <p>Valid values are:</p>
+              <ul>
+                <li>1,&nbsp;Server Host</li>
+                <li>2,&nbsp;Resource Pool</li>
+                <li>3,&nbsp;vApp</li>
+                <li>4,&nbsp;Datacenter</li>
+                <li>5,&nbsp;Folder</li>
+                <li>6,&nbsp;Cluster</li>
+                <li>7,&nbsp;Datastore</li>
+                <li>8,&nbsp;DatastoreCluster</li>
+                <li>9,&nbsp;VirtualMachine</li>
+                <li>10,&nbsp;VirtualMachine Name</li>
+                <li>11,&nbsp;VirtualMachine GuestOS</li>
+                <li>12,&nbsp;VirtualMachine Guest Host Name</li>
+                <li>13,&nbsp;Cluster Shared Volumes</li>
+                <li>14,&nbsp;Local Disk</li>
+                <li>15,&nbsp;Cluster Disk</li>
+                <li>16,&nbsp;UnprotectedVMs</li>
+                <li>17, Root/All</li>
+                <li>18,&nbsp;File Server</li>
+                <li>19,&nbsp;SMBShare</li>
+                <li>20, Types</li>
+                <li>21, VMs</li>
+                <li>22,&nbsp;Servers</li>
+                <li>23,&nbsp;Custom Templates</li>
+                <li>24,&nbsp;DataStoreList</li>
+                <li>25,&nbsp;vAppList</li>
+                <li>26,&nbsp;Datacenters</li>
+                <li>27,&nbsp;Clusters</li>
+                <li>28,&nbsp;Virtual Machine Power State</li>
+                <li>29,&nbsp;Virtual Machine Notes</li>
+                <li>30,&nbsp;Virtual Machine Custom Attribute</li>
+                <li>31,&nbsp;Network Adapter</li>
+                <li>32,&nbsp;User</li>
+                <li>33,&nbsp;Virual Machine Template</li>
+                <li>34,&nbsp;Tag</li>
+                <li>35,&nbsp;TagCategory</li>
+                <li>36,&nbsp;Subclient</li>
+                <li>37,&nbsp;ClientGroup</li>
+                <li>38,&nbsp;Protection Domain</li>
+                <li>39,&nbsp;Consistency Group</li>
+                <li>40,&nbsp;Instance Size</li>
+                <li>41,&nbsp;Organization</li>
+                <li>42,&nbsp;Images</li>
+                <li>43,&nbsp;Storage Policy</li>
+                <li>44,&nbsp;Database</li>
+                <li>45,&nbsp;Database Table</li>
+              </ul>
+            </td>
+          </tr>
+        </table>[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_client_group.htm)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                clientGroupOperationType:
+                  type: integer
+                clientGroupDetail:
+                  type: object
+                  properties:
+                    associatedClientsOperationType:
+                      type: integer
+                    isSmartClientGroup:
+                      type: boolean
+                    isDiscoveredClientGroup:
+                      type: boolean
+                    scgRule:
+                      type: object
+                      properties: {}
+                    clientGroup:
+                      type: object
+                      properties:
+                        clientGroupId:
+                          type: integer
+                        clientGroupName:
+                          type: string
+                    discoverRulesInfo:
+                      type: object
+                      properties:
+                        virtualInstanceType:
+                          type: integer
+                        associationRule:
+                          type: object
+                          properties:
+                            children:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  equalsOrNotEquals:
+                                    type: boolean
+                                  path:
+                                    type: string
+                                  displayName:
+                                    type: string
+                                  name:
+                                    type: string
+                                  allOrAnyChildren:
+                                    type: boolean
+                                  type:
+                                    type: integer
+                        virtualClients:
+                          type: object
+                          properties:
+                            clients:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  clientId:
+                                    type: integer
+              x-examples:
+                Example 1:
+                  clientGroupOperationType: 1
+                  clientGroupDetail:
+                    associatedClientsOperationType: 1
+                    isSmartClientGroup: false
+                    isDiscoveredClientGroup: true
+                    scgRule: {}
+                    clientGroup:
+                      clientGroupId: 0
+                      clientGroupName: VMAssoc_CG
+                    discoverRulesInfo:
+                      virtualInstanceType: 1
+                      associationRule:
+                        children:
+                        - equalsOrNotEquals: true
+                          path: ''
+                          displayName: bronze
+                          name: ''
+                          allOrAnyChildren: true
+                          type: 34
+                      virtualClients:
+                        clients:
+                        - clientId: 19
+            examples:
+              Client Group - Virtual Machine Association - With Tag Rule:
+                value:
+                  clientGroupOperationType: 1
+                  clientGroupDetail:
+                    associatedClientsOperationType: 1
+                    isSmartClientGroup: false
+                    isDiscoveredClientGroup: true
+                    scgRule: {}
+                    clientGroup:
+                      clientGroupId: 0
+                      clientGroupName: VMAssoc_CG
+                    discoverRulesInfo:
+                      virtualInstanceType: 1
+                      associationRule:
+                        children:
+                        - equalsOrNotEquals: true
+                          path: ''
+                          displayName: bronze
+                          name: ''
+                          allOrAnyChildren: true
+                          type: 34
+                      virtualClients:
+                        clients:
+                        - clientId: 19
+              POST Client Group:
+                value:
+                  clientGroupOperationType: 1
+                  clientGroupDetail:
+                    description: client computer group description
+                    clientGroup:
+                      clientGroupName: '{{$guid}}'
+          application/xml:
+            examples:
+              Smart Client Group -  Clients discovered using VSA Subclient:
+                value: |-
+                  <App_PerformClientGroupReq clientGroupOperationType="1">
+                      <clientGroupDetail isSmartClientGroup="1" associatedClientsOperationType="1">
+                          <clientGroup clientGroupId="0" clientGroupName="VSA"/>
+                          <scgRule>
+                              <rules>
+                                  <rule op="0">
+                                      <rules>
+                                          <rule propID="40" filterID="108" propType="6" value="&lt;?xml version='1.0' encoding='UTF-8'?&gt;&lt;App_Associations&gt;&lt;entity subclientId=&quot;25&quot; applicationId=&quot;106&quot; clientName=&quot;vsa-vc65&quot; backupsetId=&quot;16&quot; instanceId=&quot;8&quot; clientId=&quot;8&quot; subclientName=&quot;test&quot; entityTypeName=&quot;SUBCLIENT_ENTITY&quot; backupsetName=&quot;defaultBackupSet&quot; instanceName=&quot;VMware&quot; appName=&quot;Virtual Server&quot;/&gt;&lt;/App_Associations&gt;"/>
+                                      </rules>
+                                  </rule>
+                              </rules>
+                          </scgRule>
+                      </clientGroupDetail>
+                  </App_PerformClientGroupReq>
+      tags:
+      - Client Group Operations
+  '/ClientGroup/{clientGroupId}':
+    delete:
+      deprecated: false
+      description: |
+        This operation deletes a client computer group.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/delete_client_group.htm)
+      operationId: Delete Client Group
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: clientGroupId
+        required: true
+        schema:
+          type: string
+      summary: Delete Client Group (Deprecated)
+      tags:
+      - Client Group Operations
+      responses:
+        '200':
+          description: OK
+    get:
+      deprecated: false
+      description: |
+        This operation returns the properties associated with a client computer group.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_client_group_properties.htm)
+      operationId: Get Client Group Properties
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: clientGroupId
+        required: true
+        schema:
+          type: string
+      summary: Get Client Group Properties (Deprecated)
+      tags:
+      - Client Group Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  groups:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        isEDCInstanceDeleted:
+                          type: boolean
+                        flag:
+                          type: integer
+                        activity:
+                          type: integer
+                        isDiscoveredClientGroup:
+                          type: boolean
+                        isSmartClientGroup:
+                          type: boolean
+                        isAddinClientGroup:
+                          type: boolean
+                        revision:
+                          type: string
+                        edcSupportedInstanceType:
+                          type: integer
+                        isNetworkThrottleEnabled:
+                          type: boolean
+                        name:
+                          type: string
+                        Id:
+                          type: integer
+                        isEDCInstanceAssociated:
+                          type: boolean
+                x-examples:
+                  Example 1:
+                    groups:
+                    - isEDCInstanceDeleted: false
+                      flag: 528384
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      revision: ''
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Infrastructure
+                      Id: 1
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 1052672
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      revision: ''
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Proxy Clients
+                      Id: 2
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      revision: ''
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Media Agents
+                      Id: 3
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      revision: ''
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Laptop Clients
+                      Id: 4
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: ''
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Index Servers
+                      Id: 5
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_01
+                      Id: 6
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_02
+                      Id: 7
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_03
+                      Id: 8
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_04
+                      Id: 9
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_05
+                      Id: 10
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_06
+                      Id: 11
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_07
+                      Id: 12
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_08
+                      Id: 13
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_09
+                      Id: 14
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_10
+                      Id: 15
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $ M<1562836227>'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: xAll_Clients
+                      Id: 16
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_01
+                      Id: 17
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_01
+                      Id: 18
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_01
+                      Id: 19
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_01
+                      Id: 20
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_02
+                      Id: 21
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_02
+                      Id: 22
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_02
+                      Id: 23
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_02
+                      Id: 24
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_03
+                      Id: 25
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_03
+                      Id: 26
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_03
+                      Id: 27
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_03
+                      Id: 28
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_04
+                      Id: 29
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_04
+                      Id: 30
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_04
+                      Id: 31
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_04
+                      Id: 32
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_05
+                      Id: 33
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_05
+                      Id: 34
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_05
+                      Id: 35
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_05
+                      Id: 36
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_06
+                      Id: 37
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_06
+                      Id: 38
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_06
+                      Id: 39
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_06
+                      Id: 40
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_07
+                      Id: 41
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_07
+                      Id: 42
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_07
+                      Id: 43
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_07
+                      Id: 44
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_08
+                      Id: 45
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_08
+                      Id: 46
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_08
+                      Id: 47
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_08
+                      Id: 48
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_09
+                      Id: 49
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_09
+                      Id: 50
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_09
+                      Id: 51
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_09
+                      Id: 52
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_10
+                      Id: 53
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_10
+                      Id: 54
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_10
+                      Id: 55
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_10
+                      Id: 56
+                      isEDCInstanceAssociated: false
+              examples:
+                Example 1:
+                  value:
+                    groups:
+                    - isEDCInstanceDeleted: false
+                      flag: 528384
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      revision: ''
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Infrastructure
+                      Id: 1
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 1052672
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      revision: ''
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Proxy Clients
+                      Id: 2
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      revision: ''
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Media Agents
+                      Id: 3
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      revision: ''
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Laptop Clients
+                      Id: 4
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: ''
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Index Servers
+                      Id: 5
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_01
+                      Id: 6
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_02
+                      Id: 7
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_03
+                      Id: 8
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_04
+                      Id: 9
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_05
+                      Id: 10
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_06
+                      Id: 11
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_07
+                      Id: 12
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_08
+                      Id: 13
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_09
+                      Id: 14
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group07_10
+                      Id: 15
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 4096
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: true
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $ M<1562836227>'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: xAll_Clients
+                      Id: 16
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_01
+                      Id: 17
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_01
+                      Id: 18
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_01
+                      Id: 19
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_01
+                      Id: 20
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_02
+                      Id: 21
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_02
+                      Id: 22
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_02
+                      Id: 23
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_02
+                      Id: 24
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_03
+                      Id: 25
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_03
+                      Id: 26
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_03
+                      Id: 27
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_03
+                      Id: 28
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_04
+                      Id: 29
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_04
+                      Id: 30
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_04
+                      Id: 31
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_04
+                      Id: 32
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_05
+                      Id: 33
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_05
+                      Id: 34
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_05
+                      Id: 35
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_05
+                      Id: 36
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_06
+                      Id: 37
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_06
+                      Id: 38
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_06
+                      Id: 39
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_06
+                      Id: 40
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_07
+                      Id: 41
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_07
+                      Id: 42
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_07
+                      Id: 43
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_07
+                      Id: 44
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_08
+                      Id: 45
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_08
+                      Id: 46
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_08
+                      Id: 47
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_08
+                      Id: 48
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_09
+                      Id: 49
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_09
+                      Id: 50
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_09
+                      Id: 51
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_09
+                      Id: 52
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group08_10
+                      Id: 53
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group09_10
+                      Id: 54
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group10_10
+                      Id: 55
+                      isEDCInstanceAssociated: false
+                    - isEDCInstanceDeleted: false
+                      flag: 0
+                      activity: 0
+                      isDiscoveredClientGroup: false
+                      isSmartClientGroup: false
+                      isAddinClientGroup: false
+                      revision: '$Revision: 1.4 $'
+                      edcSupportedInstanceType: 0
+                      isNetworkThrottleEnabled: false
+                      name: Group11_10
+                      Id: 56
+                      isEDCInstanceAssociated: false
+    post:
+      deprecated: false
+      description: |
+        This operation updates the properties associated with a client computer group.
+        <p>
+        </p>
+        <h2>
+         Request Parameters
+        </h2>
+        <table>
+
+          <tr>
+           <td>
+            <p>
+             Name
+            </p>
+           </td>
+           <td>
+            <p>
+             Description
+            </p>
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <p>
+             activityType
+            </p>
+           </td>
+           <td>
+            <p>
+             Type of the activity.
+            </p>
+            <p>
+             Valid values are:
+            </p>
+            <ul>
+             <li>
+              1, Data backup
+             </li>
+             <li>
+              2, Data restore
+             </li>
+             <li>
+              16, Data aging
+             </li>
+            </ul>
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <p>
+             time
+            </p>
+           </td>
+           <td>
+            <p>
+             Unix Timestamp in UTC timezone
+            </p>
+           </td>
+          </tr>
+          <tr>
+           <td>
+            <p>
+             TimeZoneID
+            </p>
+           </td>
+           <td>
+            <p>
+             Obtain your timezone id by calling GET Client Group Properties API
+            </p>
+            <p>
+             Eastern Standard Time = 31
+            </p>
+           </td>
+          </tr>
+
+        </table>
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_client_group_properties.htm)
+      operationId: Update Client Group Properties
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: clientGroupId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              clientGroupDetail:
+                claQuota: 8
+                clientGroup:
+                  clientGroupName: '{{clientGroupName}}'
+                description: client computer group description modified
+              clientGroupOperationType: 2
+            schema:
+              allOf:
+              - example:
+                  clientGroupDetail:
+                    claQuota: 8
+                    clientGroup:
+                      clientGroupName: '{{clientGroupName}}'
+                    description: client computer group description modified
+                  clientGroupOperationType: 2
+                title: ClientGroupPropertiesRequest
+                properties:
+                  clientGroupDetail:
+                    example:
+                      claQuota: 7
+                      clientGroup:
+                        clientGroupName: '{{$guid}}'
+                      description: client computer group description
+                    title: ClientGroupDetail
+                    type: object
+                    properties:
+                      claQuota:
+                        format: int32
+                        type: integer
+                      clientGroup:
+                        example:
+                          clientGroupName: '{{$guid}}'
+                        title: ClientGroup
+                        type: object
+                        properties:
+                          clientGroupName:
+                            type: string
+                      description:
+                        type: string
+                  clientGroupOperationType:
+                    format: int32
+                    type: integer
+              type: object
+        description: ''
+        required: true
+      summary: Update Client Group Properties (Deprecated)
+      tags:
+      - Client Group Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: Client group updated successfully
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: Client group updated successfully
+                    errorCode: 0

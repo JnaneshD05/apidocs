@@ -1,0 +1,72 @@
+---
+id: get-first-backup-job-details
+title: "Get First backup job details"
+description: "This operation fetches the first backup job details"
+sidebar_label: "Get First backup job details"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"\nThis operation fetches the first backup job details\n\n\n<h2>Request Parameters</h2>\n\n\n<table class=\"tableintopic\" border=\"0\" cellspacing=\"0\" cellpadding=\"2\">\n\n<tr align=\"left\" valign=\"top\">\n<td>\n<p class=\"tabletext\">Name</p>\n</td>\n<td>\n<p class=\"tabletext\">Description</p>\n</td>\n</tr>\n<tr align=\"left\" valign=\"top\">\n<td>\n<p class=\"tabletext\">databaseName</p>\n</td>\n<td>\n<p class=\"tabletext\">database name</p>\n\n\n</td>\n</tr>\n\n\n\n\n\n</table>\n\n\t\t\t\n\n\n\n","operationId":"Get First backup job details","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"path","name":"clientId","required":true,"schema":{"type":"string"}},{"description":"","in":"path","name":"instanceId","required":true,"schema":{"type":"string"}}],"tags":["Sql"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"jobid":{"type":"integer"},"backup_size":{"type":"integer"},"backupStartDate":{"type":"integer"},"DatabaseName":{"type":"string"},"type":{"type":"string"},"backupFinishDate":{"type":"integer"},"backupset":{"type":"object","properties":{"backupsetId":{"type":"integer"}}}},"x-examples":{"Example 1":{"jobid":1189,"backup_size":3100672,"backupStartDate":1595497114,"DatabaseName":"clone","type":"D","backupFinishDate":1595497116,"backupset":{"backupsetId":100}}}},"examples":{"Example 1":{"value":{"jobid":1189,"backup_size":3100672,"backupStartDate":1595497114,"DatabaseName":"clone","type":"D","backupFinishDate":1595497116,"backupset":{"backupsetId":100}}}}}}}},"method":"get","path":"/Client/{clientId}/SQL/Instance/{instanceId}/GetFirstBackupJob","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get First backup job details","description":{"content":"\nThis operation fetches the first backup job details\n\n\n<h2>Request Parameters</h2>\n\n\n<table class=\"tableintopic\" border=\"0\" cellspacing=\"0\" cellpadding=\"2\">\n\n<tr align=\"left\" valign=\"top\">\n<td>\n<p class=\"tabletext\">Name</p>\n</td>\n<td>\n<p class=\"tabletext\">Description</p>\n</td>\n</tr>\n<tr align=\"left\" valign=\"top\">\n<td>\n<p class=\"tabletext\">databaseName</p>\n</td>\n<td>\n<p class=\"tabletext\">database name</p>\n\n\n</td>\n</tr>\n\n\n\n\n\n</table>\n\n\t\t\t\n\n\n\n","type":"text/plain"},"url":{"path":["Client",":clientId","SQL","Instance",":instanceId","GetFirstBackupJob"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"clientId"},{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"instanceId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/ServiceProviderManagementAPIs/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get First backup job details
+
+
+
+
+This operation fetches the first backup job details
+
+
+<h2>Request Parameters</h2>
+
+
+<table class="tableintopic" border="0" cellspacing="0" cellpadding="2">
+
+<tr align="left" valign="top">
+<td>
+<p class="tabletext">Name</p>
+</td>
+<td>
+<p class="tabletext">Description</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td>
+<p class="tabletext">databaseName</p>
+</td>
+<td>
+<p class="tabletext">database name</p>
+
+
+</td>
+</tr>
+
+
+
+
+
+</table>
+
+			
+
+
+
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"clientId","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"instanceId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"jobid"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"backup_size"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"backupStartDate"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"DatabaseName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"type"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"backupFinishDate"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>backupset</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"backupsetId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"jobid\": 0,\n  \"backup_size\": 0,\n  \"backupStartDate\": 0,\n  \"DatabaseName\": \"string\",\n  \"type\": \"string\",\n  \"backupFinishDate\": 0,\n  \"backupset\": {\n    \"backupsetId\": 0\n  }\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"{\n  \"jobid\": 1189,\n  \"backup_size\": 3100672,\n  \"backupStartDate\": 1595497114,\n  \"DatabaseName\": \"clone\",\n  \"type\": \"D\",\n  \"backupFinishDate\": 1595497116,\n  \"backupset\": {\n    \"backupsetId\": 100\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

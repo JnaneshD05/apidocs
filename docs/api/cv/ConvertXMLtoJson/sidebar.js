@@ -1,0 +1,1 @@
+module.exports = [{"type":"doc","id":"api/cv/ConvertXMLtoJson/template"},{"type":"category","label":"Convert XML to JSON","link":{"type":"doc","id":"api/cv/ConvertXMLtoJson/convert-xml-to-json"},"items":[{"type":"doc","id":"api/cv/ConvertXMLtoJson/convert-xml-to-json-object","label":"Convert XML to JSON","className":"api-method post"}]}];

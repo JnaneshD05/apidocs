@@ -1,0 +1,85 @@
+---
+id: get-get-id
+title: "Get Agent Id"
+description: "This operation returns an Agent/Application Id"
+sidebar_label: "Get Agent Id"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["Agent Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"clientName":{"type":"string"},"clientId":{"type":"integer"},"_type_":{"type":"integer"}},"x-examples":{"Example 1":{"clientName":"yashdutch","clientId":18,"_type_":3}}},"examples":{"GetId - With Client Name":{"value":{"clientName":"yashdutch","clientId":18,"_type_":3}},"GetId - With Agent Name":{"value":{"applicationId":33,"clientName":"dm2perf3","clientId":2,"_type_":4,"appName":"File System"}},"GetId - With Backupset Name":{"value":{"applicationId":33,"clientName":"dm2perf3","backupsetId":3,"instanceId":1,"clientId":2,"backupsetName":"defaultBackupSet","_type_":6,"appName":"File System"}},"GetId - With Subclient Name":{"value":{"subclientId":2,"applicationId":33,"clientName":"dm2perf3","backupsetId":3,"instanceId":1,"clientId":2,"subclientName":"default","backupsetName":"defaultBackupSet","_type_":7,"appName":"File System"}}}}}}},"operationId":"get-GetId","parameters":[{"schema":{"type":"string"},"in":"query","name":"clientName"},{"schema":{"type":"string","example":"File%20System"},"in":"query","name":"agent"},{"schema":{"type":"string"},"in":"header","name":"AuthToken"},{"schema":{"type":"string"},"in":"query","name":"backupset"},{"schema":{"type":"string"},"in":"query","name":"subclient"}],"description":"This operation returns an Agent/Application Id\n<h2>Request Parameters</h2>\n<table>\n    <tr>\n      <td>\n        <p>Name</p>\n      </td>\n      <td>\n        <p>Description</p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p>clientName</p>\n      </td>\n      <td>\n        <p>Name of the client(URL Encoded)</p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p>agent</p>\n      </td>\n      <td>\n        <p>Name of the Agent(URL Encoded)</p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p>instanceName</p>\n      </td>\n      <td>\n        <p>Instance Name(URL Encoded)</p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p>backupset</p>\n      </td>\n      <td>\n        <p>Backupset Name(URL Encoded)</p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p>subclient</p>\n      </td>\n      <td>\n        <p>Subclient Name(URL Encoded)</p>\n      </td>\n    </tr>\n</table>[_For all Agent Names_](http://documentation.commvault.com/commvault/v11/article?p=45467.htm#o99081)","method":"get","path":"/GetId","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get Agent Id","description":{"content":"This operation returns an Agent/Application Id\n<h2>Request Parameters</h2>\n<table>\n    <tr>\n      <td>\n        <p>Name</p>\n      </td>\n      <td>\n        <p>Description</p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p>clientName</p>\n      </td>\n      <td>\n        <p>Name of the client(URL Encoded)</p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p>agent</p>\n      </td>\n      <td>\n        <p>Name of the Agent(URL Encoded)</p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p>instanceName</p>\n      </td>\n      <td>\n        <p>Instance Name(URL Encoded)</p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p>backupset</p>\n      </td>\n      <td>\n        <p>Backupset Name(URL Encoded)</p>\n      </td>\n    </tr>\n    <tr>\n      <td>\n        <p>subclient</p>\n      </td>\n      <td>\n        <p>Subclient Name(URL Encoded)</p>\n      </td>\n    </tr>\n</table>[_For all Agent Names_](http://documentation.commvault.com/commvault/v11/article?p=45467.htm#o99081)","type":"text/plain"},"url":{"path":["GetId"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"clientName","value":""},{"disabled":false,"key":"agent","value":""},{"disabled":false,"key":"backupset","value":""},{"disabled":false,"key":"subclient","value":""}],"variable":[]},"header":[{"disabled":false,"description":{"content":"","type":"text/plain"},"key":"AuthToken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/AgentOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get Agent Id
+
+
+
+This operation returns an Agent/Application Id
+<h2>Request Parameters</h2>
+<table>
+    <tr>
+      <td>
+        <p>Name</p>
+      </td>
+      <td>
+        <p>Description</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>clientName</p>
+      </td>
+      <td>
+        <p>Name of the client(URL Encoded)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>agent</p>
+      </td>
+      <td>
+        <p>Name of the Agent(URL Encoded)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>instanceName</p>
+      </td>
+      <td>
+        <p>Instance Name(URL Encoded)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>backupset</p>
+      </td>
+      <td>
+        <p>Backupset Name(URL Encoded)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>subclient</p>
+      </td>
+      <td>
+        <p>Subclient Name(URL Encoded)</p>
+      </td>
+    </tr>
+</table>[_For all Agent Names_](http://documentation.commvault.com/commvault/v11/article?p=45467.htm#o99081)
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"in":"query","name":"clientName"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string","example":"File%20System"},"in":"query","name":"agent"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"in":"query","name":"backupset"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"in":"query","name":"subclient"}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"in":"header","name":"AuthToken"}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"clientName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"clientId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"_type_"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"clientName\": \"string\",\n  \"clientId\": 0,\n  \"_type_\": 0\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Get Id -  With  Client  Name"} value={" Get Id -  With  Client  Name"}><ResponseSamples responseExample={"{\n  \"clientName\": \"yashdutch\",\n  \"clientId\": 18,\n  \"_type_\": 3\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Get Id -  With  Agent  Name"} value={" Get Id -  With  Agent  Name"}><ResponseSamples responseExample={"{\n  \"applicationId\": 33,\n  \"clientName\": \"dm2perf3\",\n  \"clientId\": 2,\n  \"_type_\": 4,\n  \"appName\": \"File System\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Get Id -  With  Backupset  Name"} value={" Get Id -  With  Backupset  Name"}><ResponseSamples responseExample={"{\n  \"applicationId\": 33,\n  \"clientName\": \"dm2perf3\",\n  \"backupsetId\": 3,\n  \"instanceId\": 1,\n  \"clientId\": 2,\n  \"backupsetName\": \"defaultBackupSet\",\n  \"_type_\": 6,\n  \"appName\": \"File System\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Get Id -  With  Subclient  Name"} value={" Get Id -  With  Subclient  Name"}><ResponseSamples responseExample={"{\n  \"subclientId\": 2,\n  \"applicationId\": 33,\n  \"clientName\": \"dm2perf3\",\n  \"backupsetId\": 3,\n  \"instanceId\": 1,\n  \"clientId\": 2,\n  \"subclientName\": \"default\",\n  \"backupsetName\": \"defaultBackupSet\",\n  \"_type_\": 7,\n  \"appName\": \"File System\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

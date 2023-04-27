@@ -1,0 +1,2959 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+  - url: 'http://{hostname}/webconsole/api'
+    variables:
+      hostname:
+        default: localhost
+        description: Webconsole
+tags:
+  - name: Restore Operations
+paths:
+  /Client/2/Hierarchy:
+    get:
+      deprecated: false
+      description: |
+        This request returns subclients that have backup jobs available to restore.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_client_hierarchy_available_backup.htm)
+      operationId: Get Client Hierarchy Available backup
+      parameters:
+        - description: ''
+          in: header
+          name: Authtoken
+          schema:
+            example: '{{TOKEN}}'
+            type: string
+        - schema:
+            type: boolean
+          in: query
+          name: backedUp
+      summary: Get Client Hierarchy Available backup
+      tags:
+        - Restore Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entity:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        subclientId:
+                          type: integer
+                        applicationId:
+                          type: integer
+                        clientName:
+                          type: string
+                        backupsetId:
+                          type: integer
+                        instanceId:
+                          type: integer
+                        clientId:
+                          type: integer
+                        subclientName:
+                          type: string
+                        backupsetName:
+                          type: string
+                        instanceName:
+                          type: string
+                        appName:
+                          type: string
+                x-examples:
+                  Example 1:
+                    entity:
+                      - subclientId: 2
+                        applicationId: 33
+                        clientName: firewalltestcs
+                        backupsetId: 3
+                        instanceId: 1
+                        clientId: 2
+                        subclientName: default
+                        backupsetName: defaultBackupSet
+                        instanceName: DefaultInstanceName
+                        appName: Windows File System
+                      - subclientId: 31
+                        applicationId: 33
+                        clientName: firewalltestcs
+                        backupsetId: 3
+                        instanceId: 1
+                        clientId: 2
+                        subclientName: Back_44
+                        backupsetName: defaultBackupSet
+                        instanceName: DefaultInstanceName
+                        appName: Windows File System
+                      - subclientId: 49
+                        applicationId: 33
+                        clientName: firewalltestcs
+                        backupsetId: 3
+                        instanceId: 1
+                        clientId: 2
+                        subclientName: TestFSAPI
+                        backupsetName: defaultBackupSet
+                        instanceName: DefaultInstanceName
+                        appName: Windows File System
+              examples:
+                Example 1:
+                  value:
+                    entity:
+                      - subclientId: 2
+                        applicationId: 33
+                        clientName: firewalltestcs
+                        backupsetId: 3
+                        instanceId: 1
+                        clientId: 2
+                        subclientName: default
+                        backupsetName: defaultBackupSet
+                        instanceName: DefaultInstanceName
+                        appName: Windows File System
+                      - subclientId: 31
+                        applicationId: 33
+                        clientName: firewalltestcs
+                        backupsetId: 3
+                        instanceId: 1
+                        clientId: 2
+                        subclientName: Back_44
+                        backupsetName: defaultBackupSet
+                        instanceName: DefaultInstanceName
+                        appName: Windows File System
+                      - subclientId: 49
+                        applicationId: 33
+                        clientName: firewalltestcs
+                        backupsetId: 3
+                        instanceId: 1
+                        clientId: 2
+                        subclientName: TestFSAPI
+                        backupsetName: defaultBackupSet
+                        instanceName: DefaultInstanceName
+                        appName: Windows File System
+  /retrieveToClient:
+    post:
+      deprecated: false
+      description: |
+        This operation restores data obtained through a backup.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_retrievetoclient.htm)
+      operationId: Retrieve to Client (Restore)
+      parameters:
+        - description: ''
+          in: header
+          name: Authtoken
+          required: true
+          schema:
+            example: '{{TOKEN}}'
+            type: string
+      summary: Retrieve to Client (Restore)
+      tags:
+        - Restore Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                mode:
+                  type: integer
+                serviceType:
+                  type: integer
+                userInfo:
+                  type: object
+                  properties:
+                    userGuid:
+                      type: string
+                advanced:
+                  type: object
+                  properties:
+                    restoreDataAndACL:
+                      type: boolean
+                    restoreDeletedFiles:
+                      type: boolean
+                header:
+                  type: object
+                  properties:
+                    destination:
+                      type: object
+                      properties:
+                        clientId:
+                          type: integer
+                        clientName:
+                          type: string
+                        inPlace:
+                          type: boolean
+                        destPath:
+                          type: array
+                          items:
+                            type: string
+                    filePaths:
+                      type: array
+                      items:
+                        type: string
+                    srcContent:
+                      type: object
+                      properties:
+                        subclientId:
+                          type: integer
+                        clientId:
+                          type: integer
+                        instanceId:
+                          type: integer
+                        backupSetId:
+                          type: integer
+                        appTypeId:
+                          type: integer
+              x-examples:
+                Example 1:
+                  mode: 2
+                  serviceType: 1
+                  userInfo:
+                    userGuid: EBEA9754-607C-4CA4-B047-C9F656A1ABB0
+                  advanced:
+                    restoreDataAndACL: true
+                    restoreDeletedFiles: true
+                  header:
+                    destination:
+                      clientId: 2
+                      clientName: firewalltestcs
+                      inPlace: false
+                      destPath:
+                        - 'C:\Restore/OutOfPlace'
+                    filePaths:
+                      - '/C:/csguid.PNG'
+                      - '/C:/DEMO_3.pptx'
+                    srcContent:
+                      subclientId: 49
+                      clientId: 2
+                      instanceId: 1
+                      backupSetId: 3
+                      appTypeId: 33
+            examples:
+              Retrieve to Client (Restore) - Out Of Place:
+                value:
+                  mode: 2
+                  serviceType: 1
+                  userInfo:
+                    userGuid: EBEA9754-607C-4CA4-B047-C9F656A1ABB0
+                  advanced:
+                    restoreDataAndACL: true
+                    restoreDeletedFiles: true
+                  header:
+                    destination:
+                      clientId: 2
+                      clientName: firewalltestcs
+                      inPlace: false
+                      destPath:
+                        - 'C://Restore//OutOfPlace'
+                    filePaths:
+                      - '//C://csguid.PNG'
+                      - '//C://DEMO_3.pptx'
+                    srcContent:
+                      subclientId: 49
+                      clientId: 2
+                      instanceId: 1
+                      backupSetId: 3
+                      appTypeId: 33
+        description: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobId:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    jobId: 76278
+              examples:
+                Example 1:
+                  value:
+                    jobId: 76278
+  /DoBrowse:
+    post:
+      deprecated: false
+      description: |
+        This operation browses data obtained through a backup.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_browse.htm)
+      operationId: Perform Browse on Backed up Data
+      parameters:
+        - description: ''
+          in: header
+          name: Authtoken
+          required: true
+          schema:
+            example: '{{TOKEN}}'
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - example:
+                    entity:
+                      applicationId: 33
+                      backupsetId: 3
+                      clientId: 2
+                      clientName: '{{clientName}}'
+                      instanceId: 1
+                      subclientId: 49
+                    mode:
+                      mode: 2
+                    opType: 0
+                    options:
+                      restoreIndex: true
+                      showDeletedFiles: true
+                    paths:
+                      - path: 'c:/'
+                    queries:
+                      - aggrParam:
+                          aggrType: 4
+                          field: 0
+                        queryId: countQuery
+                        type: 1
+                      - dataParam:
+                          paging:
+                            firstNode: 0
+                            pageSize: 15
+                            skipNode: 0
+                          sortParam:
+                            ascending: true
+                            sortBy:
+                              - 38
+                              - 0
+                        queryId: dataQuery
+                        type: 0
+                  title: BrowseRequest
+                  properties:
+                    entity:
+                      example:
+                        applicationId: 33
+                        backupsetId: 3
+                        clientId: 2
+                        clientName: '{{clientName}}'
+                        instanceId: 1
+                        subclientId: 49
+                      title: Entity2
+                      type: object
+                      properties:
+                        applicationId:
+                          format: int32
+                          type: integer
+                        backupsetId:
+                          format: int32
+                          type: integer
+                        clientId:
+                          format: int32
+                          type: integer
+                        clientName:
+                          type: string
+                        instanceId:
+                          format: int32
+                          type: integer
+                        subclientId:
+                          format: int32
+                          type: integer
+                    mode:
+                      example:
+                        mode: 2
+                      title: Mode
+                      type: object
+                      properties:
+                        mode:
+                          format: int32
+                          type: integer
+                    opType:
+                      format: int32
+                      type: integer
+                    options:
+                      example:
+                        restoreIndex: true
+                        showDeletedFiles: true
+                      title: Options
+                      type: object
+                      properties:
+                        restoreIndex:
+                          type: boolean
+                        showDeletedFiles:
+                          type: boolean
+                    paths:
+                      type: array
+                      items:
+                        example:
+                          path: 'c:/'
+                        title: Path
+                        type: object
+                        properties:
+                          path:
+                            type: string
+                    queries:
+                      type: array
+                      items:
+                        example:
+                          aggrParam:
+                            aggrType: 4
+                            field: 0
+                          queryId: countQuery
+                          type: 1
+                        title: Query
+                        type: object
+                        properties:
+                          aggrParam:
+                            example:
+                              aggrType: 4
+                              field: 0
+                            title: AggrParam
+                            type: object
+                            properties:
+                              aggrType:
+                                format: int32
+                                type: integer
+                              field:
+                                format: int32
+                                type: integer
+                          dataParam:
+                            example:
+                              paging:
+                                firstNode: 0
+                                pageSize: 15
+                                skipNode: 0
+                              sortParam:
+                                ascending: true
+                                sortBy:
+                                  - 38
+                                  - 0
+                            title: DataParam
+                            type: object
+                            properties:
+                              paging:
+                                example:
+                                  firstNode: 0
+                                  pageSize: 15
+                                  skipNode: 0
+                                title: Paging
+                                type: object
+                                properties:
+                                  firstNode:
+                                    format: int32
+                                    type: integer
+                                  pageSize:
+                                    format: int32
+                                    type: integer
+                                  skipNode:
+                                    format: int32
+                                    type: integer
+                              sortParam:
+                                example:
+                                  ascending: true
+                                  sortBy:
+                                    - 38
+                                    - 0
+                                title: SortParam
+                                type: object
+                                properties:
+                                  ascending:
+                                    type: boolean
+                                  sortBy:
+                                    type: array
+                                    items:
+                                      format: int32
+                                      type: integer
+                          queryId:
+                            type: string
+                          type:
+                            format: int32
+                            type: integer
+              type: object
+            examples:
+              Browse - Backupset Level:
+                value:
+                  opType: 0
+                  queries:
+                    - type: 1
+                      queryId: countQuery
+                      aggrParam:
+                        field: 0
+                        aggrType: 4
+                    - type: 0
+                      queryId: dataQuery
+                      dataParam:
+                        sortParam:
+                          ascending: true
+                          sortBy:
+                            - 38
+                            - 0
+                        paging:
+                          firstNode: 0
+                          pageSize: 15
+                          skipNode: 0
+                  mode:
+                    mode: 2
+                  paths:
+                    - path: 'D:/'
+                  options:
+                    showDeletedFiles: true
+                    restoreIndex: true
+                  entity:
+                    applicationId: 33
+                    backupsetId: 3
+                    instanceId: 1
+                    clientId: 2
+              Browse - PostgreSQL:
+                value:
+                  opType: 0
+                  queries:
+                    - type: 0
+                      queryId: '0'
+                      fileOrFolder: 2
+                      whereClause:
+                        - connector: 0
+                          criteria:
+                            field: 76
+                            dataOperator: 9
+                            values:
+                              - '1'
+                      dataParam:
+                        sortParam:
+                          ascending: true
+                          sortBy:
+                            - 38
+                            - 0
+                        paging:
+                          firstNode: 0
+                          pageSize: 15
+                          skipNode: 0
+                    - type: 1
+                      queryId: '1'
+                      whereClause:
+                        - connector: 0
+                          criteria:
+                            field: 76
+                            dataOperator: 9
+                            values:
+                              - '1'
+                      aggrParam:
+                        field: 0
+                        aggrType: 4
+                  mode:
+                    mode: 7
+                  advOptions: {}
+                  paths:
+                    - path: /TblView
+                  options:
+                    skipIndexRestore: false
+                    restoreIndex: true
+                  entity:
+                    subclientId: 34
+                    applicationId: 125
+                    clientName: narasimha_rhel
+                    backupsetId: 31
+                    instanceId: 7
+                    clientId: 7
+                    subclientName: default
+                    backupsetName: FSBasedBackupSet
+                    instanceName: pg
+                    appName: PostgreSQL
+              Browse:
+                value:
+                  opType: 0
+                  queries:
+                    - type: 1
+                      queryId: countQuery
+                      aggrParam:
+                        field: 0
+                        aggrType: 4
+                    - type: 0
+                      queryId: dataQuery
+                      dataParam:
+                        sortParam:
+                          ascending: true
+                          sortBy:
+                            - 38
+                            - 0
+                        paging:
+                          firstNode: 0
+                          pageSize: 15
+                          skipNode: 0
+                  mode:
+                    mode: 2
+                  paths:
+                    - path: 'C:/'
+                  options:
+                    showDeletedFiles: true
+                    restoreIndex: true
+                  entity:
+                    subclientId: 49
+                    applicationId: 33
+                    clientName: firewalltestcs
+                    backupsetId: 3
+                    instanceId: 1
+                    clientId: 2
+        description: ''
+        required: true
+      summary: Perform Browse on Backed up Data
+      tags:
+        - Restore Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  opType:
+                    type: integer
+                  queries:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        type:
+                          type: integer
+                        queryId:
+                          type: string
+                        aggrParam:
+                          type: object
+                          properties:
+                            field:
+                              type: integer
+                            aggrType:
+                              type: integer
+                        dataParam:
+                          type: object
+                          properties:
+                            sortParam:
+                              type: object
+                              properties:
+                                ascending:
+                                  type: boolean
+                                sortBy:
+                                  type: array
+                                  items:
+                                    type: integer
+                            paging:
+                              type: object
+                              properties:
+                                firstNode:
+                                  type: integer
+                                pageSize:
+                                  type: integer
+                                skipNode:
+                                  type: integer
+                  mode:
+                    type: object
+                    properties:
+                      mode:
+                        type: integer
+                  paths:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        path:
+                          type: string
+                  options:
+                    type: object
+                    properties:
+                      showDeletedFiles:
+                        type: boolean
+                      restoreIndex:
+                        type: boolean
+                  entity:
+                    type: object
+                    properties:
+                      applicationId:
+                        type: integer
+                      backupsetId:
+                        type: integer
+                      instanceId:
+                        type: integer
+                      clientId:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    opType: 0
+                    queries:
+                      - type: 1
+                        queryId: countQuery
+                        aggrParam:
+                          field: 0
+                          aggrType: 4
+                      - type: 0
+                        queryId: dataQuery
+                        dataParam:
+                          sortParam:
+                            ascending: true
+                            sortBy:
+                              - 38
+                              - 0
+                          paging:
+                            firstNode: 0
+                            pageSize: 15
+                            skipNode: 0
+                    mode:
+                      mode: 2
+                    paths:
+                      - path: 'D:/'
+                    options:
+                      showDeletedFiles: true
+                      restoreIndex: true
+                    entity:
+                      applicationId: 33
+                      backupsetId: 3
+                      instanceId: 1
+                      clientId: 2
+              examples:
+                Browse:
+                  value:
+                    browseResponses:
+                      - respType: 0
+                        workerId: '1'
+                        session:
+                          sessionId: 1497261754-1
+                        browseResult:
+                          queryId: dataQuery
+                          dataResultSet:
+                            - path: 'C:/csguid.PNG'
+                              size: 31420
+                              modificationTime: 1494235377
+                              displayName: csguid.PNG
+                              name: 27/x12csguid.PNG
+                              flags:
+                                isPseudo: false
+                                file: true
+                                isFake: false
+                                snap: false
+                              advancedData:
+                                backupJobId: 324
+                                referenceTime: 1496382395
+                                offset: 0
+                                archiveGroupId: 3
+                                objectGuid: 996e5a87f1fdae404ca096e70d1c21de
+                                backupTime: 1496382395
+                                archiveFileId: 134
+                                subclient:
+                                  type: 0
+                                  _type_: 7
+                                  applicationId: 49
+                                sourceCommServer:
+                                  _type_: 1
+                                  commCellId: 2
+                                  type: 0
+                                advConfig:
+                                  browseAdvancedConfigResp:
+                                    commcellNumber: 122516778
+                                browseMetaData:
+                                  fsData:
+                                    geoLocation: <App_GeoLocation ip_address='199.255.244.65' latitude='40.300720' longitude='-74.081910' status_code='SUCCESS' status_description=''/>
+                                  indexing:
+                                    backupTime: 1496041441
+                                    fileChangeTime: 1495091808
+                                  dmStubData:
+                                    guid: 79cdf4ff048d7f66563e260400d71a3c
+                                  virtualServerMetaData:
+                                    extentBlobBitMap: ''
+                            - path: 'C:/DEMO_3.pptx'
+                              size: 266613
+                              modificationTime: 1462779722
+                              displayName: DEMO_3.pptx
+                              name: 28/x12DEMO_3.pptx
+                              flags:
+                                isPseudo: false
+                                file: true
+                                isFake: false
+                                snap: false
+                              advancedData:
+                                backupJobId: 324
+                                referenceTime: 1496382395
+                                offset: 25287
+                                archiveGroupId: 3
+                                objectGuid: a3747ff8179b1ea06fcf9cafca8059e3
+                                backupTime: 1496382395
+                                archiveFileId: 134
+                                subclient:
+                                  type: 0
+                                  _type_: 7
+                                  applicationId: 49
+                                sourceCommServer:
+                                  _type_: 1
+                                  commCellId: 2
+                                  type: 0
+                                advConfig:
+                                  browseAdvancedConfigResp:
+                                    commcellNumber: 122516778
+                                browseMetaData:
+                                  fsData:
+                                    geoLocation: <App_GeoLocation ip_address='199.255.244.65' latitude='40.300720' longitude='-74.081910' status_code='SUCCESS' status_description=''/>
+                                  indexing:
+                                    backupTime: 1496041441
+                                    fileChangeTime: 1495091862
+                                  dmStubData:
+                                    guid: de1be9262f87c39b91ace2450a83d600
+                                  virtualServerMetaData:
+                                    extentBlobBitMap: ''
+                            - path: 'C:/fw10_tppm.doc'
+                              size: 68608
+                              modificationTime: 1311434477
+                              displayName: fw10_tppm.doc
+                              name: 29/x12fw10_tppm.doc
+                              flags:
+                                isPseudo: false
+                                file: true
+                                isFake: false
+                                snap: false
+                              advancedData:
+                                backupJobId: 324
+                                referenceTime: 1496382395
+                                offset: 257037
+                                archiveGroupId: 3
+                                objectGuid: 153ce05bff91cf8b14fe97412eaaed7a
+                                backupTime: 1496382395
+                                archiveFileId: 134
+                                subclient:
+                                  type: 0
+                                  _type_: 7
+                                  applicationId: 49
+                                sourceCommServer:
+                                  _type_: 1
+                                  commCellId: 2
+                                  type: 0
+                                advConfig:
+                                  browseAdvancedConfigResp:
+                                    commcellNumber: 122516778
+                                browseMetaData:
+                                  fsData:
+                                    geoLocation: <App_GeoLocation ip_address='199.255.244.65' latitude='40.300720' longitude='-74.081910' status_code='SUCCESS' status_description=''/>
+                                  indexing:
+                                    backupTime: 1496041441
+                                    fileChangeTime: 1495091837
+                                  dmStubData:
+                                    guid: e2ea53572aacf33ab5e3958bf6970edf
+                                  virtualServerMetaData:
+                                    extentBlobBitMap: ''
+                            - path: 'C:\removeGUIDKeyFromClientGroup.sqle'
+                              size: 5904
+                              modificationTime: 1494021644
+                              displayName: removeGUIDKeyFromClientGroup.sqle
+                              name: 30/x12removeGUIDKeyFromClientGroup.sqle
+                              flags:
+                                isPseudo: false
+                                file: true
+                                isFake: false
+                                snap: false
+                              advancedData:
+                                backupJobId: 324
+                                referenceTime: 1496382395
+                                offset: 283728
+                                archiveGroupId: 3
+                                objectGuid: 55cd468e7f77676fd639e16439d72611
+                                backupTime: 1496382395
+                                archiveFileId: 134
+                                subclient:
+                                  type: 0
+                                  _type_: 7
+                                  applicationId: 49
+                                sourceCommServer:
+                                  _type_: 1
+                                  commCellId: 2
+                                  type: 0
+                                advConfig:
+                                  browseAdvancedConfigResp:
+                                    commcellNumber: 122516778
+                                browseMetaData:
+                                  fsData:
+                                    geoLocation: <App_GeoLocation ip_address='199.255.244.65' latitude='40.300720' longitude='-74.081910' status_code='SUCCESS' status_description=''/>
+                                  indexing:
+                                    backupTime: 1496041441
+                                    fileChangeTime: 1494216849
+                                  dmStubData:
+                                    guid: a74cb852465c25591f4b89b6fc5beb59
+                                  virtualServerMetaData:
+                                    extentBlobBitMap: ''
+                            - path: 'C:/Siesta-Lake-Sunset.jpg'
+                              size: 979668
+                              modificationTime: 1496122159
+                              displayName: Siesta-Lake-Sunset.jpg
+                              name: 36/x12Siesta-Lake-Sunset.jpg
+                              flags:
+                                isPseudo: false
+                                file: true
+                                isFake: false
+                                snap: false
+                              advancedData:
+                                backupJobId: 324
+                                referenceTime: 1496382395
+                                offset: 4404196
+                                archiveGroupId: 3
+                                objectGuid: 19fcc166f55f20ff815e0d0d11d5a26b
+                                backupTime: 1496382395
+                                archiveFileId: 134
+                                subclient:
+                                  type: 0
+                                  _type_: 7
+                                  applicationId: 49
+                                sourceCommServer:
+                                  _type_: 1
+                                  commCellId: 2
+                                  type: 0
+                                advConfig:
+                                  browseAdvancedConfigResp:
+                                    commcellNumber: 122516778
+                                browseMetaData:
+                                  fsData:
+                                    geoLocation: <App_GeoLocation ip_address='199.255.244.65' latitude='40.300720' longitude='-74.081910' status_code='SUCCESS' status_description=''/>
+                                  indexing:
+                                    backupTime: 1496122299
+                                    fileChangeTime: 1496122184
+                                  dmStubData:
+                                    guid: b918077f331dc730a4879cc4769620d5
+                                  virtualServerMetaData:
+                                    extentBlobBitMap: ''
+                            - path: 'C:\test.jpg'
+                              size: 3925932
+                              modificationTime: 1490575130
+                              displayName: test.jpg
+                              name: 31/x12test.jpg
+                              flags:
+                                isPseudo: false
+                                file: true
+                                isFake: false
+                                snap: false
+                              advancedData:
+                                backupJobId: 324
+                                referenceTime: 1496382395
+                                offset: 288754
+                                archiveGroupId: 3
+                                objectGuid: db17e748bcdd4c7a59e30cc8bea9e3fc
+                                backupTime: 1496382395
+                                archiveFileId: 134
+                                subclient:
+                                  type: 0
+                                  _type_: 7
+                                  applicationId: 49
+                                sourceCommServer:
+                                  _type_: 1
+                                  commCellId: 2
+                                  type: 0
+                                advConfig:
+                                  browseAdvancedConfigResp:
+                                    commcellNumber: 122516778
+                                browseMetaData:
+                                  fsData:
+                                    geoLocation: <App_GeoLocation ip_address='199.255.244.65' latitude='40.300720' longitude='-74.081910' status_code='SUCCESS' status_description=''/>
+                                  indexing:
+                                    backupTime: 1496041441
+                                    fileChangeTime: 1495091882
+                                  dmStubData:
+                                    guid: f4028c89b8a069dc1f5cd39cc60f69b6
+                                  virtualServerMetaData:
+                                    extentBlobBitMap: ''
+                            - path: 'C:\testimg.jpg'
+                              size: 360963
+                              modificationTime: 1486635105
+                              displayName: testimg.jpg
+                              name: 35/x12testimg.jpg
+                              flags:
+                                isPseudo: false
+                                file: true
+                                isFake: false
+                                snap: false
+                              advancedData:
+                                backupJobId: 324
+                                referenceTime: 1496382395
+                                offset: 3914102
+                                archiveGroupId: 3
+                                objectGuid: 957fcb75db9876b5147e29d31fc4904e
+                                backupTime: 1496382395
+                                archiveFileId: 134
+                                subclient:
+                                  type: 0
+                                  _type_: 7
+                                  applicationId: 49
+                                sourceCommServer:
+                                  _type_: 1
+                                  commCellId: 2
+                                  type: 0
+                                advConfig:
+                                  browseAdvancedConfigResp:
+                                    commcellNumber: 122516778
+                                browseMetaData:
+                                  fsData:
+                                    geoLocation: <App_GeoLocation ip_address='199.255.244.65' latitude='40.300720' longitude='-74.081910' status_code='SUCCESS' status_description=''/>
+                                  indexing:
+                                    backupTime: 1496041442
+                                    fileChangeTime: 1495092797
+                                  dmStubData:
+                                    guid: fcbd597e64e53320c88be5b7b25c2514
+                                  virtualServerMetaData:
+                                    extentBlobBitMap: ''
+                            - path: 'C:/v11SP4a.xml'
+                              size: 9095
+                              modificationTime: 1467356773
+                              displayName: v11SP4a.xml
+                              name: 32/x12v11SP4a.xml
+                              flags:
+                                isPseudo: false
+                                file: true
+                                isFake: false
+                                snap: false
+                              advancedData:
+                                backupJobId: 324
+                                referenceTime: 1496382395
+                                offset: 4168364
+                                archiveGroupId: 3
+                                objectGuid: 2c764480654e242e535a3b3744569f6b
+                                backupTime: 1496382395
+                                archiveFileId: 134
+                                subclient:
+                                  type: 0
+                                  _type_: 7
+                                  applicationId: 49
+                                sourceCommServer:
+                                  _type_: 1
+                                  commCellId: 2
+                                  type: 0
+                                advConfig:
+                                  browseAdvancedConfigResp:
+                                    commcellNumber: 122516778
+                                browseMetaData:
+                                  fsData:
+                                    geoLocation: <App_GeoLocation ip_address='199.255.244.65' latitude='40.300720' longitude='-74.081910' status_code='SUCCESS' status_description=''/>
+                                  indexing:
+                                    backupTime: 1496041442
+                                    fileChangeTime: 1495091894
+                                  dmStubData:
+                                    guid: 135e51fb1f0ced38546a74c48d67ad16
+                                  virtualServerMetaData:
+                                    extentBlobBitMap: ''
+                            - path: 'C:/wf.txt'
+                              size: 784
+                              modificationTime: 1496307934
+                              displayName: wf.txt
+                              name: 33/x12wf.txt
+                              flags:
+                                isPseudo: false
+                                file: true
+                                isFake: false
+                                snap: false
+                              advancedData:
+                                backupJobId: 324
+                                referenceTime: 1496382395
+                                offset: 5367231
+                                archiveGroupId: 3
+                                objectGuid: dd0e2e87ce21bdcd44c65082908eb193
+                                backupTime: 1496382395
+                                archiveFileId: 134
+                                subclient:
+                                  type: 0
+                                  _type_: 7
+                                  applicationId: 49
+                                sourceCommServer:
+                                  _type_: 1
+                                  commCellId: 2
+                                  type: 0
+                                advConfig:
+                                  browseAdvancedConfigResp:
+                                    commcellNumber: 122516778
+                                browseMetaData:
+                                  fsData:
+                                    geoLocation: <App_GeoLocation ip_address='199.255.244.65' latitude='40.300720' longitude='-74.081930' status_code='SUCCESS' status_description=''/>
+                                  indexing:
+                                    backupTime: 1496308013
+                                    fileChangeTime: 1496307934
+                                  dmStubData:
+                                    guid: a855ee26caa5e05c59098d0fbc54fd7a
+                                  virtualServerMetaData:
+                                    extentBlobBitMap: ''
+                            - path: 'C:/WORKQUEUE_TASK.docx'
+                              size: 276023
+                              modificationTime: 1456922322
+                              displayName: WORKQUEUE_TASK.docx
+                              name: 34/x12WORKQUEUE_TASK.docx
+                              flags:
+                                isPseudo: false
+                                file: true
+                                isFake: false
+                                snap: false
+                              advancedData:
+                                backupJobId: 324
+                                referenceTime: 1496382395
+                                offset: 4171024
+                                archiveGroupId: 3
+                                objectGuid: fb19b7c2db0a40c0a502c103fec24f04
+                                backupTime: 1496382395
+                                archiveFileId: 134
+                                subclient:
+                                  type: 0
+                                  _type_: 7
+                                  applicationId: 49
+                                sourceCommServer:
+                                  _type_: 1
+                                  commCellId: 2
+                                  type: 0
+                                advConfig:
+                                  browseAdvancedConfigResp:
+                                    commcellNumber: 122516778
+                                browseMetaData:
+                                  fsData:
+                                    geoLocation: <App_GeoLocation ip_address='199.255.244.65' latitude='40.300720' longitude='-74.081910' status_code='SUCCESS' status_description=''/>
+                                  indexing:
+                                    backupTime: 1496041442
+                                    fileChangeTime: 1495091904
+                                  dmStubData:
+                                    guid: 597b81d8f1929c330c189fb4ad35249c
+                                  virtualServerMetaData:
+                                    extentBlobBitMap: ''
+                      - respType: 0
+                        workerId: '1'
+                        session:
+                          sessionId: 1497261754-1
+                        browseResult:
+                          queryId: countQuery
+                          aggrResultSet:
+                            - result: 10
+                              groupbyValue: ''
+                              count: 10
+                      - respType: 5
+                        workerId: '1'
+                        session:
+                          sessionId: 1497261754-1
+  /Recall:
+    get:
+      deprecated: false
+      description: |
+        This operation initiates a download of data obtained through a backup.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_recall.htm)
+      operationId: Perform Recall
+      parameters:
+        - explode: true
+          in: query
+          name: at
+          schema:
+            example: 33
+            format: int32
+            type: integer
+        - description: ''
+          explode: true
+          in: query
+          name: si
+          schema:
+            example: MjoxMjI1MTY3Nzg6MDoxMzQ6NDE2ODM2NA==
+            type: string
+        - description: ''
+          explode: true
+          in: query
+          name: op
+          schema:
+            example: QzpcXHYxMVNQNGEueG1s
+            type: string
+        - description: ''
+          explode: true
+          in: query
+          name: appId
+          schema:
+            example: 49
+            format: int32
+            type: integer
+        - description: ''
+          explode: true
+          in: query
+          name: ec
+          schema:
+            example: 1
+            format: int32
+            type: integer
+        - description: ''
+          in: header
+          name: Authtoken
+          required: true
+          schema:
+            example: '{{TOKEN}}'
+            type: string
+      summary: Perform Recall
+      tags:
+        - Restore Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              examples:
+                Example 1:
+                  value: |-
+                    <?xml version="1.0" ?><testautomation>
+                      <farm name="RESTv11SP4a" type="QC"/>
+                      <email/>
+                      <testsets>
+                        <testset id="6015" iscustomtestset="False" istestsetscript="None" name="v11 B80 SP4a_Commserver_WINDOWS_Don't Care_NA_NA">
+                          <properties>
+                            <hostmachine><![CDATA[None]]></hostmachine>
+                            <username><![CDATA[None]]></username>
+                            <password><![CDATA[None]]></password>
+                            <domain><![CDATA[None]]></domain>
+                            <mailid>
+                              <notifyall><![CDATA[snasim.cv@test.com]]></notifyall>
+                              <notifyfailonly><![CDATA[]]></notifyfailonly>
+                            </mailid>
+                          </properties>
+                          <testcases>
+                            <testcase id="48367" instance="143513" istestsetscript="False" name="48367">
+                              <username><![CDATA[test]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[test]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase id="48423" instance="143518" istestsetscript="False" name="48423">
+                              <username><![CDATA[test]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[test]]></password>
+                              <clientName><![CDATA[shezavm4.test.com]]></clientName>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase id="48424" instance="143515" istestsetscript="False" name="48424">
+                              <username><![CDATA[test]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[test]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase id="48426" instance="143514" istestsetscript="False" name="48426">
+                              <username><![CDATA[test]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                              <StoragePolicy><![CDATA[SPvm6]]></StoragePolicy>
+                              <BackupSetName><![CDATA[defaultBackupSet]]></BackupSetName>
+                              <password><![CDATA[test]]></password>
+                              <ClientName><![CDATA[shezavm4.test.com]]></ClientName>
+                            </testcase>
+                            <testcase id="48427" instance="143516" istestsetscript="False" name="48427">
+                              <username><![CDATA[test]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[test]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase id="48428" instance="143519" istestsetscript="False" name="48428">
+                              <username><![CDATA[test]]></username>
+                              <library><![CDATA[libvm6]]></library>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                              <mediaagent><![CDATA[shezavm6]]></mediaagent>
+                              <password><![CDATA[test]]></password>
+                            </testcase>  
+                            <testcase id="48429" instance="143512" istestsetscript="False" name="48429">
+                              <username><![CDATA[test]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                              <StoragePolicy><![CDATA[SPvm6]]></StoragePolicy>
+                              <password><![CDATA[test]]></password>
+                              <ClientName><![CDATA[shezavm4.test.com]]></ClientName>
+                            </testcase>
+                            <testcase id="48473" instance="143557" istestsetscript="False" name="48473">
+                              <username><![CDATA[test]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[test]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase id="48476" instance="143556" istestsetscript="False" name="48476">
+                              <username><![CDATA[test]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[test]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase name="48614" id ="48614" instance="143555" istestsetscript="False">
+                              <username><![CDATA[ContentStoreUser]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[edge]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase name="48615" id ="48615" instance="143554" istestsetscript="False">
+                              <username><![CDATA[ContentStoreUser]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[edge]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase id="48616" instance="143553" istestsetscript="False" name="48616">
+                              <username><![CDATA[ContentStoreUser]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[edge]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase id="48862" instance="143552" istestsetscript="False" name="48862">
+                              <username><![CDATA[test]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[test]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase id="48863" instance="143551" istestsetscript="False" name="48863">
+                              <username><![CDATA[test]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[test]]></password>
+                              <MAClientName><![CDATA[shezavm4.test.com]]></MAClientName>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase id="48864" instance="143550" istestsetscript="False" name="48864">
+                              <username><![CDATA[test]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[test]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                              <WFClientName><![CDATA[shezavm4.test.com]]></WFClientName>
+                            </testcase>
+                            <testcase id="48425" instance="143517" istestsetscript="False" name="48425">
+                              <username><![CDATA[test]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[test]]></password>
+                              <clientName><![CDATA[shezavm4.test.com]]></clientName>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase name="49569" id ="49569" instance="143549" istestsetscript="False">
+                              <username><![CDATA[ContentStoreUser]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[edge]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase id="49608" instance="143546" istestsetscript="False" name="49608">
+                              <username><![CDATA[ContentStoreUser]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[edge]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase id="49609" instance="143545" istestsetscript="False" name="49609">
+                              <username><![CDATA[ContentStoreUser]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[edge]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase id="49611" instance="143543" istestsetscript="False" name="49611">
+                              <username><![CDATA[ContentStoreUser]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[edge]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase id="49612" instance="143544" istestsetscript="False" name="49612">
+                              <username><![CDATA[ContentStoreUser]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[edge]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                            </testcase>
+                            <testcase name="49606" id ="49606" instance="143548" istestsetscript="False">
+                              <username><![CDATA[ContentStoreUser]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[edge]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                              <webconsole_address><![CDATA[http://shezavm4.test.com/webconsole]]></webconsole_address>
+                            </testcase>
+                            <testcase name="49607" id ="49607" instance="143547" istestsetscript="False">
+                              <username><![CDATA[ContentStoreUser]]></username>
+                              <webserver><![CDATA[shezavm4.test.com]]></webserver>
+                              <password><![CDATA[edge]]></password>
+                              <Commserver><![CDATA[shezavm4.test.com]]></Commserver>
+                              <webconsole_address><![CDATA[http://shezavm4.test.com/webconsole]]></webconsole_address>
+                            </testcase>
+                                    #magic___^_^___line
+                          </testcases>
+                        </testset>
+                      </testsets>
+                    </testautomation>
+                                    #magic___^_^___line
+  /CreateTask:
+    post:
+      deprecated: false
+      description: |
+        This operation restores virtual server data obtained through a backup.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_create_task_restore.htm)
+      operationId: Create Task (Restore)
+      parameters:
+        - description: ''
+          in: header
+          name: Authtoken
+          required: true
+          schema:
+            example: '{{TOKEN}}'
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              x-examples:
+                Example 1:
+                  taskInfo:
+                    associations:
+                      - appName: Virtual Server
+                        backupsetName: '{BackupSetName}'
+                        clientName: '{VirtualizationclientName}'
+                        clientSidePackage: true
+                        consumeLicense: true
+                        instanceName: VMware
+                        subclientName: ''
+                        type: 0
+                    subTasks:
+                      - options:
+                          adminOpts:
+                            updateOption:
+                              invokeLevel: 0
+                          restoreOptions:
+                            browseOption:
+                              backupset:
+                                appName: Virtual Server
+                                backupsetName: '{BackupSetName}'
+                                clientName: '{VirtualizationclientName}'
+                                instanceName: VMware
+                              commCellId: 2
+                              fromTime: 0
+                              listMedia: false
+                              mediaOption:
+                                copyPrecedence:
+                                  copyPrecedence: 0
+                              noImage: true
+                              toTime: 0
+                              useExactIndex: false
+                            commonOptions:
+                              clusterDBBackedup: false
+                              detectRegularExpression: true
+                              isFromBrowseBackup: true
+                              overwriteFiles: true
+                              preserveLevel: 1
+                              restoreACLs: true
+                              stripLevel: 0
+                              stripLevelType: 0
+                              unconditionalOverwrite: true
+                            destination:
+                              destClient:
+                                clientName: '{clientName}'
+                                commCellName: '{CSName}'
+                              inPlace: false
+                              isLegalHold: false
+                            fileOption:
+                              sourceItem:
+                                - /50121224-4c9e-3227-a161-2117e50972e8
+                            restoreACLsType: 3
+                            virtualServerRstOption:
+                              diskLevelVMRestoreOption:
+                                advancedRestoreOptions:
+                                  - Datastore: LOCAL
+                                    disks:
+                                      - Datastore: LOCAL
+                                        name: scsi0-0-diskname.vmdk
+                                      - Datastore: LOCAL
+                                        name: scsi0-1-diskname_1.vmdk
+                                    esxHost: '{esxHost}'
+                                    guid: 50121224-4c9e-3227-a161-2117e50972e8
+                                    name: vmname
+                                    newName: newvmname
+                                    resourcePoolPath: /
+                                esxServerName: ''
+                                passUnconditionalOverride: true
+                                powerOnVmAfterRestore: true
+                              isDiskBrowse: true
+                              userPassword:
+                                userName: root
+                              viewType: 0
+                            volumeRstOption:
+                              volumeLeveRestore: false
+                              volumeLevelRestoreType: 1
+                        subTask:
+                          operationType: 1001
+                          subTaskName: ''
+                          subTaskType: 3
+                    task:
+                      initiatedFrom: 2
+                      policyType: 0
+                      taskFlags:
+                        disabled: false
+                      taskType: 1
+              properties:
+                taskInfo:
+                  type: object
+                  properties:
+                    associations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          appName:
+                            type: string
+                          backupsetName:
+                            type: string
+                          clientName:
+                            type: string
+                          clientSidePackage:
+                            type: boolean
+                          consumeLicense:
+                            type: boolean
+                          instanceName:
+                            type: string
+                          subclientName:
+                            type: string
+                          type:
+                            type: integer
+                    subTasks:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          options:
+                            type: object
+                            properties:
+                              adminOpts:
+                                type: object
+                                properties:
+                                  updateOption:
+                                    type: object
+                                    properties:
+                                      invokeLevel:
+                                        type: integer
+                              restoreOptions:
+                                type: object
+                                properties:
+                                  browseOption:
+                                    type: object
+                                    properties:
+                                      backupset:
+                                        type: object
+                                        properties:
+                                          appName:
+                                            type: string
+                                          backupsetName:
+                                            type: string
+                                          clientName:
+                                            type: string
+                                          instanceName:
+                                            type: string
+                                      commCellId:
+                                        type: integer
+                                      fromTime:
+                                        type: integer
+                                      listMedia:
+                                        type: boolean
+                                      mediaOption:
+                                        type: object
+                                        properties:
+                                          copyPrecedence:
+                                            type: object
+                                            properties:
+                                              copyPrecedence:
+                                                type: integer
+                                      noImage:
+                                        type: boolean
+                                      toTime:
+                                        type: integer
+                                      useExactIndex:
+                                        type: boolean
+                                  commonOptions:
+                                    type: object
+                                    properties:
+                                      clusterDBBackedup:
+                                        type: boolean
+                                      detectRegularExpression:
+                                        type: boolean
+                                      isFromBrowseBackup:
+                                        type: boolean
+                                      overwriteFiles:
+                                        type: boolean
+                                      preserveLevel:
+                                        type: integer
+                                      restoreACLs:
+                                        type: boolean
+                                      stripLevel:
+                                        type: integer
+                                      stripLevelType:
+                                        type: integer
+                                      unconditionalOverwrite:
+                                        type: boolean
+                                  destination:
+                                    type: object
+                                    properties:
+                                      destClient:
+                                        type: object
+                                        properties:
+                                          clientName:
+                                            type: string
+                                          commCellName:
+                                            type: string
+                                      inPlace:
+                                        type: boolean
+                                      isLegalHold:
+                                        type: boolean
+                                  fileOption:
+                                    type: object
+                                    properties:
+                                      sourceItem:
+                                        type: array
+                                        items:
+                                          type: string
+                                  restoreACLsType:
+                                    type: integer
+                                  virtualServerRstOption:
+                                    type: object
+                                    properties:
+                                      diskLevelVMRestoreOption:
+                                        type: object
+                                        properties:
+                                          advancedRestoreOptions:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                Datastore:
+                                                  type: string
+                                                disks:
+                                                  type: array
+                                                  items:
+                                                    type: object
+                                                    properties:
+                                                      Datastore:
+                                                        type: string
+                                                      name:
+                                                        type: string
+                                                esxHost:
+                                                  type: string
+                                                guid:
+                                                  type: string
+                                                name:
+                                                  type: string
+                                                newName:
+                                                  type: string
+                                                resourcePoolPath:
+                                                  type: string
+                                          esxServerName:
+                                            type: string
+                                          passUnconditionalOverride:
+                                            type: boolean
+                                          powerOnVmAfterRestore:
+                                            type: boolean
+                                      isDiskBrowse:
+                                        type: boolean
+                                      userPassword:
+                                        type: object
+                                        properties:
+                                          userName:
+                                            type: string
+                                      viewType:
+                                        type: integer
+                                  volumeRstOption:
+                                    type: object
+                                    properties:
+                                      volumeLeveRestore:
+                                        type: boolean
+                                      volumeLevelRestoreType:
+                                        type: integer
+                          subTask:
+                            type: object
+                            properties:
+                              operationType:
+                                type: integer
+                              subTaskName:
+                                type: string
+                              subTaskType:
+                                type: integer
+                    task:
+                      type: object
+                      properties:
+                        initiatedFrom:
+                          type: integer
+                        policyType:
+                          type: integer
+                        taskFlags:
+                          type: object
+                          properties:
+                            disabled:
+                              type: boolean
+                        taskType:
+                          type: integer
+            examples:
+              Ms SQL Restore - In place Restore on different SQL instance:
+                value:
+                  taskInfo:
+                    associations:
+                      - appName: Virtual Server
+                        backupsetName: '{BackupSetName}'
+                        clientName: '{VirtualizationclientName}'
+                        clientSidePackage: true
+                        consumeLicense: true
+                        instanceName: VMware
+                        subclientName: ''
+                        type: 0
+                    subTasks:
+                      - options:
+                          adminOpts:
+                            updateOption:
+                              invokeLevel: 0
+                          restoreOptions:
+                            browseOption:
+                              backupset:
+                                appName: Virtual Server
+                                backupsetName: '{BackupSetName}'
+                                clientName: '{VirtualizationclientName}'
+                                instanceName: VMware
+                              commCellId: 2
+                              fromTime: 0
+                              listMedia: false
+                              mediaOption:
+                                copyPrecedence:
+                                  copyPrecedence: 0
+                              noImage: true
+                              toTime: 0
+                              useExactIndex: false
+                            commonOptions:
+                              clusterDBBackedup: false
+                              detectRegularExpression: true
+                              isFromBrowseBackup: true
+                              overwriteFiles: true
+                              preserveLevel: 1
+                              restoreACLs: true
+                              stripLevel: 0
+                              stripLevelType: 0
+                              unconditionalOverwrite: true
+                            destination:
+                              destClient:
+                                clientName: '{clientName}'
+                                commCellName: '{CSName}'
+                              inPlace: false
+                              isLegalHold: false
+                            fileOption:
+                              sourceItem:
+                                - /50121224-4c9e-3227-a161-2117e50972e8
+                            restoreACLsType: 3
+                            virtualServerRstOption:
+                              diskLevelVMRestoreOption:
+                                advancedRestoreOptions:
+                                  - Datastore: LOCAL
+                                    disks:
+                                      - Datastore: LOCAL
+                                        name: scsi0-0-diskname.vmdk
+                                      - Datastore: LOCAL
+                                        name: scsi0-1-diskname_1.vmdk
+                                    esxHost: '{esxHost}'
+                                    guid: 50121224-4c9e-3227-a161-2117e50972e8
+                                    name: vmname
+                                    newName: newvmname
+                                    resourcePoolPath: /
+                                esxServerName: ''
+                                passUnconditionalOverride: true
+                                powerOnVmAfterRestore: true
+                              isDiskBrowse: true
+                              userPassword:
+                                userName: root
+                              viewType: 0
+                            volumeRstOption:
+                              volumeLeveRestore: false
+                              volumeLevelRestoreType: 1
+                        subTask:
+                          operationType: 1001
+                          subTaskName: ''
+                          subTaskType: 3
+                    task:
+                      initiatedFrom: 2
+                      policyType: 0
+                      taskFlags:
+                        disabled: false
+                      taskType: 1
+              Ms SQL Restore - Out of place Restore on different SQL instance:
+                value:
+                  taskInfo:
+                    associations:
+                      - clientName: '{{clientName}}'
+                        instanceName: mcnroe/sql2012
+                        appName: sql server
+                    task:
+                      taskType: 1
+                      initiatedFrom: 1
+                    subTasks:
+                      - subTask:
+                          subTaskType: 3
+                          operationType: 1001
+                        options:
+                          restoreOptions:
+                            sqlServerRstOption:
+                              sqlRecoverType: STATE_RECOVER
+                              dropConnectionsToDatabase: false
+                              overWrite: true
+                              sqlRestoreType: DATABASE_RESTORE
+                              database:
+                                - tlsnhg1
+                              restoreSource:
+                                - tlsnhg1
+                              device:
+                                - '|tlsnhg1|#12!tlsnhg1|#12!tlsnhg1|#12!E:/ContentStore/SQLAutoCS-NF/Automation/Log Files/54164-tlsnhg\tlsnhg1|#12!C:/Program Files/Microsoft SQL Server/MSSQL11.SQL2012/MSSQL/DATA\tlsnhg1.mdf'', ''|tlsnhg1|#12!tlsnhg1|#12!tlsnhg1_log|#12!E:/ContentStore/SQLAutoCS-NF/Automation/Log Files/54164-tlsnhg\tlsnhg1_log|#12!C:/Program Files/Microsoft SQL Server/MSSQL11.SQL2012/MSSQL/DATA\tlsnhg1_log.ldf'', ''|tlsnhg1|#12!tlsnhg1|#12!tlsnhg111|#12!E:/ContentStore/SQLAutoCS-NF/Automation/Log Files/54164-tlsnhg\tlsnhg111|#12!C:/Program Files/Microsoft SQL Server/MSSQL11.SQL2012/MSSQL/DATA/1tlsnhg11.ndf'', ''|tlsnhg1|#12!tlsnhg1|#12!tlsnhg112|#12!E:/ContentStore/SQLAutoCS-NF/Automation/Log Files/54164-tlsnhg\tlsnhg112|#12!C:/Program Files/Microsoft SQL Server/MSSQL11.SQL2012/MSSQL/DATA/1tlsnhg12.ndf'', ''|tlsnhg1|#12!tlsnhg1|#12!tlsnhg113|#12!E:/ContentStore/SQLAutoCS-NF/Automation/Log Files/54164-tlsnhg\tlsnhg113|#12!C:/Program Files/Microsoft SQL Server/MSSQL11.SQL2012/MSSQL/DATA/1tlsnhg13.ndf'', ''|tlsnhg1|#12!tlsnhg1|#12!tlsnhg121|#12!E:/ContentStore/SQLAutoCS-NF/Automation/Log Files/54164-tlsnhg\tlsnhg121|#12!C:/Program Files/Microsoft SQL Server/MSSQL11.SQL2012/MSSQL/DATA/1tlsnhg21.ndf'', ''|tlsnhg1|#12!tlsnhg1|#12!tlsnhg122|#12!E:/ContentStore/SQLAutoCS-NF/Automation/Log Files/54164-tlsnhg\tlsnhg122|#12!C:/Program Files/Microsoft SQL Server/MSSQL11.SQL2012/MSSQL/DATA/1tlsnhg22.ndf'', ''|tlsnhg1|#12!tlsnhg1|#12!tlsnhg123|#12!E:/ContentStore/SQLAutoCS-NF/Automation/Log Files/54164-tlsnhg\tlsnhg123|#12!C:/Program Files/Microsoft SQL Server/MSSQL11.SQL2012/MSSQL/DATA/1tlsnhg23.ndf'', ''|tlsnhg1|#12!tlsnhg1|#12!tlsnhg131|#12!E:/ContentStore/SQLAutoCS-NF/Automation/Log Files/54164-tlsnhg\tlsnhg131|#12!C:/Program Files/Microsoft SQL Server/MSSQL11.SQL2012/MSSQL/DATA/1tlsnhg31.ndf'', ''|tlsnhg1|#12!tlsnhg1|#12!tlsnhg132|#12!E:/ContentStore/SQLAutoCS-NF/Automation/Log Files/54164-tlsnhg\tlsnhg132|#12!C:/Program Files/Microsoft SQL Server/MSSQL11.SQL2012/MSSQL/DATA/1tlsnhg32.ndf'', ''|tlsnhg1|#12!tlsnhg1|#12!tlsnhg133|#12!E:/ContentStore/SQLAutoCS-NF/Automation/Log Files/54164-tlsnhg\tlsnhg133|#12!C:/Program Files/Microsoft SQL Server/MSSQL11.SQL2012/MSSQL/DATA/1tlsnhg33.ndf'
+                            browseOption:
+                              timeRange:
+                                toTimeValue: '2019/07/15 13:52:58'
+                            commonOptions: {}
+                            destination:
+                              destinationInstance:
+                                clientId: 7
+                                instanceName: mcnroe/sql2012
+                                instanceId: 7
+                              destClient:
+                                clientId: 7
+              Create Task (Restore) - FS Out of place Restore:
+                value:
+                  processinginstructioninfo: {}
+                  taskInfo:
+                    associations:
+                      - clientName: yashgdprnextgen
+                        subclientName: TapiSubclient
+                        backupsetName: defaultBackupSet
+                        instanceName: DefaultInstanceName
+                        appName: File System
+                    task:
+                      taskType: 1
+                      initiatedFrom: 2
+                      policyType: 0
+                      taskFlags:
+                        disabled: false
+                    subTasks:
+                      - subTaskOperation: 1
+                        subTask:
+                          subTaskType: 3
+                          operationType: 1001
+                        options:
+                          adminOpts:
+                            contentIndexingOption:
+                              subClientBasedAnalytics: false
+                          restoreOptions:
+                            restoreACLsType: 2
+                            impersonation:
+                              useImpersonation: false
+                              user:
+                                userName: ''
+                            virtualServerRstOption:
+                              isBlockLevelReplication: false
+                              isDiskBrowse: false
+                              viewType: 0
+                            volumeRstOption:
+                              volumeLeveRestore: false
+                            sharePointDocRstOption:
+                              isOnPremiseMigration: false
+                            browseOption:
+                              listMedia: false
+                              useExactIndex: false
+                              noImage: false
+                              commCellId: 2
+                              mediaOption:
+                                useISCSIMount: false
+                                mediaAgent: {}
+                                library: {}
+                                copyPrecedence:
+                                  copyPrecedenceApplicable: false
+                                drivePool: {}
+                              backupset:
+                                clientName: yashgdprnextgen
+                                backupsetName: defaultBackupSet
+                              timeZone:
+                                TimeZoneName: '(UTC-05:00) Eastern Time (US & Canada)'
+                              timeRange: {}
+                            commonOptions:
+                              systemStateBackup: false
+                              recreateMountPoints: true
+                              clusterDBBackedup: false
+                              isFromBrowseBackup: true
+                              powerRestore: false
+                              restoreToDisk: false
+                              offlineMiningRestore: false
+                              restoreToExchange: false
+                              preserveLevel: 1
+                              restoreOnlyStubExists: false
+                              stripLevelType: 0
+                              stripLevel: 2
+                              overwriteFiles: true
+                              copyToObjectStore: false
+                              onePassRestore: false
+                              doNotOverwriteFileOnDisk: false
+                              unconditionalOverwrite: false
+                              syncRestore: false
+                              clusterDbBackupType: 2
+                              detectRegularExpression: true
+                              wildCard: false
+                            destination:
+                              isLegalHold: false
+                              restoreOnlyIfTargetExists: false
+                              noOfStreams: 10
+                              inPlace: false
+                              destClient:
+                                clientName: dm2perf4
+                              destinationInstance:
+                                clientName: dm2perf4
+                                instanceName: DefaultInstanceName
+                                appName: File System
+                              destPath:
+                                - 'c:\temp\Restore'
+                            fileOption:
+                              sourceItem:
+                                - '/C:/XML\testdata\TestData\TestData/'
+                              browseFilters:
+                                - <?xml version='1.0' encoding='UTF-8'?><databrowse_Query type="0" queryId="0"><dataParam><sortParam ascending="1"><sortBy val="38" /><sortBy val="0" /></sortParam><paging firstNode="0" pageSize="10000" skipNode="0" /></dataParam></databrowse_Query>
+                            distributedAppsRestoreOptions:
+                              distributedRestore: false
+                              isMultiNodeRestore: false
+                              clientType: 0
+                              backupConfiguration: {}
+                            qrOption:
+                              destAppTypeId: 33
+                            sharePointRstOption:
+                              is90OrUpgradedClient: false
+                          commonOpts:
+                            notifyUserOnJobCompletion: false
+              Sybase Restore:
+                value:
+                  taskInfo:
+                    task:
+                      taskType: IMMEDIATE
+                      initiatedFrom: ''
+                    associations:
+                      - timeZone:
+                          flags: {}
+                          entityInfo: {}
+                        applicationId: 5
+                        clientName: arcent3
+                        displayName: arcent3
+                        flags: {}
+                        backupsetId: 337
+                        instanceId: 311
+                        clientId: 290
+                        subtask:
+                          flags: {}
+                          entityInfo: {}
+                        entityInfo: {}
+                        backupsetName: defaultDummyBackupSet
+                        instanceName: ARCENT3
+                        _type_: INSTANCE_ENTITY
+                        client:
+                          flags: {}
+                          entityInfo: {}
+                        owner:
+                          flags: {}
+                          entityInfo: {}
+                        appName: Sybase
+                    subTasks:
+                      - subTask:
+                          subTaskType: RESTORE
+                          operationType: RESTORE
+                        options:
+                          restoreOptions:
+                            browseOption:
+                              commCellId: 2
+                              backupset:
+                                backupsetId: 337
+                                clientId: 290
+                              timeRange:
+                                toTime: 1620820682
+                            destination:
+                              destClient:
+                                clientId: 256
+                                clientName: arrh8
+                                displayName: arrh8
+                              destinationInstance:
+                                instanceId: 272
+                                instanceName: ARRH8
+                                applicationId: 5
+                                clientId: 256
+                                clientName: arrh8
+                            sybaseRstOption:
+                              sybaseRecoverType: STATE_RECOVER
+                              pointofTime: true
+                              fromTime:
+                                time: 0
+                                timeValue: ''
+                              refTime:
+                                time: 1620820682
+                              destinationServer:
+                                id: 311
+                                name: ARCENT3
+                              pointInTime:
+                                time: 1620820682
+                              instanceRestore: true
+                              sybaseDatabase:
+                                - databaseId:
+                                    id: 2
+                                    name: tempdb
+                                  creationTimeInt:
+                                    time: 1620820679
+                                  associatedSubClientId: 761
+                                  devices:
+                                    - '761:2:74:master:master:/opt/sap/data/master.dat:54525952:tempdb'
+                                    - '761:2:75:tempdbdev:tempdbdev:/opt/sap/data/tempdbdev.dat:104857600:tempdb'
+                                  databaseChain:
+                                    - '761:2:tempdb:77'
+                                  databaseChainType: "77\tFULL\t1620820679"
+                                  devicesValue:
+                                    - "2\t74\tmaster\tmaster\t/opt/sap/data/master.dat\t54525952\t"
+                                    - "2\t75\ttempdbdev\ttempdbdev\t/opt/sap/data/tempdbdev.dat\t104857600\t"
+                                  systemDataBase: true
+                                - databaseId:
+                                    id: 31514
+                                    name: sybsystemprocs
+                                  creationTimeInt:
+                                    time: 1620820677
+                                  associatedSubClientId: 761
+                                  devices:
+                                    - '761:31514:73:sysprocsdev:sysprocsdev:/opt/sap/data/sysprocs.dat:205520896:sybsystemprocs'
+                                  databaseChain:
+                                    - '761:31514:sybsystemprocs:76'
+                                  databaseChainType: "76\tFULL\t1620820677"
+                                  devicesValue:
+                                    - "31514\t73\tsysprocsdev\tsysprocsdev\t/opt/sap/data/sysprocs.dat\t205520896\t"
+                                  systemDataBase: true
+                                - databaseId:
+                                    id: 31513
+                                    name: sybsystemdb
+                                  creationTimeInt:
+                                    time: 1620820675
+                                  associatedSubClientId: 761
+                                  devices:
+                                    - '761:31513:71:master:master:/opt/sap/data/master.dat:54525952:sybsystemdb'
+                                    - '761:31513:72:systemdbdev:systemdbdev:/opt/sap/data/sybsysdb.dat:6291456:sybsystemdb'
+                                  databaseChain:
+                                    - '761:31513:sybsystemdb:75'
+                                  databaseChainType: "75\tFULL\t1620820675"
+                                  devicesValue:
+                                    - "31513\t71\tmaster\tmaster\t/opt/sap/data/master.dat\t54525952\t"
+                                    - "31513\t72\tsystemdbdev\tsystemdbdev\t/opt/sap/data/sybsysdb.dat\t6291456\t"
+                                  systemDataBase: true
+                                - databaseId:
+                                    id: 3
+                                    name: model
+                                  creationTimeInt:
+                                    time: 1620820674
+                                  associatedSubClientId: 761
+                                  devices:
+                                    - '761:3:70:master:master:/opt/sap/data/master.dat:54525952:model'
+                                  databaseChain:
+                                    - '761:3:model:74'
+                                  databaseChainType: "74\tFULL\t1620820674"
+                                  devicesValue:
+                                    - "3\t70\tmaster\tmaster\t/opt/sap/data/master.dat\t54525952\t"
+                                  systemDataBase: true
+                                - databaseId:
+                                    id: 1
+                                    name: master
+                                  creationTimeInt:
+                                    time: 1620820672
+                                  associatedSubClientId: 761
+                                  devices:
+                                    - '761:1:69:master:master:/opt/sap/data/master.dat:54525952:master'
+                                  databaseChain:
+                                    - '761:1:master:73'
+                                  databaseChainType: "73\tFULL\t1620820672"
+                                  devicesValue:
+                                    - "1\t69\tmaster\tmaster\t/opt/sap/data/master.dat\t54525952\t"
+                                  systemDataBase: true
+                                - databaseId:
+                                    id: 4
+                                    name: CV
+                                  creationTimeInt:
+                                    time: 1620820669
+                                  associatedSubClientId: 761
+                                  devices:
+                                    - '761:4:67:data_CV:data_CV:/opt/sap/data/data_CV.dat:20971520:CV'
+                                    - '761:4:68:log_CV:log_CV:/opt/sap/data/log_CV.dat:20971520:CV'
+                                  databaseChain:
+                                    - '761:4:CV:72'
+                                  databaseChainType: "72\tFULL\t1620820669"
+                                  devicesValue:
+                                    - "4\t67\tdata_CV\tdata_CV\t/opt/sap/data/data_CV.dat\t20971520\t"
+                                    - "4\t68\tlog_CV\tlog_CV\t/opt/sap/data/log_CV.dat\t20971520\t"
+                                  systemDataBase: false
+                              renameDatabases: false
+                              restoreOptions: false
+                              restoreType: POINT_IN_TIME
+                              isTableLevel: false
+                            fileOption:
+                              sourceItem:
+                                - /tempdb
+                                - /sybsystemprocs
+                                - /sybsystemdb
+                                - /model
+                                - /master
+                                - /CV
+                            impersonation: {}
+                            commonOptions:
+                              sybaseCreateDevices: true
+                              restoreToDisk: false
+                          commonOpts:
+                            subscriptionInfo: <Api_Subscription subscriptionId ="1264"/>
+                            notifyUserOnJobCompletion: false
+              Oracle Restore:
+                value:
+                  taskInfo:
+                    task:
+                      taskType: IMMEDIATE
+                      initiatedFrom: ''
+                    associations:
+                      - timeZone:
+                          flags: {}
+                          entityInfo: {}
+                        applicationId: 22
+                        clientName: orcbdc
+                        displayName: orcbdc
+                        flags: {}
+                        instanceId: 1876
+                        clientId: 601
+                        subtask:
+                          flags: {}
+                          entityInfo: {}
+                        entityInfo: {}
+                        instanceName: ORC
+                        client:
+                          flags: {}
+                          entityInfo: {}
+                        owner:
+                          flags: {}
+                          entityInfo: {}
+                        appName: Oracle
+                    subTasks:
+                      - subTask:
+                          subTaskType: RESTORE
+                          operationType: RESTORE
+                        options:
+                          restoreOptions:
+                            browseOption:
+                              commCellId: 2
+                              timeRange:
+                                toTime: 1583497466
+                            destination:
+                              destClient:
+                                clientId: 601
+                                clientName: orcbdc
+                                displayName: orcbdc
+                                flags: {}
+                                entityInfo: {}
+                              destinationInstance:
+                                instanceId: 832
+                                instanceName: orcgg2
+                                instanceGUID: BB55BE7B-07F5-4D4A-B897-BF76E0E12D28
+                                applicationId: 22
+                                appName: Oracle
+                                clientId: 240
+                                clientName: testadmin-node
+                                displayName: DN_admin-node_DN
+                                entityInfo:
+                                  companyId: 0
+                                  companyName: ''
+                                  multiCommcellId: 0
+                            oracleOpt:
+                              catalogConnect2:
+                                password: []
+                              restoreControlFile: true
+                              specifyControlFileTime: true
+                              controlFileTime:
+                                time: 1583497466
+                              restoreSPFile: false
+                              restoreData: true
+                              restoreFrom: 1
+                              restoreTime:
+                                time: 1583497466
+                              recover: true
+                              recoverFrom: 1
+                              recoverTime:
+                                time: 1583497466
+                              recoverSCN: '435243'
+                              noCatalog: true
+                              restoreStream: 2
+                              resetLogs: 1
+                              duplicate: false
+                              duplicateStandby: false
+                              duplicateStandbySID: dup
+                              duplicateStandbyDoRecover: false
+                              duplicateToName: orcgg2
+                              redirectItemsPresent: true
+                              redirectItems:
+                                - 'HRTBL\E:\ORC-FEB-27\DATA_D-ORCWIN_TS-HRTBL_FNO-11/x15E:\ORC-FEB-27\DATA_D-ORCWIN_TS-HRTBL_FNO-11FDF'
+                                - 'REC_CATALOG\E:\ORC-FEB-27\DATA_D-ORCWIN_TS-REC_CATALOG_FNO-8/x15E:\ORC-FEB-27\DATA_D-ORCWIN_TS-REC_CATALOG_FNO-8FDFDF'
+                              redirectItemsValue:
+                                - "HRTBL\tE:\\ORC-FEB-27\\DATA_D-ORCWIN_TS-HRTBL_FNO-11\tE:\\ORC-FEB-27\\DATA_D-ORCWIN_TS-HRTBL_FNO-11FDF"
+                                - "REC_CATALOG\tE:\\ORC-FEB-27\\DATA_D-ORCWIN_TS-REC_CATALOG_FNO-8\tE:\\ORC-FEB-27\\DATA_D-ORCWIN_TS-REC_CATALOG_FNO-8FDFDF"
+                              renamePathForAllTablespaces: 'C:/'
+                              redirectAllItemsSelected: false
+                              stagingPath: 'C:/'
+                              setDBId: true
+                              switchDatabaseMode: true
+                              cleanupAuxiliary: true
+                              crossmachineRestoreOptions:
+                                onlineLogDest: 'C:/'
+                                doNidForCrossMachineRestore: true
+                            fileOption:
+                              sourceItem:
+                                - 'SID: ORC'
+                            commonOptions: {}
+                            dbDataMaskingOptions: {}
+                          commonOpts:
+                            subscriptionInfo: <Api_Subscription subscriptionId ="404"/>
+                            notifyUserOnJobCompletion: false
+              SAP Hana Restore:
+                value:
+                  taskInfo:
+                    task:
+                      taskType: IMMEDIATE
+                      initiatedFrom: ''
+                    associations:
+                      - applicationId: 135
+                        clientName: sde-hana5_MUL
+                        displayName: sde-hana5_MUL
+                        backupsetId: 2749
+                        instanceId: 2073
+                        clientId: 675
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        backupsetName: SYSTEMDB
+                        instanceName: MUL
+                        appName: SAP HANA
+                    subTasks:
+                      - subTask:
+                          subTaskType: RESTORE
+                          operationType: RESTORE
+                        options:
+                          restoreOptions:
+                            browseOption:
+                              commCellId: 2
+                              timeRange:
+                                fromTime: 0
+                                toTime: 1621867315
+                              mediaOption:
+                                copyPrecedence:
+                                  copyPrecedenceApplicable: true
+                                  copyPrecedence: 0
+                            destination:
+                              destClient:
+                                clientId: 672
+                                clientName: sde-hana5
+                              destinationInstance:
+                                instanceId: 2073
+                                instanceName: MUL
+                                instanceGUID: 52F172C9-4E5A-45F4-B7A5-2AAFD2F80A8A
+                                applicationId: 135
+                                appName: SAP HANA
+                                clientId: 675
+                                clientName: sde-hana5_MUL
+                                displayName: sde-hana5_MUL
+                                flags: {}
+                                entityInfo:
+                                  companyId: 0
+                                  companyName: ''
+                                  multiCommcellId: 0
+                              destinationBackupset:
+                                backupsetId: 2749
+                                backupsetName: SYSTEMDB
+                                backupsetGUID: 8949A3D2-E63F-4AB6-97BE-FB846DA3B7A7
+                                instanceId: 2073
+                                instanceName: MUL
+                                applicationId: 135
+                                appName: SAP HANA
+                                clientId: 675
+                                clientName: sde-hana5_MUL
+                                displayName: sde-hana5_MUL
+                                entityInfo:
+                                  companyId: 0
+                                  companyName: ''
+                                  multiCommcellId: 0
+                            commonOptions:
+                              unconditionalOverwrite: true
+                            hanaOpt:
+                              destDbName: MUL
+                              destPseudoClientName: sde-hana5_MUL
+                              destClientName: sde-hana5
+                              pointInTime:
+                                time: 1621867315
+                              useHardwareRevert: false
+                              checkAccess: true
+                              initializeLogArea: false
+                              destinationInstanceDir: /hana/data/
+                              ignoreDeltaBackups: false
+                              databases:
+                                - SYSTEMDB
+                              recoverTime: POINT_IN_TIME
+                          commonOpts:
+                            subscriptionInfo: <Api_Subscription subscriptionId ="422"/>
+                            notifyUserOnJobCompletion: false
+              SAP for Oracle Restore:
+                value:
+                  taskInfo:
+                    task:
+                      taskType: IMMEDIATE
+                      initiatedFrom: ''
+                    associations:
+                      - subclientId: 32486
+                        timeZone:
+                          flags: {}
+                          entityInfo: {}
+                        applicationId: 61
+                        clientName: sapprm1
+                        displayName: sapprm1
+                        flags: {}
+                        backupsetId: 11462
+                        instanceId: 5550
+                        clientId: 810
+                        subtask:
+                          flags: {}
+                          entityInfo: {}
+                        subclientName: default
+                        entityInfo: {}
+                        backupsetName: default
+                        instanceName: CER1
+                        _type_: SUBCLIENT_ENTITY
+                        client:
+                          flags: {}
+                          entityInfo: {}
+                        owner:
+                          flags: {}
+                          entityInfo: {}
+                        appName: SAP for Oracle
+                    subTasks:
+                      - subTask:
+                          subTaskType: RESTORE
+                          operationType: RESTORE
+                        options:
+                          restoreOptions:
+                            browseOption:
+                              commCellId: 2
+                              timeRange:
+                                fromTime: 0
+                                toTime: 1621583338
+                            destination:
+                              destClient:
+                                clientId: 811
+                                clientName: sapsby1
+                                displayName: sapsby1
+                              destinationInstance:
+                                instanceId: 4765
+                                instanceName: CER1
+                                instanceGUID: 939638D3-2C5A-41B7-8D2D-672CA3DE96C8
+                                applicationId: 61
+                                appName: SAP for Oracle
+                                clientId: 811
+                                clientName: sapsby1
+                                displayName: sapsby1
+                                entityInfo:
+                                  companyId: 0
+                                  companyName: ''
+                                  multiCommcellId: 0
+                            oracleOpt:
+                              restoreControlFile: true
+                              archiveLog: true
+                              archiveLogBy: DEFAULT
+                              restoreData: true
+                              restoreFrom: 1
+                              restoreTime:
+                                time: 1621583338
+                              recover: true
+                              recoverFrom: 1
+                              recoverTime:
+                                time: 1621583338
+                              noCatalog: true
+                              restoreStream: 2
+                              databaseCopy: true
+                              switchDatabaseMode: true
+                            fileOption:
+                              sourceItem:
+                                - /+BROWSE+
+                            commonOptions:
+                              revert: false
+                          commonOpts:
+                            subscriptionInfo: <Api_Subscription subscriptionId ="973"/>
+                            notifyUserOnJobCompletion: false
+              MySQL Restore:
+                value:
+                  taskInfo:
+                    associations:
+                      - appName: Virtual Server
+                        backupsetName: '{BackupSetName}'
+                        clientName: '{VirtualizationclientName}'
+                        clientSidePackage: true
+                        consumeLicense: true
+                        instanceName: VMware
+                        subclientName: ''
+                        type: 0
+                    subTasks:
+                      - options:
+                          adminOpts:
+                            updateOption:
+                              invokeLevel: 0
+                          restoreOptions:
+                            browseOption:
+                              backupset:
+                                appName: Virtual Server
+                                backupsetName: '{BackupSetName}'
+                                clientName: '{VirtualizationclientName}'
+                                instanceName: VMware
+                              commCellId: 2
+                              fromTime: 0
+                              listMedia: false
+                              mediaOption:
+                                copyPrecedence:
+                                  copyPrecedence: 0
+                              noImage: true
+                              toTime: 0
+                              useExactIndex: false
+                            commonOptions:
+                              clusterDBBackedup: false
+                              detectRegularExpression: true
+                              isFromBrowseBackup: true
+                              overwriteFiles: true
+                              preserveLevel: 1
+                              restoreACLs: true
+                              stripLevel: 0
+                              stripLevelType: 0
+                              unconditionalOverwrite: true
+                            destination:
+                              destClient:
+                                clientName: '{clientName}'
+                                commCellName: '{CSName}'
+                              inPlace: false
+                              isLegalHold: false
+                            fileOption:
+                              sourceItem:
+                                - /50121224-4c9e-3227-a161-2117e50972e8
+                            restoreACLsType: 3
+                            virtualServerRstOption:
+                              diskLevelVMRestoreOption:
+                                advancedRestoreOptions:
+                                  - Datastore: LOCAL
+                                    disks:
+                                      - Datastore: LOCAL
+                                        name: scsi0-0-diskname.vmdk
+                                      - Datastore: LOCAL
+                                        name: scsi0-1-diskname_1.vmdk
+                                    esxHost: '{esxHost}'
+                                    guid: 50121224-4c9e-3227-a161-2117e50972e8
+                                    name: vmname
+                                    newName: newvmname
+                                    resourcePoolPath: /
+                                esxServerName: ''
+                                passUnconditionalOverride: true
+                                powerOnVmAfterRestore: true
+                              isDiskBrowse: true
+                              userPassword:
+                                userName: root
+                              viewType: 0
+                            volumeRstOption:
+                              volumeLeveRestore: false
+                              volumeLevelRestoreType: 1
+                        subTask:
+                          operationType: 1001
+                          subTaskName: ''
+                          subTaskType: 3
+                    task:
+                      initiatedFrom: 2
+                      policyType: 0
+                      taskFlags:
+                        disabled: false
+                      taskType: 1
+              Deploy a VMware Access Node for Linux:
+                value:
+                  taskInfo:
+                    task:
+                      taskType: 1
+                    subTasks:
+                      - subTask:
+                          operationType: 4038
+                          subTaskType: 1
+                        options:
+                          adminOpts:
+                            vmProvisioningOption:
+                              virtualMachineOption:
+                                - vmEntity:
+                                    vmName: Linux-Access-Node
+                                  accessNodeDeploymentType: 0
+                                  password:
+                                    userName: root
+                                    password: '##base64 encoded password ##'
+                                  vmInfo:
+                                    vmLocation:
+                                      inventoryPath: ''
+                                      dataCenterName: _DS_Name
+                                      hostName: _ESX_
+                                      vCenter: _vcenter_name
+                                      datastore:
+                                        name: _data_Strore_name
+                                    advancedProperties:
+                                      networkCards:
+                                        - networkName: VM Network
+                                    hardDisks:
+                                      hardDisk:
+                                        - diskType: 1
+                                    vm:
+                                      vmName: Linux-Access-Node
+                                  configValues:
+                                    - key: beAutomaticOSUpdates
+                                      value: 'False'
+                                    - key: aaUseDHCP
+                                      value: 'False'
+                                    - key: abIP
+                                      value: '*.*.*.*'
+                                    - key: acNetmask
+                                      value: '*.*.*.*'
+                                    - key: adGateway
+                                      value: '*.*.*.*'
+                                    - key: aeDNSSearch
+                                      value: _dns_server
+                                    - key: afdns1
+                                      value: '*.*.*.*'
+                                    - key: agdns2
+                                      value: '*.*.*.*'
+                                    - key: baClientName
+                                      value: Linux-Access-Node
+                                    - key: bbClientHostname
+                                      value: Linux-Access-Node
+                                    - key: cbCSHostname
+                                      value: _cs_hostname
+                                    - key: caCSName
+                                      value: _cs_name
+                                    - key: bdClientGroup
+                                      value: ''
+                              operationType: 59
+              Create Task (Backup):
+                value:
+                  taskInfo:
+                    associations:
+                      - applicationId: 33
+                        clientName: '{{clientName}}'
+                        commCellId: 0
+                        backupsetName: '{{backupsetName}}'
+                        _type_: 7
+                        appName: File System
+                    task:
+                      sequenceNumber: 10
+                      initiatedFrom: 2
+                      taskType: 1
+                      policyType: 0
+                      taskId: 0
+                      taskFlags:
+                        disabled: false
+                    subTasks:
+                      - subTask:
+                          subTaskType: 2
+                          operationType: 2
+                        options:
+                          backupOpts:
+                            truncateLogsOnSource: false
+                            sybaseSkipFullafterLogBkp: false
+                            backupLevel: 1
+                            runIncrementalBackup: true
+                            isSpHasInLineCopy: false
+                            runSILOBackup: false
+                            doNotTruncateLog: false
+                            dataOpt:
+                              skipCatalogPhaseForSnapBackup: false
+                              followMountPoints: true
+                              enableIndexCheckPointing: false
+                              enforceTransactionLogUsage: false
+                              spaceReclamation: false
+                              skipConsistencyCheck: false
+                              createNewIndex: false
+                              verifySynthFull: false
+                            dataPathOpt:
+                              mediaAgent:
+                                mediaAgentId: 0
+                              library:
+                                libraryId: 0
+                              drivePool:
+                                drivePoolId: 0
+                              spareGroup:
+                                spareMediaGroupId: 0
+                              drive:
+                                driveId: 0
+                            mediaOpt:
+                              markMediaFullOnSuccess: false
+                              numberofDays: 30
+                              startNewMedia: true
+                              retentionJobType: 2
+                              allowOtherSchedulesToUseMediaSet: true
+                              reserveResourcesBeforeScan: false
+                          commonOpts:
+                            jobDescription: ''
+                            jobRetryOpts:
+                              killRunningJobWhenTotalRunningTimeExpires: false
+                              numberOfRetries: 0
+                              enableNumberOfRetries: false
+                              runningTime:
+                                enableTotalRunningTime: false
+                                totalRunningTime: 3600
+                            startUpOpts:
+                              startInSuspendedState: false
+                              useDefaultPriority: true
+                              priority: 166
+        description: ''
+        required: true
+      summary: Create Task (Restore)
+      tags:
+        - Restore Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskId:
+                    type: integer
+                  jobIds:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    taskId: 124
+                    jobIds:
+                      - '301'
+  /SQL/RestoreOptions:
+    post:
+      summary: SQL RestoreOptions
+      tags:
+        - Restore Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  sqlDbdeviceItem:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fileName:
+                          type: string
+                        logicalFileName:
+                          type: string
+                        fileMaxSize:
+                          type: integer
+                        id:
+                          type: integer
+                        sqlDBInfo:
+                          type: object
+                          properties:
+                            databaseName:
+                              type: string
+                            databaseId:
+                              type: integer
+                  sqlDestinationInstances:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        serverType:
+                          type: string
+                        genericEntity:
+                          type: object
+                          properties:
+                            clientName:
+                              type: string
+                            instanceId:
+                              type: integer
+                            clientId:
+                              type: integer
+                            instanceName:
+                              type: string
+                            _type_:
+                              type: integer
+                            osType:
+                              type: string
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    sqlDbdeviceItem:
+                      - fileName: 'C:\\Program Files\\Microsoft SQL Server\\MSSQL11.SQL2012\\MSSQL\\DATA\\1yqpwdh11.ndf'
+                        logicalFileName: yqpwdh111
+                        fileMaxSize: 10485760
+                        id: 0
+                        sqlDBInfo:
+                          databaseName: yqpwdh1
+                          databaseId: 35
+                      - fileName: 'C:\\Program Files\\Microsoft SQL Server\\MSSQL11.SQL2012\\MSSQL\\DATA\\1yqpwdh12.ndf'
+                        logicalFileName: yqpwdh112
+                        fileMaxSize: 10485760
+                        id: 0
+                        sqlDBInfo:
+                          databaseName: yqpwdh1
+                          databaseId: 35
+                      - fileName: 'C:\\Program Files\\Microsoft SQL Server\\MSSQL11.SQL2012\\MSSQL\\DATA\\1yqpwdh13.ndf'
+                        logicalFileName: yqpwdh113
+                        fileMaxSize: 10485760
+                        id: 0
+                        sqlDBInfo:
+                          databaseName: yqpwdh1
+                          databaseId: 35
+                      - fileName: 'C:\\Program Files\\Microsoft SQL Server\\MSSQL11.SQL2012\\MSSQL\\DATA\\1yqpwdh21.ndf'
+                        logicalFileName: yqpwdh121
+                        fileMaxSize: 10485760
+                        id: 0
+                        sqlDBInfo:
+                          databaseName: yqpwdh1
+                          databaseId: 35
+                      - fileName: 'C:\\Program Files\\Microsoft SQL Server\\MSSQL11.SQL2012\\MSSQL\\DATA\\1yqpwdh22.ndf'
+                        logicalFileName: yqpwdh122
+                        fileMaxSize: 10485760
+                        id: 0
+                        sqlDBInfo:
+                          databaseName: yqpwdh1
+                          databaseId: 35
+                      - fileName: 'C:\\Program Files\\Microsoft SQL Server\\MSSQL11.SQL2012\\MSSQL\\DATA\\1yqpwdh23.ndf'
+                        logicalFileName: yqpwdh123
+                        fileMaxSize: 10485760
+                        id: 0
+                        sqlDBInfo:
+                          databaseName: yqpwdh1
+                          databaseId: 35
+                      - fileName: 'C:\\Program Files\\Microsoft SQL Server\\MSSQL11.SQL2012\\MSSQL\\DATA\\1yqpwdh31.ndf'
+                        logicalFileName: yqpwdh131
+                        fileMaxSize: 10485760
+                        id: 0
+                        sqlDBInfo:
+                          databaseName: yqpwdh1
+                          databaseId: 35
+                      - fileName: 'C:\\Program Files\\Microsoft SQL Server\\MSSQL11.SQL2012\\MSSQL\\DATA\\1yqpwdh32.ndf'
+                        logicalFileName: yqpwdh132
+                        fileMaxSize: 10485760
+                        id: 0
+                        sqlDBInfo:
+                          databaseName: yqpwdh1
+                          databaseId: 35
+                      - fileName: 'C:\\Program Files\\Microsoft SQL Server\\MSSQL11.SQL2012\\MSSQL\\DATA\\1yqpwdh33.ndf'
+                        logicalFileName: yqpwdh133
+                        fileMaxSize: 10485760
+                        id: 0
+                        sqlDBInfo:
+                          databaseName: yqpwdh1
+                          databaseId: 35
+                      - fileName: 'C:\\Program Files\\Microsoft SQL Server\\MSSQL11.SQL2012\\MSSQL\\DATA\\yqpwdh1.mdf'
+                        logicalFileName: yqpwdh1
+                        fileMaxSize: 3211264
+                        id: 0
+                        sqlDBInfo:
+                          databaseName: yqpwdh1
+                          databaseId: 35
+                      - fileName: 'C:\\Program Files\\Microsoft SQL Server\\MSSQL11.SQL2012\\MSSQL\\DATA\\yqpwdh1_log.ldf'
+                        logicalFileName: yqpwdh1_log
+                        fileMaxSize: 802816
+                        id: 0
+                        sqlDBInfo:
+                          databaseName: yqpwdh1
+                          databaseId: 35
+                    sqlDestinationInstances:
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: sqlautocs-nf
+                          instanceId: 15
+                          clientId: 2
+                          instanceName: SQLAUTOCS-NF\\COMMVAULT
+                          _type_: 0
+                          osType: Windows
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: mcrae
+                          instanceId: 6
+                          clientId: 7
+                          instanceName: MCRAE\\MIXEDCASE
+                          _type_: 0
+                          osType: Windows
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: mcrae
+                          instanceId: 7
+                          clientId: 7
+                          instanceName: MCRAE\\SQL2012
+                          _type_: 0
+                          osType: Windows
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: sanchez64
+                          instanceId: 8
+                          clientId: 8
+                          instanceName: SANCHEZ64
+                          _type_: 0
+                          osType: Windows
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: sqlspanish
+                          instanceId: 17
+                          clientId: 13
+                          instanceName: SQLSPANISH
+                          _type_: 0
+                          osType: Windows
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: sqlspanish
+                          instanceId: 18
+                          clientId: 13
+                          instanceName: SQLSPANISH\\SQL2012
+                          _type_: 0
+                          osType: Windows
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: vosql2
+                          instanceId: 33
+                          clientId: 16
+                          instanceName: VOSQL2
+                          _type_: 0
+                          osType: Windows
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: vosql2
+                          instanceId: 34
+                          clientId: 16
+                          instanceName: VOSQL2\\SQL2016
+                          _type_: 0
+                          osType: Windows
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: vosql2
+                          instanceId: 35
+                          clientId: 16
+                          instanceName: VOSQL2\\VEERA
+                          _type_: 0
+                          osType: Windows
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: vosql2
+                          instanceId: 36
+                          clientId: 16
+                          instanceName: VOSQL2\\SQL2012
+                          _type_: 0
+                          osType: Windows
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: vosql2
+                          instanceId: 37
+                          clientId: 16
+                          instanceName: VOSQL2\\SQL2014
+                          _type_: 0
+                          osType: Windows
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: vosql2
+                          instanceId: 41
+                          clientId: 16
+                          instanceName: VOSQL2\\SQL2019
+                          _type_: 0
+                          osType: Windows
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: autosqlspx
+                          instanceId: 190
+                          clientId: 170
+                          instanceName: AUTOSQLSPX\\SQL2014
+                          _type_: 0
+                          osType: Windows
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: autosqlspx
+                          instanceId: 210
+                          clientId: 170
+                          instanceName: AUTOSQLSPX\\SQL2012DEST
+                          _type_: 0
+                          osType: Windows
+                      - serverType: DataBase Engine
+                        genericEntity:
+                          clientName: autosqlspx
+                          instanceId: 223
+                          clientId: 170
+                          instanceName: AUTOSQLSPX\\SQL2012
+                          _type_: 0
+                          osType: Windows
+                    error:
+                      errorMessage: success
+                      errorCode: 0
+      operationId: get-SQL-RestoreOptions
+      description: |-
+        This operation returns files for given database(s) and instance. It also returns a list of SQL instances application to be restored to.
+        <h2>Request Parameters</h2>
+        <table>
+          <tr>
+            <td>
+              <p>Name</p>
+            </td>
+            <td>
+              <p>Description</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>restoreDbType</p>
+            </td>
+            <td>
+              <p>This is to be left at zero. This will return list of SQL instances it can safely be restored to based on the user defined databases passed in list and instance version check (SQL restores can be to same instance version or higher).</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>sourceInstanceId</p>
+            </td>
+            <td>
+              <p>Id of source instance</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>selectedDatabases</p>
+            </td>
+            <td>
+              <p>List of databases to restore</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>pointInTime</p>
+            </td>
+            <td>
+              <p>The reference time for the restore.</p>
+              <p>Valid values are UNIX-style timestamps (seconds since January 1, 1970)</p>
+            </td>
+          </tr>
+        </table>[_More Details_](https://documentation.commvault.com/commvault/v11_sp20/article?p=130527.htm)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                restoreDbType:
+                  type: integer
+                sourceInstanceId:
+                  type: integer
+                selectedDatabases:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      databaseName:
+                        type: string
+                pointInTime:
+                  type: integer
+              x-examples:
+                Example 1:
+                  restoreDbType: 0
+                  sourceInstanceId: 7
+                  selectedDatabases:
+                    - databaseName: yqpwdh1
+                  pointInTime: 1597782602
+            examples:
+              SQL RestoreOptions:
+                value:
+                  restoreDbType: 0
+                  sourceInstanceId: 7
+                  selectedDatabases:
+                    - databaseName: yqpwdh1
+                  pointInTime: 1597782602

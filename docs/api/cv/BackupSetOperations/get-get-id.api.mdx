@@ -1,0 +1,86 @@
+---
+id: get-get-id
+title: "Get Backupset Id"
+description: "This operation returns Backupset Id"
+sidebar_label: "Get Backupset Id"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["Backup Set Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"applicationId":{"type":"integer"},"clientName":{"type":"string"},"clientId":{"type":"integer"},"_type_":{"type":"integer"},"appName":{"type":"string"}},"x-examples":{"Example 1":{"applicationId":33,"clientName":"dm2perf3","clientId":2,"_type_":4,"appName":"File System"}}},"examples":{"GetId - With Agent Name":{"value":{"applicationId":33,"clientName":"dm2perf3","clientId":2,"_type_":4,"appName":"File System"}},"GetId - With Backupset Name ":{"value":{"applicationId":33,"clientName":"dm2perf3","backupsetId":3,"instanceId":1,"clientId":2,"backupsetName":"defaultBackupSet","_type_":6,"appName":"File System"}}}}}}},"operationId":"get-GetId","description":"This operation returns Backupset Id\n\n<table>\n  <tr>\n    <td>\n      <p>Name</p>\n    </td>\n    <td>\n      <p>Description</p>\n    </td>\n  </tr>\n  <tr>\n    <td>\n      <p>clientName</p>\n    </td>\n    <td>\n      <p>Name of the client(URL Encoded)</p>\n    </td>\n  </tr>\n  <tr>\n    <td>\n      <p>agent</p>\n    </td>\n    <td>\n      <p>Name of the Agent(URL Encoded)</p>\n    </td>\n  </tr>\n  <tr>\n    <td>\n      <p>instanceName</p>\n    </td>\n    <td>\n      <p>Instance Name(URL Encoded)</p>\n    </td>\n  </tr>\n  <tr>\n    <td>\n      <p>backupset</p>\n    </td>\n    <td>\n      <p>Backupset Name(URL Encoded)</p>\n    </td>\n  </tr>\n  <tr>\n    <td>\n      <p>subclient</p>\n    </td>\n    <td>\n      <p>Subclient Name(URL Encoded)</p>\n    </td>\n  </tr>\n</table>[_For all Agent Names_](http://documentation.commvault.com/commvault/v11/article?p=45467.htm#o99081)\n","parameters":[{"schema":{"type":"string"},"in":"query","name":"clientname"},{"schema":{"type":"string"},"in":"query","name":"agent"},{"schema":{"type":"string","example":"defaultBackupSet"},"in":"query","name":"backupset"}],"method":"get","path":"/GetId","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get Backupset Id","description":{"content":"This operation returns Backupset Id\n\n<table>\n  <tr>\n    <td>\n      <p>Name</p>\n    </td>\n    <td>\n      <p>Description</p>\n    </td>\n  </tr>\n  <tr>\n    <td>\n      <p>clientName</p>\n    </td>\n    <td>\n      <p>Name of the client(URL Encoded)</p>\n    </td>\n  </tr>\n  <tr>\n    <td>\n      <p>agent</p>\n    </td>\n    <td>\n      <p>Name of the Agent(URL Encoded)</p>\n    </td>\n  </tr>\n  <tr>\n    <td>\n      <p>instanceName</p>\n    </td>\n    <td>\n      <p>Instance Name(URL Encoded)</p>\n    </td>\n  </tr>\n  <tr>\n    <td>\n      <p>backupset</p>\n    </td>\n    <td>\n      <p>Backupset Name(URL Encoded)</p>\n    </td>\n  </tr>\n  <tr>\n    <td>\n      <p>subclient</p>\n    </td>\n    <td>\n      <p>Subclient Name(URL Encoded)</p>\n    </td>\n  </tr>\n</table>[_For all Agent Names_](http://documentation.commvault.com/commvault/v11/article?p=45467.htm#o99081)\n","type":"text/plain"},"url":{"path":["GetId"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"clientname","value":""},{"disabled":false,"key":"agent","value":""},{"disabled":false,"key":"backupset","value":""}],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/BackupSetOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get Backupset Id
+
+
+
+This operation returns Backupset Id
+
+<table>
+  <tr>
+    <td>
+      <p>Name</p>
+    </td>
+    <td>
+      <p>Description</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>clientName</p>
+    </td>
+    <td>
+      <p>Name of the client(URL Encoded)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>agent</p>
+    </td>
+    <td>
+      <p>Name of the Agent(URL Encoded)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>instanceName</p>
+    </td>
+    <td>
+      <p>Instance Name(URL Encoded)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>backupset</p>
+    </td>
+    <td>
+      <p>Backupset Name(URL Encoded)</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <p>subclient</p>
+    </td>
+    <td>
+      <p>Subclient Name(URL Encoded)</p>
+    </td>
+  </tr>
+</table>[_For all Agent Names_](http://documentation.commvault.com/commvault/v11/article?p=45467.htm#o99081)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"in":"query","name":"clientname"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"in":"query","name":"agent"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string","example":"defaultBackupSet"},"in":"query","name":"backupset"}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"applicationId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"clientName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"clientId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"_type_"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"appName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"applicationId\": 0,\n  \"clientName\": \"string\",\n  \"clientId\": 0,\n  \"_type_\": 0,\n  \"appName\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Get Id -  With  Agent  Name"} value={" Get Id -  With  Agent  Name"}><ResponseSamples responseExample={"{\n  \"applicationId\": 33,\n  \"clientName\": \"dm2perf3\",\n  \"clientId\": 2,\n  \"_type_\": 4,\n  \"appName\": \"File System\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Get Id -  With  Backupset  Name "} value={" Get Id -  With  Backupset  Name "}><ResponseSamples responseExample={"{\n  \"applicationId\": 33,\n  \"clientName\": \"dm2perf3\",\n  \"backupsetId\": 3,\n  \"instanceId\": 1,\n  \"clientId\": 2,\n  \"backupsetName\": \"defaultBackupSet\",\n  \"_type_\": 6,\n  \"appName\": \"File System\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

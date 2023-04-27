@@ -1,0 +1,560 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Backup Operations
+paths:
+  /CreateTask:
+    post:
+      deprecated: false
+      description: |
+        This operation runs a backup job for a subclient or a backup set.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_create_task_backup.htm)
+      operationId: Create Task (Backup)
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Create Task (Backup)
+      tags:
+      - Backup Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskId:
+                    type: integer
+                  jobIds:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    taskId: 124
+                    jobIds:
+                    - '301'
+              examples:
+                POST Create Task (Backup) - This request starts an immediate backup job.:
+                  value:
+                    taskId: 0
+                    jobIds:
+                    - string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taskInfo:
+                  type: object
+                  properties:
+                    associations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          applicationId:
+                            type: integer
+                          clientName:
+                            type: string
+                          commCellId:
+                            type: integer
+                          backupsetName:
+                            type: string
+                          _type_:
+                            type: integer
+                          appName:
+                            type: string
+                    task:
+                      type: object
+                      properties:
+                        sequenceNumber:
+                          type: integer
+                        initiatedFrom:
+                          type: integer
+                        taskType:
+                          type: integer
+                        policyType:
+                          type: integer
+                        taskId:
+                          type: integer
+                        taskFlags:
+                          type: object
+                          properties:
+                            disabled:
+                              type: boolean
+                    subTasks:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          subTask:
+                            type: object
+                            properties:
+                              subTaskType:
+                                type: integer
+                              operationType:
+                                type: integer
+                          options:
+                            type: object
+                            properties:
+                              backupOpts:
+                                type: object
+                                properties:
+                                  truncateLogsOnSource:
+                                    type: boolean
+                                  sybaseSkipFullafterLogBkp:
+                                    type: boolean
+                                  backupLevel:
+                                    type: integer
+                                  runIncrementalBackup:
+                                    type: boolean
+                                  isSpHasInLineCopy:
+                                    type: boolean
+                                  runSILOBackup:
+                                    type: boolean
+                                  doNotTruncateLog:
+                                    type: boolean
+                                  dataOpt:
+                                    type: object
+                                    properties:
+                                      skipCatalogPhaseForSnapBackup:
+                                        type: boolean
+                                      followMountPoints:
+                                        type: boolean
+                                      enableIndexCheckPointing:
+                                        type: boolean
+                                      enforceTransactionLogUsage:
+                                        type: boolean
+                                      spaceReclamation:
+                                        type: boolean
+                                      skipConsistencyCheck:
+                                        type: boolean
+                                      createNewIndex:
+                                        type: boolean
+                                      verifySynthFull:
+                                        type: boolean
+                                  dataPathOpt:
+                                    type: object
+                                    properties:
+                                      mediaAgent:
+                                        type: object
+                                        properties:
+                                          mediaAgentId:
+                                            type: integer
+                                      library:
+                                        type: object
+                                        properties:
+                                          libraryId:
+                                            type: integer
+                                      drivePool:
+                                        type: object
+                                        properties:
+                                          drivePoolId:
+                                            type: integer
+                                      spareGroup:
+                                        type: object
+                                        properties:
+                                          spareMediaGroupId:
+                                            type: integer
+                                      drive:
+                                        type: object
+                                        properties:
+                                          driveId:
+                                            type: integer
+                                  mediaOpt:
+                                    type: object
+                                    properties:
+                                      markMediaFullOnSuccess:
+                                        type: boolean
+                                      numberofDays:
+                                        type: integer
+                                      startNewMedia:
+                                        type: boolean
+                                      retentionJobType:
+                                        type: integer
+                                      allowOtherSchedulesToUseMediaSet:
+                                        type: boolean
+                                      reserveResourcesBeforeScan:
+                                        type: boolean
+                              commonOpts:
+                                type: object
+                                properties:
+                                  jobDescription:
+                                    type: string
+                                  jobRetryOpts:
+                                    type: object
+                                    properties:
+                                      killRunningJobWhenTotalRunningTimeExpires:
+                                        type: boolean
+                                      numberOfRetries:
+                                        type: integer
+                                      enableNumberOfRetries:
+                                        type: boolean
+                                      runningTime:
+                                        type: object
+                                        properties:
+                                          enableTotalRunningTime:
+                                            type: boolean
+                                          totalRunningTime:
+                                            type: integer
+                                  startUpOpts:
+                                    type: object
+                                    properties:
+                                      startInSuspendedState:
+                                        type: boolean
+                                      useDefaultPriority:
+                                        type: boolean
+                                      priority:
+                                        type: integer
+              x-examples:
+                Example 1:
+                  taskInfo:
+                    associations:
+                    - applicationId: 33
+                      clientName: '{{clientName}}'
+                      commCellId: 0
+                      backupsetName: '{{backupsetName}}'
+                      _type_: 7
+                      appName: File System
+                    task:
+                      sequenceNumber: 10
+                      initiatedFrom: 2
+                      taskType: 1
+                      policyType: 0
+                      taskId: 0
+                      taskFlags:
+                        disabled: false
+                    subTasks:
+                    - subTask:
+                        subTaskType: 2
+                        operationType: 2
+                      options:
+                        backupOpts:
+                          truncateLogsOnSource: false
+                          sybaseSkipFullafterLogBkp: false
+                          backupLevel: 1
+                          runIncrementalBackup: true
+                          isSpHasInLineCopy: false
+                          runSILOBackup: false
+                          doNotTruncateLog: false
+                          dataOpt:
+                            skipCatalogPhaseForSnapBackup: false
+                            followMountPoints: true
+                            enableIndexCheckPointing: false
+                            enforceTransactionLogUsage: false
+                            spaceReclamation: false
+                            skipConsistencyCheck: false
+                            createNewIndex: false
+                            verifySynthFull: false
+                          dataPathOpt:
+                            mediaAgent:
+                              mediaAgentId: 0
+                            library:
+                              libraryId: 0
+                            drivePool:
+                              drivePoolId: 0
+                            spareGroup:
+                              spareMediaGroupId: 0
+                            drive:
+                              driveId: 0
+                          mediaOpt:
+                            markMediaFullOnSuccess: false
+                            numberofDays: 30
+                            startNewMedia: true
+                            retentionJobType: 2
+                            allowOtherSchedulesToUseMediaSet: true
+                            reserveResourcesBeforeScan: false
+                        commonOpts:
+                          jobDescription: ''
+                          jobRetryOpts:
+                            killRunningJobWhenTotalRunningTimeExpires: false
+                            numberOfRetries: 0
+                            enableNumberOfRetries: false
+                            runningTime:
+                              enableTotalRunningTime: false
+                              totalRunningTime: 3600
+                          startUpOpts:
+                            startInSuspendedState: false
+                            useDefaultPriority: true
+                            priority: 166
+            examples:
+              POST Create Task (Backup) - This request starts an immediate backup job.:
+                value:
+                  taskInfo:
+                    associations:
+                    - applicationId: 33
+                      clientName: '{{clientName}}'
+                      commCellId: 0
+                      backupsetName: '{{backupsetName}}'
+                      _type_: 7
+                      appName: File System
+                    task:
+                      sequenceNumber: 10
+                      initiatedFrom: 2
+                      taskType: 1
+                      policyType: 0
+                      taskId: 0
+                      taskFlags:
+                        disabled: false
+                    subTasks:
+                    - subTask:
+                        subTaskType: 2
+                        operationType: 2
+                      options:
+                        backupOpts:
+                          truncateLogsOnSource: false
+                          sybaseSkipFullafterLogBkp: false
+                          backupLevel: 1
+                          runIncrementalBackup: true
+                          isSpHasInLineCopy: false
+                          runSILOBackup: false
+                          doNotTruncateLog: false
+                          dataOpt:
+                            skipCatalogPhaseForSnapBackup: false
+                            followMountPoints: true
+                            enableIndexCheckPointing: false
+                            enforceTransactionLogUsage: false
+                            spaceReclamation: false
+                            skipConsistencyCheck: false
+                            createNewIndex: false
+                            verifySynthFull: false
+                          dataPathOpt:
+                            mediaAgent:
+                              mediaAgentId: 0
+                            library:
+                              libraryId: 0
+                            drivePool:
+                              drivePoolId: 0
+                            spareGroup:
+                              spareMediaGroupId: 0
+                            drive:
+                              driveId: 0
+                          mediaOpt:
+                            markMediaFullOnSuccess: false
+                            numberofDays: 30
+                            startNewMedia: true
+                            retentionJobType: 2
+                            allowOtherSchedulesToUseMediaSet: true
+                            reserveResourcesBeforeScan: false
+                        commonOpts:
+                          jobDescription: ''
+                          jobRetryOpts:
+                            killRunningJobWhenTotalRunningTimeExpires: false
+                            numberOfRetries: 0
+                            enableNumberOfRetries: false
+                            runningTime:
+                              enableTotalRunningTime: false
+                              totalRunningTime: 3600
+                          startUpOpts:
+                            startInSuspendedState: false
+                            useDefaultPriority: true
+                            priority: 166
+              Create Task (Backup) - This request starts an immediate backup job.:
+                value:
+                  taskInfo:
+                    associations:
+                    - applicationId: 33
+                      clientName: '{{clientName}}'
+                      commCellId: 0
+                      backupsetName: defaultBackupSet
+                      _type_: 7
+                      appName: File System
+                    task:
+                      sequenceNumber: 10
+                      initiatedFrom: 2
+                      taskType: 1
+                      policyType: 0
+                      taskId: 0
+                      taskFlags:
+                        disabled: false
+                    subTasks:
+                    - subTask:
+                        subTaskType: 2
+                        operationType: 2
+                      options:
+                        backupOpts:
+                          truncateLogsOnSource: false
+                          sybaseSkipFullafterLogBkp: false
+                          backupLevel: 1
+                          runIncrementalBackup: true
+                          isSpHasInLineCopy: false
+                          runSILOBackup: false
+                          doNotTruncateLog: false
+                          dataOpt:
+                            skipCatalogPhaseForSnapBackup: false
+                            followMountPoints: true
+                            enableIndexCheckPointing: false
+                            enforceTransactionLogUsage: false
+                            spaceReclamation: false
+                            skipConsistencyCheck: false
+                            createNewIndex: false
+                            verifySynthFull: false
+                          dataPathOpt:
+                            mediaAgent:
+                              mediaAgentId: 0
+                            library:
+                              libraryId: 0
+                            drivePool:
+                              drivePoolId: 0
+                            spareGroup:
+                              spareMediaGroupId: 0
+                            drive:
+                              driveId: 0
+                          mediaOpt:
+                            markMediaFullOnSuccess: false
+                            numberofDays: 30
+                            startNewMedia: true
+                            retentionJobType: 2
+                            allowOtherSchedulesToUseMediaSet: true
+                            reserveResourcesBeforeScan: false
+                        commonOpts:
+                          jobDescription: ''
+                          jobRetryOpts:
+                            killRunningJobWhenTotalRunningTimeExpires: false
+                            numberOfRetries: 0
+                            enableNumberOfRetries: false
+                            runningTime:
+                              enableTotalRunningTime: false
+                              totalRunningTime: 3600
+                          startUpOpts:
+                            startInSuspendedState: false
+                            useDefaultPriority: true
+                            priority: 166
+  /Backupset/action/backup:
+    parameters: []
+    post:
+      summary: Backup Set Backup
+      operationId: post-Backupset-backupsetId-action-backup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskId:
+                    type: integer
+                  jobIds:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    taskId: 438
+                    jobIds:
+                    - '2316'
+                    - '2317'
+                    - '2318'
+                    - '2319'
+                    - '2320'
+                    - '2321'
+              examples:
+                Backup Set Backup:
+                  value:
+                    taskId: 438
+                    jobIds:
+                    - '2316'
+                    - '2317'
+                    - '2318'
+                    - '2319'
+                    - '2320'
+                    - '2321'
+      description: |
+        This operation runs a backup job for a backup set.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_backup_set_backup.htm)
+      parameters:
+      - schema:
+          type: string
+        in: header
+        name: AuthToken
+        required: true
+      tags:
+      - Backup Operations
+  '/subclient/{subclientId}/action/backup':
+    parameters:
+    - schema:
+        type: string
+      name: subclientId
+      in: path
+      required: true
+    post:
+      summary: Subclient Backup
+      operationId: post-subclient-subclientId-action-backup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskId:
+                    type: integer
+                  jobIds:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    taskId: 138
+                    jobIds:
+                    - '323'
+              examples:
+                POST /Subclient/49/action/backup?backupLevel=Synthetic_Full&runIncrementalBackup=True&incrementalLevel=BEFORE_SYNTH:
+                  value:
+                    taskId: 138
+                    jobIds:
+                    - '323'
+                POST /Subclient/49/action/backup (FULL Backup):
+                  value:
+                    taskId: 0
+                    jobIds:
+                    - string
+                POST /Subclient/31/action/backup?backupLevel=Incremental:
+                  value:
+                    taskId: 126
+                    jobIds:
+                    - '306'
+      description: |
+        This operation runs a backup job for a subclient.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_subclient_backup.htm)
+      parameters:
+      - schema:
+          type: string
+          example: Synthetic_Full
+        in: query
+        name: backupLevel
+      - schema:
+          type: boolean
+          example: true
+        in: query
+        name: runIncrementalBackup
+      - schema:
+          type: string
+          example: AFTER_SYNTH
+        in: query
+        name: incrementalLevel
+      tags:
+      - Backup Operations

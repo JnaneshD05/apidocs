@@ -1,0 +1,1512 @@
+info:
+  contact: {}
+  description: |-
+    ## Welcome
+
+    Welcome to Commvault's Rest APIs. You can explore our APIs in [Postman](https://getpostman.com) using the predefined requests we created
+
+    The current version of this documentation is **Commvault Platform Release 2022E**.
+
+    You can access LTS documentation here:
+
+    [Feature Release 11.20](https://documenter.getpostman.com/view/2046098/UVR7KoPJ)
+
+    [Feature Release 11.24](https://documenter.getpostman.com/view/2046098/UVR7KoPL)
+
+    For more V2 and Latest APIs, please visit your API Explorer page.  
+    [*More Details*](http://documentation.commvault.com/commvault/v11/article?p=107350_1.htm)
+
+    ## Setup
+
+    To get started, [create an environment in Postman](https://www.getpostman.com/docs/environments), select that environment, and set your environment variables by entering necessary values in the `0 - Setup/Environment Setup` pre-request script ([documentation on pre-request scripts](http://www.getpostman.com/docs/pre_request_scripts)). Also, Some of our calls might have dependencies. `GET`/`PUT`/`DELETE` may only work after an item is created with a `POST`.
+
+    The same set of APIs can be used for both XML and JSON. If you want to get equivalent JSON for the XML, use our [API](https://api.commvault.com/#fe2fa795-dd7c-4416-857d-75704b52be8c) for conversion.
+
+    **Note:** Swagger Documentation for V2/Latest APIs are present in the following URL:  
+    `{ServerURL}/sandbox/apiexplorer`
+
+    [*More Details*](http://documentation.commvault.com/commvault/v11/article?p=45551.htm)
+  title: Commvault Rest API - Public
+  version: 1.0.0
+x-stoplight:
+  id: gsktkyrzoac4u
+openapi: 3.0.3
+paths:
+  /<any API end point>:
+    get:
+      deprecated: false
+      operationId: RemoteCommcellData
+      parameters:
+        - description: ''
+          in: header
+          name: authtoken
+          required: true
+          schema:
+            example: '{{TOKEN}}'
+            type: string
+        - description: ''
+          in: header
+          name: _cn
+          required: true
+          schema:
+            example: '{{remoteCommcellClientName}}'
+            type: string
+      responses:
+        default:
+          content:
+            application/json:
+              example:
+                clientProperties:
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: 223B79E0-10CC-4BCB-989F-B60B2C2C9F1B
+                        clientId: 2
+                        clientName: firewallautocs1
+                        displayName: DN_firewallautocs1_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: FirewallAutoCS1.automation.commvault.com
+                      cvdPort: 8400
+                      evmgrcPort: 0
+                    clientProps:
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: 9E062A98-E85D-4C74-9B44-A9310522853D
+                        clientId: 3
+                        clientName: cs1controller
+                        displayName: DN_cs1controller_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: CS1Controller.automation.commvault.com
+                      cvdPort: 8400
+                      evmgrcPort: 0
+                    clientProps:
+                      IsDeletedClient: true
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: B282A172-B300-4877-A4CA-6FDCC06A0859
+                        clientId: 4
+                        clientName: autocs1client1
+                        displayName: DN_autocs1client1_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: AutoCS1client1.automation.commvault.com
+                      cvdPort: 8400
+                      evmgrcPort: 0
+                    clientProps:
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: CA9E72CD-E7C4-43B7-B578-E460D4F4423D
+                        clientId: 5
+                        clientName: autocs1client2
+                        displayName: DN_autocs1client2_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: AutoCS1client2.automation.commvault.com
+                      cvdPort: 8400
+                      evmgrcPort: 0
+                    clientProps:
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: 72B85CCF-899E-4745-983D-11F725134F2F
+                        clientId: 6
+                        clientName: autocs1client3WC
+                        displayName: DN_autocs1client3WC_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: AutoCS1client3.automation.commvault.com
+                      cvdPort: 8400
+                      evmgrcPort: 0
+                    clientProps:
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: 740E1643-4AB6-42A4-89EF-4D15F7278CFA
+                        clientId: 7
+                        clientName: autocs1client1_2v10
+                        displayName: DN_autocs1client1_2v10_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: 172.19.96.146
+                      cvdPort: 8405
+                      evmgrcPort: 8402
+                    clientProps:
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: 2B36D7EC-D377-45CD-A493-619895D93AEE
+                        clientId: 11
+                        clientName: autocs1client2_2v10
+                        displayName: DN_autocs1client2_2v10_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: 172.19.96.121
+                      cvdPort: 8405
+                      evmgrcPort: 8402
+                    clientProps:
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: 8C4FFF9D-1292-46F9-84B2-D1C5E58D80F1
+                        clientId: 66
+                        clientName: autocs1cl1v10
+                        displayName: DN_autocs1cl1v10_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: autocs1cl1v10.automation.commvault.com
+                      cvdPort: 8400
+                      evmgrcPort: 8402
+                    clientProps:
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: E12F7EC7-5D60-488D-AEE2-36246E0EA7DD
+                        clientId: 124
+                        clientName: autocs1v10
+                        displayName: DN_autocs1v10_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: autocs1v10.automation.commvault.com
+                      cvdPort: 8400
+                      evmgrcPort: 8402
+                    clientProps:
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: ED9C059E-67F7-4E7D-8789-A7463CA46A16
+                        clientId: 149
+                        clientName: AutoLi-Client1
+                        displayName: DN_AutoLi-Client1_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: 172.19.98.122
+                      cvdPort: 8400
+                      evmgrcPort: 8402
+                    clientProps:
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: 992B93B4-51B9-4DF7-A6D8-C824B99FA735
+                        clientId: 150
+                        clientName: AutoLi-Client2
+                        displayName: DN_AutoLi-Client2_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: 172.19.98.123
+                      cvdPort: 8400
+                      evmgrcPort: 8402
+                    clientProps:
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: 76B15122-C306-47D3-9F36-FCBB7CE809A9
+                        clientId: 177
+                        clientName: autocs1control
+                        displayName: DN_autocs1control_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: AutoCS1control.automation.commvault.com
+                      cvdPort: 8400
+                      evmgrcPort: 0
+                    clientProps:
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: 01D150AF-615C-41F5-BCB2-AF6136F11CCF
+                        clientId: 202
+                        clientName: shostnamecs1
+                        displayName: DN_shostnamecs1_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: 172.19.96.188
+                      cvdPort: 8400
+                      evmgrcPort: 0
+                    clientProps:
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: 90A43078-5228-4208-8F0D-6A0AE5566BB3
+                        clientId: 205
+                        clientName: laptopclient
+                        displayName: DN_laptopclient_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: sHostnameCS1.automation.commvault.com
+                      cvdPort: 8405
+                      evmgrcPort: 8402
+                    clientProps:
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: B4E4C33C-12D3-47DF-86A4-0B74CE27C5BD
+                        clientId: 358
+                        clientName: SP1_IndexServer
+                        displayName: DN_SP1_IndexServer_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: SP1_IndexServer
+                      cvdPort: 0
+                      evmgrcPort: 0
+                    clientProps:
+                      IsDeletedClient: true
+                      clusterType: 15
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: 5D2A67FE-1ECE-4914-98CD-029159E0535F
+                        clientId: 373
+                        clientName: CSSP1_IndexServer
+                        displayName: DN_CSSP1_IndexServer_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: CSSP1_IndexServer
+                      cvdPort: 0
+                      evmgrcPort: 0
+                    clientProps:
+                      clusterType: 15
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: 41AF2429-C36F-4129-A207-4AA776915332
+                        clientId: 392
+                        clientName: Auto_SP_Disk_IS_IndexServer
+                        displayName: DN_Auto_SP_Disk_IS_IndexServer_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: Auto_SP_Disk_IS_IndexServer
+                      cvdPort: 0
+                      evmgrcPort: 0
+                    clientProps:
+                      clusterType: 15
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: C12C01D1-52C0-4485-ACB7-EB9D2BAC9A78
+                        clientId: 525
+                        clientName: storagepolicy_firewallautocs1_IndexServer
+                        displayName: DN_storagepolicy_firewallautocs1_IndexServer_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: storagepolicy_firewallautocs1_IndexServer
+                      cvdPort: 0
+                      evmgrcPort: 0
+                    clientProps:
+                      IsDeletedClient: true
+                      clusterType: 15
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: F0353CB2-7D05-411B-8002-271C5D5ACC8B
+                        clientId: 556
+                        clientName: autocs1cl2v9
+                        displayName: DN_autocs1cl2v9_DN
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: autocs1cl2v9.automation.commvault.com
+                      cvdPort: 8400
+                      evmgrcPort: 8402
+                    clientProps:
+                      clusterType: 0
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: 7D6AB6AB-1B49-4EBA-9474-505B12F05E23
+                        clientId: 692
+                        clientName: Auto_SP_Disk_48979_IndexServer
+                        displayName: Auto_SP_Disk_48979_IndexServer
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: Auto_SP_Disk_48979_IndexServer
+                      cvdPort: 0
+                      evmgrcPort: 0
+                    clientProps:
+                      clusterType: 15
+                      iSCSIPort: 3260
+                  - client:
+                      clientEntity:
+                        _type_: 3
+                        clientGUID: 4D96BE28-2F4C-4BAB-9E66-93371D510C9C
+                        clientId: 693
+                        clientName: bdcsrvtest05
+                        displayName: bdcsrvtest05
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                        hostName: BDCSRVTEST05.test.com
+                      cvdPort: 8400
+                      evmgrcPort: 0
+                    clientProps:
+                      IsDeletedClient: true
+                      clusterType: 0
+                      iSCSIPort: 3260
+              schema:
+                allOf:
+                  - example:
+                      clientProperties:
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 223B79E0-10CC-4BCB-989F-B60B2C2C9F1B
+                              clientId: 2
+                              clientName: firewallautocs1
+                              displayName: DN_firewallautocs1_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: FirewallAutoCS1.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 9E062A98-E85D-4C74-9B44-A9310522853D
+                              clientId: 3
+                              clientName: cs1controller
+                              displayName: DN_cs1controller_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: CS1Controller.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            IsDeletedClient: true
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: B282A172-B300-4877-A4CA-6FDCC06A0859
+                              clientId: 4
+                              clientName: autocs1client1
+                              displayName: DN_autocs1client1_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: AutoCS1client1.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: CA9E72CD-E7C4-43B7-B578-E460D4F4423D
+                              clientId: 5
+                              clientName: autocs1client2
+                              displayName: DN_autocs1client2_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: AutoCS1client2.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 72B85CCF-899E-4745-983D-11F725134F2F
+                              clientId: 6
+                              clientName: autocs1client3WC
+                              displayName: DN_autocs1client3WC_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: AutoCS1client3.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 740E1643-4AB6-42A4-89EF-4D15F7278CFA
+                              clientId: 7
+                              clientName: autocs1client1_2v10
+                              displayName: DN_autocs1client1_2v10_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: 172.19.96.146
+                            cvdPort: 8405
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 2B36D7EC-D377-45CD-A493-619895D93AEE
+                              clientId: 11
+                              clientName: autocs1client2_2v10
+                              displayName: DN_autocs1client2_2v10_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: 172.19.96.121
+                            cvdPort: 8405
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 8C4FFF9D-1292-46F9-84B2-D1C5E58D80F1
+                              clientId: 66
+                              clientName: autocs1cl1v10
+                              displayName: DN_autocs1cl1v10_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: autocs1cl1v10.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: E12F7EC7-5D60-488D-AEE2-36246E0EA7DD
+                              clientId: 124
+                              clientName: autocs1v10
+                              displayName: DN_autocs1v10_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: autocs1v10.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: ED9C059E-67F7-4E7D-8789-A7463CA46A16
+                              clientId: 149
+                              clientName: AutoLi-Client1
+                              displayName: DN_AutoLi-Client1_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: 172.19.98.122
+                            cvdPort: 8400
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 992B93B4-51B9-4DF7-A6D8-C824B99FA735
+                              clientId: 150
+                              clientName: AutoLi-Client2
+                              displayName: DN_AutoLi-Client2_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: 172.19.98.123
+                            cvdPort: 8400
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 76B15122-C306-47D3-9F36-FCBB7CE809A9
+                              clientId: 177
+                              clientName: autocs1control
+                              displayName: DN_autocs1control_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: AutoCS1control.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 01D150AF-615C-41F5-BCB2-AF6136F11CCF
+                              clientId: 202
+                              clientName: shostnamecs1
+                              displayName: DN_shostnamecs1_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: 172.19.96.188
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 90A43078-5228-4208-8F0D-6A0AE5566BB3
+                              clientId: 205
+                              clientName: laptopclient
+                              displayName: DN_laptopclient_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: sHostnameCS1.automation.commvault.com
+                            cvdPort: 8405
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: B4E4C33C-12D3-47DF-86A4-0B74CE27C5BD
+                              clientId: 358
+                              clientName: SP1_IndexServer
+                              displayName: DN_SP1_IndexServer_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: SP1_IndexServer
+                            cvdPort: 0
+                            evmgrcPort: 0
+                          clientProps:
+                            IsDeletedClient: true
+                            clusterType: 15
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 5D2A67FE-1ECE-4914-98CD-029159E0535F
+                              clientId: 373
+                              clientName: CSSP1_IndexServer
+                              displayName: DN_CSSP1_IndexServer_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: CSSP1_IndexServer
+                            cvdPort: 0
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 15
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 41AF2429-C36F-4129-A207-4AA776915332
+                              clientId: 392
+                              clientName: Auto_SP_Disk_IS_IndexServer
+                              displayName: DN_Auto_SP_Disk_IS_IndexServer_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: Auto_SP_Disk_IS_IndexServer
+                            cvdPort: 0
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 15
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: C12C01D1-52C0-4485-ACB7-EB9D2BAC9A78
+                              clientId: 525
+                              clientName: storagepolicy_firewallautocs1_IndexServer
+                              displayName: DN_storagepolicy_firewallautocs1_IndexServer_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: storagepolicy_firewallautocs1_IndexServer
+                            cvdPort: 0
+                            evmgrcPort: 0
+                          clientProps:
+                            IsDeletedClient: true
+                            clusterType: 15
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: F0353CB2-7D05-411B-8002-271C5D5ACC8B
+                              clientId: 556
+                              clientName: autocs1cl2v9
+                              displayName: DN_autocs1cl2v9_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: autocs1cl2v9.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 7D6AB6AB-1B49-4EBA-9474-505B12F05E23
+                              clientId: 692
+                              clientName: Auto_SP_Disk_48979_IndexServer
+                              displayName: Auto_SP_Disk_48979_IndexServer
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: Auto_SP_Disk_48979_IndexServer
+                            cvdPort: 0
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 15
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 4D96BE28-2F4C-4BAB-9E66-93371D510C9C
+                              clientId: 693
+                              clientName: bdcsrvtest05
+                              displayName: bdcsrvtest05
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: BDCSRVTEST05.test.com
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            IsDeletedClient: true
+                            clusterType: 0
+                            iSCSIPort: 3260
+                    properties:
+                      clientProperties:
+                        description: ''
+                        items:
+                          example:
+                            client:
+                              clientEntity:
+                                _type_: 3
+                                clientGUID: 223B79E0-10CC-4BCB-989F-B60B2C2C9F1B
+                                clientId: 2
+                                clientName: firewallautocs1
+                                displayName: DN_firewallautocs1_DN
+                                entityInfo:
+                                  companyId: 0
+                                  companyName: ''
+                                  multiCommcellId: 0
+                                hostName: FirewallAutoCS1.automation.commvault.com
+                              cvdPort: 8400
+                              evmgrcPort: 0
+                            clientProps:
+                              clusterType: 0
+                              iSCSIPort: 3260
+                          properties:
+                            client:
+                              example:
+                                clientEntity:
+                                  _type_: 3
+                                  clientGUID: 223B79E0-10CC-4BCB-989F-B60B2C2C9F1B
+                                  clientId: 2
+                                  clientName: firewallautocs1
+                                  displayName: DN_firewallautocs1_DN
+                                  entityInfo:
+                                    companyId: 0
+                                    companyName: ''
+                                    multiCommcellId: 0
+                                  hostName: FirewallAutoCS1.automation.commvault.com
+                                cvdPort: 8400
+                                evmgrcPort: 0
+                              properties:
+                                clientEntity:
+                                  example:
+                                    _type_: 3
+                                    clientGUID: 223B79E0-10CC-4BCB-989F-B60B2C2C9F1B
+                                    clientId: 2
+                                    clientName: firewallautocs1
+                                    displayName: DN_firewallautocs1_DN
+                                    entityInfo:
+                                      companyId: 0
+                                      companyName: ''
+                                      multiCommcellId: 0
+                                    hostName: FirewallAutoCS1.automation.commvault.com
+                                  properties:
+                                    _type_:
+                                      format: int32
+                                      type: integer
+                                    clientGUID:
+                                      type: string
+                                    clientId:
+                                      format: int32
+                                      type: integer
+                                    clientName:
+                                      type: string
+                                    displayName:
+                                      type: string
+                                    entityInfo:
+                                      example:
+                                        companyId: 0
+                                        companyName: ''
+                                        multiCommcellId: 0
+                                      properties:
+                                        companyId:
+                                          format: int32
+                                          type: integer
+                                        companyName:
+                                          type: string
+                                        multiCommcellId:
+                                          format: int32
+                                          type: integer
+                                      required:
+                                        - companyId
+                                        - companyName
+                                        - multiCommcellId
+                                      title: EntityInfo
+                                      type: object
+                                    hostName:
+                                      type: string
+                                  required:
+                                    - hostName
+                                    - clientId
+                                    - clientName
+                                    - displayName
+                                    - _type_
+                                    - clientGUID
+                                    - entityInfo
+                                  title: ClientEntity
+                                  type: object
+                                cvdPort:
+                                  format: int32
+                                  type: integer
+                                evmgrcPort:
+                                  format: int32
+                                  type: integer
+                              required:
+                                - evmgrcPort
+                                - cvdPort
+                                - clientEntity
+                              title: Client
+                              type: object
+                            clientProps:
+                              example:
+                                clusterType: 0
+                                iSCSIPort: 3260
+                              properties:
+                                IsDeletedClient:
+                                  type: boolean
+                                clusterType:
+                                  format: int32
+                                  type: integer
+                                iSCSIPort:
+                                  format: int32
+                                  type: integer
+                              required:
+                                - iSCSIPort
+                                - clusterType
+                              title: ClientProps
+                              type: object
+                          required:
+                            - clientProps
+                            - client
+                          title: ClientProperty
+                          type: object
+                        type: array
+                    required:
+                      - clientProperties
+                    title: Getremotecommcellclients
+                    type: object
+                  - example:
+                      clientProperties:
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 223B79E0-10CC-4BCB-989F-B60B2C2C9F1B
+                              clientId: 2
+                              clientName: firewallautocs1
+                              displayName: DN_firewallautocs1_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: FirewallAutoCS1.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 9E062A98-E85D-4C74-9B44-A9310522853D
+                              clientId: 3
+                              clientName: cs1controller
+                              displayName: DN_cs1controller_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: CS1Controller.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            IsDeletedClient: true
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: B282A172-B300-4877-A4CA-6FDCC06A0859
+                              clientId: 4
+                              clientName: autocs1client1
+                              displayName: DN_autocs1client1_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: AutoCS1client1.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: CA9E72CD-E7C4-43B7-B578-E460D4F4423D
+                              clientId: 5
+                              clientName: autocs1client2
+                              displayName: DN_autocs1client2_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: AutoCS1client2.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 72B85CCF-899E-4745-983D-11F725134F2F
+                              clientId: 6
+                              clientName: autocs1client3WC
+                              displayName: DN_autocs1client3WC_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: AutoCS1client3.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 740E1643-4AB6-42A4-89EF-4D15F7278CFA
+                              clientId: 7
+                              clientName: autocs1client1_2v10
+                              displayName: DN_autocs1client1_2v10_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: 172.19.96.146
+                            cvdPort: 8405
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 2B36D7EC-D377-45CD-A493-619895D93AEE
+                              clientId: 11
+                              clientName: autocs1client2_2v10
+                              displayName: DN_autocs1client2_2v10_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: 172.19.96.121
+                            cvdPort: 8405
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 8C4FFF9D-1292-46F9-84B2-D1C5E58D80F1
+                              clientId: 66
+                              clientName: autocs1cl1v10
+                              displayName: DN_autocs1cl1v10_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: autocs1cl1v10.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: E12F7EC7-5D60-488D-AEE2-36246E0EA7DD
+                              clientId: 124
+                              clientName: autocs1v10
+                              displayName: DN_autocs1v10_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: autocs1v10.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: ED9C059E-67F7-4E7D-8789-A7463CA46A16
+                              clientId: 149
+                              clientName: AutoLi-Client1
+                              displayName: DN_AutoLi-Client1_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: 172.19.98.122
+                            cvdPort: 8400
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 992B93B4-51B9-4DF7-A6D8-C824B99FA735
+                              clientId: 150
+                              clientName: AutoLi-Client2
+                              displayName: DN_AutoLi-Client2_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: 172.19.98.123
+                            cvdPort: 8400
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 76B15122-C306-47D3-9F36-FCBB7CE809A9
+                              clientId: 177
+                              clientName: autocs1control
+                              displayName: DN_autocs1control_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: AutoCS1control.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 01D150AF-615C-41F5-BCB2-AF6136F11CCF
+                              clientId: 202
+                              clientName: shostnamecs1
+                              displayName: DN_shostnamecs1_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: 172.19.96.188
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 90A43078-5228-4208-8F0D-6A0AE5566BB3
+                              clientId: 205
+                              clientName: laptopclient
+                              displayName: DN_laptopclient_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: sHostnameCS1.automation.commvault.com
+                            cvdPort: 8405
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: B4E4C33C-12D3-47DF-86A4-0B74CE27C5BD
+                              clientId: 358
+                              clientName: SP1_IndexServer
+                              displayName: DN_SP1_IndexServer_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: SP1_IndexServer
+                            cvdPort: 0
+                            evmgrcPort: 0
+                          clientProps:
+                            IsDeletedClient: true
+                            clusterType: 15
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 5D2A67FE-1ECE-4914-98CD-029159E0535F
+                              clientId: 373
+                              clientName: CSSP1_IndexServer
+                              displayName: DN_CSSP1_IndexServer_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: CSSP1_IndexServer
+                            cvdPort: 0
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 15
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 41AF2429-C36F-4129-A207-4AA776915332
+                              clientId: 392
+                              clientName: Auto_SP_Disk_IS_IndexServer
+                              displayName: DN_Auto_SP_Disk_IS_IndexServer_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: Auto_SP_Disk_IS_IndexServer
+                            cvdPort: 0
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 15
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: C12C01D1-52C0-4485-ACB7-EB9D2BAC9A78
+                              clientId: 525
+                              clientName: storagepolicy_firewallautocs1_IndexServer
+                              displayName: DN_storagepolicy_firewallautocs1_IndexServer_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: storagepolicy_firewallautocs1_IndexServer
+                            cvdPort: 0
+                            evmgrcPort: 0
+                          clientProps:
+                            IsDeletedClient: true
+                            clusterType: 15
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: F0353CB2-7D05-411B-8002-271C5D5ACC8B
+                              clientId: 556
+                              clientName: autocs1cl2v9
+                              displayName: DN_autocs1cl2v9_DN
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: autocs1cl2v9.automation.commvault.com
+                            cvdPort: 8400
+                            evmgrcPort: 8402
+                          clientProps:
+                            clusterType: 0
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 7D6AB6AB-1B49-4EBA-9474-505B12F05E23
+                              clientId: 692
+                              clientName: Auto_SP_Disk_48979_IndexServer
+                              displayName: Auto_SP_Disk_48979_IndexServer
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: Auto_SP_Disk_48979_IndexServer
+                            cvdPort: 0
+                            evmgrcPort: 0
+                          clientProps:
+                            clusterType: 15
+                            iSCSIPort: 3260
+                        - client:
+                            clientEntity:
+                              _type_: 3
+                              clientGUID: 4D96BE28-2F4C-4BAB-9E66-93371D510C9C
+                              clientId: 693
+                              clientName: bdcsrvtest05
+                              displayName: bdcsrvtest05
+                              entityInfo:
+                                companyId: 0
+                                companyName: ''
+                                multiCommcellId: 0
+                              hostName: BDCSRVTEST05.test.com
+                            cvdPort: 8400
+                            evmgrcPort: 0
+                          clientProps:
+                            IsDeletedClient: true
+                            clusterType: 0
+                            iSCSIPort: 3260
+          description: ''
+      summary: Remote Commcell Data
+      tags:
+        - Remote Commcell
+  /Agent:
+    get:
+      deprecated: false
+      description: |
+        <h2>
+         Description
+        </h2>
+        This operation returns a list of agents for a client.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_agent.htm)
+      operationId: GetAgents
+      parameters:
+        - description: ''
+          explode: true
+          in: query
+          name: clientId
+          required: true
+          schema:
+            example: 2
+            format: int32
+            type: integer
+        - description: ''
+          in: header
+          name: Accept
+          required: true
+          schema:
+            example: '{{Accept}}'
+            type: string
+        - description: ''
+          in: header
+          name: Authtoken
+          required: true
+          schema:
+            example: '{{TOKEN}}'
+            type: string
+      responses:
+        '200':
+          content:
+            application/json; charset=utf-8:
+              example:
+                agentProperties:
+                  - AgentProperties:
+                      agentVersion: 11(BUILD80)
+                      installDate: 1486138489
+                      isMarkedDeleted: false
+                    idaActivityControl:
+                      activityControlOptions:
+                        - activityType: 1
+                          enableActivityType: true
+                          enableAfterADelay: false
+                        - activityType: 2
+                          enableActivityType: true
+                          enableAfterADelay: false
+                    idaEntity:
+                      appName: File System
+                      applicationId: 33
+                      clientId: 2
+                      clientName: greenvalley
+                      commCellId: 2
+              schema:
+                allOf:
+                  - example:
+                      agentProperties:
+                        - AgentProperties:
+                            agentVersion: 11(BUILD80)
+                            installDate: 1486138489
+                            isMarkedDeleted: false
+                          idaActivityControl:
+                            activityControlOptions:
+                              - activityType: 1
+                                enableActivityType: true
+                                enableAfterADelay: false
+                              - activityType: 2
+                                enableActivityType: true
+                                enableAfterADelay: false
+                          idaEntity:
+                            appName: File System
+                            applicationId: 33
+                            clientId: 2
+                            clientName: greenvalley
+                            commCellId: 2
+                    properties:
+                      agentProperties:
+                        description: ''
+                        items:
+                          example:
+                            AgentProperties:
+                              agentVersion: 11(BUILD80)
+                              installDate: 1486138489
+                              isMarkedDeleted: false
+                            idaActivityControl:
+                              activityControlOptions:
+                                - activityType: 1
+                                  enableActivityType: true
+                                  enableAfterADelay: false
+                                - activityType: 2
+                                  enableActivityType: true
+                                  enableAfterADelay: false
+                            idaEntity:
+                              appName: File System
+                              applicationId: 33
+                              clientId: 2
+                              clientName: greenvalley
+                              commCellId: 2
+                          properties:
+                            AgentProperties:
+                              example:
+                                agentVersion: 11(BUILD80)
+                                installDate: 1486138489
+                                isMarkedDeleted: false
+                              properties:
+                                agentVersion:
+                                  type: string
+                                installDate:
+                                  format: int32
+                                  type: integer
+                                isMarkedDeleted:
+                                  type: boolean
+                              required:
+                                - installDate
+                                - agentVersion
+                                - isMarkedDeleted
+                              title: AgentProperties
+                              type: object
+                            idaActivityControl:
+                              example:
+                                activityControlOptions:
+                                  - activityType: 1
+                                    enableActivityType: true
+                                    enableAfterADelay: false
+                                  - activityType: 2
+                                    enableActivityType: true
+                                    enableAfterADelay: false
+                              properties:
+                                activityControlOptions:
+                                  description: ''
+                                  items:
+                                    example:
+                                      activityType: 1
+                                      enableActivityType: true
+                                      enableAfterADelay: false
+                                    properties:
+                                      activityType:
+                                        format: int32
+                                        type: integer
+                                      enableActivityType:
+                                        type: boolean
+                                      enableAfterADelay:
+                                        type: boolean
+                                    required:
+                                      - activityType
+                                      - enableAfterADelay
+                                      - enableActivityType
+                                    title: ActivityControlOption
+                                    type: object
+                                  type: array
+                              required:
+                                - activityControlOptions
+                              title: IdaActivityControl
+                              type: object
+                            idaEntity:
+                              example:
+                                appName: File System
+                                applicationId: 33
+                                clientId: 2
+                                clientName: greenvalley
+                                commCellId: 2
+                              properties:
+                                appName:
+                                  type: string
+                                applicationId:
+                                  format: int32
+                                  type: integer
+                                clientId:
+                                  format: int32
+                                  type: integer
+                                clientName:
+                                  type: string
+                                commCellId:
+                                  format: int32
+                                  type: integer
+                              required:
+                                - clientId
+                                - clientName
+                                - appName
+                                - commCellId
+                                - applicationId
+                              title: IdaEntity
+                              type: object
+                          required:
+                            - AgentProperties
+                            - idaActivityControl
+                            - idaEntity
+                          title: AgentProperty
+                          type: object
+                        type: array
+                    required:
+                      - agentProperties
+                    title: GETAgent
+                    type: object
+                  - example:
+                      agentProperties:
+                        - AgentProperties:
+                            agentVersion: 11(BUILD80)
+                            installDate: 1486138489
+                            isMarkedDeleted: false
+                          idaActivityControl:
+                            activityControlOptions:
+                              - activityType: 1
+                                enableActivityType: true
+                                enableAfterADelay: false
+                              - activityType: 2
+                                enableActivityType: true
+                                enableAfterADelay: false
+                          idaEntity:
+                            appName: File System
+                            applicationId: 33
+                            clientId: 2
+                            clientName: greenvalley
+                            commCellId: 2
+          description: OK
+      summary: Get All Agents
+      tags:
+        - Agent Operations

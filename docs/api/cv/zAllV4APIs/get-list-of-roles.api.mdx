@@ -1,0 +1,42 @@
+---
+id: get-list-of-roles
+title: "Get a list of all the roles"
+description: "Get a list of all the roles"
+sidebar_label: "Get a list of all the roles"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["Role Operations"],"responses":{"200":{"description":"Success","content":{"application/json":{"schema":{"description":"List of roles","properties":{"roles":{"description":"List of all the existing roles","items":{"description":"Returns information on the roles.","properties":{"commcell":{"nullable":true,"properties":{"name":{"description":"Name of the commcell the entity belongs to.","type":"string"}},"title":"CommcellInfo","type":"object"},"company":{"properties":{"id":{"format":"int32","type":"integer","x-terraform-omitempty":true,"x-terraform-set-key":true},"name":{"nullable":true,"type":"string"}},"type":"object"},"id":{"description":"id of the role.","format":"int32","type":"integer"},"name":{"description":"name of the role.","type":"string"},"status":{"description":"Specifies whether the role has been enabled or disabled.","enum":["ENABLED","DISABLED"],"type":"string"}},"type":"object"},"type":"array"}},"type":"object"}}}},"404":{"description":"Requested Details not found"}},"operationId":"GetListOfRoles","description":"Get a list of all the roles","method":"get","path":"/V4/Role","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"securitySchemes":{"token":{"in":"header","name":"Authtoken","type":"apiKey"}},"info":{"version":"1.0.0","contact":{},"description":"## Welcome\n\nWelcome to Commvault's Rest APIs. You can explore our APIs in [Postman](https://getpostman.com) using the predefined requests we created\n\nThe current version of this documentation is **Commvault Platform Release 2022E**.\n\nYou can access LTS documentation here:\n\n[Feature Release 11.20](https://documenter.getpostman.com/view/2046098/UVR7KoPJ)\n\n[Feature Release 11.24](https://documenter.getpostman.com/view/2046098/UVR7KoPL)\n\nFor more V2 and Latest APIs, please visit your API Explorer page.  \n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=107350_1.htm)\n\n## Setup\n\nTo get started, [create an environment in Postman](https://www.getpostman.com/docs/environments), select that environment, and set your environment variables by entering necessary values in the `0 - Setup/Environment Setup` pre-request script ([documentation on pre-request scripts](http://www.getpostman.com/docs/pre_request_scripts)). Also, Some of our calls might have dependencies. `GET`/`PUT`/`DELETE` may only work after an item is created with a `POST`.\n\nThe same set of APIs can be used for both XML and JSON. If you want to get equivalent JSON for the XML, use our [API](https://api.commvault.com/#fe2fa795-dd7c-4416-857d-75704b52be8c) for conversion.\n\n**Note:** Swagger Documentation for V2/Latest APIs are present in the following URL:  \n`{ServerURL}/sandbox/apiexplorer`\n\n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=45551.htm)","title":"Commvault Rest API - Public"},"postman":{"name":"Get a list of all the roles","description":{"content":"Get a list of all the roles","type":"text/plain"},"url":{"path":["V4","Role"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/zAllV4APIs/commvault-rest-api-public
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get a list of all the roles
+
+
+
+Get a list of all the roles
+
+<div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+Success
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>roles</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+List of all the existing roles
+
+</div><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>commcell</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={"Name of the commcell the entity belongs to."} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>company</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"id"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={false} name={"id"} required={false} deprecated={undefined} schemaDescription={"id of the role."} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={"name of the role."} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} deprecated={undefined} schemaDescription={"Specifies whether the role has been enabled or disabled."} schemaName={"string"} qualifierMessage={"**Possible values:** [`ENABLED`, `DISABLED`]"} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"roles\": [\n    {\n      \"commcell\": {\n        \"name\": \"string\"\n      },\n      \"company\": {\n        \"id\": 0,\n        \"name\": \"string\"\n      },\n      \"id\": 0,\n      \"name\": \"string\",\n      \"status\": \"ENABLED\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Requested Details not found
+
+</div><div></div></TabItem></ApiTabs></div>
+      

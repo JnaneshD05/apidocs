@@ -1,0 +1,719 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables:
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Network Topology Operations
+paths:
+  /FirewallTopology:
+    post:
+      deprecated: false
+      operationId: Configuring one-way network communication from tenants
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Configuring Network Topology (Deprecated)
+      tags:
+      - Network Topology Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pushNWConfigOnTopology:
+                  type: boolean
+                firewallTopology:
+                  type: object
+                  properties:
+                    extendedProperties:
+                      type: string
+                    topologyType:
+                      type: integer
+                    description:
+                      type: string
+                    isSmartTopology:
+                      type: boolean
+                    firewallGroups:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          fwGroupType:
+                            type: integer
+                          isMnemonic:
+                            type: boolean
+                          clientGroup:
+                            type: object
+                            properties:
+                              clientGroupName:
+                                type: string
+                    topologyEntity:
+                      type: object
+                      properties:
+                        topologyName:
+                          type: string
+              x-examples:
+                Example 1:
+                  pushNWConfigOnTopology: false
+                  firewallTopology:
+                    extendedProperties: <App_TopologyExtendedProperties displayType="0" />
+                    topologyType: 4
+                    description: Cascading Gateways Topology
+                    isSmartTopology: true
+                    firewallGroups:
+                    - fwGroupType: 2
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T1
+                    - fwGroupType: 1
+                      isMnemonic: true
+                      clientGroup:
+                        clientGroupName: My CommServe Computer
+                    - fwGroupType: 3
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T2
+                    - fwGroupType: 4
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T3
+                    topologyEntity:
+                      topologyName: TestTopology
+            examples:
+              Cascading Gateways Topology:
+                value:
+                  pushNWConfigOnTopology: false
+                  firewallTopology:
+                    extendedProperties: <App_TopologyExtendedProperties displayType="0" />
+                    topologyType: 4
+                    description: Cascading Gateways Topology
+                    isSmartTopology: true
+                    firewallGroups:
+                    - fwGroupType: 2
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T1
+                    - fwGroupType: 1
+                      isMnemonic: true
+                      clientGroup:
+                        clientGroupName: My CommServe Computer
+                    - fwGroupType: 3
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T2
+                    - fwGroupType: 4
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T3
+                    topologyEntity:
+                      topologyName: TestTopology
+              One-Way Topology (Client Type -- Laptops):
+                value:
+                  pushNWConfigOnTopology: false
+                  firewallTopology:
+                    extendedProperties: <App_TopologyExtendedProperties displayType="1" />
+                    topologyType: 2
+                    description: One-Way Topology
+                    isSmartTopology: false
+                    firewallGroups:
+                    - fwGroupType: 2
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T1
+                    - fwGroupType: 1
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T2
+                    topologyEntity:
+                      topologyName: Test One-way
+              Network Gateway Topology:
+                value:
+                  pushNWConfigOnTopology: false
+                  firewallTopology:
+                    useWildcardProxy: true
+                    extendedProperties: <App_TopologyExtendedProperties displayType="0" />
+                    topologyType: 1
+                    description: Network Gateway Topology
+                    isSmartTopology: true
+                    firewallGroups:
+                    - fwGroupType: 2
+                      isMnemonic: true
+                      clientGroup:
+                        clientGroupName: My CommServe Computer
+                    - fwGroupType: 1
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T2
+                    - fwGroupType: 3
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T1
+                    topologyEntity:
+                      topologyName: TopoTest
+              Two-Way Topology:
+                value:
+                  pushNWConfigOnTopology: true
+                  firewallTopology:
+                    extendedProperties: string
+                    topologyType: 0
+                    description: string
+                    isSmartTopology: true
+                    firewallGroups:
+                    - fwGroupType: 0
+                      isMnemonic: true
+                      clientGroup:
+                        clientGroupName: string
+                    topologyEntity:
+                      topologyName: string
+          application/xml:
+            examples:
+              Configuring one-way network communication from tenants:
+                value: "<App_CreateFirewallTopologyReq>\n\t<firewallTopology useWildcardProxy=\"0\" extendedProperties=\"&lt;App_TopologyExtendedProperties displayType=&quot;0&quot; /&gt;\" topologyType=\"{{topologyType}}\">\n\t\t<firewallGroups fwGroupType=\"2\" isMnemonic=\"0\">\n\t\t\t<clientGroup clientGroupName=\"{{clientGroupName2}}\" />\n\t\t</firewallGroups>\n\t\t<firewallGroups fwGroupType=\"1\" isMnemonic=\"0\">\n\t\t\t<clientGroup clientGroupName=\"{{clientGroupName1}}\" />\n\t\t</firewallGroups>\n\t\t<topologyEntity topologyName=\"Ensure one-way traffic from tenants {{connectName}}\" />\n\t</firewallTopology>\n</App_CreateFirewallTopologyReq>"
+        description: ''
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  topology:
+                    type: object
+                    properties:
+                      _type_:
+                        type: integer
+                      topologyId:
+                        type: integer
+                  error:
+                    type: object
+                    properties:
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    topology:
+                      _type_: 156
+                      topologyId: 1086
+                    error:
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    topology:
+                      _type_: 156
+                      topologyId: 1086
+                    error:
+                      errorCode: 0
+    get:
+      operationId: get-FirewallTopology
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  firewallTopologies:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        extendedProperties:
+                          type: string
+                        topologyType:
+                          type: integer
+                        isTopologyForCSFailover:
+                          type: boolean
+                        flags:
+                          type: integer
+                        description:
+                          type: string
+                        isSmartTopology:
+                          type: boolean
+                        topologyEntity:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            topologyName:
+                              type: string
+                            topologyId:
+                              type: integer
+                  error:
+                    type: object
+                    properties:
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    firewallTopologies:
+                    - extendedProperties: <App_TopologyExtendedProperties displayType="0"/>
+                      topologyType: 1
+                      isTopologyForCSFailover: false
+                      flags: 0
+                      description: Network Gateway Topology
+                      isSmartTopology: false
+                      topologyEntity:
+                        _type_: 156
+                        topologyName: Topo1
+                        topologyId: 1075
+                    - extendedProperties: <App_TopologyExtendedProperties displayType="0"/>
+                      topologyType: 2
+                      isTopologyForCSFailover: false
+                      flags: 1
+                      description: One-Way Topology
+                      isSmartTopology: true
+                      topologyEntity:
+                        _type_: 156
+                        topologyName: Topo2
+                        topologyId: 1076
+                    - extendedProperties: <App_TopologyExtendedProperties displayType="0"/>
+                      topologyType: 4
+                      isTopologyForCSFailover: false
+                      flags: 1
+                      description: Cascading Gateways Topology
+                      isSmartTopology: true
+                      topologyEntity:
+                        _type_: 156
+                        topologyName: Topo3
+                        topologyId: 1077
+                    - extendedProperties: <App_TopologyExtendedProperties displayType="0"/>
+                      topologyType: 3
+                      isTopologyForCSFailover: false
+                      flags: 1
+                      description: Two-Way Topology
+                      isSmartTopology: true
+                      topologyEntity:
+                        _type_: 156
+                        topologyName: Topo4
+                        topologyId: 1078
+                    error:
+                      errorCode: 0
+              examples:
+                Network Topologies:
+                  value:
+                    firewallTopologies:
+                    - extendedProperties: <App_TopologyExtendedProperties displayType="0"/>
+                      topologyType: 1
+                      isTopologyForCSFailover: false
+                      flags: 0
+                      description: Network Gateway Topology
+                      isSmartTopology: false
+                      topologyEntity:
+                        _type_: 156
+                        topologyName: Topo1
+                        topologyId: 1075
+                    - extendedProperties: <App_TopologyExtendedProperties displayType="0"/>
+                      topologyType: 2
+                      isTopologyForCSFailover: false
+                      flags: 1
+                      description: One-Way Topology
+                      isSmartTopology: true
+                      topologyEntity:
+                        _type_: 156
+                        topologyName: Topo2
+                        topologyId: 1076
+                    - extendedProperties: <App_TopologyExtendedProperties displayType="0"/>
+                      topologyType: 4
+                      isTopologyForCSFailover: false
+                      flags: 1
+                      description: Cascading Gateways Topology
+                      isSmartTopology: true
+                      topologyEntity:
+                        _type_: 156
+                        topologyName: Topo3
+                        topologyId: 1077
+                    - extendedProperties: <App_TopologyExtendedProperties displayType="0"/>
+                      topologyType: 3
+                      isTopologyForCSFailover: false
+                      flags: 1
+                      description: Two-Way Topology
+                      isSmartTopology: true
+                      topologyEntity:
+                        _type_: 156
+                        topologyName: Topo4
+                        topologyId: 1078
+                    error:
+                      errorCode: 0
+      parameters:
+      - schema:
+          type: string
+        in: header
+        name: AuthToken
+        required: true
+      tags:
+      - Network Topology Operations
+      summary: Get Network Topologies (Deprecated)
+  '/FirewallTopology/{topologyId}':
+    delete:
+      deprecated: false
+      description: |
+        This operation deletes a network topology.
+      operationId: Delete Network Topology
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: topologyId
+        required: true
+        schema:
+          type: string
+      summary: Delete Network Topology (Deprecated)
+      tags:
+      - Network Topology Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0
+    get:
+      deprecated: false
+      description: |
+        This operation returns details of a particular network topology.
+      operationId: Get Network Topology properties
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: topologyId
+        required: true
+        schema:
+          type: string
+      summary: Get Network Topology properties (Deprecated)
+      tags:
+      - Network Topology Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  topologyInfo:
+                    type: object
+                    properties:
+                      useWildcardProxy:
+                        type: boolean
+                      extendedProperties:
+                        type: string
+                      topologyType:
+                        type: integer
+                      description:
+                        type: string
+                      firewallGroups:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            fwGroupType:
+                              type: integer
+                            isMnemonic:
+                              type: boolean
+                            clientGroup:
+                              type: object
+                              properties:
+                                _type_:
+                                  type: integer
+                                clientGroupId:
+                                  type: integer
+                      topologyEntity:
+                        type: object
+                        properties:
+                          _type_:
+                            type: integer
+                          topologyName:
+                            type: string
+                          topologyId:
+                            type: integer
+                  error:
+                    type: object
+                    properties:
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    topologyInfo:
+                      useWildcardProxy: true
+                      extendedProperties: <App_TopologyExtendedProperties displayType="0"/>
+                      topologyType: 1
+                      description: Network Gateway Topology
+                      firewallGroups:
+                      - fwGroupType: 2
+                        isMnemonic: false
+                        clientGroup:
+                          _type_: 28
+                          clientGroupId: 348
+                      - fwGroupType: 3
+                        isMnemonic: false
+                        clientGroup:
+                          _type_: 28
+                          clientGroupId: 349
+                      - fwGroupType: 1
+                        isMnemonic: false
+                        clientGroup:
+                          _type_: 28
+                          clientGroupId: 350
+                      topologyEntity:
+                        _type_: 156
+                        topologyName: Topo1
+                        topologyId: 1075
+                    error:
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    topologyInfo:
+                      useWildcardProxy: true
+                      extendedProperties: <App_TopologyExtendedProperties displayType="0"/>
+                      topologyType: 1
+                      description: Network Gateway Topology
+                      firewallGroups:
+                      - fwGroupType: 2
+                        isMnemonic: false
+                        clientGroup:
+                          _type_: 28
+                          clientGroupId: 348
+                      - fwGroupType: 3
+                        isMnemonic: false
+                        clientGroup:
+                          _type_: 28
+                          clientGroupId: 349
+                      - fwGroupType: 1
+                        isMnemonic: false
+                        clientGroup:
+                          _type_: 28
+                          clientGroupId: 350
+                      topologyEntity:
+                        _type_: 156
+                        topologyName: Topo1
+                        topologyId: 1075
+                    error:
+                      errorCode: 0
+    put:
+      deprecated: false
+      description: |-
+        "This operation updates a network topology.
+        <h2>Request Body</h2>
+        <table>
+          <tr>
+            <td>Name</td>
+            <td>Description</td>
+          </tr>
+          <tr>
+            <td>topologyType</td>
+            <td>
+              <p>values - network gateway topology 1 - one-way topology 2 - two-way topology 3 - cascading gateways topology 4</p>
+            </td>
+          </tr>
+          <tr>
+            <td>displayType</td>
+            <td>
+              <p>values - servers 0 - laptops 1</p>
+            </td>
+          </tr>
+        </table>"
+      operationId: Update Network Topology
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: topologyId
+        required: true
+        schema:
+          type: string
+      summary: Update Network Topology (Deprecated)
+      tags:
+      - Network Topology Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pushNWConfigOnTopology:
+                  type: boolean
+                firewallTopology:
+                  type: object
+                  properties:
+                    extendedProperties:
+                      type: string
+                    topologyType:
+                      type: integer
+                    description:
+                      type: string
+                    isSmartTopology:
+                      type: boolean
+                    firewallGroups:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          fwGroupType:
+                            type: integer
+                          isMnemonic:
+                            type: boolean
+                          clientGroup:
+                            type: object
+                            properties:
+                              clientGroupName:
+                                type: string
+                    topologyEntity:
+                      type: object
+                      properties:
+                        topologyName:
+                          type: string
+                        topologyId:
+                          type: integer
+              x-examples:
+                Example 1:
+                  pushNWConfigOnTopology: false
+                  firewallTopology:
+                    extendedProperties: ''
+                    topologyType: 4
+                    description: Updating Cascading Gateways Topology
+                    isSmartTopology: true
+                    firewallGroups:
+                    - fwGroupType: 2
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T4
+                    - fwGroupType: 1
+                      isMnemonic: true
+                      clientGroup:
+                        clientGroupName: My CommServe Computer
+                    - fwGroupType: 3
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T2
+                    - fwGroupType: 4
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T1
+                    topologyEntity:
+                      topologyName: TestTopology
+                      topologyId: 1080
+            examples:
+              Update Network Topology:
+                value:
+                  pushNWConfigOnTopology: false
+                  firewallTopology:
+                    extendedProperties: ''
+                    topologyType: 4
+                    description: Updating Cascading Gateways Topology
+                    isSmartTopology: true
+                    firewallGroups:
+                    - fwGroupType: 2
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T4
+                    - fwGroupType: 1
+                      isMnemonic: true
+                      clientGroup:
+                        clientGroupName: My CommServe Computer
+                    - fwGroupType: 3
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T2
+                    - fwGroupType: 4
+                      isMnemonic: false
+                      clientGroup:
+                        clientGroupName: T1
+                    topologyEntity:
+                      topologyName: TestTopology
+                      topologyId: 1080
+      responses:
+        '200':
+          description: OK
+  '/FirewallTopology/{topologyId}/Push':
+    post:
+      deprecated: false
+      operationId: Push Network Configuration
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: topologyId
+        required: true
+        schema:
+          type: string
+      summary: Push Network Configuration
+      tags:
+      - Network Topology Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorString:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorString: 'Push Network Configuration submitted successfully for Network Topology [TestTopology].'
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      errorString: 'Push Network Configuration submitted successfully for Network Topology [TestTopology].'
+                      errorCode: 0

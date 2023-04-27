@@ -1,0 +1,37 @@
+---
+id: get-commserve-dr-backup
+title: "Disaster Recovery Backup"
+description: "This operation runs a disaster recovery backup job."
+sidebar_label: "Disaster Recovery Backup"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["Disaster Recovery Backup"],"responses":{"200":{"description":"OK"}},"operationId":"get-Commserve-DRBackup","description":"This operation runs a disaster recovery backup job.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_disaster_recovery_backup.htm)\n","requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"isCompressionEnabled":{"type":"boolean"},"jobType":{"type":"integer"},"backupType":{"type":"integer"}},"x-examples":{"Example 1":{"isCompressionEnabled":false,"jobType":1,"backupType":1}}},"examples":{"Example 1":{"value":{"isCompressionEnabled":false,"jobType":1,"backupType":1}}}}}},"method":"post","path":"/Commserve/DRBackup","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"isCompressionEnabled":true,"jobType":0,"backupType":0},"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Disaster Recovery Backup","description":{"content":"This operation runs a disaster recovery backup job.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_disaster_recovery_backup.htm)\n","type":"text/plain"},"url":{"path":["Commserve","DRBackup"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Content-Type","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/DisasterRecoveryBackup/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Disaster Recovery Backup
+
+
+
+This operation runs a disaster recovery backup job.
+
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_disaster_recovery_backup.htm)
+
+
+<MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"isCompressionEnabled"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"jobType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"backupType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

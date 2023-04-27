@@ -1,0 +1,48 @@
+{
+  "name": "webdoc",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start --host 0.0.0.0",
+    "build": "docusaurus build",
+    "generate": "set \"DEBUG=search-local:*\" && docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "serve": "docusaurus serve --host 0.0.0.0 --port 80",
+    "cleanAndGen": "docusaurus clean-api-docs all && docusaurus gen-api-docs all",
+    "sidebarchanges": "node generatesidebar.js"
+  },
+  "dependencies": {
+    "@aldridged/docusaurus-plugin-lunr": "^1.0.0-alpha.10",
+    "@cmfcmf/docusaurus-search-local": "^0.11.0",
+    "@docusaurus/core": "2.2.0",
+    "@docusaurus/plugin-debug": "^2.3.1",
+    "@docusaurus/preset-classic": "2.2.0",
+    "@easyops-cn/docusaurus-search-local": "^0.35.0",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mdx-js/react": "^1.6.22",
+    "@mui/icons-material": "^5.10.16",
+    "@mui/material": "^5.10.17",
+    "clsx": "^1.2.1",
+    "docusaurus-plugin-openapi-docs": "^1.5.1",
+    "docusaurus-theme-openapi-docs": "^1.5.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-json-view": "^1.21.3",
+    "react-markdown": "^7.1.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

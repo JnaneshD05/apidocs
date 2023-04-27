@@ -1,0 +1,34 @@
+---
+id: verify-export-set
+title: "Verify ExportSet"
+description: "This operation verifies an exportset."
+sidebar_label: "Verify ExportSet"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation verifies an exportset.","operationId":"Verify ExportSet","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"requestBody":{"content":{"application/json":{"example":{"description":"test2","downLoadSetID":"C6810F3A-F4E1-4C1E-8E74-E7447C0F660A"},"schema":{"allOf":[{"example":{"description":"test2","downLoadSetID":"C6810F3A-F4E1-4C1E-8E74-E7447C0F660A"},"title":"VerifyExportSetRequest","properties":{"description":{"type":"string"},"downLoadSetID":{"type":"string"}}}],"type":"object"}}},"description":"","required":true},"tags":["Compliance"],"responses":{"200":{"description":"OK"}},"method":"post","path":"/ValidateExportInputs","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"description":"test2","downLoadSetID":"C6810F3A-F4E1-4C1E-8E74-E7447C0F660A"},"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Verify ExportSet","description":{"content":"This operation verifies an exportset.","type":"text/plain"},"url":{"path":["ValidateExportInputs"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/Compliance/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Verify ExportSet
+
+
+
+This operation verifies an exportset.
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong><strong style={{"fontSize":"var(--ifm-code-font-size)","color":"var(--openapi-required)"}}> required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"description"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"downLoadSetID"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

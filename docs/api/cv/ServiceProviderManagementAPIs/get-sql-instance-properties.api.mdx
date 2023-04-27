@@ -1,0 +1,34 @@
+---
+id: get-sql-instance-properties
+title: "Get SQL instance properties"
+description: "This operation fetches the sql instance properties"
+sidebar_label: "Get SQL instance properties"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation fetches the sql instance properties","operationId":"Get SQL instance properties","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"path","name":"instanceId","required":true,"schema":{"type":"string"}}],"tags":["Sql"],"responses":{"200":{"description":"OK"}},"method":"get","path":"/sql/instance/{instanceId}","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get SQL instance properties","description":{"content":"This operation fetches the sql instance properties","type":"text/plain"},"url":{"path":["sql","instance",":instanceId"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"instanceId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/ServiceProviderManagementAPIs/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get SQL instance properties
+
+
+
+This operation fetches the sql instance properties
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"instanceId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

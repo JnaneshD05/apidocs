@@ -1,0 +1,1 @@
+module.exports = [{"type":"doc","id":"api/cv/CSLiveSync/template"},{"type":"category","label":"CSLiveSync","link":{"type":"doc","id":"api/cv/CSLiveSync/cs-live-sync"},"items":[{"type":"doc","id":"api/cv/CSLiveSync/disable-cs-live-sync","label":"CSLiveSync","className":"api-method post"}]}];

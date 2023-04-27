@@ -1,0 +1,619 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: "Template"
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Array Management
+paths:
+  /StorageArrays:
+    get:
+      deprecated: false
+      operationId: Arrays
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      summary: Arrays
+      tags:
+      - Array Management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  copyId:
+                    type: integer
+                  appId:
+                    type: integer
+                  array:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      id:
+                        type: integer
+                  vendor:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      id:
+                        type: integer
+                  arrayList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        offlineReason:
+                          type: string
+                        arrayType:
+                          type: integer
+                        flags:
+                          type: integer
+                        description:
+                          type: string
+                        ctrlHostName:
+                          type: string
+                        isEnabled:
+                          type: boolean
+                        arrayInfoType:
+                          type: integer
+                        userPswd:
+                          type: object
+                          properties:
+                            userName:
+                              type: string
+                        arrayName:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            id:
+                              type: integer
+                        vendor:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            id:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    copyId: 0
+                    appId: 0
+                    array:
+                      name: ''
+                      id: 0
+                    vendor:
+                      name: ''
+                      id: 0
+                    arrayList:
+                    - offlineReason: ''
+                      arrayType: 0
+                      flags: 16
+                      description: ''
+                      ctrlHostName: ''
+                      isEnabled: true
+                      arrayInfoType: 0
+                      userPswd:
+                        userName: root
+                      arrayName:
+                        name: mold.commvault.com
+                        id: 6056
+                      vendor:
+                        name: NetApp
+                        id: 0
+                    - offlineReason: ''
+                      arrayType: 0
+                      flags: 16
+                      description: ''
+                      ctrlHostName: ''
+                      isEnabled: true
+                      arrayInfoType: 0
+                      userPswd:
+                        userName: root
+                      arrayName:
+                        name: hfiler5.testlab.commvault.com
+                        id: 6098
+                      vendor:
+                        name: NetApp
+                        id: 0
+              examples:
+                Arrays:
+                  value:
+                    copyId: 0
+                    appId: 0
+                    array:
+                      name: ''
+                      id: 0
+                    vendor:
+                      name: ''
+                      id: 0
+                    arrayList:
+                    - offlineReason: ''
+                      arrayType: 0
+                      flags: 16
+                      description: ''
+                      ctrlHostName: ''
+                      isEnabled: true
+                      arrayInfoType: 0
+                      userPswd:
+                        userName: root
+                      arrayName:
+                        name: mold.commvault.com
+                        id: 6056
+                      vendor:
+                        name: NetApp
+                        id: 0
+                    - offlineReason: ''
+                      arrayType: 0
+                      flags: 16
+                      description: ''
+                      ctrlHostName: ''
+                      isEnabled: true
+                      arrayInfoType: 0
+                      userPswd:
+                        userName: root
+                      arrayName:
+                        name: hfiler5.testlab.commvault.com
+                        id: 6098
+                      vendor:
+                        name: NetApp
+                        id: 0
+    post:
+      deprecated: false
+      description: |
+        This API is used to add an array.
+
+        ## Request Body
+
+        | **Name** | **Description** |
+        | --- | --- |
+        | arrayName/name | Name of the Array |
+        | vendor/name | Name of the vendor |
+        | userPswd/userName | Array user name |
+        | userpswd/password | Base64 encoded Array password |
+      operationId: Add storage array
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Add storage array
+      tags:
+      - Array Management
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                clientId:
+                  type: integer
+                flags:
+                  type: integer
+                assocType:
+                  type: integer
+                copyId:
+                  type: integer
+                appId:
+                  type: integer
+                selectedMAs:
+                  type: array
+                  items:
+                    type: object
+                    properties: {}
+                hostDG:
+                  type: object
+                  properties:
+                    doNotMoveDevices:
+                      type: boolean
+                    isOverridden:
+                      type: boolean
+                    hostDGName:
+                      type: string
+                    useOnlySpouseDevices:
+                      type: boolean
+                    flags:
+                      type: integer
+                    deviceGroupOption:
+                      type: integer
+                arrayDG:
+                  type: object
+                  properties:
+                    isOverridden:
+                      type: boolean
+                    arrayDGName:
+                      type: string
+                    flags:
+                      type: integer
+                    disableDG:
+                      type: boolean
+                    useDevicesFromThisDG:
+                      type: boolean
+                configs:
+                  type: object
+                  properties: {}
+                array:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    id:
+                      type: integer
+                vendor:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    id:
+                      type: integer
+                info:
+                  type: object
+                  properties:
+                    passwordEdit:
+                      type: boolean
+                    offlineReason:
+                      type: string
+                    arrayType:
+                      type: integer
+                    flags:
+                      type: integer
+                    description:
+                      type: string
+                    ctrlHostName:
+                      type: string
+                    offlineCode:
+                      type: integer
+                    isEnabled:
+                      type: boolean
+                    arrayInfoType:
+                      type: integer
+                    uniqueIdentifier:
+                      type: string
+                    securityAssociations:
+                      type: object
+                      properties:
+                        processHiddenPermission:
+                          type: integer
+                    userPswd:
+                      type: object
+                      properties:
+                        userName:
+                          type: string
+                        password:
+                          type: string
+                    arraySecurity:
+                      type: object
+                      properties: {}
+                    arrayName:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        id:
+                          type: integer
+                    vendor:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        id:
+                          type: integer
+                    client:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        id:
+                          type: integer
+              x-examples:
+                Example 1:
+                  clientId: 0
+                  flags: 0
+                  assocType: 0
+                  copyId: 0
+                  appId: 0
+                  selectedMAs: []
+                  hostDG:
+                    doNotMoveDevices: true
+                    isOverridden: false
+                    hostDGName: ''
+                    useOnlySpouseDevices: false
+                    flags: 0
+                    deviceGroupOption: 0
+                  arrayDG:
+                    isOverridden: false
+                    arrayDGName: ''
+                    flags: 0
+                    disableDG: false
+                    useDevicesFromThisDG: false
+                  configs: {}
+                  array:
+                    name: ''
+                    id: 0
+                  vendor:
+                    name: ''
+                    id: 0
+                  info:
+                    passwordEdit: false
+                    offlineReason: ''
+                    arrayType: 0
+                    flags: 0
+                    description: ''
+                    ctrlHostName: ''
+                    offlineCode: 0
+                    isEnabled: true
+                    arrayInfoType: 0
+                    uniqueIdentifier: ''
+                    securityAssociations:
+                      processHiddenPermission: 0
+                    userPswd:
+                      userName: testadmin
+                      password: password
+                    arraySecurity: {}
+                    arrayName:
+                      name: 10.45.135.99
+                      id: 0
+                    vendor:
+                      name: Nutanix
+                      id: 0
+                    client:
+                      name: ''
+                      id: 0
+            examples:
+              Add Array:
+                value:
+                  clientId: 0
+                  flags: 0
+                  assocType: 0
+                  copyId: 0
+                  appId: 0
+                  selectedMAs: []
+                  hostDG:
+                    doNotMoveDevices: true
+                    isOverridden: false
+                    hostDGName: ''
+                    useOnlySpouseDevices: false
+                    flags: 0
+                    deviceGroupOption: 0
+                  arrayDG:
+                    isOverridden: false
+                    arrayDGName: ''
+                    flags: 0
+                    disableDG: false
+                    useDevicesFromThisDG: false
+                  configs: {}
+                  array:
+                    name: ''
+                    id: 0
+                  vendor:
+                    name: ''
+                    id: 0
+                  info:
+                    passwordEdit: false
+                    offlineReason: ''
+                    arrayType: 0
+                    flags: 0
+                    description: ''
+                    ctrlHostName: ''
+                    offlineCode: 0
+                    isEnabled: true
+                    arrayInfoType: 0
+                    uniqueIdentifier: ''
+                    securityAssociations:
+                      processHiddenPermission: 0
+                    userPswd:
+                      userName: testadmin
+                      password: password
+                    arraySecurity: {}
+                    arrayName:
+                      name: 10.45.135.99
+                      id: 0
+                    vendor:
+                      name: Nutanix
+                      id: 0
+                    client:
+                      name: ''
+                      id: 0
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: WebServer
+                        value: webServer_name
+                    errorMessage: '6049'
+                    errorCode: 0
+  '/StorageArrays/{control_host_id}':
+    delete:
+      deprecated: false
+      description: |
+        | **Name** | **Description** |
+        | --- | --- |
+        | control_host_id | control host id fetched from GET StorageArrays (arrayName/id) |
+      operationId: Delete Storage Array
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: control_host_id
+        required: true
+        schema:
+          type: string
+      summary: Delete Storage Array
+      tags:
+      - Array Management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  warningCode:
+                    type: integer
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                  warningMessage:
+                    type: string
+                x-examples:
+                  Example 1:
+                    warningCode: 0
+                    errorMessage: Array has been successfully deleted
+                    errorCode: 0
+                    warningMessage: ''
+              examples:
+                Example 1:
+                  value:
+                    warningCode: 0
+                    errorMessage: Array has been successfully deleted
+                    errorCode: 0
+                    warningMessage: ''
+    get:
+      deprecated: false
+      operationId: Get storage array Details
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: control_host_id
+        required: true
+        schema:
+          type: string
+      summary: Get storage array Details
+      tags:
+      - Array Management
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  add:
+                    type: boolean
+                  forceAdd:
+                    type: boolean
+                  clientId:
+                    type: integer
+                  flags:
+                    type: integer
+                  assocType:
+                    type: integer
+                  arrayPasswordLabel:
+                    type: string
+                  copyId:
+                    type: integer
+                  arrayNameLabel:
+                    type: string
+                  appId:
+                    type: integer
+                  arrayControlHostLabel:
+                    type: string
+                  arrayUserNameLabel:
+                    type: string
+                  availableMAs:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        arrayControllerId:
+                          type: integer
+                        mediaAgent:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            id:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    add: false
+                    forceAdd: false
+                    clientId: 0
+                    flags: 0
+                    assocType: 3
+                    arrayPasswordLabel: ''
+                    copyId: 0
+                    arrayNameLabel: ''
+                    appId: 0
+                    arrayControlHostLabel: ''
+                    arrayUserNameLabel: ''
+                    availableMAs:
+                    - arrayControllerId: 0
+                      mediaAgent:
+                        name: 172.24.25.41
+                        id: 17
+                    - arrayControllerId: 0
+                      mediaAgent:
+                        name: 172.24.45.28
+                        id: 7745
+              examples:
+                Array Details:
+                  value: {}
+

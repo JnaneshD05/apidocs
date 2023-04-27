@@ -1,0 +1,34 @@
+---
+id: start-data-crawl
+title: "Start Data Crawl"
+description: "This operation starts a data crawl from the given file source"
+sidebar_label: "Start Data Crawl"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation starts a data crawl from the given file source","operationId":"Start Data Crawl","parameters":[{"description":"","explode":true,"in":"query","name":"datasourceId","schema":{"example":"{{datasourceId}}","type":"string"}},{"description":"","explode":true,"in":"query","name":"type","schema":{"example":1,"format":"int32","type":"integer"}},{"description":"","explode":true,"in":"query","name":"operation","schema":{"example":3,"format":"int32","type":"integer"}},{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/xml","type":"string"}},{"description":"","in":"path","name":"projectId","required":true,"schema":{"type":"string"}}],"tags":["Apps"],"responses":{"200":{"description":"OK","content":{"text/plain":{"examples":{"Start Incremental Data Crawl - EDiscoveryClients/Clients/{{projectId}}/Jobs?datasourceId={{datasourceId}}&type=1&operation=2":{"value":"<App_GenericResp />"}}}}}},"method":"get","path":"/EDiscoveryClients/Clients/{projectId}/Jobs","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Commvault Rest API - Public","contact":{},"version":"1.0","description":"## Welcome\n\nWelcome to Commvault's Rest APIs. You can explore our APIs in [Postman](https://getpostman.com) using the predefined requests we created\n\nThe current version of this documentation is **Commvault Platform Release 2022E**.\n\nYou can access LTS documentation here:\n\n[Feature Release 11.20](https://documenter.getpostman.com/view/2046098/UVR7KoPJ)\n\n[Feature Release 11.24](https://documenter.getpostman.com/view/2046098/UVR7KoPL)\n\nFor more V2 and Latest APIs, please visit your API Explorer page.  \n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=107350_1.htm)\n\n"},"postman":{"name":"Start Data Crawl","description":{"content":"This operation starts a data crawl from the given file source","type":"text/plain"},"url":{"path":["EDiscoveryClients","Clients",":projectId","Jobs"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"datasourceId","value":""},{"disabled":false,"key":"type","value":""},{"disabled":false,"key":"operation","value":""}],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"projectId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"text/plain"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/ActivateOperations/commvault-rest-api-public
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Start Data Crawl
+
+
+
+This operation starts a data crawl from the given file source
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"projectId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"datasourceId","schema":{"example":"{{datasourceId}}","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"type","schema":{"example":1,"format":"int32","type":"integer"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"operation","schema":{"example":3,"format":"int32","type":"integer"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/xml","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={" Start  Incremental  Data  Crawl -  E Discovery Clients/ Clients/{{project Id}}/ Jobs?datasource Id={{datasource Id}}&type=1&operation=2"} value={" Start  Incremental  Data  Crawl -  E Discovery Clients/ Clients/{{project Id}}/ Jobs?datasource Id={{datasource Id}}&type=1&operation=2"}><ResponseSamples responseExample={"<App_GenericResp />"} language={"shell"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

@@ -1,0 +1,42 @@
+---
+id: get-syslog-server-details
+title: "Get Syslog Server Details (Deprecated)"
+description: "This operation returns the details of a syslog server."
+sidebar_label: "Get Syslog Server Details (Deprecated)"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":true,"description":"This operation returns the details of a syslog server.\n\n\n[_More Details_](https://documentation.commvault.com/11.24/essential/114182_view_details_of_syslog_server_rest_api_get.html)\n","operationId":"Get Syslog Server Details","parameters":[{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/json","type":"string"}},{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Syslog Server"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"hostname":{"type":"string"},"port":{"type":"integer"},"enabled":{"type":"boolean"},"syslogPolicy":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"enabled":{"type":"boolean"}}}}},"x-examples":{"Example 1":{"hostname":"syslogserver","port":514,"enabled":true,"syslogPolicy":[{"name":"Alerts","enabled":false},{"name":"Audit","enabled":true},{"name":"Events","enabled":true}]}}},"examples":{"Syslog Server Details":{"value":{"hostname":"syslogserver","port":514,"enabled":true,"syslogPolicy":[{"name":"Alerts","enabled":false},{"name":"Audit","enabled":true},{"name":"Events","enabled":true}]}}}}}}},"method":"get","path":"/Status","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get Syslog Server Details (Deprecated)","description":{"content":"This operation returns the details of a syslog server.\n\n\n[_More Details_](https://documentation.commvault.com/11.24/essential/114182_view_details_of_syslog_server_rest_api_get.html)\n","type":"text/plain"},"url":{"path":["Status"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/SyslogServer/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get Syslog Server Details (Deprecated)
+
+:::caution deprecated
+
+This endpoint has been deprecated and may be removed in future versions of the API.
+
+:::
+
+This operation returns the details of a syslog server.
+
+
+[_More Details_](https://documentation.commvault.com/11.24/essential/114182_view_details_of_syslog_server_rest_api_get.html)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/json","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"hostname"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"port"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"enabled"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>syslogPolicy</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"enabled"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"hostname\": \"string\",\n  \"port\": 0,\n  \"enabled\": true,\n  \"syslogPolicy\": [\n    {\n      \"name\": \"string\",\n      \"enabled\": true\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Syslog  Server  Details"} value={" Syslog  Server  Details"}><ResponseSamples responseExample={"{\n  \"hostname\": \"syslogserver\",\n  \"port\": 514,\n  \"enabled\": true,\n  \"syslogPolicy\": [\n    {\n      \"name\": \"Alerts\",\n      \"enabled\": false\n    },\n    {\n      \"name\": \"Audit\",\n      \"enabled\": true\n    },\n    {\n      \"name\": \"Events\",\n      \"enabled\": true\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

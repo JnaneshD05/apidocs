@@ -1,0 +1,1506 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Backup Set Operations
+paths:
+  /Backupset:
+    get:
+      deprecated: false
+      description: |
+        This operation returns a list of backup sets for a client.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_backup_set.htm)
+      operationId: Get All Backup Sets
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: clientId
+        schema:
+          example: 2
+          format: int32
+          type: integer
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get All Backup Sets
+      tags:
+      - Backup Set Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  backupsetProperties:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        modifiedTime:
+                          type: integer
+                        indexSettings:
+                          type: object
+                          properties: {}
+                        fsBackupSet:
+                          type: object
+                          properties:
+                            preserveFileAccessTimes:
+                              type: boolean
+                            useDCserviceForScan:
+                              type: boolean
+                        planEntity:
+                          type: object
+                          properties: {}
+                        backupSetEntity:
+                          type: object
+                          properties:
+                            clientId:
+                              type: integer
+                            clientName:
+                              type: string
+                            instanceName:
+                              type: string
+                            appName:
+                              type: string
+                            backupsetId:
+                              type: integer
+                            _type_:
+                              type: integer
+                            instanceId:
+                              type: integer
+                            backupsetName:
+                              type: string
+                            applicationId:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    backupsetProperties:
+                    - modifiedTime: 1487014530
+                      indexSettings: {}
+                      fsBackupSet:
+                        preserveFileAccessTimes: false
+                        useDCserviceForScan: true
+                      planEntity: {}
+                      backupSetEntity:
+                        clientId: 2
+                        clientName: greenvalley
+                        instanceName: DefaultInstanceName
+                        appName: Windows File System
+                        backupsetId: 3
+                        _type_: 6
+                        instanceId: 1
+                        backupsetName: defaultBackupSet
+                        applicationId: 33
+              examples:
+                Example 1:
+                  value:
+                    backupsetProperties:
+                    - modifiedTime: 1487014530
+                      indexSettings: {}
+                      fsBackupSet:
+                        preserveFileAccessTimes: false
+                        useDCserviceForScan: true
+                      planEntity: {}
+                      backupSetEntity:
+                        clientId: 2
+                        clientName: greenvalley
+                        instanceName: DefaultInstanceName
+                        appName: Windows File System
+                        backupsetId: 3
+                        _type_: 6
+                        instanceId: 1
+                        backupsetName: defaultBackupSet
+                        applicationId: 33
+    post:
+      deprecated: false
+      description: |
+        This operation creates a backup set.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_backup_set.htm)
+      operationId: Create Backup Set
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                association:
+                  type: object
+                  properties:
+                    entity:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          clientName:
+                            type: string
+                          subclientName:
+                            type: string
+                          backupsetName:
+                            type: string
+                          instanceName:
+                            type: string
+                          appName:
+                            type: string
+              x-examples:
+                Example 1:
+                  association:
+                    entity:
+                    - clientName: '{{clientName}}'
+                      subclientName: default
+                      backupsetName: ff5bd3eb-923c-4341-a9b6-cf96291985e6
+                      instanceName: DefaultInstanceName
+                      appName: File System
+            examples:
+              Example 1:
+                value:
+                  association:
+                    entity:
+                    - clientName: '{{clientName}}'
+                      subclientName: default
+                      backupsetName: ff5bd3eb-923c-4341-a9b6-cf96291985e6
+                      instanceName: DefaultInstanceName
+                      appName: File System
+        description: ''
+        required: true
+      summary: Create Backup Set
+      tags:
+      - Backup Set Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorCode:
+                          type: integer
+                        entity:
+                          type: object
+                          properties:
+                            srmReportSet:
+                              type: integer
+                            type:
+                              type: integer
+                            applicationId:
+                              type: integer
+                            backupsetId:
+                              type: integer
+                            srmReportType:
+                              type: integer
+                            clientSidePackage:
+                              type: boolean
+                            clientId:
+                              type: integer
+                            _type_:
+                              type: integer
+                            consumeLicense:
+                              type: boolean
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorCode: 0
+                      entity:
+                        srmReportSet: 0
+                        type: 0
+                        applicationId: 33
+                        backupsetId: 231
+                        srmReportType: 0
+                        clientSidePackage: true
+                        clientId: 2
+                        _type_: 0
+                        consumeLicense: true
+              examples:
+                Example 1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorCode: 0
+                      entity:
+                        srmReportSet: 0
+                        type: 0
+                        applicationId: 33
+                        backupsetId: 231
+                        srmReportType: 0
+                        clientSidePackage: true
+                        clientId: 2
+                        _type_: 0
+                        consumeLicense: true
+  '/Backupset/{backupsetId2}':
+    delete:
+      deprecated: false
+      description: |
+        This operation deletes a backup set.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/delete_backup_set.htm)
+      operationId: Delete a Backup Set
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: backupsetId2
+        required: true
+        schema:
+          type: string
+      summary: Delete a Backup Set
+      tags:
+      - Backup Set Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorCode:
+                          type: integer
+                        entity:
+                          type: object
+                          properties:
+                            srmReportSet:
+                              type: integer
+                            type:
+                              type: integer
+                            applicationId:
+                              type: integer
+                            backupsetId:
+                              type: integer
+                            srmReportType:
+                              type: integer
+                            clientSidePackage:
+                              type: boolean
+                            clientId:
+                              type: integer
+                            _type_:
+                              type: integer
+                            consumeLicense:
+                              type: boolean
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorCode: 0
+                      entity:
+                        srmReportSet: 0
+                        type: 0
+                        applicationId: 0
+                        backupsetId: 0
+                        srmReportType: 0
+                        clientSidePackage: true
+                        clientId: 0
+                        _type_: 0
+                        consumeLicense: true
+              examples:
+                Example 1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorCode: 0
+                      entity:
+                        srmReportSet: 0
+                        type: 0
+                        applicationId: 0
+                        backupsetId: 0
+                        srmReportType: 0
+                        clientSidePackage: true
+                        clientId: 0
+                        _type_: 0
+                        consumeLicense: true
+    get:
+      summary: Get Backup Set Properties
+      operationId: get-Backupset-backupsetId2
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  backupsetProperties:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        modifiedTime:
+                          type: integer
+                        securityAssociations:
+                          type: object
+                          properties:
+                            ownerAssociations:
+                              type: object
+                              properties: {}
+                        indexSettings:
+                          type: object
+                          properties:
+                            currentIndexServer:
+                              type: object
+                              properties:
+                                clientId:
+                                  type: integer
+                                clientName:
+                                  type: string
+                            qualifyingIndexServers:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  clientId:
+                                    type: integer
+                                  clientName:
+                                    type: string
+                        backupsetSecurity:
+                          type: object
+                          properties:
+                            associatedUserGroups:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  userGroupId:
+                                    type: integer
+                                  _type_:
+                                    type: integer
+                                  userGroupName:
+                                    type: string
+                            ownerCapabilities:
+                              type: object
+                              properties: {}
+                        fsBackupSet:
+                          type: object
+                          properties:
+                            pre70SystemStateArchiveFilesExist:
+                              type: boolean
+                            useChangeJournal:
+                              type: boolean
+                            runTrueUpJobAfterDaysForOnePass:
+                              type: integer
+                            isIndexingV2:
+                              type: boolean
+                            useArchiveBit:
+                              type: boolean
+                            isUseBlockLevelBackup:
+                              type: boolean
+                            flrRepSetName:
+                              type: string
+                            preserveFileAccessTimes:
+                              type: boolean
+                            netAppImageBackup:
+                              type: boolean
+                            customApplicationType:
+                              type: integer
+                            isTrueUpOptionEnabledForOnePass:
+                              type: boolean
+                            useDCserviceForScan:
+                              type: boolean
+                            fLRrepSetId:
+                              type: integer
+                        planEntity:
+                          type: object
+                          properties: {}
+                        commonBackupSet:
+                          type: object
+                          properties:
+                            dataMigratorILMCLASS:
+                              type: boolean
+                            newBackupSetName:
+                              type: string
+                            onDemandBackupset:
+                              type: boolean
+                            isDeleted:
+                              type: boolean
+                            isFanInBackupSet:
+                              type: boolean
+                            isLegalHoldBackupset:
+                              type: boolean
+                            decompressData:
+                              type: boolean
+                            isNasTurboBackupSet:
+                              type: boolean
+                            isWildCardContentBackupSet:
+                              type: boolean
+                            cDRFSDMBackupset:
+                              type: boolean
+                            userDescription:
+                              type: string
+                            associatedsubclientPolicy:
+                              type: integer
+                            isDedupBackupset:
+                              type: boolean
+                            isMyBackupSet:
+                              type: boolean
+                            siloCopyId:
+                              type: integer
+                            isDefaultBackupSet:
+                              type: boolean
+                            isHidden:
+                              type: boolean
+                            isMining:
+                              type: boolean
+                            isUSeDCForBackup:
+                              type: boolean
+                        backupSetEntity:
+                          type: object
+                          properties:
+                            clientId:
+                              type: integer
+                            clientName:
+                              type: string
+                            instanceName:
+                              type: string
+                            appName:
+                              type: string
+                            backupsetId:
+                              type: integer
+                            _type_:
+                              type: integer
+                            instanceId:
+                              type: integer
+                            backupsetName:
+                              type: string
+                            applicationId:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    backupsetProperties:
+                    - modifiedTime: 1487014530
+                      securityAssociations:
+                        ownerAssociations: {}
+                      indexSettings:
+                        currentIndexServer:
+                          clientId: 2
+                          clientName: greenvalley
+                        qualifyingIndexServers:
+                        - clientId: 2
+                          clientName: greenvalley
+                      backupsetSecurity:
+                        associatedUserGroups:
+                        - userGroupId: 1
+                          _type_: 15
+                          userGroupName: master
+                        - userGroupId: 3
+                          _type_: 15
+                          userGroupName: View All
+                        ownerCapabilities: {}
+                      fsBackupSet:
+                        pre70SystemStateArchiveFilesExist: false
+                        useChangeJournal: true
+                        runTrueUpJobAfterDaysForOnePass: 30
+                        isIndexingV2: true
+                        useArchiveBit: false
+                        isUseBlockLevelBackup: false
+                        flrRepSetName: ''
+                        preserveFileAccessTimes: false
+                        netAppImageBackup: false
+                        customApplicationType: 0
+                        isTrueUpOptionEnabledForOnePass: false
+                        useDCserviceForScan: false
+                        fLRrepSetId: 0
+                      planEntity: {}
+                      commonBackupSet:
+                        dataMigratorILMCLASS: false
+                        newBackupSetName: defaultBackupSet
+                        onDemandBackupset: false
+                        isDeleted: false
+                        isFanInBackupSet: false
+                        isLegalHoldBackupset: false
+                        decompressData: false
+                        isNasTurboBackupSet: false
+                        isWildCardContentBackupSet: false
+                        cDRFSDMBackupset: false
+                        userDescription: ''
+                        associatedsubclientPolicy: 0
+                        isDedupBackupset: false
+                        isMyBackupSet: false
+                        siloCopyId: 0
+                        isDefaultBackupSet: true
+                        isHidden: false
+                        isMining: false
+                        isUSeDCForBackup: false
+                      backupSetEntity:
+                        clientId: 2
+                        clientName: greenvalley
+                        instanceName: DefaultInstanceName
+                        appName: File System
+                        backupsetId: 3
+                        _type_: 6
+                        instanceId: 1
+                        backupsetName: defaultBackupSet
+                        applicationId: 33
+              examples:
+                Backup Set Properties:
+                  value:
+                    backupsetProperties:
+                    - modifiedTime: 1487014530
+                      securityAssociations:
+                        ownerAssociations: {}
+                      indexSettings:
+                        currentIndexServer:
+                          clientId: 2
+                          clientName: greenvalley
+                        qualifyingIndexServers:
+                        - clientId: 2
+                          clientName: greenvalley
+                      backupsetSecurity:
+                        associatedUserGroups:
+                        - userGroupId: 1
+                          _type_: 15
+                          userGroupName: master
+                        - userGroupId: 3
+                          _type_: 15
+                          userGroupName: View All
+                        ownerCapabilities: {}
+                      fsBackupSet:
+                        pre70SystemStateArchiveFilesExist: false
+                        useChangeJournal: true
+                        runTrueUpJobAfterDaysForOnePass: 30
+                        isIndexingV2: true
+                        useArchiveBit: false
+                        isUseBlockLevelBackup: false
+                        flrRepSetName: ''
+                        preserveFileAccessTimes: false
+                        netAppImageBackup: false
+                        customApplicationType: 0
+                        isTrueUpOptionEnabledForOnePass: false
+                        useDCserviceForScan: false
+                        fLRrepSetId: 0
+                      planEntity: {}
+                      commonBackupSet:
+                        dataMigratorILMCLASS: false
+                        newBackupSetName: defaultBackupSet
+                        onDemandBackupset: false
+                        isDeleted: false
+                        isFanInBackupSet: false
+                        isLegalHoldBackupset: false
+                        decompressData: false
+                        isNasTurboBackupSet: false
+                        isWildCardContentBackupSet: false
+                        cDRFSDMBackupset: false
+                        userDescription: ''
+                        associatedsubclientPolicy: 0
+                        isDedupBackupset: false
+                        isMyBackupSet: false
+                        siloCopyId: 0
+                        isDefaultBackupSet: true
+                        isHidden: false
+                        isMining: false
+                        isUSeDCForBackup: false
+                      backupSetEntity:
+                        clientId: 2
+                        clientName: greenvalley
+                        instanceName: DefaultInstanceName
+                        appName: File System
+                        backupsetId: 3
+                        _type_: 6
+                        instanceId: 1
+                        backupsetName: defaultBackupSet
+                        applicationId: 33
+      description: |
+        This operation returns the properties associated with a backup set.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_backup_set_properties.htm)
+      tags:
+      - Backup Set Operations
+    parameters:
+    - schema:
+        type: string
+      name: backupsetId2
+      in: path
+      required: true
+    post:
+      summary: Modify Backup Set Properties
+      operationId: post-Backupset-backupsetId2
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorCode:
+                          type: integer
+                        entity:
+                          type: object
+                          properties:
+                            srmReportSet:
+                              type: integer
+                            type:
+                              type: integer
+                            applicationId:
+                              type: integer
+                            backupsetId:
+                              type: integer
+                            srmReportType:
+                              type: integer
+                            clientSidePackage:
+                              type: boolean
+                            clientId:
+                              type: integer
+                            _type_:
+                              type: integer
+                            consumeLicense:
+                              type: boolean
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorCode: 0
+                      entity:
+                        srmReportSet: 0
+                        type: 0
+                        applicationId: 33
+                        backupsetId: 3
+                        srmReportType: 0
+                        clientSidePackage: true
+                        clientId: 2
+                        _type_: 0
+                        consumeLicense: true
+              examples:
+                POST BackupSet Properties - Setting the backupset name to defaultBackupSet:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorCode: 0
+                      entity:
+                        srmReportSet: 0
+                        type: 0
+                        applicationId: 33
+                        backupsetId: 3
+                        srmReportType: 0
+                        clientSidePackage: true
+                        clientId: 2
+                        _type_: 0
+                        consumeLicense: true
+      description: |
+        This operation updates the properties associated with a backup set.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_backup_set_properties.htm)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                backupsetProperties:
+                  type: object
+                  properties:
+                    commonBackupSet:
+                      type: object
+                      properties:
+                        newBackupSetName:
+                          type: string
+                association:
+                  type: object
+                  properties:
+                    entity:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          clientName:
+                            type: string
+                          backupsetName:
+                            type: string
+                          instanceName:
+                            type: string
+                          appName:
+                            type: string
+              x-examples:
+                Example 1:
+                  backupsetProperties:
+                    commonBackupSet:
+                      newBackupSetName: '{{backupsetName}}'
+                  association:
+                    entity:
+                    - clientName: '{{clientName}}'
+                      backupsetName: '{{backupsetName}}'
+                      instanceName: DefaultInstanceName
+                      appName: File System
+            examples:
+              Backup Set Properties:
+                value:
+                  backupsetProperties:
+                    commonBackupSet:
+                      newBackupSetName: '{{backupsetName}}'
+                  association:
+                    entity:
+                    - clientName: '{{clientName}}'
+                      backupsetName: '{{backupsetName}}'
+                      instanceName: DefaultInstanceName
+                      appName: File System
+              POST BackupSet Properties - Setting the backupset name to defaultBackupSet:
+                value:
+                  backupsetProperties:
+                    commonBackupSet:
+                      newBackupSetName: '{{backupsetName}}'
+                  association:
+                    entity:
+                    - clientName: '{{clientName}}'
+                      backupsetName: '{{backupsetName}}'
+                      instanceName: DefaultInstanceName
+                      appName: File System
+              Backup Set Properties - Associate To Plan:
+                value:
+                  backupsetProperties:
+                    planEntity:
+                      planName: Server plan
+      tags:
+      - Backup Set Operations
+  '/Backupset/{backupsetId}/action/backup':
+    post:
+      deprecated: false
+      description: |
+        This operation runs a backup job for a backup set.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_backup_set_backup.htm)
+      operationId: Trigger Backup Set Backup
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: backupsetId
+        required: true
+        schema:
+          type: string
+      summary: Trigger Backup Set Backup
+      tags:
+      - Backup Set Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskId:
+                    type: integer
+                  jobIds:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    taskId: 438
+                    jobIds:
+                    - '2316'
+                    - '2317'
+                    - '2318'
+                    - '2319'
+                    - '2320'
+                    - '2321'
+              examples:
+                Example 1:
+                  value:
+                    taskId: 438
+                    jobIds:
+                    - '2316'
+                    - '2317'
+                    - '2318'
+                    - '2319'
+                    - '2320'
+                    - '2321'
+  /CreateTask:
+    post:
+      deprecated: false
+      description: |
+        This operation runs a backup job for a subclient or a backup set.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_create_task_backup.htm)
+      operationId: Create Task (Backup)
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Create Task (Backup)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskId:
+                    type: integer
+                  jobIds:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    taskId: 124
+                    jobIds:
+                    - '301'
+              examples:
+                POST Create Task (Backup) - This request starts an immediate backup job.:
+                  value:
+                    taskId: 0
+                    jobIds:
+                    - string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taskInfo:
+                  type: object
+                  properties:
+                    associations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          applicationId:
+                            type: integer
+                          clientName:
+                            type: string
+                          commCellId:
+                            type: integer
+                          backupsetName:
+                            type: string
+                          _type_:
+                            type: integer
+                          appName:
+                            type: string
+                    task:
+                      type: object
+                      properties:
+                        sequenceNumber:
+                          type: integer
+                        initiatedFrom:
+                          type: integer
+                        taskType:
+                          type: integer
+                        policyType:
+                          type: integer
+                        taskId:
+                          type: integer
+                        taskFlags:
+                          type: object
+                          properties:
+                            disabled:
+                              type: boolean
+                    subTasks:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          subTask:
+                            type: object
+                            properties:
+                              subTaskType:
+                                type: integer
+                              operationType:
+                                type: integer
+                          options:
+                            type: object
+                            properties:
+                              backupOpts:
+                                type: object
+                                properties:
+                                  truncateLogsOnSource:
+                                    type: boolean
+                                  sybaseSkipFullafterLogBkp:
+                                    type: boolean
+                                  backupLevel:
+                                    type: integer
+                                  runIncrementalBackup:
+                                    type: boolean
+                                  isSpHasInLineCopy:
+                                    type: boolean
+                                  runSILOBackup:
+                                    type: boolean
+                                  doNotTruncateLog:
+                                    type: boolean
+                                  dataOpt:
+                                    type: object
+                                    properties:
+                                      skipCatalogPhaseForSnapBackup:
+                                        type: boolean
+                                      followMountPoints:
+                                        type: boolean
+                                      enableIndexCheckPointing:
+                                        type: boolean
+                                      enforceTransactionLogUsage:
+                                        type: boolean
+                                      spaceReclamation:
+                                        type: boolean
+                                      skipConsistencyCheck:
+                                        type: boolean
+                                      createNewIndex:
+                                        type: boolean
+                                      verifySynthFull:
+                                        type: boolean
+                                  dataPathOpt:
+                                    type: object
+                                    properties:
+                                      mediaAgent:
+                                        type: object
+                                        properties:
+                                          mediaAgentId:
+                                            type: integer
+                                      library:
+                                        type: object
+                                        properties:
+                                          libraryId:
+                                            type: integer
+                                      drivePool:
+                                        type: object
+                                        properties:
+                                          drivePoolId:
+                                            type: integer
+                                      spareGroup:
+                                        type: object
+                                        properties:
+                                          spareMediaGroupId:
+                                            type: integer
+                                      drive:
+                                        type: object
+                                        properties:
+                                          driveId:
+                                            type: integer
+                                  mediaOpt:
+                                    type: object
+                                    properties:
+                                      markMediaFullOnSuccess:
+                                        type: boolean
+                                      numberofDays:
+                                        type: integer
+                                      startNewMedia:
+                                        type: boolean
+                                      retentionJobType:
+                                        type: integer
+                                      allowOtherSchedulesToUseMediaSet:
+                                        type: boolean
+                                      reserveResourcesBeforeScan:
+                                        type: boolean
+                              commonOpts:
+                                type: object
+                                properties:
+                                  jobDescription:
+                                    type: string
+                                  jobRetryOpts:
+                                    type: object
+                                    properties:
+                                      killRunningJobWhenTotalRunningTimeExpires:
+                                        type: boolean
+                                      numberOfRetries:
+                                        type: integer
+                                      enableNumberOfRetries:
+                                        type: boolean
+                                      runningTime:
+                                        type: object
+                                        properties:
+                                          enableTotalRunningTime:
+                                            type: boolean
+                                          totalRunningTime:
+                                            type: integer
+                                  startUpOpts:
+                                    type: object
+                                    properties:
+                                      startInSuspendedState:
+                                        type: boolean
+                                      useDefaultPriority:
+                                        type: boolean
+                                      priority:
+                                        type: integer
+              x-examples:
+                Example 1:
+                  taskInfo:
+                    associations:
+                    - applicationId: 33
+                      clientName: '{{clientName}}'
+                      commCellId: 0
+                      backupsetName: '{{backupsetName}}'
+                      _type_: 7
+                      appName: File System
+                    task:
+                      sequenceNumber: 10
+                      initiatedFrom: 2
+                      taskType: 1
+                      policyType: 0
+                      taskId: 0
+                      taskFlags:
+                        disabled: false
+                    subTasks:
+                    - subTask:
+                        subTaskType: 2
+                        operationType: 2
+                      options:
+                        backupOpts:
+                          truncateLogsOnSource: false
+                          sybaseSkipFullafterLogBkp: false
+                          backupLevel: 1
+                          runIncrementalBackup: true
+                          isSpHasInLineCopy: false
+                          runSILOBackup: false
+                          doNotTruncateLog: false
+                          dataOpt:
+                            skipCatalogPhaseForSnapBackup: false
+                            followMountPoints: true
+                            enableIndexCheckPointing: false
+                            enforceTransactionLogUsage: false
+                            spaceReclamation: false
+                            skipConsistencyCheck: false
+                            createNewIndex: false
+                            verifySynthFull: false
+                          dataPathOpt:
+                            mediaAgent:
+                              mediaAgentId: 0
+                            library:
+                              libraryId: 0
+                            drivePool:
+                              drivePoolId: 0
+                            spareGroup:
+                              spareMediaGroupId: 0
+                            drive:
+                              driveId: 0
+                          mediaOpt:
+                            markMediaFullOnSuccess: false
+                            numberofDays: 30
+                            startNewMedia: true
+                            retentionJobType: 2
+                            allowOtherSchedulesToUseMediaSet: true
+                            reserveResourcesBeforeScan: false
+                        commonOpts:
+                          jobDescription: ''
+                          jobRetryOpts:
+                            killRunningJobWhenTotalRunningTimeExpires: false
+                            numberOfRetries: 0
+                            enableNumberOfRetries: false
+                            runningTime:
+                              enableTotalRunningTime: false
+                              totalRunningTime: 3600
+                          startUpOpts:
+                            startInSuspendedState: false
+                            useDefaultPriority: true
+                            priority: 166
+            examples:
+              POST Create Task (Backup) - This request starts an immediate backup job.:
+                value:
+                  taskInfo:
+                    associations:
+                    - applicationId: 33
+                      clientName: '{{clientName}}'
+                      commCellId: 0
+                      backupsetName: '{{backupsetName}}'
+                      _type_: 7
+                      appName: File System
+                    task:
+                      sequenceNumber: 10
+                      initiatedFrom: 2
+                      taskType: 1
+                      policyType: 0
+                      taskId: 0
+                      taskFlags:
+                        disabled: false
+                    subTasks:
+                    - subTask:
+                        subTaskType: 2
+                        operationType: 2
+                      options:
+                        backupOpts:
+                          truncateLogsOnSource: false
+                          sybaseSkipFullafterLogBkp: false
+                          backupLevel: 1
+                          runIncrementalBackup: true
+                          isSpHasInLineCopy: false
+                          runSILOBackup: false
+                          doNotTruncateLog: false
+                          dataOpt:
+                            skipCatalogPhaseForSnapBackup: false
+                            followMountPoints: true
+                            enableIndexCheckPointing: false
+                            enforceTransactionLogUsage: false
+                            spaceReclamation: false
+                            skipConsistencyCheck: false
+                            createNewIndex: false
+                            verifySynthFull: false
+                          dataPathOpt:
+                            mediaAgent:
+                              mediaAgentId: 0
+                            library:
+                              libraryId: 0
+                            drivePool:
+                              drivePoolId: 0
+                            spareGroup:
+                              spareMediaGroupId: 0
+                            drive:
+                              driveId: 0
+                          mediaOpt:
+                            markMediaFullOnSuccess: false
+                            numberofDays: 30
+                            startNewMedia: true
+                            retentionJobType: 2
+                            allowOtherSchedulesToUseMediaSet: true
+                            reserveResourcesBeforeScan: false
+                        commonOpts:
+                          jobDescription: ''
+                          jobRetryOpts:
+                            killRunningJobWhenTotalRunningTimeExpires: false
+                            numberOfRetries: 0
+                            enableNumberOfRetries: false
+                            runningTime:
+                              enableTotalRunningTime: false
+                              totalRunningTime: 3600
+                          startUpOpts:
+                            startInSuspendedState: false
+                            useDefaultPriority: true
+                            priority: 166
+              Create Task (Backup) - This request starts an immediate backup job.:
+                value:
+                  taskInfo:
+                    associations:
+                    - applicationId: 33
+                      clientName: '{{clientName}}'
+                      commCellId: 0
+                      backupsetName: defaultBackupSet
+                      _type_: 7
+                      appName: File System
+                    task:
+                      sequenceNumber: 10
+                      initiatedFrom: 2
+                      taskType: 1
+                      policyType: 0
+                      taskId: 0
+                      taskFlags:
+                        disabled: false
+                    subTasks:
+                    - subTask:
+                        subTaskType: 2
+                        operationType: 2
+                      options:
+                        backupOpts:
+                          truncateLogsOnSource: false
+                          sybaseSkipFullafterLogBkp: false
+                          backupLevel: 1
+                          runIncrementalBackup: true
+                          isSpHasInLineCopy: false
+                          runSILOBackup: false
+                          doNotTruncateLog: false
+                          dataOpt:
+                            skipCatalogPhaseForSnapBackup: false
+                            followMountPoints: true
+                            enableIndexCheckPointing: false
+                            enforceTransactionLogUsage: false
+                            spaceReclamation: false
+                            skipConsistencyCheck: false
+                            createNewIndex: false
+                            verifySynthFull: false
+                          dataPathOpt:
+                            mediaAgent:
+                              mediaAgentId: 0
+                            library:
+                              libraryId: 0
+                            drivePool:
+                              drivePoolId: 0
+                            spareGroup:
+                              spareMediaGroupId: 0
+                            drive:
+                              driveId: 0
+                          mediaOpt:
+                            markMediaFullOnSuccess: false
+                            numberofDays: 30
+                            startNewMedia: true
+                            retentionJobType: 2
+                            allowOtherSchedulesToUseMediaSet: true
+                            reserveResourcesBeforeScan: false
+                        commonOpts:
+                          jobDescription: ''
+                          jobRetryOpts:
+                            killRunningJobWhenTotalRunningTimeExpires: false
+                            numberOfRetries: 0
+                            enableNumberOfRetries: false
+                            runningTime:
+                              enableTotalRunningTime: false
+                              totalRunningTime: 3600
+                          startUpOpts:
+                            startInSuspendedState: false
+                            useDefaultPriority: true
+                            priority: 166
+      tags:
+      - Backup Set Operations
+  /Backupset/action/backup:
+    parameters: []
+    post:
+      summary: Backup Set Backup
+      operationId: post-Backupset-backupsetId-action-backup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskId:
+                    type: integer
+                  jobIds:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    taskId: 438
+                    jobIds:
+                    - '2316'
+                    - '2317'
+                    - '2318'
+                    - '2319'
+                    - '2320'
+                    - '2321'
+              examples:
+                Backup Set Backup:
+                  value:
+                    taskId: 438
+                    jobIds:
+                    - '2316'
+                    - '2317'
+                    - '2318'
+                    - '2319'
+                    - '2320'
+                    - '2321'
+      description: |
+        This operation runs a backup job for a backup set.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_backup_set_backup.htm)
+      parameters:
+      - schema:
+          type: string
+        in: header
+        name: AuthToken
+        required: true
+      tags:
+      - Backup Set Operations
+  /GetId:
+    get:
+      summary: Get Backupset Id
+      tags:
+      - Backup Set Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  applicationId:
+                    type: integer
+                  clientName:
+                    type: string
+                  clientId:
+                    type: integer
+                  _type_:
+                    type: integer
+                  appName:
+                    type: string
+                x-examples:
+                  Example 1:
+                    applicationId: 33
+                    clientName: dm2perf3
+                    clientId: 2
+                    _type_: 4
+                    appName: File System
+              examples:
+                GetId - With Agent Name:
+                  value:
+                    applicationId: 33
+                    clientName: dm2perf3
+                    clientId: 2
+                    _type_: 4
+                    appName: File System
+                'GetId - With Backupset Name ':
+                  value:
+                    applicationId: 33
+                    clientName: dm2perf3
+                    backupsetId: 3
+                    instanceId: 1
+                    clientId: 2
+                    backupsetName: defaultBackupSet
+                    _type_: 6
+                    appName: File System
+      operationId: get-GetId
+      description: |
+        This operation returns Backupset Id
+
+        <table>
+          <tr>
+            <td>
+              <p>Name</p>
+            </td>
+            <td>
+              <p>Description</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>clientName</p>
+            </td>
+            <td>
+              <p>Name of the client(URL Encoded)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>agent</p>
+            </td>
+            <td>
+              <p>Name of the Agent(URL Encoded)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>instanceName</p>
+            </td>
+            <td>
+              <p>Instance Name(URL Encoded)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>backupset</p>
+            </td>
+            <td>
+              <p>Backupset Name(URL Encoded)</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>subclient</p>
+            </td>
+            <td>
+              <p>Subclient Name(URL Encoded)</p>
+            </td>
+          </tr>
+        </table>[_For all Agent Names_](http://documentation.commvault.com/commvault/v11/article?p=45467.htm#o99081)
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: clientname
+      - schema:
+          type: string
+        in: query
+        name: agent
+      - schema:
+          type: string
+          example: defaultBackupSet
+        in: query
+        name: backupset

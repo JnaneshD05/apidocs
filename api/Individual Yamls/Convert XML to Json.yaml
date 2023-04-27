@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Convert XML to JSON
+paths:
+  /jsonobject:
+    post:
+      deprecated: false
+      description: |
+        This operation converts XML into equivalent JSON object.
+      operationId: Convert XML to JSON Object
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          enum:
+          - application/xml
+          example: application/xml
+          type: string
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      summary: Convert XML to JSON
+      tags:
+      - Convert XML to JSON
+      responses:
+        '200':
+          description: OK

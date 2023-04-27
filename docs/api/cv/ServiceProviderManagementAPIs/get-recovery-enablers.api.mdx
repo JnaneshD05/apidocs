@@ -1,0 +1,34 @@
+---
+id: get-recovery-enablers
+title: "Get Recovery Enablers"
+description: "Get Recovery Enablers"
+sidebar_label: "Get Recovery Enablers"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"operationId":"Get Recovery Enablers","parameters":[{"description":"","explode":true,"in":"query","name":"osType","schema":{"example":"CLIENT_PLATFORM_OSTYPE_UNIX","type":"string"}},{"description":"","in":"header","name":"Authtoken","schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["4 - Onboarding your hypervisor"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"osType":{"type":"integer"}},"x-examples":{"Example 1":{"osType":2}}},"examples":{"/MediaAgent/RecoveryEnabler?osType=CLIENT_PLATFORM_OSTYPE_UNIX":{"value":{"osType":2}}}}}}},"description":"Get Recovery Enablers","method":"get","path":"/MediaAgent/RecoveryEnabler","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get Recovery Enablers","description":{"type":"text/plain"},"url":{"path":["MediaAgent","RecoveryEnabler"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"osType","value":""}],"variable":[]},"header":[{"disabled":false,"description":{"content":"","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/ServiceProviderManagementAPIs/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get Recovery Enablers
+
+
+
+Get Recovery Enablers
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"osType","schema":{"example":"CLIENT_PLATFORM_OSTYPE_UNIX","type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"osType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"osType\": 0\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"/ Media Agent/ Recovery Enabler?os Type= C L I E N T_ P L A T F O R M_ O S T Y P E_ U N I X"} value={"/ Media Agent/ Recovery Enabler?os Type= C L I E N T_ P L A T F O R M_ O S T Y P E_ U N I X"}><ResponseSamples responseExample={"{\n  \"osType\": 2\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

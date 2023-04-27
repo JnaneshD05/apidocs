@@ -1,0 +1,39 @@
+---
+id: get-client-licenses
+title: "Get Client Licenses"
+description: "<h2>"
+sidebar_label: "Get Client Licenses"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"<h2>\nDescription\n</h2>\nThis operation returns the licenses that are applied to a client.\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_client_license.htm)\n","operationId":"Get Client Licenses","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"path","name":"clientId","required":true,"schema":{"type":"string"}}],"tags":["License Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"licensesInfo":{"type":"array","items":{"type":"object","properties":{"platformType":{"type":"integer"},"license":{"type":"object","properties":{"licenseType":{"type":"integer"},"appType":{"type":"integer"},"licenseName":{"type":"string"}}}}}}},"x-examples":{"Example 1":{"licensesInfo":[{"platformType":1,"license":{"licenseType":1,"appType":33,"licenseName":"Server File System - Windows File System"}},{"platformType":2,"license":{"licenseType":11,"appType":1002,"licenseName":"MediaAgent - MediaAgent Management"}},{"platformType":2,"license":{"licenseType":84,"appType":1020,"licenseName":"Disk Library Connector (DDO) - Magnetic Library"}}]}}},"examples":{"Example 1":{"value":{"licensesInfo":[{"platformType":1,"license":{"licenseType":1,"appType":33,"licenseName":"Server File System - Windows File System"}},{"platformType":2,"license":{"licenseType":11,"appType":1002,"licenseName":"MediaAgent - MediaAgent Management"}},{"platformType":2,"license":{"licenseType":84,"appType":1020,"licenseName":"Disk Library Connector (DDO) - Magnetic Library"}}]}}}}}}},"method":"get","path":"/Client/{clientId}/License","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get Client Licenses","description":{"content":"<h2>\nDescription\n</h2>\nThis operation returns the licenses that are applied to a client.\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_client_license.htm)\n","type":"text/plain"},"url":{"path":["Client",":clientId","License"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"clientId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/LicenseOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get Client Licenses
+
+
+
+<h2>
+Description
+</h2>
+This operation returns the licenses that are applied to a client.
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_client_license.htm)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"clientId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>licensesInfo</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"platformType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>license</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"licenseType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"appType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"licenseName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"licensesInfo\": [\n    {\n      \"platformType\": 0,\n      \"license\": {\n        \"licenseType\": 0,\n        \"appType\": 0,\n        \"licenseName\": \"string\"\n      }\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"{\n  \"licensesInfo\": [\n    {\n      \"platformType\": 1,\n      \"license\": {\n        \"licenseType\": 1,\n        \"appType\": 33,\n        \"licenseName\": \"Server File System - Windows File System\"\n      }\n    },\n    {\n      \"platformType\": 2,\n      \"license\": {\n        \"licenseType\": 11,\n        \"appType\": 1002,\n        \"licenseName\": \"MediaAgent - MediaAgent Management\"\n      }\n    },\n    {\n      \"platformType\": 2,\n      \"license\": {\n        \"licenseType\": 84,\n        \"appType\": 1020,\n        \"licenseName\": \"Disk Library Connector (DDO) - Magnetic Library\"\n      }\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

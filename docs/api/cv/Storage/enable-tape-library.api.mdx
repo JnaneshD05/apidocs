@@ -1,0 +1,36 @@
+---
+id: enable-tape-library
+title: "Enable Tape Library"
+description: "This operation enables a tape library."
+sidebar_label: "Enable Tape Library"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation enables a tape library.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_enable_tape_library.htm)","operationId":"Enable Tape Library","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Storage Resource Operations"],"responses":{"200":{"description":"OK"}},"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"tapeProperties":{"type":"object","properties":{"attribute":{"type":"integer"},"status":{"type":"integer"},"libraryEntity":{"type":"object","properties":{"libraryId":{"type":"integer"}}}}}},"x-examples":{"Example 1":{"tapeProperties":{"attribute":522,"status":-1,"libraryEntity":{"libraryId":184}}}}},"examples":{"Enable Tape Library":{"value":{"tapeProperties":{"attribute":-1,"status":1,"libraryEntity":{"libraryId":334}}}},"Mark Tape Library Offline For Maintenance":{"value":{"tapeProperties":{"attribute":522,"status":-1,"libraryEntity":{"libraryId":184}}}},"UnMark Tape Library Offline For Maintenance":{"value":{"tapeProperties":{"attribute":0,"status":-1,"libraryEntity":{"libraryId":184}}}},"Disable Tape Library":{"value":{"tapeProperties":{"attribute":-1,"status":0,"libraryEntity":{"libraryId":334}}}}}}}},"method":"post","path":"/TapeLibraryProperties","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"tapeProperties":{"attribute":0,"status":0,"libraryEntity":{"libraryId":0}}},"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Enable Tape Library","description":{"content":"This operation enables a tape library.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_enable_tape_library.htm)","type":"text/plain"},"url":{"path":["TapeLibraryProperties"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/Storage/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Enable Tape Library
+
+
+
+This operation enables a tape library.
+
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_enable_tape_library.htm)
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>tapeProperties</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"attribute"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>libraryEntity</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"libraryId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

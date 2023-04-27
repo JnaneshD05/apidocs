@@ -1,0 +1,37 @@
+---
+id: suspend-a-a-job
+title: "Suspend a Job"
+description: "This operation suspends a job."
+sidebar_label: "Suspend a Job"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation suspends a job.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_job_suspend.htm)\n","operationId":"Suspend a aJob","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"path","name":"jobId","required":true,"schema":{"type":"string"}}],"tags":["Job Operations"],"responses":{"200":{"description":"OK"}},"method":"post","path":"/Job/{jobId}/action/pause","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Suspend a Job","description":{"content":"This operation suspends a job.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_job_suspend.htm)\n","type":"text/plain"},"url":{"path":["Job",":jobId","action","pause"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"jobId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""}],"method":"POST"}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/JobOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Suspend a Job
+
+
+
+This operation suspends a job.
+
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_job_suspend.htm)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"jobId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

@@ -1,0 +1,88 @@
+---
+id: get-all-tags
+title: "Get all Tags"
+description: "This operation creates a new tag or multiple tags for a given entity or multiple entities."
+sidebar_label: "Get all Tags"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation creates a new tag or multiple tags for a given entity or multiple entities.\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\">\n                                  #magic___^_^___line\n  <tr align=\"left\" valign=\"top\">\n   <td > \n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     entityType\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Type of entity.\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      3, CLIENT_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      5, INSTANCE_ENTITY\n     </li>\n     <li>\n      7, SUBCLIENT_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      28, CLIENT_GROUP_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      64, PROVIDER_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      158, PLAN_ENTITY\n     </li>\n    </ul>\n   </td>\n  </tr>\n                                  #magic___^_^___line\n</table>","operationId":"Get all Tags","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Entity Tags"],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"entityTag":{"type":"array","items":{"type":"object","properties":{"entityType":{"type":"integer"},"entityId":{"type":"integer"},"tag":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"value":{"type":"string"}}}}}}}},"x-examples":{"Example 1":{"entityTag":[{"entityType":3,"entityId":9,"tag":[{"name":"Brand","value":"Apple"}]},{"entityType":3,"entityId":8,"tag":[{"name":"Brand","value":"Google"}]}]}}},"examples":{"Tags":{"value":{"entityTag":[{"entityType":3,"entityId":9,"tag":[{"name":"Brand","value":"Apple"}]},{"entityType":3,"entityId":8,"tag":[{"name":"Brand","value":"Google"}]}]}},"Tags - Already Present":{"value":{"entityTag":[{"entityType":3,"entityId":9,"tag":[{"name":"Brand","value":"Apple"}]},{"entityType":3,"entityId":8,"tag":[{"name":"Brand","value":"Google"}]}]}},"Tags for a smart client group":{"value":{"error":{},"tags":[{"entityType":28,"entityId":3,"tag":[{"name":"isUpdateRequire","value":"yes"}]}]}}}}}},"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"error":{"type":"object","properties":{"errorMessage":{"type":"string"},"errorCode":{"type":"integer"}}}},"x-examples":{"Example 1":{"error":{"errorMessage":"Successfully executed given operation","errorCode":0}}}},"examples":{"Example 1":{"value":{"error":{"errorMessage":"Successfully executed given operation","errorCode":0}}}}}}}},"method":"post","path":"/Tags","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"entityTag":[{"entityType":0,"entityId":0,"tag":[{"name":"string","value":"string"}]}]},"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get all Tags","description":{"content":"This operation creates a new tag or multiple tags for a given entity or multiple entities.\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\">\n                                  #magic___^_^___line\n  <tr align=\"left\" valign=\"top\">\n   <td > \n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     entityType\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Type of entity.\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      3, CLIENT_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      5, INSTANCE_ENTITY\n     </li>\n     <li>\n      7, SUBCLIENT_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      28, CLIENT_GROUP_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      64, PROVIDER_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      158, PLAN_ENTITY\n     </li>\n    </ul>\n   </td>\n  </tr>\n                                  #magic___^_^___line\n</table>","type":"text/plain"},"url":{"path":["Tags"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/json"},{"key":"Accept","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/EntityTags/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get all Tags
+
+
+
+This operation creates a new tag or multiple tags for a given entity or multiple entities.
+<h2>
+ Request Parameters
+</h2>
+<table border="0" cellpadding="2" cellspacing="0" class="tableintopic">
+                                  #magic___^_^___line
+  <tr align="left" valign="top">
+   <td > 
+    <p class="tabletext">
+     Name
+    </p>
+   </td>
+   <td >
+    <p class="tabletext">
+     Description
+    </p>
+   </td>
+  </tr>
+  <tr align="left" valign="top">
+   <td >
+    <p class="tabletext">
+     entityType
+    </p>
+   </td>
+   <td >
+    <p class="tabletext">
+     Type of entity.
+    </p>
+    <p class="tabletext">
+     Valid values are:
+    </p>
+    <ul class="listbullet">
+     <li class="listbullet">
+      3, CLIENT_ENTITY
+     </li>
+     <li class="listbullet">
+      5, INSTANCE_ENTITY
+     </li>
+     <li>
+      7, SUBCLIENT_ENTITY
+     </li>
+     <li class="listbullet">
+      28, CLIENT_GROUP_ENTITY
+     </li>
+     <li class="listbullet">
+      64, PROVIDER_ENTITY
+     </li>
+     <li class="listbullet">
+      158, PLAN_ENTITY
+     </li>
+    </ul>
+   </td>
+  </tr>
+                                  #magic___^_^___line
+</table>
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>entityTag</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"entityType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"entityId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>tag</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"value"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>error</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"errorMessage"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"errorCode"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"error\": {\n    \"errorMessage\": \"string\",\n    \"errorCode\": 0\n  }\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"{\n  \"error\": {\n    \"errorMessage\": \"Successfully executed given operation\",\n    \"errorCode\": 0\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

@@ -1,0 +1,52 @@
+---
+id: retrieve-commcell-activity-control
+title: "Retrieve Commcell Activity Control"
+description: "This operation is used to retrieve activity control status for commcell"
+sidebar_label: "Retrieve Commcell Activity Control"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation is used to retrieve activity control status for commcell\n\n<h2>Response Parameters</h2>\n<table>\n\n\n<tr>\n<td>Name</td>\n<td>Description</td>\n</tr>\n<tr>\n<td>activityType</td>\n<td>\n<p>- Backup : 1- Restore : 2- Aux Copy : 4- Data Aging : 16- Scheduler : 256- DDB Activity : 2048- Data Verification : 8192</p>\n</td>\n</tr>\n\n\n</table>","operationId":"Retrieve Commcell Activity Control","parameters":[{"description":"","in":"header","name":"AuthToken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Control Panel Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"acObjects":{"type":"array","items":{"type":"object","properties":{"reEnableTime":{"type":"integer"},"noSchedEnable":{"type":"boolean"},"reenableTimeZone":{"type":"integer"},"activityType":{"type":"integer"},"enabled":{"type":"boolean"}}}}},"x-examples":{"Example 1":{"acObjects":[{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":128,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":1,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":2,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":16,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":4,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":256,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":8192,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":1024,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":512,"enabled":false}]}}},"examples":{"Example 1":{"value":{"acObjects":[{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":128,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":1,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":2,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":16,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":4,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":256,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":8192,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":1024,"enabled":false},{"reEnableTime":0,"noSchedEnable":true,"reenableTimeZone":0,"activityType":512,"enabled":false}]}}}}}}},"method":"get","path":"/CommCell/ActivityControl","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Retrieve Commcell Activity Control","description":{"content":"This operation is used to retrieve activity control status for commcell\n\n<h2>Response Parameters</h2>\n<table>\n\n\n<tr>\n<td>Name</td>\n<td>Description</td>\n</tr>\n<tr>\n<td>activityType</td>\n<td>\n<p>- Backup : 1- Restore : 2- Aux Copy : 4- Data Aging : 16- Scheduler : 256- DDB Activity : 2048- Data Verification : 8192</p>\n</td>\n</tr>\n\n\n</table>","type":"text/plain"},"url":{"path":["CommCell","ActivityControl"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"AuthToken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/ControlPanelOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Retrieve Commcell Activity Control
+
+
+
+This operation is used to retrieve activity control status for commcell
+
+<h2>Response Parameters</h2>
+<table>
+
+
+<tr>
+<td>Name</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>activityType</td>
+<td>
+<p>- Backup : 1- Restore : 2- Aux Copy : 4- Data Aging : 16- Scheduler : 256- DDB Activity : 2048- Data Verification : 8192</p>
+</td>
+</tr>
+
+
+</table>
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"AuthToken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>acObjects</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"reEnableTime"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"noSchedEnable"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"reenableTimeZone"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"activityType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"enabled"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"acObjects\": [\n    {\n      \"reEnableTime\": 0,\n      \"noSchedEnable\": true,\n      \"reenableTimeZone\": 0,\n      \"activityType\": 0,\n      \"enabled\": true\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"{\n  \"acObjects\": [\n    {\n      \"reEnableTime\": 0,\n      \"noSchedEnable\": true,\n      \"reenableTimeZone\": 0,\n      \"activityType\": 128,\n      \"enabled\": false\n    },\n    {\n      \"reEnableTime\": 0,\n      \"noSchedEnable\": true,\n      \"reenableTimeZone\": 0,\n      \"activityType\": 1,\n      \"enabled\": false\n    },\n    {\n      \"reEnableTime\": 0,\n      \"noSchedEnable\": true,\n      \"reenableTimeZone\": 0,\n      \"activityType\": 2,\n      \"enabled\": false\n    },\n    {\n      \"reEnableTime\": 0,\n      \"noSchedEnable\": true,\n      \"reenableTimeZone\": 0,\n      \"activityType\": 16,\n      \"enabled\": false\n    },\n    {\n      \"reEnableTime\": 0,\n      \"noSchedEnable\": true,\n      \"reenableTimeZone\": 0,\n      \"activityType\": 4,\n      \"enabled\": false\n    },\n    {\n      \"reEnableTime\": 0,\n      \"noSchedEnable\": true,\n      \"reenableTimeZone\": 0,\n      \"activityType\": 256,\n      \"enabled\": false\n    },\n    {\n      \"reEnableTime\": 0,\n      \"noSchedEnable\": true,\n      \"reenableTimeZone\": 0,\n      \"activityType\": 8192,\n      \"enabled\": false\n    },\n    {\n      \"reEnableTime\": 0,\n      \"noSchedEnable\": true,\n      \"reenableTimeZone\": 0,\n      \"activityType\": 1024,\n      \"enabled\": false\n    },\n    {\n      \"reEnableTime\": 0,\n      \"noSchedEnable\": true,\n      \"reenableTimeZone\": 0,\n      \"activityType\": 512,\n      \"enabled\": false\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

@@ -1,0 +1,98 @@
+---
+id: create-pseudo-client
+title: "Create Pseudo Client"
+description: "This operation creates a Pseudo Client."
+sidebar_label: "Create Pseudo Client"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation creates a Pseudo Client.\n\n\n<h2>Request Parameters</h2>\n<table>\n\n<tr>\n<td>\n<p>Name</p>\n</td>\n<td>\n<p>Description</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>clientType</p>\n</td>\n<td>\n<p>Type of Pseudo Client.</p>\n<p>Valid values are:</p>\n<ul>\n<li>0, Windows</li>\n<li>1, Unix</li>\n<li>2, NAS</li>\n<li>3, Oracle RAC</li>\n<li>4, DB2 MultiNode</li>\n<li>5, SRM NetWare Server</li>\n<li>6, SRM Oracle Database</li>\n<li>7, SRM NAS Filer</li>\n<li>8, Exchange DAG</li>\n<li>9, SAP Archive Link</li>\n<li>10, Windows Cluster Client</li>\n<li>11, Unix Cluster Client</li>\n<li>12, Virtualization</li>\n<li>13, OpenVMS</li>\n<li>14, Reference Copy</li>\n<li>15, Cloud Connector</li>\n<li>16, SAP HANA</li>\n<li>17, IBM i</li>\n<li>18, Non NDMP Filer</li>\n<li>19, Edge Drive</li>\n<li>20, MSSQL AG</li>\n<li>21, Remote Client</li>\n<li>22, Mobile Device</li>\n<li>23, Windows Tape Import</li>\n<li>24, Unix Tape Import</li>\n<li>25, Exchange Mailbox</li>\n<li>26, Notes OnePass</li>\n<li>27, SharePoint Farm</li>\n<li>28, Distributed File System</li>\n<li>29, Distributed Ida</li>\n<li>30, User Centric client</li>\n<li>31, Exchange client</li>\n<li>32, Solr Backup client</li>\n<li>33, Oracle Dataguard</li>\n<li>35, DB Thin Client</li>\n<li>36, Case Manager Client</li>\n<li>37, Office 365 Client</li>\n<li>38, Azure AD Client</li>\n</ul>\n</td>\n</tr>\n\n</table>","operationId":"Create Pseudo Client","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Client Operations"],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"clientInfo":{"type":"object","properties":{"clientType":{"type":"integer"},"nonNDMPClientProperties":{"type":"object","properties":{"osType":{"type":"integer"}}}}},"entity":{"type":"object","properties":{"hostName":{"type":"string"},"clientName":{"type":"string"}}}},"x-examples":{"Example 1":{"clientInfo":{"clientType":18,"nonNDMPClientProperties":{"osType":2}},"entity":{"hostName":"nfs_hostname","clientName":"nfs_server_name"}}}},"examples":{"Create Pseudo Client - NAS Server":{"value":{"clientInfo":{"clientType":18,"nonNDMPClientProperties":{"osType":2}},"entity":{"hostName":"nfs_hostname","clientName":"nfs_server_name"}}},"Create Pseudo Client - Exchange ":{"value":{"clientInfo":{"clientType":37,"lookupPlanInfo":false,"plan":{"planId":{}},"exchangeOnePassClientProperties":{"backupSetTypeToCreate":1,"infraStructurePoolEnabled":false,"recallService":"","onePassProp":{"environmentType":4,"cloudRegion":1,"isModernAuthEnabled":false,"azureAppList":{"azureApps":[{"azureDirectoryId":"{{Azure Tenant ID}}","azureAppDisplayName":"{{Azure App display name}}","azureAppId":"{{Azure App Id}}","azureAppKeyValue":"client secret"}]},"accounts":{"adminAccounts":[{"serviceType":2,"exchangeAdminSmtpAddress":"{{Exchange service account}}","userAccount":{"userName":"{{userName}}","password":"{{password}}"}}]}},"indexServer":{"mediaAgentId":10},"jobResulsDir":{"path":""},"memberServers":{"memberServers":[{"client":{"clientName":"{{Proxy client name here}}","clientId":98,"_type_":3}}]}}},"entity":{"clientName":"{{client name here}}"}}},"Create Pseudo Client - OneDrive Classic":{"value":{"clientInfo":{"clientType":15,"lookupPlanInfo":false,"plan":{"planId":1},"cloudClonnectorProperties":{"instanceType":7,"instance":{"instance":{"clientId":0,"clientName":"{{OneDrive client name}}","instanceName":"{{Instance name}}","instanceId":0,"applicationId":0},"cloudAppsInstance":{"instanceType":7,"oneDriveInstance":{"manageContentAutomatically":false,"createAdditionalSubclients":false,"numberofAdditionalSubclients":0,"cloudRegion":1,"clientSecret":"{{client secret}}","callbackUrl":"","tenant":"{{tenant ID}}","clientId":"{{client ID}}","isAutoDiscoveryEnabled":false,"infraStructurePoolEnabled":false,"isEnterprise":true,"serviceAccounts":{},"azureAppList":{}},"generalCloudProperties":{"numberOfBackupStreams":10,"proxyServers":[{"hostName":"{{proxy server host name}}","clientId":{},"clientName":"{{proxy server client name}}","displayName":"{{proxy server display name}}","_type_":3,"csGUID":"{{CS GUID}}"}],"jobResultsDir":{"path":""}}}}}},"entity":{"clientName":"{{OneDrive client name}}"}}},"Create Pseudo Client - OneDrive v2":{"value":{"clientInfo":{"environmentType":0,"setKeyForMultiTenantApp":false,"clientType":37,"lookupPlanInfo":false,"resourcePoolAppType":5,"useResourcePoolInfo":false,"plan":{"planId":{}},"cloudClonnectorProperties":{"instanceType":7,"instance":{"instance":{"clientName":"{{OneDrive Client Name}}","instanceName":"{{OneDrive Client Name}}_Instance001","instanceId":0,"clientId":0,"applicationId":0},"cloudAppsInstance":{"instanceType":7,"oneDriveInstance":{"manageContentAutomatically":false,"createAdditionalSubclients":false,"numberofAdditionalSubclients":0,"cloudRegion":1,"callbackUrl":"","isAutoDiscoveryEnabled":false,"infraStructurePoolEnabled":false,"isEnterprise":true,"serviceAccounts":{},"azureAppList":{"azureApps":[{"azureDirectoryId":"{{Azure Directory ID}}","azureAppDisplayName":"{{Display Name}}","azureAppKeyValue":"{{b64 encoded Azure Client Secret}}","appStatus":8,"azureAppId":"{{Azure App ID}}"}]}},"generalCloudProperties":{"numberOfBackupStreams":10,"memberServers":[{"client":{"clientName":"{{Access Node Client Name}}","clientId":{},"_type_":3}}],"jobResultsDir":{"path":""},"indexServer":{"clientId":{}}}}}}},"entity":{"clientName":"{{OneDrive Client Name}}"}}}}}}},"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"processinginstructioninfo":{"type":"object","properties":{"attributes":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"value":{"type":"string"}}}}}},"response":{"type":"object","properties":{"errorCode":{"type":"integer"},"entity":{"type":"object","properties":{"clientName":{"type":"string"},"clientId":{"type":"integer"},"_type_":{"type":"integer"}}}}}},"x-examples":{"Example 1":{"processinginstructioninfo":{"attributes":[{"name":"exitval","value":"0"}]},"response":{"errorCode":0,"entity":{"clientName":"TestOne","clientId":128,"_type_":3}}}}}}}}},"method":"post","path":"/pseudoClient","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"clientInfo":{"clientType":0,"nonNDMPClientProperties":{"osType":0}},"entity":{"hostName":"string","clientName":"string"}},"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Create Pseudo Client","description":{"content":"This operation creates a Pseudo Client.\n\n\n<h2>Request Parameters</h2>\n<table>\n\n<tr>\n<td>\n<p>Name</p>\n</td>\n<td>\n<p>Description</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>clientType</p>\n</td>\n<td>\n<p>Type of Pseudo Client.</p>\n<p>Valid values are:</p>\n<ul>\n<li>0, Windows</li>\n<li>1, Unix</li>\n<li>2, NAS</li>\n<li>3, Oracle RAC</li>\n<li>4, DB2 MultiNode</li>\n<li>5, SRM NetWare Server</li>\n<li>6, SRM Oracle Database</li>\n<li>7, SRM NAS Filer</li>\n<li>8, Exchange DAG</li>\n<li>9, SAP Archive Link</li>\n<li>10, Windows Cluster Client</li>\n<li>11, Unix Cluster Client</li>\n<li>12, Virtualization</li>\n<li>13, OpenVMS</li>\n<li>14, Reference Copy</li>\n<li>15, Cloud Connector</li>\n<li>16, SAP HANA</li>\n<li>17, IBM i</li>\n<li>18, Non NDMP Filer</li>\n<li>19, Edge Drive</li>\n<li>20, MSSQL AG</li>\n<li>21, Remote Client</li>\n<li>22, Mobile Device</li>\n<li>23, Windows Tape Import</li>\n<li>24, Unix Tape Import</li>\n<li>25, Exchange Mailbox</li>\n<li>26, Notes OnePass</li>\n<li>27, SharePoint Farm</li>\n<li>28, Distributed File System</li>\n<li>29, Distributed Ida</li>\n<li>30, User Centric client</li>\n<li>31, Exchange client</li>\n<li>32, Solr Backup client</li>\n<li>33, Oracle Dataguard</li>\n<li>35, DB Thin Client</li>\n<li>36, Case Manager Client</li>\n<li>37, Office 365 Client</li>\n<li>38, Azure AD Client</li>\n</ul>\n</td>\n</tr>\n\n</table>","type":"text/plain"},"url":{"path":["pseudoClient"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/json"},{"key":"Accept","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/ClientOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Create Pseudo Client
+
+
+
+This operation creates a Pseudo Client.
+
+
+<h2>Request Parameters</h2>
+<table>
+
+<tr>
+<td>
+<p>Name</p>
+</td>
+<td>
+<p>Description</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>clientType</p>
+</td>
+<td>
+<p>Type of Pseudo Client.</p>
+<p>Valid values are:</p>
+<ul>
+<li>0, Windows</li>
+<li>1, Unix</li>
+<li>2, NAS</li>
+<li>3, Oracle RAC</li>
+<li>4, DB2 MultiNode</li>
+<li>5, SRM NetWare Server</li>
+<li>6, SRM Oracle Database</li>
+<li>7, SRM NAS Filer</li>
+<li>8, Exchange DAG</li>
+<li>9, SAP Archive Link</li>
+<li>10, Windows Cluster Client</li>
+<li>11, Unix Cluster Client</li>
+<li>12, Virtualization</li>
+<li>13, OpenVMS</li>
+<li>14, Reference Copy</li>
+<li>15, Cloud Connector</li>
+<li>16, SAP HANA</li>
+<li>17, IBM i</li>
+<li>18, Non NDMP Filer</li>
+<li>19, Edge Drive</li>
+<li>20, MSSQL AG</li>
+<li>21, Remote Client</li>
+<li>22, Mobile Device</li>
+<li>23, Windows Tape Import</li>
+<li>24, Unix Tape Import</li>
+<li>25, Exchange Mailbox</li>
+<li>26, Notes OnePass</li>
+<li>27, SharePoint Farm</li>
+<li>28, Distributed File System</li>
+<li>29, Distributed Ida</li>
+<li>30, User Centric client</li>
+<li>31, Exchange client</li>
+<li>32, Solr Backup client</li>
+<li>33, Oracle Dataguard</li>
+<li>35, DB Thin Client</li>
+<li>36, Case Manager Client</li>
+<li>37, Office 365 Client</li>
+<li>38, Azure AD Client</li>
+</ul>
+</td>
+</tr>
+
+</table>
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>clientInfo</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"clientType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>nonNDMPClientProperties</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"osType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>entity</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"hostName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"clientName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>processinginstructioninfo</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>attributes</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"value"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>response</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"errorCode"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>entity</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"clientName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"clientId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"_type_"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"processinginstructioninfo\": {\n    \"attributes\": [\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"response\": {\n    \"errorCode\": 0,\n    \"entity\": {\n      \"clientName\": \"string\",\n      \"clientId\": 0,\n      \"_type_\": 0\n    }\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

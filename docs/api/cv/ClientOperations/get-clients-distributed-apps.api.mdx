@@ -1,0 +1,64 @@
+---
+id: get-clients-distributed-apps
+title: "Get Clients - DistributedApps"
+description: "This operation returns a list of clients with Distributed App Type Filter"
+sidebar_label: "Get Clients - DistributedApps"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation returns a list of clients with Distributed App Type Filter\n<p> </p>\n<h2>Request Parameters</h2>\n<table>\n<tr>\n<td>\n<p>Name</p>\n</td>\n<td>\n<p>Description</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>clusterType</p>\n</td>\n<td>\n<p>Cluster Types</p>\n<p>Valid values are:</p>\n<ul>\n<li>2, Hadoop</li>\n<li>5, WINFS</li>\n<li>8, MongoDB</li>\n<li>9, Cassandra</li>\n<li>12, HACCluster</li>\n<li>14, IndexStorePool</li>\n<li>15, IndexServer</li>\n</ul>\n</td>\n</tr>\n</table>","operationId":"Get Clients - DistributedApps","parameters":[{"description":"","explode":true,"in":"query","name":"clusterType","schema":{"example":"WINFS","type":"string"}},{"description":"","in":"header","name":"Authtoken","schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Client Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"response":{"type":"object","properties":{"errorMessage":{"type":"string"},"errorCode":{"type":"integer"}}}},"x-examples":{"Example 1":{"response":{"errorMessage":"","errorCode":0}}}}}}}},"method":"get","path":"/Client/DistributedApps","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get Clients - DistributedApps","description":{"content":"This operation returns a list of clients with Distributed App Type Filter\n<p> </p>\n<h2>Request Parameters</h2>\n<table>\n<tr>\n<td>\n<p>Name</p>\n</td>\n<td>\n<p>Description</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>clusterType</p>\n</td>\n<td>\n<p>Cluster Types</p>\n<p>Valid values are:</p>\n<ul>\n<li>2, Hadoop</li>\n<li>5, WINFS</li>\n<li>8, MongoDB</li>\n<li>9, Cassandra</li>\n<li>12, HACCluster</li>\n<li>14, IndexStorePool</li>\n<li>15, IndexServer</li>\n</ul>\n</td>\n</tr>\n</table>","type":"text/plain"},"url":{"path":["Client","DistributedApps"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"clusterType","value":""}],"variable":[]},"header":[{"disabled":false,"description":{"content":"","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/ClientOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get Clients - DistributedApps
+
+
+
+This operation returns a list of clients with Distributed App Type Filter
+<p> </p>
+<h2>Request Parameters</h2>
+<table>
+<tr>
+<td>
+<p>Name</p>
+</td>
+<td>
+<p>Description</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>clusterType</p>
+</td>
+<td>
+<p>Cluster Types</p>
+<p>Valid values are:</p>
+<ul>
+<li>2, Hadoop</li>
+<li>5, WINFS</li>
+<li>8, MongoDB</li>
+<li>9, Cassandra</li>
+<li>12, HACCluster</li>
+<li>14, IndexStorePool</li>
+<li>15, IndexServer</li>
+</ul>
+</td>
+</tr>
+</table>
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"clusterType","schema":{"example":"WINFS","type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>response</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"errorMessage"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"errorCode"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"response\": {\n    \"errorMessage\": \"string\",\n    \"errorCode\": 0\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

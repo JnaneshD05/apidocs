@@ -1,0 +1,46 @@
+---
+id: get-service-commcells
+title: "Returns a list of serviceCommcells"
+description: "Returns a list of Service Commcells"
+sidebar_label: "Returns a list of serviceCommcells"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["ServiceCommcells"],"responses":{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","properties":{"serviceCommcells":{"type":"array","items":{"description":"Returns a list of service commcells","properties":{"hostname":{"description":"hostname of the Commcell","type":"string"},"id":{"description":"Id of the commcell","format":"int32","type":"integer"},"name":{"description":"Name of the commcell entity","type":"string"},"role":{"description":"Role of the commcell","enum":["NOTCONFIGURED","ROUTERCOMMCELL","ROUTERCOMMCELL_SERVICECOMMCELL","IDPCOMMCELL","IDPCOMMCELL_SERVICECOMMCELL","CLOUDSERVICE","ONPRIM_SUBSCRIBER_OF_CLOUDSERVICE","MSP_CLOUDSERVICE"],"type":"string"},"syncStatus":{"description":"Sync status of the commcell","properties":{"errorMessage":{"description":"errorMessage if the commcell failed to sync","items":{"properties":{"message":{"description":"Description of the error","type":"string"},"name":{"description":"Name of the error","type":"string"}},"type":"object"},"title":"ErrorMessage","type":"array","x-tags":["ServiceCommcells"]},"lastSyncedWithIDP":{"description":"returns the last synced time with IDP(unix time format)","format":"int32","type":"integer"},"status":{"description":"status of the commcell","enum":["SUCCESSFUL","FAILED"],"type":"string"}},"required":["errorMessage"],"title":"SyncStatus","type":"object","x-tags":["ServiceCommcells"]},"useUniversalCommandCenter":{"description":"if enabled the Command Center of the commcell belong to the primary CommCell","type":"boolean"}},"title":"ServiceCommcells","type":"object","x-tags":["ServiceCommcells"]}}}}}}},"503":{"description":"Service Unavailable"}},"operationId":"GetServiceCommcells","description":"Returns a list of Service Commcells","method":"get","path":"/V4/ServiceCommcells","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"securitySchemes":{"token":{"in":"header","name":"Authtoken","type":"apiKey"}},"info":{"version":"1.0.0","contact":{},"description":"## Welcome\n\nWelcome to Commvault's Rest APIs. You can explore our APIs in [Postman](https://getpostman.com) using the predefined requests we created\n\nThe current version of this documentation is **Commvault Platform Release 2022E**.\n\nYou can access LTS documentation here:\n\n[Feature Release 11.20](https://documenter.getpostman.com/view/2046098/UVR7KoPJ)\n\n[Feature Release 11.24](https://documenter.getpostman.com/view/2046098/UVR7KoPL)\n\nFor more V2 and Latest APIs, please visit your API Explorer page.  \n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=107350_1.htm)\n\n## Setup\n\nTo get started, [create an environment in Postman](https://www.getpostman.com/docs/environments), select that environment, and set your environment variables by entering necessary values in the `0 - Setup/Environment Setup` pre-request script ([documentation on pre-request scripts](http://www.getpostman.com/docs/pre_request_scripts)). Also, Some of our calls might have dependencies. `GET`/`PUT`/`DELETE` may only work after an item is created with a `POST`.\n\nThe same set of APIs can be used for both XML and JSON. If you want to get equivalent JSON for the XML, use our [API](https://api.commvault.com/#fe2fa795-dd7c-4416-857d-75704b52be8c) for conversion.\n\n**Note:** Swagger Documentation for V2/Latest APIs are present in the following URL:  \n`{ServerURL}/sandbox/apiexplorer`\n\n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=45551.htm)","title":"Commvault Rest API - Public"},"postman":{"name":"Returns a list of serviceCommcells","description":{"content":"Returns a list of Service Commcells","type":"text/plain"},"url":{"path":["V4","ServiceCommcells"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/zAllV4APIs/commvault-rest-api-public
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Returns a list of serviceCommcells
+
+
+
+Returns a list of Service Commcells
+
+<div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+Success
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>serviceCommcells</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"hostname"} required={false} deprecated={undefined} schemaDescription={"hostname of the Commcell"} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"id"} required={false} deprecated={undefined} schemaDescription={"Id of the commcell"} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={"Name of the commcell entity"} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"role"} required={false} deprecated={undefined} schemaDescription={"Role of the commcell"} schemaName={"string"} qualifierMessage={"**Possible values:** [`NOTCONFIGURED`, `ROUTERCOMMCELL`, `ROUTERCOMMCELL_SERVICECOMMCELL`, `IDPCOMMCELL`, `IDPCOMMCELL_SERVICECOMMCELL`, `CLOUDSERVICE`, `ONPRIM_SUBSCRIBER_OF_CLOUDSERVICE`, `MSP_CLOUDSERVICE`]"} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>syncStatus</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+Sync status of the commcell
+
+</div><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>errorMessage</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><div style={{"marginTop":".5rem","marginBottom":".5rem"}}>
+
+errorMessage if the commcell failed to sync
+
+</div><SchemaItem collapsible={false} name={"message"} required={false} deprecated={undefined} schemaDescription={"Description of the error"} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={"Name of the error"} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={false} name={"lastSyncedWithIDP"} required={false} deprecated={undefined} schemaDescription={"returns the last synced time with IDP(unix time format)"} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"status"} required={false} deprecated={undefined} schemaDescription={"status of the commcell"} schemaName={"string"} qualifierMessage={"**Possible values:** [`SUCCESSFUL`, `FAILED`]"} defaultValue={undefined}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={false} name={"useUniversalCommandCenter"} required={false} deprecated={undefined} schemaDescription={"if enabled the Command Center of the commcell belong to the primary CommCell"} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"serviceCommcells\": [\n    {\n      \"hostname\": \"string\",\n      \"id\": 0,\n      \"name\": \"string\",\n      \"role\": \"NOTCONFIGURED\",\n      \"syncStatus\": {\n        \"errorMessage\": [\n          {\n            \"message\": \"string\",\n            \"name\": \"string\"\n          }\n        ],\n        \"lastSyncedWithIDP\": 0,\n        \"status\": \"SUCCESSFUL\"\n      },\n      \"useUniversalCommandCenter\": true\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"503"} value={"503"}><div>
+
+Service Unavailable
+
+</div><div></div></TabItem></ApiTabs></div>
+      

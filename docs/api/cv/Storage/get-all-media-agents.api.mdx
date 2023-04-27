@@ -1,0 +1,36 @@
+---
+id: get-all-media-agents
+title: "Get All MediaAgents"
+description: "This operation returns a list of MediaAgents."
+sidebar_label: "Get All MediaAgents"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation returns a list of MediaAgents.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_mediaagent.htm)","operationId":"Get All MediaAgents","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Storage Resource Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"response":{"type":"array","items":{"type":"object","properties":{"entityInfo":{"type":"object","properties":{"name":{"type":"string"},"id":{"type":"integer"}}}}}}},"x-examples":{"Example 1":{"response":[{"entityInfo":{"name":"firewalltestcs","id":2}},{"entityInfo":{"name":"IDCMA","id":3}},{"entityInfo":{"name":"IDCMA2","id":4}},{"entityInfo":{"name":"firewalltestma","id":9}},{"entityInfo":{"name":"IDCunixclient","id":10}},{"entityInfo":{"name":"firewalltestma_3","id":17}},{"entityInfo":{"name":"neo-ws","id":26}}]}}},"examples":{"Example 1":{"value":{"response":[{"entityInfo":{"name":"firewalltestcs","id":2}},{"entityInfo":{"name":"IDCMA","id":3}},{"entityInfo":{"name":"IDCMA2","id":4}},{"entityInfo":{"name":"firewalltestma","id":9}},{"entityInfo":{"name":"IDCunixclient","id":10}},{"entityInfo":{"name":"firewalltestma_3","id":17}},{"entityInfo":{"name":"neo-ws","id":26}}]}}}}}}},"method":"get","path":"/MediaAgent","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get All MediaAgents","description":{"content":"This operation returns a list of MediaAgents.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_mediaagent.htm)","type":"text/plain"},"url":{"path":["MediaAgent"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/Storage/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get All MediaAgents
+
+
+
+This operation returns a list of MediaAgents.
+
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_mediaagent.htm)
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>response</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>entityInfo</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"id"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"response\": [\n    {\n      \"entityInfo\": {\n        \"name\": \"string\",\n        \"id\": 0\n      }\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"{\n  \"response\": [\n    {\n      \"entityInfo\": {\n        \"name\": \"firewalltestcs\",\n        \"id\": 2\n      }\n    },\n    {\n      \"entityInfo\": {\n        \"name\": \"IDCMA\",\n        \"id\": 3\n      }\n    },\n    {\n      \"entityInfo\": {\n        \"name\": \"IDCMA2\",\n        \"id\": 4\n      }\n    },\n    {\n      \"entityInfo\": {\n        \"name\": \"firewalltestma\",\n        \"id\": 9\n      }\n    },\n    {\n      \"entityInfo\": {\n        \"name\": \"IDCunixclient\",\n        \"id\": 10\n      }\n    },\n    {\n      \"entityInfo\": {\n        \"name\": \"firewalltestma_3\",\n        \"id\": 17\n      }\n    },\n    {\n      \"entityInfo\": {\n        \"name\": \"neo-ws\",\n        \"id\": 26\n      }\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

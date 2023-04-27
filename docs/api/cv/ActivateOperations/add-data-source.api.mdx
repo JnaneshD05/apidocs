@@ -1,0 +1,52 @@
+---
+id: add-data-source
+title: "Add Data Source"
+description: "This operation adds a data source to the project"
+sidebar_label: "Add Data Source"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation adds a data source to the project\n\n<h2>Request Body</h2>\n<table>\n\n\n<tr>\n<td>Name</td>\n<td>Description</td>\n</tr>\n<tr>\n<td>datasourceType</td>\n<td>\n<p>values:- File System : 5- SharePoint : 28- Email : 29- OneDrive : 27- Database : 30- Google Drive : 32- Gmail : 33</p>\n</td>\n</tr>\n\n\n</table>","operationId":"Add Data Source","parameters":[{"description":"","in":"header","name":"Authtoken","schema":{"example":"{{TOKEN}}","type":"string"}}],"requestBody":{"content":{"text/plain":{"examples":{"Add FSO Client Data Source":{"value":"<DM2ContentIndexing_ClientDatasource datasourceId=\"{{inventoryId}}\"> <datasources datasourceName=\"fso_ds_localdata\" datasourceType=\"5\"> <properties propertyName=\"ContentIndexingStatus\" propertyValue=\"0\"/> <properties propertyName=\"BackedupStatus\" propertyValue=\"0\"/> <properties propertyName=\"ClientId\" propertyValue=\"2\"/> <properties propertyName=\"countryCode\" propertyValue=\"US\"/> <properties propertyName=\"co\" propertyValue=\"United States\"/> <properties propertyName=\"contentid\" propertyValue=\"CSClient\"/> <properties propertyName=\"clientdisplayname\" propertyValue=\"fso_ds_localData\"/> <properties propertyName=\"includedirectoriespath\" propertyValue=\"C:/Activate/SampleData\"/> <properties propertyName=\"dcplanid\" propertyValue=\"2\"/> <properties propertyName=\"caconfig\" propertyValue=\"[{&quot;task&quot;:&quot;EntityExtractionFields&quot;,&quot;arguments&quot;:[&quot;content&quot;]}]\"/> <properties propertyName=\"name\" propertyValue=\"mastervm\"/> <properties propertyName=\"operatingSystem\" propertyValue=\"Windows\"/> </datasources> </DM2ContentIndexing_ClientDatasource>"},"Add File System Data Source":{"value":"<?xml version=\"1.0\" encoding=\"UTF-8\"?><DM2ContentIndexing_ClientDatasource datasourceId=\"1\" indexServerClientId=\"4\" clientId=\"66\"> \n    <datasources datasourceName=\"dm2perf2\" datasourceType=\"5\"> \n        <properties propertyName=\"ContentIndexingStatus\" propertyValue=\"0\"/> \n        <properties propertyName=\"BackedupStatus\" propertyValue=\"1\"/> \n        <properties propertyName=\"ClientId\" propertyValue=\"2\"/> \n        <properties propertyName=\"countryCode\" propertyValue=\"US\"/> \n        <properties propertyName=\"co\" propertyValue=\"United States\"/> \n        <properties propertyName=\"contentid\" propertyValue=\"dm2perf2.test.cv.com\"/> \n        <properties propertyName=\"includedirectoriespath\" propertyValue=\"\\\\maverick/Yash_data\\TestData\\TestData\"/> \n        <properties propertyName=\"dcplanid\" propertyValue=\"2\"/> \n        <properties propertyName=\"caconfig\" propertyValue=\"[{&quot;task&quot;:&quot;EntityExtractionFields&quot;,&quot;arguments&quot;:[&quot;content&quot;]}]\"/> \n        <properties propertyName=\"name\" propertyValue=\"dm2perf2\"/> \n        <properties propertyName=\"domainName\" propertyValue=\"test.cv.com\"/> \n        <properties propertyName=\"dNSHostName\" propertyValue=\"DM2PERF2.test.cv.com\"/> \n        <properties propertyName=\"operatingSystem\" propertyValue=\"Windows\"/> \n    </datasources> \n</DM2ContentIndexing_ClientDatasource>"}}}},"description":"","required":true},"tags":["Apps"],"responses":{"200":{"description":"OK","content":{"text/plain":{"examples":{"Add File System Data Source":{"value":"<DM2ContentIndexing_GetCollectionsResp> <collections> <datasources datasourceId=\"116\" datasourceName=\"dm2perf2\" /> </collections> <error /> </DM2ContentIndexing_GetCollectionsResp>"},"Add FSO Client Data Source":{"value":"<DM2ContentIndexing_GetCollectionsResp>\n    <collections>\n        <datasources datasourceId=\"116\" datasourceName=\"fso_ds_localdata\" />\n    </collections>\n    <error />\n</DM2ContentIndexing_GetCollectionsResp>"}}}}}},"method":"post","path":"/EDiscoveryClients/DataSources","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Commvault Rest API - Public","contact":{},"version":"1.0","description":"## Welcome\n\nWelcome to Commvault's Rest APIs. You can explore our APIs in [Postman](https://getpostman.com) using the predefined requests we created\n\nThe current version of this documentation is **Commvault Platform Release 2022E**.\n\nYou can access LTS documentation here:\n\n[Feature Release 11.20](https://documenter.getpostman.com/view/2046098/UVR7KoPJ)\n\n[Feature Release 11.24](https://documenter.getpostman.com/view/2046098/UVR7KoPL)\n\nFor more V2 and Latest APIs, please visit your API Explorer page.  \n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=107350_1.htm)\n\n"},"postman":{"name":"Add Data Source","description":{"content":"This operation adds a data source to the project\n\n<h2>Request Body</h2>\n<table>\n\n\n<tr>\n<td>Name</td>\n<td>Description</td>\n</tr>\n<tr>\n<td>datasourceType</td>\n<td>\n<p>values:- File System : 5- SharePoint : 28- Email : 29- OneDrive : 27- Database : 30- Google Drive : 32- Gmail : 33</p>\n</td>\n</tr>\n\n\n</table>","type":"text/plain"},"url":{"path":["EDiscoveryClients","DataSources"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"text/plain"},{"key":"Accept","value":"text/plain"}],"method":"POST","body":{"mode":"raw","raw":"\"<DM2ContentIndexing_ClientDatasource datasourceId=\\\"{{inventoryId}}\\\"> <datasources datasourceName=\\\"fso_ds_localdata\\\" datasourceType=\\\"5\\\"> <properties propertyName=\\\"ContentIndexingStatus\\\" propertyValue=\\\"0\\\"/> <properties propertyName=\\\"BackedupStatus\\\" propertyValue=\\\"0\\\"/> <properties propertyName=\\\"ClientId\\\" propertyValue=\\\"2\\\"/> <properties propertyName=\\\"countryCode\\\" propertyValue=\\\"US\\\"/> <properties propertyName=\\\"co\\\" propertyValue=\\\"United States\\\"/> <properties propertyName=\\\"contentid\\\" propertyValue=\\\"CSClient\\\"/> <properties propertyName=\\\"clientdisplayname\\\" propertyValue=\\\"fso_ds_localData\\\"/> <properties propertyName=\\\"includedirectoriespath\\\" propertyValue=\\\"C:/Activate/SampleData\\\"/> <properties propertyName=\\\"dcplanid\\\" propertyValue=\\\"2\\\"/> <properties propertyName=\\\"caconfig\\\" propertyValue=\\\"[{&quot;task&quot;:&quot;EntityExtractionFields&quot;,&quot;arguments&quot;:[&quot;content&quot;]}]\\\"/> <properties propertyName=\\\"name\\\" propertyValue=\\\"mastervm\\\"/> <properties propertyName=\\\"operatingSystem\\\" propertyValue=\\\"Windows\\\"/> </datasources> </DM2ContentIndexing_ClientDatasource>\""}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/ActivateOperations/commvault-rest-api-public
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Add Data Source
+
+
+
+This operation adds a data source to the project
+
+<h2>Request Body</h2>
+<table>
+
+
+<tr>
+<td>Name</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>datasourceType</td>
+<td>
+<p>values:- File System : 5- SharePoint : 28- Email : 29- OneDrive : 27- Database : 30- Google Drive : 32- Gmail : 33</p>
+</td>
+</tr>
+
+
+</table>
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={" Add  File  System  Data  Source"} value={" Add  File  System  Data  Source"}><ResponseSamples responseExample={"<DM2ContentIndexing_GetCollectionsResp> <collections> <datasources datasourceId=\"116\" datasourceName=\"dm2perf2\" /> </collections> <error /> </DM2ContentIndexing_GetCollectionsResp>"} language={"shell"}></ResponseSamples></TabItem><TabItem label={" Add  F S O  Client  Data  Source"} value={" Add  F S O  Client  Data  Source"}><ResponseSamples responseExample={"<DM2ContentIndexing_GetCollectionsResp>\n    <collections>\n        <datasources datasourceId=\"116\" datasourceName=\"fso_ds_localdata\" />\n    </collections>\n    <error />\n</DM2ContentIndexing_GetCollectionsResp>"} language={"shell"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

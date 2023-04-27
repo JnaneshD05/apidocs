@@ -1,0 +1,4187 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Subclient Operations
+paths:
+  /subclient:
+    post:
+      summary: Create Subclient
+      operationId: post-Subclient
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Subclient Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subClientProperties:
+                  type: object
+                  properties:
+                    subClientEntity:
+                      type: object
+                      properties:
+                        clientName:
+                          type: string
+                        appName:
+                          type: string
+                        backupsetName:
+                          type: string
+                        subclientName:
+                          type: string
+                    contentOperationType:
+                      type: string
+                    content:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          path:
+                            type: string
+                    commonProperties:
+                      type: object
+                      properties:
+                        storageDevice:
+                          type: object
+                          properties:
+                            dataBackupStoragePolicy:
+                              type: object
+                              properties:
+                                storagePolicyName:
+                                  type: string
+              x-examples:
+                Example 1:
+                  subClientProperties:
+                    subClientEntity:
+                      clientName: '{{clientName}}'
+                      appName: File System
+                      backupsetName: DefaultBackupset
+                      subclientName: subclient001
+                    contentOperationType: ADD
+                    content:
+                    - path: 'C:\TestFolder1'
+                    - path: 'C:\TestFolder2'
+                    commonProperties:
+                      storageDevice:
+                        dataBackupStoragePolicy:
+                          storagePolicyName: NonDedupeSP
+            examples:
+              Subclient - For File System Agent:
+                value:
+                  subClientProperties:
+                    subClientEntity:
+                      clientName: '{{clientName}}'
+                      appName: File System
+                      backupsetName: DefaultBackupset
+                      subclientName: subclient001
+                    contentOperationType: ADD
+                    content:
+                    - path: 'C:\TestFolder1'
+                    - path: 'C:\TestFolder2'
+                    commonProperties:
+                      storageDevice:
+                        dataBackupStoragePolicy:
+                          storagePolicyName: NonDedupeSP
+              Subclient - For Virtual Server Agent:
+                value:
+                  subClientProperties:
+                    subClientEntity:
+                      clientName: client001
+                      appName: Virtual Server
+                      backupsetName: defaultBackupSet
+                      subclientName: subclient001
+                    vmContentOperationType: ADD
+                    vmContent:
+                      children:
+                      - equalsOrNotEquals: true
+                        displayName: VM001
+                        type: VMName
+                      - equalsOrNotEquals: true
+                        displayName: VM011
+                        type: VMName
+                    commonProperties:
+                      storageDevice:
+                        dataBackupStoragePolicy:
+                          storagePolicyName: SP004
+              Subclient - For MySQL:
+                value:
+                  subClientProperties:
+                    subClientEntity:
+                      subclientId: -1
+                      subclientName: sc1
+                      backupsetId: 9412
+                      instanceId: 4615
+                      instanceName: mysqlb_3306
+                      instanceGUID: F3CABE2A-95E2-4EDB-A8D6-2BEEDB334617
+                      applicationId: 104
+                      appName: MySQL
+                      clientId: 616
+                      clientName: mysqlb
+                      displayName: mysqlb
+                      flags: {}
+                      entityInfo:
+                        companyId: 0
+                        companyName: ''
+                        multiCommcellId: 0
+                    commonProperties:
+                      storageDevice: {}
+                    content:
+                    - mySQLContent:
+                        databaseName: teliatesting
+                    contentOperationType: OVERWRITE
+                    mySqlSubclientProp:
+                      numberOfBackupStreams: 2
+                      numberOfTransactionLogStreams: 1
+                    planEntity:
+                      planId: 31
+              Subclient - For Oracle:
+                value:
+                  subClientProperties:
+                    subClientEntity:
+                      subclientId: -1
+                      subclientName: sof
+                      backupsetId: 10506
+                      instanceId: 5098
+                      instanceName: orcdb2
+                      instanceGUID: 464BB27E-544D-409C-BF00-5E319B73B134
+                      applicationId: 22
+                      appName: Oracle
+                      clientId: 866
+                      clientName: arcent3
+                      displayName: arcent3
+                      flags: {}
+                      entityInfo:
+                        companyId: 0
+                        companyName: ''
+                        multiCommcellId: 0
+                    commonProperties:
+                      storageDevice: {}
+                    contentOperationType: ADD
+                    oracleSubclientProp:
+                      selectiveOnlineFull: true
+                      data: true
+                      backupMode: ONLINE_DB
+                      lightsOutScript: false
+                      backupArchiveLog: true
+                      archiveDelete: true
+                      dataThresholdStreams: 2
+                      archiveDeleteAll: false
+                    planEntity:
+                      planId: 45
+              Subclient - For Sybase:
+                value:
+                  subClientProperties:
+                    subClientEntity:
+                      subclientId: -1
+                      subclientName: sc1
+                      backupsetId: 10594
+                      instanceId: 5130
+                      instanceName: MY8
+                      instanceGUID: 8077DB9A-219F-40DF-BE49-CE569372ECE8
+                      applicationId: 5
+                      appName: Sybase
+                      clientId: 569
+                      clientName: my8
+                      displayName: my8
+                      flags: {}
+                      entityInfo:
+                        companyId: 0
+                        companyName: ''
+                        multiCommcellId: 0
+                    commonProperties:
+                      storageDevice: {}
+                    content:
+                    - sybaseContent:
+                        databaseName: CV
+                    - sybaseContent:
+                        databaseName: CV_2
+                    contentOperationType: ADD
+                    sybaseSubclientProp:
+                      numberOfBackupStreams: 2
+                      numberOfTransactionLogStreams: 1
+                    planEntity:
+                      planId: 45
+              Subclient - For PostgreSQL:
+                value:
+                  subClientProperties:
+                    subClientEntity:
+                      subclientId: -1
+                      subclientName: sc1
+                      backupsetId: 9493
+                      backupsetName: DumpBasedBackupSet
+                      backupsetGUID: 9AE65456-F563-41A1-B025-E40C258A8806
+                      instanceId: 4650
+                      instanceName: '5598'
+                      applicationId: 125
+                      appName: PostgreSQL
+                      clientId: 367
+                      clientName: gkstandby
+                      displayName: DN_gkstandby_DN
+                      flags: {}
+                      entityInfo:
+                        companyId: 0
+                        companyName: ''
+                        multiCommcellId: 0
+                    commonProperties:
+                      storageDevice: {}
+                    content:
+                    - postgreSQLContent:
+                        databaseName: gk1
+                    contentOperationType: ADD
+                    postgreSQLSubclientProp:
+                      numberOfBackupStreams: 1
+                      collectObjectListDuringBackup: false
+                    planEntity:
+                      planId: 45
+              Subclient - For SAP HANA:
+                value:
+                  subClientProperties:
+                    subClientEntity:
+                      subclientId: -1
+                      subclientName: sc1
+                      backupsetId: 20
+                      instanceId: 8
+                      instanceName: HDB
+                      instanceGUID: DA591219-A808-49C8-9398-1179D654387F
+                      applicationId: 135
+                      appName: SAP HANA
+                      clientId: 8
+                      clientName: hdbhana
+                      displayName: hdbhana
+                      flags: {}
+                      entityInfo: {}
+                    commonProperties:
+                      storageDevice:
+                        dataBackupStoragePolicy:
+                          storagePolicyId: 0
+                    contentOperationType: ADD
+                    sapHANASubclientProp:
+                      numberOfBackupStreams: 4
+                    planEntity:
+                      planId: 1
+    get:
+      summary: Get Subclient
+      operationId: get-subclient
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subClientProperties:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        proxyClient:
+                          type: object
+                          properties: {}
+                        subClientEntity:
+                          type: object
+                          properties:
+                            clientName:
+                              type: string
+                            instanceName:
+                              type: string
+                            backupsetId:
+                              type: integer
+                            _type_:
+                              type: integer
+                            instanceId:
+                              type: integer
+                            subclientId:
+                              type: integer
+                            clientId:
+                              type: integer
+                            appName:
+                              type: string
+                            backupsetName:
+                              type: string
+                            applicationId:
+                              type: integer
+                            subclientName:
+                              type: string
+                        dfsSubclientProp:
+                          type: object
+                          properties: {}
+                        planEntity:
+                          type: object
+                          properties: {}
+                        analyticsSubclientProp:
+                          type: object
+                          properties: {}
+                x-examples:
+                  Example 1:
+                    subClientProperties:
+                    - proxyClient: {}
+                      subClientEntity:
+                        clientName: firewalltestcs
+                        instanceName: DefaultInstanceName
+                        backupsetId: 3
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 2
+                        clientId: 2
+                        appName: Windows File System
+                        backupsetName: defaultBackupSet
+                        applicationId: 33
+                        subclientName: default
+                      dfsSubclientProp: {}
+                      planEntity: {}
+                      analyticsSubclientProp: {}
+                    - proxyClient: {}
+                      subClientEntity:
+                        clientName: firewalltestcs
+                        instanceName: DefaultInstanceName
+                        backupsetId: 3
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 30
+                        clientId: 2
+                        appName: Windows File System
+                        backupsetName: defaultBackupSet
+                        applicationId: 33
+                        subclientName: IndexBackup
+                      dfsSubclientProp: {}
+                      planEntity: {}
+                      analyticsSubclientProp: {}
+                    - proxyClient: {}
+                      subClientEntity:
+                        clientName: firewalltestcs
+                        instanceName: DefaultInstanceName
+                        backupsetId: 3
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 31
+                        clientId: 2
+                        appName: Windows File System
+                        backupsetName: defaultBackupSet
+                        applicationId: 33
+                        subclientName: Back_44
+                      dfsSubclientProp: {}
+                      planEntity: {}
+                      analyticsSubclientProp: {}
+                    - proxyClient: {}
+                      subClientEntity:
+                        clientName: firewalltestcs
+                        instanceName: DefaultInstanceName
+                        backupsetId: 3
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 49
+                        clientId: 2
+                        appName: Windows File System
+                        backupsetName: defaultBackupSet
+                        applicationId: 33
+                        subclientName: TestFSAPI
+                      dfsSubclientProp: {}
+                      planEntity: {}
+                      analyticsSubclientProp: {}
+              examples:
+                Get Subclient:
+                  value:
+                    subClientProperties:
+                    - proxyClient: {}
+                      subClientEntity:
+                        clientName: firewalltestcs
+                        instanceName: DefaultInstanceName
+                        backupsetId: 3
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 2
+                        clientId: 2
+                        appName: Windows File System
+                        backupsetName: defaultBackupSet
+                        applicationId: 33
+                        subclientName: default
+                      dfsSubclientProp: {}
+                      planEntity: {}
+                      analyticsSubclientProp: {}
+                    - proxyClient: {}
+                      subClientEntity:
+                        clientName: firewalltestcs
+                        instanceName: DefaultInstanceName
+                        backupsetId: 3
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 30
+                        clientId: 2
+                        appName: Windows File System
+                        backupsetName: defaultBackupSet
+                        applicationId: 33
+                        subclientName: IndexBackup
+                      dfsSubclientProp: {}
+                      planEntity: {}
+                      analyticsSubclientProp: {}
+                    - proxyClient: {}
+                      subClientEntity:
+                        clientName: firewalltestcs
+                        instanceName: DefaultInstanceName
+                        backupsetId: 3
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 31
+                        clientId: 2
+                        appName: Windows File System
+                        backupsetName: defaultBackupSet
+                        applicationId: 33
+                        subclientName: Back_44
+                      dfsSubclientProp: {}
+                      planEntity: {}
+                      analyticsSubclientProp: {}
+                    - proxyClient: {}
+                      subClientEntity:
+                        clientName: firewalltestcs
+                        instanceName: DefaultInstanceName
+                        backupsetId: 3
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 49
+                        clientId: 2
+                        appName: Windows File System
+                        backupsetName: defaultBackupSet
+                        applicationId: 33
+                        subclientName: TestFSAPI
+                      dfsSubclientProp: {}
+                      planEntity: {}
+                      analyticsSubclientProp: {}
+      description: |
+        This operation returns a list of subclients for a client.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_subclient.htm)
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: clientId
+      tags:
+      - Subclient Operations
+  /GetId:
+    get:
+      deprecated: false
+      description: |
+        This operation returns Subclient Id or Instance ID of a database
+        <p>
+        </p>
+        <h2>
+         Request Parameters
+        </h2>
+        <table border="0" cellpadding="2" cellspacing="0" class="tableintopic">
+
+          <tr align="left" valign="top">
+           <td>
+            <p class="tabletext">
+             Name
+            </p>
+           </td>
+           <td>
+            <p class="tabletext">
+             Description
+            </p>
+           </td>
+          </tr>
+          <tr align="left" valign="top">
+           <td>
+            <p class="tabletext">
+             clientName
+            </p>
+           </td>
+           <td>
+            <p class="tabletext">
+             Name of the client(URL Encoded)
+            </p>
+           </td>
+          </tr>
+          <tr align="left" valign="top">
+           <td>
+            <p class="tabletext">
+             agent
+            </p>
+           </td>
+           <td>
+            <p class="tabletext">
+             Name of the Agent(URL Encoded)
+            </p>
+           </td>
+          </tr>
+          <tr align="left" valign="top">
+           <td>
+            <p class="tabletext">
+             instanceName
+            </p>
+           </td>
+           <td>
+            <p class="tabletext">
+             Instance Name(URL Encoded)
+            </p>
+           </td>
+          </tr>
+          <tr align="left" valign="top">
+           <td>
+            <p class="tabletext">
+             backupset
+            </p>
+           </td>
+           <td>
+            <p class="tabletext">
+             Backupset Name(URL Encoded)
+            </p>
+           </td>
+          </tr>
+          <tr align="left" valign="top">
+           <td>
+            <p class="tabletext">
+             subclient
+            </p>
+           </td>
+           <td>
+            <p class="tabletext">
+             Subclient Name(URL Encoded)
+            </p>
+           </td>
+          </tr>
+
+        </table>
+        [_For all Agent Names_](http://documentation.commvault.com/commvault/v11/article?p=45467.htm#o99081)
+      operationId: Get Subclient Id
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: clientname
+        schema:
+          example: '{{clientName}}'
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: agent
+        schema:
+          example: File System
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: backupset
+        schema:
+          example: defaultBackupSet
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: subclient
+        schema:
+          example: default
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Subclient Id
+      tags:
+      - Subclient Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  applicationId:
+                    type: integer
+                  clientName:
+                    type: string
+                  instanceId:
+                    type: integer
+                  clientId:
+                    type: integer
+                  instanceName:
+                    type: string
+                  _type_:
+                    type: integer
+                  appName:
+                    type: string
+                x-examples:
+                  Example 1:
+                    applicationId: 33
+                    clientName: dm2perf3
+                    instanceId: 1
+                    clientId: 2
+                    instanceName: DefaultInstanceName
+                    _type_: 5
+                    appName: File System
+              examples:
+                'GetId - With InstanceName /GetId?clientname={{clientName}}&agent=File%20System&instanceName=DefaultInstanceName':
+                  value:
+                    applicationId: 33
+                    clientName: dm2perf3
+                    instanceId: 1
+                    clientId: 2
+                    instanceName: DefaultInstanceName
+                    _type_: 5
+                    appName: File System
+                'GetId - With Backupset Name - /GetId?clientname={{clientName}}&agent=File%20System&backupset=defaultBackupSet':
+                  value:
+                    applicationId: 33
+                    clientName: dm2perf3
+                    backupsetId: 3
+                    instanceId: 1
+                    clientId: 2
+                    backupsetName: defaultBackupSet
+                    _type_: 6
+                    appName: File System
+                GetId - With Client Name:
+                  value:
+                    clientName: yashdutch
+                    clientId: 18
+                    _type_: 3
+                GetId - With Subclient Name:
+                  value:
+                    subclientId: 2
+                    applicationId: 33
+                    clientName: dm2perf3
+                    backupsetId: 3
+                    instanceId: 1
+                    clientId: 2
+                    subclientName: default
+                    backupsetName: defaultBackupSet
+                    _type_: 7
+                    appName: File System
+                GetId - With Agent Name:
+                  value:
+                    applicationId: 33
+                    clientName: dm2perf3
+                    clientId: 2
+                    _type_: 4
+                    appName: File System
+                GetId - With Backupset Name:
+                  value:
+                    applicationId: 33
+                    clientName: dm2perf3
+                    backupsetId: 3
+                    instanceId: 1
+                    clientId: 2
+                    backupsetName: defaultBackupSet
+                    _type_: 6
+                    appName: File System
+  /Subclient/EmailPolicyAssociation:
+    post:
+      deprecated: false
+      description: |
+        This operation updates the content, plan for a subclient.
+      operationId: Subclient Email Policy Association
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Subclient Email Policy Association
+      tags:
+      - Subclient Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                emailAssociation:
+                  type: object
+                  properties:
+                    emailStatus:
+                      type: integer
+                    advanceOptions:
+                      type: object
+                      properties:
+                        enableAutoDiscovery:
+                          type: boolean
+                    subclientEntity:
+                      type: object
+                      properties:
+                        clientName:
+                          type: string
+                        instanceName:
+                          type: string
+                        displayName:
+                          type: string
+                        backupsetId:
+                          type: integer
+                        _type_:
+                          type: integer
+                        commCellName:
+                          type: string
+                        instanceId:
+                          type: integer
+                        csGUID:
+                          type: string
+                        subclientGUID:
+                          type: string
+                        subclientId:
+                          type: integer
+                        clientId:
+                          type: integer
+                        appName:
+                          type: string
+                        backupsetName:
+                          type: string
+                        applicationId:
+                          type: integer
+                        subclientName:
+                          type: string
+                        entityInfo:
+                          type: object
+                          properties:
+                            companyId:
+                              type: integer
+                            companyName:
+                              type: string
+                            multiCommcellId:
+                              type: integer
+                    emailDiscoverinfo:
+                      type: object
+                      properties:
+                        discoverByType:
+                          type: integer
+                        mailBoxes:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              aliasName:
+                                type: string
+                              mailBoxType:
+                                type: integer
+                              databaseName:
+                                type: string
+                              displayName:
+                                type: string
+                              smtpAdrress:
+                                type: string
+                              isAutoDiscoveredUser:
+                                type: boolean
+                              msExchRecipientTypeDetails:
+                                type: integer
+                              exchangeVersion:
+                                type: integer
+                              associated:
+                                type: boolean
+                              exchangeServer:
+                                type: string
+                              user:
+                                type: object
+                                properties:
+                                  userGUID:
+                                    type: string
+                    plan:
+                      type: object
+                      properties:
+                        planId:
+                          type: integer
+              x-examples:
+                Example 1:
+                  emailAssociation:
+                    emailStatus: 0
+                    advanceOptions:
+                      enableAutoDiscovery: false
+                    subclientEntity:
+                      clientName: exchange_sp22
+                      instanceName: defaultInstanceName
+                      displayName: exchange_sp22
+                      backupsetId: 9561
+                      _type_: 7
+                      commCellName: applicationcs
+                      instanceId: 3668
+                      csGUID: DEBC4F98-BDE5-40D1-A5C3-D3D2BBE2E9FE
+                      subclientGUID: 576694DF-D9A7-4D55-8871-632CD0826D80
+                      subclientId: 12224
+                      clientId: 5775
+                      appName: Exchange Mailbox
+                      backupsetName: User Mailbox
+                      applicationId: 137
+                      subclientName: usermailbox
+                      entityInfo:
+                        companyId: 0
+                        companyName: ''
+                        multiCommcellId: 0
+                    emailDiscoverinfo:
+                      discoverByType: 1
+                      mailBoxes:
+                      - aliasName: 1ManojPerfexUserSynchedToAzure
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: 1ManojPerfexUserSynchedToAzure
+                        smtpAdrress: 1ManojPerfexUserSynchedToAzure@commvault365.onmicrosoft.com
+                        isAutoDiscoveredUser: false
+                        msExchRecipientTypeDetails: 36
+                        exchangeVersion: 2
+                        associated: false
+                        exchangeServer: ''
+                        user:
+                          userGUID: 0B86D204X544EX4D77X8F63X1B76CDB75C46
+                    plan:
+                      planId: 392
+            examples:
+              Subclient Email Policy Association:
+                value:
+                  emailAssociation:
+                    emailStatus: 0
+                    advanceOptions:
+                      enableAutoDiscovery: false
+                    subclientEntity:
+                      clientName: exchange_sp22
+                      instanceName: defaultInstanceName
+                      displayName: exchange_sp22
+                      backupsetId: 9561
+                      _type_: 7
+                      commCellName: applicationcs
+                      instanceId: 3668
+                      csGUID: DEBC4F98-BDE5-40D1-A5C3-D3D2BBE2E9FE
+                      subclientGUID: 576694DF-D9A7-4D55-8871-632CD0826D80
+                      subclientId: 12224
+                      clientId: 5775
+                      appName: Exchange Mailbox
+                      backupsetName: User Mailbox
+                      applicationId: 137
+                      subclientName: usermailbox
+                      entityInfo:
+                        companyId: 0
+                        companyName: ''
+                        multiCommcellId: 0
+                    emailDiscoverinfo:
+                      discoverByType: 1
+                      mailBoxes:
+                      - aliasName: 1ManojPerfexUserSynchedToAzure
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: 1ManojPerfexUserSynchedToAzure
+                        smtpAdrress: 1ManojPerfexUserSynchedToAzure@commvault365.onmicrosoft.com
+                        isAutoDiscoveredUser: false
+                        msExchRecipientTypeDetails: 36
+                        exchangeVersion: 2
+                        associated: false
+                        exchangeServer: ''
+                        user:
+                          userGUID: 0B86D204X544EX4D77X8F63X1B76CDB75C46
+                    plan:
+                      planId: 392
+              Discover all mailboxes:
+                value:
+                  emailAssociation:
+                    emailStatus: 0
+                    advanceOptions:
+                      enableAutoDiscovery: true
+                    subclientEntity:
+                      clientName: ssTestExch
+                      instanceName: defaultInstanceName
+                      displayName: ssTestExch
+                      backupsetId: 1453
+                      _type_: 7
+                      commCellName: currentcs
+                      instanceId: 802
+                      csGUID: 9C4B70F7-F5EB-4381-99FC-DF7570B59656
+                      subclientGUID: F8E90701-A5BB-4418-8D1E-6137BE7F98F2
+                      subclientId: 2109
+                      clientId: 924
+                      appName: Exchange Mailbox
+                      backupsetName: User Mailbox
+                      applicationId: 137
+                      subclientName: usermailbox
+                      entityInfo:
+                        companyId: 0
+                        companyName: ''
+                        multiCommcellId: 0
+                    emailDiscoverinfo:
+                      discoverByType: 8
+                      genericAssociations:
+                      - associationName: All mailboxes
+                        associationType: 8
+                    plan:
+                      planId: 16
+              Discover all O365 group mailboxes:
+                value:
+                  emailAssociation:
+                    emailStatus: 0
+                    advanceOptions:
+                      enableAutoDiscovery: true
+                    subclientEntity:
+                      clientName: ssTestExch
+                      instanceName: defaultInstanceName
+                      displayName: ssTestExch
+                      backupsetId: 1453
+                      _type_: 7
+                      commCellName: currentcs
+                      instanceId: 802
+                      csGUID: 9C4B70F7-F5EB-4381-99FC-DF7570B59656
+                      subclientGUID: F8E90701-A5BB-4418-8D1E-6137BE7F98F2
+                      subclientId: 2109
+                      clientId: 924
+                      appName: Exchange Mailbox
+                      backupsetName: User Mailbox
+                      applicationId: 137
+                      subclientName: usermailbox
+                      entityInfo:
+                        companyId: 0
+                        companyName: ''
+                        multiCommcellId: 0
+                    emailDiscoverinfo:
+                      discoverByType: 11
+                      genericAssociations:
+                      - associationName: All O365 group mailboxes
+                        associationType: 11
+                    plan:
+                      planId: 16
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  resp:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    resp:
+                      errorMessage: ''
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    resp:
+                      errorMessage: ''
+                      errorCode: 0
+    put:
+      deprecated: false
+      description: |
+        This operation updates the content, plan for a subclient.
+      operationId: Subclient Email Policy Association Copy
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Subclient Email Policy Association Copy
+      tags:
+      - Subclient Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                emailAssociation:
+                  type: object
+                  properties:
+                    emailStatus:
+                      type: integer
+                    advanceOptions:
+                      type: object
+                      properties:
+                        enableAutoDiscovery:
+                          type: boolean
+                    subclientEntity:
+                      type: object
+                      properties:
+                        clientName:
+                          type: string
+                        instanceName:
+                          type: string
+                        displayName:
+                          type: string
+                        backupsetId:
+                          type: integer
+                        _type_:
+                          type: integer
+                        commCellName:
+                          type: string
+                        instanceId:
+                          type: integer
+                        csGUID:
+                          type: string
+                        subclientGUID:
+                          type: string
+                        subclientId:
+                          type: integer
+                        clientId:
+                          type: integer
+                        appName:
+                          type: string
+                        backupsetName:
+                          type: string
+                        applicationId:
+                          type: integer
+                        subclientName:
+                          type: string
+                        entityInfo:
+                          type: object
+                          properties:
+                            companyId:
+                              type: integer
+                            companyName:
+                              type: string
+                            multiCommcellId:
+                              type: integer
+                    emailDiscoverinfo:
+                      type: object
+                      properties:
+                        discoverByType:
+                          type: integer
+                        mailBoxes:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              aliasName:
+                                type: string
+                              mailBoxType:
+                                type: integer
+                              databaseName:
+                                type: string
+                              displayName:
+                                type: string
+                              smtpAdrress:
+                                type: string
+                              isAutoDiscoveredUser:
+                                type: boolean
+                              msExchRecipientTypeDetails:
+                                type: integer
+                              exchangeVersion:
+                                type: integer
+                              associated:
+                                type: boolean
+                              exchangeServer:
+                                type: string
+                              user:
+                                type: object
+                                properties:
+                                  userGUID:
+                                    type: string
+                    plan:
+                      type: object
+                      properties:
+                        planId:
+                          type: integer
+              x-examples:
+                Example 1:
+                  emailAssociation:
+                    emailStatus: 0
+                    advanceOptions:
+                      enableAutoDiscovery: false
+                    subclientEntity:
+                      clientName: exchange_sp22
+                      instanceName: defaultInstanceName
+                      displayName: exchange_sp22
+                      backupsetId: 9561
+                      _type_: 7
+                      commCellName: applicationcs
+                      instanceId: 3668
+                      csGUID: DEBC4F98-BDE5-40D1-A5C3-D3D2BBE2E9FE
+                      subclientGUID: 576694DF-D9A7-4D55-8871-632CD0826D80
+                      subclientId: 12224
+                      clientId: 5775
+                      appName: Exchange Mailbox
+                      backupsetName: User Mailbox
+                      applicationId: 137
+                      subclientName: usermailbox
+                      entityInfo:
+                        companyId: 0
+                        companyName: ''
+                        multiCommcellId: 0
+                    emailDiscoverinfo:
+                      discoverByType: 1
+                      mailBoxes:
+                      - aliasName: 1ManojPerfexUserSynchedToAzure
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: 1ManojPerfexUserSynchedToAzure
+                        smtpAdrress: 1ManojPerfexUserSynchedToAzure@commvault365.onmicrosoft.com
+                        isAutoDiscoveredUser: false
+                        msExchRecipientTypeDetails: 36
+                        exchangeVersion: 2
+                        associated: false
+                        exchangeServer: ''
+                        user:
+                          userGUID: 0B86D204X544EX4D77X8F63X1B76CDB75C46
+                    plan:
+                      planId: 392
+            examples:
+              Example 1:
+                value:
+                  emailAssociation:
+                    emailStatus: 0
+                    advanceOptions:
+                      enableAutoDiscovery: false
+                    subclientEntity:
+                      clientName: exchange_sp22
+                      instanceName: defaultInstanceName
+                      displayName: exchange_sp22
+                      backupsetId: 9561
+                      _type_: 7
+                      commCellName: applicationcs
+                      instanceId: 3668
+                      csGUID: DEBC4F98-BDE5-40D1-A5C3-D3D2BBE2E9FE
+                      subclientGUID: 576694DF-D9A7-4D55-8871-632CD0826D80
+                      subclientId: 12224
+                      clientId: 5775
+                      appName: Exchange Mailbox
+                      backupsetName: User Mailbox
+                      applicationId: 137
+                      subclientName: usermailbox
+                      entityInfo:
+                        companyId: 0
+                        companyName: ''
+                        multiCommcellId: 0
+                    emailDiscoverinfo:
+                      discoverByType: 1
+                      mailBoxes:
+                      - aliasName: 1ManojPerfexUserSynchedToAzure
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: 1ManojPerfexUserSynchedToAzure
+                        smtpAdrress: 1ManojPerfexUserSynchedToAzure@commvault365.onmicrosoft.com
+                        isAutoDiscoveredUser: false
+                        msExchRecipientTypeDetails: 36
+                        exchangeVersion: 2
+                        associated: false
+                        exchangeServer: ''
+                        user:
+                          userGUID: 0B86D204X544EX4D77X8F63X1B76CDB75C46
+                    plan:
+                      planId: 392
+      responses:
+        '200':
+          description: OK
+  '/Subclient/{clientId}/Browse':
+    get:
+      deprecated: false
+      description: |
+        This operation browses data obtained through a backup.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_subclient_browse.htm)
+      operationId: Subclient Browse
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: path
+        schema:
+          example: /
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - schema:
+          type: boolean
+        in: query
+        name: showDeletedFiles
+      - schema:
+          type: boolean
+        in: query
+        name: vsFileBrowse
+      summary: Subclient Browse
+      tags:
+      - Subclient Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  browseResponses:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        respType:
+                          type: integer
+                        workerId:
+                          type: string
+                        session:
+                          type: object
+                          properties:
+                            sessionId:
+                              type: string
+                        browseResult:
+                          type: object
+                          properties:
+                            queryId:
+                              type: string
+                            dataResultSet:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  path:
+                                    type: string
+                                  size:
+                                    type: integer
+                                  modificationTime:
+                                    type: integer
+                                  displayName:
+                                    type: string
+                                  name:
+                                    type: string
+                                  flags:
+                                    type: object
+                                    properties:
+                                      directory:
+                                        type: boolean
+                                      mountPoint:
+                                        type: boolean
+                                      isFake:
+                                        type: boolean
+                                      snap:
+                                        type: boolean
+                                  advancedData:
+                                    type: object
+                                    properties:
+                                      backupJobId:
+                                        type: integer
+                                      referenceTime:
+                                        type: integer
+                                      offset:
+                                        type: integer
+                                      archiveGroupId:
+                                        type: integer
+                                      objectGuid:
+                                        type: string
+                                      backupTime:
+                                        type: integer
+                                      archiveFileId:
+                                        type: integer
+                                      subclient:
+                                        type: object
+                                        properties:
+                                          type:
+                                            type: integer
+                                          _type_:
+                                            type: integer
+                                          applicationId:
+                                            type: integer
+                                      sourceCommServer:
+                                        type: object
+                                        properties:
+                                          _type_:
+                                            type: integer
+                                          commCellId:
+                                            type: integer
+                                          type:
+                                            type: integer
+                                      advConfig:
+                                        type: object
+                                        properties:
+                                          browseAdvancedConfigResp:
+                                            type: object
+                                            properties:
+                                              commcellNumber:
+                                                type: integer
+                                      browseMetaData:
+                                        type: object
+                                        properties:
+                                          fsData:
+                                            type: object
+                                            properties:
+                                              DriveFreePercentage:
+                                                type: integer
+                                              geoLocation:
+                                                type: string
+                                              VolumeSize:
+                                                type: integer
+                                          indexing:
+                                            type: object
+                                            properties:
+                                              folderSize:
+                                                type: integer
+                                              backupTime:
+                                                type: integer
+                                              fileChangeTime:
+                                                type: integer
+                                          dmStubData:
+                                            type: object
+                                            properties:
+                                              guid:
+                                                type: string
+                                          virtualServerMetaData:
+                                            type: object
+                                            properties:
+                                              extentBlobBitMap:
+                                                type: string
+                            aggrResultSet:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  result:
+                                    type: integer
+                                  groupbyValue:
+                                    type: string
+                                  count:
+                                    type: integer
+                x-examples:
+                  Example 1:
+                    browseResponses:
+                    - respType: 0
+                      workerId: '32'
+                      session:
+                        sessionId: 1496303822-32
+                      browseResult:
+                        queryId: '0'
+                        dataResultSet:
+                        - path: 'C:'
+                          size: 28457425
+                          modificationTime: 1496122177
+                          displayName: 'C:'
+                          name: '2/x12C:'
+                          flags:
+                            directory: true
+                            mountPoint: true
+                            isFake: false
+                            snap: false
+                          advancedData:
+                            backupJobId: 288
+                            referenceTime: 1496122310
+                            offset: 0
+                            archiveGroupId: 3
+                            objectGuid: 15832c0c2980f319a3be40952e7e69b0
+                            backupTime: 1496122310
+                            archiveFileId: 107
+                            subclient:
+                              type: 0
+                              _type_: 7
+                              applicationId: 49
+                            sourceCommServer:
+                              _type_: 1
+                              commCellId: 2
+                              type: 0
+                            advConfig:
+                              browseAdvancedConfigResp:
+                                commcellNumber: 122516778
+                            browseMetaData:
+                              fsData:
+                                DriveFreePercentage: 59
+                                geoLocation: <App_GeoLocation ip_address='199.255.244.65' latitude='40.300720' longitude='-74.081910' status_code='SUCCESS' status_description=''/>
+                                VolumeSize: 214379261952
+                              indexing:
+                                folderSize: 28457425
+                                backupTime: 1496122299
+                                fileChangeTime: 1496122177
+                              dmStubData:
+                                guid: 4adf0103078dbb0de054c95cd763ff21
+                              virtualServerMetaData:
+                                extentBlobBitMap: ''
+                    - respType: 0
+                      workerId: '32'
+                      session:
+                        sessionId: 1496303822-32
+                      browseResult:
+                        queryId: '1'
+                        aggrResultSet:
+                        - result: 1
+                          groupbyValue: ''
+                          count: 1
+                    - respType: 5
+                      workerId: '32'
+                      session:
+                        sessionId: 1496303822-32
+              examples:
+                Subclient Browse - This request is for a root level browse for guest virtual machines.:
+                  value:
+                    browseResponses:
+                    - respType: 0
+                      workerId: '32'
+                      session:
+                        sessionId: 1496303822-32
+                      browseResult:
+                        queryId: '0'
+                        dataResultSet:
+                        - path: 'C:'
+                          size: 28457425
+                          modificationTime: 1496122177
+                          displayName: 'C:'
+                          name: '2/x12C:'
+                          flags:
+                            directory: true
+                            mountPoint: true
+                            isFake: false
+                            snap: false
+                          advancedData:
+                            backupJobId: 288
+                            referenceTime: 1496122310
+                            offset: 0
+                            archiveGroupId: 3
+                            objectGuid: 15832c0c2980f319a3be40952e7e69b0
+                            backupTime: 1496122310
+                            archiveFileId: 107
+                            subclient:
+                              type: 0
+                              _type_: 7
+                              applicationId: 49
+                            sourceCommServer:
+                              _type_: 1
+                              commCellId: 2
+                              type: 0
+                            advConfig:
+                              browseAdvancedConfigResp:
+                                commcellNumber: 122516778
+                            browseMetaData:
+                              fsData:
+                                DriveFreePercentage: 59
+                                geoLocation: <App_GeoLocation ip_address='199.255.244.65' latitude='40.300720' longitude='-74.081910' status_code='SUCCESS' status_description=''/>
+                                VolumeSize: 214379261952
+                              indexing:
+                                folderSize: 28457425
+                                backupTime: 1496122299
+                                fileChangeTime: 1496122177
+                              dmStubData:
+                                guid: 4adf0103078dbb0de054c95cd763ff21
+                              virtualServerMetaData:
+                                extentBlobBitMap: ''
+                    - respType: 0
+                      workerId: '32'
+                      session:
+                        sessionId: 1496303822-32
+                      browseResult:
+                        queryId: '1'
+                        aggrResultSet:
+                        - result: 1
+                          groupbyValue: ''
+                          count: 1
+                    - respType: 5
+                      workerId: '32'
+                      session:
+                        sessionId: 1496303822-32
+                Subclient Browse - This request is for a root level browse.:
+                  value:
+                    browseResponses:
+                    - respType: 0
+                      workerId: '31'
+                      session:
+                        sessionId: 1496303745-31
+                      browseResult:
+                        queryId: '0'
+                        dataResultSet:
+                        - path: 'C:'
+                          size: 28457425
+                          modificationTime: 1496122177
+                          displayName: 'C:'
+                          name: '2/x12C:'
+                          flags:
+                            directory: true
+                            mountPoint: true
+                            isFake: false
+                            snap: false
+                          advancedData:
+                            backupJobId: 288
+                            referenceTime: 1496122310
+                            offset: 0
+                            archiveGroupId: 3
+                            objectGuid: 15832c0c2980f319a3be40952e7e69b0
+                            backupTime: 1496122310
+                            archiveFileId: 107
+                            subclient:
+                              type: 0
+                              _type_: 7
+                              applicationId: 49
+                            sourceCommServer:
+                              _type_: 1
+                              commCellId: 2
+                              type: 0
+                            advConfig:
+                              browseAdvancedConfigResp:
+                                commcellNumber: 122516778
+                            browseMetaData:
+                              fsData:
+                                DriveFreePercentage: 59
+                                geoLocation: <App_GeoLocation ip_address='199.255.244.65' latitude='40.300720' longitude='-74.081910' status_code='SUCCESS' status_description=''/>
+                                VolumeSize: 214379261952
+                              indexing:
+                                folderSize: 28457425
+                                backupTime: 1496122299
+                                fileChangeTime: 1496122177
+                              dmStubData:
+                                guid: 4adf0103078dbb0de054c95cd763ff21
+                              virtualServerMetaData:
+                                extentBlobBitMap: ''
+                    - respType: 0
+                      workerId: '31'
+                      session:
+                        sessionId: 1496303745-31
+                      browseResult:
+                        queryId: '1'
+                        aggrResultSet:
+                        - result: 1
+                          groupbyValue: ''
+                          count: 1
+                    - respType: 5
+                      workerId: '31'
+                      session:
+                        sessionId: 1496303745-31
+    parameters:
+    - in: path
+      name: clientId
+      required: true
+      schema:
+        type: string
+  '/Subclient/{subclientId}':
+    delete:
+      deprecated: false
+      description: |
+        This operation deletes a subclient.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/delete_subclient.htm)
+      operationId: Delete a Subclient
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: subclientId
+        required: true
+        schema:
+          type: string
+      summary: Delete a Subclient
+      tags:
+      - Subclient Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorCode:
+                          type: integer
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorCode: 0
+    get:
+      deprecated: false
+      description: |
+        This operation returns the properties associated with a subclient.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_subclient_properties.htm)
+      operationId: Get Subclient Properties
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: subclientId
+        required: true
+        schema:
+          type: string
+      summary: Get Subclient Properties
+      tags:
+      - Subclient Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subClientProperties:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        hcSubclientProp:
+                          type: object
+                          properties: {}
+                        impersonateUser:
+                          type: object
+                          properties:
+                            userName:
+                              type: string
+                        proxyClient:
+                          type: object
+                          properties: {}
+                        subClientEntity:
+                          type: object
+                          properties:
+                            clientName:
+                              type: string
+                            instanceName:
+                              type: string
+                            backupsetId:
+                              type: integer
+                            _type_:
+                              type: integer
+                            instanceId:
+                              type: integer
+                            subclientId:
+                              type: integer
+                            clientId:
+                              type: integer
+                            appName:
+                              type: string
+                            backupsetName:
+                              type: string
+                            applicationId:
+                              type: integer
+                            subclientName:
+                              type: string
+                        dfsSubclientProp:
+                          type: object
+                          properties:
+                            distributedDataAccessNodes:
+                              type: object
+                              properties: {}
+                        fsSubClientProp:
+                          type: object
+                          properties:
+                            catalogACL:
+                              type: boolean
+                            syncQueue:
+                              type: string
+                            archiverRetention:
+                              type: boolean
+                            blockLevelSPOSBackup:
+                              type: integer
+                            backupPrivateAuthority:
+                              type: boolean
+                            enableFolderLevelMultiThread:
+                              type: boolean
+                            bigFileSize:
+                              type: integer
+                            backupAsObjects:
+                              type: boolean
+                            useGlobalFilters:
+                              type: integer
+                            backupFilesQualifiedForArchive:
+                              type: boolean
+                            syncAllLibForBackup:
+                              type: boolean
+                            backupFileTimeZoneName:
+                              type: string
+                            vssOptions:
+                              type: integer
+                            useVSSForSystemState:
+                              type: boolean
+                            olderFileVersionsMode:
+                              type: integer
+                            blockLevelBackup:
+                              type: integer
+                            backupRetentionMode:
+                              type: integer
+                            deletePSTFileOnly:
+                              type: boolean
+                            txtlibSyncCheckPoint:
+                              type: string
+                            customSubclientContentFlags:
+                              type: integer
+                            saveAccessPath:
+                              type: string
+                            unixCtime:
+                              type: boolean
+                            keepVersions:
+                              type: integer
+                            backupRetention:
+                              type: boolean
+                            scanOption:
+                              type: integer
+                            backupFilesAsExtents:
+                              type: boolean
+                            backupSystemState:
+                              type: boolean
+                            afterDeletionKeepItemsForNDays:
+                              type: integer
+                            saveWhileActiveOpt:
+                              type: string
+                            useIncremental:
+                              type: boolean
+                            unixMtime:
+                              type: boolean
+                            useVssForAllFilesOptions:
+                              type: integer
+                            runTrueUpJobAfterJobsForFS:
+                              type: integer
+                            catalogAdditional:
+                              type: boolean
+                            oneTouchSubclient:
+                              type: boolean
+                            extendRetentionForNDays:
+                              type: integer
+                            customSubclientFlag:
+                              type: boolean
+                            isTrueUpOptionEnabledForFS:
+                              type: boolean
+                            enableOCSBackupOnSubclient:
+                              type: boolean
+                            folderLevelThreadCount:
+                              type: integer
+                            targetReleaseForBackupData:
+                              type: string
+                            retentionPolicy:
+                              type: integer
+                            backupSaveFileData:
+                              type: boolean
+                            activeWaitTime:
+                              type: integer
+                            archiverRetentionMode:
+                              type: integer
+                            backupFilesOnOrAfter:
+                              type: boolean
+                            extentSize:
+                              type: integer
+                            enableOnePass:
+                              type: boolean
+                            runTrueUpJobAfterDaysForFS:
+                              type: integer
+                            useVSS:
+                              type: boolean
+                            isSynthfullRunAfterOnePassEnabledOnSubclient:
+                              type: boolean
+                            useSCPFilters:
+                              type: boolean
+                            extendStoragePolicyRetention:
+                              type: boolean
+                            backupSpooledFileData:
+                              type: boolean
+                            backupQueueData:
+                              type: boolean
+                            oneTouchServerDirectory:
+                              type: string
+                            keepOlderVersionsForNDays:
+                              type: integer
+                            ibmiSubclientprop:
+                              type: object
+                              properties:
+                                SRBootServerDir:
+                                  type: string
+                            backupConfiguration:
+                              type: object
+                              properties: {}
+                            oneTouchServer:
+                              type: object
+                              properties:
+                                clientId:
+                                  type: integer
+                                _type_:
+                                  type: integer
+                            backupFilesOnOrAfterDate:
+                              type: object
+                              properties:
+                                _type_:
+                                  type: integer
+                            diskCleanupRules:
+                              type: object
+                              properties:
+                                stubPruningOptions:
+                                  type: integer
+                                afterArchivingRule:
+                                  type: integer
+                                stubRetentionDaysOld:
+                                  type: integer
+                                enableRedundancyForDataBackedup:
+                                  type: boolean
+                                patternMatch:
+                                  type: string
+                                rulesToSatisfy:
+                                  type: integer
+                                entityMatch:
+                                  type: string
+                            ocsUserName:
+                              type: object
+                              properties:
+                                userName:
+                                  type: string
+                        planEntity:
+                          type: object
+                          properties: {}
+                        content:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              path:
+                                type: string
+                        commonProperties:
+                          type: object
+                          properties:
+                            encryptionFlag:
+                              type: integer
+                            numberOfBackupStreams:
+                              type: integer
+                            nextBackupTime:
+                              type: integer
+                            isTurboSubclient:
+                              type: boolean
+                            isKeepItemPastExpiryTime:
+                              type: boolean
+                            onDemandSubClient:
+                              type: boolean
+                            totalBackupSize:
+                              type: integer
+                            lastBackupTime:
+                              type: integer
+                            indexingBackupSubClient:
+                              type: boolean
+                            description:
+                              type: string
+                            subClientPropertiesFlag:
+                              type: integer
+                            lastBackupSize:
+                              type: integer
+                            onlyBackupQualifiedArchivingFiles:
+                              type: boolean
+                            allowVssForSnapbackup:
+                              type: boolean
+                            enableBackupAfterDelay:
+                              type: boolean
+                            expandSymbolicLinks:
+                              type: boolean
+                            enableAppleDoubleSupport:
+                              type: boolean
+                            allowMultipleDataReaders:
+                              type: boolean
+                            indexCycleToEveryBackupJobs:
+                              type: integer
+                            excludeFromSLA:
+                              type: boolean
+                            readBuffersize:
+                              type: integer
+                            enableBackup:
+                              type: boolean
+                            securityAssociations:
+                              type: object
+                              properties:
+                                ownerAssociations:
+                                  type: object
+                                  properties: {}
+                            enableBackupAtDateTime:
+                              type: object
+                              properties:
+                                TimeZoneID:
+                                  type: integer
+                                time:
+                                  type: integer
+                            turboNASClient:
+                              type: object
+                              properties:
+                                clientId:
+                                  type: integer
+                                _type_:
+                                  type: integer
+                            associatedSnapShotSCId:
+                              type: object
+                              properties:
+                                _type_:
+                                  type: integer
+                                subclientId:
+                                  type: integer
+                            snapCopyInfo:
+                              type: object
+                              properties:
+                                snapToTapeProxyToUseSource:
+                                  type: boolean
+                                isSnapBackupEnabled:
+                                  type: boolean
+                                backupCopyInterface:
+                                  type: integer
+                                IsOracleSposDriverEnabled:
+                                  type: boolean
+                                isRMANEnableForTapeMovement:
+                                  type: boolean
+                                useProxyForSQLIntegrity:
+                                  type: object
+                                  properties: {}
+                                sybaseUser:
+                                  type: object
+                                  properties: {}
+                                snapToTapeSelectedEngine:
+                                  type: object
+                                  properties:
+                                    _type_:
+                                      type: integer
+                                sqlUser:
+                                  type: object
+                                  properties: {}
+                                snapToTapeProxyToUse:
+                                  type: object
+                                  properties:
+                                    clientId:
+                                      type: integer
+                                    _type_:
+                                      type: integer
+                                quiesceImpersonateUser:
+                                  type: object
+                                  properties: {}
+                                separateProxyForSnapToTape:
+                                  type: object
+                                  properties:
+                                    _type_:
+                                      type: integer
+                                configuredSybaseInstance:
+                                  type: object
+                                  properties:
+                                    _type_:
+                                      type: integer
+                            prepostProcess:
+                              type: object
+                              properties:
+                                runPostScan:
+                                  type: integer
+                                runPostBackup:
+                                  type: integer
+                                runPostLog:
+                                  type: integer
+                                prepostUserName:
+                                  type: object
+                                  properties: {}
+                            security:
+                              type: object
+                              properties:
+                                clientOwners:
+                                  type: array
+                                  items:
+                                    type: string
+                                associatedUserGroups:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      userGroupId:
+                                        type: integer
+                                      _type_:
+                                        type: integer
+                                      userGroupName:
+                                        type: string
+                                ownerCapabilities:
+                                  type: object
+                                  properties: {}
+                            storageDevice:
+                              type: object
+                              properties:
+                                networkAgents:
+                                  type: integer
+                                overrideIncrementalDataPath:
+                                  type: boolean
+                                applicableReadSize:
+                                  type: integer
+                                softwareCompression:
+                                  type: integer
+                                overrideDataPath:
+                                  type: boolean
+                                throttleNetworkBandwidth:
+                                  type: integer
+                                dataBackupStoragePolicy:
+                                  type: object
+                                  properties:
+                                    _type_:
+                                      type: integer
+                                    storagePolicyName:
+                                      type: string
+                                    storagePolicyId:
+                                      type: integer
+                                deDuplicationOptions:
+                                  type: object
+                                  properties:
+                                    enableDeduplication:
+                                      type: boolean
+                                    generateSignature:
+                                      type: integer
+                                logBackupStoragePolicy:
+                                  type: object
+                                  properties:
+                                    _type_:
+                                      type: integer
+                                performanceMode:
+                                  type: object
+                                  properties:
+                                    perfSPName:
+                                      type: string
+                                    multiplexingValid:
+                                      type: boolean
+                                    enableMultiplexing:
+                                      type: boolean
+                                    perfCopyName:
+                                      type: string
+                                    perfClientName:
+                                      type: string
+                                    streamsOverMux:
+                                      type: boolean
+                                    pipelineBufferSize:
+                                      type: integer
+                                    numOfPipelineBuffers:
+                                      type: integer
+                                    muxFactor:
+                                      type: integer
+                                    lookAheadReaderSlots:
+                                      type: integer
+                                    perfCRCDetails:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          crcOverMedia:
+                                            type: boolean
+                                          perfMaId:
+                                            type: integer
+                                          crcOverNetwork:
+                                            type: boolean
+                                          perfMa:
+                                            type: string
+                            associatedPolicy:
+                              type: object
+                              properties:
+                                subclientPolicyId:
+                                  type: integer
+                        analyticsSubclientProp:
+                          type: object
+                          properties: {}
+                x-examples:
+                  Example 1:
+                    subClientProperties:
+                    - hcSubclientProp: {}
+                      impersonateUser:
+                        userName: ''
+                      proxyClient: {}
+                      subClientEntity:
+                        clientName: firewalltestcs
+                        instanceName: DefaultInstanceName
+                        backupsetId: 3
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 49
+                        clientId: 2
+                        appName: File System
+                        backupsetName: defaultBackupSet
+                        applicationId: 33
+                        subclientName: TestFSAPI
+                      dfsSubclientProp:
+                        distributedDataAccessNodes: {}
+                      fsSubClientProp:
+                        catalogACL: false
+                        syncQueue: ''
+                        archiverRetention: false
+                        blockLevelSPOSBackup: 0
+                        backupPrivateAuthority: false
+                        enableFolderLevelMultiThread: false
+                        bigFileSize: 1024
+                        backupAsObjects: false
+                        useGlobalFilters: 2
+                        backupFilesQualifiedForArchive: false
+                        syncAllLibForBackup: false
+                        backupFileTimeZoneName: ''
+                        vssOptions: 2
+                        useVSSForSystemState: true
+                        olderFileVersionsMode: 1
+                        blockLevelBackup: 0
+                        backupRetentionMode: 1
+                        deletePSTFileOnly: false
+                        txtlibSyncCheckPoint: ''
+                        customSubclientContentFlags: 0
+                        saveAccessPath: '*SYSVAL'
+                        unixCtime: true
+                        keepVersions: 0
+                        backupRetention: false
+                        scanOption: 2
+                        backupFilesAsExtents: false
+                        backupSystemState: false
+                        afterDeletionKeepItemsForNDays: 730
+                        saveWhileActiveOpt: ''
+                        useIncremental: false
+                        unixMtime: true
+                        useVssForAllFilesOptions: 3
+                        runTrueUpJobAfterJobsForFS: 0
+                        catalogAdditional: false
+                        oneTouchSubclient: false
+                        extendRetentionForNDays: -1
+                        customSubclientFlag: false
+                        isTrueUpOptionEnabledForFS: true
+                        enableOCSBackupOnSubclient: false
+                        folderLevelThreadCount: 0
+                        targetReleaseForBackupData: ''
+                        retentionPolicy: 0
+                        backupSaveFileData: false
+                        activeWaitTime: 0
+                        archiverRetentionMode: 2
+                        backupFilesOnOrAfter: false
+                        extentSize: 4
+                        enableOnePass: false
+                        runTrueUpJobAfterDaysForFS: 30
+                        useVSS: true
+                        isSynthfullRunAfterOnePassEnabledOnSubclient: false
+                        useSCPFilters: false
+                        extendStoragePolicyRetention: false
+                        backupSpooledFileData: false
+                        backupQueueData: false
+                        oneTouchServerDirectory: ''
+                        keepOlderVersionsForNDays: 30
+                        ibmiSubclientprop:
+                          SRBootServerDir: ''
+                        backupConfiguration: {}
+                        oneTouchServer:
+                          clientId: 0
+                          _type_: 3
+                        backupFilesOnOrAfterDate:
+                          _type_: 55
+                        diskCleanupRules:
+                          stubPruningOptions: 0
+                          afterArchivingRule: 1
+                          stubRetentionDaysOld: 0
+                          enableRedundancyForDataBackedup: true
+                          patternMatch: ''
+                          rulesToSatisfy: 1
+                          entityMatch: ''
+                        ocsUserName:
+                          userName: ''
+                      planEntity: {}
+                      content:
+                      - path: 'C:/csguid.PNG'
+                      - path: 'C:/DEMO_3.pptx'
+                      - path: 'C:/fw10_tppm.doc'
+                      - path: 'C:\removeGUIDKeyFromClientGroup.sqle'
+                      - path: 'C:\test.jpg'
+                      - path: 'C:/v11SP4a.xml'
+                      - path: 'C:/wf.txt'
+                      - path: 'C:/WORKQUEUE_TASK.docx'
+                      - path: 'C:\testimg.jpg'
+                      - path: 'C:/Siesta-Lake-Sunset.jpg'
+                      commonProperties:
+                        encryptionFlag: 2
+                        numberOfBackupStreams: 2
+                        nextBackupTime: 0
+                        isTurboSubclient: false
+                        isKeepItemPastExpiryTime: true
+                        onDemandSubClient: false
+                        totalBackupSize: 5933719
+                        lastBackupTime: 1496122319
+                        indexingBackupSubClient: false
+                        description: ''
+                        subClientPropertiesFlag: 0
+                        lastBackupSize: 981264
+                        onlyBackupQualifiedArchivingFiles: false
+                        allowVssForSnapbackup: false
+                        enableBackupAfterDelay: false
+                        expandSymbolicLinks: false
+                        enableAppleDoubleSupport: false
+                        allowMultipleDataReaders: false
+                        indexCycleToEveryBackupJobs: 0
+                        excludeFromSLA: false
+                        readBuffersize: 0
+                        enableBackup: true
+                        securityAssociations:
+                          ownerAssociations: {}
+                        enableBackupAtDateTime:
+                          TimeZoneID: 0
+                          time: 0
+                        turboNASClient:
+                          clientId: 0
+                          _type_: 3
+                        associatedSnapShotSCId:
+                          _type_: 7
+                          subclientId: 0
+                        snapCopyInfo:
+                          snapToTapeProxyToUseSource: false
+                          isSnapBackupEnabled: false
+                          backupCopyInterface: 0
+                          IsOracleSposDriverEnabled: false
+                          isRMANEnableForTapeMovement: false
+                          useProxyForSQLIntegrity: {}
+                          sybaseUser: {}
+                          snapToTapeSelectedEngine:
+                            _type_: 110
+                          sqlUser: {}
+                          snapToTapeProxyToUse:
+                            clientId: 0
+                            _type_: 3
+                          quiesceImpersonateUser: {}
+                          separateProxyForSnapToTape:
+                            _type_: 3
+                          configuredSybaseInstance:
+                            _type_: 5
+                        prepostProcess:
+                          runPostScan: 0
+                          runPostBackup: 0
+                          runPostLog: 0
+                          prepostUserName: {}
+                        security:
+                          clientOwners:
+                          - testadmin
+                          associatedUserGroups:
+                          - userGroupId: 1
+                            _type_: 15
+                            userGroupName: master
+                          - userGroupId: 3
+                            _type_: 15
+                            userGroupName: View All
+                          ownerCapabilities: {}
+                        storageDevice:
+                          networkAgents: 2
+                          overrideIncrementalDataPath: false
+                          applicableReadSize: 0
+                          softwareCompression: 2
+                          overrideDataPath: false
+                          throttleNetworkBandwidth: 0
+                          dataBackupStoragePolicy:
+                            _type_: 17
+                            storagePolicyName: CSSP
+                            storagePolicyId: 3
+                          deDuplicationOptions:
+                            enableDeduplication: true
+                            generateSignature: 1
+                          logBackupStoragePolicy:
+                            _type_: 17
+                          performanceMode:
+                            perfSPName: CSSP
+                            multiplexingValid: true
+                            enableMultiplexing: false
+                            perfCopyName: Primary
+                            perfClientName: firewalltestcs
+                            streamsOverMux: false
+                            pipelineBufferSize: 64
+                            numOfPipelineBuffers: 30
+                            muxFactor: 0
+                            lookAheadReaderSlots: 4
+                            perfCRCDetails:
+                            - crcOverMedia: true
+                              perfMaId: 2
+                              crcOverNetwork: true
+                              perfMa: firewalltestcs
+                        associatedPolicy:
+                          subclientPolicyId: 0
+                      analyticsSubclientProp: {}
+              examples:
+                Example 1:
+                  value:
+                    subClientProperties:
+                    - hcSubclientProp: {}
+                      impersonateUser:
+                        userName: ''
+                      proxyClient: {}
+                      subClientEntity:
+                        clientName: firewalltestcs
+                        instanceName: DefaultInstanceName
+                        backupsetId: 3
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 49
+                        clientId: 2
+                        appName: File System
+                        backupsetName: defaultBackupSet
+                        applicationId: 33
+                        subclientName: TestFSAPI
+                      dfsSubclientProp:
+                        distributedDataAccessNodes: {}
+                      fsSubClientProp:
+                        catalogACL: false
+                        syncQueue: ''
+                        archiverRetention: false
+                        blockLevelSPOSBackup: 0
+                        backupPrivateAuthority: false
+                        enableFolderLevelMultiThread: false
+                        bigFileSize: 1024
+                        backupAsObjects: false
+                        useGlobalFilters: 2
+                        backupFilesQualifiedForArchive: false
+                        syncAllLibForBackup: false
+                        backupFileTimeZoneName: ''
+                        vssOptions: 2
+                        useVSSForSystemState: true
+                        olderFileVersionsMode: 1
+                        blockLevelBackup: 0
+                        backupRetentionMode: 1
+                        deletePSTFileOnly: false
+                        txtlibSyncCheckPoint: ''
+                        customSubclientContentFlags: 0
+                        saveAccessPath: '*SYSVAL'
+                        unixCtime: true
+                        keepVersions: 0
+                        backupRetention: false
+                        scanOption: 2
+                        backupFilesAsExtents: false
+                        backupSystemState: false
+                        afterDeletionKeepItemsForNDays: 730
+                        saveWhileActiveOpt: ''
+                        useIncremental: false
+                        unixMtime: true
+                        useVssForAllFilesOptions: 3
+                        runTrueUpJobAfterJobsForFS: 0
+                        catalogAdditional: false
+                        oneTouchSubclient: false
+                        extendRetentionForNDays: -1
+                        customSubclientFlag: false
+                        isTrueUpOptionEnabledForFS: true
+                        enableOCSBackupOnSubclient: false
+                        folderLevelThreadCount: 0
+                        targetReleaseForBackupData: ''
+                        retentionPolicy: 0
+                        backupSaveFileData: false
+                        activeWaitTime: 0
+                        archiverRetentionMode: 2
+                        backupFilesOnOrAfter: false
+                        extentSize: 4
+                        enableOnePass: false
+                        runTrueUpJobAfterDaysForFS: 30
+                        useVSS: true
+                        isSynthfullRunAfterOnePassEnabledOnSubclient: false
+                        useSCPFilters: false
+                        extendStoragePolicyRetention: false
+                        backupSpooledFileData: false
+                        backupQueueData: false
+                        oneTouchServerDirectory: ''
+                        keepOlderVersionsForNDays: 30
+                        ibmiSubclientprop:
+                          SRBootServerDir: ''
+                        backupConfiguration: {}
+                        oneTouchServer:
+                          clientId: 0
+                          _type_: 3
+                        backupFilesOnOrAfterDate:
+                          _type_: 55
+                        diskCleanupRules:
+                          stubPruningOptions: 0
+                          afterArchivingRule: 1
+                          stubRetentionDaysOld: 0
+                          enableRedundancyForDataBackedup: true
+                          patternMatch: ''
+                          rulesToSatisfy: 1
+                          entityMatch: ''
+                        ocsUserName:
+                          userName: ''
+                      planEntity: {}
+                      content:
+                      - path: 'C:/csguid.PNG'
+                      - path: 'C:/DEMO_3.pptx'
+                      - path: 'C:/fw10_tppm.doc'
+                      - path: 'C:\removeGUIDKeyFromClientGroup.sqle'
+                      - path: 'C:\test.jpg'
+                      - path: 'C:/v11SP4a.xml'
+                      - path: 'C:/wf.txt'
+                      - path: 'C:/WORKQUEUE_TASK.docx'
+                      - path: 'C:\testimg.jpg'
+                      - path: 'C:/Siesta-Lake-Sunset.jpg'
+                      commonProperties:
+                        encryptionFlag: 2
+                        numberOfBackupStreams: 2
+                        nextBackupTime: 0
+                        isTurboSubclient: false
+                        isKeepItemPastExpiryTime: true
+                        onDemandSubClient: false
+                        totalBackupSize: 5933719
+                        lastBackupTime: 1496122319
+                        indexingBackupSubClient: false
+                        description: ''
+                        subClientPropertiesFlag: 0
+                        lastBackupSize: 981264
+                        onlyBackupQualifiedArchivingFiles: false
+                        allowVssForSnapbackup: false
+                        enableBackupAfterDelay: false
+                        expandSymbolicLinks: false
+                        enableAppleDoubleSupport: false
+                        allowMultipleDataReaders: false
+                        indexCycleToEveryBackupJobs: 0
+                        excludeFromSLA: false
+                        readBuffersize: 0
+                        enableBackup: true
+                        securityAssociations:
+                          ownerAssociations: {}
+                        enableBackupAtDateTime:
+                          TimeZoneID: 0
+                          time: 0
+                        turboNASClient:
+                          clientId: 0
+                          _type_: 3
+                        associatedSnapShotSCId:
+                          _type_: 7
+                          subclientId: 0
+                        snapCopyInfo:
+                          snapToTapeProxyToUseSource: false
+                          isSnapBackupEnabled: false
+                          backupCopyInterface: 0
+                          IsOracleSposDriverEnabled: false
+                          isRMANEnableForTapeMovement: false
+                          useProxyForSQLIntegrity: {}
+                          sybaseUser: {}
+                          snapToTapeSelectedEngine:
+                            _type_: 110
+                          sqlUser: {}
+                          snapToTapeProxyToUse:
+                            clientId: 0
+                            _type_: 3
+                          quiesceImpersonateUser: {}
+                          separateProxyForSnapToTape:
+                            _type_: 3
+                          configuredSybaseInstance:
+                            _type_: 5
+                        prepostProcess:
+                          runPostScan: 0
+                          runPostBackup: 0
+                          runPostLog: 0
+                          prepostUserName: {}
+                        security:
+                          clientOwners:
+                          - testadmin
+                          associatedUserGroups:
+                          - userGroupId: 1
+                            _type_: 15
+                            userGroupName: master
+                          - userGroupId: 3
+                            _type_: 15
+                            userGroupName: View All
+                          ownerCapabilities: {}
+                        storageDevice:
+                          networkAgents: 2
+                          overrideIncrementalDataPath: false
+                          applicableReadSize: 0
+                          softwareCompression: 2
+                          overrideDataPath: false
+                          throttleNetworkBandwidth: 0
+                          dataBackupStoragePolicy:
+                            _type_: 17
+                            storagePolicyName: CSSP
+                            storagePolicyId: 3
+                          deDuplicationOptions:
+                            enableDeduplication: true
+                            generateSignature: 1
+                          logBackupStoragePolicy:
+                            _type_: 17
+                          performanceMode:
+                            perfSPName: CSSP
+                            multiplexingValid: true
+                            enableMultiplexing: false
+                            perfCopyName: Primary
+                            perfClientName: firewalltestcs
+                            streamsOverMux: false
+                            pipelineBufferSize: 64
+                            numOfPipelineBuffers: 30
+                            muxFactor: 0
+                            lookAheadReaderSlots: 4
+                            perfCRCDetails:
+                            - crcOverMedia: true
+                              perfMaId: 2
+                              crcOverNetwork: true
+                              perfMa: firewalltestcs
+                        associatedPolicy:
+                          subclientPolicyId: 0
+                      analyticsSubclientProp: {}
+    post:
+      deprecated: false
+      description: "                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n This operation updates the properties  associated with a subclient.\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\" >\n                                        #magic___^_^___line\n  <tr align=\"left\"  valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\"  valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     fsContentOperationType\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Operate on FS subclient content\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li>\n      OVERWRITE: 1\n     </li>\n     <li class=\"listbullet\">\n      ADD: 2\n     </li>\n     <li class=\"listbullet\">\n      DELETE: 3\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     fsExcludeFilterOperationType\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Operate on FS subclient exclude filters\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li>\n      OVERWRITE: 1\n     </li>\n     <li class=\"listbullet\">\n      ADD: 2\n     </li>\n     <li class=\"listbullet\">\n      DELETE: 3\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\"  valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     fsIncludeFilterOperationType\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Operate on FS subclient except filters\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li>\n      OVERWRITE: 1\n     </li>\n     <li class=\"listbullet\">\n      ADD: 2\n     </li>\n     <li class=\"listbullet\">\n      DELETE: 3\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\"  valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     includePolicyFilters\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Associate a backupset to subclient policy\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      1, true\n     </li>\n     <li class=\"listbullet\">\n      0, false\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     customSubclientFlag\n    </p>\n    <p class=\"tabletext\">\n     (Applicable only to/_IBM iSeries subclient)\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     This reveals whether the subclient is a custom one created by the user, or a subclient with preconfigured content\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      1, true\n     </li>\n     <li class=\"listbullet\">\n      0, false\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\"  valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     customSubclientContentFlag\n    </p>\n    <p class=\"tabletext\">\n     (Applicable only to IBM iSeries subclient)\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     This is a bit flag. Each of the following bits will denote the selected content\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <table width=\"371\">\n                                        #magic___^_^___line\n      <tr>\n       <td>\n        customSubclientContentFlag\n       </td>\n       <td>\n        Decimal Bit\n       </td>\n      </tr>\n      <tr>\n       <td >\n        Security Objects\n       </td>\n       <td >\n        1\n       </td>\n      </tr>\n      <tr>\n       <td >\n        Configuration Objects\n       </td>\n       <td >\n        2\n       </td>\n      </tr>\n      <tr>\n       <td>\n        IBM\n       </td>\n       <td >\n        4\n       </td>\n      </tr>\n      <tr>\n       <td>\n        ALLDLO\n       </td>\n       <td >\n        8\n       </td>\n      </tr>\n      <tr>\n       <td>\n        ALLUSER\n       </td>\n       <td>\n        16\n       </td>\n      </tr>\n      <tr>\n       <td>\n        Link\n       </td>\n       <td> \n        32\n       </td>\n      </tr>\n      <tr>\n       <td>\n        History Log\n       </td>\n       <td>\n        64\n       </td>\n      </tr>\n                                        #magic___^_^___line\n    </table>\n    <p class=\"tabletext\">\n     Valid Values for combination are:\n    </p>\n    <p class=\"tabletext\">\n     Link + History Log = 32 + 64 = 96\n    </p>\n    <p class=\"tabletext\">\n     ALLUSER + Link = 16 + 32 = 48\n    </p>\n   </td>\n  </tr>\n                                        #magic___^_^___line\n</table>\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=49184.htm)\n"
+      operationId: Update Subclient Properties
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: subclientId
+        required: true
+        schema:
+          type: string
+      summary: Update Subclient Properties
+      tags:
+      - Subclient Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subClientProperties:
+                  type: object
+                  properties:
+                    fsIncludeFilterOperationType:
+                      type: integer
+                    fsExcludeFilterOperationType:
+                      type: integer
+                    fsContentOperationType:
+                      type: integer
+                    useLocalContent:
+                      type: boolean
+                    fsSubClientProp:
+                      type: object
+                      properties:
+                        useGlobalFilters:
+                          type: integer
+                        customSubclientContentFlags:
+                          type: integer
+                        backupSystemState:
+                          type: boolean
+                        customSubclientFlag:
+                          type: boolean
+                        openvmsBackupDate:
+                          type: boolean
+                        includePolicyFilters:
+                          type: boolean
+                    content:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          path:
+                            type: string
+                          excludePath:
+                            type: string
+              x-examples:
+                Example 1:
+                  subClientProperties:
+                    fsIncludeFilterOperationType: 4
+                    fsExcludeFilterOperationType: 1
+                    fsContentOperationType: 1
+                    useLocalContent: true
+                    fsSubClientProp:
+                      useGlobalFilters: 2
+                      customSubclientContentFlags: 0
+                      backupSystemState: true
+                      customSubclientFlag: true
+                      openvmsBackupDate: false
+                      includePolicyFilters: true
+                    content:
+                    - path: /
+                    - excludePath: 'C:/Program Files'
+                    - excludePath: 'C:/Program Files (x86)'
+            examples:
+              Subclient Properties - Backup Content Derived From a Plan:
+                value:
+                  subClientProperties:
+                    useLocalContent: false
+              Subclient Properties - Disable Encryption:
+                value:
+                  subClientProperties:
+                    commonProperties:
+                      encryptionFlag: ENC_NONE
+              Subclient Properties - Backup Content Override From a Plan:
+                value:
+                  subClientProperties:
+                    fsIncludeFilterOperationType: 4
+                    fsExcludeFilterOperationType: 1
+                    fsContentOperationType: 1
+                    useLocalContent: true
+                    fsSubClientProp:
+                      useGlobalFilters: 2
+                      customSubclientContentFlags: 0
+                      backupSystemState: true
+                      customSubclientFlag: true
+                      openvmsBackupDate: false
+                      includePolicyFilters: true
+                    content:
+                    - path: /
+                    - excludePath: 'C:/Program Files'
+                    - excludePath: 'C:/Program Files (x86)'
+              Subclient Properties - Disable Extend Storage Policy Retention:
+                value:
+                  subClientProperties:
+                    fsIncludeFilterOperationType: 0
+                    fsExcludeFilterOperationType: 0
+                    fsContentOperationType: 0
+                    useLocalContent: true
+                    fsSubClientProp:
+                      useGlobalFilters: 0
+                      customSubclientContentFlags: 0
+                      backupSystemState: true
+                      customSubclientFlag: true
+                      openvmsBackupDate: true
+                      includePolicyFilters: true
+                    content:
+                    - path: string
+                      excludePath: string
+              Subclient Properties - Disable Backup:
+                value:
+                  subClientProperties:
+                    commonProperties:
+                      enableBackup: false
+              Subclient Properties - For MySQL:
+                value:
+                  subClientProperties:
+                    commonProperties:
+                      isDefaultSubclient: false
+                    content:
+                    - mySQLContent:
+                        databaseName: teliatesting
+                    - mySQLContent:
+                        databaseName: sys
+                    contentOperationType: OVERWRITE
+                    mySqlSubclientProp:
+                      numberOfBackupStreams: 3
+                      numberOfTransactionLogStreams: 1
+                    planEntity:
+                      planId: 45
+                  association:
+                    entity:
+                    - subclientId: 30090
+                      applicationId: 104
+                      backupsetId: 9412
+                      instanceId: 4615
+                      clientId: 616
+                      subclientName: sc1
+                      backupsetName: defaultDummyBackupSet
+              Subclient Properties - For Oracle:
+                value:
+                  subClientProperties:
+                    commonProperties: {}
+                    oracleSubclientProp:
+                      selectiveOnlineFull: true
+                      data: true
+                      backupMode: ONLINE_DB
+                      lightsOutScript: false
+                      enableTableBrowse: false
+                      backupArchiveLog: true
+                      archiveDelete: true
+                      archiveDeleteAll: false
+                      dataFilesPerBFS: 8
+                      maxBackupSetSizeInKB: 0
+                      archiveFilesPerBFS: 32
+                      maxOpenFiles: 8
+                      dataThresholdStreams: 4
+                      sectionSizeInKB: 0
+                    planEntity:
+                      planId: 16
+                  association:
+                    entity:
+                    - subclientId: 30091
+                      applicationId: 22
+                      clientName: arcent3
+                      displayName: arcent3
+                      flags: {}
+                      backupsetId: 10506
+                      commCellName: dewcs
+                      instanceId: 5098
+                      subclientGUID: A639716E-BE70-4549-8E2E-78A0B931D958
+                      clientId: 866
+                      subclientName: sof
+                      csGUID: FEDC3CFF-8154-4CBA-8F5F-6B3D650FC842
+                      entityInfo:
+                        companyId: 0
+                        companyName: ''
+                        multiCommcellId: 0
+                      backupsetName: default
+                      instanceName: orcdb2
+                      appName: Oracle
+              Subclient Properties - For Sybase:
+                value:
+                  subClientProperties:
+                    content:
+                    - sybaseContent:
+                        databaseName: CV_2
+                    contentOperationType: OVERWRITE
+                    sybaseSubclientProp:
+                      numberOfBackupStreams: 4
+                      numberOfTransactionLogStreams: 1
+                    planEntity:
+                      planId: 16
+                  association:
+                    entity:
+                    - subclientId: 30093
+                      applicationId: 5
+                      backupsetId: 10594
+                      instanceId: 5130
+                      clientId: 569
+                      subclientName: sc1
+                      backupsetName: defaultDummyBackupSet
+              Subclient Properties - For PostgreSQL:
+                value:
+                  subClientProperties:
+                    commonProperties:
+                      isDefaultSubclient: false
+                    content:
+                    - postgreSQLContent:
+                        databaseName: gk1
+                    - postgreSQLContent:
+                        databaseName: postgres
+                    contentOperationType: OVERWRITE
+                    postgreSQLSubclientProp:
+                      numberOfBackupStreams: 2
+                      collectObjectListDuringBackup: false
+                    planEntity:
+                      planId: 16
+                  association:
+                    entity:
+                    - subclientId: 30096
+                      applicationId: 125
+                      backupsetId: 9493
+                      instanceId: 4650
+                      clientId: 367
+                      subclientName: sc1
+                      backupsetName: DumpBasedBackupSet
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        warningCode:
+                          type: integer
+                        errorCode:
+                          type: integer
+                        warningMessage:
+                          type: string
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - warningCode: 0
+                      errorCode: 0
+                      warningMessage: ''
+              examples:
+                Example 1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - warningCode: 0
+                      errorCode: 0
+                      warningMessage: ''
+  '/Subclient/{subclientId}/EmailPolicyAssociation':
+    get:
+      deprecated: false
+      description: |-
+        This operation returns information about mailboxes or auto discover association depending on discoveryType.
+        <h2>Request Parameters</h2>
+        <table>
+          <tr>
+            <td>
+              <p>Name</p>
+            </td>
+            <td>
+              <p>Description</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>discoveryType</p>
+            </td>
+            <td>
+              <p>Discovery Type. Valid values are:</p>
+              <p>USER</p>
+              <p>DATABASE</p>
+              <p>ADGROUPS</p>
+              <p>AUTO_DISCOVERED</p>
+              <p>MICROSOFT_JOURNAL</p>
+              <p>CONTENTSTORE</p>
+              <p>ALL_JOURNAL</p>
+              <p>ALL_USERS</p>
+              <p>PST_INGESTION</p>
+              <p>BROWSE_FOLDERS</p>
+              <p>ALL_OFFICE365_GROUPS</p>
+              <p>ALL_PUBLIC_FOLDERS</p>
+              <p>JOURNAL_RECIPIENT</p>
+            </td>
+          </tr>
+        </table>
+      operationId: Get Subclient Email Policy Association
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - in: path
+        name: subclientId
+        required: true
+        schema:
+          type: string
+      summary: Subclient Email Policy Association
+      tags:
+      - Subclient Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  environmentType:
+                    type: integer
+                  associations:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        emailStatus:
+                          type: integer
+                        discoverType:
+                          type: integer
+                        pagingInfo:
+                          type: object
+                          properties:
+                            totalRecords:
+                              type: integer
+                        policies:
+                          type: object
+                          properties:
+                            emailPolicies:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  policyType:
+                                    type: integer
+                                  detail:
+                                    type: object
+                                    properties:
+                                      emailPolicy:
+                                        type: object
+                                        properties:
+                                          emailPolicyType:
+                                            type: integer
+                                  policyEntity:
+                                    type: object
+                                    properties:
+                                      policyId:
+                                        type: integer
+                                      policyName:
+                                        type: string
+                        databaseInfo:
+                          type: object
+                          properties:
+                            databaseName:
+                              type: string
+                            exchangeServer:
+                              type: string
+                        adGroupsInfo:
+                          type: object
+                          properties:
+                            adGroupName:
+                              type: string
+                        userMailBoxInfo:
+                          type: object
+                          properties:
+                            aliasName:
+                              type: string
+                            numberOfEmails:
+                              type: integer
+                            mailBoxType:
+                              type: integer
+                            databaseName:
+                              type: string
+                            displayName:
+                              type: string
+                            mailboxSize:
+                              type: integer
+                            smtpAdrress:
+                              type: string
+                            isAutoDiscoveredUser:
+                              type: boolean
+                            msExchRecipientTypeDetails:
+                              type: integer
+                            exchangeVersion:
+                              type: integer
+                            exchangeServer:
+                              type: string
+                            created:
+                              type: object
+                              properties:
+                                time:
+                                  type: integer
+                            lastArchiveJobRanTime:
+                              type: object
+                              properties:
+                                time:
+                                  type: integer
+                            modified:
+                              type: object
+                              properties:
+                                time:
+                                  type: integer
+                            user:
+                              type: object
+                              properties:
+                                _type_:
+                                  type: integer
+                                userGUID:
+                                  type: string
+                        additionalOptions:
+                          type: object
+                          properties:
+                            enableAutoDiscovery:
+                              type: boolean
+                        subclientEntity:
+                          type: object
+                          properties: {}
+                        plan:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            planName:
+                              type: string
+                            planId:
+                              type: integer
+                  stats:
+                    type: object
+                    properties:
+                      indexCreationTime:
+                        type: integer
+                      ciCount:
+                        type: integer
+                      numberOfItems:
+                        type: integer
+                      lastCiJobRanTime:
+                        type: integer
+                      lastArchiveJobRanTime:
+                        type: integer
+                      appArchiveSize:
+                        type: integer
+                      emailCount:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    environmentType: 4
+                    associations:
+                    - emailStatus: 0
+                      discoverType: 1
+                      pagingInfo:
+                        totalRecords: 6
+                      policies:
+                        emailPolicies:
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 1
+                          policyEntity:
+                            policyId: 2189
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox archiving policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 3
+                          policyEntity:
+                            policyId: 2190
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox retention policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 2
+                          policyEntity:
+                            policyId: 2191
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox cleanup policy
+                      databaseInfo:
+                        databaseName: ''
+                        exchangeServer: ''
+                      adGroupsInfo: {}
+                      userMailBoxInfo:
+                        aliasName: 1Manoj
+                        numberOfEmails: 7
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: 1Manoj
+                        mailboxSize: 147690
+                        smtpAdrress: 1Manoj@commvault365.onmicrosoft.com
+                        isAutoDiscoveredUser: false
+                        msExchRecipientTypeDetails: 36
+                        exchangeVersion: 2
+                        exchangeServer: ''
+                        created:
+                          time: 1612391378
+                        lastArchiveJobRanTime:
+                          time: 1613077587
+                        modified:
+                          time: 0
+                        user:
+                          _type_: 13
+                          userGUID: 4226AE8AXD94AX4280X870DX6AAD715F7D5B
+                      additionalOptions:
+                        enableAutoDiscovery: false
+                      subclientEntity: {}
+                      plan:
+                        _type_: 158
+                        planName: newoffice365plan_3rd feb
+                        planId: 392
+                    - emailStatus: 0
+                      discoverType: 1
+                      pagingInfo:
+                        totalRecords: 6
+                      policies:
+                        emailPolicies:
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 1
+                          policyEntity:
+                            policyId: 2189
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox archiving policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 3
+                          policyEntity:
+                            policyId: 2190
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox retention policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 2
+                          policyEntity:
+                            policyId: 2191
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox cleanup policy
+                      databaseInfo:
+                        databaseName: ''
+                        exchangeServer: ''
+                      adGroupsInfo: {}
+                      userMailBoxInfo:
+                        aliasName: 1ManojPerfexPureAzure
+                        numberOfEmails: 1
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: 1ManojPerfexPureAzure
+                        mailboxSize: 30541
+                        smtpAdrress: 1ManojPerfexPureAzure@commvault365.onmicrosoft.com
+                        isAutoDiscoveredUser: false
+                        msExchRecipientTypeDetails: 36
+                        exchangeVersion: 2
+                        exchangeServer: ''
+                        created:
+                          time: 1612391378
+                        lastArchiveJobRanTime:
+                          time: 1613077591
+                        modified:
+                          time: 0
+                        user:
+                          _type_: 13
+                          userGUID: E6787EE4X4C21X43D8X960FX8FD7E82C3BD7
+                      additionalOptions:
+                        enableAutoDiscovery: false
+                      subclientEntity: {}
+                      plan:
+                        _type_: 158
+                        planName: newoffice365plan_3rd feb
+                        planId: 392
+                    - emailStatus: 0
+                      discoverType: 1
+                      pagingInfo:
+                        totalRecords: 6
+                      policies:
+                        emailPolicies:
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 1
+                          policyEntity:
+                            policyId: 2189
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox archiving policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 3
+                          policyEntity:
+                            policyId: 2190
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox retention policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 2
+                          policyEntity:
+                            policyId: 2191
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox cleanup policy
+                      databaseInfo:
+                        databaseName: ''
+                        exchangeServer: ''
+                      adGroupsInfo: {}
+                      userMailBoxInfo:
+                        aliasName: 1ManojPerfexUserSynchedToAzure
+                        numberOfEmails: 1
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: 1ManojPerfexUserSynchedToAzure
+                        mailboxSize: 30816
+                        smtpAdrress: 1ManojPerfexUserSynchedToAzure@commvault365.onmicrosoft.com
+                        isAutoDiscoveredUser: false
+                        msExchRecipientTypeDetails: 36
+                        exchangeVersion: 2
+                        exchangeServer: ''
+                        created:
+                          time: 1612455286
+                        lastArchiveJobRanTime:
+                          time: 1613077585
+                        modified:
+                          time: 0
+                        user:
+                          _type_: 13
+                          userGUID: 0B86D204X544EX4D77X8F63X1B76CDB75C46
+                      additionalOptions:
+                        enableAutoDiscovery: false
+                      subclientEntity: {}
+                      plan:
+                        _type_: 158
+                        planName: newoffice365plan_3rd feb
+                        planId: 392
+                    - emailStatus: 0
+                      discoverType: 1
+                      pagingInfo:
+                        totalRecords: 6
+                      policies:
+                        emailPolicies:
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 1
+                          policyEntity:
+                            policyId: 2189
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox archiving policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 3
+                          policyEntity:
+                            policyId: 2190
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox retention policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 2
+                          policyEntity:
+                            policyId: 2191
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox cleanup policy
+                      databaseInfo:
+                        databaseName: ''
+                        exchangeServer: ''
+                      adGroupsInfo:
+                        adGroupName: ''
+                      userMailBoxInfo:
+                        aliasName: ManojGlobAdminNoLicBasicBlocked
+                        numberOfEmails: 149793
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: ManojGlobAdminNoLicBasicBlocked
+                        mailboxSize: 27106454122
+                        smtpAdrress: ManojGlobAdminNoLicBasicBlocked@commvault365.onmicrosoft.com
+                        isAutoDiscoveredUser: true
+                        msExchRecipientTypeDetails: 3
+                        exchangeVersion: 2
+                        exchangeServer: ''
+                        created:
+                          time: 1612455558
+                        lastArchiveJobRanTime:
+                          time: 1613077510
+                        modified:
+                          time: 0
+                        user:
+                          _type_: 13
+                          userGUID: 91562463XF740X4DA1XBC1AX4F3C055115AF
+                      additionalOptions:
+                        enableAutoDiscovery: true
+                      subclientEntity: {}
+                      plan:
+                        _type_: 158
+                        planName: newoffice365plan_3rd feb
+                        planId: 392
+                    - emailStatus: 0
+                      discoverType: 1
+                      pagingInfo:
+                        totalRecords: 6
+                      policies:
+                        emailPolicies:
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 1
+                          policyEntity:
+                            policyId: 2189
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox archiving policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 3
+                          policyEntity:
+                            policyId: 2190
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox retention policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 2
+                          policyEntity:
+                            policyId: 2191
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox cleanup policy
+                      databaseInfo:
+                        databaseName: ''
+                        exchangeServer: ''
+                      adGroupsInfo:
+                        adGroupName: ''
+                      userMailBoxInfo:
+                        aliasName: sp15onlymb2
+                        numberOfEmails: 6212
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: sp15onlymb2
+                        mailboxSize: 5640381674
+                        smtpAdrress: sp15onlymb2@commvault365.onmicrosoft.com
+                        isAutoDiscoveredUser: true
+                        msExchRecipientTypeDetails: 1
+                        exchangeVersion: 2
+                        exchangeServer: ''
+                        created:
+                          time: 1612455558
+                        lastArchiveJobRanTime:
+                          time: 1613077583
+                        modified:
+                          time: 0
+                        user:
+                          _type_: 13
+                          userGUID: D92F5C3BXFA97X48D9X9CE8X66717DF507C3
+                      additionalOptions:
+                        enableAutoDiscovery: true
+                      subclientEntity: {}
+                      plan:
+                        _type_: 158
+                        planName: newoffice365plan_3rd feb
+                        planId: 392
+                    - emailStatus: 0
+                      discoverType: 1
+                      pagingInfo:
+                        totalRecords: 6
+                      policies:
+                        emailPolicies:
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 1
+                          policyEntity:
+                            policyId: 2189
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox archiving policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 3
+                          policyEntity:
+                            policyId: 2190
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox retention policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 2
+                          policyEntity:
+                            policyId: 2191
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox cleanup policy
+                      databaseInfo:
+                        databaseName: ''
+                        exchangeServer: ''
+                      adGroupsInfo: {}
+                      userMailBoxInfo:
+                        aliasName: herbrewmb1
+                        numberOfEmails: 79877
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: '"מפוצצים 10 גשרים ברחבי ארץ ישראל; ני ליל הגשרים" - אנשי הפלמ"ח'
+                        mailboxSize: 6979157677
+                        smtpAdrress: herbrewmb1@commvault365.com
+                        isAutoDiscoveredUser: false
+                        msExchRecipientTypeDetails: 3
+                        exchangeVersion: 2
+                        exchangeServer: ''
+                        created:
+                          time: 1612379832
+                        lastArchiveJobRanTime:
+                          time: 1613077588
+                        modified:
+                          time: 0
+                        user:
+                          _type_: 13
+                          userGUID: 4BC960F9X58C7X4567X9637X8EEF1476288A
+                      additionalOptions:
+                        enableAutoDiscovery: false
+                      subclientEntity: {}
+                      plan:
+                        _type_: 158
+                        planName: newoffice365plan_3rd feb
+                        planId: 392
+                    stats:
+                      indexCreationTime: 1612991284
+                      ciCount: 0
+                      numberOfItems: 6
+                      lastCiJobRanTime: 0
+                      lastArchiveJobRanTime: 1613077687
+                      appArchiveSize: 40601381172
+                      emailCount: 244393
+              examples:
+                Example 1:
+                  value:
+                    environmentType: 4
+                    associations:
+                    - emailStatus: 0
+                      discoverType: 1
+                      pagingInfo:
+                        totalRecords: 6
+                      policies:
+                        emailPolicies:
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 1
+                          policyEntity:
+                            policyId: 2189
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox archiving policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 3
+                          policyEntity:
+                            policyId: 2190
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox retention policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 2
+                          policyEntity:
+                            policyId: 2191
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox cleanup policy
+                      databaseInfo:
+                        databaseName: ''
+                        exchangeServer: ''
+                      adGroupsInfo: {}
+                      userMailBoxInfo:
+                        aliasName: 1Manoj
+                        numberOfEmails: 7
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: 1Manoj
+                        mailboxSize: 147690
+                        smtpAdrress: 1Manoj@commvault365.onmicrosoft.com
+                        isAutoDiscoveredUser: false
+                        msExchRecipientTypeDetails: 36
+                        exchangeVersion: 2
+                        exchangeServer: ''
+                        created:
+                          time: 1612391378
+                        lastArchiveJobRanTime:
+                          time: 1613077587
+                        modified:
+                          time: 0
+                        user:
+                          _type_: 13
+                          userGUID: 4226AE8AXD94AX4280X870DX6AAD715F7D5B
+                      additionalOptions:
+                        enableAutoDiscovery: false
+                      subclientEntity: {}
+                      plan:
+                        _type_: 158
+                        planName: newoffice365plan_3rd feb
+                        planId: 392
+                    - emailStatus: 0
+                      discoverType: 1
+                      pagingInfo:
+                        totalRecords: 6
+                      policies:
+                        emailPolicies:
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 1
+                          policyEntity:
+                            policyId: 2189
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox archiving policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 3
+                          policyEntity:
+                            policyId: 2190
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox retention policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 2
+                          policyEntity:
+                            policyId: 2191
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox cleanup policy
+                      databaseInfo:
+                        databaseName: ''
+                        exchangeServer: ''
+                      adGroupsInfo: {}
+                      userMailBoxInfo:
+                        aliasName: 1ManojPerfexPureAzure
+                        numberOfEmails: 1
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: 1ManojPerfexPureAzure
+                        mailboxSize: 30541
+                        smtpAdrress: 1ManojPerfexPureAzure@commvault365.onmicrosoft.com
+                        isAutoDiscoveredUser: false
+                        msExchRecipientTypeDetails: 36
+                        exchangeVersion: 2
+                        exchangeServer: ''
+                        created:
+                          time: 1612391378
+                        lastArchiveJobRanTime:
+                          time: 1613077591
+                        modified:
+                          time: 0
+                        user:
+                          _type_: 13
+                          userGUID: E6787EE4X4C21X43D8X960FX8FD7E82C3BD7
+                      additionalOptions:
+                        enableAutoDiscovery: false
+                      subclientEntity: {}
+                      plan:
+                        _type_: 158
+                        planName: newoffice365plan_3rd feb
+                        planId: 392
+                    - emailStatus: 0
+                      discoverType: 1
+                      pagingInfo:
+                        totalRecords: 6
+                      policies:
+                        emailPolicies:
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 1
+                          policyEntity:
+                            policyId: 2189
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox archiving policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 3
+                          policyEntity:
+                            policyId: 2190
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox retention policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 2
+                          policyEntity:
+                            policyId: 2191
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox cleanup policy
+                      databaseInfo:
+                        databaseName: ''
+                        exchangeServer: ''
+                      adGroupsInfo: {}
+                      userMailBoxInfo:
+                        aliasName: 1ManojPerfexUserSynchedToAzure
+                        numberOfEmails: 1
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: 1ManojPerfexUserSynchedToAzure
+                        mailboxSize: 30816
+                        smtpAdrress: 1ManojPerfexUserSynchedToAzure@commvault365.onmicrosoft.com
+                        isAutoDiscoveredUser: false
+                        msExchRecipientTypeDetails: 36
+                        exchangeVersion: 2
+                        exchangeServer: ''
+                        created:
+                          time: 1612455286
+                        lastArchiveJobRanTime:
+                          time: 1613077585
+                        modified:
+                          time: 0
+                        user:
+                          _type_: 13
+                          userGUID: 0B86D204X544EX4D77X8F63X1B76CDB75C46
+                      additionalOptions:
+                        enableAutoDiscovery: false
+                      subclientEntity: {}
+                      plan:
+                        _type_: 158
+                        planName: newoffice365plan_3rd feb
+                        planId: 392
+                    - emailStatus: 0
+                      discoverType: 1
+                      pagingInfo:
+                        totalRecords: 6
+                      policies:
+                        emailPolicies:
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 1
+                          policyEntity:
+                            policyId: 2189
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox archiving policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 3
+                          policyEntity:
+                            policyId: 2190
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox retention policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 2
+                          policyEntity:
+                            policyId: 2191
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox cleanup policy
+                      databaseInfo:
+                        databaseName: ''
+                        exchangeServer: ''
+                      adGroupsInfo:
+                        adGroupName: ''
+                      userMailBoxInfo:
+                        aliasName: ManojGlobAdminNoLicBasicBlocked
+                        numberOfEmails: 149793
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: ManojGlobAdminNoLicBasicBlocked
+                        mailboxSize: 27106454122
+                        smtpAdrress: ManojGlobAdminNoLicBasicBlocked@commvault365.onmicrosoft.com
+                        isAutoDiscoveredUser: true
+                        msExchRecipientTypeDetails: 3
+                        exchangeVersion: 2
+                        exchangeServer: ''
+                        created:
+                          time: 1612455558
+                        lastArchiveJobRanTime:
+                          time: 1613077510
+                        modified:
+                          time: 0
+                        user:
+                          _type_: 13
+                          userGUID: 91562463XF740X4DA1XBC1AX4F3C055115AF
+                      additionalOptions:
+                        enableAutoDiscovery: true
+                      subclientEntity: {}
+                      plan:
+                        _type_: 158
+                        planName: newoffice365plan_3rd feb
+                        planId: 392
+                    - emailStatus: 0
+                      discoverType: 1
+                      pagingInfo:
+                        totalRecords: 6
+                      policies:
+                        emailPolicies:
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 1
+                          policyEntity:
+                            policyId: 2189
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox archiving policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 3
+                          policyEntity:
+                            policyId: 2190
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox retention policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 2
+                          policyEntity:
+                            policyId: 2191
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox cleanup policy
+                      databaseInfo:
+                        databaseName: ''
+                        exchangeServer: ''
+                      adGroupsInfo:
+                        adGroupName: ''
+                      userMailBoxInfo:
+                        aliasName: sp15onlymb2
+                        numberOfEmails: 6212
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: sp15onlymb2
+                        mailboxSize: 5640381674
+                        smtpAdrress: sp15onlymb2@commvault365.onmicrosoft.com
+                        isAutoDiscoveredUser: true
+                        msExchRecipientTypeDetails: 1
+                        exchangeVersion: 2
+                        exchangeServer: ''
+                        created:
+                          time: 1612455558
+                        lastArchiveJobRanTime:
+                          time: 1613077583
+                        modified:
+                          time: 0
+                        user:
+                          _type_: 13
+                          userGUID: D92F5C3BXFA97X48D9X9CE8X66717DF507C3
+                      additionalOptions:
+                        enableAutoDiscovery: true
+                      subclientEntity: {}
+                      plan:
+                        _type_: 158
+                        planName: newoffice365plan_3rd feb
+                        planId: 392
+                    - emailStatus: 0
+                      discoverType: 1
+                      pagingInfo:
+                        totalRecords: 6
+                      policies:
+                        emailPolicies:
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 1
+                          policyEntity:
+                            policyId: 2189
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox archiving policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 3
+                          policyEntity:
+                            policyId: 2190
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox retention policy
+                        - policyType: 1
+                          detail:
+                            emailPolicy:
+                              emailPolicyType: 2
+                          policyEntity:
+                            policyId: 2191
+                            policyName: newoffice365plan_3rd feb Office 365 Mailbox cleanup policy
+                      databaseInfo:
+                        databaseName: ''
+                        exchangeServer: ''
+                      adGroupsInfo: {}
+                      userMailBoxInfo:
+                        aliasName: herbrewmb1
+                        numberOfEmails: 79877
+                        mailBoxType: 1
+                        databaseName: ''
+                        displayName: '"מפוצצים 10 גשרים ברחבי ארץ ישראל; ני ליל הגשרים" - אנשי הפלמ"ח'
+                        mailboxSize: 6979157677
+                        smtpAdrress: herbrewmb1@commvault365.com
+                        isAutoDiscoveredUser: false
+                        msExchRecipientTypeDetails: 3
+                        exchangeVersion: 2
+                        exchangeServer: ''
+                        created:
+                          time: 1612379832
+                        lastArchiveJobRanTime:
+                          time: 1613077588
+                        modified:
+                          time: 0
+                        user:
+                          _type_: 13
+                          userGUID: 4BC960F9X58C7X4567X9637X8EEF1476288A
+                      additionalOptions:
+                        enableAutoDiscovery: false
+                      subclientEntity: {}
+                      plan:
+                        _type_: 158
+                        planName: newoffice365plan_3rd feb
+                        planId: 392
+                    stats:
+                      indexCreationTime: 1612991284
+                      ciCount: 0
+                      numberOfItems: 6
+                      lastCiJobRanTime: 0
+                      lastArchiveJobRanTime: 1613077687
+                      appArchiveSize: 40601381172
+                      emailCount: 244393
+  '/Subclient/{subclientId}/action/backup':
+    post:
+      deprecated: false
+      description: |
+        This operation runs a backup job for a subclient.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_subclient_backup.htm)
+      operationId: Perform Subclient Backup
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: backupLevel
+        schema:
+          example: Synthetic_Full
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: runIncrementalBackup
+        schema:
+          example: true
+          type: boolean
+      - description: ''
+        explode: true
+        in: query
+        name: incrementalLevel
+        schema:
+          example: AFTER_SYNTH
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: subclientId
+        required: true
+        schema:
+          type: string
+      summary: Perform Subclient Backup
+      tags:
+      - Subclient Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskId:
+                    type: integer
+                  jobIds:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    taskId: 128
+                    jobIds:
+                    - '308'
+              examples:
+                Subclient Backup:
+                  value:
+                    taskId: 128
+                    jobIds:
+                    - '308'
+  /CreateTask:
+    post:
+      summary: Create Task (Backup)
+      tags:
+      - Subclient Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskId:
+                    type: integer
+                  jobIds:
+                    type: array
+                    items:
+                      type: string
+                x-examples:
+                  Example 1:
+                    taskId: 124
+                    jobIds:
+                    - '301'
+                    - '302'
+                    - '303'
+              examples:
+                Create Task (Backup) - This request starts an immediate backup job.:
+                  value:
+                    taskId: 124
+                    jobIds:
+                    - '301'
+                    - '302'
+                    - '303'
+      operationId: get-CreateTask
+      description: |
+        This operation runs a backup job for a subclient or a backup set.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_create_task_backup.htm)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taskInfo:
+                  type: object
+                  properties:
+                    associations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          applicationId:
+                            type: integer
+                          clientName:
+                            type: string
+                          commCellId:
+                            type: integer
+                          backupsetName:
+                            type: string
+                          _type_:
+                            type: integer
+                          appName:
+                            type: string
+                    task:
+                      type: object
+                      properties:
+                        sequenceNumber:
+                          type: integer
+                        initiatedFrom:
+                          type: integer
+                        taskType:
+                          type: integer
+                        policyType:
+                          type: integer
+                        taskId:
+                          type: integer
+                        taskFlags:
+                          type: object
+                          properties:
+                            disabled:
+                              type: boolean
+                    subTasks:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          subTask:
+                            type: object
+                            properties:
+                              subTaskType:
+                                type: integer
+                              operationType:
+                                type: integer
+                          options:
+                            type: object
+                            properties:
+                              backupOpts:
+                                type: object
+                                properties:
+                                  truncateLogsOnSource:
+                                    type: boolean
+                                  sybaseSkipFullafterLogBkp:
+                                    type: boolean
+                                  backupLevel:
+                                    type: integer
+                                  runIncrementalBackup:
+                                    type: boolean
+                                  isSpHasInLineCopy:
+                                    type: boolean
+                                  runSILOBackup:
+                                    type: boolean
+                                  doNotTruncateLog:
+                                    type: boolean
+                                  dataOpt:
+                                    type: object
+                                    properties:
+                                      skipCatalogPhaseForSnapBackup:
+                                        type: boolean
+                                      followMountPoints:
+                                        type: boolean
+                                      enableIndexCheckPointing:
+                                        type: boolean
+                                      enforceTransactionLogUsage:
+                                        type: boolean
+                                      spaceReclamation:
+                                        type: boolean
+                                      skipConsistencyCheck:
+                                        type: boolean
+                                      createNewIndex:
+                                        type: boolean
+                                      verifySynthFull:
+                                        type: boolean
+                                  dataPathOpt:
+                                    type: object
+                                    properties:
+                                      mediaAgent:
+                                        type: object
+                                        properties:
+                                          mediaAgentId:
+                                            type: integer
+                                      library:
+                                        type: object
+                                        properties:
+                                          libraryId:
+                                            type: integer
+                                      drivePool:
+                                        type: object
+                                        properties:
+                                          drivePoolId:
+                                            type: integer
+                                      spareGroup:
+                                        type: object
+                                        properties:
+                                          spareMediaGroupId:
+                                            type: integer
+                                      drive:
+                                        type: object
+                                        properties:
+                                          driveId:
+                                            type: integer
+                                  mediaOpt:
+                                    type: object
+                                    properties:
+                                      markMediaFullOnSuccess:
+                                        type: boolean
+                                      numberofDays:
+                                        type: integer
+                                      startNewMedia:
+                                        type: boolean
+                                      retentionJobType:
+                                        type: integer
+                                      allowOtherSchedulesToUseMediaSet:
+                                        type: boolean
+                                      reserveResourcesBeforeScan:
+                                        type: boolean
+                              commonOpts:
+                                type: object
+                                properties:
+                                  jobDescription:
+                                    type: string
+                                  jobRetryOpts:
+                                    type: object
+                                    properties:
+                                      killRunningJobWhenTotalRunningTimeExpires:
+                                        type: boolean
+                                      numberOfRetries:
+                                        type: integer
+                                      enableNumberOfRetries:
+                                        type: boolean
+                                      runningTime:
+                                        type: object
+                                        properties:
+                                          enableTotalRunningTime:
+                                            type: boolean
+                                          totalRunningTime:
+                                            type: integer
+                                  startUpOpts:
+                                    type: object
+                                    properties:
+                                      startInSuspendedState:
+                                        type: boolean
+                                      useDefaultPriority:
+                                        type: boolean
+                                      priority:
+                                        type: integer
+              x-examples:
+                Example 1:
+                  taskInfo:
+                    associations:
+                    - applicationId: 33
+                      clientName: '{{clientName}}'
+                      commCellId: 0
+                      backupsetName: defaultBackupSet
+                      _type_: 7
+                      appName: File System
+                    task:
+                      sequenceNumber: 10
+                      initiatedFrom: 2
+                      taskType: 1
+                      policyType: 0
+                      taskId: 0
+                      taskFlags:
+                        disabled: false
+                    subTasks:
+                    - subTask:
+                        subTaskType: 2
+                        operationType: 2
+                      options:
+                        backupOpts:
+                          truncateLogsOnSource: false
+                          sybaseSkipFullafterLogBkp: false
+                          backupLevel: 1
+                          runIncrementalBackup: true
+                          isSpHasInLineCopy: false
+                          runSILOBackup: false
+                          doNotTruncateLog: false
+                          dataOpt:
+                            skipCatalogPhaseForSnapBackup: false
+                            followMountPoints: true
+                            enableIndexCheckPointing: false
+                            enforceTransactionLogUsage: false
+                            spaceReclamation: false
+                            skipConsistencyCheck: false
+                            createNewIndex: false
+                            verifySynthFull: false
+                          dataPathOpt:
+                            mediaAgent:
+                              mediaAgentId: 0
+                            library:
+                              libraryId: 0
+                            drivePool:
+                              drivePoolId: 0
+                            spareGroup:
+                              spareMediaGroupId: 0
+                            drive:
+                              driveId: 0
+                          mediaOpt:
+                            markMediaFullOnSuccess: false
+                            numberofDays: 30
+                            startNewMedia: true
+                            retentionJobType: 2
+                            allowOtherSchedulesToUseMediaSet: true
+                            reserveResourcesBeforeScan: false
+                        commonOpts:
+                          jobDescription: ''
+                          jobRetryOpts:
+                            killRunningJobWhenTotalRunningTimeExpires: false
+                            numberOfRetries: 0
+                            enableNumberOfRetries: false
+                            runningTime:
+                              enableTotalRunningTime: false
+                              totalRunningTime: 3600
+                          startUpOpts:
+                            startInSuspendedState: false
+                            useDefaultPriority: true
+                            priority: 166
+            examples:
+              Create Task (Backup) - This request starts an immediate backup job.:
+                value:
+                  taskInfo:
+                    associations:
+                    - applicationId: 33
+                      clientName: '{{clientName}}'
+                      commCellId: 0
+                      backupsetName: defaultBackupSet
+                      _type_: 7
+                      appName: File System
+                    task:
+                      sequenceNumber: 10
+                      initiatedFrom: 2
+                      taskType: 1
+                      policyType: 0
+                      taskId: 0
+                      taskFlags:
+                        disabled: false
+                    subTasks:
+                    - subTask:
+                        subTaskType: 2
+                        operationType: 2
+                      options:
+                        backupOpts:
+                          truncateLogsOnSource: false
+                          sybaseSkipFullafterLogBkp: false
+                          backupLevel: 1
+                          runIncrementalBackup: true
+                          isSpHasInLineCopy: false
+                          runSILOBackup: false
+                          doNotTruncateLog: false
+                          dataOpt:
+                            skipCatalogPhaseForSnapBackup: false
+                            followMountPoints: true
+                            enableIndexCheckPointing: false
+                            enforceTransactionLogUsage: false
+                            spaceReclamation: false
+                            skipConsistencyCheck: false
+                            createNewIndex: false
+                            verifySynthFull: false
+                          dataPathOpt:
+                            mediaAgent:
+                              mediaAgentId: 0
+                            library:
+                              libraryId: 0
+                            drivePool:
+                              drivePoolId: 0
+                            spareGroup:
+                              spareMediaGroupId: 0
+                            drive:
+                              driveId: 0
+                          mediaOpt:
+                            markMediaFullOnSuccess: false
+                            numberofDays: 30
+                            startNewMedia: true
+                            retentionJobType: 2
+                            allowOtherSchedulesToUseMediaSet: true
+                            reserveResourcesBeforeScan: false
+                        commonOpts:
+                          jobDescription: ''
+                          jobRetryOpts:
+                            killRunningJobWhenTotalRunningTimeExpires: false
+                            numberOfRetries: 0
+                            enableNumberOfRetries: false
+                            runningTime:
+                              enableTotalRunningTime: false
+                              totalRunningTime: 3600
+                          startUpOpts:
+                            startInSuspendedState: false
+                            useDefaultPriority: true
+                            priority: 166

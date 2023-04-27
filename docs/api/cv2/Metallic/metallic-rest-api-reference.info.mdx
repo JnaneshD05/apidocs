@@ -1,0 +1,46 @@
+---
+id: metallic-rest-api-reference
+title: "Metallic REST API Reference"
+description: "This API documentation covers all the APIs exposed by metallic for all the partner customers as well as standalone customers."
+sidebar_label: Introduction
+sidebar_position: 0
+hide_title: true
+custom_edit_url: null
+---
+
+import ApiLogo from "@theme/ApiLogo";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import Export from "@theme/ApiDemoPanel/Export";
+
+<span className={"theme-doc-version-badge badge badge--secondary"}>Version: 1.0</span>
+
+# Metallic REST API Reference
+
+
+
+This API documentation covers all the APIs exposed by metallic for all the partner customers as well as standalone customers.
+
+> Invoke Authentication - `/api/v1/authenticate` API using `username` and `password` provided by metallic to obtain `authToken`. All subsequent requests should pass `authToken` obtained as `Bearer token` as part of `Authorization` header.
+
+> Contact Metallic Customer support for any further assistance.
+
+## HTTP Codes
+
+Following are the generic HTTP codes returned by APIs. These HTTP codes are not documented again at each API level to improve the overall documentation readability.
+
+| **HTTP Error Code** | **Description** |
+| --- | --- |
+| 200 | OK - Success |
+| 201 | Created - Record created successfully |
+| 204 | Success No Content -Usually returned for DELETE operation response. |
+| 400 | Bad Request - Correct the request and resubmit. |
+| 401 | Unauthorized - Authentication Failed. User credentials are incorrect or authToken is incorrect/expired. |
+| 403 | Forbidden - Logged in user does not have permission to requested API. |
+| 404 | Not Found - No records found matching the request. |
+| 409 | Conflict - In case of business errors where resource can not be created/updated due to conflict. |
+| 429 | Too Many Requests - API invocation quota exceeded. |
+| 500 | Internal Server Error - Unexpected error from server. Something went wrong on server. |
+
+<div style={{"marginBottom":"2rem"}}><h2 id={"authentication"} style={{"marginBottom":"1rem"}}>Authentication</h2><Tabs><TabItem label={"Bearer"} value={"bearer"}><div><table><tbody><tr><th>Security Scheme Type:</th><td>http</td></tr><tr><th>HTTP Authorization Scheme:</th><td>bearer</td></tr><tr><th>Bearer format:</th><td></td></tr></tbody></table></div></TabItem></Tabs></div>
+      

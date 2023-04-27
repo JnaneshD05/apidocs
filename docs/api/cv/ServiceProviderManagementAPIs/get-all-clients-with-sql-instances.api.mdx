@@ -1,0 +1,87 @@
+---
+id: get-all-clients-with-sql-instances
+title: "Get All Clients with SQL instances"
+description: "This operation fetches all the clients with sql instances,"
+sidebar_label: "Get All Clients with SQL instances"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation fetches all the clients with sql instances,\n\n\n<h2>Request Parameters</h2>\n\n\n<table>\n\n<tr>\n<td>\n<p>Name</p>\n</td>\n<td>\n<p>Description</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>opType</p>\n</td>\n<td>\n<p>Valid values are:</p>\n<ul>\n<li>GETINSTANCES=0</li>\n<li>VERIFYGUID=1</li>\n<li>ISAGCONFIGURED=2</li>\n<li>GETCLOUDPROXYLIST=3</li>\n<li>GETAGCLIENTSLIST=4</li>\n<li>ANALYSIS_SERVER_INSTANCES=5</li>\n<li>APPLESS = 6</li>\n<li>CLOUD_APPS = 7</li>\n</ul>\n</td>\n</tr>\n\n\n<tr>\n<td>\n<p>osType</p>\n</td>\n<td>\n<p>Valid values are:</p>\n<ul>\n<li>UNKNOWN= 0</li>\n<li>WINDOWS= 1</li>\n<li>UNIX = 2</li>\n<li>NETWARE= 3</li>\n<li>NASFILER = 4</li>\n<li>DATAONTAP= 5</li>\n</ul>\n</td>\n</tr>\n\n</table>","operationId":"Get All Clients with SQL instances","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"schema":{"type":"string"},"in":"query","name":"opType"},{"schema":{"type":"string"},"in":"query","name":"osType"}],"tags":["Sql"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"proxyClientsForSQL":{"type":"array","items":{"type":"object","properties":{"clientId":{"type":"integer"},"clientName":{"type":"string"}}}},"sqlClientInstances":{"type":"array","items":{"type":"object","properties":{"sqlClient":{"type":"object","properties":{"clientId":{"type":"integer"},"clientName":{"type":"string"}}},"sqlInstance":{"type":"array","items":{"type":"object","properties":{"instanceName":{"type":"string"},"instanceId":{"type":"integer"}}}}}}}},"x-examples":{"Example 1":{"proxyClientsForSQL":[{"clientId":2,"clientName":"ssp20"},{"clientId":3,"clientName":"pluginnoservc"},{"clientId":6,"clientName":"sanjaycs"}],"sqlClientInstances":[{"sqlClient":{"clientId":2,"clientName":"ssp20"},"sqlInstance":[{"instanceName":"SSP20/COMMVAULT","instanceId":3}]},{"sqlClient":{"clientId":3,"clientName":"pluginnoservc"},"sqlInstance":[{"instanceName":"PLUGINNOSERVC","instanceId":4},{"instanceName":"PLUGINNOSERVC/SANJAYSERVER2","instanceId":7}]},{"sqlClient":{"clientId":6,"clientName":"sanjaycs"},"sqlInstance":[{"instanceName":"SANJAYCS","instanceId":6}]}]}}},"examples":{"Example 1":{"value":{"proxyClientsForSQL":[{"clientId":2,"clientName":"ssp20"},{"clientId":3,"clientName":"pluginnoservc"},{"clientId":6,"clientName":"sanjaycs"}],"sqlClientInstances":[{"sqlClient":{"clientId":2,"clientName":"ssp20"},"sqlInstance":[{"instanceName":"SSP20/COMMVAULT","instanceId":3}]},{"sqlClient":{"clientId":3,"clientName":"pluginnoservc"},"sqlInstance":[{"instanceName":"PLUGINNOSERVC","instanceId":4},{"instanceName":"PLUGINNOSERVC/SANJAYSERVER2","instanceId":7}]},{"sqlClient":{"clientId":6,"clientName":"sanjaycs"},"sqlInstance":[{"instanceName":"SANJAYCS","instanceId":6}]}]}}}}}}},"method":"get","path":"/Client/SQL","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get All Clients with SQL instances","description":{"content":"This operation fetches all the clients with sql instances,\n\n\n<h2>Request Parameters</h2>\n\n\n<table>\n\n<tr>\n<td>\n<p>Name</p>\n</td>\n<td>\n<p>Description</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>opType</p>\n</td>\n<td>\n<p>Valid values are:</p>\n<ul>\n<li>GETINSTANCES=0</li>\n<li>VERIFYGUID=1</li>\n<li>ISAGCONFIGURED=2</li>\n<li>GETCLOUDPROXYLIST=3</li>\n<li>GETAGCLIENTSLIST=4</li>\n<li>ANALYSIS_SERVER_INSTANCES=5</li>\n<li>APPLESS = 6</li>\n<li>CLOUD_APPS = 7</li>\n</ul>\n</td>\n</tr>\n\n\n<tr>\n<td>\n<p>osType</p>\n</td>\n<td>\n<p>Valid values are:</p>\n<ul>\n<li>UNKNOWN= 0</li>\n<li>WINDOWS= 1</li>\n<li>UNIX = 2</li>\n<li>NETWARE= 3</li>\n<li>NASFILER = 4</li>\n<li>DATAONTAP= 5</li>\n</ul>\n</td>\n</tr>\n\n</table>","type":"text/plain"},"url":{"path":["Client","SQL"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"opType","value":""},{"disabled":false,"key":"osType","value":""}],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/ServiceProviderManagementAPIs/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get All Clients with SQL instances
+
+
+
+This operation fetches all the clients with sql instances,
+
+
+<h2>Request Parameters</h2>
+
+
+<table>
+
+<tr>
+<td>
+<p>Name</p>
+</td>
+<td>
+<p>Description</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>opType</p>
+</td>
+<td>
+<p>Valid values are:</p>
+<ul>
+<li>GETINSTANCES=0</li>
+<li>VERIFYGUID=1</li>
+<li>ISAGCONFIGURED=2</li>
+<li>GETCLOUDPROXYLIST=3</li>
+<li>GETAGCLIENTSLIST=4</li>
+<li>ANALYSIS_SERVER_INSTANCES=5</li>
+<li>APPLESS = 6</li>
+<li>CLOUD_APPS = 7</li>
+</ul>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<p>osType</p>
+</td>
+<td>
+<p>Valid values are:</p>
+<ul>
+<li>UNKNOWN= 0</li>
+<li>WINDOWS= 1</li>
+<li>UNIX = 2</li>
+<li>NETWARE= 3</li>
+<li>NASFILER = 4</li>
+<li>DATAONTAP= 5</li>
+</ul>
+</td>
+</tr>
+
+</table>
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"in":"query","name":"opType"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"in":"query","name":"osType"}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>proxyClientsForSQL</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"clientId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"clientName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>sqlClientInstances</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>sqlClient</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"clientId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"clientName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>sqlInstance</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"instanceName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"instanceId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"proxyClientsForSQL\": [\n    {\n      \"clientId\": 0,\n      \"clientName\": \"string\"\n    }\n  ],\n  \"sqlClientInstances\": [\n    {\n      \"sqlClient\": {\n        \"clientId\": 0,\n        \"clientName\": \"string\"\n      },\n      \"sqlInstance\": [\n        {\n          \"instanceName\": \"string\",\n          \"instanceId\": 0\n        }\n      ]\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"{\n  \"proxyClientsForSQL\": [\n    {\n      \"clientId\": 2,\n      \"clientName\": \"ssp20\"\n    },\n    {\n      \"clientId\": 3,\n      \"clientName\": \"pluginnoservc\"\n    },\n    {\n      \"clientId\": 6,\n      \"clientName\": \"sanjaycs\"\n    }\n  ],\n  \"sqlClientInstances\": [\n    {\n      \"sqlClient\": {\n        \"clientId\": 2,\n        \"clientName\": \"ssp20\"\n      },\n      \"sqlInstance\": [\n        {\n          \"instanceName\": \"SSP20/COMMVAULT\",\n          \"instanceId\": 3\n        }\n      ]\n    },\n    {\n      \"sqlClient\": {\n        \"clientId\": 3,\n        \"clientName\": \"pluginnoservc\"\n      },\n      \"sqlInstance\": [\n        {\n          \"instanceName\": \"PLUGINNOSERVC\",\n          \"instanceId\": 4\n        },\n        {\n          \"instanceName\": \"PLUGINNOSERVC/SANJAYSERVER2\",\n          \"instanceId\": 7\n        }\n      ]\n    },\n    {\n      \"sqlClient\": {\n        \"clientId\": 6,\n        \"clientName\": \"sanjaycs\"\n      },\n      \"sqlInstance\": [\n        {\n          \"instanceName\": \"SANJAYCS\",\n          \"instanceId\": 6\n        }\n      ]\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

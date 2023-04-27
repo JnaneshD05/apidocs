@@ -1,0 +1,1460 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Compliance
+paths:
+  /getCIServerList:
+    get:
+      deprecated: false
+      description: This operation returns a list of all index servers and search engines.
+      operationId: Index Servers and Search Engines
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: enumnames
+        required: true
+        schema:
+          example: true
+          type: boolean
+      summary: Index Servers and Search Engines
+      tags:
+      - Compliance
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  listOfCIServer:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        hostName:
+                          type: string
+                        clientName:
+                          type: string
+                        cIServerURL:
+                          type: string
+                        type:
+                          type: string
+                        basePort:
+                          type: integer
+                        clientId:
+                          type: integer
+                        version:
+                          type: string
+                        cloudID:
+                          type: integer
+                        serverType:
+                          type: string
+                        engineName:
+                          type: string
+                        indexServerClientId:
+                          type: integer
+                x-examples:
+                  Example 1:
+                    listOfCIServer:
+                    - hostName: dm2perf4.test.cv.com
+                      clientName: dm2perf4.test.cv.com
+                      cIServerURL: 'http://dm2perf4.test.cv.com:27000'
+                      type: SOLR
+                      basePort: 27000
+                      clientId: 2
+                      version: Solr 1.0
+                      cloudID: 6
+                      serverType: SearchEngine
+                      engineName: se_cloud
+                      indexServerClientId: 0
+              examples:
+                Example 1:
+                  value:
+                    listOfCIServer:
+                    - hostName: dm2perf4.test.cv.com
+                      clientName: dm2perf4.test.cv.com
+                      cIServerURL: 'http://dm2perf4.test.cv.com:27000'
+                      type: SOLR
+                      basePort: 27000
+                      clientId: 2
+                      version: Solr 1.0
+                      cloudID: 6
+                      serverType: SearchEngine
+                      engineName: se_cloud
+                      indexServerClientId: 0
+  /Download:
+    post:
+      deprecated: false
+      description: This operation adds a newly created export to an exportset container - For selected items.
+      operationId: Add Export To Exportset Container For Selected Items
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Add Export To Exportset Container For Selected Items
+      tags:
+      - Compliance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                complianceData:
+                  type: object
+                  properties:
+                    mode:
+                      type: integer
+                    restoreType:
+                      type: integer
+                    downLoadDesc:
+                      type: string
+                    destContainer:
+                      type: object
+                      properties:
+                        capabilities:
+                          type: integer
+                        containerFullName:
+                          type: string
+                        containerType:
+                          type: integer
+                        createTime:
+                          type: integer
+                        containerName:
+                          type: string
+                        deDuplicateFields:
+                          type: string
+                        containerOwnerType:
+                          type: integer
+                        comment:
+                          type: string
+                        attribute:
+                          type: integer
+                        containerId:
+                          type: integer
+                        containerGuid:
+                          type: string
+                        ownerInfo:
+                          type: object
+                          properties:
+                            aliasName:
+                              type: string
+                            userGuid:
+                              type: string
+                            userName:
+                              type: string
+                    originatingContainer:
+                      type: object
+                      properties:
+                        containerOwnerType:
+                          type: integer
+                    options:
+                      type: object
+                      properties: {}
+                onlineData:
+                  type: object
+                  properties:
+                    downloadStatus:
+                      type: integer
+                listOfItems:
+                  type: object
+                  properties:
+                    resultItem:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          modifiedTime:
+                            type: integer
+                          fileName:
+                            type: string
+                          viewsourceurl:
+                            type: string
+                          folderPathHTML:
+                            type: string
+                          folderPath:
+                            type: string
+                          appId:
+                            type: integer
+                          cloudId:
+                            type: integer
+                          sizeKB:
+                            type: integer
+                          dataType:
+                            type: integer
+                          turboGuid:
+                            type: string
+                          jobId:
+                            type: integer
+                          clientName:
+                            type: string
+                          fileNameHTML:
+                            type: string
+                          aFileOffset:
+                            type: integer
+                          aFileId:
+                            type: integer
+                          appType:
+                            type: integer
+                          clientId:
+                            type: integer
+                          commcellNo:
+                            type: integer
+                          documentId:
+                            type: string
+                          backupTime:
+                            type: integer
+                          appSpecific:
+                            type: object
+                            properties:
+                              appSpecificFlags:
+                                type: object
+                                properties:
+                                  deleted:
+                                    type: boolean
+                                  stub:
+                                    type: boolean
+                              eMail:
+                                type: object
+                                properties:
+                                  smtpFromHTML:
+                                    type: string
+                                  subject:
+                                    type: string
+                                  importance:
+                                    type: integer
+                                  smtpFrom:
+                                    type: string
+                                  subjectHTML:
+                                    type: string
+                                  mailBox:
+                                    type: string
+                                  links:
+                                    type: string
+                                  from:
+                                    type: string
+                                  fromHTML:
+                                    type: string
+                                  hasAttach:
+                                    type: string
+                          tags:
+                            type: object
+                            properties: {}
+              x-examples:
+                Example 1:
+                  complianceData:
+                    mode: 2
+                    restoreType: 17
+                    downLoadDesc: test2
+                    destContainer:
+                      capabilities: 4328650375167
+                      containerFullName: compliancesearch_exportset
+                      containerType: 9503
+                      createTime: 1597160438
+                      containerName: compliancesearch_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 86
+                      containerGuid: C6810F3A-F4E1-4C1E-8E74-E7447C0F660A
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+                    originatingContainer:
+                      containerOwnerType: 1
+                    options: {}
+                  onlineData:
+                    downloadStatus: 0
+                  listOfItems:
+                    resultItem:
+                    - modifiedTime: 1617904446
+                      fileName: 'Meeting Notes: Board Review - 318833352'
+                      viewsourceurl: 'http://devincs.testexch.commvault.com:20000/viewsourceservlet?docid=bad30bdad799b2f98933c3cff606fad3330e790409ae8a0441d8e2c25d9f3744&juniper=query.ANY(*)&returntype=xml&nodes=devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/'
+                      folderPathHTML: Inbox
+                      folderPath: Inbox
+                      appId: 12
+                      cloudId: 4
+                      sizeKB: 3360
+                      dataType: 2
+                      turboGuid: bad30bdad799b2f98933c3cff606fad3330e790409ae8a0441d8e2c25d9f3744
+                      jobId: 51746
+                      clientName: ExchangeUserMB
+                      fileNameHTML: 'Meeting Notes: Board Review - 318833352'
+                      aFileOffset: 9626915
+                      aFileId: 3434
+                      appType: 137
+                      clientId: 7
+                      commcellNo: 253286789
+                      documentId: bad30bdad799b2f98933c3cff606fad3330e790409ae8a0441d8e2c25d9f3744
+                      backupTime: 1618209010
+                      appSpecific:
+                        appSpecificFlags:
+                          deleted: false
+                          stub: false
+                        eMail:
+                          smtpFromHTML: alice.crimmins@testexch.commvault.com
+                          subject: 'Meeting Notes: Board Review - 318833352'
+                          importance: 1
+                          smtpFrom: alice.crimmins@testexch.commvault.com
+                          subjectHTML: 'Meeting Notes: Board Review - 318833352'
+                          mailBox: Brit Prawat (brit.prawat@testexch.commvault.com)
+                          links: '/MB/{E75A3306X971FX479CX86B0X00775D56E9FA}/Inbox/bad30bdad799b2f98933c3cff606fad3330e790409ae8a0441d8e2c25d9f3744'
+                          from: alice.crimmins@testexch.commvault.com
+                          fromHTML: alice.crimmins@testexch.commvault.com
+                          hasAttach: 'false'
+                      tags: {}
+                    - modifiedTime: 1617904446
+                      fileName: 'Meeting Notes: Board Review - 318833352'
+                      viewsourceurl: 'http://devincs.testexch.commvault.com:20000/viewsourceservlet?docid=e501fde423f87fcf966a9560ae2284799e3d62a422a92652a4bbae6683772f8e&juniper=query.ANY(*)&returntype=xml&nodes=devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/'
+                      folderPathHTML: Inbox
+                      folderPath: Inbox
+                      appId: 12
+                      cloudId: 4
+                      sizeKB: 3358
+                      dataType: 2
+                      turboGuid: e501fde423f87fcf966a9560ae2284799e3d62a422a92652a4bbae6683772f8e
+                      jobId: 51746
+                      clientName: ExchangeUserMB
+                      fileNameHTML: 'Meeting Notes: Board Review - 318833352'
+                      aFileOffset: 25339898
+                      aFileId: 3435
+                      appType: 137
+                      clientId: 7
+                      commcellNo: 253286789
+                      documentId: e501fde423f87fcf966a9560ae2284799e3d62a422a92652a4bbae6683772f8e
+                      backupTime: 1618209010
+                      appSpecific:
+                        appSpecificFlags:
+                          deleted: false
+                          stub: false
+                        eMail:
+                          smtpFromHTML: alice.crimmins@testexch.commvault.com
+                          subject: 'Meeting Notes: Board Review - 318833352'
+                          importance: 1
+                          smtpFrom: alice.crimmins@testexch.commvault.com
+                          subjectHTML: 'Meeting Notes: Board Review - 318833352'
+                          mailBox: Ashley Flowers (ashley.flowers@testexch.commvault.com)
+                          links: '/MB/{C2E488FBX107FX4B76X99E2XEEAA47065E5A}/Inbox/e501fde423f87fcf966a9560ae2284799e3d62a422a92652a4bbae6683772f8e'
+                          from: alice.crimmins@testexch.commvault.com
+                          fromHTML: alice.crimmins@testexch.commvault.com
+                          hasAttach: 'false'
+                      tags: {}
+            examples:
+              Add Export To Exportset Container For Selected Items:
+                value:
+                  complianceData:
+                    mode: 2
+                    restoreType: 17
+                    downLoadDesc: test2
+                    destContainer:
+                      capabilities: 4328650375167
+                      containerFullName: compliancesearch_exportset
+                      containerType: 9503
+                      createTime: 1597160438
+                      containerName: compliancesearch_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 86
+                      containerGuid: C6810F3A-F4E1-4C1E-8E74-E7447C0F660A
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+                    originatingContainer:
+                      containerOwnerType: 1
+                    options: {}
+                  onlineData:
+                    downloadStatus: 0
+                  listOfItems:
+                    resultItem:
+                    - modifiedTime: 1617904446
+                      fileName: 'Meeting Notes: Board Review - 318833352'
+                      viewsourceurl: 'http://devincs.testexch.commvault.com:20000/viewsourceservlet?docid=bad30bdad799b2f98933c3cff606fad3330e790409ae8a0441d8e2c25d9f3744&juniper=query.ANY(*)&returntype=xml&nodes=devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/'
+                      folderPathHTML: Inbox
+                      folderPath: Inbox
+                      appId: 12
+                      cloudId: 4
+                      sizeKB: 3360
+                      dataType: 2
+                      turboGuid: bad30bdad799b2f98933c3cff606fad3330e790409ae8a0441d8e2c25d9f3744
+                      jobId: 51746
+                      clientName: ExchangeUserMB
+                      fileNameHTML: 'Meeting Notes: Board Review - 318833352'
+                      aFileOffset: 9626915
+                      aFileId: 3434
+                      appType: 137
+                      clientId: 7
+                      commcellNo: 253286789
+                      documentId: bad30bdad799b2f98933c3cff606fad3330e790409ae8a0441d8e2c25d9f3744
+                      backupTime: 1618209010
+                      appSpecific:
+                        appSpecificFlags:
+                          deleted: false
+                          stub: false
+                        eMail:
+                          smtpFromHTML: alice.crimmins@testexch.commvault.com
+                          subject: 'Meeting Notes: Board Review - 318833352'
+                          importance: 1
+                          smtpFrom: alice.crimmins@testexch.commvault.com
+                          subjectHTML: 'Meeting Notes: Board Review - 318833352'
+                          mailBox: Brit Prawat (brit.prawat@testexch.commvault.com)
+                          links: '/MB/{E75A3306X971FX479CX86B0X00775D56E9FA}/Inbox/bad30bdad799b2f98933c3cff606fad3330e790409ae8a0441d8e2c25d9f3744'
+                          from: alice.crimmins@testexch.commvault.com
+                          fromHTML: alice.crimmins@testexch.commvault.com
+                          hasAttach: 'false'
+                      tags: {}
+                    - modifiedTime: 1617904446
+                      fileName: 'Meeting Notes: Board Review - 318833352'
+                      viewsourceurl: 'http://devincs.testexch.commvault.com:20000/viewsourceservlet?docid=e501fde423f87fcf966a9560ae2284799e3d62a422a92652a4bbae6683772f8e&juniper=query.ANY(*)&returntype=xml&nodes=devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/,devincs.testexch.commvault.com:20000/'
+                      folderPathHTML: Inbox
+                      folderPath: Inbox
+                      appId: 12
+                      cloudId: 4
+                      sizeKB: 3358
+                      dataType: 2
+                      turboGuid: e501fde423f87fcf966a9560ae2284799e3d62a422a92652a4bbae6683772f8e
+                      jobId: 51746
+                      clientName: ExchangeUserMB
+                      fileNameHTML: 'Meeting Notes: Board Review - 318833352'
+                      aFileOffset: 25339898
+                      aFileId: 3435
+                      appType: 137
+                      clientId: 7
+                      commcellNo: 253286789
+                      documentId: e501fde423f87fcf966a9560ae2284799e3d62a422a92652a4bbae6683772f8e
+                      backupTime: 1618209010
+                      appSpecific:
+                        appSpecificFlags:
+                          deleted: false
+                          stub: false
+                        eMail:
+                          smtpFromHTML: alice.crimmins@testexch.commvault.com
+                          subject: 'Meeting Notes: Board Review - 318833352'
+                          importance: 1
+                          smtpFrom: alice.crimmins@testexch.commvault.com
+                          subjectHTML: 'Meeting Notes: Board Review - 318833352'
+                          mailBox: Ashley Flowers (ashley.flowers@testexch.commvault.com)
+                          links: '/MB/{C2E488FBX107FX4B76X99E2XEEAA47065E5A}/Inbox/e501fde423f87fcf966a9560ae2284799e3d62a422a92652a4bbae6683772f8e'
+                          from: alice.crimmins@testexch.commvault.com
+                          fromHTML: alice.crimmins@testexch.commvault.com
+                          hasAttach: 'false'
+                      tags: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobId:
+                    type: integer
+                  downloadId:
+                    type: string
+                x-examples:
+                  Example 1:
+                    jobId: 51821
+                    downloadId: 7a374148-f730-4b8a-ae80-58ecf61b0eea
+  /DownloadFile:
+    post:
+      deprecated: false
+      description: This API will take the downloadId as input from Download API response. The  download request id from the response can be used to download the file using getDownloadCenterFileStream API
+      operationId: Download File
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                appTypeId:
+                  type: integer
+                responseFileName:
+                  type: string
+                fileParams:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      id:
+                        type: integer
+              x-examples:
+                Example 1:
+                  appTypeId: 200
+                  responseFileName: test2
+                  fileParams:
+                  - name: 7A374148-F730-4B8A-AE80-58ECF61B0EEA
+                    id: 2
+                  - name: zip
+                    id: 3
+                  - name: Streamed
+                    id: 10
+            examples:
+              Download File:
+                value:
+                  appTypeId: 200
+                  responseFileName: test2
+                  fileParams:
+                  - name: 7A374148-F730-4B8A-AE80-58ECF61B0EEA
+                    id: 2
+                  - name: zip
+                    id: 3
+                  - name: Streamed
+                    id: 10
+        description: ''
+        required: true
+      summary: Download File
+      tags:
+      - Compliance
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fileContent:
+                    type: object
+                    properties:
+                      fileName:
+                        type: string
+                      fileSize:
+                        type: integer
+                      requestId:
+                        type: string
+                x-examples:
+                  Example 1:
+                    fileContent:
+                      fileName: test2.zip
+                      fileSize: 30074
+                      requestId: 414dd598-da30-491d-b462-97109c799112
+              examples:
+                Download File:
+                  value:
+                    fileContent:
+                      fileName: test2.zip
+                      fileSize: 30074
+                      requestId: 414dd598-da30-491d-b462-97109c799112
+  /GetContainers:
+    post:
+      deprecated: false
+      description: |-
+        This operation returns a the list of exportsets.
+
+        <h2>Request Parameters</h2>
+        <table class="tableintopic" border="0" cellspacing="0" cellpadding="2">
+
+        <tr align="left" valign="top">
+        <td >
+        <p class="tabletext">Name</p>
+        </td>
+        <td >
+        <p class="tabletext">Description</p>
+        </td>
+        </tr>
+        <tr align="left" valign="top">
+        <td >
+        <p class="tabletext">entityType</p>
+        </td>
+        <td >
+        <p class="tabletext">Type of entity.</p>
+        <p class="tabletext">Valid values are:</p>
+        <ul class="listbullet">
+        <li class="listbullet">9502, QuerySet</li>
+        <li class="listbullet">9503, DownloadSet</li>
+        </ul>
+        </td>
+        </tr>
+
+        </table>
+      operationId: Get Exportsets
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Exportsets
+      tags:
+      - Compliance
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  containers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        capabilities:
+                          type: integer
+                        containerFullName:
+                          type: string
+                        containerType:
+                          type: integer
+                        createTime:
+                          type: integer
+                        containerName:
+                          type: string
+                        deDuplicateFields:
+                          type: string
+                        containerOwnerType:
+                          type: integer
+                        comment:
+                          type: string
+                        attribute:
+                          type: integer
+                        containerId:
+                          type: integer
+                        containerGuid:
+                          type: string
+                        ownerInfo:
+                          type: object
+                          properties:
+                            aliasName:
+                              type: string
+                            userGuid:
+                              type: string
+                            userName:
+                              type: string
+                x-examples:
+                  Example 1:
+                    containers:
+                    - capabilities: 4328650375167
+                      containerFullName: caseclient_283_exportset
+                      containerType: 9503
+                      createTime: 1608671288
+                      containerName: caseclient_283_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 203
+                      containerGuid: 8D1799F1-3B81-4F77-A935-96677C06BADA
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+                    - capabilities: 4328650375167
+                      containerFullName: compliancesearch_exportset
+                      containerType: 9503
+                      createTime: 1597160438
+                      containerName: compliancesearch_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 86
+                      containerGuid: C6810F3A-F4E1-4C1E-8E74-E7447C0F660A
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+                    - capabilities: 4328650375167
+                      containerFullName: exchange_07C6514C-A158-4658-A31F-FAE3B319FB72_exportset
+                      containerType: 9503
+                      createTime: 1597160974
+                      containerName: exchange_07C6514C-A158-4658-A31F-FAE3B319FB72_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 87
+                      containerGuid: AD728637-6574-46B5-A771-597E31E440A0
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+              examples:
+                Get Exportsets:
+                  value:
+                    containers:
+                    - capabilities: 4328650375167
+                      containerFullName: caseclient_283_exportset
+                      containerType: 9503
+                      createTime: 1608671288
+                      containerName: caseclient_283_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 203
+                      containerGuid: 8D1799F1-3B81-4F77-A935-96677C06BADA
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+                    - capabilities: 4328650375167
+                      containerFullName: compliancesearch_exportset
+                      containerType: 9503
+                      createTime: 1597160438
+                      containerName: compliancesearch_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 86
+                      containerGuid: C6810F3A-F4E1-4C1E-8E74-E7447C0F660A
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+                    - capabilities: 4328650375167
+                      containerFullName: exchange_07C6514C-A158-4658-A31F-FAE3B319FB72_exportset
+                      containerType: 9503
+                      createTime: 1597160974
+                      containerName: exchange_07C6514C-A158-4658-A31F-FAE3B319FB72_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 87
+                      containerGuid: AD728637-6574-46B5-A771-597E31E440A0
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                getContainerOptions:
+                  type: integer
+                entityType:
+                  type: integer
+                userGuid:
+                  type: string
+                attribute:
+                  type: object
+                  properties:
+                    all:
+                      type: boolean
+              x-examples:
+                Example 1:
+                  getContainerOptions: 0
+                  entityType: 9503
+                  userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                  attribute:
+                    all: true
+            examples:
+              Example 1:
+                value:
+                  getContainerOptions: 0
+                  entityType: 9503
+                  userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                  attribute:
+                    all: true
+  /GetDownloads:
+    post:
+      deprecated: false
+      description: |-
+        This operation returns a list of all exports.
+
+        <h2>Request Parameters</h2>
+        <table class="tableintopic" border="0" cellspacing="0" cellpadding="2">
+
+        <tr align="left" valign="top">
+        <td >
+        <p class="tabletext">Name</p>
+        </td>
+        <td >
+        <p class="tabletext">Description</p>
+        </td>
+        </tr>
+        <tr align="left" valign="top">
+        <td >
+        <p class="tabletext">entityType</p>
+        </td>
+        <td >
+        <p class="tabletext">Type of entity.</p>
+        <p class="tabletext">Valid values are:</p>
+        <ul class="listbullet">
+        <li class="listbullet">9502, QuerySet</li>
+        <li class="listbullet">9503, DownloadSet</li>
+        </ul>
+        </td>
+        </tr>
+        <tr>
+        <td >
+        <p class="tabletext">operationType</p>
+        </td>
+        <td >
+        <p class="tabletext">Type of operation.</p>
+        <p class="tabletext">Valid values are:</p>
+        <ul>
+        <li class="tabletext">1, ADD</li>
+        <li class="tabletext">2, DELETE</li>
+        </ul>
+        </td>
+        </tr>
+
+        </table>
+      operationId: Get Exports
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Exports
+      tags:
+      - Compliance
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  containers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        capabilities:
+                          type: integer
+                        containerFullName:
+                          type: string
+                        containerType:
+                          type: integer
+                        createTime:
+                          type: integer
+                        containerName:
+                          type: string
+                        deDuplicateFields:
+                          type: string
+                        containerOwnerType:
+                          type: integer
+                        comment:
+                          type: string
+                        attribute:
+                          type: integer
+                        containerId:
+                          type: integer
+                        containerGuid:
+                          type: string
+                        ownerInfo:
+                          type: object
+                          properties:
+                            aliasName:
+                              type: string
+                            userGuid:
+                              type: string
+                            userName:
+                              type: string
+                x-examples:
+                  Example 1:
+                    containers:
+                    - capabilities: 4328650375167
+                      containerFullName: caseclient_283_exportset
+                      containerType: 9503
+                      createTime: 1608671288
+                      containerName: caseclient_283_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 203
+                      containerGuid: 8D1799F1-3B81-4F77-A935-96677C06BADA
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+                    - capabilities: 4328650375167
+                      containerFullName: compliancesearch_exportset
+                      containerType: 9503
+                      createTime: 1597160438
+                      containerName: compliancesearch_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 86
+                      containerGuid: C6810F3A-F4E1-4C1E-8E74-E7447C0F660A
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+                    - capabilities: 4328650375167
+                      containerFullName: exchange_07C6514C-A158-4658-A31F-FAE3B319FB72_exportset
+                      containerType: 9503
+                      createTime: 1597160974
+                      containerName: exchange_07C6514C-A158-4658-A31F-FAE3B319FB72_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 87
+                      containerGuid: AD728637-6574-46B5-A771-597E31E440A0
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+              examples:
+                Get Exports:
+                  value:
+                    containers:
+                    - capabilities: 4328650375167
+                      containerFullName: caseclient_283_exportset
+                      containerType: 9503
+                      createTime: 1608671288
+                      containerName: caseclient_283_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 203
+                      containerGuid: 8D1799F1-3B81-4F77-A935-96677C06BADA
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+                    - capabilities: 4328650375167
+                      containerFullName: compliancesearch_exportset
+                      containerType: 9503
+                      createTime: 1597160438
+                      containerName: compliancesearch_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 86
+                      containerGuid: C6810F3A-F4E1-4C1E-8E74-E7447C0F660A
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+                    - capabilities: 4328650375167
+                      containerFullName: exchange_07C6514C-A158-4658-A31F-FAE3B319FB72_exportset
+                      containerType: 9503
+                      createTime: 1597160974
+                      containerName: exchange_07C6514C-A158-4658-A31F-FAE3B319FB72_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 87
+                      containerGuid: AD728637-6574-46B5-A771-597E31E440A0
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                containerOpReq:
+                  type: object
+                  properties:
+                    entityType:
+                      type: integer
+                    operationType:
+                      type: integer
+                    userGuid:
+                      type: string
+                    fromSite:
+                      type: integer
+                    container:
+                      type: object
+                      properties:
+                        capabilities:
+                          type: integer
+                        containerFullName:
+                          type: string
+                        containerType:
+                          type: integer
+                        createTime:
+                          type: integer
+                        containerName:
+                          type: string
+                        deDuplicateFields:
+                          type: string
+                        containerOwnerType:
+                          type: integer
+                        comment:
+                          type: string
+                        attribute:
+                          type: integer
+                        containerId:
+                          type: integer
+                        containerGuid:
+                          type: string
+                        ownerInfo:
+                          type: object
+                          properties:
+                            aliasName:
+                              type: string
+                            userGuid:
+                              type: string
+                            userName:
+                              type: string
+                filter:
+                  type: object
+                  properties: {}
+                pagingData:
+                  type: object
+                  properties:
+                    startIndex:
+                      type: integer
+                    fetchEmails:
+                      type: boolean
+                    pageSize:
+                      type: integer
+                    fetchFiles:
+                      type: boolean
+              x-examples:
+                Example 1:
+                  containerOpReq:
+                    entityType: 9503
+                    operationType: 1
+                    userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                    fromSite: 0
+                    container:
+                      capabilities: 4328650375167
+                      containerFullName: compliancesearch_exportset
+                      containerType: 9503
+                      createTime: 1597160438
+                      containerName: compliancesearch_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 86
+                      containerGuid: C6810F3A-F4E1-4C1E-8E74-E7447C0F660A
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+                  filter: {}
+                  pagingData:
+                    startIndex: 0
+                    fetchEmails: true
+                    pageSize: 50
+                    fetchFiles: true
+            examples:
+              Example 1:
+                value:
+                  containerOpReq:
+                    entityType: 9503
+                    operationType: 1
+                    userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                    fromSite: 0
+                    container:
+                      capabilities: 4328650375167
+                      containerFullName: compliancesearch_exportset
+                      containerType: 9503
+                      createTime: 1597160438
+                      containerName: compliancesearch_exportset
+                      deDuplicateFields: ''
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 86
+                      containerGuid: C6810F3A-F4E1-4C1E-8E74-E7447C0F660A
+                      ownerInfo:
+                        aliasName: testadmin
+                        userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                        userName: Administrator
+                  filter: {}
+                  pagingData:
+                    startIndex: 0
+                    fetchEmails: true
+                    pageSize: 50
+                    fetchFiles: true
+  /RestoreAll:
+    post:
+      deprecated: false
+      description: This operation adds a newly created export to an exportset container - For selecting all items.
+      operationId: Add Export To Exportset Container For All Items
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Add Export To Exportset Container For All Items
+      tags:
+      - Compliance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                searchRequest:
+                  type: string
+                restoreType:
+                  type: integer
+                eContext:
+                  type: integer
+                downLoadDesc:
+                  type: string
+                userInfo:
+                  type: object
+                  properties:
+                    userGuid:
+                      type: string
+                downloadContainer:
+                  type: object
+                  properties:
+                    capabilities:
+                      type: integer
+                    containerFullName:
+                      type: string
+                    containerType:
+                      type: integer
+                    createTime:
+                      type: integer
+                    containerName:
+                      type: string
+                    deDuplicateFields:
+                      type: string
+                    containerOwnerType:
+                      type: integer
+                    comment:
+                      type: string
+                    attribute:
+                      type: integer
+                    containerId:
+                      type: integer
+                    containerGuid:
+                      type: string
+                    ownerInfo:
+                      type: object
+                      properties:
+                        aliasName:
+                          type: string
+                        userGuid:
+                          type: string
+                        userName:
+                          type: string
+                options:
+                  type: object
+                  properties:
+                    folderHierarchy:
+                      type: boolean
+                    zipEML:
+                      type: boolean
+                    restrictExportSize:
+                      type: boolean
+              x-examples:
+                Example 1:
+                  searchRequest: '<?xml version=''1.0'' encoding=''UTF-8''?><DM2ContentIndexing_CVSearchReq mode="2"><searchProcessingInfo pageSize="50" resultOffset="0"><queryParams param="SORT_STYLE" value="DESCENDING"/><queryParams param="SORTFIELD" value="MODIFIEDTIME"/><queryParams param="ENABLE_NEW_COMPLIANCE_SEARCH" value="true"/><queryParams param="ENABLE_DEFAULT_VISIBLE_QUERY" value="true"/></searchProcessingInfo><advSearchGrp><cvSearchKeyword keyword="*" isExactWordsOptionSelected="0"/><commonFilter><filter/></commonFilter><galaxyFilter applicationType="4"/></advSearchGrp><facetRequests><facetRequest count="4" name="APPTYPE"/></facetRequests><listOfCIServer cloudID="4" cIServerURL="http://devincs.testexch.commvault.com:20000" clientId="2" clientName="devincs" basePort="20000" hostName="devincs.testexch.commvault.com" version="FSIndex 1.0" type="3" engineName="DeviIndexServer" serverType="1" indexServerClientId="6" internalCloudName="DeviIndexServer"/><userInformation userGuid="A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF"/></DM2ContentIndexing_CVSearchReq>'
+                  restoreType: 2
+                  eContext: 1
+                  downLoadDesc: dd
+                  userInfo:
+                    userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                  downloadContainer:
+                    capabilities: 4328650375167
+                    containerFullName: compliancesearch_exportset
+                    containerType: 9503
+                    createTime: 1597160438
+                    containerName: compliancesearch_exportset
+                    deDuplicateFields: ''
+                    containerOwnerType: 1
+                    comment: Export set for client - containerName
+                    attribute: 0
+                    containerId: 86
+                    containerGuid: C6810F3A-F4E1-4C1E-8E74-E7447C0F660A
+                    ownerInfo:
+                      aliasName: testadmin
+                      userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                      userName: Administrator
+                  options:
+                    folderHierarchy: false
+                    zipEML: true
+                    restrictExportSize: false
+            examples:
+              Add Export To Exportset Container For All Items:
+                value:
+                  searchRequest: '<?xml version=''1.0'' encoding=''UTF-8''?><DM2ContentIndexing_CVSearchReq mode="2"><searchProcessingInfo pageSize="50" resultOffset="0"><queryParams param="SORT_STYLE" value="DESCENDING"/><queryParams param="SORTFIELD" value="MODIFIEDTIME"/><queryParams param="ENABLE_NEW_COMPLIANCE_SEARCH" value="true"/><queryParams param="ENABLE_DEFAULT_VISIBLE_QUERY" value="true"/></searchProcessingInfo><advSearchGrp><cvSearchKeyword keyword="*" isExactWordsOptionSelected="0"/><commonFilter><filter/></commonFilter><galaxyFilter applicationType="4"/></advSearchGrp><facetRequests><facetRequest count="4" name="APPTYPE"/></facetRequests><listOfCIServer cloudID="4" cIServerURL="http://devincs.testexch.commvault.com:20000" clientId="2" clientName="devincs" basePort="20000" hostName="devincs.testexch.commvault.com" version="FSIndex 1.0" type="3" engineName="DeviIndexServer" serverType="1" indexServerClientId="6" internalCloudName="DeviIndexServer"/><userInformation userGuid="A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF"/></DM2ContentIndexing_CVSearchReq>'
+                  restoreType: 2
+                  eContext: 1
+                  downLoadDesc: dd
+                  userInfo:
+                    userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                  downloadContainer:
+                    capabilities: 4328650375167
+                    containerFullName: compliancesearch_exportset
+                    containerType: 9503
+                    createTime: 1597160438
+                    containerName: compliancesearch_exportset
+                    deDuplicateFields: ''
+                    containerOwnerType: 1
+                    comment: Export set for client - containerName
+                    attribute: 0
+                    containerId: 86
+                    containerGuid: C6810F3A-F4E1-4C1E-8E74-E7447C0F660A
+                    ownerInfo:
+                      aliasName: testadmin
+                      userGuid: A37C0717-9CAC-4D64-8F5C-AC0443D9FCAF
+                      userName: Administrator
+                  options:
+                    folderHierarchy: false
+                    zipEML: true
+                    restrictExportSize: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  startPowerRestoreRespData:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        jobId:
+                          type: integer
+                x-examples:
+                  Example 1:
+                    startPowerRestoreRespData:
+                    - jobId: 52031
+  /ValidateExportInputs:
+    post:
+      deprecated: false
+      description: This operation verifies an exportset.
+      operationId: Verify ExportSet
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              description: test2
+              downLoadSetID: C6810F3A-F4E1-4C1E-8E74-E7447C0F660A
+            schema:
+              allOf:
+              - example:
+                  description: test2
+                  downLoadSetID: C6810F3A-F4E1-4C1E-8E74-E7447C0F660A
+                title: VerifyExportSetRequest
+                properties:
+                  description:
+                    type: string
+                  downLoadSetID:
+                    type: string
+              type: object
+        description: ''
+        required: true
+      summary: Verify ExportSet
+      tags:
+      - Compliance
+      responses:
+        '200':
+          description: OK
+  /PerformContainerOperation:
+    post:
+      deprecated: false
+      description: |-
+        This operation creates a new exportset.
+
+        <h2>Request Parameters</h2>
+        <table class="tableintopic" border="0" cellspacing="0" cellpadding="2">
+
+        <tr align="left" valign="top">
+        <td >
+        <p class="tabletext">Name</p>
+        </td>
+        <td >
+        <p class="tabletext">Description</p>
+        </td>
+        </tr>
+        <tr align="left" valign="top">
+        <td >
+        <p class="tabletext">entityType</p>
+        </td>
+        <td >
+        <p class="tabletext">Type of entity.</p>
+        <p class="tabletext">Valid values are:</p>
+        <ul class="listbullet">
+        <li class="listbullet">9502, QuerySet</li>
+        <li class="listbullet">9503, DownloadSet</li>
+        </ul>
+        </td>
+        </tr>
+        <tr>
+        <td >
+        <p class="tabletext">operationType</p>
+        </td>
+        <td >
+        <p class="tabletext">Type of operation.</p>
+        <p class="tabletext">Valid values are:</p>
+        <ul>
+        <li class="tabletext">1, ADD</li>
+        <li class="tabletext">2, DELETE</li>
+        </ul>
+        </td>
+        </tr>
+
+        </table>
+      operationId: Create ExportSet
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Create ExportSet
+      tags:
+      - Compliance
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                entityType:
+                  type: integer
+                operationType:
+                  type: integer
+                userGuid:
+                  type: string
+                fromSite:
+                  type: integer
+                container:
+                  type: object
+                  properties:
+                    containerType:
+                      type: integer
+                    containerName:
+                      type: string
+                    containerOwnerType:
+                      type: integer
+                    comment:
+                      type: string
+              x-examples:
+                Example 1:
+                  entityType: 9503
+                  operationType: 1
+                  userGuid: 786AC909-DF80-4A2B-9A13-9BDB5B41B175
+                  fromSite: 2
+                  container:
+                    containerType: 9503
+                    containerName: exchange_75FD5896-A402-40EE-A76E-689713DBB515_exportset
+                    containerOwnerType: 1
+                    comment: Export set for client - containerName
+            examples:
+              Create ExportSet:
+                value:
+                  entityType: 9503
+                  operationType: 1
+                  userGuid: 786AC909-DF80-4A2B-9A13-9BDB5B41B175
+                  fromSite: 2
+                  container:
+                    containerType: 9503
+                    containerName: exchange_75FD5896-A402-40EE-A76E-689713DBB515_exportset
+                    containerOwnerType: 1
+                    comment: Export set for client - containerName
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  container:
+                    type: object
+                    properties:
+                      containerFullName:
+                        type: string
+                      containerType:
+                        type: integer
+                      containerName:
+                        type: string
+                      containerOwnerType:
+                        type: integer
+                      comment:
+                        type: string
+                      attribute:
+                        type: integer
+                      containerId:
+                        type: integer
+                      containerGuid:
+                        type: string
+                x-examples:
+                  Example 1:
+                    container:
+                      containerFullName: exchange_75FD5896-A402-40EE-A76E-689713DBB515_exportset
+                      containerType: 9503
+                      containerName: exchange_75FD5896-A402-40EE-A76E-689713DBB515_exportset
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 610
+                      containerGuid: F83A4684-55A6-4374-8AAE-12B9B6C095D6
+              examples:
+                Create ExportSet:
+                  value:
+                    container:
+                      containerFullName: exchange_75FD5896-A402-40EE-A76E-689713DBB515_exportset
+                      containerType: 9503
+                      containerName: exchange_75FD5896-A402-40EE-A76E-689713DBB515_exportset
+                      containerOwnerType: 1
+                      comment: Export set for client - containerName
+                      attribute: 0
+                      containerId: 610
+                      containerGuid: F83A4684-55A6-4374-8AAE-12B9B6C095D6

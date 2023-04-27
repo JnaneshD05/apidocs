@@ -1,0 +1,1990 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables:
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Role Operations
+paths:
+  /Role:
+    get:
+      deprecated: false
+      description: |
+        This operation returns a list of roles.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_role.htm)
+      operationId: View Roles
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - schema:
+          type: string
+        in: query
+        name: propertyLevel
+      summary: View Roles (Deprecated)
+      tags:
+      - Role Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  roleProperties:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        visibility:
+                          type: integer
+                        description:
+                          type: string
+                        role:
+                          type: object
+                          properties:
+                            roleId:
+                              type: integer
+                            roleName:
+                              type: string
+                            flags:
+                              type: object
+                              properties:
+                                disabled:
+                                  type: boolean
+                        categoryPermission:
+                          type: object
+                          properties:
+                            categoriesPermissionList:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  srmReportSet:
+                                    type: integer
+                                  type:
+                                    type: integer
+                                  srmReportType:
+                                    type: integer
+                                  clientSidePackage:
+                                    type: boolean
+                                  _type_:
+                                    type: integer
+                                  consumeLicense:
+                                    type: boolean
+                                  permissionId:
+                                    type: integer
+                                  permissionName:
+                                    type: string
+                                  categoryName:
+                                    type: string
+                                  categoryId:
+                                    type: integer
+                                  flags:
+                                    type: object
+                                    properties:
+                                      exclude:
+                                        type: boolean
+                        securityAssociations:
+                          type: object
+                          properties:
+                            ownerAssociations:
+                              type: object
+                              properties: {}
+                x-examples:
+                  Example 1:
+                    roleProperties:
+                    - visibility: 0
+                      description: System Created Role with all permissions
+                      role:
+                        roleId: 1
+                        roleName: Master
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          _type_: 123
+                          consumeLicense: true
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System Created Role for View permission
+                      role:
+                        roleId: 3
+                        roleName: View
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 31
+                          permissionName: View
+                          categoryName: Global
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 107
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created role for end users
+                      role:
+                        roleId: 4
+                        roleName: End Users
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 2
+                          permissionName: Agent Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 3
+                          permissionName: Agent Scheduling
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 5
+                          permissionName: Upload
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 6
+                          permissionName: Download
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 12
+                          permissionName: Data Protection Operations
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 20
+                          permissionName: In Place Recover
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 22
+                          permissionName: Out of Place Recover
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 24
+                          permissionName: EndUser Access
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 38
+                          permissionName: Live Browse
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 40
+                          permissionName: Sharing
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created role for compliance
+                      role:
+                        roleId: 5
+                        roleName: Compliance
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 6
+                          permissionName: Download
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 22
+                          permissionName: Out of Place Recover
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 25
+                          permissionName: Compliance Search
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 27
+                          permissionName: Tag Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 29
+                          permissionName: Legal Hold Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 32
+                          permissionName: Annotation Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created role for client admins
+                      role:
+                        roleId: 6
+                        roleName: Client Admins
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 2
+                          permissionName: Agent Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 3
+                          permissionName: Agent Scheduling
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 7
+                          permissionName: 'Install Package/Update '
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 12
+                          permissionName: Data Protection Operations
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 13
+                          permissionName: Browse
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 20
+                          permissionName: In Place Recover
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 22
+                          permissionName: Out of Place Recover
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 39
+                          permissionName: Full Machine Recovery
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 42
+                          permissionName: Out of Place Full Machine Recovery
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created for Laptop owners
+                      role:
+                        roleId: 7
+                        roleName: All Users Laptops
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 65
+                          permissionName: Install client
+                          categoryName: Commcell
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 101
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created for plan add remove role
+                      role:
+                        roleId: 8
+                        roleName: Plan Subscription Role
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 159
+                          permissionName: Edit Plan Associations
+                          categoryName: Plan
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 118
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created for Plan creators
+                      role:
+                        roleId: 10
+                        roleName: Plan Creator Role
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          categoryName: Plan
+                          _type_: 121
+                          consumeLicense: true
+                          categoryId: 118
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 31
+                          permissionName: View
+                          categoryName: Global
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 107
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 156
+                          permissionName: Create Plan
+                          categoryName: Plan
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 118
+                          flags:
+                            exclude: true
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: Role for company user group client group associations
+                      role:
+                        roleId: 11
+                        roleName: MSP Subscription
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          _type_: 123
+                          consumeLicense: true
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created role for alert owners
+                      role:
+                        roleId: 12
+                        roleName: Alert Owner
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          categoryName: Alert
+                          _type_: 121
+                          consumeLicense: true
+                          categoryId: 117
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 31
+                          permissionName: View
+                          categoryName: Global
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 107
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 107
+                          permissionName: Change security settings
+                          categoryName: Global
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 107
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 151
+                          permissionName: Create Alert
+                          categoryName: Alert
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 117
+                          flags:
+                            exclude: true
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created role for subclient policy owners
+                      role:
+                        roleId: 13
+                        roleName: Subclient Policy Owner
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          categoryName: Subclient Policy
+                          _type_: 121
+                          consumeLicense: true
+                          categoryId: 121
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 31
+                          permissionName: View
+                          categoryName: Global
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 107
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 107
+                          permissionName: Change security settings
+                          categoryName: Global
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 107
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 174
+                          permissionName: Create Subclient Policy
+                          categoryName: Subclient Policy
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 121
+                          flags:
+                            exclude: true
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: Client Group Creator role
+                      role:
+                        roleId: 14
+                        roleName: Client Group Creator
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          categoryName: Client Group
+                          _type_: 121
+                          consumeLicense: true
+                          categoryId: 122
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 2
+                          permissionName: Agent Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 1
+                          permissionName: Administrative Management
+                          categoryName: Global
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 107
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 179
+                          permissionName: Create Client Group
+                          categoryName: Client Group
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 122
+                          flags:
+                            exclude: true
+                      securityAssociations:
+                        ownerAssociations: {}
+              examples:
+                View Roles - This request uses 30 for the propertyLevel parameter.:
+                  value:
+                    roleProperties:
+                    - visibility: 0
+                      description: System Created Role with all permissions
+                      role:
+                        roleId: 1
+                        roleName: Master
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          _type_: 123
+                          consumeLicense: true
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System Created Role for View permission
+                      role:
+                        roleId: 3
+                        roleName: View
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 31
+                          permissionName: View
+                          categoryName: Global
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 107
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created role for end users
+                      role:
+                        roleId: 4
+                        roleName: End Users
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 2
+                          permissionName: Agent Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 3
+                          permissionName: Agent Scheduling
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 5
+                          permissionName: Upload
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 6
+                          permissionName: Download
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 12
+                          permissionName: Data Protection Operations
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 20
+                          permissionName: In Place Recover
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 22
+                          permissionName: Out of Place Recover
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 24
+                          permissionName: EndUser Access
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 38
+                          permissionName: Live Browse
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 40
+                          permissionName: Sharing
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created role for compliance
+                      role:
+                        roleId: 5
+                        roleName: Compliance
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 6
+                          permissionName: Download
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 22
+                          permissionName: Out of Place Recover
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 25
+                          permissionName: Compliance Search
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 27
+                          permissionName: Tag Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 29
+                          permissionName: Legal Hold Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 32
+                          permissionName: Annotation Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created role for client admins
+                      role:
+                        roleId: 6
+                        roleName: Client Admins
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 2
+                          permissionName: Agent Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 3
+                          permissionName: Agent Scheduling
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 7
+                          permissionName: 'Install Package/Update '
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 12
+                          permissionName: Data Protection Operations
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 13
+                          permissionName: Browse
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 20
+                          permissionName: In Place Recover
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 22
+                          permissionName: Out of Place Recover
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 39
+                          permissionName: Full Machine Recovery
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 42
+                          permissionName: Out of Place Full Machine Recovery
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created for Laptop owners
+                      role:
+                        roleId: 7
+                        roleName: All Users Laptops
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 65
+                          permissionName: Install client
+                          categoryName: Commcell
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 101
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created for plan add remove role
+                      role:
+                        roleId: 8
+                        roleName: Plan Subscription Role
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 159
+                          permissionName: Edit Plan Associations
+                          categoryName: Plan
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 118
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created for Plan creators
+                      role:
+                        roleId: 10
+                        roleName: Plan Creator Role
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          categoryName: Plan
+                          _type_: 121
+                          consumeLicense: true
+                          categoryId: 118
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 31
+                          permissionName: View
+                          categoryName: Global
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 107
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 156
+                          permissionName: Create Plan
+                          categoryName: Plan
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 118
+                          flags:
+                            exclude: true
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: Role for company user group client group associations
+                      role:
+                        roleId: 11
+                        roleName: MSP Subscription
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          _type_: 123
+                          consumeLicense: true
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created role for alert owners
+                      role:
+                        roleId: 12
+                        roleName: Alert Owner
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          categoryName: Alert
+                          _type_: 121
+                          consumeLicense: true
+                          categoryId: 117
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 31
+                          permissionName: View
+                          categoryName: Global
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 107
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 107
+                          permissionName: Change security settings
+                          categoryName: Global
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 107
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 151
+                          permissionName: Create Alert
+                          categoryName: Alert
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 117
+                          flags:
+                            exclude: true
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: System created role for subclient policy owners
+                      role:
+                        roleId: 13
+                        roleName: Subclient Policy Owner
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          categoryName: Subclient Policy
+                          _type_: 121
+                          consumeLicense: true
+                          categoryId: 121
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 31
+                          permissionName: View
+                          categoryName: Global
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 107
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 107
+                          permissionName: Change security settings
+                          categoryName: Global
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 107
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 174
+                          permissionName: Create Subclient Policy
+                          categoryName: Subclient Policy
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 121
+                          flags:
+                            exclude: true
+                      securityAssociations:
+                        ownerAssociations: {}
+                    - visibility: 0
+                      description: Client Group Creator role
+                      role:
+                        roleId: 14
+                        roleName: Client Group Creator
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          categoryName: Client Group
+                          _type_: 121
+                          consumeLicense: true
+                          categoryId: 122
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 2
+                          permissionName: Agent Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 1
+                          permissionName: Administrative Management
+                          categoryName: Global
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 107
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 179
+                          permissionName: Create Client Group
+                          categoryName: Client Group
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 122
+                          flags:
+                            exclude: true
+                      securityAssociations:
+                        ownerAssociations: {}
+                View Roles - This request uses 1 for the propertyLevel parameter.:
+                  value:
+                    roleProperties:
+                    - role:
+                        roleId: 1
+                        roleName: Master
+                        flags:
+                          disabled: false
+                    - role:
+                        roleId: 3
+                        roleName: View
+                        flags:
+                          disabled: false
+                    - role:
+                        roleId: 4
+                        roleName: End Users
+                        flags:
+                          disabled: false
+                    - role:
+                        roleId: 5
+                        roleName: Compliance
+                        flags:
+                          disabled: false
+                    - role:
+                        roleId: 6
+                        roleName: Client Admins
+                        flags:
+                          disabled: false
+                    - role:
+                        roleId: 7
+                        roleName: All Users Laptops
+                        flags:
+                          disabled: false
+                    - role:
+                        roleId: 8
+                        roleName: Plan Subscription Role
+                        flags:
+                          disabled: false
+                    - role:
+                        roleId: 10
+                        roleName: Plan Creator Role
+                        flags:
+                          disabled: false
+                    - role:
+                        roleId: 11
+                        roleName: MSP Subscription
+                        flags:
+                          disabled: false
+                    - role:
+                        roleId: 12
+                        roleName: Alert Owner
+                        flags:
+                          disabled: false
+                    - role:
+                        roleId: 13
+                        roleName: Subclient Policy Owner
+                        flags:
+                          disabled: false
+                    - role:
+                        roleId: 14
+                        roleName: Client Group Creator
+                        flags:
+                          disabled: false
+    post:
+      deprecated: false
+      description: |
+        This operation creates a role.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_role.htm)
+      operationId: Create a Role
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          enum:
+          - application/xml
+          example: application/xml
+          type: string
+      summary: Create a Role (Deprecated)
+      tags:
+      - Role Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorString:
+                          type: string
+                        errorCode:
+                          type: integer
+                        entity:
+                          type: object
+                          properties:
+                            roleName:
+                              type: string
+                            roleId:
+                              type: integer
+                            flags:
+                              type: object
+                              properties:
+                                disabled:
+                                  type: boolean
+                x-examples:
+                  Example 1:
+                    response:
+                    - errorString: Successful
+                      errorCode: 0
+                      entity:
+                        roleName: TestRole
+                        roleId: 33
+                        flags:
+                          disabled: false
+              examples:
+                Create a Role:
+                  value:
+                    response:
+                    - errorString: Successful
+                      errorCode: 0
+                      entity:
+                        roleName: TestRole
+                        roleId: 33
+                        flags:
+                          disabled: false
+      requestBody:
+        content:
+          application/xml:
+            examples:
+              Create a Role:
+                value: |-
+                  <Security_CreateRoleRequest>
+                     <roles>
+                        <role>
+                           <roleName>TestRole</roleName>
+                           <flags>
+                              <disabled>false</disabled>
+                           </flags>
+                        </role>
+                        <description></description>
+                        <categoryPermission>
+                           <categoriesPermissionList>
+                             <categoryName>Alert</categoryName>
+                           </categoriesPermissionList>
+                           <categoriesPermissionList>
+                              <permissionName>Agent Management</permissionName>
+                           </categoriesPermissionList>
+                           <categoriesPermissionList>
+                              <permissionName>Agent Scheduling</permissionName>
+                           </categoriesPermissionList>
+                           <categoriesPermissionOperationType>ADD</categoriesPermissionOperationType>
+                        </categoryPermission>
+                     </roles>
+                  </Security_CreateRoleRequest>
+  '/Role/{roleId}':
+    post:
+      deprecated: false
+      operationId: Enabling security roles for tenant use
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: roleId
+        required: true
+        schema:
+          type: string
+      summary: Update a Role (Deprecated)
+      tags:
+      - Role Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  roleProperties:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        visibility:
+                          type: integer
+                        description:
+                          type: string
+                        role:
+                          type: object
+                          properties:
+                            roleId:
+                              type: integer
+                            roleName:
+                              type: string
+                            flags:
+                              type: object
+                              properties:
+                                disabled:
+                                  type: boolean
+                        categoryPermission:
+                          type: object
+                          properties:
+                            categoriesPermissionList:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  srmReportSet:
+                                    type: integer
+                                  type:
+                                    type: integer
+                                  srmReportType:
+                                    type: integer
+                                  clientSidePackage:
+                                    type: boolean
+                                  categoryName:
+                                    type: string
+                                  _type_:
+                                    type: integer
+                                  consumeLicense:
+                                    type: boolean
+                                  categoryId:
+                                    type: integer
+                                  permissionId:
+                                    type: integer
+                                  permissionName:
+                                    type: string
+                        securityAssociations:
+                          type: object
+                          properties:
+                            associations:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  userOrGroup:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        srmReportSet:
+                                          type: integer
+                                        type:
+                                          type: integer
+                                        srmReportType:
+                                          type: integer
+                                        clientSidePackage:
+                                          type: boolean
+                                        userId:
+                                          type: integer
+                                        _type_:
+                                          type: integer
+                                        userName:
+                                          type: string
+                                        consumeLicense:
+                                          type: boolean
+                                  properties:
+                                    type: object
+                                    properties:
+                                      isCreatorAssociation:
+                                        type: boolean
+                                      role:
+                                        type: object
+                                        properties:
+                                          _type_:
+                                            type: integer
+                                          roleId:
+                                            type: integer
+                                          roleName:
+                                            type: string
+                            ownerAssociations:
+                              type: object
+                              properties: {}
+                x-examples:
+                  Example 1:
+                    roleProperties:
+                    - visibility: 0
+                      description: testing role modification.
+                      role:
+                        roleId: 34
+                        roleName: TestRole
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          categoryName: Alert
+                          _type_: 121
+                          consumeLicense: true
+                          categoryId: 117
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 2
+                          permissionName: Agent Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 3
+                          permissionName: Agent Scheduling
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                      securityAssociations:
+                        associations:
+                        - userOrGroup:
+                          - srmReportSet: 0
+                            type: 0
+                            srmReportType: 0
+                            clientSidePackage: true
+                            userId: 1
+                            _type_: 13
+                            userName: testadmin
+                            consumeLicense: true
+                          properties:
+                            isCreatorAssociation: true
+                            role:
+                              _type_: 120
+                              roleId: 3
+                              roleName: View
+                        ownerAssociations: {}
+              examples:
+                Update a Role:
+                  value:
+                    response:
+                    - errorString: Successful
+                      errorCode: 0
+                      entity:
+                        roleName: TestRole
+                        roleId: 34
+      description: |-
+        This operation creates a role.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_role.htm)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                roles:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      description:
+                        type: string
+                      role:
+                        type: object
+                        properties:
+                          roleName:
+                            type: string
+                          flags:
+                            type: object
+                            properties:
+                              disabled:
+                                type: boolean
+                      categoryPermission:
+                        type: object
+                        properties:
+                          categoriesPermissionOperationType:
+                            type: integer
+                          categoriesPermissionList:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                categoryName:
+                                  type: string
+                                permissionName:
+                                  type: string
+              x-examples:
+                Example 1:
+                  roles:
+                  - description: testing
+                    role:
+                      roleName: TestRole
+                      flags:
+                        disabled: false
+                    categoryPermission:
+                      categoriesPermissionOperationType: 2
+                      categoriesPermissionList:
+                      - categoryName: Alert
+                      - permissionName: Agent Management
+                      - permissionName: Agent Scheduling
+            examples:
+              Update a Role:
+                value:
+                  roles:
+                  - description: testing
+                    role:
+                      roleName: TestRole
+                      flags:
+                        disabled: false
+                    categoryPermission:
+                      categoriesPermissionOperationType: 2
+                      categoriesPermissionList:
+                      - categoryName: Alert
+                      - permissionName: Agent Management
+                      - permissionName: Agent Scheduling
+              Example 1:
+                value:
+                  roles:
+                  - description: string
+                    role:
+                      roleName: string
+                      flags:
+                        disabled: true
+                    categoryPermission:
+                      categoriesPermissionOperationType: 0
+                      categoriesPermissionList:
+                      - categoryName: string
+                        permissionName: string
+          application/xml:
+            examples:
+              Example 1:
+                value: |-
+                  <Security_ModifyRoleRequest>
+                     <roles visibility="1">
+                        <role roleId="20" roleName="VM End User">
+                           <flags disabled="0" />
+                        </role>
+                        <categoryPermission categoriesPermissionOperationType="1">
+                           <categoriesPermissionList permissionId="6" _type_="122" categoryId="102" />
+                           <categoriesPermissionList permissionId="13" _type_="122" categoryId="102" />
+                           <categoriesPermissionList permissionId="20" _type_="122" categoryId="102" />
+                           <categoriesPermissionList permissionId="22" _type_="122" categoryId="102" />
+                           <categoriesPermissionList permissionId="39" _type_="122" categoryId="102" />
+                           <categoriesPermissionList permissionId="42" _type_="122" categoryId="102" />
+                        </categoryPermission>
+                     </roles>
+                  </Security_ModifyRoleRequest>
+        description: ''
+    delete:
+      summary: Delete Role (Deprecated)
+      operationId: delete-Role-roleId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorString:
+                          type: string
+                        errorCode:
+                          type: integer
+                x-examples:
+                  Example 1:
+                    response:
+                    - errorString: Successful
+                      errorCode: 0
+      description: |
+        This operation deletes a role.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/delete_role.htm)
+      tags:
+      - Role Operations
+    parameters:
+    - schema:
+        type: string
+      name: roleId
+      in: path
+      required: true
+    get:
+      summary: View Role Properties (Deprecated)
+      tags:
+      - Role Operations
+      operationId: get-Role-roleId
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  roleProperties:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        visibility:
+                          type: integer
+                        description:
+                          type: string
+                        role:
+                          type: object
+                          properties:
+                            roleId:
+                              type: integer
+                            roleName:
+                              type: string
+                            flags:
+                              type: object
+                              properties:
+                                disabled:
+                                  type: boolean
+                        categoryPermission:
+                          type: object
+                          properties:
+                            categoriesPermissionList:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  srmReportSet:
+                                    type: integer
+                                  type:
+                                    type: integer
+                                  srmReportType:
+                                    type: integer
+                                  clientSidePackage:
+                                    type: boolean
+                                  categoryName:
+                                    type: string
+                                  _type_:
+                                    type: integer
+                                  consumeLicense:
+                                    type: boolean
+                                  categoryId:
+                                    type: integer
+                                  permissionId:
+                                    type: integer
+                                  permissionName:
+                                    type: string
+                        securityAssociations:
+                          type: object
+                          properties:
+                            associations:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  userOrGroup:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        srmReportSet:
+                                          type: integer
+                                        type:
+                                          type: integer
+                                        srmReportType:
+                                          type: integer
+                                        clientSidePackage:
+                                          type: boolean
+                                        userId:
+                                          type: integer
+                                        _type_:
+                                          type: integer
+                                        userName:
+                                          type: string
+                                        consumeLicense:
+                                          type: boolean
+                                  properties:
+                                    type: object
+                                    properties:
+                                      isCreatorAssociation:
+                                        type: boolean
+                                      role:
+                                        type: object
+                                        properties:
+                                          _type_:
+                                            type: integer
+                                          roleId:
+                                            type: integer
+                                          roleName:
+                                            type: string
+                            ownerAssociations:
+                              type: object
+                              properties: {}
+                x-examples:
+                  Example 1:
+                    roleProperties:
+                    - visibility: 0
+                      description: testing role modification.
+                      role:
+                        roleId: 34
+                        roleName: TestRole
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          categoryName: Alert
+                          _type_: 121
+                          consumeLicense: true
+                          categoryId: 117
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 2
+                          permissionName: Agent Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 3
+                          permissionName: Agent Scheduling
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                      securityAssociations:
+                        associations:
+                        - userOrGroup:
+                          - srmReportSet: 0
+                            type: 0
+                            srmReportType: 0
+                            clientSidePackage: true
+                            userId: 1
+                            _type_: 13
+                            userName: testadmin
+                            consumeLicense: true
+                          properties:
+                            isCreatorAssociation: true
+                            role:
+                              _type_: 120
+                              roleId: 3
+                              roleName: View
+                        ownerAssociations: {}
+              examples:
+                Example 1:
+                  value:
+                    roleProperties:
+                    - visibility: 0
+                      description: testing role modification.
+                      role:
+                        roleId: 34
+                        roleName: TestRole
+                        flags:
+                          disabled: false
+                      categoryPermission:
+                        categoriesPermissionList:
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          categoryName: Alert
+                          _type_: 121
+                          consumeLicense: true
+                          categoryId: 117
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 2
+                          permissionName: Agent Management
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                        - srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          permissionId: 3
+                          permissionName: Agent Scheduling
+                          categoryName: Client
+                          _type_: 122
+                          consumeLicense: true
+                          categoryId: 102
+                      securityAssociations:
+                        associations:
+                        - userOrGroup:
+                          - srmReportSet: 0
+                            type: 0
+                            srmReportType: 0
+                            clientSidePackage: true
+                            userId: 1
+                            _type_: 13
+                            userName: testadmin
+                            consumeLicense: true
+                          properties:
+                            isCreatorAssociation: true
+                            role:
+                              _type_: 120
+                              roleId: 3
+                              roleName: View
+                        ownerAssociations: {}
+      description: |
+        This operation returns the properties associated with a role.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_role_properties.htm)

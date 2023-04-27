@@ -1,0 +1,177 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+  - url: 'http://{hostname}/webconsole/api'
+    variables:
+      hostname:
+        default: localhost
+        description: Webconsole
+tags:
+  - name: Syslog Server
+paths:
+  /Config:
+    post:
+      deprecated: true
+      description: |
+        This operation creates a syslog server.
+
+        [_More Details_](https://documentation.commvault.com/11.24/essential/114183_create_syslog_server_rest_api_post.html)
+      operationId: Create a Syslog Server
+      parameters:
+        - description: ''
+          in: header
+          name: Authtoken
+          required: true
+          schema:
+            example: '{{TOKEN}}'
+            type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              enabled: true
+              hostname: '{{hostname}}'
+              port: 514
+              syslogPolicy:
+                - enabled: false
+                  name: Alerts
+                - enabled: true
+                  name: Audit
+                - enabled: false
+                  name: Events
+            schema:
+              allOf:
+                - example:
+                    enabled: true
+                    hostname: '{{hostname}}'
+                    port: 514
+                    syslogPolicy:
+                      - enabled: false
+                        name: Alerts
+                      - enabled: true
+                        name: Audit
+                      - enabled: false
+                        name: Events
+                  title: CreateaSyslogServerRequest
+                  properties:
+                    enabled:
+                      type: boolean
+                    hostname:
+                      type: string
+                    port:
+                      format: int32
+                      type: integer
+                    syslogPolicy:
+                      type: array
+                      items:
+                        example:
+                          enabled: false
+                          name: Alerts
+                        title: SyslogPolicy
+                        type: object
+                        properties:
+                          enabled:
+                            type: boolean
+                          name:
+                            type: string
+              type: object
+        description: ''
+        required: true
+      summary: Create a Syslog Server (Deprecated)
+      tags:
+        - Syslog Server
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0
+  /Status:
+    get:
+      deprecated: true
+      description: |
+        This operation returns the details of a syslog server.
+
+
+        [_More Details_](https://documentation.commvault.com/11.24/essential/114182_view_details_of_syslog_server_rest_api_get.html)
+      operationId: Get Syslog Server Details
+      parameters:
+        - description: ''
+          in: header
+          name: Accept
+          required: true
+          schema:
+            example: application/json
+            type: string
+        - description: ''
+          in: header
+          name: Authtoken
+          required: true
+          schema:
+            example: '{{TOKEN}}'
+            type: string
+      summary: Get Syslog Server Details (Deprecated)
+      tags:
+        - Syslog Server
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  hostname:
+                    type: string
+                  port:
+                    type: integer
+                  enabled:
+                    type: boolean
+                  syslogPolicy:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        enabled:
+                          type: boolean
+                x-examples:
+                  Example 1:
+                    hostname: syslogserver
+                    port: 514
+                    enabled: true
+                    syslogPolicy:
+                      - name: Alerts
+                        enabled: false
+                      - name: Audit
+                        enabled: true
+                      - name: Events
+                        enabled: true
+              examples:
+                Syslog Server Details:
+                  value:
+                    hostname: syslogserver
+                    port: 514
+                    enabled: true
+                    syslogPolicy:
+                      - name: Alerts
+                        enabled: false
+                      - name: Audit
+                        enabled: true
+                      - name: Events
+                        enabled: true

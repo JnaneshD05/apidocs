@@ -1,0 +1,36 @@
+---
+id: reset-tape-library
+title: "Reset Tape Library"
+description: "This operation resets tape libraries."
+sidebar_label: "Reset Tape Library"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation resets tape libraries.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_reset_tape_library.htm)","operationId":"Reset Tape Library","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"requestBody":{"content":{"application/json":{"example":{"LibraryId":184,"libraryOperationType":22},"schema":{"allOf":[{"example":{"LibraryId":184,"libraryOperationType":22},"properties":{"LibraryId":{"format":"int32","type":"integer"},"libraryOperationType":{"format":"int32","type":"integer"}},"required":["LibraryId","libraryOperationType"],"title":"ResetTapeLibraryRequest","type":"object"},{"example":{"LibraryId":184,"libraryOperationType":22}}]}}},"description":"","required":true},"tags":["Storage Resource Operations"],"responses":{"200":{"description":"OK"}},"method":"post","path":"/LibraryOperations","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"LibraryId":184,"libraryOperationType":22},"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Reset Tape Library","description":{"content":"This operation resets tape libraries.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_reset_tape_library.htm)","type":"text/plain"},"url":{"path":["LibraryOperations"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/Storage/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Reset Tape Library
+
+
+
+This operation resets tape libraries.
+
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_reset_tape_library.htm)
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong><strong style={{"fontSize":"var(--ifm-code-font-size)","color":"var(--openapi-required)"}}> required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"LibraryId"} required={true} deprecated={undefined} schemaDescription={undefined} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"libraryOperationType"} required={true} deprecated={undefined} schemaDescription={undefined} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

@@ -1,0 +1,37 @@
+---
+id: get-virtual-server-agent-clients
+title: "Get Virtual Server Agent Clients"
+description: "This operation returns a list of clients where the Virtual Server agent is installed."
+sidebar_label: "Get Virtual Server Agent Clients"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation returns a list of clients where the Virtual Server agent is installed.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_virtual_server_agent_client.htm)\n","operationId":"Get Virtual Server Agent Clients","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["VM Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"clients":{"type":"array","items":{"type":"object","properties":{"hostName":{"type":"string"},"clientId":{"type":"integer"},"clientName":{"type":"string"},"displayName":{"type":"string"},"_type_":{"type":"integer"},"csGUID":{"type":"string"}}}}},"x-examples":{"Example 1":{"clients":[{"hostName":"dm2perf4.test.cv.com","clientId":2,"clientName":"dm2perf4","displayName":"dm2perf4_DN","_type_":3,"csGUID":"31B8C004-387A-4DC9-A156-ED798AFF7647"}]}}},"examples":{"Virtual Server Agent Clients":{"value":{"clients":[{"hostName":"dm2perf4.test.cv.com","clientId":2,"clientName":"dm2perf4","displayName":"dm2perf4_DN","_type_":3,"csGUID":"31B8C004-387A-4DC9-A156-ED798AFF7647"}]}}}}}}},"method":"get","path":"/VSAclientlist","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get Virtual Server Agent Clients","description":{"content":"This operation returns a list of clients where the Virtual Server agent is installed.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_virtual_server_agent_client.htm)\n","type":"text/plain"},"url":{"path":["VSAclientlist"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/VirtualizationOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get Virtual Server Agent Clients
+
+
+
+This operation returns a list of clients where the Virtual Server agent is installed.
+
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_virtual_server_agent_client.htm)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>clients</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"hostName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"clientId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"clientName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"displayName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"_type_"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"csGUID"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"clients\": [\n    {\n      \"hostName\": \"string\",\n      \"clientId\": 0,\n      \"clientName\": \"string\",\n      \"displayName\": \"string\",\n      \"_type_\": 0,\n      \"csGUID\": \"string\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Virtual  Server  Agent  Clients"} value={" Virtual  Server  Agent  Clients"}><ResponseSamples responseExample={"{\n  \"clients\": [\n    {\n      \"hostName\": \"dm2perf4.test.cv.com\",\n      \"clientId\": 2,\n      \"clientName\": \"dm2perf4\",\n      \"displayName\": \"dm2perf4_DN\",\n      \"_type_\": 3,\n      \"csGUID\": \"31B8C004-387A-4DC9-A156-ED798AFF7647\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

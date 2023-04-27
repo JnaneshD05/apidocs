@@ -1,0 +1,35 @@
+---
+id: send-pin-for-two-factor-authentication
+title: "Send Pin for Two-Factor Authentication"
+description: "Sends an email with the pin for two-factor authentication to the email address for the username in the request."
+sidebar_label: "Send Pin for Two-Factor Authentication"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"Sends an email with the pin for two-factor authentication to the email address for the username in the request.\n","operationId":"Send Pin for Two-Factor Authentication","parameters":[{"description":"","explode":true,"in":"query","name":"username","schema":{"example":"{{Username}}","type":"string"}},{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/json","type":"string"}}],"tags":["Authentication Operations"],"responses":{"200":{"description":"OK"}},"method":"get","path":"/Security/TwoFactorAuth/Pin","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Send Pin for Two-Factor Authentication","description":{"content":"Sends an email with the pin for two-factor authentication to the email address for the username in the request.\n","type":"text/plain"},"url":{"path":["Security","TwoFactorAuth","Pin"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"username","value":""}],"variable":[]},"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/AuthenticationOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Send Pin for Two-Factor Authentication
+
+
+
+Sends an email with the pin for two-factor authentication to the email address for the username in the request.
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"username","schema":{"example":"{{Username}}","type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/json","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

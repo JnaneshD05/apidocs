@@ -1,0 +1,34 @@
+---
+id: plan-storage-modify
+title: "Plan Storage Modify"
+description: "This operation updates Storage Pool properties for a Plan."
+sidebar_label: "Plan Storage Modify"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation updates Storage Pool properties for a Plan.","operationId":"Plan Storage Modify","parameters":[{"description":"","in":"header","name":"Authtoken","schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"header","name":"Content-Type","schema":{"enum":["application/x-www-form-urlencoded"],"example":"application/x-www-form-urlencoded","type":"string"}},{"description":"","in":"path","name":"PlanId","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"application/x-www-form-urlencoded":{"encoding":{},"schema":{"properties":{"PrimaryRetentionInDays":{"example":30,"format":"int32","type":"integer"},"SecondaryRetentionInDays":{"example":30,"format":"int32","type":"integer"}},"required":["PrimaryRetentionInDays","SecondaryRetentionInDays"],"type":"object"}}},"required":false},"tags":["More Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"errorMessage":{"type":"string"},"errorCode":{"type":"integer"}},"x-examples":{"Example 1":{"errorMessage":"","errorCode":0}}},"examples":{"Example 1":{"value":{"errorMessage":"","errorCode":0}}}}}}},"method":"put","path":"/v2/Plan/{PlanId}/Storage/Modify","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Plan Storage Modify","description":{"content":"This operation updates Storage Pool properties for a Plan.","type":"text/plain"},"url":{"path":["v2","Plan",":PlanId","Storage","Modify"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"PlanId"}]},"header":[{"disabled":false,"description":{"content":"","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/x-www-form-urlencoded"},{"key":"Accept","value":"application/json"}],"method":"PUT","body":{"mode":"urlencoded","urlencoded":[]}}}
+sidebar_class_name: "put api-method"
+info_path: docs/api/cv/ServiceProviderManagementAPIs/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Plan Storage Modify
+
+
+
+This operation updates Storage Pool properties for a Plan.
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"PlanId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Content-Type","schema":{"enum":["application/x-www-form-urlencoded"],"example":"application/x-www-form-urlencoded","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/x-www-form-urlencoded"} value={"application/x-www-form-urlencoded-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"PrimaryRetentionInDays"} required={true} deprecated={undefined} schemaDescription={undefined} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"SecondaryRetentionInDays"} required={true} deprecated={undefined} schemaDescription={undefined} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"errorMessage"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"errorCode"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"errorMessage\": \"string\",\n  \"errorCode\": 0\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"{\n  \"errorMessage\": \"\",\n  \"errorCode\": 0\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

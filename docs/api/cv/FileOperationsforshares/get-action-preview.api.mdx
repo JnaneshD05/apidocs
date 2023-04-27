@@ -1,0 +1,63 @@
+---
+id: get-action-preview
+title: "Preview a Shared File"
+description: "This operation allows you to preview a backed up file that was shared with you by another user. Preview is currently supported for all images and Microsoft Office file types."
+sidebar_label: "Preview a Shared File"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["File Operations For Shares"],"responses":{"200":{"description":"OK"}},"operationId":"get-action-preview","parameters":[{"schema":{"type":"string"},"in":"query","name":"path"},{"schema":{"type":"string"},"in":"query","name":"shareId"}],"description":"This operation allows you to preview a backed up file that was shared with you by another user. Preview is currently supported for all images and Microsoft Office file types.\n<p>By default, you can preview files that have a maximum file size limit of 10 MB. For instructions on changing the file size limit, see <a href=\"http://documentation.commvault.com/commvault/v11/article?p=products/web_console/t_wcnsl_admin_preview_size.htm\">Changing the File Size Limit for Preview</a> .</p>\n<h2>Supported Error Codes</h2>\n<table>\n  <tr>\n    <th>Code</th>\n    <th>Status</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>400</td>\n    <td>Bad Request</td>\n    <td>The request is missing required parameters or the file name has some unacceptable characters.</td>\n  </tr>\n  <tr>\n    <td>204</td>\n    <td>No Content</td>\n    <td>Preview is not available for the file.</td>\n  </tr>\n  <tr>\n    <td>403</td>\n    <td>Forbidden</td>\n    <td>User does not have permissions to preview or the preview is requested for a folder or an unsupported file type.</td>\n  </tr>\n  <tr>\n    <td>404</td>\n    <td>Not Found</td>\n    <td>The specified file does not exist.</td>\n  </tr>\n</table>[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_share_preview.htm)","method":"get","path":"/action/preview","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Preview a Shared File","description":{"content":"This operation allows you to preview a backed up file that was shared with you by another user. Preview is currently supported for all images and Microsoft Office file types.\n<p>By default, you can preview files that have a maximum file size limit of 10 MB. For instructions on changing the file size limit, see <a href=\"http://documentation.commvault.com/commvault/v11/article?p=products/web_console/t_wcnsl_admin_preview_size.htm\">Changing the File Size Limit for Preview</a> .</p>\n<h2>Supported Error Codes</h2>\n<table>\n  <tr>\n    <th>Code</th>\n    <th>Status</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>400</td>\n    <td>Bad Request</td>\n    <td>The request is missing required parameters or the file name has some unacceptable characters.</td>\n  </tr>\n  <tr>\n    <td>204</td>\n    <td>No Content</td>\n    <td>Preview is not available for the file.</td>\n  </tr>\n  <tr>\n    <td>403</td>\n    <td>Forbidden</td>\n    <td>User does not have permissions to preview or the preview is requested for a folder or an unsupported file type.</td>\n  </tr>\n  <tr>\n    <td>404</td>\n    <td>Not Found</td>\n    <td>The specified file does not exist.</td>\n  </tr>\n</table>[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_share_preview.htm)","type":"text/plain"},"url":{"path":["action","preview"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"path","value":""},{"disabled":false,"key":"shareId","value":""}],"variable":[]},"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/FileOperationsforshares/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Preview a Shared File
+
+
+
+This operation allows you to preview a backed up file that was shared with you by another user. Preview is currently supported for all images and Microsoft Office file types.
+<p>By default, you can preview files that have a maximum file size limit of 10 MB. For instructions on changing the file size limit, see <a href="http://documentation.commvault.com/commvault/v11/article?p=products/web_console/t_wcnsl_admin_preview_size.htm">Changing the File Size Limit for Preview</a> .</p>
+<h2>Supported Error Codes</h2>
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Status</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>400</td>
+    <td>Bad Request</td>
+    <td>The request is missing required parameters or the file name has some unacceptable characters.</td>
+  </tr>
+  <tr>
+    <td>204</td>
+    <td>No Content</td>
+    <td>Preview is not available for the file.</td>
+  </tr>
+  <tr>
+    <td>403</td>
+    <td>Forbidden</td>
+    <td>User does not have permissions to preview or the preview is requested for a folder or an unsupported file type.</td>
+  </tr>
+  <tr>
+    <td>404</td>
+    <td>Not Found</td>
+    <td>The specified file does not exist.</td>
+  </tr>
+</table>[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_share_preview.htm)
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"in":"query","name":"path"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"in":"query","name":"shareId"}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

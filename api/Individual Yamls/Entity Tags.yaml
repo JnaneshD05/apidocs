@@ -1,0 +1,1182 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Entity Tags
+paths:
+  /Ediscovery/Tags:
+    get:
+      deprecated: false
+      description: |
+        This operation returns details of all the tags.
+      operationId: All Tags Details
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: All Tags Details
+      tags:
+      - Entity Tags
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  listOftagSetList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        tagSetsAndItems:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              container:
+                                type: object
+                                properties:
+                                  capabilities:
+                                    type: integer
+                                  containerFullName:
+                                    type: string
+                                  containerType:
+                                    type: integer
+                                  createTime:
+                                    type: integer
+                                  containerName:
+                                    type: string
+                                  deDuplicateFields:
+                                    type: string
+                                  containerOwnerType:
+                                    type: integer
+                                  comment:
+                                    type: string
+                                  attribute:
+                                    type: integer
+                                  containerId:
+                                    type: integer
+                                  containerGuid:
+                                    type: string
+                                  ownerInfo:
+                                    type: object
+                                    properties:
+                                      aliasName:
+                                        type: string
+                                      userGuid:
+                                        type: string
+                                      userName:
+                                        type: string
+                              tags:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    tagOwnerType:
+                                      type: integer
+                                    tagId:
+                                      type: integer
+                                    name:
+                                      type: string
+                                    flags:
+                                      type: integer
+                                    fullName:
+                                      type: string
+                                    description:
+                                      type: string
+                                    id:
+                                      type: string
+                                    attribute:
+                                      type: object
+                                      properties:
+                                        system:
+                                          type: boolean
+                x-examples:
+                  Example 1:
+                    listOftagSetList:
+                    - tagSetsAndItems:
+                      - container:
+                          capabilities: 4328650375167
+                          containerFullName: CommonTags
+                          containerType: 9504
+                          createTime: 1437163690
+                          containerName: CommonTags
+                          deDuplicateFields: ''
+                          containerOwnerType: 1
+                          comment: System default tag set
+                          attribute: 2
+                          containerId: 1
+                          containerGuid: 152AC4AC-ADDE-423C-8989-84C1EE223927
+                          ownerInfo:
+                            aliasName: testadmin
+                            userGuid: 80ECA8AB-E88E-4B71-A5BE-233932068CC2
+                            userName: Administrator
+                        tags:
+                        - tagOwnerType: 1
+                          tagId: 1
+                          name: Un-Reviewed
+                          flags: 2
+                          fullName: CommonTags/Un-Reviewed
+                          description: System Tag
+                          id: 0D8BD683-993F-49A2-BEBF-919A45E49E07
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 2
+                          name: Pending
+                          flags: 2
+                          fullName: CommonTags/Pending
+                          description: System Tag
+                          id: 64BB6877-A1E8-4367-AB52-136FCF258FD5
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 3
+                          name: Responsive
+                          flags: 2
+                          fullName: CommonTags\Responsive
+                          description: System Tag
+                          id: 2E2B92B3-A644-43F3-B344-494E105B6C8E
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 4
+                          name: SPAM
+                          flags: 2
+                          fullName: CommonTags/SPAM
+                          description: System Tag
+                          id: 4810C9CD-671F-4B07-92C2-54834C6BE478
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 5
+                          name: Attorney-Client Privilege
+                          flags: 2
+                          fullName: CommonTags/Attorney-Client Privilege
+                          description: System Tag
+                          id: F7B57F05-3A16-4B71-B60D-839352AF99ED
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 6
+                          name: Appraised
+                          flags: 2
+                          fullName: CommonTags/Appraised
+                          description: System Tag
+                          id: B78F3446-A065-4F67-B343-F725C0F67D30
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 7
+                          name: Questioned
+                          flags: 2
+                          fullName: CommonTags/Questioned
+                          description: System Tag
+                          id: CD7A377F-4534-4604-876C-830B06C05CE1
+                          attribute:
+                            system: true
+                    - tagSetsAndItems:
+                      - container:
+                          capabilities: 4328650375167
+                          containerFullName: DiscoveryEntity
+                          containerType: 9504
+                          createTime: 1437163690
+                          containerName: DiscoveryEntity
+                          deDuplicateFields: ''
+                          containerOwnerType: 1
+                          comment: Discovery Entity Tag Set
+                          attribute: 2
+                          containerId: 2
+                          containerGuid: 1151020F-FB4C-44C7-BAE4-D47FB2808BC0
+                          ownerInfo:
+                            aliasName: testadmin
+                            userGuid: 80ECA8AB-E88E-4B71-A5BE-233932068CC2
+                            userName: Administrator
+                        tags:
+                        - tagOwnerType: 1
+                          tagId: 8
+                          name: SSN
+                          flags: 2
+                          fullName: DiscoveryEntity/SSN
+                          description: Social Security Number
+                          id: F76C8407-1B96-4205-ACB9-067F92C56B2E
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 9
+                          name: American
+                          flags: 2
+                          fullName: DiscoveryEntity/American
+                          description: American Express
+                          id: 98D1F71D-DCD9-49E4-B322-B24CE87A3788
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 10
+                          name: VISA
+                          flags: 2
+                          fullName: DiscoveryEntity/VISA
+                          description: VISA Card
+                          id: C13CC358-B81A-46CC-8350-42A2C18CD02A
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 11
+                          name: MasterCard
+                          flags: 2
+                          fullName: DiscoveryEntity/MasterCard
+                          description: MasterCard
+                          id: 03535E08-6B17-4BDE-9BB3-F051572CCB60
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 12
+                          name: Discover
+                          flags: 2
+                          fullName: DiscoveryEntity/Discover
+                          description: Discover Card
+                          id: 2D7BE9DA-F175-49F6-8A7F-8B68747BBE3E
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 13
+                          name: Routing Number
+                          flags: 2
+                          fullName: DiscoveryEntity\Routing Number
+                          description: Routing Number
+                          id: A432409C-4B00-4F13-AE71-C6273CDA2238
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 14
+                          name: Location
+                          flags: 2
+                          fullName: DiscoveryEntity/Location
+                          description: Location
+                          id: 38C3E678-5B52-49CC-B811-EC041DD3D4AD
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 15
+                          name: USPhonenumber
+                          flags: 2
+                          fullName: DiscoveryEntity/USPhonenumber
+                          description: US Phone Number
+                          id: BDF5AB2C-A216-4C47-97CE-BF0DB8A48F57
+                          attribute:
+                            system: true
+                    - tagSetsAndItems:
+                      - container:
+                          capabilities: 4328650375167
+                          containerFullName: HealthSafetyRecords
+                          containerType: 9504
+                          createTime: 1437163690
+                          containerName: HealthSafetyRecords
+                          deDuplicateFields: ''
+                          containerOwnerType: 1
+                          comment: Health & Safety Records Tag Set
+                          attribute: 2
+                          containerId: 4
+                          containerGuid: 084E495A-B687-4294-B330-AAB4373035D9
+                          ownerInfo:
+                            aliasName: testadmin
+                            userGuid: 80ECA8AB-E88E-4B71-A5BE-233932068CC2
+                            userName: Administrator
+                        tags:
+                        - tagOwnerType: 1
+                          tagId: 25
+                          name: Chemical Exposure
+                          flags: 2
+                          fullName: HealthSafetyRecords/Chemical Exposure
+                          description: Chemical Exposure
+                          id: 580DBAB0-C4B6-469B-B7AB-CCA4174B16BF
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 26
+                          name: Occupational Injury
+                          flags: 2
+                          fullName: HealthSafetyRecords/Occupational Injury
+                          description: Occupational Injury
+                          id: DF703CDF-60C1-4EC4-8D9F-B57E04FA92A2
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 27
+                          name: Hazardous Waste
+                          flags: 2
+                          fullName: HealthSafetyRecords/Hazardous Waste
+                          description: Hazardous Waste
+                          id: 8A319894-7B6E-4A0F-8898-3E41FCB17D39
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 28
+                          name: Employee Exposure
+                          flags: 2
+                          fullName: HealthSafetyRecords/Employee Exposure
+                          description: Employee Exposure
+                          id: F396EAAF-7DA3-4F21-9078-B3343287ACB6
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 29
+                          name: Asbestos Monitoring
+                          flags: 2
+                          fullName: HealthSafetyRecords/Asbestos Monitoring
+                          description: Asbestos Monitoring
+                          id: BAE806CA-8BE9-486F-8959-99963A01430B
+                          attribute:
+                            system: true
+                    - tagSetsAndItems:
+                      - container:
+                          capabilities: 4328650375167
+                          containerFullName: PersonalRecords
+                          containerType: 9504
+                          createTime: 1437163690
+                          containerName: PersonalRecords
+                          deDuplicateFields: ''
+                          containerOwnerType: 1
+                          comment: Personal Records Tag Set
+                          attribute: 2
+                          containerId: 3
+                          containerGuid: 6087C866-6B06-468C-ABA0-F992604CA2EA
+                          ownerInfo:
+                            aliasName: testadmin
+                            userGuid: 80ECA8AB-E88E-4B71-A5BE-233932068CC2
+                            userName: Administrator
+                        tags:
+                        - tagOwnerType: 1
+                          tagId: 16
+                          name: Medical
+                          flags: 2
+                          fullName: PersonalRecords/Medical
+                          description: Medical Records
+                          id: 1232D4DB-A907-40C7-9EA0-032044F9B186
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 17
+                          name: Employment
+                          flags: 2
+                          fullName: PersonalRecords/Employment
+                          description: Employment
+                          id: 0090183C-68C8-48D2-B140-CDDFED41D054
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 18
+                          name: 401K/Pension
+                          flags: 2
+                          fullName: PersonalRecords/401K/Pension
+                          description: 401K/Pension
+                          id: 2385C4DB-515C-414A-B40B-7827B9C7B93E
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 19
+                          name: Appraisal
+                          flags: 2
+                          fullName: PersonalRecords/Appraisal
+                          description: Appraisal
+                          id: 5B0CB6EF-FCCE-4CB4-BF90-6777EDEBDC4E
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 20
+                          name: MBO
+                          flags: 2
+                          fullName: PersonalRecords/MBO
+                          description: MBO
+                          id: F74A37DC-F053-4F75-A547-003E5E58A3DC
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 21
+                          name: Disciplinary
+                          flags: 2
+                          fullName: PersonalRecords/Disciplinary
+                          description: Disciplinary
+                          id: C319A5F1-1635-4F69-B946-437961319ADD
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 22
+                          name: FCIA
+                          flags: 2
+                          fullName: PersonalRecords/FCIA
+                          description: FCIA
+                          id: AF5F1D22-7B14-4F4F-A4A6-CD332158E7E5
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 23
+                          name: FMLA
+                          flags: 2
+                          fullName: PersonalRecords/FMLA
+                          description: FMLA
+                          id: C92A67E8-E0A7-45E4-86B1-D5918883E0A4
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 24
+                          name: Paycheck
+                          flags: 2
+                          fullName: PersonalRecords/Paycheck
+                          description: Paycheck
+                          id: 3784ABE3-BA01-4AEC-8903-32B2D08E80C7
+                          attribute:
+                            system: true
+              examples:
+                Example 1:
+                  value:
+                    listOftagSetList:
+                    - tagSetsAndItems:
+                      - container:
+                          capabilities: 4328650375167
+                          containerFullName: CommonTags
+                          containerType: 9504
+                          createTime: 1437163690
+                          containerName: CommonTags
+                          deDuplicateFields: ''
+                          containerOwnerType: 1
+                          comment: System default tag set
+                          attribute: 2
+                          containerId: 1
+                          containerGuid: 152AC4AC-ADDE-423C-8989-84C1EE223927
+                          ownerInfo:
+                            aliasName: testadmin
+                            userGuid: 80ECA8AB-E88E-4B71-A5BE-233932068CC2
+                            userName: Administrator
+                        tags:
+                        - tagOwnerType: 1
+                          tagId: 1
+                          name: Un-Reviewed
+                          flags: 2
+                          fullName: CommonTags/Un-Reviewed
+                          description: System Tag
+                          id: 0D8BD683-993F-49A2-BEBF-919A45E49E07
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 2
+                          name: Pending
+                          flags: 2
+                          fullName: CommonTags/Pending
+                          description: System Tag
+                          id: 64BB6877-A1E8-4367-AB52-136FCF258FD5
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 3
+                          name: Responsive
+                          flags: 2
+                          fullName: CommonTags\Responsive
+                          description: System Tag
+                          id: 2E2B92B3-A644-43F3-B344-494E105B6C8E
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 4
+                          name: SPAM
+                          flags: 2
+                          fullName: CommonTags/SPAM
+                          description: System Tag
+                          id: 4810C9CD-671F-4B07-92C2-54834C6BE478
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 5
+                          name: Attorney-Client Privilege
+                          flags: 2
+                          fullName: CommonTags/Attorney-Client Privilege
+                          description: System Tag
+                          id: F7B57F05-3A16-4B71-B60D-839352AF99ED
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 6
+                          name: Appraised
+                          flags: 2
+                          fullName: CommonTags/Appraised
+                          description: System Tag
+                          id: B78F3446-A065-4F67-B343-F725C0F67D30
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 7
+                          name: Questioned
+                          flags: 2
+                          fullName: CommonTags/Questioned
+                          description: System Tag
+                          id: CD7A377F-4534-4604-876C-830B06C05CE1
+                          attribute:
+                            system: true
+                    - tagSetsAndItems:
+                      - container:
+                          capabilities: 4328650375167
+                          containerFullName: DiscoveryEntity
+                          containerType: 9504
+                          createTime: 1437163690
+                          containerName: DiscoveryEntity
+                          deDuplicateFields: ''
+                          containerOwnerType: 1
+                          comment: Discovery Entity Tag Set
+                          attribute: 2
+                          containerId: 2
+                          containerGuid: 1151020F-FB4C-44C7-BAE4-D47FB2808BC0
+                          ownerInfo:
+                            aliasName: testadmin
+                            userGuid: 80ECA8AB-E88E-4B71-A5BE-233932068CC2
+                            userName: Administrator
+                        tags:
+                        - tagOwnerType: 1
+                          tagId: 8
+                          name: SSN
+                          flags: 2
+                          fullName: DiscoveryEntity/SSN
+                          description: Social Security Number
+                          id: F76C8407-1B96-4205-ACB9-067F92C56B2E
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 9
+                          name: American
+                          flags: 2
+                          fullName: DiscoveryEntity/American
+                          description: American Express
+                          id: 98D1F71D-DCD9-49E4-B322-B24CE87A3788
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 10
+                          name: VISA
+                          flags: 2
+                          fullName: DiscoveryEntity/VISA
+                          description: VISA Card
+                          id: C13CC358-B81A-46CC-8350-42A2C18CD02A
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 11
+                          name: MasterCard
+                          flags: 2
+                          fullName: DiscoveryEntity/MasterCard
+                          description: MasterCard
+                          id: 03535E08-6B17-4BDE-9BB3-F051572CCB60
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 12
+                          name: Discover
+                          flags: 2
+                          fullName: DiscoveryEntity/Discover
+                          description: Discover Card
+                          id: 2D7BE9DA-F175-49F6-8A7F-8B68747BBE3E
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 13
+                          name: Routing Number
+                          flags: 2
+                          fullName: DiscoveryEntity\Routing Number
+                          description: Routing Number
+                          id: A432409C-4B00-4F13-AE71-C6273CDA2238
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 14
+                          name: Location
+                          flags: 2
+                          fullName: DiscoveryEntity/Location
+                          description: Location
+                          id: 38C3E678-5B52-49CC-B811-EC041DD3D4AD
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 15
+                          name: USPhonenumber
+                          flags: 2
+                          fullName: DiscoveryEntity/USPhonenumber
+                          description: US Phone Number
+                          id: BDF5AB2C-A216-4C47-97CE-BF0DB8A48F57
+                          attribute:
+                            system: true
+                    - tagSetsAndItems:
+                      - container:
+                          capabilities: 4328650375167
+                          containerFullName: HealthSafetyRecords
+                          containerType: 9504
+                          createTime: 1437163690
+                          containerName: HealthSafetyRecords
+                          deDuplicateFields: ''
+                          containerOwnerType: 1
+                          comment: Health & Safety Records Tag Set
+                          attribute: 2
+                          containerId: 4
+                          containerGuid: 084E495A-B687-4294-B330-AAB4373035D9
+                          ownerInfo:
+                            aliasName: testadmin
+                            userGuid: 80ECA8AB-E88E-4B71-A5BE-233932068CC2
+                            userName: Administrator
+                        tags:
+                        - tagOwnerType: 1
+                          tagId: 25
+                          name: Chemical Exposure
+                          flags: 2
+                          fullName: HealthSafetyRecords/Chemical Exposure
+                          description: Chemical Exposure
+                          id: 580DBAB0-C4B6-469B-B7AB-CCA4174B16BF
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 26
+                          name: Occupational Injury
+                          flags: 2
+                          fullName: HealthSafetyRecords/Occupational Injury
+                          description: Occupational Injury
+                          id: DF703CDF-60C1-4EC4-8D9F-B57E04FA92A2
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 27
+                          name: Hazardous Waste
+                          flags: 2
+                          fullName: HealthSafetyRecords/Hazardous Waste
+                          description: Hazardous Waste
+                          id: 8A319894-7B6E-4A0F-8898-3E41FCB17D39
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 28
+                          name: Employee Exposure
+                          flags: 2
+                          fullName: HealthSafetyRecords/Employee Exposure
+                          description: Employee Exposure
+                          id: F396EAAF-7DA3-4F21-9078-B3343287ACB6
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 29
+                          name: Asbestos Monitoring
+                          flags: 2
+                          fullName: HealthSafetyRecords/Asbestos Monitoring
+                          description: Asbestos Monitoring
+                          id: BAE806CA-8BE9-486F-8959-99963A01430B
+                          attribute:
+                            system: true
+                    - tagSetsAndItems:
+                      - container:
+                          capabilities: 4328650375167
+                          containerFullName: PersonalRecords
+                          containerType: 9504
+                          createTime: 1437163690
+                          containerName: PersonalRecords
+                          deDuplicateFields: ''
+                          containerOwnerType: 1
+                          comment: Personal Records Tag Set
+                          attribute: 2
+                          containerId: 3
+                          containerGuid: 6087C866-6B06-468C-ABA0-F992604CA2EA
+                          ownerInfo:
+                            aliasName: testadmin
+                            userGuid: 80ECA8AB-E88E-4B71-A5BE-233932068CC2
+                            userName: Administrator
+                        tags:
+                        - tagOwnerType: 1
+                          tagId: 16
+                          name: Medical
+                          flags: 2
+                          fullName: PersonalRecords/Medical
+                          description: Medical Records
+                          id: 1232D4DB-A907-40C7-9EA0-032044F9B186
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 17
+                          name: Employment
+                          flags: 2
+                          fullName: PersonalRecords/Employment
+                          description: Employment
+                          id: 0090183C-68C8-48D2-B140-CDDFED41D054
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 18
+                          name: 401K/Pension
+                          flags: 2
+                          fullName: PersonalRecords/401K/Pension
+                          description: 401K/Pension
+                          id: 2385C4DB-515C-414A-B40B-7827B9C7B93E
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 19
+                          name: Appraisal
+                          flags: 2
+                          fullName: PersonalRecords/Appraisal
+                          description: Appraisal
+                          id: 5B0CB6EF-FCCE-4CB4-BF90-6777EDEBDC4E
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 20
+                          name: MBO
+                          flags: 2
+                          fullName: PersonalRecords/MBO
+                          description: MBO
+                          id: F74A37DC-F053-4F75-A547-003E5E58A3DC
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 21
+                          name: Disciplinary
+                          flags: 2
+                          fullName: PersonalRecords/Disciplinary
+                          description: Disciplinary
+                          id: C319A5F1-1635-4F69-B946-437961319ADD
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 22
+                          name: FCIA
+                          flags: 2
+                          fullName: PersonalRecords/FCIA
+                          description: FCIA
+                          id: AF5F1D22-7B14-4F4F-A4A6-CD332158E7E5
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 23
+                          name: FMLA
+                          flags: 2
+                          fullName: PersonalRecords/FMLA
+                          description: FMLA
+                          id: C92A67E8-E0A7-45E4-86B1-D5918883E0A4
+                          attribute:
+                            system: true
+                        - tagOwnerType: 1
+                          tagId: 24
+                          name: Paycheck
+                          flags: 2
+                          fullName: PersonalRecords/Paycheck
+                          description: Paycheck
+                          id: 3784ABE3-BA01-4AEC-8903-32B2D08E80C7
+                          attribute:
+                            system: true
+  /Tags:
+    delete:
+      deprecated: false
+      description: "This operation deletes a new tag or multiple tags for a given entity or multiple entities.\n                                  #magic___^_^___line\n                                  #magic___^_^___line\n<b>\n Note:\n</b>\n<p>\n If only\n <i>\n  entityType\n </i>\n and\n <i>\n  entityId\n </i>\n is passed without\n <i>\n  tag\n </i>\n list in the payload, all the tags for that entity will be deleted.\n</p>\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\">\n                                  #magic___^_^___line\n  <tr align=\"left\" valign=\"top\">\n   <td > \n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     entityType\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Type of entity.\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      3, CLIENT_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      5, INSTANCE_ENTITY\n     </li>\n     <li>\n      7, SUBCLIENT_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      28, CLIENT_GROUP_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      64, PROVIDER_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      158, PLAN_ENTITY\n     </li>\n    </ul>\n   </td>\n  </tr>\n                                  #magic___^_^___line\n</table>"
+      operationId: Delete a Tag or multiple tags
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          enum:
+          - application/json
+          example: application/json
+          type: string
+      summary: Delete a Tag or multiple tags
+      tags:
+      - Entity Tags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                entityTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      entityType:
+                        type: integer
+                      entityId:
+                        type: integer
+                      tag:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            value:
+                              type: string
+              x-examples:
+                Example 1:
+                  entityTag:
+                  - entityType: 3
+                    entityId: 8
+                    tag:
+                    - id: 451
+                      name: Brand2
+                      value: Apple
+                  - entityType: 3
+                    entityId: 9
+                    tag:
+                    - id: 452
+                      name: Brand1
+                      value: Googleeee
+            examples:
+              Delete a given tag for entities:
+                value:
+                  entityTag:
+                  - entityType: 3
+                    entityId: 8
+                    tag:
+                    - id: 451
+                      name: Brand2
+                      value: Apple
+                  - entityType: 3
+                    entityId: 9
+                    tag:
+                    - id: 452
+                      name: Brand1
+                      value: Googleeee
+      responses:
+        '200':
+          description: OK
+    post:
+      deprecated: false
+      description: "This operation creates a new tag or multiple tags for a given entity or multiple entities.\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\">\n                                  #magic___^_^___line\n  <tr align=\"left\" valign=\"top\">\n   <td > \n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     entityType\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Type of entity.\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      3, CLIENT_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      5, INSTANCE_ENTITY\n     </li>\n     <li>\n      7, SUBCLIENT_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      28, CLIENT_GROUP_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      64, PROVIDER_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      158, PLAN_ENTITY\n     </li>\n    </ul>\n   </td>\n  </tr>\n                                  #magic___^_^___line\n</table>"
+      operationId: Get all Tags
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get all Tags
+      tags:
+      - Entity Tags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                entityTag:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      entityType:
+                        type: integer
+                      entityId:
+                        type: integer
+                      tag:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+              x-examples:
+                Example 1:
+                  entityTag:
+                  - entityType: 3
+                    entityId: 9
+                    tag:
+                    - name: Brand
+                      value: Apple
+                  - entityType: 3
+                    entityId: 8
+                    tag:
+                    - name: Brand
+                      value: Google
+            examples:
+              Tags:
+                value:
+                  entityTag:
+                  - entityType: 3
+                    entityId: 9
+                    tag:
+                    - name: Brand
+                      value: Apple
+                  - entityType: 3
+                    entityId: 8
+                    tag:
+                    - name: Brand
+                      value: Google
+              Tags - Already Present:
+                value:
+                  entityTag:
+                  - entityType: 3
+                    entityId: 9
+                    tag:
+                    - name: Brand
+                      value: Apple
+                  - entityType: 3
+                    entityId: 8
+                    tag:
+                    - name: Brand
+                      value: Google
+              Tags for a smart client group:
+                value:
+                  error: {}
+                  tags:
+                  - entityType: 28
+                    entityId: 3
+                    tag:
+                    - name: isUpdateRequire
+                      value: 'yes'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorMessage: Successfully executed given operation
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      errorMessage: Successfully executed given operation
+                      errorCode: 0
+    put:
+      deprecated: false
+      description: "This operation updates a new tag or multiple tags for a given entity or multiple entities.\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\">\n                                  #magic___^_^___line\n  <tr align=\"left\" valign=\"top\">\n   <td > \n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     entityType\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Type of entity.\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      3, CLIENT_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      5, INSTANCE_ENTITY\n     </li>\n     <li>\n      7, SUBCLIENT_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      28, CLIENT_GROUP_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      64, PROVIDER_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      158, PLAN_ENTITY\n     </li>\n    </ul>\n   </td>\n  </tr>\n                                  #magic___^_^___line\n</table>"
+      operationId: Update tags
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              entityTag:
+              - entityId: 9
+                entityType: 3
+                tag:
+                - name: Brand
+                  value: Apple
+              - entityId: 8
+                entityType: 3
+                tag:
+                - id: 452
+                  name: Brand
+                  value: Google
+            schema:
+              allOf:
+              - example:
+                  entityTag:
+                  - entityId: 9
+                    entityType: 3
+                    tag:
+                    - name: Brand
+                      value: Apple
+                  - entityId: 8
+                    entityType: 3
+                    tag:
+                    - id: 452
+                      name: Brand
+                      value: Google
+                title: TagsRequest1
+                properties:
+                  entityTag:
+                    type: array
+                    items:
+                      example:
+                        entityId: 9
+                        entityType: 3
+                        tag:
+                        - name: Brand
+                          value: Apple
+                      title: EntityTag1
+                      type: object
+                      properties:
+                        entityId:
+                          format: int32
+                          type: integer
+                        entityType:
+                          format: int32
+                          type: integer
+                        tag:
+                          type: array
+                          items:
+                            example:
+                              name: Brand
+                              value: Apple
+                            title: Tag3
+                            type: object
+                            properties:
+                              id:
+                                format: int32
+                                type: integer
+                              name:
+                                type: string
+                              value:
+                                type: string
+              type: object
+        description: ''
+        required: true
+      summary: Update tags
+      tags:
+      - Entity Tags
+      responses:
+        '200':
+          description: OK
+  '/Tags/{entityType}/{entityId}&tagId={tagId}&tagName={tagName}&tagValue={tagValue}':
+    get:
+      deprecated: false
+      description: "This operation returns a the list of tags.\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\">\n                                  #magic___^_^___line\n  <tr align=\"left\" valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     entityType\n    </p>\n   </td>\n   <td > \n    <p class=\"tabletext\">\n     Type of entity.\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      3, CLIENT_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      5, INSTANCE_ENTITY\n     </li>\n     <li>\n      7, SUBCLIENT_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      28, CLIENT_GROUP_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      64, PROVIDER_ENTITY\n     </li>\n     <li class=\"listbullet\">\n      158, PLAN_ENTITY\n     </li>\n    </ul>\n   </td>\n  </tr>\n                                  #magic___^_^___line\n</table>"
+      operationId: List of Tags
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: entityType
+        required: true
+        schema:
+          type: string
+      - description: ''
+        in: path
+        name: entityId
+        required: true
+        schema:
+          type: string
+      - description: ''
+        in: path
+        name: tagId
+        required: true
+        schema:
+          type: string
+      - description: ''
+        in: path
+        name: tagName
+        required: true
+        schema:
+          type: string
+      - description: ''
+        in: path
+        name: tagValue
+        required: true
+        schema:
+          type: string
+      summary: List of Tags
+      tags:
+      - Entity Tags
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties: {}
+                  tags:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        entityType:
+                          type: integer
+                        entityId:
+                          type: integer
+                        tag:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              id:
+                                type: integer
+                              value:
+                                type: string
+                x-examples:
+                  Example 1:
+                    error: {}
+                    tags:
+                    - entityType: 3
+                      entityId: 8
+                      tag:
+                      - name: Brand
+                        id: 452
+                        value: Apple
+              examples:
+                Tags:
+                  value:
+                    error: {}
+                    tags:
+                    - entityType: 3
+                      entityId: 8
+                      tag:
+                      - name: Brand
+                        id: 452
+                        value: Apple
+                Tags for a smart client group:
+                  value:
+                    error: {}
+                    tags:
+                    - entityType: 28
+                      entityId: 21
+                      tag:
+                      - name: isUpdateRequire
+                        id: 622
+                        value: 'yes'
+    parameters:
+    - in: path
+      name: entityId
+      required: true
+      schema:
+        type: string

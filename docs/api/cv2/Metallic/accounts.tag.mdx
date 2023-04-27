@@ -1,0 +1,37 @@
+---
+id: accounts
+title: "Accounts"
+description: "Accounts"
+custom_edit_url: null
+---
+
+
+
+Account management includes getting account details, activate and deactivate accounts and updating account details (except services). Account creation and service updates are handled via fulfillment requests.
+
+Following are the allowed values for account status:
+
+##### Account Status Enumeration
+
+| **Enumeration Value** | **Description** |
+| --- | --- |
+| provisioning | New account provisioning in progress |
+| updating | Account updation in progress |
+| activating | Account activation in progress |
+| deactivating | Account deactivation in progress |
+| active | Account is in active state |
+| provisioning_failure | New account provisioning failed |
+| pending | Account activation or deactivation failed |
+| update_failure | Account update failed |
+| error | Account activation or deactivation failed |
+| deactivated | Account is in deactivated state |
+
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
+      

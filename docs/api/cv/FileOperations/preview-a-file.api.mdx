@@ -1,0 +1,107 @@
+---
+id: preview-a-file
+title: "Preview a File"
+description: "This operation allows you to preview a backed up file on your laptop computer."
+sidebar_label: "Preview a File"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation allows you to preview a backed up file on your laptop computer.\n\nPreview is currently supported for all images and Microsoft Office file types.\n<p>\n By default, you can preview files that have a maximum file size limit of 10 MB. For instructions on changing the file size limit, see\n <a href=\"http://documentation.commvault.com/commvault/v11/article?p=products/web_console/t_wcnsl_admin_preview_size.htm\">\n  Changing the File Size Limit for Preview\n </a>\n .\n</p>\n<h2>\n Supported Error Codes\n</h2>\n<table width=\"100%\">\n\n  <tr>\n   <th width=\"20%\">\n    Code\n   </th>\n   <th width=\"20%\">\n    Status\n   </th>\n   <th width=\"60%\">\n    Description\n   </th>\n  </tr>\n  <tr>\n   <td>\n    400\n   </td>\n   <td>\n    Bad Request\n   </td>\n   <td>\n    The request is missing required parameters or the file name has some unacceptable characters.\n   </td>\n  </tr>\n  <tr>\n   <td>\n    204\n   </td>\n   <td>\n    No Content\n   </td>\n   <td>\n    Preview is not available for the file.\n   </td>\n  </tr>\n  <tr>\n   <td>\n    403\n   </td>\n   <td>\n    Forbidden\n   </td>\n   <td>\n    User does not have permissions to preview or the preview is requested for a folder or an unsupported file type.\n   </td>\n  </tr>\n  <tr>\n   <td>\n    404\n   </td>\n   <td>\n    Not Found\n   </td>\n   <td>\n    The specified file does not exist.\n   </td>\n  </tr>\n\n</table>\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_preview.htm)\n","operationId":"Preview a File","parameters":[{"description":"","explode":true,"in":"query","name":"appid","schema":{"example":25,"format":"int32","type":"integer"}},{"description":"","explode":true,"in":"query","name":"path","schema":{"example":"C:/sample.txt","type":"string"}},{"in":"header","name":"Accept","required":true,"schema":{"example":"application/xml","type":"string"},"description":"application/xml"},{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["File Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{}}},"text/html":{"examples":{"Example 1":{"value":"<html xmlns=\"http://www.w3.org/1999/xhtml\">\n\n<head>\n\n<meta name=\"X-Parsed-By\" content=\"org.apache.tika.parser.DefaultParser\"/>\n\n<meta name=\"X-Parsed-By\" content=\"org.apache.tika.parser.txt.TXTParser\"/>\n\n<meta name=\"Content-Encoding\" content=\"ISO-8859-1\"/>\n\n<meta name=\"ext_name\" content=\"tmp\"/>\n\n<meta name=\"Content-Type\" content=\"text/plain; charset=ISO-8859-1\"/>\n\n\n</head>\n\n<body background=\"\" >\n<pre>Sample text file.</pre>\n</body>\n</html>\n"}}}}}},"method":"get","path":"/action/preview","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Preview a File","description":{"content":"This operation allows you to preview a backed up file on your laptop computer.\n\nPreview is currently supported for all images and Microsoft Office file types.\n<p>\n By default, you can preview files that have a maximum file size limit of 10 MB. For instructions on changing the file size limit, see\n <a href=\"http://documentation.commvault.com/commvault/v11/article?p=products/web_console/t_wcnsl_admin_preview_size.htm\">\n  Changing the File Size Limit for Preview\n </a>\n .\n</p>\n<h2>\n Supported Error Codes\n</h2>\n<table width=\"100%\">\n\n  <tr>\n   <th width=\"20%\">\n    Code\n   </th>\n   <th width=\"20%\">\n    Status\n   </th>\n   <th width=\"60%\">\n    Description\n   </th>\n  </tr>\n  <tr>\n   <td>\n    400\n   </td>\n   <td>\n    Bad Request\n   </td>\n   <td>\n    The request is missing required parameters or the file name has some unacceptable characters.\n   </td>\n  </tr>\n  <tr>\n   <td>\n    204\n   </td>\n   <td>\n    No Content\n   </td>\n   <td>\n    Preview is not available for the file.\n   </td>\n  </tr>\n  <tr>\n   <td>\n    403\n   </td>\n   <td>\n    Forbidden\n   </td>\n   <td>\n    User does not have permissions to preview or the preview is requested for a folder or an unsupported file type.\n   </td>\n  </tr>\n  <tr>\n   <td>\n    404\n   </td>\n   <td>\n    Not Found\n   </td>\n   <td>\n    The specified file does not exist.\n   </td>\n  </tr>\n\n</table>\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_preview.htm)\n","type":"text/plain"},"url":{"path":["action","preview"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"appid","value":""},{"disabled":false,"key":"path","value":""}],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/FileOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Preview a File
+
+
+
+This operation allows you to preview a backed up file on your laptop computer.
+
+Preview is currently supported for all images and Microsoft Office file types.
+<p>
+ By default, you can preview files that have a maximum file size limit of 10 MB. For instructions on changing the file size limit, see
+ <a href="http://documentation.commvault.com/commvault/v11/article?p=products/web_console/t_wcnsl_admin_preview_size.htm">
+  Changing the File Size Limit for Preview
+ </a>
+ .
+</p>
+<h2>
+ Supported Error Codes
+</h2>
+<table width="100%">
+
+  <tr>
+   <th width="20%">
+    Code
+   </th>
+   <th width="20%">
+    Status
+   </th>
+   <th width="60%">
+    Description
+   </th>
+  </tr>
+  <tr>
+   <td>
+    400
+   </td>
+   <td>
+    Bad Request
+   </td>
+   <td>
+    The request is missing required parameters or the file name has some unacceptable characters.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    204
+   </td>
+   <td>
+    No Content
+   </td>
+   <td>
+    Preview is not available for the file.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    403
+   </td>
+   <td>
+    Forbidden
+   </td>
+   <td>
+    User does not have permissions to preview or the preview is requested for a folder or an unsupported file type.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    404
+   </td>
+   <td>
+    Not Found
+   </td>
+   <td>
+    The specified file does not exist.
+   </td>
+  </tr>
+
+</table>
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_preview.htm)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"appid","schema":{"example":25,"format":"int32","type":"integer"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"path","schema":{"example":"C:/sample.txt","type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"in":"header","name":"Accept","required":true,"schema":{"example":"application/xml","type":"string"},"description":"application/xml"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/html"} value={"text/html"}><SchemaTabs><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"<html xmlns=\"http://www.w3.org/1999/xhtml\">\n\n<head>\n\n<meta name=\"X-Parsed-By\" content=\"org.apache.tika.parser.DefaultParser\"/>\n\n<meta name=\"X-Parsed-By\" content=\"org.apache.tika.parser.txt.TXTParser\"/>\n\n<meta name=\"Content-Encoding\" content=\"ISO-8859-1\"/>\n\n<meta name=\"ext_name\" content=\"tmp\"/>\n\n<meta name=\"Content-Type\" content=\"text/plain; charset=ISO-8859-1\"/>\n\n\n</head>\n\n<body background=\"\" >\n<pre>Sample text file.</pre>\n</body>\n</html>\n"} language={"shell"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

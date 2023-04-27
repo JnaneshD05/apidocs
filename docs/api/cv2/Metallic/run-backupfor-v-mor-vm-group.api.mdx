@@ -1,0 +1,40 @@
+---
+id: run-backupfor-v-mor-vm-group
+title: "Run Backup for VM or VM Group"
+description: "This API runs a backup for vm guid and vmgroup on metallic azure."
+sidebar_label: "Run Backup for VM or VM Group"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["VM Content Operations"],"description":"This API runs a backup for vm guid and vmgroup on metallic azure.\n\n#### Response Body\n\n| **Field** | **Description** | **Type** | **Notes** |\n| --- | --- | --- | --- |\n| JobId | List of jobs triggered | List |  |","operationId":"RunBackupforVMorVMGroup","parameters":[{"schema":{"type":"string","example":"3f3b6111-083e-4c27-b475-45c66fc3ae07"},"in":"query","name":"VMGuid","description":"Guid of the Virtual Machine"},{"schema":{"type":"string","example":"3428"},"in":"query","name":"vmGroupId","description":"Guid of the Virtual Machine Group"}],"responses":{"200":{"description":"OK","content":{"application/json;charset=utf-8":{"schema":{"allOf":[{"title":"RunBackupforVMGUID","required":["taskId","jobIds"],"type":"object","properties":{"taskId":{"type":"integer","format":"int32"},"jobIds":{"type":"array","items":{"type":"string"},"description":""}},"example":{"taskId":63814,"jobIds":["131574"]}},{"example":{"taskId":63814,"jobIds":["131574"]}}]},"example":{"taskId":63814,"jobIds":["131574"]}}}}},"deprecated":false,"method":"post","path":"/core/azurevm/backup","servers":[{"url":"https://api.metallic.io/api/v1","variables":{}}],"security":[{"bearer":[]}],"securitySchemes":{"bearer":{"type":"http","scheme":"bearer"}},"info":{"title":"Metallic REST API Reference","description":"This API documentation covers all the APIs exposed by metallic for all the partner customers as well as standalone customers.\n\n> Invoke Authentication - `/api/v1/authenticate` API using `username` and `password` provided by metallic to obtain `authToken`. All subsequent requests should pass `authToken` obtained as `Bearer token` as part of `Authorization` header.\n\n> Contact Metallic Customer support for any further assistance.\n\n## HTTP Codes\n\nFollowing are the generic HTTP codes returned by APIs. These HTTP codes are not documented again at each API level to improve the overall documentation readability.\n\n| **HTTP Error Code** | **Description** |\n| --- | --- |\n| 200 | OK - Success |\n| 201 | Created - Record created successfully |\n| 204 | Success No Content -Usually returned for DELETE operation response. |\n| 400 | Bad Request - Correct the request and resubmit. |\n| 401 | Unauthorized - Authentication Failed. User credentials are incorrect or authToken is incorrect/expired. |\n| 403 | Forbidden - Logged in user does not have permission to requested API. |\n| 404 | Not Found - No records found matching the request. |\n| 409 | Conflict - In case of business errors where resource can not be created/updated due to conflict. |\n| 429 | Too Many Requests - API invocation quota exceeded. |\n| 500 | Internal Server Error - Unexpected error from server. Something went wrong on server. |","contact":{},"version":"1.0"},"postman":{"name":"Run Backup for VM or VM Group","description":{"content":"This API runs a backup for vm guid and vmgroup on metallic azure.\n\n#### Response Body\n\n| **Field** | **Description** | **Type** | **Notes** |\n| --- | --- | --- | --- |\n| JobId | List of jobs triggered | List |  |","type":"text/plain"},"url":{"path":["core","azurevm","backup"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"Guid of the Virtual Machine","type":"text/plain"},"key":"VMGuid","value":""},{"disabled":false,"description":{"content":"Guid of the Virtual Machine Group","type":"text/plain"},"key":"vmGroupId","value":""}],"variable":[]},"header":[{"key":"Accept","value":"application/json;charset=utf-8"}],"method":"POST"}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv2/Metallic/metallic-rest-api-reference
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Run Backup for VM or VM Group
+
+
+
+This API runs a backup for vm guid and vmgroup on metallic azure.
+
+#### Response Body
+
+| **Field** | **Description** | **Type** | **Notes** |
+| --- | --- | --- | --- |
+| JobId | List of jobs triggered | List |  |
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string","example":"3f3b6111-083e-4c27-b475-45c66fc3ae07"},"in":"query","name":"VMGuid","description":"Guid of the Virtual Machine"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string","example":"3428"},"in":"query","name":"vmGroupId","description":"Guid of the Virtual Machine Group"}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json;charset=utf-8"} value={"application/json;charset=utf-8"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"taskId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"jobIds"} required={false} deprecated={undefined} schemaDescription={""} schemaName={"string[]"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"taskId\": 63814,\n  \"jobIds\": [\n    \"131574\"\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={"Example"} value={"Example"}><ResponseSamples responseExample={"{\n  \"taskId\": 63814,\n  \"jobIds\": [\n    \"131574\"\n  ]\n}"} language={"shell"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

@@ -1,0 +1,36 @@
+---
+id: lock-unlock-mm-configuration
+title: "Lock / Unlock MM Configuration"
+description: "This operation locks or unlocks media management (MM) configuration."
+sidebar_label: "Lock / Unlock MM Configuration"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation locks or unlocks media management (MM) configuration.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_lock_mm_configuration.htm)","operationId":"Lock / Unlock MM Configuration","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"requestBody":{"content":{"application/json":{"example":{"configLockUnlock":{"lockType":1}},"schema":{"allOf":[{"example":{"configLockUnlock":{"lockType":1}},"properties":{"configLockUnlock":{"example":{"lockType":1},"properties":{"lockType":{"format":"int32","type":"integer"}},"required":["lockType"],"title":"ConfigLockUnlock","type":"object"}},"required":["configLockUnlock"],"title":"LockUnlockMMConfigurationRequest","type":"object"},{"example":{"configLockUnlock":{"lockType":1}}}]}}},"description":"","required":true},"tags":["Storage Resource Operations"],"responses":{"200":{"description":"OK"}},"method":"post","path":"/LockMMConfiguration","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"configLockUnlock":{"lockType":1}},"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Lock / Unlock MM Configuration","description":{"content":"This operation locks or unlocks media management (MM) configuration.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_lock_mm_configuration.htm)","type":"text/plain"},"url":{"path":["LockMMConfiguration"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/Storage/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Lock / Unlock MM Configuration
+
+
+
+This operation locks or unlocks media management (MM) configuration.
+
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_lock_mm_configuration.htm)
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong><strong style={{"fontSize":"var(--ifm-code-font-size)","color":"var(--openapi-required)"}}> required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>configLockUnlock</strong><span style={{"opacity":"0.6"}}> object</span><strong style={{"fontSize":"var(--ifm-code-font-size)","color":"var(--openapi-required)"}}> required</strong></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"lockType"} required={true} deprecated={undefined} schemaDescription={undefined} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

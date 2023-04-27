@@ -1,0 +1,93 @@
+---
+id: disable-restore-agent
+title: "Disable restore property for an agent"
+description: "Used to disable restore property for an agent"
+sidebar_label: "Disable restore property for an agent"
+hide_title: true
+hide_table_of_contents: true
+api: {"description":"Used to disable restore property for an agent\nTypes of available agentIds are:\n41-Active Directory,\n21-AIX File System,\n64-Big Data Apps,\n134-Cloud Apps,\n37-DB2,\n103-DB2 MultiNode,\n62-DB2 on Unix,\n128-Documentum,\n90-Domino Mailbox Archiver,\n91-DPM,\n67-Exchange Compliance Archiver,\n53-Exchange Database,\n45-Exchange Mailbox,\n54-Exchange Mailbox (Classic),\n56-Exchange Mailbox Archiver,\n82-Exchange PF Archiver,\n35-Exchange Public Folder,\n73-File Share Archiver,\n33-File System,\n74-FreeBSD,\n71-GroupWise DB,\n17-HP-UX Files System,\n65-Image Level,\n75-Image Level On Unix,\n76-Image Level ProxyHost,\n87-Image Level ProxyHost on Unix,\n3-Informix Database,\n29-Linux File System,\n89-MS SharePoint Archiver,\n104-MySQL,\n13-NAS,\n83-Netware File Archiver,\n12-Netware File System,\n10-Novell Directory Services,\n124-Object Link,\n131-Object Store,\n86-OES File System on Linux,\n22-Oracle,\n80-Oracle RAC,\n130-Other External Agent,\n125-PostgreSQL,\n38-Proxy Client File System,\n87-ProxyHost on Unix,\n61-SAP for Oracle,\n135-SAP HANA,\n78-SharePoint Server,\n20-Solaris 64bit File System,\n19-Solaris File System,\n81-SQL Server,\n5-Sybase Database,\n66-Unix File Archiver,\n36-Unix Tru64 64-bit File System,\n106-Virtual Server,\n58- Windows File Archiver","operationId":"DisableRestoreAgent","responses":{"200":{"description":"Success","content":{"application/json":{"schema":{"properties":{"errorCode":{"format":"int32","type":"integer"},"errorMessage":{"nullable":true,"type":"string"}},"type":"object"}}}},"500":{"description":"Internal Server Error"}},"tags":["Agent"],"parameters":[{"name":"serverId","in":"path","description":"Id of the server to modify","required":true,"schema":{"type":"integer","format":"int32"}},{"name":"agentId","in":"path","description":"Id of the agent to be modified","required":true,"schema":{"type":"integer","format":"int32"}},{"name":"enableAfterADelay","in":"query","description":"Provide UTC time in unix format.","required":false,"schema":{"type":"integer","format":"int32"}}],"method":"put","path":"/V4/Server/{serverId}/Agent/{agentId}/Restore/Action/Disable","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"securitySchemes":{"token":{"in":"header","name":"Authtoken","type":"apiKey"}},"info":{"version":"1.0.0","contact":{},"description":"## Welcome\n\nWelcome to Commvault's Rest APIs. You can explore our APIs in [Postman](https://getpostman.com) using the predefined requests we created\n\nThe current version of this documentation is **Commvault Platform Release 2022E**.\n\nYou can access LTS documentation here:\n\n[Feature Release 11.20](https://documenter.getpostman.com/view/2046098/UVR7KoPJ)\n\n[Feature Release 11.24](https://documenter.getpostman.com/view/2046098/UVR7KoPL)\n\nFor more V2 and Latest APIs, please visit your API Explorer page.  \n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=107350_1.htm)\n\n## Setup\n\nTo get started, [create an environment in Postman](https://www.getpostman.com/docs/environments), select that environment, and set your environment variables by entering necessary values in the `0 - Setup/Environment Setup` pre-request script ([documentation on pre-request scripts](http://www.getpostman.com/docs/pre_request_scripts)). Also, Some of our calls might have dependencies. `GET`/`PUT`/`DELETE` may only work after an item is created with a `POST`.\n\nThe same set of APIs can be used for both XML and JSON. If you want to get equivalent JSON for the XML, use our [API](https://api.commvault.com/#fe2fa795-dd7c-4416-857d-75704b52be8c) for conversion.\n\n**Note:** Swagger Documentation for V2/Latest APIs are present in the following URL:  \n`{ServerURL}/sandbox/apiexplorer`\n\n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=45551.htm)","title":"Commvault Rest API - Public"},"postman":{"name":"Disable restore property for an agent","description":{"content":"Used to disable restore property for an agent\nTypes of available agentIds are:\n41-Active Directory,\n21-AIX File System,\n64-Big Data Apps,\n134-Cloud Apps,\n37-DB2,\n103-DB2 MultiNode,\n62-DB2 on Unix,\n128-Documentum,\n90-Domino Mailbox Archiver,\n91-DPM,\n67-Exchange Compliance Archiver,\n53-Exchange Database,\n45-Exchange Mailbox,\n54-Exchange Mailbox (Classic),\n56-Exchange Mailbox Archiver,\n82-Exchange PF Archiver,\n35-Exchange Public Folder,\n73-File Share Archiver,\n33-File System,\n74-FreeBSD,\n71-GroupWise DB,\n17-HP-UX Files System,\n65-Image Level,\n75-Image Level On Unix,\n76-Image Level ProxyHost,\n87-Image Level ProxyHost on Unix,\n3-Informix Database,\n29-Linux File System,\n89-MS SharePoint Archiver,\n104-MySQL,\n13-NAS,\n83-Netware File Archiver,\n12-Netware File System,\n10-Novell Directory Services,\n124-Object Link,\n131-Object Store,\n86-OES File System on Linux,\n22-Oracle,\n80-Oracle RAC,\n130-Other External Agent,\n125-PostgreSQL,\n38-Proxy Client File System,\n87-ProxyHost on Unix,\n61-SAP for Oracle,\n135-SAP HANA,\n78-SharePoint Server,\n20-Solaris 64bit File System,\n19-Solaris File System,\n81-SQL Server,\n5-Sybase Database,\n66-Unix File Archiver,\n36-Unix Tru64 64-bit File System,\n106-Virtual Server,\n58- Windows File Archiver","type":"text/plain"},"url":{"path":["V4","Server",":serverId","Agent",":agentId","Restore","Action","Disable"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"Provide UTC time in unix format.","type":"text/plain"},"key":"enableAfterADelay","value":""}],"variable":[{"disabled":false,"description":{"content":"(Required) Id of the server to modify","type":"text/plain"},"type":"any","value":"","key":"serverId"},{"disabled":false,"description":{"content":"(Required) Id of the agent to be modified","type":"text/plain"},"type":"any","value":"","key":"agentId"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"PUT"}}
+sidebar_class_name: "put api-method"
+info_path: docs/api/cv/zAllV4APIs/commvault-rest-api-public
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Disable restore property for an agent
+
+
+
+Used to disable restore property for an agent
+Types of available agentIds are:
+41-Active Directory,
+21-AIX File System,
+64-Big Data Apps,
+134-Cloud Apps,
+37-DB2,
+103-DB2 MultiNode,
+62-DB2 on Unix,
+128-Documentum,
+90-Domino Mailbox Archiver,
+91-DPM,
+67-Exchange Compliance Archiver,
+53-Exchange Database,
+45-Exchange Mailbox,
+54-Exchange Mailbox (Classic),
+56-Exchange Mailbox Archiver,
+82-Exchange PF Archiver,
+35-Exchange Public Folder,
+73-File Share Archiver,
+33-File System,
+74-FreeBSD,
+71-GroupWise DB,
+17-HP-UX Files System,
+65-Image Level,
+75-Image Level On Unix,
+76-Image Level ProxyHost,
+87-Image Level ProxyHost on Unix,
+3-Informix Database,
+29-Linux File System,
+89-MS SharePoint Archiver,
+104-MySQL,
+13-NAS,
+83-Netware File Archiver,
+12-Netware File System,
+10-Novell Directory Services,
+124-Object Link,
+131-Object Store,
+86-OES File System on Linux,
+22-Oracle,
+80-Oracle RAC,
+130-Other External Agent,
+125-PostgreSQL,
+38-Proxy Client File System,
+87-ProxyHost on Unix,
+61-SAP for Oracle,
+135-SAP HANA,
+78-SharePoint Server,
+20-Solaris 64bit File System,
+19-Solaris File System,
+81-SQL Server,
+5-Sybase Database,
+66-Unix File Archiver,
+36-Unix Tru64 64-bit File System,
+106-Virtual Server,
+58- Windows File Archiver
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"serverId","in":"path","description":"Id of the server to modify","required":true,"schema":{"type":"integer","format":"int32"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"name":"agentId","in":"path","description":"Id of the agent to be modified","required":true,"schema":{"type":"integer","format":"int32"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"name":"enableAfterADelay","in":"query","description":"Provide UTC time in unix format.","required":false,"schema":{"type":"integer","format":"int32"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+Success
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"errorCode"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"errorMessage"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"errorCode\": 0,\n  \"errorMessage\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"500"} value={"500"}><div>
+
+Internal Server Error
+
+</div><div></div></TabItem></ApiTabs></div>
+      

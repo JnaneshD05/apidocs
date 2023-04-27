@@ -1,0 +1,37 @@
+---
+id: post-subclient-subclient-id-action-backup
+title: "Subclient Backup"
+description: "This operation runs a backup job for a subclient."
+sidebar_label: "Subclient Backup"
+hide_title: true
+hide_table_of_contents: true
+api: {"operationId":"post-subclient-subclientId-action-backup","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"taskId":{"type":"integer"},"jobIds":{"type":"array","items":{"type":"string"}}},"x-examples":{"Example 1":{"taskId":138,"jobIds":["323"]}}},"examples":{"POST /Subclient/49/action/backup?backupLevel=Synthetic_Full&runIncrementalBackup=True&incrementalLevel=BEFORE_SYNTH":{"value":{"taskId":138,"jobIds":["323"]}},"POST /Subclient/49/action/backup (FULL Backup)":{"value":{"taskId":0,"jobIds":["string"]}},"POST /Subclient/31/action/backup?backupLevel=Incremental":{"value":{"taskId":126,"jobIds":["306"]}}}}}}},"description":"This operation runs a backup job for a subclient.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_subclient_backup.htm)\n","parameters":[{"schema":{"type":"string","example":"Synthetic_Full"},"in":"query","name":"backupLevel"},{"schema":{"type":"boolean","example":true},"in":"query","name":"runIncrementalBackup"},{"schema":{"type":"string","example":"AFTER_SYNTH"},"in":"query","name":"incrementalLevel"},{"schema":{"type":"string"},"name":"subclientId","in":"path","required":true}],"tags":["Backup Operations"],"method":"post","path":"/subclient/{subclientId}/action/backup","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Subclient Backup","description":{"content":"This operation runs a backup job for a subclient.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_subclient_backup.htm)\n","type":"text/plain"},"url":{"path":["subclient",":subclientId","action","backup"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"backupLevel","value":""},{"disabled":false,"key":"runIncrementalBackup","value":""},{"disabled":false,"key":"incrementalLevel","value":""}],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"subclientId"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"POST"}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/BackupOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Subclient Backup
+
+
+
+This operation runs a backup job for a subclient.
+
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_subclient_backup.htm)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"name":"subclientId","in":"path","required":true}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string","example":"Synthetic_Full"},"in":"query","name":"backupLevel"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"schema":{"type":"boolean","example":true},"in":"query","name":"runIncrementalBackup"}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string","example":"AFTER_SYNTH"},"in":"query","name":"incrementalLevel"}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"taskId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"jobIds"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string[]"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"taskId\": 0,\n  \"jobIds\": [\n    \"string\"\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" P O S T / Subclient/49/action/backup?backup Level= Synthetic_ Full&run Incremental Backup= True&incremental Level= B E F O R E_ S Y N T H"} value={" P O S T / Subclient/49/action/backup?backup Level= Synthetic_ Full&run Incremental Backup= True&incremental Level= B E F O R E_ S Y N T H"}><ResponseSamples responseExample={"{\n  \"taskId\": 138,\n  \"jobIds\": [\n    \"323\"\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" P O S T / Subclient/49/action/backup ( F U L L  Backup)"} value={" P O S T / Subclient/49/action/backup ( F U L L  Backup)"}><ResponseSamples responseExample={"{\n  \"taskId\": 0,\n  \"jobIds\": [\n    \"string\"\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" P O S T / Subclient/31/action/backup?backup Level= Incremental"} value={" P O S T / Subclient/31/action/backup?backup Level= Incremental"}><ResponseSamples responseExample={"{\n  \"taskId\": 126,\n  \"jobIds\": [\n    \"306\"\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

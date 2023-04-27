@@ -1,0 +1,110 @@
+---
+id: update-client-group-properties
+title: "Update Client Group Properties (Deprecated)"
+description: "This operation updates the properties associated with a client computer group."
+sidebar_label: "Update Client Group Properties (Deprecated)"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation updates the properties associated with a client computer group.\n<p>\n</p>\n<h2>\n Request Parameters\n</h2>\n<table>\n\n  <tr>\n   <td>\n    <p>\n     Name\n    </p>\n   </td>\n   <td>\n    <p>\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr>\n   <td>\n    <p>\n     activityType\n    </p>\n   </td>\n   <td>\n    <p>\n     Type of the activity.\n    </p>\n    <p>\n     Valid values are:\n    </p>\n    <ul>\n     <li>\n      1, Data backup\n     </li>\n     <li>\n      2, Data restore\n     </li>\n     <li>\n      16, Data aging\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr>\n   <td>\n    <p>\n     time\n    </p>\n   </td>\n   <td>\n    <p>\n     Unix Timestamp in UTC timezone\n    </p>\n   </td>\n  </tr>\n  <tr>\n   <td>\n    <p>\n     TimeZoneID\n    </p>\n   </td>\n   <td>\n    <p>\n     Obtain your timezone id by calling GET Client Group Properties API\n    </p>\n    <p>\n     Eastern Standard Time = 31\n    </p>\n   </td>\n  </tr>\n\n</table>\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_client_group_properties.htm)\n","operationId":"Update Client Group Properties","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"path","name":"clientGroupId","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"application/json":{"example":{"clientGroupDetail":{"claQuota":8,"clientGroup":{"clientGroupName":"{{clientGroupName}}"},"description":"client computer group description modified"},"clientGroupOperationType":2},"schema":{"allOf":[{"example":{"clientGroupDetail":{"claQuota":8,"clientGroup":{"clientGroupName":"{{clientGroupName}}"},"description":"client computer group description modified"},"clientGroupOperationType":2},"title":"ClientGroupPropertiesRequest","properties":{"clientGroupDetail":{"example":{"claQuota":7,"clientGroup":{"clientGroupName":"{{$guid}}"},"description":"client computer group description"},"title":"ClientGroupDetail","type":"object","properties":{"claQuota":{"format":"int32","type":"integer"},"clientGroup":{"example":{"clientGroupName":"{{$guid}}"},"title":"ClientGroup","type":"object","properties":{"clientGroupName":{"type":"string"}}},"description":{"type":"string"}}},"clientGroupOperationType":{"format":"int32","type":"integer"}}}],"type":"object"}}},"description":"","required":true},"tags":["Client Group Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"errorMessage":{"type":"string"},"errorCode":{"type":"integer"}},"x-examples":{"Example 1":{"errorMessage":"Client group updated successfully","errorCode":0}}},"examples":{"Example 1":{"value":{"errorMessage":"Client group updated successfully","errorCode":0}}}}}}},"method":"post","path":"/ClientGroup/{clientGroupId}","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"clientGroupDetail":{"claQuota":8,"clientGroup":{"clientGroupName":"{{clientGroupName}}"},"description":"client computer group description modified"},"clientGroupOperationType":2},"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Update Client Group Properties (Deprecated)","description":{"content":"This operation updates the properties associated with a client computer group.\n<p>\n</p>\n<h2>\n Request Parameters\n</h2>\n<table>\n\n  <tr>\n   <td>\n    <p>\n     Name\n    </p>\n   </td>\n   <td>\n    <p>\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr>\n   <td>\n    <p>\n     activityType\n    </p>\n   </td>\n   <td>\n    <p>\n     Type of the activity.\n    </p>\n    <p>\n     Valid values are:\n    </p>\n    <ul>\n     <li>\n      1, Data backup\n     </li>\n     <li>\n      2, Data restore\n     </li>\n     <li>\n      16, Data aging\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr>\n   <td>\n    <p>\n     time\n    </p>\n   </td>\n   <td>\n    <p>\n     Unix Timestamp in UTC timezone\n    </p>\n   </td>\n  </tr>\n  <tr>\n   <td>\n    <p>\n     TimeZoneID\n    </p>\n   </td>\n   <td>\n    <p>\n     Obtain your timezone id by calling GET Client Group Properties API\n    </p>\n    <p>\n     Eastern Standard Time = 31\n    </p>\n   </td>\n  </tr>\n\n</table>\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_client_group_properties.htm)\n","type":"text/plain"},"url":{"path":["ClientGroup",":clientGroupId"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"clientGroupId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/json"},{"key":"Accept","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/ClientGroupOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Update Client Group Properties (Deprecated)
+
+
+
+This operation updates the properties associated with a client computer group.
+<p>
+</p>
+<h2>
+ Request Parameters
+</h2>
+<table>
+
+  <tr>
+   <td>
+    <p>
+     Name
+    </p>
+   </td>
+   <td>
+    <p>
+     Description
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     activityType
+    </p>
+   </td>
+   <td>
+    <p>
+     Type of the activity.
+    </p>
+    <p>
+     Valid values are:
+    </p>
+    <ul>
+     <li>
+      1, Data backup
+     </li>
+     <li>
+      2, Data restore
+     </li>
+     <li>
+      16, Data aging
+     </li>
+    </ul>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     time
+    </p>
+   </td>
+   <td>
+    <p>
+     Unix Timestamp in UTC timezone
+    </p>
+   </td>
+  </tr>
+  <tr>
+   <td>
+    <p>
+     TimeZoneID
+    </p>
+   </td>
+   <td>
+    <p>
+     Obtain your timezone id by calling GET Client Group Properties API
+    </p>
+    <p>
+     Eastern Standard Time = 31
+    </p>
+   </td>
+  </tr>
+
+</table>
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_client_group_properties.htm)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"clientGroupId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong><strong style={{"fontSize":"var(--ifm-code-font-size)","color":"var(--openapi-required)"}}> required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>clientGroupDetail</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"claQuota"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>clientGroup</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"clientGroupName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={false} name={"description"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={false} name={"clientGroupOperationType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"errorMessage"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"errorCode"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"errorMessage\": \"string\",\n  \"errorCode\": 0\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"{\n  \"errorMessage\": \"Client group updated successfully\",\n  \"errorCode\": 0\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

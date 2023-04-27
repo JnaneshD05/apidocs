@@ -1,0 +1,348 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: "Template"
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Cloud Object Storage
+paths:
+  /Instance/CloudStorage:
+    get:
+      deprecated: false
+      description: |
+        This operation returns a list of cloud object storage accounts.
+      operationId: Get Cloud Object Storage Accounts
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Cloud Object Storage Accounts
+      tags:
+      - Cloud Object Storage
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                  account:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        vendorType:
+                          type: integer
+                        backupSize:
+                          type: integer
+                        slaStatus:
+                          type: integer
+                        vendorDisplayName:
+                          type: string
+                        backupTime:
+                          type: integer
+                        status:
+                          type: integer
+                        instance:
+                          type: object
+                          properties:
+                            clientId:
+                              type: integer
+                            clientName:
+                              type: string
+                            instanceName:
+                              type: string
+                            instanceId:
+                              type: integer
+                        plan:
+                          type: object
+                          properties:
+                            planName:
+                              type: string
+                            planId:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+                    account:
+                    - vendorType: 21
+                      backupSize: 917517607
+                      slaStatus: 1
+                      vendorDisplayName: Azure Data Lake Storage Gen2
+                      backupTime: 1569598599
+                      status: 0
+                      instance:
+                        clientId: 1103
+                        clientName: Gen2_1
+                        instanceName: Gen2_1
+                        instanceId: 15
+                      plan:
+                        planName: plan1
+                        planId: 2
+                    - vendorType: 21
+                      backupSize: 917381208
+                      slaStatus: 1
+                      vendorDisplayName: Azure Data Lake Storage Gen2
+                      backupTime: 1569598867
+                      status: 0
+                      instance:
+                        clientId: 1105
+                        clientName: gen2_linux
+                        instanceName: gen2_linux
+                        instanceId: 16
+                      plan:
+                        planName: plan1
+                        planId: 2
+                    - vendorType: 21
+                      backupSize: 2226167
+                      slaStatus: 2
+                      vendorDisplayName: Azure Data Lake Storage Gen2
+                      backupTime: 1569598267
+                      status: 0
+                      instance:
+                        clientId: 1117
+                        clientName: gen2_3_new
+                        instanceName: gen2_3_new
+                        instanceId: 27
+                      plan:
+                        planName: plan1
+                        planId: 2
+                    - vendorType: 21
+                      backupSize: 23429929854
+                      slaStatus: 1
+                      vendorDisplayName: Azure Data Lake Storage Gen2
+                      backupTime: 1569602687
+                      status: 0
+                      instance:
+                        clientId: 1121
+                        clientName: gen2_scale1
+                        instanceName: gen2_scale1
+                        instanceId: 31
+                      plan:
+                        planName: plan1
+                        planId: 2
+                    - vendorType: 21
+                      backupSize: 23429930159
+                      slaStatus: 1
+                      vendorDisplayName: Azure Data Lake Storage Gen2
+                      backupTime: 1569609067
+                      status: 0
+                      instance:
+                        clientId: 1123
+                        clientName: gen2_scale_linux
+                        instanceName: gen2_scale_linux
+                        instanceId: 33
+                      plan:
+                        planName: plan1
+                        planId: 2
+                    - vendorType: 5
+                      backupSize: 191102375
+                      slaStatus: 3
+                      vendorDisplayName: Amazon S3
+                      backupTime: 1569600608
+                      status: 0
+                      instance:
+                        clientId: 1133
+                        clientName: s3client
+                        instanceName: s3client
+                        instanceId: 41
+                      plan:
+                        planName: plan1
+                        planId: 2
+                    - vendorType: 6
+                      backupSize: 0
+                      slaStatus: 3
+                      vendorDisplayName: Azure Blob
+                      backupTime: 0
+                      status: 0
+                      instance:
+                        clientId: 1139
+                        clientName: testblob
+                        instanceName: testblob
+                        instanceId: 44
+                      plan:
+                        planName: plan1
+                        planId: 2
+                    - vendorType: 5
+                      backupSize: 0
+                      slaStatus: 3
+                      vendorDisplayName: Amazon S3
+                      backupTime: 0
+                      status: 0
+                      instance:
+                        clientId: 1133
+                        clientName: s3client
+                        instanceName: tests3
+                        instanceId: 50
+                      plan:
+                        planName: ''
+                        planId: 0
+                    - vendorType: 21
+                      backupSize: 917361950
+                      slaStatus: 1
+                      vendorDisplayName: Azure Data Lake Storage Gen2
+                      backupTime: 1569598821
+                      status: 0
+                      instance:
+                        clientId: 1141
+                        clientName: TC54790
+                        instanceName: TC54790
+                        instanceId: 51
+                      plan:
+                        planName: plan1
+                        planId: 2
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+                    account:
+                    - vendorType: 21
+                      backupSize: 917517607
+                      slaStatus: 1
+                      vendorDisplayName: Azure Data Lake Storage Gen2
+                      backupTime: 1569598599
+                      status: 0
+                      instance:
+                        clientId: 1103
+                        clientName: Gen2_1
+                        instanceName: Gen2_1
+                        instanceId: 15
+                      plan:
+                        planName: plan1
+                        planId: 2
+                    - vendorType: 21
+                      backupSize: 917381208
+                      slaStatus: 1
+                      vendorDisplayName: Azure Data Lake Storage Gen2
+                      backupTime: 1569598867
+                      status: 0
+                      instance:
+                        clientId: 1105
+                        clientName: gen2_linux
+                        instanceName: gen2_linux
+                        instanceId: 16
+                      plan:
+                        planName: plan1
+                        planId: 2
+                    - vendorType: 21
+                      backupSize: 2226167
+                      slaStatus: 2
+                      vendorDisplayName: Azure Data Lake Storage Gen2
+                      backupTime: 1569598267
+                      status: 0
+                      instance:
+                        clientId: 1117
+                        clientName: gen2_3_new
+                        instanceName: gen2_3_new
+                        instanceId: 27
+                      plan:
+                        planName: plan1
+                        planId: 2
+                    - vendorType: 21
+                      backupSize: 23429929854
+                      slaStatus: 1
+                      vendorDisplayName: Azure Data Lake Storage Gen2
+                      backupTime: 1569602687
+                      status: 0
+                      instance:
+                        clientId: 1121
+                        clientName: gen2_scale1
+                        instanceName: gen2_scale1
+                        instanceId: 31
+                      plan:
+                        planName: plan1
+                        planId: 2
+                    - vendorType: 21
+                      backupSize: 23429930159
+                      slaStatus: 1
+                      vendorDisplayName: Azure Data Lake Storage Gen2
+                      backupTime: 1569609067
+                      status: 0
+                      instance:
+                        clientId: 1123
+                        clientName: gen2_scale_linux
+                        instanceName: gen2_scale_linux
+                        instanceId: 33
+                      plan:
+                        planName: plan1
+                        planId: 2
+                    - vendorType: 5
+                      backupSize: 191102375
+                      slaStatus: 3
+                      vendorDisplayName: Amazon S3
+                      backupTime: 1569600608
+                      status: 0
+                      instance:
+                        clientId: 1133
+                        clientName: s3client
+                        instanceName: s3client
+                        instanceId: 41
+                      plan:
+                        planName: plan1
+                        planId: 2
+                    - vendorType: 6
+                      backupSize: 0
+                      slaStatus: 3
+                      vendorDisplayName: Azure Blob
+                      backupTime: 0
+                      status: 0
+                      instance:
+                        clientId: 1139
+                        clientName: testblob
+                        instanceName: testblob
+                        instanceId: 44
+                      plan:
+                        planName: plan1
+                        planId: 2
+                    - vendorType: 5
+                      backupSize: 0
+                      slaStatus: 3
+                      vendorDisplayName: Amazon S3
+                      backupTime: 0
+                      status: 0
+                      instance:
+                        clientId: 1133
+                        clientName: s3client
+                        instanceName: tests3
+                        instanceId: 50
+                      plan:
+                        planName: ''
+                        planId: 0
+                    - vendorType: 21
+                      backupSize: 917361950
+                      slaStatus: 1
+                      vendorDisplayName: Azure Data Lake Storage Gen2
+                      backupTime: 1569598821
+                      status: 0
+                      instance:
+                        clientId: 1141
+                        clientName: TC54790
+                        instanceName: TC54790
+                        instanceId: 51
+                      plan:
+                        planName: plan1
+                        planId: 2
+

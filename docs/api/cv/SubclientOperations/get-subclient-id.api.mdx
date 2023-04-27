@@ -1,0 +1,117 @@
+---
+id: get-subclient-id
+title: "Get Subclient Id"
+description: "This operation returns Subclient Id or Instance ID of a database"
+sidebar_label: "Get Subclient Id"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation returns Subclient Id or Instance ID of a database\n<p>\n</p>\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\">\n\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     clientName\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Name of the client(URL Encoded)\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     agent\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Name of the Agent(URL Encoded)\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     instanceName\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Instance Name(URL Encoded)\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     backupset\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Backupset Name(URL Encoded)\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     subclient\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Subclient Name(URL Encoded)\n    </p>\n   </td>\n  </tr>\n\n</table>\n[_For all Agent Names_](http://documentation.commvault.com/commvault/v11/article?p=45467.htm#o99081)\n","operationId":"Get Subclient Id","parameters":[{"description":"","explode":true,"in":"query","name":"clientname","schema":{"example":"{{clientName}}","type":"string"}},{"description":"","explode":true,"in":"query","name":"agent","schema":{"example":"File System","type":"string"}},{"description":"","explode":true,"in":"query","name":"backupset","schema":{"example":"defaultBackupSet","type":"string"}},{"description":"","explode":true,"in":"query","name":"subclient","schema":{"example":"default","type":"string"}},{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Subclient Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"applicationId":{"type":"integer"},"clientName":{"type":"string"},"instanceId":{"type":"integer"},"clientId":{"type":"integer"},"instanceName":{"type":"string"},"_type_":{"type":"integer"},"appName":{"type":"string"}},"x-examples":{"Example 1":{"applicationId":33,"clientName":"dm2perf3","instanceId":1,"clientId":2,"instanceName":"DefaultInstanceName","_type_":5,"appName":"File System"}}},"examples":{"GetId - With InstanceName /GetId?clientname={{clientName}}&agent=File%20System&instanceName=DefaultInstanceName":{"value":{"applicationId":33,"clientName":"dm2perf3","instanceId":1,"clientId":2,"instanceName":"DefaultInstanceName","_type_":5,"appName":"File System"}},"GetId - With Backupset Name - /GetId?clientname={{clientName}}&agent=File%20System&backupset=defaultBackupSet":{"value":{"applicationId":33,"clientName":"dm2perf3","backupsetId":3,"instanceId":1,"clientId":2,"backupsetName":"defaultBackupSet","_type_":6,"appName":"File System"}},"GetId - With Client Name":{"value":{"clientName":"yashdutch","clientId":18,"_type_":3}},"GetId - With Subclient Name":{"value":{"subclientId":2,"applicationId":33,"clientName":"dm2perf3","backupsetId":3,"instanceId":1,"clientId":2,"subclientName":"default","backupsetName":"defaultBackupSet","_type_":7,"appName":"File System"}},"GetId - With Agent Name":{"value":{"applicationId":33,"clientName":"dm2perf3","clientId":2,"_type_":4,"appName":"File System"}},"GetId - With Backupset Name":{"value":{"applicationId":33,"clientName":"dm2perf3","backupsetId":3,"instanceId":1,"clientId":2,"backupsetName":"defaultBackupSet","_type_":6,"appName":"File System"}}}}}}},"method":"get","path":"/GetId","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get Subclient Id","description":{"content":"This operation returns Subclient Id or Instance ID of a database\n<p>\n</p>\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\">\n\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     clientName\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Name of the client(URL Encoded)\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     agent\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Name of the Agent(URL Encoded)\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     instanceName\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Instance Name(URL Encoded)\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     backupset\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Backupset Name(URL Encoded)\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     subclient\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Subclient Name(URL Encoded)\n    </p>\n   </td>\n  </tr>\n\n</table>\n[_For all Agent Names_](http://documentation.commvault.com/commvault/v11/article?p=45467.htm#o99081)\n","type":"text/plain"},"url":{"path":["GetId"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"clientname","value":""},{"disabled":false,"key":"agent","value":""},{"disabled":false,"key":"backupset","value":""},{"disabled":false,"key":"subclient","value":""}],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/SubclientOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get Subclient Id
+
+
+
+This operation returns Subclient Id or Instance ID of a database
+<p>
+</p>
+<h2>
+ Request Parameters
+</h2>
+<table border="0" cellpadding="2" cellspacing="0" class="tableintopic">
+
+  <tr align="left" valign="top">
+   <td>
+    <p class="tabletext">
+     Name
+    </p>
+   </td>
+   <td>
+    <p class="tabletext">
+     Description
+    </p>
+   </td>
+  </tr>
+  <tr align="left" valign="top">
+   <td>
+    <p class="tabletext">
+     clientName
+    </p>
+   </td>
+   <td>
+    <p class="tabletext">
+     Name of the client(URL Encoded)
+    </p>
+   </td>
+  </tr>
+  <tr align="left" valign="top">
+   <td>
+    <p class="tabletext">
+     agent
+    </p>
+   </td>
+   <td>
+    <p class="tabletext">
+     Name of the Agent(URL Encoded)
+    </p>
+   </td>
+  </tr>
+  <tr align="left" valign="top">
+   <td>
+    <p class="tabletext">
+     instanceName
+    </p>
+   </td>
+   <td>
+    <p class="tabletext">
+     Instance Name(URL Encoded)
+    </p>
+   </td>
+  </tr>
+  <tr align="left" valign="top">
+   <td>
+    <p class="tabletext">
+     backupset
+    </p>
+   </td>
+   <td>
+    <p class="tabletext">
+     Backupset Name(URL Encoded)
+    </p>
+   </td>
+  </tr>
+  <tr align="left" valign="top">
+   <td>
+    <p class="tabletext">
+     subclient
+    </p>
+   </td>
+   <td>
+    <p class="tabletext">
+     Subclient Name(URL Encoded)
+    </p>
+   </td>
+  </tr>
+
+</table>
+[_For all Agent Names_](http://documentation.commvault.com/commvault/v11/article?p=45467.htm#o99081)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"clientname","schema":{"example":"{{clientName}}","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"agent","schema":{"example":"File System","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"backupset","schema":{"example":"defaultBackupSet","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"subclient","schema":{"example":"default","type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"applicationId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"clientName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"instanceId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"clientId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"instanceName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"_type_"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"appName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"applicationId\": 0,\n  \"clientName\": \"string\",\n  \"instanceId\": 0,\n  \"clientId\": 0,\n  \"instanceName\": \"string\",\n  \"_type_\": 0,\n  \"appName\": \"string\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Get Id -  With  Instance Name / Get Id?clientname={{client Name}}&agent= File%20 System&instance Name= Default Instance Name"} value={" Get Id -  With  Instance Name / Get Id?clientname={{client Name}}&agent= File%20 System&instance Name= Default Instance Name"}><ResponseSamples responseExample={"{\n  \"applicationId\": 33,\n  \"clientName\": \"dm2perf3\",\n  \"instanceId\": 1,\n  \"clientId\": 2,\n  \"instanceName\": \"DefaultInstanceName\",\n  \"_type_\": 5,\n  \"appName\": \"File System\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Get Id -  With  Backupset  Name - / Get Id?clientname={{client Name}}&agent= File%20 System&backupset=default Backup Set"} value={" Get Id -  With  Backupset  Name - / Get Id?clientname={{client Name}}&agent= File%20 System&backupset=default Backup Set"}><ResponseSamples responseExample={"{\n  \"applicationId\": 33,\n  \"clientName\": \"dm2perf3\",\n  \"backupsetId\": 3,\n  \"instanceId\": 1,\n  \"clientId\": 2,\n  \"backupsetName\": \"defaultBackupSet\",\n  \"_type_\": 6,\n  \"appName\": \"File System\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Get Id -  With  Client  Name"} value={" Get Id -  With  Client  Name"}><ResponseSamples responseExample={"{\n  \"clientName\": \"yashdutch\",\n  \"clientId\": 18,\n  \"_type_\": 3\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Get Id -  With  Subclient  Name"} value={" Get Id -  With  Subclient  Name"}><ResponseSamples responseExample={"{\n  \"subclientId\": 2,\n  \"applicationId\": 33,\n  \"clientName\": \"dm2perf3\",\n  \"backupsetId\": 3,\n  \"instanceId\": 1,\n  \"clientId\": 2,\n  \"subclientName\": \"default\",\n  \"backupsetName\": \"defaultBackupSet\",\n  \"_type_\": 7,\n  \"appName\": \"File System\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Get Id -  With  Agent  Name"} value={" Get Id -  With  Agent  Name"}><ResponseSamples responseExample={"{\n  \"applicationId\": 33,\n  \"clientName\": \"dm2perf3\",\n  \"clientId\": 2,\n  \"_type_\": 4,\n  \"appName\": \"File System\"\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Get Id -  With  Backupset  Name"} value={" Get Id -  With  Backupset  Name"}><ResponseSamples responseExample={"{\n  \"applicationId\": 33,\n  \"clientName\": \"dm2perf3\",\n  \"backupsetId\": 3,\n  \"instanceId\": 1,\n  \"clientId\": 2,\n  \"backupsetName\": \"defaultBackupSet\",\n  \"_type_\": 6,\n  \"appName\": \"File System\"\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

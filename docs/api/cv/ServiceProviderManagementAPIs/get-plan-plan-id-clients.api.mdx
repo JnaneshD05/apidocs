@@ -1,0 +1,53 @@
+---
+id: get-plan-plan-id-clients
+title: "Plan Clients - Associate Client to a Plan"
+description: "This operation updates associations for client to a plan."
+sidebar_label: "Plan Clients - Associate Client to a Plan"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["Associations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"operationStatus":{"type":"object","properties":{"errorMessage":{"type":"string"},"errorCode":{"type":"integer"}}}},"x-examples":{"Example 1":{"operationStatus":{"errorMessage":"","errorCode":0}}}}}}}},"operationId":"get-Plan-planId-clients","requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"clients":{"type":"array","items":{"type":"object","properties":{"clientId":{"type":"integer"}}}},"additonalTasks":{"type":"array","items":{"type":"object","properties":{"value":{"type":"string"},"key":{"type":"string"},"parameters":{"type":"array","items":{"type":"object","properties":{"value":{"type":"string"},"key":{"type":"string"}}}}}}},"plan":{"type":"object","properties":{"planId":{"type":"integer"}}}},"x-examples":{"Example 1":{"clients":[{"clientId":1}],"additonalTasks":[{"value":"2","key":"ArrayId"},{"value":"0","key":"ProcessSubClients"},{"value":"0","key":"ProcessDefaultSubClientsOnly"},{"value":"0","key":"IncludeAllAppTypes"},{"value":"0","key":"AppIds","parameters":[{"value":"106","key":"AppIds"}]},{"value":"0","key":"IncludeSubClientIds","parameters":[{"value":"25","key":"SubClientId"},{"value":"26","key":"SubClientId"},{"value":"27","key":"SubClientId"}]}],"plan":{"planId":1}}}},"examples":{"Plan Clients - Associate Client to a Plan":{"value":{"clients":[{"clientId":1}],"additonalTasks":[{"value":"2","key":"ArrayId"},{"value":"0","key":"ProcessSubClients"},{"value":"0","key":"ProcessDefaultSubClientsOnly"},{"value":"0","key":"IncludeAllAppTypes"},{"value":"0","key":"AppIds","parameters":[{"value":"106","key":"AppIds"}]},{"value":"0","key":"IncludeSubClientIds","parameters":[{"value":"25","key":"SubClientId"},{"value":"26","key":"SubClientId"},{"value":"27","key":"SubClientId"}]}],"plan":{"planId":1}}}}}}},"description":"This operation updates associations for client to a plan.\n\nRequest Body\n\n\"ArrayId\" - This is only applicable if using SNAP Plan.\n\n\"ProcessSubClients\" - Applicable if associating all subclients to this plan along with client. Valid values are 1-True, 0-False.\n\n\"ProcessDefaultSubClientsOnly\" - If AppType is provided, then this option is used to determine if only default subclients of provided apptype should be associated with the plan. Valid values are 1-True, 0-False.\n\n\"IncludeAllAppTypes\" - This suggest if all apptypes of client should be expanded with subclients for plan association. Valid values are 1-True, 0-False.\n\n\"AppIds\" - To enable specific AppIds. Valid values are 1-True, 0-False.\n\n\"AppIds\" - Sub Param - Specify apptypes.\n\n\"IncludeSubClientIds\" - Valid values are 1-True, 0-False.\n\n\"SubClientId\" - Subclient Id plan association.\n","parameters":[{"schema":{"type":"string"},"name":"planId","in":"path","required":true}],"method":"put","path":"/Plan/{planId}/clients","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"clients":[{"clientId":0}],"additonalTasks":[{"value":"string","key":"string","parameters":[{"value":"string","key":"string"}]}],"plan":{"planId":0}},"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Plan Clients - Associate Client to a Plan","description":{"content":"This operation updates associations for client to a plan.\n\nRequest Body\n\n\"ArrayId\" - This is only applicable if using SNAP Plan.\n\n\"ProcessSubClients\" - Applicable if associating all subclients to this plan along with client. Valid values are 1-True, 0-False.\n\n\"ProcessDefaultSubClientsOnly\" - If AppType is provided, then this option is used to determine if only default subclients of provided apptype should be associated with the plan. Valid values are 1-True, 0-False.\n\n\"IncludeAllAppTypes\" - This suggest if all apptypes of client should be expanded with subclients for plan association. Valid values are 1-True, 0-False.\n\n\"AppIds\" - To enable specific AppIds. Valid values are 1-True, 0-False.\n\n\"AppIds\" - Sub Param - Specify apptypes.\n\n\"IncludeSubClientIds\" - Valid values are 1-True, 0-False.\n\n\"SubClientId\" - Subclient Id plan association.\n","type":"text/plain"},"url":{"path":["Plan",":planId","clients"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"planId"}]},"header":[{"key":"Content-Type","value":"application/json"},{"key":"Accept","value":"application/json"}],"method":"PUT","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "put api-method"
+info_path: docs/api/cv/ServiceProviderManagementAPIs/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Plan Clients - Associate Client to a Plan
+
+
+
+This operation updates associations for client to a plan.
+
+Request Body
+
+"ArrayId" - This is only applicable if using SNAP Plan.
+
+"ProcessSubClients" - Applicable if associating all subclients to this plan along with client. Valid values are 1-True, 0-False.
+
+"ProcessDefaultSubClientsOnly" - If AppType is provided, then this option is used to determine if only default subclients of provided apptype should be associated with the plan. Valid values are 1-True, 0-False.
+
+"IncludeAllAppTypes" - This suggest if all apptypes of client should be expanded with subclients for plan association. Valid values are 1-True, 0-False.
+
+"AppIds" - To enable specific AppIds. Valid values are 1-True, 0-False.
+
+"AppIds" - Sub Param - Specify apptypes.
+
+"IncludeSubClientIds" - Valid values are 1-True, 0-False.
+
+"SubClientId" - Subclient Id plan association.
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"name":"planId","in":"path","required":true}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>clients</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"clientId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>additonalTasks</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"value"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"key"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>parameters</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"value"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"key"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>plan</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"planId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>operationStatus</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"errorMessage"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"errorCode"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"operationStatus\": {\n    \"errorMessage\": \"string\",\n    \"errorCode\": 0\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

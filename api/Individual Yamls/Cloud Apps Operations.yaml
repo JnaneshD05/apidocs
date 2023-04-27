@@ -1,0 +1,536 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Cloud Apps Operations
+paths:
+  /Client/proxy/CloudApps:
+    get:
+      deprecated: false
+      description: |
+        This operation returns the list of all proxy clients for cloud apps virtual clients.
+
+         [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_cloudapp_proxy_clients.htm)
+      operationId: Get All Proxy Clients
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: cAppType
+        schema:
+          example: 1
+          format: int32
+          type: integer
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get All Proxy Clients
+      tags:
+      - Cloud Apps Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vendor:
+                    type: integer
+                  clients:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        hostName:
+                          type: string
+                        clientId:
+                          type: integer
+                        clientName:
+                          type: string
+                        _type_:
+                          type: integer
+                        csGUID:
+                          type: string
+                x-examples:
+                  Example 1:
+                    vendor: 0
+                    clients:
+                    - hostName: cloudproxy.test.com
+                      clientId: 23
+                      clientName: cloudproxy
+                      _type_: 3
+                      csGUID: 5E84F806-4C30-4788-9F80-FC8C83AC6F44
+                    - hostName: Exproxy-lyon.perfex.commvault.com
+                      clientId: 22
+                      clientName: exproxy-lyon
+                      _type_: 3
+                      csGUID: 02C675FA-3131-412F-B860-193C1DDF379A
+                    - hostName: jinzhou.devemc.commvault.com
+                      clientId: 1077
+                      clientName: jinzhou
+                      _type_: 3
+                      csGUID: 8D099E25-9D07-4E3B-91BB-56257BBC6804
+                    - hostName: noshaq
+                      clientId: 1091
+                      clientName: noshaq
+                      _type_: 3
+                      csGUID: 27FB7A32-4F16-42F4-893A-68FA551B54BE
+                    - hostName: SidAutomation.test.com
+                      clientId: 1209
+                      clientName: sidautomation
+                      _type_: 3
+                      csGUID: 896B8934-0DEA-4DD8-B241-036EA79B03CB
+                    - hostName: stampede.devemc.commvault.com
+                      clientId: 1165
+                      clientName: stampede
+                      _type_: 3
+                      csGUID: 9404E8AE-0D06-46D6-A88B-22DCEA5FE16F
+              examples:
+                Proxy Clients:
+                  value:
+                    vendor: 0
+                    clients:
+                    - hostName: cloudproxy.test.com
+                      clientId: 23
+                      clientName: cloudproxy
+                      _type_: 3
+                      csGUID: 5E84F806-4C30-4788-9F80-FC8C83AC6F44
+                    - hostName: Exproxy-lyon.perfex.commvault.com
+                      clientId: 22
+                      clientName: exproxy-lyon
+                      _type_: 3
+                      csGUID: 02C675FA-3131-412F-B860-193C1DDF379A
+                    - hostName: jinzhou.devemc.commvault.com
+                      clientId: 1077
+                      clientName: jinzhou
+                      _type_: 3
+                      csGUID: 8D099E25-9D07-4E3B-91BB-56257BBC6804
+                    - hostName: noshaq
+                      clientId: 1091
+                      clientName: noshaq
+                      _type_: 3
+                      csGUID: 27FB7A32-4F16-42F4-893A-68FA551B54BE
+                    - hostName: SidAutomation.test.com
+                      clientId: 1209
+                      clientName: sidautomation
+                      _type_: 3
+                      csGUID: 896B8934-0DEA-4DD8-B241-036EA79B03CB
+                    - hostName: stampede.devemc.commvault.com
+                      clientId: 1165
+                      clientName: stampede
+                      _type_: 3
+                      csGUID: 9404E8AE-0D06-46D6-A88B-22DCEA5FE16F
+  /Office365/CloudApps/SetUserPolicyAssociation:
+    post:
+      deprecated: false
+      description: |
+        This API is used to set user policy association for Office365.
+      operationId: Office365 User Policy Association
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      summary: Office365 User Policy Association
+      tags:
+      - Cloud Apps Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                LaunchAutoDiscovery:
+                  type: boolean
+                cloudAppAssociation:
+                  type: object
+                  properties:
+                    accountStatus:
+                      type: integer
+                    subclientEntity:
+                      type: object
+                      properties:
+                        subclientId:
+                          type: integer
+                        clientId:
+                          type: integer
+                        applicationId:
+                          type: integer
+                    cloudAppDiscoverinfo:
+                      type: object
+                      properties:
+                        discoverByType:
+                          type: integer
+                        groups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                    plan:
+                      type: object
+                      properties:
+                        planId:
+                          type: integer
+              x-examples:
+                Example 1:
+                  LaunchAutoDiscovery: true
+                  cloudAppAssociation:
+                    accountStatus: 0
+                    subclientEntity:
+                      subclientId: 1
+                      clientId: 1
+                      applicationId: 134
+                    cloudAppDiscoverinfo:
+                      discoverByType: 4
+                      groups:
+                      - name: All Users
+                    plan:
+                      planId: 1
+            examples:
+              Add "All Users" to OneDrive client:
+                value:
+                  LaunchAutoDiscovery: true
+                  cloudAppAssociation:
+                    accountStatus: 0
+                    subclientEntity:
+                      subclientId: 0
+                      clientId: 0
+                      applicationId: 134
+                    cloudAppDiscoverinfo:
+                      discoverByType: 4
+                      groups:
+                      - name: All Users
+                    plan:
+                      planId: 0
+              Add All teams association:
+                value:
+                  LaunchAutoDiscovery: true
+                  cloudAppAssociation:
+                    subclientEntity:
+                      subclientId: 0
+                      clientId: 0
+                      instanceId: 0
+                      applicationId: 134
+                    cloudAppDiscoverinfo:
+                      groups:
+                      - name: All teams
+                      discoverByType: 13
+                    plan:
+                      planId: 0
+      responses:
+        '200':
+          description: OK
+  /Client:
+    get:
+      summary: Cloud Apps Pseudo Clients
+      tags:
+      - Cloud Apps Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  VSPseudoClientsList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        VSInstanceType:
+                          type: integer
+                        clientActivityControl:
+                          type: object
+                          properties:
+                            activityControlOptions:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  activityType:
+                                    type: integer
+                                  enableAfterADelay:
+                                    type: boolean
+                                  enableActivityType:
+                                    type: boolean
+                            entity:
+                              type: object
+                              properties:
+                                _type_:
+                                  type: integer
+                        client:
+                          type: object
+                          properties:
+                            hostName:
+                              type: string
+                            clientId:
+                              type: integer
+                            clientName:
+                              type: string
+                            displayName:
+                              type: string
+                            clientGUID:
+                              type: string
+                x-examples:
+                  Example 1:
+                    VSPseudoClientsList:
+                    - VSInstanceType: 2
+                      clientActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        entity:
+                          _type_: 3
+                      client:
+                        hostName: AD
+                        clientId: 54
+                        clientName: AD
+                        displayName: AD
+                        clientGUID: 25CD3B0A-C01D-434B-B16C-0F7E2831A8E3
+                    - VSInstanceType: 4
+                      clientActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        entity:
+                          _type_: 3
+                      client:
+                        hostName: AmazonVirtest
+                        clientId: 1105
+                        clientName: AmazonVirtest
+                        displayName: AmazonVirtest
+                        clientGUID: B84E47EC-BA01-4A90-B183-500E3F1EC025
+                    - VSInstanceType: 7
+                      clientActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        entity:
+                          _type_: 3
+                      client:
+                        hostName: AzureVirtest
+                        clientId: 1108
+                        clientName: AzureVirtest
+                        displayName: AzureVirtest
+                        clientGUID: 0385E37F-E8D5-4B4E-8D1B-38EB06FFA5DD
+                    - VSInstanceType: 1
+                      clientActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        entity:
+                          _type_: 3
+                      client:
+                        hostName: IB-AppAware-ESX
+                        clientId: 1306
+                        clientName: IB-AppAware-ESX
+                        displayName: IB-AppAware-ESX
+                        clientGUID: 0BD04935-C6FD-4B61-9E3F-0B8912250EEA
+                    - VSInstanceType: 2
+                      clientActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        entity:
+                          _type_: 3
+                      client:
+                        hostName: abc
+                        clientId: 1378
+                        clientName: abc
+                        displayName: abc
+                        clientGUID: 20197462-5AED-4209-992B-79605E356DF2
+              examples:
+                Cloud Apps Pseudo Clients-VSPseudo:
+                  value:
+                    VSPseudoClientsList:
+                    - VSInstanceType: 2
+                      clientActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        entity:
+                          _type_: 3
+                      client:
+                        hostName: AD
+                        clientId: 54
+                        clientName: AD
+                        displayName: AD
+                        clientGUID: 25CD3B0A-C01D-434B-B16C-0F7E2831A8E3
+                    - VSInstanceType: 4
+                      clientActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        entity:
+                          _type_: 3
+                      client:
+                        hostName: AmazonVirtest
+                        clientId: 1105
+                        clientName: AmazonVirtest
+                        displayName: AmazonVirtest
+                        clientGUID: B84E47EC-BA01-4A90-B183-500E3F1EC025
+                    - VSInstanceType: 7
+                      clientActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        entity:
+                          _type_: 3
+                      client:
+                        hostName: AzureVirtest
+                        clientId: 1108
+                        clientName: AzureVirtest
+                        displayName: AzureVirtest
+                        clientGUID: 0385E37F-E8D5-4B4E-8D1B-38EB06FFA5DD
+                    - VSInstanceType: 1
+                      clientActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        entity:
+                          _type_: 3
+                      client:
+                        hostName: IB-AppAware-ESX
+                        clientId: 1306
+                        clientName: IB-AppAware-ESX
+                        displayName: IB-AppAware-ESX
+                        clientGUID: 0BD04935-C6FD-4B61-9E3F-0B8912250EEA
+                    - VSInstanceType: 2
+                      clientActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        entity:
+                          _type_: 3
+                      client:
+                        hostName: abc
+                        clientId: 1378
+                        clientName: abc
+                        displayName: abc
+                        clientGUID: 20197462-5AED-4209-992B-79605E356DF2
+                /Client?PseudoClientType=CloudApps:
+                  value:
+                    CloudAppsClientsList:
+                    - cloudAppsInstanceType: 7
+                      client:
+                        hostName: qlu_onedrive_in_workgroup
+                        clientId: 1092
+                        clientName: qlu_onedrive_in_workgroup
+                        displayName: qlu_onedrive_in_workgroup
+                        clientGUID: 5DD2D37E-0248-43E2-AD36-70B04B24B569
+                    - cloudAppsInstanceType: 2
+                      client:
+                        hostName: Sid-Gdrive
+                        clientId: 41
+                        clientName: Sid-Gdrive
+                        displayName: Sid-Gdrive
+                        clientGUID: DC928F66-80BD-4382-BDCA-9D7F6A8D0C54
+                    - cloudAppsInstanceType: 1
+                      client:
+                        hostName: Sid-Gmail
+                        clientId: 40
+                        clientName: Sid-Gmail
+                        displayName: Sid-Gmail
+                        clientGUID: 999671B8-8774-4B04-9519-629B77194860
+                    - cloudAppsInstanceType: 7
+                      client:
+                        hostName: Sid-OneDrive
+                        clientId: 33
+                        clientName: Sid-OneDrive
+                        displayName: Sid-OneDrive
+                        clientGUID: 6C371525-3061-4E68-A002-F7B1172C02B1
+                    - cloudAppsInstanceType: 7
+                      client:
+                        hostName: Sid-OneDrive1
+                        clientId: 44
+                        clientName: Sid-OneDrive1
+                        displayName: Sid-OneDrive1
+                        clientGUID: FD96AA2E-03FC-43EB-BF4B-1C91551F6914
+                    - cloudAppsInstanceType: 7
+                      client:
+                        hostName: sid-onedrive2
+                        clientId: 1226
+                        clientName: sid-onedrive2
+                        displayName: sid-onedrive2
+                        clientGUID: 4DCE177B-5F82-450C-849A-319BA9869C08
+      operationId: get-Client
+      description: |
+        This operation returns a list of clients.
+         [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_client.htm)
+      parameters:
+      - schema:
+          type: string
+        in: header
+        name: AuthToken
+      - schema:
+          type: string
+        in: query
+        name: PseudoClientType
+        required: true

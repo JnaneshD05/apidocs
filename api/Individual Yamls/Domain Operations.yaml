@@ -1,0 +1,460 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Domain Operations
+paths:
+  /IdentityServers:
+    get:
+      deprecated: false
+      description: |
+        This operation returns the details of SAML applications and domains in a CommCell environment. If you log in as a tenant user, then this operation returns the details of SAML applications and domains in the Company.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=104253_1.htm)
+      operationId: Get Identity Servers
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Identity Servers
+      tags:
+      - Domain Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  identityServers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        serviceType:
+                          type: integer
+                        isConfigured:
+                          type: boolean
+                        isEnabled:
+                          type: boolean
+                        domainName:
+                          type: string
+                        IdentityServerId:
+                          type: integer
+                        IdentityServerName:
+                          type: string
+                        type:
+                          type: integer
+                        ownerCompany:
+                          type: object
+                          properties:
+                            domainName:
+                              type: string
+                            id:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    identityServers:
+                    - serviceType: 2
+                      isConfigured: true
+                      isEnabled: true
+                      domainName: test.cv.com
+                      IdentityServerId: 1
+                      IdentityServerName: dm2
+                      type: 2
+                      ownerCompany:
+                        domainName: ''
+                        id: 0
+                    - serviceType: 2
+                      isConfigured: true
+                      isEnabled: true
+                      domainName: test.com
+                      IdentityServerId: 2
+                      IdentityServerName: testlab
+                      type: 2
+                      ownerCompany:
+                        domainName: ''
+                        id: 0
+                    - serviceType: 2
+                      isConfigured: true
+                      isEnabled: true
+                      domainName: test.cv.com
+                      IdentityServerId: 3
+                      IdentityServerName: commvault-nj
+                      type: 2
+                      ownerCompany:
+                        domainName: ''
+                        id: 0
+              examples:
+                Example 1:
+                  value:
+                    identityServers:
+                    - serviceType: 2
+                      isConfigured: true
+                      isEnabled: true
+                      domainName: test.cv.com
+                      IdentityServerId: 1
+                      IdentityServerName: dm2
+                      type: 2
+                      ownerCompany:
+                        domainName: ''
+                        id: 0
+                    - serviceType: 2
+                      isConfigured: true
+                      isEnabled: true
+                      domainName: test.com
+                      IdentityServerId: 2
+                      IdentityServerName: testlab
+                      type: 2
+                      ownerCompany:
+                        domainName: ''
+                        id: 0
+                    - serviceType: 2
+                      isConfigured: true
+                      isEnabled: true
+                      domainName: test.cv.com
+                      IdentityServerId: 3
+                      IdentityServerName: commvault-nj
+                      type: 2
+                      ownerCompany:
+                        domainName: ''
+                        id: 0
+  /CommCell/DomainController:
+    get:
+      summary: Get Domain
+      tags:
+      - Domain Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  providers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        serviceType:
+                          type: integer
+                        flags:
+                          type: integer
+                        description:
+                          type: string
+                        login:
+                          type: string
+                        enabled:
+                          type: integer
+                        trustedHostUser:
+                          type: string
+                        password:
+                          type: string
+                        bTrustedHostUser:
+                          type: string
+                        useSecureLdap:
+                          type: integer
+                        connectName:
+                          type: string
+                        port:
+                          type: integer
+                        bLogin:
+                          type: string
+                        tppm:
+                          type: object
+                          properties:
+                            enable:
+                              type: boolean
+                            tppmType:
+                              type: integer
+                            proxyInformation:
+                              type: object
+                              properties:
+                                portNumber:
+                                  type: integer
+                                proxyEntity:
+                                  type: object
+                                  properties:
+                                    clientName:
+                                      type: string
+                                    clientId:
+                                      type: integer
+                                    _type_:
+                                      type: integer
+                        resourceProvider:
+                          type: object
+                          properties:
+                            domainName:
+                              type: string
+                            id:
+                              type: integer
+                        shortName:
+                          type: object
+                          properties:
+                            domainName:
+                              type: string
+                            id:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    providers:
+                    - serviceType: 2
+                      flags: 0
+                      description: ''
+                      login: gbuilder
+                      enabled: 1
+                      trustedHostUser: gbuilder
+                      password: 3fc6a1ae5e2a31de47e4143b439590b5f614fad96bf545daa
+                      bTrustedHostUser: ''
+                      useSecureLdap: 0
+                      connectName: test.cv.com
+                      port: 0
+                      bLogin: gbuilder
+                      tppm:
+                        enable: false
+                        tppmType: 4
+                        proxyInformation:
+                          portNumber: 0
+                          proxyEntity:
+                            clientName: '0'
+                            clientId: 0
+                            _type_: 3
+                      resourceProvider:
+                        domainName: Qinetix Commcell
+                        id: 0
+                      shortName:
+                        domainName: commvault-nj
+                        id: 1
+                    - serviceType: 2
+                      flags: 0
+                      description: ''
+                      login: administrator
+                      enabled: 1
+                      trustedHostUser: administrator
+                      password: 387be93ed16c19268f4ff02fa18b27d38492dc181e19376df
+                      bTrustedHostUser: ''
+                      useSecureLdap: 0
+                      connectName: commvault365.com
+                      port: 0
+                      bLogin: administrator
+                      tppm:
+                        enable: false
+                        tppmType: 4
+                        proxyInformation:
+                          portNumber: 0
+                          proxyEntity:
+                            clientName: '0'
+                            clientId: 0
+                            _type_: 3
+                      resourceProvider:
+                        domainName: Qinetix Commcell
+                        id: 0
+                      shortName:
+                        domainName: COMMVAULT365
+                        id: 2
+              examples:
+                Domain:
+                  value:
+                    providers:
+                    - serviceType: 2
+                      flags: 0
+                      description: ''
+                      login: gbuilder
+                      enabled: 1
+                      trustedHostUser: gbuilder
+                      password: 3fc6a1ae5e2a31de47e4143b439590b5f614fad96bf545daa
+                      bTrustedHostUser: ''
+                      useSecureLdap: 0
+                      connectName: test.cv.com
+                      port: 0
+                      bLogin: gbuilder
+                      tppm:
+                        enable: false
+                        tppmType: 4
+                        proxyInformation:
+                          portNumber: 0
+                          proxyEntity:
+                            clientName: '0'
+                            clientId: 0
+                            _type_: 3
+                      resourceProvider:
+                        domainName: Qinetix Commcell
+                        id: 0
+                      shortName:
+                        domainName: commvault-nj
+                        id: 1
+                    - serviceType: 2
+                      flags: 0
+                      description: ''
+                      login: administrator
+                      enabled: 1
+                      trustedHostUser: administrator
+                      password: 387be93ed16c19268f4ff02fa18b27d38492dc181e19376df
+                      bTrustedHostUser: ''
+                      useSecureLdap: 0
+                      connectName: commvault365.com
+                      port: 0
+                      bLogin: administrator
+                      tppm:
+                        enable: false
+                        tppmType: 4
+                        proxyInformation:
+                          portNumber: 0
+                          proxyEntity:
+                            clientName: '0'
+                            clientId: 0
+                            _type_: 3
+                      resourceProvider:
+                        domainName: Qinetix Commcell
+                        id: 0
+                      shortName:
+                        domainName: COMMVAULT365
+                        id: 2
+      operationId: get-CommCell-DomainController
+      description: |
+        This operation returns a list of domains registered with the CommServe computer.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=92525_1.htm)
+    post:
+      summary: Update Domain
+      operationId: post-CommCell-DomainController
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0
+      description: |
+        This operation updates a domain.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=92527_1.htm)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                operation:
+                  type: integer
+                provider:
+                  type: object
+                  properties:
+                    serviceType:
+                      type: integer
+                    flags:
+                      type: integer
+                    bPassword:
+                      type: string
+                    login:
+                      type: string
+                    enabled:
+                      type: integer
+                    useSecureLdap:
+                      type: integer
+                    connectName:
+                      type: string
+                    bLogin:
+                      type: string
+                    shortName:
+                      type: object
+                      properties:
+                        domainName:
+                          type: string
+              x-examples:
+                Example 1:
+                  operation: 1
+                  provider:
+                    serviceType: 2
+                    flags: 0
+                    bPassword: YmFzZTY0RW5jb2RlZFBhc3N3b3Jk
+                    login: testadmin
+                    enabled: 1
+                    useSecureLdap: 0
+                    connectName: testAD001
+                    bLogin: testadmin
+                    shortName:
+                      domainName: mycompany
+            examples:
+              Update Domain:
+                value:
+                  operation: 1
+                  provider:
+                    serviceType: 2
+                    flags: 0
+                    bPassword: YmFzZTY0RW5jb2RlZFBhc3N3b3Jk
+                    login: testadmin
+                    enabled: 1
+                    useSecureLdap: 0
+                    connectName: testAD001
+                    bLogin: testadmin
+                    shortName:
+                      domainName: mycompany
+      tags:
+      - Domain Operations
+  '/CommCell/DomainController/{domainId}':
+    delete:
+      deprecated: false
+      description: |
+        This operation deletes a domain.
+
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=92523_1.htm)
+      operationId: Delete a Domain
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: domainId
+        required: true
+        schema:
+          type: string
+      summary: Delete a Domain
+      tags:
+      - Domain Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0

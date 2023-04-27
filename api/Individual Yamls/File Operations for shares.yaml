@@ -1,0 +1,427 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: File Operations For Shares
+paths:
+  /GetSharedFolders:
+    post:
+      deprecated: false
+      description: |
+        This operation lists the share details of all the shares or a specific share for a user.
+        <h2>
+         Supported Error Codes
+        </h2>
+        <table width="100%">
+
+          <tr>
+           <th width="20%">
+            Code
+           </th>
+           <th width="20%">
+            Status
+           </th>
+           <th width="60%">
+            Description
+           </th>
+          </tr>
+          <tr>
+           <td>
+            400
+           </td>
+           <td>
+            Bad Request
+           </td>
+           <td>
+            The request is missing required parameters.
+           </td>
+          </tr>
+          <tr>
+           <td>
+            403
+           </td>
+           <td>
+            Forbidden
+           </td>
+           <td>
+            Error cased due to one of the following reasons:
+            <ul>
+             <li>
+              The user does not have access to the share
+             </li>
+             <li>
+              The file requested is not accessible inside the share
+             </li>
+             <li>
+              Download operation is not allowed. This can happen if you attempt to download a folder.
+             </li>
+            </ul>
+           </td>
+          </tr>
+          <tr>
+           <td>
+            404
+           </td>
+           <td>
+            Not Found
+           </td>
+           <td>
+            The specified file does not exist.
+           </td>
+          </tr>
+
+        </table>
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_view_shared_files.htm)
+      operationId: View Shared Files and Folders
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: View Shared Files and Folders
+      tags:
+      - File Operations For Shares
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                propertyLevel:
+                  type: integer
+                shareInfo:
+                  type: object
+                  properties:
+                    shareFolder:
+                      type: object
+                      properties:
+                        syncWebFolderId:
+                          type: integer
+              x-examples:
+                Example 1:
+                  propertyLevel: 30
+                  shareInfo:
+                    shareFolder:
+                      syncWebFolderId: 703241
+            examples:
+              View Shared Files and Folders - To view the share details of a specific shared file:
+                value:
+                  propertyLevel: 30
+                  shareInfo:
+                    shareFolder:
+                      syncWebFolderId: 703241
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  shares:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        userPermission:
+                          type: integer
+                        description:
+                          type: string
+                        shareType:
+                          type: integer
+                        canReshare:
+                          type: boolean
+                        hasReshares:
+                          type: integer
+                        canUserEdit:
+                          type: boolean
+                        status:
+                          type: integer
+                        owner:
+                          type: object
+                          properties:
+                            userName:
+                              type: string
+                            userId:
+                              type: integer
+                        sharedTo:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              userHasReshares:
+                                type: integer
+                              userStatus:
+                                type: integer
+                              permission:
+                                type: integer
+                              userType:
+                                type: integer
+                              email:
+                                type: string
+                              externalGroup:
+                                type: object
+                                properties: {}
+                              sharedBy:
+                                type: object
+                                properties:
+                                  userId:
+                                    type: integer
+                              user:
+                                type: object
+                                properties: {}
+                              group:
+                                type: object
+                                properties: {}
+                        shareFolder:
+                          type: object
+                          properties:
+                            syncWebFolderId:
+                              type: integer
+                            syncWebFolderName:
+                              type: string
+                        browseInfo:
+                          type: object
+                          properties:
+                            edgeClient:
+                              type: boolean
+                            paths:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  path:
+                                    type: string
+                                  directory:
+                                    type: boolean
+                            expirationTime:
+                              type: object
+                              properties:
+                                time:
+                                  type: integer
+                            emailInfo:
+                              type: object
+                              properties:
+                                emailMessage:
+                                  type: string
+                                browseUrl:
+                                  type: string
+                                dontSendEmail:
+                                  type: boolean
+                        client:
+                          type: object
+                          properties:
+                            clientName:
+                              type: string
+                            backupsetId:
+                              type: integer
+                            instanceId:
+                              type: integer
+                            subclientId:
+                              type: integer
+                            clientId:
+                              type: integer
+                            applicationId:
+                              type: integer
+                        lastModified:
+                          type: object
+                          properties:
+                            timeValue:
+                              type: string
+                x-examples:
+                  Example 1:
+                    shares:
+                    - userPermission: 1
+                      description: ''
+                      shareType: 2
+                      canReshare: false
+                      hasReshares: 0
+                      canUserEdit: false
+                      status: 0
+                      owner:
+                        userName: edgeuser
+                        userId: 4
+                      sharedTo:
+                      - userHasReshares: 0
+                        userStatus: 0
+                        permission: 1
+                        userType: 2
+                        email: snasim@commvault.com
+                        externalGroup: {}
+                        sharedBy:
+                          userId: 4
+                        user: {}
+                        group: {}
+                      shareFolder:
+                        syncWebFolderId: 703241
+                        syncWebFolderName: netstat
+                      browseInfo:
+                        edgeClient: false
+                        paths:
+                        - path: 'C:\netstat.txt'
+                          directory: false
+                        expirationTime:
+                          time: 0
+                        emailInfo:
+                          emailMessage: ''
+                          browseUrl: /webconsole/gtl.do?gid=acV5rp8
+                          dontSendEmail: false
+                      client:
+                        clientName: firewalltestma
+                        backupsetId: 20
+                        instanceId: 1
+                        subclientId: 70
+                        clientId: 9
+                        applicationId: 33
+                      lastModified:
+                        timeValue: '1496310616'
+              examples:
+                Example 1:
+                  value:
+                    shares:
+                    - userPermission: 1
+                      description: ''
+                      shareType: 2
+                      canReshare: false
+                      hasReshares: 0
+                      canUserEdit: false
+                      status: 0
+                      owner:
+                        userName: edgeuser
+                        userId: 4
+                      sharedTo:
+                      - userHasReshares: 0
+                        userStatus: 0
+                        permission: 1
+                        userType: 2
+                        email: snasim@commvault.com
+                        externalGroup: {}
+                        sharedBy:
+                          userId: 4
+                        user: {}
+                        group: {}
+                      shareFolder:
+                        syncWebFolderId: 703241
+                        syncWebFolderName: netstat
+                      browseInfo:
+                        edgeClient: false
+                        paths:
+                        - path: 'C:\netstat.txt'
+                          directory: false
+                        expirationTime:
+                          time: 0
+                        emailInfo:
+                          emailMessage: ''
+                          browseUrl: /webconsole/gtl.do?gid=acV5rp8
+                          dontSendEmail: false
+                      client:
+                        clientName: firewalltestma
+                        backupsetId: 20
+                        instanceId: 1
+                        subclientId: 70
+                        clientId: 9
+                        applicationId: 33
+                      lastModified:
+                        timeValue: '1496310616'
+  /action/preview:
+    get:
+      summary: Preview a Shared File
+      tags:
+      - File Operations For Shares
+      responses:
+        '200':
+          description: OK
+      operationId: get-action-preview
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: path
+      - schema:
+          type: string
+        in: query
+        name: shareId
+      description: |-
+        This operation allows you to preview a backed up file that was shared with you by another user. Preview is currently supported for all images and Microsoft Office file types.
+        <p>By default, you can preview files that have a maximum file size limit of 10 MB. For instructions on changing the file size limit, see <a href="http://documentation.commvault.com/commvault/v11/article?p=products/web_console/t_wcnsl_admin_preview_size.htm">Changing the File Size Limit for Preview</a> .</p>
+        <h2>Supported Error Codes</h2>
+        <table>
+          <tr>
+            <th>Code</th>
+            <th>Status</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>400</td>
+            <td>Bad Request</td>
+            <td>The request is missing required parameters or the file name has some unacceptable characters.</td>
+          </tr>
+          <tr>
+            <td>204</td>
+            <td>No Content</td>
+            <td>Preview is not available for the file.</td>
+          </tr>
+          <tr>
+            <td>403</td>
+            <td>Forbidden</td>
+            <td>User does not have permissions to preview or the preview is requested for a folder or an unsupported file type.</td>
+          </tr>
+          <tr>
+            <td>404</td>
+            <td>Not Found</td>
+            <td>The specified file does not exist.</td>
+          </tr>
+        </table>[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_share_preview.htm)
+  /stream/action/download:
+    get:
+      summary: Download a Shared File
+      tags:
+      - File Operations For Shares
+      responses:
+        '200':
+          description: OK
+      operationId: get-stream-action-download
+      description: |-
+        Downloading a folder is currently not supported using this operation.
+        <h2>Supported Error Codes</h2>
+        <table>
+          <tr>
+            <th>Code</th>
+            <th>Status</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>400</td>
+            <td>Bad Request</td>
+            <td>The request is missing required parameters.</td>
+          </tr>
+          <tr>
+            <td>403</td>
+            <td>Forbidden</td>
+            <td>
+              Error cased due to one of the following reasons:
+              <ul>
+                <li>The user does not have access to the share</li>
+                <li>The file requested is not accessible inside the share</li>
+                <li>Download operation is not allowed. This can happen if you attempt to download a folder.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>404</td>
+            <td>Not Found</td>
+            <td>The specified file does not exist.</td>
+          </tr>
+        </table>[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_share_download.htm)

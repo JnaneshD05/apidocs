@@ -1,0 +1,222 @@
+---
+id: get-chargeback-report
+title: "Get Chargeback Report"
+description: "<p><strong>Request Parameters:</strong></p>"
+sidebar_label: "Get Chargeback Report"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"<p><strong>Request Parameters:</strong></p>\n<table>\n<tr>\n<td>\n<p>parameter.spName</p>\n</td>\n<td>\n<p>RptMonthlyStorageUsage (Stored Procedure Name)</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param1</p>\n</td>\n<td>\n<p>CommCell Group Id -1 for all</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param2</p>\n</td>\n<td>\n<p>Aggregate level</p>\n<p>0 for Subclient, 1 for Client, 2 for CommCell, 3 for Client Group, 4 for Tag, 5 for Subclient per Copy</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param3</p>\n</td>\n<td>\n<p>CommCell UniqId</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param4</p>\n</td>\n<td>\n<p>Include Cost (1 to include defined cost, 0 to Exclude)</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param5</p>\n</td>\n<td>\n<p>Start Date</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param6</p>\n</td>\n<td>\n<p>Size</p>\n<p>(GB, TB, PB)</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param7</p>\n</td>\n<td>\n<p>Client Group Name (Null or Name of Client Group)</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param8</p>\n</td>\n<td>\n<p>Type (1 for monthly, 2 Weekly, 4 Daily)</p>\n</td>\n</tr>\n\n\n</table>\n\n\n\n\n<p><strong>Optional Variables:</strong></p>\n<table>\n\n\n<tr>\n<td width=\"185\">\n<p><strong>Variable Name</strong></p>\n</td>\n<td width=\"246\">\n<p><strong>Usage</strong></p>\n</td>\n<td width=\"276\">\n<p><strong>Description</strong></p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;limit=number_of_rows</p>\n</td>\n<td width=\"246\">\n<p>&amp;limit=3</p>\n</td>\n<td width=\"276\">\n<p>Limits the number of rows to 3</p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;fields=[field_name] as [aliased_field_name]</p>\n</td>\n<td width=\"246\">\n<p>&amp;fields=[f1] AS [f1], [f2] AS [f2]</p>\n</td>\n<td width=\"276\">\n<p>Column name to include in the output.</p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;orderby</p>\n</td>\n<td width=\"246\">\n<p>&amp;orderby=fieldNname desc</p>\n</td>\n<td width=\"276\">\n<p>Same as SQL Order by clause</p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;where</p>\n</td>\n<td width=\"246\">\n<p>&amp;where=fieldName=value</p>\n</td>\n<td width=\"276\">\n<p>Same as SQL where clause</p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;having</p>\n</td>\n<td width=\"246\">\n<p>&amp;having=fieldName=value</p>\n</td>\n<td width=\"276\">\n<p>Same as SQL having clause</p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;groupby</p>\n</td>\n<td width=\"246\">\n<p>&amp;groupby=fieldName=value</p>\n</td>\n<td width=\"276\">\n<p>Same as SQL group by clause</p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;cache=true</p>\n</td>\n<td width=\"246\">\n<p>&nbsp;</p>\n</td>\n<td width=\"276\">\n<p>Enables caching of the ResultSet and returns the cacheID</p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;cacheId</p>\n</td>\n<td width=\"246\">\n<p>&amp;cacheId=1efd5d67c5b546fda2f103719a0640ca</p>\n</td>\n<td width=\"276\">\n<p>Reads the ResultSet from the cache instead of the revising the original data sources</p>\n</td>\n</tr>\n\n\n</table>","operationId":"Get Chargeback Report","parameters":[{"description":"","explode":true,"in":"query","name":"livefeed","schema":{"example":true,"type":"boolean"}},{"description":"","explode":true,"in":"query","name":"parameter.param8","schema":{"example":"N'1'","type":"string"}},{"description":"","explode":true,"in":"query","name":"parameter.param9","schema":{"example":"N'0'","type":"string"}},{"description":"","explode":true,"in":"query","name":"offset","schema":{"example":0,"format":"int32","type":"integer"}},{"description":"","explode":true,"in":"query","name":"dateFormat","schema":{"example":"milliseconds","type":"string"}},{"description":"","explode":true,"in":"query","name":"priority","schema":{"example":"normal","type":"string"}},{"description":"","explode":true,"in":"query","name":"syscol","schema":{"example":false,"type":"boolean"}},{"description":"","explode":true,"in":"query","name":"limit","schema":{"example":-1,"format":"int64","type":"integer"}},{"description":"","explode":true,"in":"query","name":"parameter.param2","schema":{"example":3,"format":"int32","type":"integer"}},{"description":"","explode":true,"in":"query","name":"parameter.param3","schema":{"example":35636,"format":"int32","type":"integer"}},{"description":"","explode":true,"in":"query","name":"parameter.param1","schema":{"example":-1,"format":"int64","type":"integer"}},{"description":"","explode":true,"in":"query","name":"parameter.param6","schema":{"example":"N'TB'","type":"string"}},{"description":"","explode":true,"in":"query","name":"operation","schema":{"example":"METRICS_EXECUTE_SP","type":"string"}},{"description":"","explode":true,"in":"query","name":"parameter.param7","schema":{"example":"NULL","type":"string"}},{"description":"","explode":true,"in":"query","name":"parameter.spName","schema":{"example":"RptMonthlyStorageUsage","type":"string"}},{"description":"","explode":true,"in":"query","name":"parameter.param4","schema":{"example":"N'1'","type":"string"}},{"description":"","explode":true,"in":"query","name":"parameter.param5","schema":{"example":"N'2017-01-01 00:00:00'","type":"string"}},{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Reports"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"cacheId":{"type":"string"},"offset":{"type":"integer"},"limit":{"type":"integer"},"totalRecordCount":{"type":"integer"},"columns":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"dataField":{"type":"string"},"type":{"type":"string"},"precision":{"type":"integer"},"scale":{"type":"integer"}}}},"recordsCount":{"type":"integer"},"records":{"type":"array","items":{"type":"object","properties":{}}},"failures":{"type":"object","properties":{}},"warnings":{"type":"object","properties":{}}},"x-examples":{"Example 1":{"cacheId":"8202e47e7d4a420395a021f05da627ff","offset":0,"limit":50,"totalRecordCount":0,"columns":[{"name":"Data Source","dataField":"Data Source","type":"String","precision":2147483647,"scale":0},{"name":"CommServ UniqueId<DONOTSHOW>","dataField":"CommServ UniqueId<DONOTSHOW>","type":"Integer","precision":10,"scale":0},{"name":"CommCell Name","dataField":"CommCell Name","type":"String","precision":2147483647,"scale":0},{"name":"Client Groups","dataField":"Client Groups","type":"String","precision":2147483647,"scale":0},{"name":"Client","dataField":"Client","type":"String","precision":2147483647,"scale":0},{"name":"Agent","dataField":"Agent","type":"String","precision":2147483647,"scale":0},{"name":"Instance","dataField":"Instance","type":"String","precision":2147483647,"scale":0},{"name":"Backupset","dataField":"Backupset","type":"String","precision":2147483647,"scale":0},{"name":"Subclient","dataField":"Subclient","type":"String","precision":2147483647,"scale":0},{"name":"Front End Backup Size","dataField":"Front End Backup Size","type":"Decimal","precision":32,"scale":3},{"name":"Front End Backup Cost<FORMATNUMBERNA>","dataField":"Front End Backup Cost<FORMATNUMBERNA>","type":"Decimal","precision":32,"scale":3},{"name":"Front End Archive Size","dataField":"Front End Archive Size","type":"Decimal","precision":32,"scale":3},{"name":"Front End Archive Cost<FORMATNUMBERNA>","dataField":"Front End Archive Cost<FORMATNUMBERNA>","type":"Decimal","precision":32,"scale":3},{"name":"Primary App Size","dataField":"Primary App Size","type":"Decimal","precision":32,"scale":3},{"name":"Primary App Cost<FORMATNUMBERNA>","dataField":"Primary App Cost<FORMATNUMBERNA>","type":"Decimal","precision":32,"scale":3},{"name":"Total Cost<FORMATNUMBERNA>","dataField":"Total Cost<FORMATNUMBERNA>","type":"Decimal","precision":32,"scale":3}],"recordsCount":0,"records":[],"failures":{},"warnings":{}}}},"examples":{"Chargeback Report - Via WebConsole":{"value":{"cacheId":"8202e47e7d4a420395a021f05da627ff","offset":0,"limit":50,"totalRecordCount":0,"columns":[{"name":"Data Source","dataField":"Data Source","type":"String","precision":2147483647,"scale":0},{"name":"CommServ UniqueId<DONOTSHOW>","dataField":"CommServ UniqueId<DONOTSHOW>","type":"Integer","precision":10,"scale":0},{"name":"CommCell Name","dataField":"CommCell Name","type":"String","precision":2147483647,"scale":0},{"name":"Client Groups","dataField":"Client Groups","type":"String","precision":2147483647,"scale":0},{"name":"Client","dataField":"Client","type":"String","precision":2147483647,"scale":0},{"name":"Agent","dataField":"Agent","type":"String","precision":2147483647,"scale":0},{"name":"Instance","dataField":"Instance","type":"String","precision":2147483647,"scale":0},{"name":"Backupset","dataField":"Backupset","type":"String","precision":2147483647,"scale":0},{"name":"Subclient","dataField":"Subclient","type":"String","precision":2147483647,"scale":0},{"name":"Front End Backup Size","dataField":"Front End Backup Size","type":"Decimal","precision":32,"scale":3},{"name":"Front End Backup Cost<FORMATNUMBERNA>","dataField":"Front End Backup Cost<FORMATNUMBERNA>","type":"Decimal","precision":32,"scale":3},{"name":"Front End Archive Size","dataField":"Front End Archive Size","type":"Decimal","precision":32,"scale":3},{"name":"Front End Archive Cost<FORMATNUMBERNA>","dataField":"Front End Archive Cost<FORMATNUMBERNA>","type":"Decimal","precision":32,"scale":3},{"name":"Primary App Size","dataField":"Primary App Size","type":"Decimal","precision":32,"scale":3},{"name":"Primary App Cost<FORMATNUMBERNA>","dataField":"Primary App Cost<FORMATNUMBERNA>","type":"Decimal","precision":32,"scale":3},{"name":"Total Cost<FORMATNUMBERNA>","dataField":"Total Cost<FORMATNUMBERNA>","type":"Decimal","precision":32,"scale":3}],"recordsCount":0,"records":[],"failures":{},"warnings":{}}},"Chargeback Report":{"value":{"cacheId":"string","offset":0,"limit":0,"totalRecordCount":0,"columns":[{"name":"string","dataField":"string","type":"string","precision":0,"scale":0}],"recordsCount":0,"records":[{}],"failures":{},"warnings":{}}}}}}}},"method":"get","path":"/cr/reportsplusengine/datasets/METRICS_DEFAULT/data","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get Chargeback Report","description":{"content":"<p><strong>Request Parameters:</strong></p>\n<table>\n<tr>\n<td>\n<p>parameter.spName</p>\n</td>\n<td>\n<p>RptMonthlyStorageUsage (Stored Procedure Name)</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param1</p>\n</td>\n<td>\n<p>CommCell Group Id -1 for all</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param2</p>\n</td>\n<td>\n<p>Aggregate level</p>\n<p>0 for Subclient, 1 for Client, 2 for CommCell, 3 for Client Group, 4 for Tag, 5 for Subclient per Copy</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param3</p>\n</td>\n<td>\n<p>CommCell UniqId</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param4</p>\n</td>\n<td>\n<p>Include Cost (1 to include defined cost, 0 to Exclude)</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param5</p>\n</td>\n<td>\n<p>Start Date</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param6</p>\n</td>\n<td>\n<p>Size</p>\n<p>(GB, TB, PB)</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param7</p>\n</td>\n<td>\n<p>Client Group Name (Null or Name of Client Group)</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>parameter.param8</p>\n</td>\n<td>\n<p>Type (1 for monthly, 2 Weekly, 4 Daily)</p>\n</td>\n</tr>\n\n\n</table>\n\n\n\n\n<p><strong>Optional Variables:</strong></p>\n<table>\n\n\n<tr>\n<td width=\"185\">\n<p><strong>Variable Name</strong></p>\n</td>\n<td width=\"246\">\n<p><strong>Usage</strong></p>\n</td>\n<td width=\"276\">\n<p><strong>Description</strong></p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;limit=number_of_rows</p>\n</td>\n<td width=\"246\">\n<p>&amp;limit=3</p>\n</td>\n<td width=\"276\">\n<p>Limits the number of rows to 3</p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;fields=[field_name] as [aliased_field_name]</p>\n</td>\n<td width=\"246\">\n<p>&amp;fields=[f1] AS [f1], [f2] AS [f2]</p>\n</td>\n<td width=\"276\">\n<p>Column name to include in the output.</p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;orderby</p>\n</td>\n<td width=\"246\">\n<p>&amp;orderby=fieldNname desc</p>\n</td>\n<td width=\"276\">\n<p>Same as SQL Order by clause</p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;where</p>\n</td>\n<td width=\"246\">\n<p>&amp;where=fieldName=value</p>\n</td>\n<td width=\"276\">\n<p>Same as SQL where clause</p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;having</p>\n</td>\n<td width=\"246\">\n<p>&amp;having=fieldName=value</p>\n</td>\n<td width=\"276\">\n<p>Same as SQL having clause</p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;groupby</p>\n</td>\n<td width=\"246\">\n<p>&amp;groupby=fieldName=value</p>\n</td>\n<td width=\"276\">\n<p>Same as SQL group by clause</p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;cache=true</p>\n</td>\n<td width=\"246\">\n<p>&nbsp;</p>\n</td>\n<td width=\"276\">\n<p>Enables caching of the ResultSet and returns the cacheID</p>\n</td>\n</tr>\n<tr>\n<td width=\"185\">\n<p>&amp;cacheId</p>\n</td>\n<td width=\"246\">\n<p>&amp;cacheId=1efd5d67c5b546fda2f103719a0640ca</p>\n</td>\n<td width=\"276\">\n<p>Reads the ResultSet from the cache instead of the revising the original data sources</p>\n</td>\n</tr>\n\n\n</table>","type":"text/plain"},"url":{"path":["cr","reportsplusengine","datasets","METRICS_DEFAULT","data"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"livefeed","value":""},{"disabled":false,"key":"parameter.param8","value":""},{"disabled":false,"key":"parameter.param9","value":""},{"disabled":false,"key":"offset","value":""},{"disabled":false,"key":"dateFormat","value":""},{"disabled":false,"key":"priority","value":""},{"disabled":false,"key":"syscol","value":""},{"disabled":false,"key":"limit","value":""},{"disabled":false,"key":"parameter.param2","value":""},{"disabled":false,"key":"parameter.param3","value":""},{"disabled":false,"key":"parameter.param1","value":""},{"disabled":false,"key":"parameter.param6","value":""},{"disabled":false,"key":"operation","value":""},{"disabled":false,"key":"parameter.param7","value":""},{"disabled":false,"key":"parameter.spName","value":""},{"disabled":false,"key":"parameter.param4","value":""},{"disabled":false,"key":"parameter.param5","value":""}],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/Reporting/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get Chargeback Report
+
+
+
+<p><strong>Request Parameters:</strong></p>
+<table>
+<tr>
+<td>
+<p>parameter.spName</p>
+</td>
+<td>
+<p>RptMonthlyStorageUsage (Stored Procedure Name)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>parameter.param1</p>
+</td>
+<td>
+<p>CommCell Group Id -1 for all</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>parameter.param2</p>
+</td>
+<td>
+<p>Aggregate level</p>
+<p>0 for Subclient, 1 for Client, 2 for CommCell, 3 for Client Group, 4 for Tag, 5 for Subclient per Copy</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>parameter.param3</p>
+</td>
+<td>
+<p>CommCell UniqId</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>parameter.param4</p>
+</td>
+<td>
+<p>Include Cost (1 to include defined cost, 0 to Exclude)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>parameter.param5</p>
+</td>
+<td>
+<p>Start Date</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>parameter.param6</p>
+</td>
+<td>
+<p>Size</p>
+<p>(GB, TB, PB)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>parameter.param7</p>
+</td>
+<td>
+<p>Client Group Name (Null or Name of Client Group)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>parameter.param8</p>
+</td>
+<td>
+<p>Type (1 for monthly, 2 Weekly, 4 Daily)</p>
+</td>
+</tr>
+
+
+</table>
+
+
+
+
+<p><strong>Optional Variables:</strong></p>
+<table>
+
+
+<tr>
+<td width="185">
+<p><strong>Variable Name</strong></p>
+</td>
+<td width="246">
+<p><strong>Usage</strong></p>
+</td>
+<td width="276">
+<p><strong>Description</strong></p>
+</td>
+</tr>
+<tr>
+<td width="185">
+<p>&amp;limit=number_of_rows</p>
+</td>
+<td width="246">
+<p>&amp;limit=3</p>
+</td>
+<td width="276">
+<p>Limits the number of rows to 3</p>
+</td>
+</tr>
+<tr>
+<td width="185">
+<p>&amp;fields=[field_name] as [aliased_field_name]</p>
+</td>
+<td width="246">
+<p>&amp;fields=[f1] AS [f1], [f2] AS [f2]</p>
+</td>
+<td width="276">
+<p>Column name to include in the output.</p>
+</td>
+</tr>
+<tr>
+<td width="185">
+<p>&amp;orderby</p>
+</td>
+<td width="246">
+<p>&amp;orderby=fieldNname desc</p>
+</td>
+<td width="276">
+<p>Same as SQL Order by clause</p>
+</td>
+</tr>
+<tr>
+<td width="185">
+<p>&amp;where</p>
+</td>
+<td width="246">
+<p>&amp;where=fieldName=value</p>
+</td>
+<td width="276">
+<p>Same as SQL where clause</p>
+</td>
+</tr>
+<tr>
+<td width="185">
+<p>&amp;having</p>
+</td>
+<td width="246">
+<p>&amp;having=fieldName=value</p>
+</td>
+<td width="276">
+<p>Same as SQL having clause</p>
+</td>
+</tr>
+<tr>
+<td width="185">
+<p>&amp;groupby</p>
+</td>
+<td width="246">
+<p>&amp;groupby=fieldName=value</p>
+</td>
+<td width="276">
+<p>Same as SQL group by clause</p>
+</td>
+</tr>
+<tr>
+<td width="185">
+<p>&amp;cache=true</p>
+</td>
+<td width="246">
+<p>&nbsp;</p>
+</td>
+<td width="276">
+<p>Enables caching of the ResultSet and returns the cacheID</p>
+</td>
+</tr>
+<tr>
+<td width="185">
+<p>&amp;cacheId</p>
+</td>
+<td width="246">
+<p>&amp;cacheId=1efd5d67c5b546fda2f103719a0640ca</p>
+</td>
+<td width="276">
+<p>Reads the ResultSet from the cache instead of the revising the original data sources</p>
+</td>
+</tr>
+
+
+</table>
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"livefeed","schema":{"example":true,"type":"boolean"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"parameter.param8","schema":{"example":"N'1'","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"parameter.param9","schema":{"example":"N'0'","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"offset","schema":{"example":0,"format":"int32","type":"integer"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"dateFormat","schema":{"example":"milliseconds","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"priority","schema":{"example":"normal","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"syscol","schema":{"example":false,"type":"boolean"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"limit","schema":{"example":-1,"format":"int64","type":"integer"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"parameter.param2","schema":{"example":3,"format":"int32","type":"integer"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"parameter.param3","schema":{"example":35636,"format":"int32","type":"integer"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"parameter.param1","schema":{"example":-1,"format":"int64","type":"integer"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"parameter.param6","schema":{"example":"N'TB'","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"operation","schema":{"example":"METRICS_EXECUTE_SP","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"parameter.param7","schema":{"example":"NULL","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"parameter.spName","schema":{"example":"RptMonthlyStorageUsage","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"parameter.param4","schema":{"example":"N'1'","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"parameter.param5","schema":{"example":"N'2017-01-01 00:00:00'","type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"cacheId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"offset"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"limit"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"totalRecordCount"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>columns</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"dataField"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"type"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"precision"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"scale"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={false} name={"recordsCount"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>records</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>failures</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>warnings</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"cacheId\": \"string\",\n  \"offset\": 0,\n  \"limit\": 0,\n  \"totalRecordCount\": 0,\n  \"columns\": [\n    {\n      \"name\": \"string\",\n      \"dataField\": \"string\",\n      \"type\": \"string\",\n      \"precision\": 0,\n      \"scale\": 0\n    }\n  ],\n  \"recordsCount\": 0,\n  \"records\": [\n    {}\n  ],\n  \"failures\": {},\n  \"warnings\": {}\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Chargeback  Report -  Via  Web Console"} value={" Chargeback  Report -  Via  Web Console"}><ResponseSamples responseExample={"{\n  \"cacheId\": \"8202e47e7d4a420395a021f05da627ff\",\n  \"offset\": 0,\n  \"limit\": 50,\n  \"totalRecordCount\": 0,\n  \"columns\": [\n    {\n      \"name\": \"Data Source\",\n      \"dataField\": \"Data Source\",\n      \"type\": \"String\",\n      \"precision\": 2147483647,\n      \"scale\": 0\n    },\n    {\n      \"name\": \"CommServ UniqueId<DONOTSHOW>\",\n      \"dataField\": \"CommServ UniqueId<DONOTSHOW>\",\n      \"type\": \"Integer\",\n      \"precision\": 10,\n      \"scale\": 0\n    },\n    {\n      \"name\": \"CommCell Name\",\n      \"dataField\": \"CommCell Name\",\n      \"type\": \"String\",\n      \"precision\": 2147483647,\n      \"scale\": 0\n    },\n    {\n      \"name\": \"Client Groups\",\n      \"dataField\": \"Client Groups\",\n      \"type\": \"String\",\n      \"precision\": 2147483647,\n      \"scale\": 0\n    },\n    {\n      \"name\": \"Client\",\n      \"dataField\": \"Client\",\n      \"type\": \"String\",\n      \"precision\": 2147483647,\n      \"scale\": 0\n    },\n    {\n      \"name\": \"Agent\",\n      \"dataField\": \"Agent\",\n      \"type\": \"String\",\n      \"precision\": 2147483647,\n      \"scale\": 0\n    },\n    {\n      \"name\": \"Instance\",\n      \"dataField\": \"Instance\",\n      \"type\": \"String\",\n      \"precision\": 2147483647,\n      \"scale\": 0\n    },\n    {\n      \"name\": \"Backupset\",\n      \"dataField\": \"Backupset\",\n      \"type\": \"String\",\n      \"precision\": 2147483647,\n      \"scale\": 0\n    },\n    {\n      \"name\": \"Subclient\",\n      \"dataField\": \"Subclient\",\n      \"type\": \"String\",\n      \"precision\": 2147483647,\n      \"scale\": 0\n    },\n    {\n      \"name\": \"Front End Backup Size\",\n      \"dataField\": \"Front End Backup Size\",\n      \"type\": \"Decimal\",\n      \"precision\": 32,\n      \"scale\": 3\n    },\n    {\n      \"name\": \"Front End Backup Cost<FORMATNUMBERNA>\",\n      \"dataField\": \"Front End Backup Cost<FORMATNUMBERNA>\",\n      \"type\": \"Decimal\",\n      \"precision\": 32,\n      \"scale\": 3\n    },\n    {\n      \"name\": \"Front End Archive Size\",\n      \"dataField\": \"Front End Archive Size\",\n      \"type\": \"Decimal\",\n      \"precision\": 32,\n      \"scale\": 3\n    },\n    {\n      \"name\": \"Front End Archive Cost<FORMATNUMBERNA>\",\n      \"dataField\": \"Front End Archive Cost<FORMATNUMBERNA>\",\n      \"type\": \"Decimal\",\n      \"precision\": 32,\n      \"scale\": 3\n    },\n    {\n      \"name\": \"Primary App Size\",\n      \"dataField\": \"Primary App Size\",\n      \"type\": \"Decimal\",\n      \"precision\": 32,\n      \"scale\": 3\n    },\n    {\n      \"name\": \"Primary App Cost<FORMATNUMBERNA>\",\n      \"dataField\": \"Primary App Cost<FORMATNUMBERNA>\",\n      \"type\": \"Decimal\",\n      \"precision\": 32,\n      \"scale\": 3\n    },\n    {\n      \"name\": \"Total Cost<FORMATNUMBERNA>\",\n      \"dataField\": \"Total Cost<FORMATNUMBERNA>\",\n      \"type\": \"Decimal\",\n      \"precision\": 32,\n      \"scale\": 3\n    }\n  ],\n  \"recordsCount\": 0,\n  \"records\": [],\n  \"failures\": {},\n  \"warnings\": {}\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Chargeback  Report"} value={" Chargeback  Report"}><ResponseSamples responseExample={"{\n  \"cacheId\": \"string\",\n  \"offset\": 0,\n  \"limit\": 0,\n  \"totalRecordCount\": 0,\n  \"columns\": [\n    {\n      \"name\": \"string\",\n      \"dataField\": \"string\",\n      \"type\": \"string\",\n      \"precision\": 0,\n      \"scale\": 0\n    }\n  ],\n  \"recordsCount\": 0,\n  \"records\": [\n    {}\n  ],\n  \"failures\": {},\n  \"warnings\": {}\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

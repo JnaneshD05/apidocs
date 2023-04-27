@@ -1,0 +1,36 @@
+---
+id: retire-cluster-client
+title: "Retire Cluster Client"
+description: "Delete the Kubernetes Client with client id 'clientId'."
+sidebar_label: "Retire Cluster Client"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"Delete the Kubernetes Client with client id \"clientId\".\nThe clientId can be fetched by using the Client ID API\n","operationId":"Retire Cluster Client","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"header","name":"Content-Type","required":true,"schema":{"enum":["application/json"],"example":"application/json","type":"string"}},{"description":"","in":"path","name":"clientId","required":true,"schema":{"type":"string"}},{"schema":{"type":"number"},"in":"query","name":"clientId"}],"tags":["Client Operations"],"responses":{"200":{"description":"OK"}},"method":"delete","path":"/client/{clientId}/Retire","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Retire Cluster Client","description":{"content":"Delete the Kubernetes Client with client id \"clientId\".\nThe clientId can be fetched by using the Client ID API\n","type":"text/plain"},"url":{"path":["client",":clientId","Retire"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"clientId","value":""}],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"clientId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""}],"method":"DELETE"}}
+sidebar_class_name: "delete api-method"
+info_path: docs/api/cv/ClientOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Retire Cluster Client
+
+
+
+Delete the Kubernetes Client with client id "clientId".
+The clientId can be fetched by using the Client ID API
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"clientId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"schema":{"type":"number"},"in":"query","name":"clientId"}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Content-Type","required":true,"schema":{"enum":["application/json"],"example":"application/json","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

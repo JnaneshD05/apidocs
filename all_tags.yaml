@@ -1,0 +1,362 @@
+tags:
+- name: Array Management
+- description: APIs for Access Control Operations
+  name: AccessControl
+
+- description: APIs for Active Directory Operations
+  name: ActiveDirectory
+- description: APIs to manage activity controls
+  name: ActivityControl
+- description: APIs for Additional Settings Operations
+  name: AdditionalSettings
+
+- name: Agent Operations
+- name: Alert Operations
+
+- description: APIs for Anomalous Condition Operations
+  name: AnomalousConditions
+
+- name: Authentication Operations
+
+- name: Backup Operations
+
+- name: Backup Set Operations
+
+- description: APIs for Big Data App Operations
+  name: BigDataApps
+
+- name: Client Group Operations
+- name: Client Operations
+- name: Cloud Apps Operations
+- name: Cloud Object Storage
+- description: APIs for Cloud Apps Operations
+  name: CloudApps
+
+- description: APIs for Commcell Operations
+  name: Commcell
+- name: Commvault Backup as a Service (Unmanaged IaaS)
+- name: CSLiveSync
+
+- name: Convert XML to JSON
+- description: APIs for Credential Manager Operations
+  name: CredentialManager
+  xpath: Control Panel Operations
+- name: Credentials Manager
+  xpath: Control Panel Operations
+- description: REST APIs for Data Cube.
+  name: Data Cube Operations
+
+- description: APIs for Development Operations
+
+  name: DeveloperTools
+- name: Disaster Recovery Backup
+
+- description: APIs for Distributed Storage Operations
+  name: DistributedStorage
+- description: APIs for Distributed systems Operations
+  name: DistributedSystems
+- name: Domain Operations
+- description: APIs for Dynamics 365 Operations
+  name: Dynamics365
+- name: Edge Drive Operations
+- description: APIs for SMTP Email Server Operations
+  name: EmailServer
+
+- name: Entity Tags
+- description: APIs for entity tags related operations
+  name: EntityTag
+- description: APIs for EpicServer Operations
+  name: EpicServers
+- description: You can use failover groups to set up disaster recovery for a group of  virtual machines (VMs) from a Live Sync job.
+  name: Failover Group Operations
+- description: APIs for Failover Group Operations
+  name: FailoverGroups
+- name: File Operations
+- name: File Operations For Shares
+- description: APIs for File Server Operations
+  name: FileServers
+- description: When listing or searching contents of a folder, you can refine the search or browse results by defining filters in the request body.
+  name: Filters for Search or List
+- description: APIs for GCPSpanner Operations
+  name: GCPSpanner
+- name: Global Parameters
+- description: APIs for Global Exception Operations
+  name: GlobalExceptions
+- description: APIs for global search related operations
+  name: GlobalSearch
+- description: APIs for Hybrid File Stores Operations
+  name: HybridFileStores
+- description: APIs for HyperScale Storage Pool Operations
+  name: HyperScaleStorage
+
+- name: Instance Operations
+- description: APIs for Instance Operations
+  name: Instances
+- description: APIs for Database Instant Clone Operations
+  name: InstantClones
+
+- description: APIs for Inventory Manager Operations
+  name: InventoryManager
+- name: Job Operations
+- description: APIs for Key Management Server Operations
+  name: KeyManagementServer
+- name: Kubernetes Operations
+
+- name: Laptop Devices
+- description: APIs for Laptop Owner Mapping Operations
+  name: LaptopOwnerMapping
+
+- name: License Operations
+- description: APIs for MediaAgent Operations
+  name: MediaAgent
+- name: Network Topology Operations
+
+- name: ObjectStore Operations
+- name: Offce 365
+
+- name: Organization Operations
+
+- name: Plan Operations
+
+- name: QCommands
+
+- description: APIs for Recovery Target Operations
+  name: RecoveryTarget
+- description: APIs for Regions Operations
+  name: Regions
+- name: Remote Commcell
+- description: You can use REST APIs to gather data from tables in Reports and use that data in other applications or reports.
+  name: Reports
+
+- description: APIs for Request Manager Operations
+  name: RequestManager
+- description: APIs for Resource Pool Operations
+  name: ResourcePools
+  x-path: Storage
+- name: Restore Operations
+- name: Role Operations
+
+- name: Schedule and Schedule Policy Operations
+- description: APIs for Scrub Log Operations
+  name: ScrubLogs
+- description: You can use REST APIs to update security associations and to check the permissions for users.
+  name: Security Operations
+
+- description: APIs for Workload Solutions Operations
+
+  name: Solutions
+- description: APIs for Storage Array Operations
+  name: StorageArrays
+- name: Subclient Operations
+- name: Syslog Server
+
+- name: User Group Operations
+- name: User Operations
+
+- description: APIs for VM Provisioning Operations
+  name: VMProvisioning
+
+- description: For more V2 APIs, please visit your API Explorer page.
+  name: Virtualization Operations
+- name: Workflow Operations
+- name: 1-Touch Recovery Points
+  x-path: Client Operations
+
+- name: Client Migration
+  x-path: Organization Operations
+- name: Navigation Settings
+  x-path: Organization Operations
+- description: APIs for Laptop Plan Operations
+  name: LaptopPlan
+  x-path: Plan Operations
+- description: APIs for Archive Plan Operations
+  name: ArchivePlan
+  x-path: Plan Operations
+- description: APIs for Server Plan Operations
+  name: ServerPlan
+  x-path: Plan Operations
+- name: Replication Groups
+  x-path: Replication
+- description: 'The Replication Monitor provides summary information for all Live Sync virtual machines. '
+  name: Replication Monitor
+  x-path: Replication
+- name: Replication Target
+  x-path: Replication
+- description: APIs for Replication Group Operations
+  x-path: Replication
+  name: ReplicationGroup
+- description: APIs for Replication Monitor Pair Operations
+  name: ReplicationMonitor
+  x-path: Replication
+- name: Storage Policy Operations
+  x-path: Storage
+- name: Storage Pool Operations
+  x-path: Storage
+- name: Storage Resource Operations
+  x-path: Storage
+- description: APIs for Tape Operations
+  name: TapeStorage
+  x-path: Storage
+- description: APIs for Storage Pool Operations
+  name: Storage
+  x-path: Storage
+- description: APIs for Cloud Storage Pool Operations
+  name: CloudStorage
+  x-path: Storage
+- description: APIs for Disk Storage Pool Operations
+  name: DiskStorage
+  x-path: Storage
+- description: APIs for Subclient Operations
+  name: Subclient
+  x-merge: Subclient Operations
+- name: More Company Operations
+  x-path: Service Provider Management APIs.Tenants
+- name: Core Operations
+  x-path: Service Provider Management APIs.Service Plans
+- name: Associations
+  x-path: Service Provider Management APIs.Service Plans
+- name: More Operations
+  x-path: Service Provider Management APIs.Service Plans
+- name: File Servers
+  x-path: Service Provider Management APIs.Onboarding Types
+- name: Laptops
+  x-path: Service Provider Management APIs.Onboarding Types
+- name: Virtualization
+  x-path: Service Provider Management APIs.Onboarding Types
+- name: Oracle
+  x-path: Service Provider Management APIs.Onboarding Types
+- name: Sql
+  x-path: Service Provider Management APIs.Onboarding Types
+- name: Applications
+  x-path: Service Provider Management APIs.Onboarding Types
+- name: Reporting
+  x-path: Service Provider Management APIs
+- description: APIs for Syslog Server Operations
+  name: SyslogServer
+  x-merge: Syslog Server
+- name: 5 - Optional Configuration
+  x-path: Service Provider Management APIs.Commvault Backup as a Service (Unmanaged IaaS)
+- name: 4 - Onboarding your hypervisor
+  x-path: Service Provider Management APIs.Commvault Backup as a Service (Unmanaged IaaS)
+- name: 3 - Onboarding your first tenant
+  x-path: Service Provider Management APIs.Commvault Backup as a Service (Unmanaged IaaS)
+- name: 2 - Configuring your Service Catalog
+  x-path: Service Provider Management APIs.Commvault Backup as a Service (Unmanaged IaaS)
+- name: 1 - Initial application setup
+  x-path: Service Provider Management APIs.Commvault Backup as a Service (Unmanaged IaaS)
+- name: 0 - Install Media Agent
+  x-path: Service Provider Management APIs.Commvault Backup as a Service (Unmanaged IaaS)
+- name: QCurl
+  x-path: QCommands
+- description: APIs for Company Operations
+  name: Company
+  x-path: Service Provider Management APIs.Tenants
+- description: Operations to manage Tenant Operators
+  name: Management
+  x-path: Service Provider Management APIs.Tenants.Tenant Operator
+- description: Operations for Tenant Operators.
+  name: Tenant Operator Operations
+  x-path: Service Provider Management APIs.Tenants.Tenant Operator
+- description: APIs for Blackout Window Operations
+  name: BlackoutWindows
+  x-merge: Control Panel Operations.Operation Window Operations
+- description: APIs for Alerts Operations
+  name: Alerts
+  x-merge: Alert Operations
+- description: APIs for Activate Operations
+  name: Activate
+  x-path: Activate Operations
+- description: APIs for Agent Operations
+  name: Agent
+  x-merge: Agent Operations
+- name: Apps
+  x-path: Activate Operations
+- description: APIs for CDM Plan Operations
+  name: CDMPlan
+  x-path: Plan Operations
+
+- name: Compliance
+  x-path: Ediscovery
+- name: Data Interface Pairs
+  x-path: Control Panel Operations
+- description: APIs for Identity Servers Operations
+  name: IdentityServers
+  x-path: Client Operations
+- name: Inventory Operations
+  x-path: Activate Operations
+- name: Entity Operations
+  x-path: Activate Operations
+- description: APIs for Laptop Operations
+  name: Laptop
+  x-merge: Laptop Devices
+- description: APIs for License Operations
+  name: License
+  x-merge: License Operations
+- description: APIs for Network Topology Operations
+  name: NetworkTopology
+  x-merge: Network Topology Operations
+- description: APIs for Office 365 Operations
+  name: Office365
+  x-path: offce 365
+- name: Operation Window Operations
+  x-path: Control Panel Operations
+- description: APIs for Plan Operations
+  name: Plan
+  x-merge: Plan Operations
+- description: APIs for Plan Rule Operations
+  name: PlanRules
+  x-path: Plan Operations
+- description: Operations for Request Manager.
+  name: Request Operations
+  x-path: Activate Operations
+- description: APIs for Role Operations
+  name: Roles
+  x-merge: Role Operations
+- description: APIs for SNMP Configuration Operations
+  name: SNMP
+  x-merge: Control Panel Operations.SNMPV3 configuration
+- name: SNMPV3 configuration
+  x-merge: Control Panel Operations
+- description: APIs for schedule and schedule policy operations
+  name: Schedule
+  x-merge: Schedule and Schedule Policy Operations
+- description: APIs for ServerGroup Operations
+  name: ServerGroup
+  x-merge: Client Group Operations
+- description: APIs for Service Commcells Operations
+  x-path: Client Operations
+  name: ServiceCommcells
+- description: APIs for UserGroup Operations
+  name: UserGroup
+  x-merge: User Group Operations
+- description: APIs for Server Operations
+  name: Servers
+  x-merge: Client Opertions
+- description: APIs for Archive File Server Operations
+  name: ArchiveFileServers
+- description: APIs for Index Server Operations
+  name: IndexServers
+  x-path: Client Operations
+- description: APIs for User Operations
+  name: User
+  x-merge: User Operations
+- description: APIs for Virtual Machines Operations
+  name: VirtualMachines
+  x-merge: Virtualization Operations
+- description: APIs for Databases Operations
+  name: Databases
+  x-merge: Instance Operations
+- name: Hypervisor Operations
+  x-path: Virtualization Operations
+- name: VM Group Operations
+  x-path: Virtualization Operations
+- name: VM Operations
+  x-path: Virtualization Operations
+- name: Hypervisor Operations_v4
+  x-merge: Virtualization Operations.Hypervisor Operations
+- name: VM Group Operations_v4
+  x-merge: Virtualization Operations.VM Group Operations
+- name: VM Operations_v4
+  x-merge: Virtualization Operations.VM Operations
+- name: Instances
+  x-merge: Instance Operations

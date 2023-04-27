@@ -1,0 +1,140 @@
+---
+id: schedule-a-data-crawl
+title: "Schedule a dataCrawl"
+description: "<div class='pane resizableX resizableY request-meta-viewer'>"
+sidebar_label: "Schedule a dataCrawl"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"<div class=\"pane resizableX resizableY request-meta-viewer\">\n <div class=\"pane-content\">\n  <div class=\"requester-contents-group-container\">\n   <div class=\"requester-contents-group-left\">\n    <div class=\"inline-editor-wrapper request-meta-description\">\n     <div class=\"inline-editor-text-wrapper-container\">\n      <div class=\"inline-editor-text-wrapper inline-editor-text-wrapper--editable\">\n       <div class=\"inline-editor-text\">\n        <div>\n         This operation schedules datasource crawl.\n        </div>\n       </div>\n      </div>\n     </div>\n    </div>\n   </div>\n  </div>\n </div>\n</div>\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\">\n                                  #magic___^_^___line\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     repeatUnits\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Schedule Type.\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      1, Minute(s)\n     </li>\n     <li class=\"listbullet\">\n      2, Hourly\n     </li>\n     <li class=\"listbullet\">\n      3, Daily\n     </li>\n     <li class=\"listbullet\">\n      4, Weekly\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr>\n   <td> \n    <p class=\"tabletext\">\n     isActive\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Enable or Disable the Schedule\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      0, Disable\n     </li>\n     <li>\n      1, Enable\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr>\n   <td >\n    <p class=\"tabletext\">\n     day\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Day of the Week\n    </p>\n    <p class=\"tabletext\">\n     Valid values are from 1 to 7, with 1=Sunday\n    </p>\n   </td>\n  </tr>\n                                  #magic___^_^___line\n</table>\n<h2>\n</h2>","operationId":"Schedule a dataCrawl","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"header","name":"Content-Type","required":true,"schema":{"enum":["application/xml"],"example":"application/xml","type":"string"}}],"tags":["Data Cube Operations"],"requestBody":{"content":{"application/xml":{"examples":{"Schedule Crawl In Minutes":{"value":"<DM2ContentIndexing_SEDataSource datasourceId=\"{{datasourceId}}\">\n    <schedule repeatUnits=\"1\" minutes=\"50\" isActive=\"1\"/>\n</DM2ContentIndexing_SEDataSource>"},"Example 1":{"value":"<DM2ContentIndexing_SEDataSource datasourceId=\"{{datasourceId}}\">\n    <schedule repeatUnits=\"2\" minutes=\"30\" isActive=\"1\"/>\n</DM2ContentIndexing_SEDataSource>"}}}}},"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"collections":{"type":"array","items":{"type":"object","properties":{"clientId":{"type":"integer"},"computedCoreName":{"type":"string"},"description":{"type":"string"},"coreName":{"type":"string"},"cloudId":{"type":"integer"},"ownerUserId":{"type":"integer"},"schemaType":{"type":"string"},"createUTCTime":{"type":"integer"},"coreId":{"type":"integer"},"attribute":{"type":"integer"},"datasources":{"type":"array","items":{"type":"object","properties":{"ownerType":{"type":"integer"},"displayName":{"type":"string"},"datasourceGuid":{"type":"string"},"userId":{"type":"integer"},"datasourceType":{"type":"integer"},"datasourceId":{"type":"integer"},"createUTCTime":{"type":"integer"},"attribute":{"type":"integer"},"datasourceName":{"type":"string"},"modifiedByUserId":{"type":"integer"},"modifiedUTCTime":{"type":"integer"},"schedule":{"type":"object","properties":{"hour":{"type":"integer"},"updateUTCTime":{"type":"integer"},"minutes":{"type":"integer"},"repeatUnits":{"type":"integer"},"isActive":{"type":"boolean"},"day":{"type":"integer"},"scheduleId":{"type":"integer"}}},"properties":{"type":"array","items":{"type":"object","properties":{"propertyName":{"type":"string"},"propertyNameSEA":{"type":"string"},"propertyValue":{"type":"string"},"propertyId":{"type":"integer"}}}}}}}}}}},"x-examples":{"Example 1":{"collections":[{"clientId":2,"computedCoreName":"DC_file_SCYLLA_P0_1597860991_1066","description":"","coreName":"SCYLLA_P0_1597860991","cloudId":9,"ownerUserId":1,"schemaType":"file","createUTCTime":1597875392,"coreId":1066,"attribute":0,"datasources":[{"ownerType":1,"displayName":"SCYLLA","datasourceGuid":"8B9E06CA-DF30-4885-B349-97D5B8A7CE28","userId":1,"datasourceType":5,"datasourceId":1066,"createUTCTime":1597875394,"attribute":0,"datasourceName":"SCYLLA_P0_1597860991","modifiedByUserId":1,"modifiedUTCTime":1598790613,"schedule":{"hour":0,"updateUTCTime":1609296142,"minutes":30,"repeatUnits":2,"isActive":true,"day":0,"scheduleId":2},"properties":[{"propertyName":"username","propertyNameSEA":"username","propertyValue":"test\\testuser","propertyId":6},{"propertyName":"password","propertyNameSEA":"password","propertyId":7},{"propertyName":"includedirectoriespath","propertyNameSEA":"includedirectoriespath","propertyValue":"\\\\scylla.commvault.com/venkatjupalli2","propertyId":46},{"propertyName":"doincrementalscan","propertyNameSEA":"doincrementalscan","propertyValue":"True","propertyId":50},{"propertyName":"pushonlymetadata","propertyNameSEA":"pushonlymetadata","propertyValue":"True","propertyId":51},{"propertyName":"includefilters","propertyNameSEA":"includefilters","propertyValue":"*.doc,*.docx,*.xls,*.xlsx,*.ppt,*.pptx,*.msg,*.txt,*.rtf,*.eml,*.pdf,*.htm,*.html,*.csv,*.log,*.ods,*.odt,*.odg,*.odp,*.dot,*.pages,*.xmind","propertyId":52},{"propertyName":"excludefilters","propertyNameSEA":"excludefilters","propertyValue":"C:/Program Files,C:/Program Files (x86),C:/Windows","propertyId":53},{"propertyName":"minumumdocumentsize","propertyNameSEA":"minumumdocumentsize","propertyValue":"0","propertyId":54},{"propertyName":"maximumdocumentsize","propertyNameSEA":"maximumdocumentsize","propertyValue":"52428800","propertyId":55},{"propertyName":"lookupparams","propertyNameSEA":"lookupparams","propertyValue":"[{\"selectFields\":\"department,CountryISOCode,co,cn,title,userPrincipalName,lastLogonTimestamp,slevel_Url_1\",\"primaryKeyMap\":{\"OwnerSID\":\"objectSid\"},\"alias\":{\"department\":\"Department\",\"CountryISOCode\":\"OwnerLocation\",\"co\":\"OwnerCountryName\",\"cn\":\"OwnerDisplayName\",\"title\":\"Designation\",\"userPrincipalName\":\"OwnerPrincipalName\",\"lastLogonTimestamp\":\"OwnerLastLogonTimestamp\",\"slevel_Url_1\":\"EmployeeGroup\"},\"type\":\"datasource\",\"value\":\"796\",\"url\":\"http://dm2perf4.test.cv.com:20000/solr/DC_open_Activate_Nikhil_796\",\"sourceType\":\"solr\"}]","propertyId":76},{"propertyName":"caconfig","propertyNameSEA":"caconfig","propertyValue":"[{\"task\":\"EntityExtractionFields\",\"arguments\":[\"content\"]}]","propertyId":90},{"propertyName":"literalproperties","propertyNameSEA":"literalproperties","propertyValue":"\r\n \r\n \r\n \r\n","propertyId":107},{"propertyName":"statusinfo","propertyNameSEA":"statusinfo","propertyValue":"<?xml version=\"1.0\" encoding=\"utf-16\"?><StatusInfo xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" TotalDocs=\"58\" TotalSizeInBytes=\"232873\" LastModified=\"1598790631413\" LastSyncTime=\"1609241778624\" MaxTotalDocs=\"4066\" MaxTotalSizeInBytes=\"6958798\" MaxTotalSyncTime=\"1598764321348\" MaxSizeSyncTime=\"1598764321348\"><TypeStatusInfo EntitiesCount=\"0\"><FileInfo SourceCount=\"1\" UsersCount=\"2\" SizeAnalyzed=\"1877089\" FilesCount=\"49\" /></TypeStatusInfo></StatusInfo>","propertyId":109},{"propertyName":"roletypename","propertyNameSEA":"roletypename","propertyValue":"Data Analytics","propertyId":112},{"propertyName":"pseudoclientid","propertyNameSEA":"pseudoclientid","propertyValue":"401","propertyId":113},{"propertyName":"subclientid","propertyNameSEA":"subclientid","propertyValue":"1720","propertyId":114},{"propertyName":"appname","propertyNameSEA":"appname","propertyValue":"GDPR","propertyId":115},{"propertyName":"candelete","propertyNameSEA":"candelete","propertyValue":"False","propertyId":116},{"propertyName":"dcplanid","propertyNameSEA":"dcplanid","propertyValue":"102","propertyId":117},{"propertyName":"createclient","propertyNameSEA":"createclient","propertyValue":"archiverClient","propertyId":118},{"propertyName":"accessnodeclientid","propertyNameSEA":"accessnodeclientid","propertyValue":"2","propertyId":119},{"propertyName":"crawltype","propertyNameSEA":"crawltype","propertyValue":"1","propertyId":122},{"propertyName":"hostname","propertyNameSEA":"hostname","propertyValue":"scylla.commvault.com","propertyId":127},{"propertyName":"ostype","propertyNameSEA":"ostype","propertyValue":"OnTap","propertyId":128},{"propertyName":"enablemonitoring","propertyNameSEA":"enablemonitoring","propertyValue":"true","propertyId":129},{"propertyName":"auditserverinfo","propertyNameSEA":"auditserverinfo","propertyValue":"<auditServerInfo cloudId=\"9\" auditCoreName=\"cvcoreaudit2\" modifiedTime=\"2020-08-30T12:30:22.080\"><client clientId=\"2\"/></auditServerInfo>","propertyId":130},{"propertyName":"clientdisplayname","propertyNameSEA":"clientdisplayname","propertyValue":"SCYLLA","propertyId":134}]}]}]}}}}}}},"method":"post","path":"/dcube/schedule","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Schedule a dataCrawl","description":{"content":"<div class=\"pane resizableX resizableY request-meta-viewer\">\n <div class=\"pane-content\">\n  <div class=\"requester-contents-group-container\">\n   <div class=\"requester-contents-group-left\">\n    <div class=\"inline-editor-wrapper request-meta-description\">\n     <div class=\"inline-editor-text-wrapper-container\">\n      <div class=\"inline-editor-text-wrapper inline-editor-text-wrapper--editable\">\n       <div class=\"inline-editor-text\">\n        <div>\n         This operation schedules datasource crawl.\n        </div>\n       </div>\n      </div>\n     </div>\n    </div>\n   </div>\n  </div>\n </div>\n</div>\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\">\n                                  #magic___^_^___line\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     repeatUnits\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Schedule Type.\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      1, Minute(s)\n     </li>\n     <li class=\"listbullet\">\n      2, Hourly\n     </li>\n     <li class=\"listbullet\">\n      3, Daily\n     </li>\n     <li class=\"listbullet\">\n      4, Weekly\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr>\n   <td> \n    <p class=\"tabletext\">\n     isActive\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Enable or Disable the Schedule\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      0, Disable\n     </li>\n     <li>\n      1, Enable\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr>\n   <td >\n    <p class=\"tabletext\">\n     day\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Day of the Week\n    </p>\n    <p class=\"tabletext\">\n     Valid values are from 1 to 7, with 1=Sunday\n    </p>\n   </td>\n  </tr>\n                                  #magic___^_^___line\n</table>\n<h2>\n</h2>","type":"text/plain"},"url":{"path":["dcube","schedule"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/xml"},{"key":"Accept","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"<DM2ContentIndexing_SEDataSource datasourceId=\\\"{{datasourceId}}\\\">\\n    <schedule repeatUnits=\\\"1\\\" minutes=\\\"50\\\" isActive=\\\"1\\\"/>\\n</DM2ContentIndexing_SEDataSource>\"","options":{"raw":{"language":"xml"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/DataCubeOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Schedule a dataCrawl
+
+
+
+<div class="pane resizableX resizableY request-meta-viewer">
+ <div class="pane-content">
+  <div class="requester-contents-group-container">
+   <div class="requester-contents-group-left">
+    <div class="inline-editor-wrapper request-meta-description">
+     <div class="inline-editor-text-wrapper-container">
+      <div class="inline-editor-text-wrapper inline-editor-text-wrapper--editable">
+       <div class="inline-editor-text">
+        <div>
+         This operation schedules datasource crawl.
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+<h2>
+ Request Parameters
+</h2>
+<table border="0" cellpadding="2" cellspacing="0" class="tableintopic">
+                                  #magic___^_^___line
+  <tr align="left" valign="top">
+   <td>
+    <p class="tabletext">
+     Name
+    </p>
+   </td>
+   <td>
+    <p class="tabletext">
+     Description
+    </p>
+   </td>
+  </tr>
+  <tr align="left" valign="top">
+   <td>
+    <p class="tabletext">
+     repeatUnits
+    </p>
+   </td>
+   <td >
+    <p class="tabletext">
+     Schedule Type.
+    </p>
+    <p class="tabletext">
+     Valid values are:
+    </p>
+    <ul class="listbullet">
+     <li class="listbullet">
+      1, Minute(s)
+     </li>
+     <li class="listbullet">
+      2, Hourly
+     </li>
+     <li class="listbullet">
+      3, Daily
+     </li>
+     <li class="listbullet">
+      4, Weekly
+     </li>
+    </ul>
+   </td>
+  </tr>
+  <tr>
+   <td> 
+    <p class="tabletext">
+     isActive
+    </p>
+   </td>
+   <td>
+    <p class="tabletext">
+     Enable or Disable the Schedule
+    </p>
+    <p class="tabletext">
+     Valid values are:
+    </p>
+    <ul class="listbullet">
+     <li class="listbullet">
+      0, Disable
+     </li>
+     <li>
+      1, Enable
+     </li>
+    </ul>
+   </td>
+  </tr>
+  <tr>
+   <td >
+    <p class="tabletext">
+     day
+    </p>
+   </td>
+   <td>
+    <p class="tabletext">
+     Day of the Week
+    </p>
+    <p class="tabletext">
+     Valid values are from 1 to 7, with 1=Sunday
+    </p>
+   </td>
+  </tr>
+                                  #magic___^_^___line
+</table>
+<h2>
+</h2>
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Content-Type","required":true,"schema":{"enum":["application/xml"],"example":"application/xml","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>collections</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"clientId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"computedCoreName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"description"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"coreName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"cloudId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"ownerUserId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"schemaType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"createUTCTime"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"coreId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"attribute"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>datasources</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"ownerType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"displayName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"datasourceGuid"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"userId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"datasourceType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"datasourceId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"createUTCTime"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"attribute"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"datasourceName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"modifiedByUserId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"modifiedUTCTime"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>schedule</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"hour"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"updateUTCTime"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"minutes"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"repeatUnits"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"isActive"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"day"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"scheduleId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>properties</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"propertyName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"propertyNameSEA"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"propertyValue"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"propertyId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"collections\": [\n    {\n      \"clientId\": 0,\n      \"computedCoreName\": \"string\",\n      \"description\": \"string\",\n      \"coreName\": \"string\",\n      \"cloudId\": 0,\n      \"ownerUserId\": 0,\n      \"schemaType\": \"string\",\n      \"createUTCTime\": 0,\n      \"coreId\": 0,\n      \"attribute\": 0,\n      \"datasources\": [\n        {\n          \"ownerType\": 0,\n          \"displayName\": \"string\",\n          \"datasourceGuid\": \"string\",\n          \"userId\": 0,\n          \"datasourceType\": 0,\n          \"datasourceId\": 0,\n          \"createUTCTime\": 0,\n          \"attribute\": 0,\n          \"datasourceName\": \"string\",\n          \"modifiedByUserId\": 0,\n          \"modifiedUTCTime\": 0,\n          \"schedule\": {\n            \"hour\": 0,\n            \"updateUTCTime\": 0,\n            \"minutes\": 0,\n            \"repeatUnits\": 0,\n            \"isActive\": true,\n            \"day\": 0,\n            \"scheduleId\": 0\n          },\n          \"properties\": [\n            {\n              \"propertyName\": \"string\",\n              \"propertyNameSEA\": \"string\",\n              \"propertyValue\": \"string\",\n              \"propertyId\": 0\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

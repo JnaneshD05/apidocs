@@ -1,0 +1,35 @@
+---
+id: enable-database-add-on
+title: "Enable Database Add-on"
+description: "This operation enables the server plan database backup options."
+sidebar_label: "Enable Database Add-on"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation enables the server plan database backup options.\n","operationId":"Enable Database Add-on","parameters":[{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/json","type":"string"}},{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"path","name":"PlanId","required":true,"schema":{"type":"string"}}],"tags":["Plan Operations"],"responses":{"200":{"description":"OK"}},"method":"put","path":"/v2/Plan/{PlanId}/AddOn/Database/Action/Enable","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Enable Database Add-on","description":{"content":"This operation enables the server plan database backup options.\n","type":"text/plain"},"url":{"path":["v2","Plan",":PlanId","AddOn","Database","Action","Enable"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"PlanId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""}],"method":"PUT"}}
+sidebar_class_name: "put api-method"
+info_path: docs/api/cv/PlanOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Enable Database Add-on
+
+
+
+This operation enables the server plan database backup options.
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"PlanId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/json","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

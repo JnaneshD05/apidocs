@@ -1,0 +1,38 @@
+---
+id: get-snm-phosts
+title: "Get SNMP Servers"
+description: "Get list of SNMP hosts for alert notification"
+sidebar_label: "Get SNMP Servers"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["SNMP"],"responses":{"200":{"description":"Success","content":{"application/json":{"schema":{"type":"object","properties":{"SNMPHosts":{"type":"array","items":{"description":"SNMP host configuration","properties":{"authenticationAlgorithm":{"description":"Authentication algorithm of SNMP host","enum":["HMAC_MD5","HMAC_SHA","HMAC128_SHA224","HMAC192_SHA256","HMAC256_SHA384","HMAC384_SHA512"],"type":"string"},"id":{"description":"Id of SNMP host","format":"int32","type":"integer"},"name":{"description":"Name of SNMP host","type":"string"},"privacyAlgorithm":{"description":"Privacy algorithm of SNMP host","enum":["None","CBC_DES","CFB128_AES128","CFB128_AES192","CFB128_AES256","CBC_AES128","CBC_AES192","CBC_AES256"],"type":"string"},"userName":{"description":"Username used to access SNMP host","type":"string"}},"title":"SNMPConfigurationSummary","type":"object"}}}}}}},"404":{"description":"Requested Details not found"}},"description":"Get list of SNMP hosts for alert notification","operationId":"GetSNMPhosts","method":"get","path":"/V4/Snmp","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"securitySchemes":{"token":{"in":"header","name":"Authtoken","type":"apiKey"}},"info":{"version":"1.0.0","contact":{},"description":"## Welcome\n\nWelcome to Commvault's Rest APIs. You can explore our APIs in [Postman](https://getpostman.com) using the predefined requests we created\n\nThe current version of this documentation is **Commvault Platform Release 2022E**.\n\nYou can access LTS documentation here:\n\n[Feature Release 11.20](https://documenter.getpostman.com/view/2046098/UVR7KoPJ)\n\n[Feature Release 11.24](https://documenter.getpostman.com/view/2046098/UVR7KoPL)\n\nFor more V2 and Latest APIs, please visit your API Explorer page.  \n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=107350_1.htm)\n\n## Setup\n\nTo get started, [create an environment in Postman](https://www.getpostman.com/docs/environments), select that environment, and set your environment variables by entering necessary values in the `0 - Setup/Environment Setup` pre-request script ([documentation on pre-request scripts](http://www.getpostman.com/docs/pre_request_scripts)). Also, Some of our calls might have dependencies. `GET`/`PUT`/`DELETE` may only work after an item is created with a `POST`.\n\nThe same set of APIs can be used for both XML and JSON. If you want to get equivalent JSON for the XML, use our [API](https://api.commvault.com/#fe2fa795-dd7c-4416-857d-75704b52be8c) for conversion.\n\n**Note:** Swagger Documentation for V2/Latest APIs are present in the following URL:  \n`{ServerURL}/sandbox/apiexplorer`\n\n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=45551.htm)","title":"Commvault Rest API - Public"},"postman":{"name":"Get SNMP Servers","description":{"content":"Get list of SNMP hosts for alert notification","type":"text/plain"},"url":{"path":["V4","Snmp"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/zAllV4APIs/commvault-rest-api-public
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get SNMP Servers
+
+
+
+Get list of SNMP hosts for alert notification
+
+<div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+Success
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>SNMPHosts</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"authenticationAlgorithm"} required={false} deprecated={undefined} schemaDescription={"Authentication algorithm of SNMP host"} schemaName={"string"} qualifierMessage={"**Possible values:** [`HMAC_MD5`, `HMAC_SHA`, `HMAC128_SHA224`, `HMAC192_SHA256`, `HMAC256_SHA384`, `HMAC384_SHA512`]"} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"id"} required={false} deprecated={undefined} schemaDescription={"Id of SNMP host"} schemaName={"int32"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={"Name of SNMP host"} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"privacyAlgorithm"} required={false} deprecated={undefined} schemaDescription={"Privacy algorithm of SNMP host"} schemaName={"string"} qualifierMessage={"**Possible values:** [`None`, `CBC_DES`, `CFB128_AES128`, `CFB128_AES192`, `CFB128_AES256`, `CBC_AES128`, `CBC_AES192`, `CBC_AES256`]"} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"userName"} required={false} deprecated={undefined} schemaDescription={"Username used to access SNMP host"} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"SNMPHosts\": [\n    {\n      \"authenticationAlgorithm\": \"HMAC_MD5\",\n      \"id\": 0,\n      \"name\": \"string\",\n      \"privacyAlgorithm\": \"None\",\n      \"userName\": \"string\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem><TabItem label={"404"} value={"404"}><div>
+
+Requested Details not found
+
+</div><div></div></TabItem></ApiTabs></div>
+      

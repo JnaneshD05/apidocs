@@ -1,0 +1,3859 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Replication
+- name: Replication Monitor
+- name: Replication Groups
+- name: Replication Target
+paths:
+  /Replications/Monitors/streaming:
+    get:
+      deprecated: false
+      description: This operation returns a list of replicated VMs.
+      operationId: Replicated VMs
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: subclientId
+        schema:
+          example: 0
+          format: int32
+          type: integer
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - schema:
+          type: string
+        in: query
+        name: advanced
+      - schema:
+          type: string
+        in: query
+        name: operationType
+      summary: Replicated VMs
+      tags:
+      - Replication Monitor
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vApp:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        description:
+                          type: string
+                        isVirtualLab:
+                          type: boolean
+                        operationType:
+                          type: integer
+                        vAppEntity:
+                          type: object
+                          properties:
+                            vAppId:
+                              type: integer
+                            vAppName:
+                              type: string
+                        clientList:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              clientName:
+                                type: string
+                              backupsetId:
+                                type: integer
+                              clientId:
+                                type: integer
+                              GUID:
+                                type: string
+                              backupsetName:
+                                type: string
+                              _type_:
+                                type: integer
+                              entityId:
+                                type: integer
+                x-examples:
+                  Example 1:
+                    vApp:
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 19
+                        vAppName: testadmin-0121
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 13
+                        vAppName: testadmin-1
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 22
+                        vAppName: testadmin-1a0121
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 11
+                        vAppName: admin2
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 24
+                        vAppName: testadmin-211a0121
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 12
+                        vAppName: admin5
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 44
+                        vAppName: AFFailoverGrp
+                      clientList:
+                      - clientName: AFVM1
+                        backupsetId: 6
+                        clientId: 94
+                        GUID: 502641cb-e459-703e-6841-5bf73b35cc63
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 11
+                      - clientName: AFVM2
+                        backupsetId: 6
+                        clientId: 95
+                        GUID: 502617fa-4606-a9af-b0b4-72734ca778b2
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 9
+                      - clientName: AFVM3
+                        backupsetId: 6
+                        clientId: 96
+                        GUID: 50261d2b-f72d-dc57-281a-f75ef545106d
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 10
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 40
+                        vAppName: automation-tst-fgX1
+                      clientList:
+                      - clientName: failovervm
+                        backupsetId: 6
+                        clientId: 76
+                        GUID: 5026fe9a-f1f8-2137-3936-e3815fa6cf23
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 8
+                      - clientName: failovervm1
+                        backupsetId: 6
+                        clientId: 77
+                        GUID: 5026edff-a12d-3a5a-a2e7-f7287040a6bf
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 7
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 32
+                        vAppName: automation-tst-fgX2
+                      clientList:
+                      - clientName: failovervm
+                        backupsetId: 6
+                        clientId: 76
+                        GUID: 5026fe9a-f1f8-2137-3936-e3815fa6cf23
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 8
+                      - clientName: failovervm1
+                        backupsetId: 6
+                        clientId: 77
+                        GUID: 5026edff-a12d-3a5a-a2e7-f7287040a6bf
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 7
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 41
+                        vAppName: automation-tst-fgXX1
+                      clientList:
+                      - clientName: failovervm
+                        backupsetId: 6
+                        clientId: 76
+                        GUID: 5026fe9a-f1f8-2137-3936-e3815fa6cf23
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 8
+                      - clientName: failovervm1
+                        backupsetId: 6
+                        clientId: 77
+                        GUID: 5026edff-a12d-3a5a-a2e7-f7287040a6bf
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 7
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 25
+                        vAppName: fg1-automation1-21
+                      clientList:
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 26
+                        vAppName: fg1-automation1x21
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 29
+                        vAppName: fg1-automation1y21
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 30
+                        vAppName: fg1-automation1z21
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 9
+                        vAppName: hfgh
+                      clientList:
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 10
+                        vAppName: hfgh1
+                      clientList:
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 27
+                        vAppName: javagui-fg
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 28
+                        vAppName: javagui-fg1
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 46
+                        vAppName: NewDRGroup
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 39
+                        vAppName: poc-failover
+                      clientList:
+                      - clientName: failovervm
+                        backupsetId: 6
+                        clientId: 76
+                        GUID: 5026fe9a-f1f8-2137-3936-e3815fa6cf23
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 8
+                      - clientName: failovervm1
+                        backupsetId: 6
+                        clientId: 77
+                        GUID: 5026edff-a12d-3a5a-a2e7-f7287040a6bf
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 7
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 8
+                        vAppName: testAuto
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 7
+                        vAppName: testNoAuto
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+              examples:
+                Example 1:
+                  value:
+                    vApp:
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 19
+                        vAppName: testadmin-0121
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 13
+                        vAppName: testadmin-1
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 22
+                        vAppName: testadmin-1a0121
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 11
+                        vAppName: admin2
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 24
+                        vAppName: testadmin-211a0121
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 12
+                        vAppName: admin5
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 44
+                        vAppName: AFFailoverGrp
+                      clientList:
+                      - clientName: AFVM1
+                        backupsetId: 6
+                        clientId: 94
+                        GUID: 502641cb-e459-703e-6841-5bf73b35cc63
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 11
+                      - clientName: AFVM2
+                        backupsetId: 6
+                        clientId: 95
+                        GUID: 502617fa-4606-a9af-b0b4-72734ca778b2
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 9
+                      - clientName: AFVM3
+                        backupsetId: 6
+                        clientId: 96
+                        GUID: 50261d2b-f72d-dc57-281a-f75ef545106d
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 10
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 40
+                        vAppName: automation-tst-fgX1
+                      clientList:
+                      - clientName: failovervm
+                        backupsetId: 6
+                        clientId: 76
+                        GUID: 5026fe9a-f1f8-2137-3936-e3815fa6cf23
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 8
+                      - clientName: failovervm1
+                        backupsetId: 6
+                        clientId: 77
+                        GUID: 5026edff-a12d-3a5a-a2e7-f7287040a6bf
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 7
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 32
+                        vAppName: automation-tst-fgX2
+                      clientList:
+                      - clientName: failovervm
+                        backupsetId: 6
+                        clientId: 76
+                        GUID: 5026fe9a-f1f8-2137-3936-e3815fa6cf23
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 8
+                      - clientName: failovervm1
+                        backupsetId: 6
+                        clientId: 77
+                        GUID: 5026edff-a12d-3a5a-a2e7-f7287040a6bf
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 7
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 41
+                        vAppName: automation-tst-fgXX1
+                      clientList:
+                      - clientName: failovervm
+                        backupsetId: 6
+                        clientId: 76
+                        GUID: 5026fe9a-f1f8-2137-3936-e3815fa6cf23
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 8
+                      - clientName: failovervm1
+                        backupsetId: 6
+                        clientId: 77
+                        GUID: 5026edff-a12d-3a5a-a2e7-f7287040a6bf
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 7
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 25
+                        vAppName: fg1-automation1-21
+                      clientList:
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 26
+                        vAppName: fg1-automation1x21
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 29
+                        vAppName: fg1-automation1y21
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 30
+                        vAppName: fg1-automation1z21
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 9
+                        vAppName: hfgh
+                      clientList:
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 10
+                        vAppName: hfgh1
+                      clientList:
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 27
+                        vAppName: javagui-fg
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 28
+                        vAppName: javagui-fg1
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 46
+                        vAppName: NewDRGroup
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 39
+                        vAppName: poc-failover
+                      clientList:
+                      - clientName: failovervm
+                        backupsetId: 6
+                        clientId: 76
+                        GUID: 5026fe9a-f1f8-2137-3936-e3815fa6cf23
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 8
+                      - clientName: failovervm1
+                        backupsetId: 6
+                        clientId: 77
+                        GUID: 5026edff-a12d-3a5a-a2e7-f7287040a6bf
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 7
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 8
+                        vAppName: testAuto
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+                    - description: ''
+                      isVirtualLab: false
+                      operationType: 16
+                      vAppEntity:
+                        vAppId: 7
+                        vAppName: testNoAuto
+                      clientList:
+                      - clientName: testboot
+                        backupsetId: 6
+                        clientId: 62
+                        GUID: 5026707a-0a15-d7c6-69a9-9f781514a932
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 3
+                      - clientName: testboot1
+                        backupsetId: 6
+                        clientId: 63
+                        GUID: 5026ddf0-3cb1-ba7c-1417-0328aeb53db1
+                        backupsetName: defaultBackupSet
+                        _type_: 3
+                        entityId: 4
+  '/Replications/Monitors/streaming/{replicationPairId}':
+    delete:
+      deprecated: false
+      description: This operation deletes replicated VM from Replication monitor.
+      operationId: Replicated VM
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: replicationPairId
+        required: true
+        schema:
+          type: string
+      summary: Replicated VM
+      tags:
+      - Replication Monitor
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: ''
+                    errorCode: 0
+  '/Task/{taskId}/Details':
+    get:
+      deprecated: false
+      description: This operation returns details of Replication group.
+      operationId: Replication Group Details
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: taskId
+        required: true
+        schema:
+          type: string
+      summary: Replication Group Details
+      tags:
+      - Replication Groups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskInfo:
+                    type: object
+                    properties:
+                      associations:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            srmReportSet:
+                              type: integer
+                            srmTemplateId:
+                              type: integer
+                            subclientId:
+                              type: integer
+                            clientGroupId:
+                              type: integer
+                            storagePolicyId:
+                              type: integer
+                            copyId:
+                              type: integer
+                            applicationId:
+                              type: integer
+                            clientName:
+                              type: string
+                            displayName:
+                              type: string
+                            backupsetId:
+                              type: integer
+                            instanceId:
+                              type: integer
+                            sidbStoreId:
+                              type: integer
+                            clientId:
+                              type: integer
+                            subclientName:
+                              type: string
+                            srmTemplateName:
+                              type: string
+                            agentlessPolicyId:
+                              type: integer
+                            mediaAgentId:
+                              type: integer
+                            backupsetName:
+                              type: string
+                            workflowId:
+                              type: integer
+                            instanceName:
+                              type: string
+                            _type_:
+                              type: integer
+                            trackingPolicyId:
+                              type: integer
+                            appName:
+                              type: string
+                            flags:
+                              type: object
+                              properties:
+                                exclude:
+                                  type: boolean
+                      task:
+                        type: object
+                        properties:
+                          description:
+                            type: string
+                          ownerId:
+                            type: integer
+                          runUserId:
+                            type: integer
+                          taskType:
+                            type: integer
+                          ownerName:
+                            type: string
+                          alertId:
+                            type: integer
+                          GUID:
+                            type: string
+                          policyType:
+                            type: integer
+                          associatedObjects:
+                            type: integer
+                          taskName:
+                            type: string
+                          taskId:
+                            type: integer
+                          securityAssociations:
+                            type: object
+                            properties:
+                              ownerAssociations:
+                                type: object
+                                properties: {}
+                          originalCC:
+                            type: object
+                            properties:
+                              commCellId:
+                                type: integer
+                          taskSecurity:
+                            type: object
+                            properties:
+                              associatedUserGroups:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    userGroupId:
+                                      type: integer
+                                    _type_:
+                                      type: integer
+                                    userGroupName:
+                                      type: string
+                              ownerCapabilities:
+                                type: object
+                                properties: {}
+                          createAs:
+                            type: object
+                            properties:
+                              user:
+                                type: object
+                                properties:
+                                  user:
+                                    type: object
+                                    properties:
+                                      userName:
+                                        type: string
+                                      userId:
+                                        type: integer
+                          taskFlags:
+                            type: object
+                            properties:
+                              isEdgeDrive:
+                                type: boolean
+                              isEZOperation:
+                                type: boolean
+                              forDDB:
+                                type: boolean
+                              uninstalled:
+                                type: boolean
+                              isSystem:
+                                type: boolean
+                              disabled:
+                                type: boolean
+                          task:
+                            type: object
+                            properties:
+                              taskName:
+                                type: string
+                              taskId:
+                                type: integer
+                      appGroup:
+                        type: object
+                        properties: {}
+                      subTasks:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            subTask:
+                              type: object
+                              properties:
+                                subTaskOrder:
+                                  type: integer
+                                subTaskName:
+                                  type: string
+                                subTaskType:
+                                  type: integer
+                                flags:
+                                  type: integer
+                                operationType:
+                                  type: integer
+                                subTaskId:
+                                  type: integer
+                                subTask:
+                                  type: object
+                                  properties:
+                                    subtaskId:
+                                      type: integer
+                                    subtaskName:
+                                      type: string
+                            pattern:
+                              type: object
+                              properties:
+                                active_end_occurence:
+                                  type: integer
+                                freq_subday_interval:
+                                  type: integer
+                                freq_type:
+                                  type: integer
+                                patternId:
+                                  type: integer
+                                flags:
+                                  type: integer
+                                description:
+                                  type: string
+                                active_end_time:
+                                  type: integer
+                                active_end_date:
+                                  type: integer
+                                skipOccurence:
+                                  type: integer
+                                skipDayNumber:
+                                  type: integer
+                                active_start_time:
+                                  type: integer
+                                freq_restart_interval:
+                                  type: integer
+                                active_start_date:
+                                  type: integer
+                                freq_interval:
+                                  type: integer
+                                freq_relative_interval:
+                                  type: integer
+                                name:
+                                  type: string
+                                freq_recurrence_factor:
+                                  type: integer
+                                calendar:
+                                  type: object
+                                  properties:
+                                    calendarName:
+                                      type: string
+                                    calendarId:
+                                      type: integer
+                                timeZone:
+                                  type: object
+                                  properties:
+                                    TimeZoneID:
+                                      type: integer
+                            options:
+                              type: object
+                              properties:
+                                adminOpts:
+                                  type: object
+                                  properties:
+                                    updateOption:
+                                      type: object
+                                      properties:
+                                        invokeLevel:
+                                          type: integer
+                                restoreOptions:
+                                  type: object
+                                  properties:
+                                    useAllocationPolicyForRestore:
+                                      type: boolean
+                                    restoreACLsType:
+                                      type: integer
+                                    virtualServerRstOption:
+                                      type: object
+                                      properties:
+                                        isVolumeBrowse:
+                                          type: boolean
+                                        isDiskBrowse:
+                                          type: boolean
+                                        viewType:
+                                          type: integer
+                                        isFileBrowse:
+                                          type: boolean
+                                        userPassword:
+                                          type: object
+                                          properties:
+                                            userName:
+                                              type: string
+                                        diskLevelVMRestoreOption:
+                                          type: object
+                                          properties:
+                                            powerOnVmAfterRestore:
+                                              type: boolean
+                                            maxNumOfVMPerJob:
+                                              type: integer
+                                        allocationPolicy:
+                                          type: object
+                                          properties:
+                                            vmAllocPolicyName:
+                                              type: string
+                                            vmAllocPolicyId:
+                                              type: integer
+                                    volumeRstOption:
+                                      type: object
+                                      properties:
+                                        volumeLeveRestore:
+                                          type: boolean
+                                        volumeLevelRestoreType:
+                                          type: integer
+                                        destinationVendor:
+                                          type: integer
+                                    browseOption:
+                                      type: object
+                                      properties:
+                                        listMedia:
+                                          type: boolean
+                                        useExactIndex:
+                                          type: boolean
+                                        noImage:
+                                          type: boolean
+                                        commCellId:
+                                          type: integer
+                                        mediaOption:
+                                          type: object
+                                          properties:
+                                            mediaAgent:
+                                              type: object
+                                              properties: {}
+                                            library:
+                                              type: object
+                                              properties: {}
+                                            copyPrecedence:
+                                              type: object
+                                              properties:
+                                                copyPrecedence:
+                                                  type: integer
+                                                copyPrecedenceApplicable:
+                                                  type: boolean
+                                            drivePool:
+                                              type: object
+                                              properties: {}
+                                    commonOptions:
+                                      type: object
+                                      properties:
+                                        systemStateBackup:
+                                          type: boolean
+                                        clusterDBBackedup:
+                                          type: boolean
+                                        isFromBrowseBackup:
+                                          type: boolean
+                                        powerRestore:
+                                          type: boolean
+                                        restoreToDisk:
+                                          type: boolean
+                                        offlineMiningRestore:
+                                          type: boolean
+                                        preserveLevel:
+                                          type: integer
+                                        stripLevelType:
+                                          type: integer
+                                        restoreACLs:
+                                          type: boolean
+                                        stripLevel:
+                                          type: integer
+                                        overwriteFiles:
+                                          type: boolean
+                                        onePassRestore:
+                                          type: boolean
+                                        unconditionalOverwrite:
+                                          type: boolean
+                                        detectRegularExpression:
+                                          type: boolean
+                                        wildCard:
+                                          type: boolean
+                                    destination:
+                                      type: object
+                                      properties:
+                                        isLegalHold:
+                                          type: boolean
+                                    storagePolicy:
+                                      type: object
+                                      properties:
+                                        copyId:
+                                          type: integer
+                                        copyName:
+                                          type: string
+                                    sharePointRstOption:
+                                      type: object
+                                      properties:
+                                        is90OrUpgradedClient:
+                                          type: boolean
+                x-examples:
+                  Example 1:
+                    taskInfo:
+                      associations:
+                      - srmReportSet: 0
+                        srmTemplateId: 0
+                        subclientId: 9
+                        clientGroupId: 0
+                        storagePolicyId: 0
+                        copyId: 0
+                        applicationId: 106
+                        clientName: vsa-vc6.test.com
+                        displayName: vsa-vc6.test.com
+                        backupsetId: 7
+                        instanceId: 3
+                        sidbStoreId: 0
+                        clientId: 4
+                        subclientName: DRAuto
+                        srmTemplateName: ''
+                        agentlessPolicyId: 0
+                        mediaAgentId: 0
+                        backupsetName: defaultBackupSet
+                        workflowId: 0
+                        instanceName: VMware
+                        _type_: 7
+                        trackingPolicyId: 0
+                        appName: Virtual Server
+                        flags:
+                          exclude: false
+                      task:
+                        description: ''
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 2
+                        ownerName: Administrator
+                        alertId: 0
+                        GUID: aa000112-0512-41b0-a3b3-3f9bf626f2a1
+                        policyType: 0
+                        associatedObjects: 0
+                        taskName: ''
+                        taskId: 57
+                        securityAssociations:
+                          ownerAssociations: {}
+                        originalCC:
+                          commCellId: 2
+                        taskSecurity:
+                          associatedUserGroups:
+                          - userGroupId: 1
+                            _type_: 15
+                            userGroupName: master
+                          - userGroupId: 3
+                            _type_: 15
+                            userGroupName: View All
+                          ownerCapabilities: {}
+                        createAs:
+                          user:
+                            user:
+                              userName: testadmin
+                              userId: 1
+                        taskFlags:
+                          isEdgeDrive: false
+                          isEZOperation: false
+                          forDDB: false
+                          uninstalled: false
+                          isSystem: false
+                          disabled: false
+                        task:
+                          taskName: ''
+                          taskId: 57
+                      appGroup: {}
+                      subTasks:
+                      - subTask:
+                          subTaskOrder: 0
+                          subTaskName: DRAuto_Immediately after the backup job completes
+                          subTaskType: 3
+                          flags: 0
+                          operationType: 1007
+                          subTaskId: 60
+                          subTask:
+                            subtaskId: 60
+                            subtaskName: DRAuto_Immediately after the backup job completes
+                        pattern:
+                          active_end_occurence: 0
+                          freq_subday_interval: 0
+                          freq_type: 4096
+                          patternId: 22
+                          flags: 0
+                          description: After Each Backup Job Schedule
+                          active_end_time: 0
+                          active_end_date: 0
+                          skipOccurence: 0
+                          skipDayNumber: 0
+                          active_start_time: 0
+                          freq_restart_interval: 0
+                          active_start_date: 1519948800
+                          freq_interval: 0
+                          freq_relative_interval: 0
+                          name: ''
+                          freq_recurrence_factor: 4096
+                          calendar:
+                            calendarName: Standard
+                            calendarId: 1
+                          timeZone:
+                            TimeZoneID: 1000
+                        options:
+                          adminOpts:
+                            updateOption:
+                              invokeLevel: 0
+                          restoreOptions:
+                            useAllocationPolicyForRestore: true
+                            restoreACLsType: 3
+                            virtualServerRstOption:
+                              isVolumeBrowse: false
+                              isDiskBrowse: true
+                              viewType: 0
+                              isFileBrowse: false
+                              userPassword:
+                                userName: root
+                              diskLevelVMRestoreOption:
+                                powerOnVmAfterRestore: true
+                                maxNumOfVMPerJob: 0
+                              allocationPolicy:
+                                vmAllocPolicyName: DRAuto
+                                vmAllocPolicyId: 2
+                            volumeRstOption:
+                              volumeLeveRestore: false
+                              volumeLevelRestoreType: 1
+                              destinationVendor: 0
+                            browseOption:
+                              listMedia: false
+                              useExactIndex: false
+                              noImage: true
+                              commCellId: 2
+                              mediaOption:
+                                mediaAgent: {}
+                                library: {}
+                                copyPrecedence:
+                                  copyPrecedence: 0
+                                  copyPrecedenceApplicable: false
+                                drivePool: {}
+                            commonOptions:
+                              systemStateBackup: false
+                              clusterDBBackedup: false
+                              isFromBrowseBackup: true
+                              powerRestore: false
+                              restoreToDisk: false
+                              offlineMiningRestore: false
+                              preserveLevel: 1
+                              stripLevelType: 0
+                              restoreACLs: true
+                              stripLevel: 0
+                              overwriteFiles: true
+                              onePassRestore: false
+                              unconditionalOverwrite: true
+                              detectRegularExpression: true
+                              wildCard: false
+                            destination:
+                              isLegalHold: false
+                            storagePolicy:
+                              copyId: 9
+                              copyName: Secondary
+                            sharePointRstOption:
+                              is90OrUpgradedClient: false
+              examples:
+                Replication Group details:
+                  value:
+                    taskInfo:
+                      associations:
+                      - srmReportSet: 0
+                        srmTemplateId: 0
+                        subclientId: 9
+                        clientGroupId: 0
+                        storagePolicyId: 0
+                        copyId: 0
+                        applicationId: 106
+                        clientName: vsa-vc6.test.com
+                        displayName: vsa-vc6.test.com
+                        backupsetId: 7
+                        instanceId: 3
+                        sidbStoreId: 0
+                        clientId: 4
+                        subclientName: DRAuto
+                        srmTemplateName: ''
+                        agentlessPolicyId: 0
+                        mediaAgentId: 0
+                        backupsetName: defaultBackupSet
+                        workflowId: 0
+                        instanceName: VMware
+                        _type_: 7
+                        trackingPolicyId: 0
+                        appName: Virtual Server
+                        flags:
+                          exclude: false
+                      task:
+                        description: ''
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 2
+                        ownerName: Administrator
+                        alertId: 0
+                        GUID: aa000112-0512-41b0-a3b3-3f9bf626f2a1
+                        policyType: 0
+                        associatedObjects: 0
+                        taskName: ''
+                        taskId: 57
+                        securityAssociations:
+                          ownerAssociations: {}
+                        originalCC:
+                          commCellId: 2
+                        taskSecurity:
+                          associatedUserGroups:
+                          - userGroupId: 1
+                            _type_: 15
+                            userGroupName: master
+                          - userGroupId: 3
+                            _type_: 15
+                            userGroupName: View All
+                          ownerCapabilities: {}
+                        createAs:
+                          user:
+                            user:
+                              userName: testadmin
+                              userId: 1
+                        taskFlags:
+                          isEdgeDrive: false
+                          isEZOperation: false
+                          forDDB: false
+                          uninstalled: false
+                          isSystem: false
+                          disabled: false
+                        task:
+                          taskName: ''
+                          taskId: 57
+                      appGroup: {}
+                      subTasks:
+                      - subTask:
+                          subTaskOrder: 0
+                          subTaskName: DRAuto_Immediately after the backup job completes
+                          subTaskType: 3
+                          flags: 0
+                          operationType: 1007
+                          subTaskId: 60
+                          subTask:
+                            subtaskId: 60
+                            subtaskName: DRAuto_Immediately after the backup job completes
+                        pattern:
+                          active_end_occurence: 0
+                          freq_subday_interval: 0
+                          freq_type: 4096
+                          patternId: 22
+                          flags: 0
+                          description: After Each Backup Job Schedule
+                          active_end_time: 0
+                          active_end_date: 0
+                          skipOccurence: 0
+                          skipDayNumber: 0
+                          active_start_time: 0
+                          freq_restart_interval: 0
+                          active_start_date: 1519948800
+                          freq_interval: 0
+                          freq_relative_interval: 0
+                          name: ''
+                          freq_recurrence_factor: 4096
+                          calendar:
+                            calendarName: Standard
+                            calendarId: 1
+                          timeZone:
+                            TimeZoneID: 1000
+                        options:
+                          adminOpts:
+                            updateOption:
+                              invokeLevel: 0
+                          restoreOptions:
+                            useAllocationPolicyForRestore: true
+                            restoreACLsType: 3
+                            virtualServerRstOption:
+                              isVolumeBrowse: false
+                              isDiskBrowse: true
+                              viewType: 0
+                              isFileBrowse: false
+                              userPassword:
+                                userName: root
+                              diskLevelVMRestoreOption:
+                                powerOnVmAfterRestore: true
+                                maxNumOfVMPerJob: 0
+                              allocationPolicy:
+                                vmAllocPolicyName: DRAuto
+                                vmAllocPolicyId: 2
+                            volumeRstOption:
+                              volumeLeveRestore: false
+                              volumeLevelRestoreType: 1
+                              destinationVendor: 0
+                            browseOption:
+                              listMedia: false
+                              useExactIndex: false
+                              noImage: true
+                              commCellId: 2
+                              mediaOption:
+                                mediaAgent: {}
+                                library: {}
+                                copyPrecedence:
+                                  copyPrecedence: 0
+                                  copyPrecedenceApplicable: false
+                                drivePool: {}
+                            commonOptions:
+                              systemStateBackup: false
+                              clusterDBBackedup: false
+                              isFromBrowseBackup: true
+                              powerRestore: false
+                              restoreToDisk: false
+                              offlineMiningRestore: false
+                              preserveLevel: 1
+                              stripLevelType: 0
+                              restoreACLs: true
+                              stripLevel: 0
+                              overwriteFiles: true
+                              onePassRestore: false
+                              unconditionalOverwrite: true
+                              detectRegularExpression: true
+                              wildCard: false
+                            destination:
+                              isLegalHold: false
+                            storagePolicy:
+                              copyId: 9
+                              copyName: Secondary
+                            sharePointRstOption:
+                              is90OrUpgradedClient: false
+  '/Task/{taskId}/Operation/DELETE':
+    post:
+      deprecated: false
+      description: This operation deletes Replication group.
+      operationId: Delete Replication Group
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: taskId
+        required: true
+        schema:
+          type: string
+      summary: Delete Replication Group
+      tags:
+      - Replication Groups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                opType:
+                  type: integer
+                taskEntities:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      _type_:
+                        type: integer
+                      taskId:
+                        type: integer
+                taskIds:
+                  type: array
+                  items:
+                    type: integer
+              x-examples:
+                Example 1:
+                  opType: 3
+                  taskEntities:
+                  - _type_: 69
+                    taskId: 2
+                  taskIds:
+                  - 2
+            examples:
+              Delete Replication Group:
+                value:
+                  opType: 3
+                  taskEntities:
+                  - _type_: 69
+                    taskId: 0
+                  taskIds:
+                  - 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorCode: 0
+  /ModifyTask:
+    post:
+      deprecated: false
+      description: This operation adds VM to replication group.
+      operationId: Add VM to Replication Group
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Add VM to Replication Group
+      tags:
+      - Replication Groups
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taskInfo:
+                  type: object
+                  properties:
+                    taskOperation:
+                      type: integer
+                    associations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          srmReportSet:
+                            type: integer
+                          srmTemplateId:
+                            type: integer
+                          subclientId:
+                            type: integer
+                          clientGroupId:
+                            type: integer
+                          storagePolicyId:
+                            type: integer
+                          copyId:
+                            type: integer
+                          applicationId:
+                            type: integer
+                          clientName:
+                            type: string
+                          displayName:
+                            type: string
+                          backupsetId:
+                            type: integer
+                          instanceId:
+                            type: integer
+                          sidbStoreId:
+                            type: integer
+                          clientId:
+                            type: integer
+                          subclientName:
+                            type: string
+                          srmTemplateName:
+                            type: string
+                          agentlessPolicyId:
+                            type: integer
+                          mediaAgentId:
+                            type: integer
+                          backupsetName:
+                            type: string
+                          workflowId:
+                            type: integer
+                          instanceName:
+                            type: string
+                          trackingPolicyId:
+                            type: integer
+                          appName:
+                            type: string
+                          flags:
+                            type: object
+                            properties:
+                              exclude:
+                                type: boolean
+                    task:
+                      type: object
+                      properties:
+                        description:
+                          type: string
+                        ownerId:
+                          type: integer
+                        runUserId:
+                          type: integer
+                        taskType:
+                          type: integer
+                        ownerName:
+                          type: string
+                        alertId:
+                          type: integer
+                        GUID:
+                          type: string
+                        initiatedFrom:
+                          type: integer
+                        policyType:
+                          type: integer
+                        associatedObjects:
+                          type: integer
+                        taskName:
+                          type: string
+                        taskId:
+                          type: integer
+                        securityAssociations:
+                          type: object
+                          properties:
+                            ownerAssociations:
+                              type: object
+                              properties:
+                                categoryPermission:
+                                  type: object
+                                  properties: {}
+                        originalCC:
+                          type: object
+                          properties:
+                            commCellId:
+                              type: integer
+                            flags:
+                              type: object
+                              properties: {}
+                        taskSecurity:
+                          type: object
+                          properties:
+                            entityDataSecurity:
+                              type: object
+                              properties: {}
+                            associatedUserGroups:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  userGroupId:
+                                    type: integer
+                                  userGroupName:
+                                    type: string
+                            ownerCapabilities:
+                              type: object
+                              properties: {}
+                            changePassword:
+                              type: object
+                              properties: {}
+                        createAs:
+                          type: object
+                          properties:
+                            user:
+                              type: object
+                              properties:
+                                user:
+                                  type: object
+                                  properties:
+                                    userName:
+                                      type: string
+                                    userId:
+                                      type: integer
+                                    flags:
+                                      type: object
+                                      properties: {}
+                            userGroup:
+                              type: object
+                              properties:
+                                flags:
+                                  type: object
+                                  properties: {}
+                        alert:
+                          type: object
+                          properties:
+                            flags:
+                              type: object
+                              properties: {}
+                        taskFlags:
+                          type: object
+                          properties:
+                            isEdgeDrive:
+                              type: boolean
+                            isEZOperation:
+                              type: boolean
+                            forDDB:
+                              type: boolean
+                            uninstalled:
+                              type: boolean
+                            isSystem:
+                              type: boolean
+                            disabled:
+                              type: boolean
+                        script:
+                          type: object
+                          properties:
+                            mode:
+                              type: integer
+                            userCreation:
+                              type: integer
+                            scriptCredentials:
+                              type: object
+                              properties: {}
+                        task:
+                          type: object
+                          properties:
+                            taskName:
+                              type: string
+                            taskId:
+                              type: integer
+                            flags:
+                              type: object
+                              properties: {}
+                    appGroup:
+                      type: object
+                      properties: {}
+                    subTasks:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          subTask:
+                            type: object
+                            properties:
+                              subTaskOrder:
+                                type: integer
+                              subTaskName:
+                                type: string
+                              subTaskType:
+                                type: integer
+                              flags:
+                                type: integer
+                              operationType:
+                                type: integer
+                              subTaskId:
+                                type: integer
+                              subTask:
+                                type: object
+                                properties:
+                                  subtaskId:
+                                    type: integer
+                                  subtaskName:
+                                    type: string
+                          pattern:
+                            type: object
+                            properties:
+                              active_end_occurence:
+                                type: integer
+                              freq_subday_interval:
+                                type: integer
+                              freq_type:
+                                type: integer
+                              patternId:
+                                type: integer
+                              flags:
+                                type: integer
+                              description:
+                                type: string
+                              active_end_time:
+                                type: integer
+                              active_end_date:
+                                type: integer
+                              skipOccurence:
+                                type: integer
+                              skipDayNumber:
+                                type: integer
+                              active_start_time:
+                                type: integer
+                              freq_restart_interval:
+                                type: integer
+                              active_start_date:
+                                type: integer
+                              freq_interval:
+                                type: integer
+                              freq_relative_interval:
+                                type: integer
+                              name:
+                                type: string
+                              freq_recurrence_factor:
+                                type: integer
+                              calendar:
+                                type: object
+                                properties:
+                                  calendarName:
+                                    type: string
+                                  calendarId:
+                                    type: integer
+                              timeZone:
+                                type: object
+                                properties:
+                                  TimeZoneID:
+                                    type: integer
+                          options:
+                            type: object
+                            properties:
+                              backupOpts:
+                                type: object
+                                properties:
+                                  backupLevel:
+                                    type: integer
+                                  vsaBackupOptions:
+                                    type: object
+                                    properties: {}
+                                  dataOpt:
+                                    type: object
+                                    properties:
+                                      autoCopy:
+                                        type: boolean
+                              adminOpts:
+                                type: object
+                                properties:
+                                  contentIndexingOption:
+                                    type: object
+                                    properties:
+                                      subClientBasedAnalytics:
+                                        type: boolean
+                              restoreOptions:
+                                type: object
+                                properties:
+                                  replicationType:
+                                    type: integer
+                                  virtualServerRstOption:
+                                    type: object
+                                    properties:
+                                      isVolumeBrowse:
+                                        type: boolean
+                                      isVirtualLab:
+                                        type: boolean
+                                      esxServer:
+                                        type: string
+                                      isAttachToNewVM:
+                                        type: boolean
+                                      isBlockLevelReplication:
+                                        type: boolean
+                                      isDiskBrowse:
+                                        type: boolean
+                                      viewType:
+                                        type: integer
+                                      replicationGuid:
+                                        type: string
+                                      isFileBrowse:
+                                        type: boolean
+                                      vCenterInstance:
+                                        type: object
+                                        properties:
+                                          clientId:
+                                            type: integer
+                                          clientName:
+                                            type: string
+                                          instanceName:
+                                            type: string
+                                          appName:
+                                            type: string
+                                          instanceId:
+                                            type: integer
+                                          applicationId:
+                                            type: integer
+                                      diskLevelVMRestoreOption:
+                                        type: object
+                                        properties:
+                                          vmFolderName:
+                                            type: string
+                                          passUnconditionalOverride:
+                                            type: boolean
+                                          dataCenterName:
+                                            type: string
+                                          hostOrCluster:
+                                            type: string
+                                          useVcloudCredentials:
+                                            type: boolean
+                                          diskOption:
+                                            type: integer
+                                          vmName:
+                                            type: string
+                                          powerOnVmAfterRestore:
+                                            type: boolean
+                                          esxServerName:
+                                            type: string
+                                          transportMode:
+                                            type: integer
+                                          maxNumOfVMPerJob:
+                                            type: integer
+                                          userPassword:
+                                            type: object
+                                            properties:
+                                              domainName:
+                                                type: string
+                                              userName:
+                                                type: string
+                                          advancedRestoreOptions:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                esxHost:
+                                                  type: string
+                                                destComputerUserName:
+                                                  type: string
+                                                resourcePoolPath:
+                                                  type: string
+                                                vmSize:
+                                                  type: string
+                                                destComputerName:
+                                                  type: string
+                                                datacenter:
+                                                  type: string
+                                                newName:
+                                                  type: string
+                                                Datastore:
+                                                  type: string
+                                                name:
+                                                  type: string
+                                                guid:
+                                                  type: string
+                                                nics:
+                                                  type: array
+                                                  items:
+                                                    type: object
+                                                    properties:
+                                                      sourceNetwork:
+                                                        type: string
+                                                      destinationNetwork:
+                                                        type: string
+                                                      subnetId:
+                                                        type: string
+                                                      sourceNetworkId:
+                                                        type: string
+                                                      networkName:
+                                                        type: string
+                                          dataStore:
+                                            type: object
+                                            properties:
+                                              totalSizeInBytes:
+                                                type: integer
+                                              freeSpaceInBytes:
+                                                type: integer
+                                              dataStoreName:
+                                                type: string
+                                      allocationPolicy:
+                                        type: object
+                                        properties:
+                                          vmAllocPolicyName:
+                                            type: string
+                                          vmAllocPolicyId:
+                                            type: integer
+                                          policyType:
+                                            type: integer
+                                          instanceEntity:
+                                            type: object
+                                            properties:
+                                              flags:
+                                                type: object
+                                                properties: {}
+                                          flags:
+                                            type: object
+                                            properties: {}
+                                          region:
+                                            type: object
+                                            properties:
+                                              flags:
+                                                type: object
+                                                properties: {}
+                                  volumeRstOption:
+                                    type: object
+                                    properties:
+                                      volumeLeveRestore:
+                                        type: boolean
+                                      volumeLevelRestoreType:
+                                        type: integer
+                                      destinationVendor:
+                                        type: integer
+                                  browseOption:
+                                    type: object
+                                    properties:
+                                      listMedia:
+                                        type: boolean
+                                      useExactIndex:
+                                        type: boolean
+                                      noImage:
+                                        type: boolean
+                                      commCellId:
+                                        type: integer
+                                      showDeletedItems:
+                                        type: boolean
+                                      mediaOption:
+                                        type: object
+                                        properties:
+                                          mediaAgent:
+                                            type: object
+                                            properties:
+                                              mediaAgentId:
+                                                type: integer
+                                          library:
+                                            type: object
+                                            properties:
+                                              libraryId:
+                                                type: integer
+                                          copyPrecedence:
+                                            type: object
+                                            properties:
+                                              copyPrecedence:
+                                                type: integer
+                                              synchronousCopyPrecedence:
+                                                type: integer
+                                              copyPrecedenceApplicable:
+                                                type: boolean
+                                          drivePool:
+                                            type: object
+                                            properties:
+                                              drivePoolId:
+                                                type: integer
+                                          drive:
+                                            type: object
+                                            properties:
+                                              driveId:
+                                                type: integer
+                                      backupset:
+                                        type: object
+                                        properties:
+                                          clientId:
+                                            type: integer
+                                          instanceName:
+                                            type: string
+                                          backupsetId:
+                                            type: integer
+                                          applicationId:
+                                            type: integer
+                                      timeZone:
+                                        type: object
+                                        properties:
+                                          TimeZoneID:
+                                            type: integer
+                                          TimeZoneName:
+                                            type: string
+                                      timeRange:
+                                        type: object
+                                        properties: {}
+                                  commonOptions:
+                                    type: object
+                                    properties:
+                                      systemStateBackup:
+                                        type: boolean
+                                      clusterDBBackedup:
+                                        type: boolean
+                                      powerRestore:
+                                        type: boolean
+                                      restoreToDisk:
+                                        type: boolean
+                                      offlineMiningRestore:
+                                        type: boolean
+                                      copyToObjectStore:
+                                        type: boolean
+                                      onePassRestore:
+                                        type: boolean
+                                      revert:
+                                        type: boolean
+                                      syncRestore:
+                                        type: boolean
+                                      detectRegularExpression:
+                                        type: boolean
+                                      wildCard:
+                                        type: boolean
+                                  destination:
+                                    type: object
+                                    properties:
+                                      isLegalHold:
+                                        type: boolean
+                                      noOfStreams:
+                                        type: integer
+                                      inPlace:
+                                        type: boolean
+                                      destClient:
+                                        type: object
+                                        properties:
+                                          clientId:
+                                            type: integer
+                                          clientName:
+                                            type: string
+                                  fileOption:
+                                    type: object
+                                    properties:
+                                      sourceItem:
+                                        type: array
+                                        items:
+                                          type: string
+                                      browseFilters:
+                                        type: array
+                                        items:
+                                          type: string
+                                  distributedAppsRestoreOptions:
+                                    type: object
+                                    properties:
+                                      distributedRestore:
+                                        type: boolean
+                                      isMultiNodeRestore:
+                                        type: boolean
+                                  sharePointRstOption:
+                                    type: object
+                                    properties:
+                                      is90OrUpgradedClient:
+                                        type: boolean
+                              commonOpts:
+                                type: object
+                                properties:
+                                  jobDescription:
+                                    type: string
+                                  jobRetryOpts:
+                                    type: object
+                                    properties:
+                                      killRunningJobWhenTotalRunningTimeExpires:
+                                        type: boolean
+                                      numberOfRetries:
+                                        type: integer
+                                      enableNumberOfRetries:
+                                        type: boolean
+                                      runningTime:
+                                        type: object
+                                        properties:
+                                          enableTotalRunningTime:
+                                            type: boolean
+                                          totalRunningTime:
+                                            type: integer
+                                  startUpOpts:
+                                    type: object
+                                    properties:
+                                      startInSuspendedState:
+                                        type: boolean
+                                      useDefaultPriority:
+                                        type: boolean
+                                      priority:
+                                        type: integer
+                                  perfJobOpts:
+                                    type: object
+                                    properties:
+                                      rstPerfJobOpts:
+                                        type: object
+                                        properties:
+                                          mediaReadSpeed:
+                                            type: boolean
+                                          pipelineTransmittingSpeed:
+                                            type: boolean
+              x-examples:
+                Example 1:
+                  taskInfo:
+                    taskOperation: 1
+                    associations:
+                    - srmReportSet: 0
+                      srmTemplateId: 0
+                      subclientId: 18
+                      clientGroupId: 0
+                      storagePolicyId: 0
+                      copyId: 0
+                      applicationId: 106
+                      clientName: vsa-vc6.test.com
+                      displayName: vsa-vc6.test.com
+                      backupsetId: 10
+                      instanceId: 3
+                      sidbStoreId: 0
+                      clientId: 4
+                      subclientName: FGJavaGUI2
+                      srmTemplateName: ''
+                      agentlessPolicyId: 0
+                      mediaAgentId: 0
+                      backupsetName: TestFailoverGroups
+                      workflowId: 0
+                      instanceName: VMware
+                      trackingPolicyId: 0
+                      appName: Virtual Server
+                      flags:
+                        exclude: false
+                    task:
+                      description: ''
+                      ownerId: 1
+                      runUserId: 1
+                      taskType: 2
+                      ownerName: Administrator
+                      alertId: 0
+                      GUID: 7c213ff7-3184-482c-af38-fc42c3e71a5e
+                      initiatedFrom: 1
+                      policyType: 0
+                      associatedObjects: 0
+                      taskName: ''
+                      taskId: 155
+                      securityAssociations:
+                        ownerAssociations:
+                          categoryPermission: {}
+                      originalCC:
+                        commCellId: 2
+                        flags: {}
+                      taskSecurity:
+                        entityDataSecurity: {}
+                        associatedUserGroups:
+                        - userGroupId: 1
+                          userGroupName: master
+                        - userGroupId: 3
+                          userGroupName: View All
+                        ownerCapabilities: {}
+                        changePassword: {}
+                      createAs:
+                        user:
+                          user:
+                            userName: testadmin
+                            userId: 1
+                            flags: {}
+                        userGroup:
+                          flags: {}
+                      alert:
+                        flags: {}
+                      taskFlags:
+                        isEdgeDrive: false
+                        isEZOperation: false
+                        forDDB: false
+                        uninstalled: false
+                        isSystem: false
+                        disabled: false
+                      script:
+                        mode: 2
+                        userCreation: 0
+                        scriptCredentials: {}
+                      task:
+                        taskName: ''
+                        taskId: 155
+                        flags: {}
+                    appGroup: {}
+                    subTasks:
+                    - subTask:
+                        subTaskOrder: 0
+                        subTaskName: FGJavaGUISC2
+                        subTaskType: 3
+                        flags: 0
+                        operationType: 1007
+                        subTaskId: 160
+                        subTask:
+                          subtaskId: 160
+                          subtaskName: FGJavaGUISC2
+                      pattern:
+                        active_end_occurence: 0
+                        freq_subday_interval: 0
+                        freq_type: 4096
+                        patternId: 38
+                        flags: 0
+                        description: After Each Backup Job Schedule
+                        active_end_time: 0
+                        active_end_date: 0
+                        skipOccurence: 0
+                        skipDayNumber: 0
+                        active_start_time: 0
+                        freq_restart_interval: 0
+                        active_start_date: 1521158400
+                        freq_interval: 0
+                        freq_relative_interval: 0
+                        name: ''
+                        freq_recurrence_factor: 4096
+                        calendar:
+                          calendarName: Standard
+                          calendarId: 1
+                        timeZone:
+                          TimeZoneID: 64
+                      options:
+                        backupOpts:
+                          backupLevel: 2
+                          vsaBackupOptions: {}
+                          dataOpt:
+                            autoCopy: false
+                        adminOpts:
+                          contentIndexingOption:
+                            subClientBasedAnalytics: false
+                        restoreOptions:
+                          replicationType: 0
+                          virtualServerRstOption:
+                            isVolumeBrowse: false
+                            isVirtualLab: false
+                            esxServer: ''
+                            isAttachToNewVM: false
+                            isBlockLevelReplication: false
+                            isDiskBrowse: true
+                            viewType: 0
+                            replicationGuid: dc085ee9-7bfc-41f1-838f-181875ad4e73
+                            isFileBrowse: false
+                            vCenterInstance:
+                              clientId: 4
+                              clientName: vsa-vc6.test.com
+                              instanceName: VMware
+                              appName: Virtual Server
+                              instanceId: 3
+                              applicationId: 106
+                            diskLevelVMRestoreOption:
+                              vmFolderName: ''
+                              passUnconditionalOverride: false
+                              dataCenterName: ''
+                              hostOrCluster: 172.19.116.139
+                              useVcloudCredentials: false
+                              diskOption: 0
+                              vmName: ''
+                              powerOnVmAfterRestore: true
+                              esxServerName: vsa-vc6.test.com
+                              transportMode: 0
+                              maxNumOfVMPerJob: 0
+                              userPassword:
+                                domainName: ''
+                                userName: test/testuser
+                              advancedRestoreOptions:
+                              - esxHost: 172.19.116.139
+                                destComputerUserName: ''
+                                resourcePoolPath: /Automation
+                                vmSize: ''
+                                destComputerName: ''
+                                datacenter: ''
+                                newName: ACVM1DRAuto
+                                Datastore: datastore193
+                                name: ACVM1
+                                guid: 5026fad1-aa4d-8aed-9274-8f0bc7671163
+                                nics:
+                                - sourceNetwork: Any Network
+                                  destinationNetwork: VM Network 3
+                              - esxHost: 172.19.116.139
+                                destComputerUserName: ''
+                                resourcePoolPath: /Regression
+                                vmSize: ''
+                                destComputerName: ''
+                                datacenter: ''
+                                newName: JGVM3_FGJAVAGUI
+                                Datastore: datastore1
+                                name: JGVM3
+                                guid: 50262a09-aaf6-1da0-e605-5b2eea6b78d9
+                                nics:
+                                - subnetId: ''
+                                  sourceNetwork: VM Network
+                                  sourceNetworkId: ''
+                                  networkName: ''
+                                  destinationNetwork: VM Network
+                              - esxHost: 172.19.116.139
+                                destComputerUserName: ''
+                                resourcePoolPath: /Regression
+                                vmSize: ''
+                                destComputerName: ''
+                                datacenter: ''
+                                newName: JGVM4_FGJAVAGUI
+                                Datastore: datastore192
+                                name: JGVM4
+                                guid: 502641d1-ec3b-ddb6-3aea-4f64c0c33bc4
+                                nics:
+                                - subnetId: ''
+                                  sourceNetwork: VM Network
+                                  sourceNetworkId: ''
+                                  networkName: ''
+                                  destinationNetwork: VM Network
+                              dataStore:
+                                totalSizeInBytes: 0
+                                freeSpaceInBytes: 0
+                                dataStoreName: ''
+                            allocationPolicy:
+                              vmAllocPolicyName: DRAuto
+                              vmAllocPolicyId: 2
+                              policyType: 0
+                              instanceEntity:
+                                flags: {}
+                              flags: {}
+                              region:
+                                flags: {}
+                          volumeRstOption:
+                            volumeLeveRestore: false
+                            volumeLevelRestoreType: 1
+                            destinationVendor: 1
+                          browseOption:
+                            listMedia: false
+                            useExactIndex: false
+                            noImage: false
+                            commCellId: 2
+                            showDeletedItems: true
+                            mediaOption:
+                              mediaAgent:
+                                mediaAgentId: 0
+                              library:
+                                libraryId: 0
+                              copyPrecedence:
+                                copyPrecedence: 0
+                                synchronousCopyPrecedence: 1
+                                copyPrecedenceApplicable: false
+                              drivePool:
+                                drivePoolId: 0
+                              drive:
+                                driveId: 0
+                            backupset:
+                              clientId: 4
+                              instanceName: VMware
+                              backupsetId: 10
+                              applicationId: 106
+                            timeZone:
+                              TimeZoneID: 64
+                              TimeZoneName: '(UTC-08:00) Pacific Time (US & Canada)'
+                            timeRange: {}
+                          commonOptions:
+                            systemStateBackup: false
+                            clusterDBBackedup: false
+                            powerRestore: false
+                            restoreToDisk: false
+                            offlineMiningRestore: false
+                            copyToObjectStore: false
+                            onePassRestore: false
+                            revert: false
+                            syncRestore: false
+                            detectRegularExpression: true
+                            wildCard: false
+                          destination:
+                            isLegalHold: false
+                            noOfStreams: 0
+                            inPlace: false
+                            destClient:
+                              clientId: 3
+                              clientName: drorchestration
+                          fileOption:
+                            sourceItem:
+                            - /5026fad1-aa4d-8aed-9274-8f0bc7671163
+                            - /50262a09-aaf6-1da0-e605-5b2eea6b78d9
+                            - /502641d1-ec3b-ddb6-3aea-4f64c0c33bc4
+                            browseFilters:
+                            - <?xml version='1.0' encoding='UTF-8'?><databrowse_Query type="0" queryId="0" />
+                          distributedAppsRestoreOptions:
+                            distributedRestore: false
+                            isMultiNodeRestore: false
+                          sharePointRstOption:
+                            is90OrUpgradedClient: false
+                        commonOpts:
+                          jobDescription: ''
+                          jobRetryOpts:
+                            killRunningJobWhenTotalRunningTimeExpires: false
+                            numberOfRetries: 0
+                            enableNumberOfRetries: false
+                            runningTime:
+                              enableTotalRunningTime: false
+                              totalRunningTime: 3600
+                          startUpOpts:
+                            startInSuspendedState: false
+                            useDefaultPriority: true
+                            priority: 166
+                          perfJobOpts:
+                            rstPerfJobOpts:
+                              mediaReadSpeed: false
+                              pipelineTransmittingSpeed: false
+            examples:
+              Add VM to Replication Group:
+                value:
+                  taskInfo:
+                    taskOperation: 1
+                    associations:
+                    - srmReportSet: 0
+                      srmTemplateId: 0
+                      subclientId: 18
+                      clientGroupId: 0
+                      storagePolicyId: 0
+                      copyId: 0
+                      applicationId: 106
+                      clientName: vsa-vc6.test.com
+                      displayName: vsa-vc6.test.com
+                      backupsetId: 10
+                      instanceId: 3
+                      sidbStoreId: 0
+                      clientId: 4
+                      subclientName: FGJavaGUI2
+                      srmTemplateName: ''
+                      agentlessPolicyId: 0
+                      mediaAgentId: 0
+                      backupsetName: TestFailoverGroups
+                      workflowId: 0
+                      instanceName: VMware
+                      trackingPolicyId: 0
+                      appName: Virtual Server
+                      flags:
+                        exclude: false
+                    task:
+                      description: ''
+                      ownerId: 1
+                      runUserId: 1
+                      taskType: 2
+                      ownerName: Administrator
+                      alertId: 0
+                      GUID: 7c213ff7-3184-482c-af38-fc42c3e71a5e
+                      initiatedFrom: 1
+                      policyType: 0
+                      associatedObjects: 0
+                      taskName: ''
+                      taskId: 155
+                      securityAssociations:
+                        ownerAssociations:
+                          categoryPermission: {}
+                      originalCC:
+                        commCellId: 2
+                        flags: {}
+                      taskSecurity:
+                        entityDataSecurity: {}
+                        associatedUserGroups:
+                        - userGroupId: 1
+                          userGroupName: master
+                        - userGroupId: 3
+                          userGroupName: View All
+                        ownerCapabilities: {}
+                        changePassword: {}
+                      createAs:
+                        user:
+                          user:
+                            userName: testadmin
+                            userId: 1
+                            flags: {}
+                        userGroup:
+                          flags: {}
+                      alert:
+                        flags: {}
+                      taskFlags:
+                        isEdgeDrive: false
+                        isEZOperation: false
+                        forDDB: false
+                        uninstalled: false
+                        isSystem: false
+                        disabled: false
+                      script:
+                        mode: 2
+                        userCreation: 0
+                        scriptCredentials: {}
+                      task:
+                        taskName: ''
+                        taskId: 155
+                        flags: {}
+                    appGroup: {}
+                    subTasks:
+                    - subTask:
+                        subTaskOrder: 0
+                        subTaskName: FGJavaGUISC2
+                        subTaskType: 3
+                        flags: 0
+                        operationType: 1007
+                        subTaskId: 160
+                        subTask:
+                          subtaskId: 160
+                          subtaskName: FGJavaGUISC2
+                      pattern:
+                        active_end_occurence: 0
+                        freq_subday_interval: 0
+                        freq_type: 4096
+                        patternId: 38
+                        flags: 0
+                        description: After Each Backup Job Schedule
+                        active_end_time: 0
+                        active_end_date: 0
+                        skipOccurence: 0
+                        skipDayNumber: 0
+                        active_start_time: 0
+                        freq_restart_interval: 0
+                        active_start_date: 1521158400
+                        freq_interval: 0
+                        freq_relative_interval: 0
+                        name: ''
+                        freq_recurrence_factor: 4096
+                        calendar:
+                          calendarName: Standard
+                          calendarId: 1
+                        timeZone:
+                          TimeZoneID: 64
+                      options:
+                        backupOpts:
+                          backupLevel: 2
+                          vsaBackupOptions: {}
+                          dataOpt:
+                            autoCopy: false
+                        adminOpts:
+                          contentIndexingOption:
+                            subClientBasedAnalytics: false
+                        restoreOptions:
+                          replicationType: 0
+                          virtualServerRstOption:
+                            isVolumeBrowse: false
+                            isVirtualLab: false
+                            esxServer: ''
+                            isAttachToNewVM: false
+                            isBlockLevelReplication: false
+                            isDiskBrowse: true
+                            viewType: 0
+                            replicationGuid: dc085ee9-7bfc-41f1-838f-181875ad4e73
+                            isFileBrowse: false
+                            vCenterInstance:
+                              clientId: 4
+                              clientName: vsa-vc6.test.com
+                              instanceName: VMware
+                              appName: Virtual Server
+                              instanceId: 3
+                              applicationId: 106
+                            diskLevelVMRestoreOption:
+                              vmFolderName: ''
+                              passUnconditionalOverride: false
+                              dataCenterName: ''
+                              hostOrCluster: 172.19.116.139
+                              useVcloudCredentials: false
+                              diskOption: 0
+                              vmName: ''
+                              powerOnVmAfterRestore: true
+                              esxServerName: vsa-vc6.test.com
+                              transportMode: 0
+                              maxNumOfVMPerJob: 0
+                              userPassword:
+                                domainName: ''
+                                userName: test/testuser
+                              advancedRestoreOptions:
+                              - esxHost: 172.19.116.139
+                                destComputerUserName: ''
+                                resourcePoolPath: /Automation
+                                vmSize: ''
+                                destComputerName: ''
+                                datacenter: ''
+                                newName: ACVM1DRAuto
+                                Datastore: datastore193
+                                name: ACVM1
+                                guid: 5026fad1-aa4d-8aed-9274-8f0bc7671163
+                                nics:
+                                - sourceNetwork: Any Network
+                                  destinationNetwork: VM Network 3
+                              - esxHost: 172.19.116.139
+                                destComputerUserName: ''
+                                resourcePoolPath: /Regression
+                                vmSize: ''
+                                destComputerName: ''
+                                datacenter: ''
+                                newName: JGVM3_FGJAVAGUI
+                                Datastore: datastore1
+                                name: JGVM3
+                                guid: 50262a09-aaf6-1da0-e605-5b2eea6b78d9
+                                nics:
+                                - subnetId: ''
+                                  sourceNetwork: VM Network
+                                  sourceNetworkId: ''
+                                  networkName: ''
+                                  destinationNetwork: VM Network
+                              - esxHost: 172.19.116.139
+                                destComputerUserName: ''
+                                resourcePoolPath: /Regression
+                                vmSize: ''
+                                destComputerName: ''
+                                datacenter: ''
+                                newName: JGVM4_FGJAVAGUI
+                                Datastore: datastore192
+                                name: JGVM4
+                                guid: 502641d1-ec3b-ddb6-3aea-4f64c0c33bc4
+                                nics:
+                                - subnetId: ''
+                                  sourceNetwork: VM Network
+                                  sourceNetworkId: ''
+                                  networkName: ''
+                                  destinationNetwork: VM Network
+                              dataStore:
+                                totalSizeInBytes: 0
+                                freeSpaceInBytes: 0
+                                dataStoreName: ''
+                            allocationPolicy:
+                              vmAllocPolicyName: DRAuto
+                              vmAllocPolicyId: 2
+                              policyType: 0
+                              instanceEntity:
+                                flags: {}
+                              flags: {}
+                              region:
+                                flags: {}
+                          volumeRstOption:
+                            volumeLeveRestore: false
+                            volumeLevelRestoreType: 1
+                            destinationVendor: 1
+                          browseOption:
+                            listMedia: false
+                            useExactIndex: false
+                            noImage: false
+                            commCellId: 2
+                            showDeletedItems: true
+                            mediaOption:
+                              mediaAgent:
+                                mediaAgentId: 0
+                              library:
+                                libraryId: 0
+                              copyPrecedence:
+                                copyPrecedence: 0
+                                synchronousCopyPrecedence: 1
+                                copyPrecedenceApplicable: false
+                              drivePool:
+                                drivePoolId: 0
+                              drive:
+                                driveId: 0
+                            backupset:
+                              clientId: 4
+                              instanceName: VMware
+                              backupsetId: 10
+                              applicationId: 106
+                            timeZone:
+                              TimeZoneID: 64
+                              TimeZoneName: '(UTC-08:00) Pacific Time (US & Canada)'
+                            timeRange: {}
+                          commonOptions:
+                            systemStateBackup: false
+                            clusterDBBackedup: false
+                            powerRestore: false
+                            restoreToDisk: false
+                            offlineMiningRestore: false
+                            copyToObjectStore: false
+                            onePassRestore: false
+                            revert: false
+                            syncRestore: false
+                            detectRegularExpression: true
+                            wildCard: false
+                          destination:
+                            isLegalHold: false
+                            noOfStreams: 0
+                            inPlace: false
+                            destClient:
+                              clientId: 3
+                              clientName: drorchestration
+                          fileOption:
+                            sourceItem:
+                            - /5026fad1-aa4d-8aed-9274-8f0bc7671163
+                            - /50262a09-aaf6-1da0-e605-5b2eea6b78d9
+                            - /502641d1-ec3b-ddb6-3aea-4f64c0c33bc4
+                            browseFilters:
+                            - <?xml version='1.0' encoding='UTF-8'?><databrowse_Query type="0" queryId="0" />
+                          distributedAppsRestoreOptions:
+                            distributedRestore: false
+                            isMultiNodeRestore: false
+                          sharePointRstOption:
+                            is90OrUpgradedClient: false
+                        commonOpts:
+                          jobDescription: ''
+                          jobRetryOpts:
+                            killRunningJobWhenTotalRunningTimeExpires: false
+                            numberOfRetries: 0
+                            enableNumberOfRetries: false
+                            runningTime:
+                              enableTotalRunningTime: false
+                              totalRunningTime: 3600
+                          startUpOpts:
+                            startInSuspendedState: false
+                            useDefaultPriority: true
+                            priority: 166
+                          perfJobOpts:
+                            rstPerfJobOpts:
+                              mediaReadSpeed: false
+                              pipelineTransmittingSpeed: false
+  '/ReplicationGroups/{ReplicationGroupID}/testfailover':
+    post:
+      deprecated: false
+      description: This operation triggers a Test Failover job and returns a Job ID in the response.
+      operationId: Test Failover - Replication Group
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      - description: ''
+        in: path
+        name: ReplicationGroupID
+        required: true
+        schema:
+          type: string
+      summary: Test Failover - Replication Group
+      tags:
+      - Replication Groups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  repGroupJobIds:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        jobIds:
+                          type: array
+                          items:
+                            type: string
+                x-examples:
+                  Example 1:
+                    repGroupJobIds:
+                    - jobIds:
+                      - '1328078'
+              examples:
+                Example 1:
+                  value:
+                    repGroupJobIds:
+                    - jobIds:
+                      - '1328078'
+  /Replications/Groups:
+    get:
+      deprecated: false
+      description: This operation returns list of Replication groups.
+      operationId: Get Replication Groups
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Replication Groups
+      tags:
+      - Replication Groups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskDetail:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        associations:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              clientName:
+                                type: string
+                              displayName:
+                                type: string
+                              clientId:
+                                type: integer
+                        task:
+                          type: object
+                          properties:
+                            taskId:
+                              type: integer
+                            taskFlags:
+                              type: object
+                              properties:
+                                disabled:
+                                  type: boolean
+                        subTasks:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              subTask:
+                                type: object
+                                properties:
+                                  subTaskName:
+                                    type: string
+                                  subTaskId:
+                                    type: integer
+                              options:
+                                type: object
+                                properties:
+                                  restoreOptions:
+                                    type: object
+                                    properties:
+                                      virtualServerRstOption:
+                                        type: object
+                                        properties:
+                                          allocationPolicy:
+                                            type: object
+                                            properties:
+                                              vmAllocPolicyName:
+                                                type: string
+                                              vmAllocPolicyId:
+                                                type: integer
+                x-examples:
+                  Example 1:
+                    taskDetail:
+                    - associations:
+                      - clientName: vsa-vc6.test.com
+                        displayName: vsa-vc6.test.com
+                        clientId: 4
+                      task:
+                        taskId: 135
+                        taskFlags:
+                          disabled: true
+                      subTasks:
+                      - subTask:
+                          subTaskName: TestFailover_Immediately after the backup job completes
+                          subTaskId: 139
+                        options:
+                          restoreOptions:
+                            virtualServerRstOption:
+                              allocationPolicy:
+                                vmAllocPolicyName: TestFailover
+                                vmAllocPolicyId: 3
+                    - associations:
+                      - clientName: vsa-vc6.test.com
+                        displayName: vsa-vc6.test.com
+                        clientId: 4
+                      task:
+                        taskId: 140
+                        taskFlags:
+                          disabled: true
+                      subTasks:
+                      - subTask:
+                          subTaskName: TestFailoverGroups_Immediately after the backup job completes
+                          subTaskId: 145
+                        options:
+                          restoreOptions:
+                            virtualServerRstOption:
+                              allocationPolicy:
+                                vmAllocPolicyName: FailoverGroups
+                                vmAllocPolicyId: 4
+                    - associations:
+                      - clientName: vsa-vc6.test.com
+                        displayName: vsa-vc6.test.com
+                        clientId: 4
+                      task:
+                        taskId: 57
+                        taskFlags:
+                          disabled: false
+                      subTasks:
+                      - subTask:
+                          subTaskName: DRAuto_Immediately after the backup job completes
+                          subTaskId: 60
+                        options:
+                          restoreOptions:
+                            virtualServerRstOption:
+                              allocationPolicy:
+                                vmAllocPolicyName: DRAuto
+                                vmAllocPolicyId: 2
+              examples:
+                Get list of Replication Groups:
+                  value:
+                    taskDetail:
+                    - associations:
+                      - clientName: vsa-vc6.test.com
+                        displayName: vsa-vc6.test.com
+                        clientId: 4
+                      task:
+                        taskId: 135
+                        taskFlags:
+                          disabled: true
+                      subTasks:
+                      - subTask:
+                          subTaskName: TestFailover_Immediately after the backup job completes
+                          subTaskId: 139
+                        options:
+                          restoreOptions:
+                            virtualServerRstOption:
+                              allocationPolicy:
+                                vmAllocPolicyName: TestFailover
+                                vmAllocPolicyId: 3
+                    - associations:
+                      - clientName: vsa-vc6.test.com
+                        displayName: vsa-vc6.test.com
+                        clientId: 4
+                      task:
+                        taskId: 140
+                        taskFlags:
+                          disabled: true
+                      subTasks:
+                      - subTask:
+                          subTaskName: TestFailoverGroups_Immediately after the backup job completes
+                          subTaskId: 145
+                        options:
+                          restoreOptions:
+                            virtualServerRstOption:
+                              allocationPolicy:
+                                vmAllocPolicyName: FailoverGroups
+                                vmAllocPolicyId: 4
+                    - associations:
+                      - clientName: vsa-vc6.test.com
+                        displayName: vsa-vc6.test.com
+                        clientId: 4
+                      task:
+                        taskId: 57
+                        taskFlags:
+                          disabled: false
+                      subTasks:
+                      - subTask:
+                          subTaskName: DRAuto_Immediately after the backup job completes
+                          subTaskId: 60
+                        options:
+                          restoreOptions:
+                            virtualServerRstOption:
+                              allocationPolicy:
+                                vmAllocPolicyName: DRAuto
+                                vmAllocPolicyId: 2
+  /VMAllocationPolicy:
+    get:
+      deprecated: false
+      description: This operation returns list of replication targets.
+      operationId: Replication targets
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: showResourceGroupPolicy
+        schema:
+          example: true
+          type: boolean
+      - description: ''
+        explode: true
+        in: query
+        name: showNonResourceGroupPolicy
+        schema:
+          example: false
+          type: boolean
+      - description: ''
+        explode: true
+        in: query
+        name: deep
+        schema:
+          example: true
+          type: boolean
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Replication targets
+      tags:
+      - Replication Target
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  policy:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        vmNameEditType:
+                          type: integer
+                        vmNameEditString:
+                          type: string
+                        resourcePoolPath:
+                          type: string
+                        createIsolatedNetwork:
+                          type: boolean
+                        migrateVMs:
+                          type: boolean
+                        isResourceGroupPolicy:
+                          type: boolean
+                        enabled:
+                          type: boolean
+                        networkList:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              sourceNetwork:
+                                type: string
+                              destinationNetwork:
+                                type: string
+                        destinationHyperV:
+                          type: object
+                          properties:
+                            clientId:
+                              type: integer
+                            clientName:
+                              type: string
+                        dataStores:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              dataStoreName:
+                                type: string
+                        proxyClientEntity:
+                          type: object
+                          properties:
+                            clientId:
+                              type: integer
+                            clientName:
+                              type: string
+                        dataCenter:
+                          type: object
+                          properties:
+                            dataCenterId:
+                              type: integer
+                            dataCenterName:
+                              type: string
+                        esxServers:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              esxServerName:
+                                type: string
+                        entity:
+                          type: object
+                          properties:
+                            vmAllocPolicyName:
+                              type: string
+                            vmAllocPolicyId:
+                              type: integer
+                            policyType:
+                              type: integer
+                        minutesRetainUntil:
+                          type: integer
+                        gatewayTemplate:
+                          type: object
+                          properties:
+                            vmName:
+                              type: string
+                            vmGUID:
+                              type: string
+                x-examples:
+                  Example 1:
+                    policy:
+                    - vmNameEditType: 2
+                      vmNameEditString: DRAuto
+                      resourcePoolPath: /Automation
+                      createIsolatedNetwork: false
+                      migrateVMs: false
+                      isResourceGroupPolicy: true
+                      enabled: true
+                      networkList:
+                      - sourceNetwork: Any Network
+                        destinationNetwork: VM Network 3
+                      destinationHyperV:
+                        clientId: 4
+                        clientName: vsa-vc6.test.com
+                      dataStores:
+                      - dataStoreName: datastore193
+                      proxyClientEntity:
+                        clientId: 3
+                        clientName: drorchestration
+                      dataCenter:
+                        dataCenterId: 1
+                        dataCenterName: Hema
+                      esxServers:
+                      - esxServerName: 172.19.116.139
+                      entity:
+                        vmAllocPolicyName: DRAuto
+                        vmAllocPolicyId: 2
+                        policyType: 0
+                    - vmNameEditType: 2
+                      vmNameEditString: FailoverGroups
+                      resourcePoolPath: /Regression
+                      createIsolatedNetwork: false
+                      migrateVMs: false
+                      isResourceGroupPolicy: true
+                      enabled: true
+                      networkList:
+                      - sourceNetwork: Any Network
+                        destinationNetwork: VM Network
+                      destinationHyperV:
+                        clientId: 4
+                        clientName: vsa-vc6.test.com
+                      dataStores:
+                      - dataStoreName: Dev_TestGroups
+                      proxyClientEntity:
+                        clientId: 3
+                        clientName: drorchestration
+                      dataCenter:
+                        dataCenterId: 1
+                        dataCenterName: Hema
+                      esxServers:
+                      - esxServerName: 172.19.116.139
+                      entity:
+                        vmAllocPolicyName: FailoverGroups
+                        vmAllocPolicyId: 4
+                        policyType: 0
+                    - vmNameEditType: 2
+                      vmNameEditString: TestFailover
+                      resourcePoolPath: /Regression
+                      createIsolatedNetwork: true
+                      migrateVMs: false
+                      isResourceGroupPolicy: true
+                      minutesRetainUntil: 1
+                      enabled: true
+                      gatewayTemplate:
+                        vmName: CV_VLAB_GATEWAY_CENTOS7_SP11_WITHMASQUERADING
+                        vmGUID: 5026424c-62fe-1f68-0250-20b7b6e211df
+                      networkList:
+                      - sourceNetwork: Any Network
+                        destinationNetwork: VM Network
+                      destinationHyperV:
+                        clientId: 4
+                        clientName: vsa-vc6.test.com
+                      dataStores:
+                      - dataStoreName: Dev_TestGroups
+                      proxyClientEntity:
+                        clientId: 3
+                        clientName: drorchestration
+                      dataCenter:
+                        dataCenterId: 1
+                        dataCenterName: Hema
+                      esxServers:
+                      - esxServerName: 172.19.116.139
+                      entity:
+                        vmAllocPolicyName: TestFailover
+                        vmAllocPolicyId: 3
+                        policyType: 13
+              examples:
+                Example 1:
+                  value:
+                    policy:
+                    - vmNameEditType: 2
+                      vmNameEditString: DRAuto
+                      resourcePoolPath: /Automation
+                      createIsolatedNetwork: false
+                      migrateVMs: false
+                      isResourceGroupPolicy: true
+                      enabled: true
+                      networkList:
+                      - sourceNetwork: Any Network
+                        destinationNetwork: VM Network 3
+                      destinationHyperV:
+                        clientId: 4
+                        clientName: vsa-vc6.test.com
+                      dataStores:
+                      - dataStoreName: datastore193
+                      proxyClientEntity:
+                        clientId: 3
+                        clientName: drorchestration
+                      dataCenter:
+                        dataCenterId: 1
+                        dataCenterName: Hema
+                      esxServers:
+                      - esxServerName: 172.19.116.139
+                      entity:
+                        vmAllocPolicyName: DRAuto
+                        vmAllocPolicyId: 2
+                        policyType: 0
+                    - vmNameEditType: 2
+                      vmNameEditString: FailoverGroups
+                      resourcePoolPath: /Regression
+                      createIsolatedNetwork: false
+                      migrateVMs: false
+                      isResourceGroupPolicy: true
+                      enabled: true
+                      networkList:
+                      - sourceNetwork: Any Network
+                        destinationNetwork: VM Network
+                      destinationHyperV:
+                        clientId: 4
+                        clientName: vsa-vc6.test.com
+                      dataStores:
+                      - dataStoreName: Dev_TestGroups
+                      proxyClientEntity:
+                        clientId: 3
+                        clientName: drorchestration
+                      dataCenter:
+                        dataCenterId: 1
+                        dataCenterName: Hema
+                      esxServers:
+                      - esxServerName: 172.19.116.139
+                      entity:
+                        vmAllocPolicyName: FailoverGroups
+                        vmAllocPolicyId: 4
+                        policyType: 0
+                    - vmNameEditType: 2
+                      vmNameEditString: TestFailover
+                      resourcePoolPath: /Regression
+                      createIsolatedNetwork: true
+                      migrateVMs: false
+                      isResourceGroupPolicy: true
+                      minutesRetainUntil: 1
+                      enabled: true
+                      gatewayTemplate:
+                        vmName: CV_VLAB_GATEWAY_CENTOS7_SP11_WITHMASQUERADING
+                        vmGUID: 5026424c-62fe-1f68-0250-20b7b6e211df
+                      networkList:
+                      - sourceNetwork: Any Network
+                        destinationNetwork: VM Network
+                      destinationHyperV:
+                        clientId: 4
+                        clientName: vsa-vc6.test.com
+                      dataStores:
+                      - dataStoreName: Dev_TestGroups
+                      proxyClientEntity:
+                        clientId: 3
+                        clientName: drorchestration
+                      dataCenter:
+                        dataCenterId: 1
+                        dataCenterName: Hema
+                      esxServers:
+                      - esxServerName: 172.19.116.139
+                      entity:
+                        vmAllocPolicyName: TestFailover
+                        vmAllocPolicyId: 3
+                        policyType: 13
+    post:
+      deprecated: false
+      description: This operation creates Replication target.
+      operationId: Create Replication target
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: integer
+                policy:
+                  type: object
+                  properties:
+                    vmNameEditType:
+                      type: integer
+                    vmNameEditString:
+                      type: string
+                    resourcePoolPath:
+                      type: string
+                    createIsolatedNetwork:
+                      type: boolean
+                    migrateVMs:
+                      type: boolean
+                    isResourceGroupPolicy:
+                      type: boolean
+                    enabled:
+                      type: boolean
+                    networkList:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          sourceNetwork:
+                            type: string
+                          destinationNetwork:
+                            type: string
+                    destinationHyperV:
+                      type: object
+                      properties:
+                        clientId:
+                          type: integer
+                        clientName:
+                          type: string
+                    dataStores:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          dataStoreName:
+                            type: string
+                    proxyClientEntity:
+                      type: object
+                      properties:
+                        clientId:
+                          type: integer
+                        clientName:
+                          type: string
+                    dataCenter:
+                      type: object
+                      properties:
+                        dataCenterName:
+                          type: string
+                    esxServers:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          esxServerName:
+                            type: string
+                    entity:
+                      type: object
+                      properties:
+                        vmAllocPolicyName:
+                          type: string
+                        policyType:
+                          type: integer
+              x-examples:
+                Example 1:
+                  action: 0
+                  policy:
+                    vmNameEditType: 2
+                    vmNameEditString: DR
+                    resourcePoolPath: /
+                    createIsolatedNetwork: false
+                    migrateVMs: false
+                    isResourceGroupPolicy: true
+                    enabled: true
+                    networkList:
+                    - sourceNetwork: Any Network
+                      destinationNetwork: LIVE SYNC NW
+                    destinationHyperV:
+                      clientId: 4
+                      clientName: vsa-vc6.test.com
+                    dataStores:
+                    - dataStoreName: vsa-delleqlds2
+                    proxyClientEntity:
+                      clientId: 3
+                      clientName: drorchestration
+                    dataCenter:
+                      dataCenterName: VSA-DC8
+                    esxServers:
+                    - esxServerName: 172.19.116.180
+                    entity:
+                      vmAllocPolicyName: New Replication target
+                      policyType: 0
+            examples:
+              Create Replication target:
+                value:
+                  action: 0
+                  policy:
+                    createIsolatedNetwork: false
+                    dataCenter:
+                      dataCenterName: VSA-DC8
+                    dataStores:
+                    - dataStoreName: vsa-delleqlds2
+                    destinationHyperV:
+                      clientId: 4
+                      clientName: vsa-vc6.test.com
+                    enabled: true
+                    entity:
+                      policyType: 0
+                      vmAllocPolicyName: New Replication target
+                    esxServers:
+                    - esxServerName: 172.19.116.180
+                    isResourceGroupPolicy: true
+                    migrateVMs: false
+                    networkList:
+                    - destinationNetwork: LIVE SYNC NW
+                      sourceNetwork: Any Network
+                    proxyClientEntity:
+                      clientId: 3
+                      clientName: drorchestration
+                    resourcePoolPath: /
+                    vmNameEditString: DR
+                    vmNameEditType: 2
+        description: ''
+        required: true
+      summary: Create Replication target
+      tags:
+      - Replication Target
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entity:
+                    type: object
+                    properties:
+                      vmAllocPolicyId:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    entity:
+                      vmAllocPolicyId: 9
+              examples:
+                Example 1:
+                  value:
+                    entity:
+                      vmAllocPolicyId: 9
+  '/VMAllocationPolicy/{VMAllocationPolicyId}':
+    delete:
+      deprecated: false
+      description: This operation deletes Replication target.
+      operationId: Delete Replication target
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: VMAllocationPolicyId
+        required: true
+        schema:
+          type: string
+      summary: Delete Replication target
+      tags:
+      - Replication Target
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0
+              examples:
+                Remove replicated VM:
+                  value:
+                    errorMessage: ''
+                    errorCode: 0

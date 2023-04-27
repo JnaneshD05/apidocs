@@ -1,0 +1,2199 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Instance Operations
+paths:
+  /Instance:
+    post:
+      deprecated: false
+      description: This operation adds an Instance.
+      operationId: Add Instance
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Add Instance
+      tags:
+      - Instance Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: object
+                    properties:
+                      warningCode:
+                        type: integer
+                      errorCode:
+                        type: integer
+                      warningMessage:
+                        type: string
+                      entity:
+                        type: object
+                        properties:
+                          instanceId:
+                            type: integer
+                          clientId:
+                            type: integer
+                          instanceName:
+                            type: string
+                          _type_:
+                            type: integer
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                      warningCode: 0
+                      errorCode: 0
+                      warningMessage: ''
+                      entity:
+                        instanceId: 10
+                        clientId: 11
+                        instanceName: 'aurora/aurorapg13[us-east-1]'
+                        _type_: 0
+              examples:
+                Example 1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                      warningCode: 0
+                      errorCode: 0
+                      warningMessage: ''
+                      entity:
+                        instanceId: 10
+                        clientId: 11
+                        instanceName: 'aurora/aurorapg13[us-east-1]'
+                        _type_: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instanceProperties:
+                  type: object
+                  properties:
+                    instance:
+                      type: object
+                      properties:
+                        instanceId:
+                          type: integer
+                        instanceName:
+                          type: string
+                        applicationId:
+                          type: integer
+                        appName:
+                          type: string
+                        clientId:
+                          type: integer
+                        clientName:
+                          type: string
+                        commCellId:
+                          type: integer
+                    oracleInstance:
+                      type: object
+                      properties:
+                        oracleUser:
+                          type: object
+                          properties:
+                            userName:
+                              type: string
+                        oracleHome:
+                          type: string
+                        sqlConnect:
+                          type: object
+                          properties:
+                            userName:
+                              type: string
+                            password:
+                              type: string
+                            domainName:
+                              type: string
+                            confirmPassword:
+                              type: string
+                        useCatalogConnect:
+                          type: boolean
+                        TNSAdminPath:
+                          type: string
+                        blockSize:
+                          type: integer
+                        oracleStorageDevice:
+                          type: object
+                          properties:
+                            commandLineStoragePolicy:
+                              type: object
+                              properties: {}
+                            logBackupStoragePolicy:
+                              type: object
+                              properties: {}
+                        crossCheckTimeout:
+                          type: integer
+                    planEntity:
+                      type: object
+                      properties:
+                        planId:
+                          type: integer
+              x-examples:
+                Example 1:
+                  instanceProperties:
+                    instance:
+                      instanceId: -1
+                      instanceName: orcdb
+                      applicationId: 22
+                      appName: Oracle
+                      clientId: 5
+                      clientName: arcent3
+                      commCellId: 2
+                    oracleInstance:
+                      oracleUser:
+                        userName: ''
+                      oracleHome: '{{oracle home path}}'
+                      sqlConnect:
+                        userName: sys
+                        password: WTI5dGJYWmhkV3gwSVRFeQ==
+                        domainName: orcdb
+                        confirmPassword: Y29tbXZhdWx0ITEy
+                      useCatalogConnect: false
+                      TNSAdminPath: ''
+                      blockSize: 1048576
+                      oracleStorageDevice:
+                        commandLineStoragePolicy: {}
+                        logBackupStoragePolicy: {}
+                      crossCheckTimeout: 600
+                    planEntity:
+                      planId: 2
+            examples:
+              Oracle Instance:
+                value:
+                  instanceProperties:
+                    description: ''
+                    version: ''
+                    instance:
+                      clientName: '{{clientName}}'
+                      instanceName: '{{instanceName}}'
+                      appName: '{{appName}}'
+                      applicationId: 81
+                    mssqlInstance:
+                      vDITimeOut: 300
+                      useVss: false
+                      isOnDemand: false
+                      overrideHigherLevelSettings:
+                        useLocalSystemAccount: true
+                        overrideGlobalAuthentication: false
+                        userAccount:
+                          password: ''
+                          userName: ''
+                      MSSQLStorageDevice:
+                        logBackupStoragePolicy:
+                          storagePolicyName: '{{storagePolicyName}}'
+                        commandLineStoragePolicy:
+                          storagePolicyName: '{{storagePolicyName}}'
+              MySQL Instance:
+                value:
+                  instanceProperties:
+                    instance:
+                      instanceId: -1
+                      instanceName: my8_3306
+                      applicationId: 104
+                      clientId: 7
+                      clientName: my8
+                    mySqlInstance:
+                      BinaryDirectory: /usr/bin
+                      LogDataDirectory: /var/lib/mysql
+                      ConfigFile: /etc/my.cnf
+                      port: /etc/my.cnf
+                      EnableAutoDiscovery: true
+                      SAUser:
+                        userName: root
+                        password: Y29tbXZhdWx0ITEy
+                      unixUser:
+                        userName: ''
+                      proxySettings:
+                        isProxyEnabled: false
+                        proxyInstance:
+                          instanceId: 0
+                          flags: {}
+                        isUseSSL: false
+                        runBackupOnProxy: false
+                      xtraBackupSettings:
+                        enableXtraBackup: false
+                        xtraBackupBinPath: ''
+                      sslCa: ''
+                      mebSettings:
+                        enableMEB: false
+                    planEntity:
+                      planId: 2
+              MySQL  Instance (Unix):
+                value:
+                  instanceProperties:
+                    instance:
+                      instanceId: -1
+                      instanceName: my8_3306
+                      applicationId: 104
+                      clientId: 7
+                      clientName: my8
+                    mySqlInstance:
+                      BinaryDirectory: /usr/bin
+                      LogDataDirectory: /var/lib/mysql
+                      ConfigFile: /etc/my.cnf
+                      port: /etc/my.cnf
+                      EnableAutoDiscovery: true
+                      SAUser:
+                        userName: root
+                        password: Y29tbXZhdWx0ITEy
+                      unixUser:
+                        userName: ''
+                      proxySettings:
+                        isProxyEnabled: false
+                        proxyInstance:
+                          instanceId: 0
+                          flags: {}
+                        isUseSSL: false
+                        runBackupOnProxy: false
+                      xtraBackupSettings:
+                        enableXtraBackup: false
+                        xtraBackupBinPath: ''
+                      sslCa: ''
+                      mebSettings:
+                        enableMEB: false
+                    planEntity:
+                      planId: 2
+              MySQL  Instance (Windows):
+                value:
+                  instanceProperties:
+                    instance:
+                      instanceId: -1
+                      instanceName: mysqlwin_3306
+                      applicationId: 104
+                      clientId: 724
+                      clientName: mysqlwin
+                    mySqlInstance:
+                      BinaryDirectory: 'C:/Program Files/MySQL/MySQL Server 8.0/bin/'
+                      LogDataDirectory: 'E:/mysql80/log/'
+                      ConfigFile: 'E:/mysql80/data/my.ini'
+                      port: '3306'
+                      EnableAutoDiscovery: true
+                      SAUser:
+                        userName: root
+                        password: Y29tbXZhdWx0ITEy
+                      NTUser:
+                        userName: ''
+                      unixUser:
+                        userName: ''
+                      proxySettings:
+                        isProxyEnabled: false
+                        proxyInstance:
+                          instanceId: 0
+                          flags: {}
+                        isUseSSL: false
+                        runBackupOnProxy: false
+                      xtraBackupSettings:
+                        enableXtraBackup: false
+                        xtraBackupBinPath: ''
+                      sslCa: ''
+                      mebSettings:
+                        enableMEB: false
+                    planEntity:
+                      planId: 47
+              Sybase Instance:
+                value:
+                  instanceProperties:
+                    instance:
+                      instanceId: -1
+                      instanceName: MY8
+                      applicationId: 5
+                      clientId: 569
+                      clientName: my8
+                    sybaseInstance:
+                      sybaseHome: ''
+                      sybaseASE: ''
+                      sybaseOCS: ''
+                      configFile: ''
+                      sharedMemoryDirectory: ''
+                      enableAutoDiscovery: true
+                      sybaseBlockSize: 65536
+                      localAdministrator:
+                        userName: ''
+                        password: ''
+                      saUser:
+                        userName: sa
+                        password: c3liYXNl
+                      defaultDatabaseStoragePolicy:
+                        storagePolicyId: 1
+                        storagePolicyName: ''
+                    planEntity:
+                      planId: 45
+              PostgreSQL Instance:
+                value:
+                  instanceProperties:
+                    instance:
+                      instanceId: -1
+                      instanceName: my8_5435
+                      applicationId: 125
+                      clientId: 569
+                      clientName: my8
+                    postGreSQLInstance:
+                      MaintainenceDB: postgres
+                      BinaryDirectory: /usr/pgsql-12/bin
+                      LibDirectory: /usr/pgsql-12/lib
+                      ArchiveLogDirectory: ''
+                      port: '5435'
+                      SAUser:
+                        userName: postgres
+                        password: Y29tbXZhdWx0ITEy
+                      ArchiveDelete: false
+                      isStandBy: false
+                      standbyOptions:
+                        isStandbyEnabled: false
+                        standbyInstance: {}
+                        useMasterForDataBkp: false
+                        useMasterForLogBkp: false
+                      osUser:
+                        userName: ''
+                    planEntity:
+                      planId: 45
+              SAP for HANA Instance:
+                value:
+                  instanceProperties:
+                    instance:
+                      instanceName: HDB
+                      applicationId: 135
+                      clientId: 8
+                      clientName: hdbhana
+                      commCellId: 2
+                    saphanaInstance:
+                      SAPHANAUser:
+                        userName: hdbadm
+                      hdbuserstorekey: ''
+                      hdbsqlLocationDirectory: /usr/sap/HDB/HDB01/exe/hdbsql
+                      DBInstances:
+                      - clientId: 4
+                        clientName: rhel7np
+                        displayName: rhel7np
+                      dbInstanceNumber: '00'
+                      dbUser:
+                        userName: SYSTEM
+                        password: cmFuZG9t
+                      isUsehdbStoreKey: false
+                      sslEnabled: false
+                      sslProvider: commoncrypto
+                      sslTrustStore: sapcli.pse
+                    planEntity:
+                      planId: 1
+              MSSQL Instance:
+                value:
+                  instanceProperties:
+                    description: ''
+                    version: ''
+                    instance:
+                      clientName: '{{clientName}}'
+                      instanceName: TestSQL3
+                      appName: '{{appName}}'
+                      applicationId: 81
+                    mssqlInstance:
+                      vDITimeOut: 300
+                      useVss: false
+                      isOnDemand: false
+                      overrideHigherLevelSettings:
+                        useLocalSystemAccount: true
+                        overrideGlobalAuthentication: false
+                        userAccount:
+                          password: ''
+                          userName: ''
+                      MSSQLStorageDevice:
+                        logBackupStoragePolicy:
+                          storagePolicyName: CSSP
+                        commandLineStoragePolicy:
+                          storagePolicyName: CSSP
+              Azure CloudDB - COSMOS DB:
+                value:
+                  instanceProperties:
+                    instance:
+                      clientName: cosmos_win_proxy
+                      instanceName: SQL API
+                      clientId: 2331
+                      applicationId: 134
+                    cloudAppsInstance:
+                      instanceType: 23
+                      rdsInstance: {}
+                      amazonDynamoDB: {}
+                      azureTableStorageInstance: {}
+                    planEntity:
+                      planId: 80
+              Azure CloudDB - SQL Server:
+                value:
+                  instanceProperties:
+                    instance:
+                      clientName: venkat_AzureSQLnew
+                      instanceName: chrisazuresql.database.windows.net
+                      _type_: 5
+                      instanceId: -1
+                      clientId: 2081
+                      applicationId: 81
+                    mssqlInstance:
+                      overrideHigherSettings: true
+                      serverType: Azure DataBase Engine
+                      overrideHigherLevelSettings:
+                        useLocalSystemAccount: false
+                        overrideGlobalAuthentication: true
+                      azureInfo:
+                        azureStorageConnectionString: test
+                      MSSQLCredentialinfo:
+                        credentialId: 54
+                        credentialName: Azsqlinstanadmin
+                        entityInfo:
+                          companyId: 96
+                          companyName: vcompany
+                          multiCommcellId: 0
+                    planEntity:
+                      planId: 86
+              Azure CloudDB - Maria DB & MySQL:
+                value:
+                  instanceProperties:
+                    version: '10.3'
+                    instance:
+                      clientName: az-win
+                      instanceName: 'mariadb/jah-mariadb[eastus]'
+                      _type_: 5
+                      instanceId: -1
+                      clientId: 3909
+                      applicationId: 104
+                    mySqlInstance:
+                      sslCa: ''
+                      BinaryDirectory: ''
+                      sslCert: ''
+                      version: '10.3'
+                      port: 'jah-mariadb.mariadb.database.azure.com:3306'
+                      sslKey: ''
+                      EnableAutoDiscovery: true
+                      cloudDBEngineType: 5
+                      logStoragePolicy:
+                        storagePolicyName: ''
+                        storagePolicyId: 1
+                      SAUser:
+                        userName: user_1
+                    planEntity:
+                      planId: 8
+              Azure CloudDB - PostgreSQL:
+                value:
+                  instanceProperties:
+                    version: '10'
+                    instance:
+                      clientName: az-win
+                      instanceName: 'pgdbv10[centralindia]'
+                      _type_: 5
+                      instanceId: -1
+                      clientId: 3909
+                      applicationId: 125
+                    postGreSQLInstance:
+                      MaintainenceDB: postgres
+                      BinaryDirectory: ''
+                      ArchiveDelete: false
+                      LibDirectory: ''
+                      port: 'pgdbv10.postgres.database.azure.com:5432'
+                      ArchiveLogDirectory: ''
+                      cloudDBEngineType: 1
+                      sslOpt:
+                        sslCa: ''
+                        sslKey: ''
+                        sslCert: ''
+                      logStoragePolicy:
+                        storagePolicyName: ''
+                        storagePolicyId: 1
+                      SAUser:
+                        userName: postgres
+                      standbyOptions:
+                        useMasterForLogBkp: false
+                        isStandbyEnabled: false
+                        useMasterForDataBkp: false
+                        standbyInstance: {}
+                    planEntity:
+                      planId: 4
+              AWS RDS PostgreSQL:
+                value:
+                  instanceProperties:
+                    version: '13.4'
+                    instance:
+                      clientName: Amazon
+                      instanceName: 'aurora/aurorapg13[us-east-1]'
+                      clientId: 11
+                      applicationId: 125
+                    postGreSQLInstance:
+                      MaintainenceDB: postgres
+                      BinaryDirectory: ''
+                      ArchiveDelete: false
+                      LibDirectory: ''
+                      port: 'aurorapg13.cluster-cfm3msdcsraf.us-east-1.rds.amazonaws.com:5432'
+                      ArchiveLogDirectory: ''
+                      cloudDBEngineType: 2
+                      sslOpt:
+                        sslCa: ''
+                      logStoragePolicy:
+                        storagePolicyName: ''
+                        storagePolicyId: 1
+                      SAUser:
+                        userName: postgres
+                      standbyOptions:
+                        useMasterForLogBkp: false
+                        isStandbyEnabled: false
+                        useMasterForDataBkp: false
+                        standbyInstance: {}
+                    planEntity:
+                      planId: 1
+    get:
+      summary: Get Instance
+      operationId: get-Instance
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  instanceProperties:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        isDeleted:
+                          type: boolean
+                        instance:
+                          type: object
+                          properties:
+                            clientId:
+                              type: integer
+                            clientName:
+                              type: string
+                            instanceName:
+                              type: string
+                            appName:
+                              type: string
+                            instanceId:
+                              type: integer
+                            applicationId:
+                              type: integer
+                            instanceGUID:
+                              type: string
+                        instanceActivityControl:
+                          type: object
+                          properties:
+                            activityControlOptions:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  activityType:
+                                    type: integer
+                                  enableAfterADelay:
+                                    type: boolean
+                                  enableActivityType:
+                                    type: boolean
+                        mssqlInstance:
+                          type: object
+                          properties:
+                            awsSqlInfo:
+                              type: object
+                              properties:
+                                sqlInstanceCredentials:
+                                  type: object
+                                  properties: {}
+                            agProperties:
+                              type: object
+                              properties:
+                                SQLAvailabilityReplicasList:
+                                  type: object
+                                  properties: {}
+                                availabilityGroup:
+                                  type: object
+                                  properties: {}
+                                proxyClient:
+                                  type: object
+                                  properties: {}
+                            azureInfo:
+                              type: object
+                              properties:
+                                azureCredentials:
+                                  type: object
+                                  properties: {}
+                                azureSqlInstanceCredentials:
+                                  type: object
+                                  properties: {}
+                x-examples:
+                  Example 1:
+                    instanceProperties:
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: DefaultInstanceName
+                        appName: File System
+                        instanceId: 1
+                        applicationId: 33
+                        instanceGUID: D86B6E22-AF63-4DB3-973D-844A10020BBA
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 128
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 16
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 4
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 256
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 8192
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: -32
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 1024
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 512
+                          enableAfterADelay: false
+                          enableActivityType: true
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: SHEZAVM9/COMMVAULT
+                        appName: SQL Server
+                        instanceId: 6
+                        applicationId: 81
+                        instanceGUID: B3E994F3-A3CC-415C-94CC-ABD7F75A4AAD
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      mssqlInstance:
+                        awsSqlInfo:
+                          sqlInstanceCredentials: {}
+                        agProperties:
+                          SQLAvailabilityReplicasList: {}
+                          availabilityGroup: {}
+                          proxyClient: {}
+                        azureInfo:
+                          azureCredentials: {}
+                          azureSqlInstanceCredentials: {}
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: Test
+                        appName: SQL Server
+                        instanceId: 9
+                        applicationId: 81
+                        instanceGUID: 2C55D1D8-FD86-466D-A43E-40790BF60F46
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      mssqlInstance:
+                        awsSqlInfo:
+                          sqlInstanceCredentials: {}
+                        agProperties:
+                          SQLAvailabilityReplicasList: {}
+                          availabilityGroup: {}
+                          proxyClient: {}
+                        azureInfo:
+                          azureCredentials: {}
+                          azureSqlInstanceCredentials: {}
+              examples:
+                GET  Instance by clientId:
+                  value:
+                    instanceProperties:
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: DefaultInstanceName
+                        appName: File System
+                        instanceId: 1
+                        applicationId: 33
+                        instanceGUID: D86B6E22-AF63-4DB3-973D-844A10020BBA
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 128
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 16
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 4
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 256
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 8192
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: -32
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 1024
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 512
+                          enableAfterADelay: false
+                          enableActivityType: true
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: SHEZAVM9/COMMVAULT
+                        appName: SQL Server
+                        instanceId: 6
+                        applicationId: 81
+                        instanceGUID: B3E994F3-A3CC-415C-94CC-ABD7F75A4AAD
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      mssqlInstance:
+                        awsSqlInfo:
+                          sqlInstanceCredentials: {}
+                        agProperties:
+                          SQLAvailabilityReplicasList: {}
+                          availabilityGroup: {}
+                          proxyClient: {}
+                        azureInfo:
+                          azureCredentials: {}
+                          azureSqlInstanceCredentials: {}
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: Test
+                        appName: SQL Server
+                        instanceId: 9
+                        applicationId: 81
+                        instanceGUID: 2C55D1D8-FD86-466D-A43E-40790BF60F46
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      mssqlInstance:
+                        awsSqlInfo:
+                          sqlInstanceCredentials: {}
+                        agProperties:
+                          SQLAvailabilityReplicasList: {}
+                          availabilityGroup: {}
+                          proxyClient: {}
+                        azureInfo:
+                          azureCredentials: {}
+                          azureSqlInstanceCredentials: {}
+                'GET Instance by name /instance?clientName={{clientName}}':
+                  value:
+                    instanceProperties:
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: DefaultInstanceName
+                        appName: File System
+                        instanceId: 1
+                        applicationId: 33
+                        instanceGUID: D86B6E22-AF63-4DB3-973D-844A10020BBA
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 128
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 16
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 4
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 256
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 8192
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: -32
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 1024
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 512
+                          enableAfterADelay: false
+                          enableActivityType: true
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: SHEZAVM9/COMMVAULT
+                        appName: SQL Server
+                        instanceId: 6
+                        applicationId: 81
+                        instanceGUID: B3E994F3-A3CC-415C-94CC-ABD7F75A4AAD
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      mssqlInstance:
+                        awsSqlInfo:
+                          sqlInstanceCredentials: {}
+                        agProperties:
+                          SQLAvailabilityReplicasList: {}
+                          availabilityGroup: {}
+                          proxyClient: {}
+                        azureInfo:
+                          azureCredentials: {}
+                          azureSqlInstanceCredentials: {}
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: Test
+                        appName: SQL Server
+                        instanceId: 9
+                        applicationId: 81
+                        instanceGUID: 2C55D1D8-FD86-466D-A43E-40790BF60F46
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      mssqlInstance:
+                        awsSqlInfo:
+                          sqlInstanceCredentials: {}
+                        agProperties:
+                          SQLAvailabilityReplicasList: {}
+                          availabilityGroup: {}
+                          proxyClient: {}
+                        azureInfo:
+                          azureCredentials: {}
+                          azureSqlInstanceCredentials: {}
+                'GET Instance /instance/byName(clientName=''{{clientName}}'',appName=''{{appName}}''),instanceName=''{{instanceName}}'')':
+                  value:
+                    instanceProperties:
+                    - isDeleted: false
+                      instance:
+                        clientId: 5
+                        clientName: firewalltestma_2
+                        instanceName: Test
+                        appName: SQL Server
+                        instanceId: 3
+                        applicationId: 81
+                        instanceGUID: 33C8B996-2213-4000-A105-31BB061E1921
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      mssqlInstance:
+                        awsSqlInfo:
+                          sqlInstanceCredentials: {}
+                        agProperties:
+                          SQLAvailabilityReplicasList: {}
+                          availabilityGroup: {}
+                          proxyClient: {}
+                        azureInfo:
+                          azureCredentials: {}
+                          azureSqlInstanceCredentials: {}
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: clientName
+      - schema:
+          type: number
+        in: query
+        name: clientId
+      tags:
+      - Instance Operations
+  /databases/instances:
+    get:
+      deprecated: false
+      description: |
+        This operation returns all instances of databases.
+      operationId: Get Instances of databases
+      parameters:
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Instances of databases
+      tags:
+      - Instance Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dbInstance:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        cloudVendorType:
+                          type: integer
+                        notReadyReason:
+                          type: string
+                        slaCategoryDescription:
+                          type: string
+                        flags:
+                          type: integer
+                        sla:
+                          type: string
+                        version:
+                          type: string
+                        backupSize:
+                          type: integer
+                        slaStatus:
+                          type: integer
+                        isCloudDB:
+                          type: boolean
+                        clientType:
+                          type: integer
+                        isSnapEnabled:
+                          type: integer
+                        noDBs:
+                          type: integer
+                        applicationSize:
+                          type: integer
+                        backupTime:
+                          type: integer
+                        status:
+                          type: string
+                        instance:
+                          type: object
+                          properties:
+                            clientId:
+                              type: integer
+                            clientName:
+                              type: string
+                            instanceName:
+                              type: string
+                            appName:
+                              type: string
+                            instanceId:
+                              type: integer
+                            applicationId:
+                              type: integer
+                            entityInfo:
+                              type: object
+                              properties:
+                                companyId:
+                                  type: integer
+                                companyName:
+                                  type: string
+                                multiCommcellId:
+                                  type: integer
+                        plan:
+                          type: object
+                          properties:
+                            planName:
+                              type: string
+                            planId:
+                              type: integer
+                            entityInfo:
+                              type: object
+                              properties:
+                                companyId:
+                                  type: integer
+                                companyName:
+                                  type: string
+                                multiCommcellId:
+                                  type: integer
+                x-examples:
+                  Example 1:
+                    dbInstance:
+                    - cloudVendorType: 0
+                      notReadyReason: ''
+                      slaCategoryDescription: ''
+                      flags: 0
+                      sla: Missed
+                      version: ''
+                      backupSize: 0
+                      slaStatus: 2
+                      isCloudDB: false
+                      clientType: 0
+                      isSnapEnabled: 0
+                      noDBs: 0
+                      applicationSize: 0
+                      backupTime: 0
+                      status: Ready
+                      instance:
+                        clientId: 2307
+                        clientName: saporavm3_4_DN
+                        instanceName: CER
+                        appName: SAP for Oracle
+                        instanceId: 3612
+                        applicationId: 61
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+                      plan:
+                        planName: Not Assigned
+                        planId: 0
+                        entityInfo:
+                          companyId: 0
+                          companyName: ''
+                          multiCommcellId: 0
+              examples:
+                All Instances of databases:
+                  value: {}
+  /instance:
+    get:
+      deprecated: false
+      description: |
+        This operation returns a list of instances for a client using client id.
+      operationId: Get Instances using clientId
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: clientId
+        required: true
+        schema:
+          example: '{{clientId}}'
+          type: string
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Instances using clientId
+      tags:
+      - Instance Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  instanceProperties:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        isDeleted:
+                          type: boolean
+                        instance:
+                          type: object
+                          properties:
+                            clientId:
+                              type: integer
+                            clientName:
+                              type: string
+                            instanceName:
+                              type: string
+                            appName:
+                              type: string
+                            instanceId:
+                              type: integer
+                            applicationId:
+                              type: integer
+                            instanceGUID:
+                              type: string
+                        instanceActivityControl:
+                          type: object
+                          properties:
+                            activityControlOptions:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  activityType:
+                                    type: integer
+                                  enableAfterADelay:
+                                    type: boolean
+                                  enableActivityType:
+                                    type: boolean
+                        mssqlInstance:
+                          type: object
+                          properties:
+                            awsSqlInfo:
+                              type: object
+                              properties:
+                                sqlInstanceCredentials:
+                                  type: object
+                                  properties: {}
+                            agProperties:
+                              type: object
+                              properties:
+                                SQLAvailabilityReplicasList:
+                                  type: object
+                                  properties: {}
+                                availabilityGroup:
+                                  type: object
+                                  properties: {}
+                                proxyClient:
+                                  type: object
+                                  properties: {}
+                            azureInfo:
+                              type: object
+                              properties:
+                                azureCredentials:
+                                  type: object
+                                  properties: {}
+                                azureSqlInstanceCredentials:
+                                  type: object
+                                  properties: {}
+                x-examples:
+                  Example 1:
+                    instanceProperties:
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: DefaultInstanceName
+                        appName: File System
+                        instanceId: 1
+                        applicationId: 33
+                        instanceGUID: D86B6E22-AF63-4DB3-973D-844A10020BBA
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 128
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 16
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 4
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 256
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 8192
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: -32
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 1024
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 512
+                          enableAfterADelay: false
+                          enableActivityType: true
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: SHEZAVM9/COMMVAULT
+                        appName: SQL Server
+                        instanceId: 6
+                        applicationId: 81
+                        instanceGUID: B3E994F3-A3CC-415C-94CC-ABD7F75A4AAD
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      mssqlInstance:
+                        awsSqlInfo:
+                          sqlInstanceCredentials: {}
+                        agProperties:
+                          SQLAvailabilityReplicasList: {}
+                          availabilityGroup: {}
+                          proxyClient: {}
+                        azureInfo:
+                          azureCredentials: {}
+                          azureSqlInstanceCredentials: {}
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: Test
+                        appName: SQL Server
+                        instanceId: 9
+                        applicationId: 81
+                        instanceGUID: 2C55D1D8-FD86-466D-A43E-40790BF60F46
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      mssqlInstance:
+                        awsSqlInfo:
+                          sqlInstanceCredentials: {}
+                        agProperties:
+                          SQLAvailabilityReplicasList: {}
+                          availabilityGroup: {}
+                          proxyClient: {}
+                        azureInfo:
+                          azureCredentials: {}
+                          azureSqlInstanceCredentials: {}
+              examples:
+                GET  Instance by clientId:
+                  value:
+                    instanceProperties:
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: DefaultInstanceName
+                        appName: File System
+                        instanceId: 1
+                        applicationId: 33
+                        instanceGUID: D86B6E22-AF63-4DB3-973D-844A10020BBA
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 128
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 16
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 4
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 256
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 8192
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: -32
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 1024
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 512
+                          enableAfterADelay: false
+                          enableActivityType: true
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: SHEZAVM9/COMMVAULT
+                        appName: SQL Server
+                        instanceId: 6
+                        applicationId: 81
+                        instanceGUID: B3E994F3-A3CC-415C-94CC-ABD7F75A4AAD
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      mssqlInstance:
+                        awsSqlInfo:
+                          sqlInstanceCredentials: {}
+                        agProperties:
+                          SQLAvailabilityReplicasList: {}
+                          availabilityGroup: {}
+                          proxyClient: {}
+                        azureInfo:
+                          azureCredentials: {}
+                          azureSqlInstanceCredentials: {}
+                    - isDeleted: false
+                      instance:
+                        clientId: 11
+                        clientName: shezavm9_new
+                        instanceName: Test
+                        appName: SQL Server
+                        instanceId: 9
+                        applicationId: 81
+                        instanceGUID: 2C55D1D8-FD86-466D-A43E-40790BF60F46
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      mssqlInstance:
+                        awsSqlInfo:
+                          sqlInstanceCredentials: {}
+                        agProperties:
+                          SQLAvailabilityReplicasList: {}
+                          availabilityGroup: {}
+                          proxyClient: {}
+                        azureInfo:
+                          azureCredentials: {}
+                          azureSqlInstanceCredentials: {}
+  '/instance/byName(clientName={clientName},appName={appName}),instanceName={instanceName}':
+    get:
+      deprecated: false
+      description: |
+        This operation returns properties of a particular instance using client name, app name and instance name.
+      operationId: Get Instance using parameters
+      parameters:
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: clientName
+        required: true
+        schema:
+          type: string
+      - description: ''
+        in: path
+        name: appName
+        required: true
+        schema:
+          type: string
+      - description: ''
+        in: path
+        name: instanceName
+        required: true
+        schema:
+          type: string
+      summary: Get Instance using parameters
+      tags:
+      - Instance Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  instanceProperties:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        isDeleted:
+                          type: boolean
+                        instance:
+                          type: object
+                          properties:
+                            clientId:
+                              type: integer
+                            clientName:
+                              type: string
+                            instanceName:
+                              type: string
+                            appName:
+                              type: string
+                            instanceId:
+                              type: integer
+                            applicationId:
+                              type: integer
+                            instanceGUID:
+                              type: string
+                        instanceActivityControl:
+                          type: object
+                          properties:
+                            activityControlOptions:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  activityType:
+                                    type: integer
+                                  enableAfterADelay:
+                                    type: boolean
+                                  enableActivityType:
+                                    type: boolean
+                        mssqlInstance:
+                          type: object
+                          properties:
+                            awsSqlInfo:
+                              type: object
+                              properties:
+                                sqlInstanceCredentials:
+                                  type: object
+                                  properties: {}
+                            agProperties:
+                              type: object
+                              properties:
+                                SQLAvailabilityReplicasList:
+                                  type: object
+                                  properties: {}
+                                availabilityGroup:
+                                  type: object
+                                  properties: {}
+                                proxyClient:
+                                  type: object
+                                  properties: {}
+                            azureInfo:
+                              type: object
+                              properties:
+                                azureCredentials:
+                                  type: object
+                                  properties: {}
+                                azureSqlInstanceCredentials:
+                                  type: object
+                                  properties: {}
+                x-examples:
+                  Example 1:
+                    instanceProperties:
+                    - isDeleted: false
+                      instance:
+                        clientId: 5
+                        clientName: firewalltestma_2
+                        instanceName: Test
+                        appName: SQL Server
+                        instanceId: 3
+                        applicationId: 81
+                        instanceGUID: 33C8B996-2213-4000-A105-31BB061E1921
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      mssqlInstance:
+                        awsSqlInfo:
+                          sqlInstanceCredentials: {}
+                        agProperties:
+                          SQLAvailabilityReplicasList: {}
+                          availabilityGroup: {}
+                          proxyClient: {}
+                        azureInfo:
+                          azureCredentials: {}
+                          azureSqlInstanceCredentials: {}
+              examples:
+                Example 1:
+                  value:
+                    instanceProperties:
+                    - isDeleted: false
+                      instance:
+                        clientId: 5
+                        clientName: firewalltestma_2
+                        instanceName: Test
+                        appName: SQL Server
+                        instanceId: 3
+                        applicationId: 81
+                        instanceGUID: 33C8B996-2213-4000-A105-31BB061E1921
+                      instanceActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      mssqlInstance:
+                        awsSqlInfo:
+                          sqlInstanceCredentials: {}
+                        agProperties:
+                          SQLAvailabilityReplicasList: {}
+                          availabilityGroup: {}
+                          proxyClient: {}
+                        azureInfo:
+                          azureCredentials: {}
+                          azureSqlInstanceCredentials: {}
+    parameters:
+    - in: path
+      name: clientName
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: appName
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: instanceName
+      required: true
+      schema:
+        type: string
+    post:
+      deprecated: false
+      description: |
+        This operation modifies properties of an existing instance using instance name.
+      operationId: modify Instance using name
+      parameters:
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: clientName
+        required: true
+        schema:
+          type: string
+      - description: ''
+        in: path
+        name: appName
+        required: true
+        schema:
+          type: string
+      - description: ''
+        in: path
+        name: instanceName
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              instanceProperties:
+                description: ''
+                mssqlInstance:
+                  MSSQLStorageDevice:
+                    commandLineStoragePolicy:
+                      storagePolicyName: CSSP
+                    logBackupStoragePolicy:
+                      storagePolicyName: CSSP
+                  isOnDemand: false
+                  overrideHigherLevelSettings:
+                    overrideGlobalAuthentication: false
+                    useLocalSystemAccount: true
+                    userAccount:
+                      password: ''
+                      userName: ''
+                  useVss: true
+                  vDITimeOut: 400
+                version: ''
+            schema:
+              allOf:
+              - example:
+                  instanceProperties:
+                    description: ''
+                    mssqlInstance:
+                      MSSQLStorageDevice:
+                        commandLineStoragePolicy:
+                          storagePolicyName: CSSP
+                        logBackupStoragePolicy:
+                          storagePolicyName: CSSP
+                      isOnDemand: false
+                      overrideHigherLevelSettings:
+                        overrideGlobalAuthentication: false
+                        useLocalSystemAccount: true
+                        userAccount:
+                          password: ''
+                          userName: ''
+                      useVss: true
+                      vDITimeOut: 400
+                    version: ''
+                properties:
+                  instanceProperties:
+                    example:
+                      description: ''
+                      mssqlInstance:
+                        MSSQLStorageDevice:
+                          commandLineStoragePolicy:
+                            storagePolicyName: CSSP
+                          logBackupStoragePolicy:
+                            storagePolicyName: CSSP
+                        isOnDemand: false
+                        overrideHigherLevelSettings:
+                          overrideGlobalAuthentication: false
+                          useLocalSystemAccount: true
+                          userAccount:
+                            password: ''
+                            userName: ''
+                        useVss: true
+                        vDITimeOut: 400
+                      version: ''
+                    properties:
+                      description:
+                        type: string
+                      mssqlInstance:
+                        example:
+                          MSSQLStorageDevice:
+                            commandLineStoragePolicy:
+                              storagePolicyName: '{{storagePolicyName}}'
+                            logBackupStoragePolicy:
+                              storagePolicyName: '{{storagePolicyName}}'
+                          isOnDemand: false
+                          overrideHigherLevelSettings:
+                            overrideGlobalAuthentication: false
+                            useLocalSystemAccount: true
+                            userAccount:
+                              password: ''
+                              userName: ''
+                          useVss: false
+                          vDITimeOut: 300
+                        properties:
+                          MSSQLStorageDevice:
+                            example:
+                              commandLineStoragePolicy:
+                                storagePolicyName: '{{storagePolicyName}}'
+                              logBackupStoragePolicy:
+                                storagePolicyName: '{{storagePolicyName}}'
+                            properties:
+                              commandLineStoragePolicy:
+                                example:
+                                  storagePolicyName: '{{storagePolicyName}}'
+                                properties:
+                                  storagePolicyName:
+                                    type: string
+                                required:
+                                - storagePolicyName
+                                title: CommandLineStoragePolicy
+                                type: object
+                              logBackupStoragePolicy:
+                                example:
+                                  storagePolicyName: '{{storagePolicyName}}'
+                                properties:
+                                  storagePolicyName:
+                                    type: string
+                                required:
+                                - storagePolicyName
+                                title: LogBackupStoragePolicy
+                                type: object
+                            required:
+                            - logBackupStoragePolicy
+                            - commandLineStoragePolicy
+                            title: MSSQLStorageDevice
+                            type: object
+                          isOnDemand:
+                            type: boolean
+                          overrideHigherLevelSettings:
+                            example:
+                              overrideGlobalAuthentication: false
+                              useLocalSystemAccount: true
+                              userAccount:
+                                password: ''
+                                userName: ''
+                            properties:
+                              overrideGlobalAuthentication:
+                                type: boolean
+                              useLocalSystemAccount:
+                                type: boolean
+                              userAccount:
+                                example:
+                                  password: ''
+                                  userName: ''
+                                properties:
+                                  password:
+                                    type: string
+                                  userName:
+                                    type: string
+                                required:
+                                - password
+                                - userName
+                                title: UserAccount
+                                type: object
+                            required:
+                            - useLocalSystemAccount
+                            - overrideGlobalAuthentication
+                            - userAccount
+                            title: OverrideHigherLevelSettings
+                            type: object
+                          useVss:
+                            type: boolean
+                          vDITimeOut:
+                            format: int32
+                            type: integer
+                        required:
+                        - vDITimeOut
+                        - useVss
+                        - isOnDemand
+                        - overrideHigherLevelSettings
+                        - MSSQLStorageDevice
+                        title: MssqlInstance6
+                        type: object
+                      version:
+                        type: string
+                    required:
+                    - description
+                    - version
+                    - mssqlInstance
+                    title: InstanceProperties2
+                    type: object
+                required:
+                - instanceProperties
+                title: modifyInstanceusingnameRequest
+                type: object
+              - example:
+                  instanceProperties:
+                    description: ''
+                    mssqlInstance:
+                      MSSQLStorageDevice:
+                        commandLineStoragePolicy:
+                          storagePolicyName: CSSP
+                        logBackupStoragePolicy:
+                          storagePolicyName: CSSP
+                      isOnDemand: false
+                      overrideHigherLevelSettings:
+                        overrideGlobalAuthentication: false
+                        useLocalSystemAccount: true
+                        userAccount:
+                          password: ''
+                          userName: ''
+                      useVss: true
+                      vDITimeOut: 400
+                    version: ''
+        description: ''
+        required: true
+      summary: modify Instance using name
+      tags:
+      - Instance Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        warningCode:
+                          type: integer
+                        errorCode:
+                          type: integer
+                        warningMessage:
+                          type: string
+                        entity:
+                          type: object
+                          properties:
+                            instanceId:
+                              type: integer
+                            clientId:
+                              type: integer
+                            instanceName:
+                              type: string
+                            _type_:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - warningCode: 0
+                      errorCode: 0
+                      warningMessage: ''
+                      entity:
+                        instanceId: 0
+                        clientId: 0
+                        instanceName: ''
+                        _type_: 0
+              examples:
+                Example 1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - warningCode: 0
+                      errorCode: 0
+                      warningMessage: ''
+                      entity:
+                        instanceId: 0
+                        clientId: 0
+                        instanceName: ''
+                        _type_: 0
+  '/instance/{InstanceId}':
+    post:
+      deprecated: false
+      description: |
+        This operation associates a server plan to a SQL Server Instance.
+      operationId: Associate Plan to an Instance
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: InstanceId
+        required: true
+        schema:
+          type: string
+      summary: modify Instance using instance id
+      tags:
+      - Instance Operations
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instanceProperties:
+                  type: object
+                  properties:
+                    instance:
+                      type: object
+                      properties:
+                        instanceId:
+                          type: integer
+                        applicationId:
+                          type: integer
+                        clientId:
+                          type: integer
+                    oracleInstance:
+                      type: object
+                      properties:
+                        oracleUser:
+                          type: object
+                          properties:
+                            userName:
+                              type: string
+                        oracleHome:
+                          type: string
+                        sqlConnect:
+                          type: object
+                          properties:
+                            userName:
+                              type: string
+                            password:
+                              type: string
+                            domainName:
+                              type: string
+                            confirmPassword:
+                              type: string
+                        useCatalogConnect:
+                          type: boolean
+                        TNSAdminPath:
+                          type: string
+                        blockSize:
+                          type: integer
+                        oracleStorageDevice:
+                          type: object
+                          properties:
+                            commandLineStoragePolicy:
+                              type: object
+                              properties:
+                                storagePolicyId:
+                                  type: integer
+                                storagePolicyName:
+                                  type: string
+                                flags:
+                                  type: object
+                                  properties: {}
+                                entityInfo:
+                                  type: object
+                                  properties: {}
+                            logBackupStoragePolicy:
+                              type: object
+                              properties:
+                                storagePolicyId:
+                                  type: integer
+                                storagePolicyName:
+                                  type: string
+                                flags:
+                                  type: object
+                                  properties: {}
+                                entityInfo:
+                                  type: object
+                                  properties: {}
+                        crossCheckTimeout:
+                          type: integer
+                    planEntity:
+                      type: object
+                      properties:
+                        planId:
+                          type: integer
+                association:
+                  type: object
+                  properties:
+                    entity:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          applicationId:
+                            type: integer
+                          clientName:
+                            type: string
+                          displayName:
+                            type: string
+                          flags:
+                            type: object
+                            properties: {}
+                          instanceId:
+                            type: integer
+                          clientId:
+                            type: integer
+                          instanceGUID:
+                            type: string
+                          entityInfo:
+                            type: object
+                            properties: {}
+                          instanceName:
+                            type: string
+                          appName:
+                            type: string
+              x-examples:
+                Example 1:
+                  instanceProperties:
+                    instance:
+                      instanceId: 8
+                      applicationId: 22
+                      clientId: 6
+                    oracleInstance:
+                      oracleUser:
+                        userName: oracle
+                      oracleHome: '{{oracle home path}}'
+                      sqlConnect:
+                        userName: sys
+                        password: YzJGa1lYTmtZWE5r
+                        domainName: klcdb
+                        confirmPassword: c2FkYXNkYXNk
+                      useCatalogConnect: false
+                      TNSAdminPath: ''
+                      blockSize: 1048576
+                      oracleStorageDevice:
+                        commandLineStoragePolicy:
+                          storagePolicyId: 6
+                          storagePolicyName: arplan1
+                          flags: {}
+                          entityInfo: {}
+                        logBackupStoragePolicy:
+                          storagePolicyId: 6
+                          storagePolicyName: arplan1
+                          flags: {}
+                          entityInfo: {}
+                      crossCheckTimeout: 600
+                    planEntity:
+                      planId: 2
+                  association:
+                    entity:
+                    - applicationId: 22
+                      clientName: klcent1
+                      displayName: klcent1
+                      flags: {}
+                      instanceId: 8
+                      clientId: 6
+                      instanceGUID: '{{Instance GUID}}'
+                      entityInfo: {}
+                      instanceName: klcdb
+                      appName: Oracle
+            examples:
+              Modify Oracle Instance:
+                value:
+                  instanceProperties:
+                    instance:
+                      instanceId: 8
+                      applicationId: 22
+                      clientId: 6
+                    oracleInstance:
+                      oracleUser:
+                        userName: oracle
+                      oracleHome: '{{oracle home path}}'
+                      sqlConnect:
+                        userName: sys
+                        password: YzJGa1lYTmtZWE5r
+                        domainName: klcdb
+                        confirmPassword: c2FkYXNkYXNk
+                      useCatalogConnect: false
+                      TNSAdminPath: ''
+                      blockSize: 1048576
+                      oracleStorageDevice:
+                        commandLineStoragePolicy:
+                          storagePolicyId: 6
+                          storagePolicyName: arplan1
+                          flags: {}
+                          entityInfo: {}
+                        logBackupStoragePolicy:
+                          storagePolicyId: 6
+                          storagePolicyName: arplan1
+                          flags: {}
+                          entityInfo: {}
+                      crossCheckTimeout: 600
+                    planEntity:
+                      planId: 2
+                  association:
+                    entity:
+                    - applicationId: 22
+                      clientName: klcent1
+                      displayName: klcent1
+                      flags: {}
+                      instanceId: 8
+                      clientId: 6
+                      instanceGUID: '{{Instance GUID}}'
+                      entityInfo: {}
+                      instanceName: klcdb
+                      appName: Oracle
+    delete:
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: InstanceId
+        required: true
+        schema:
+          type: string
+      summary: Delete an Instance
+      operationId: Delete an Instance
+      description: This operation deletes a particular instance using instance id.
+      responses:
+        '200':
+          description: OK
+      tags:
+      - Instance Operations

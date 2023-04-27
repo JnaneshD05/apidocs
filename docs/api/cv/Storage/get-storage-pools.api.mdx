@@ -1,0 +1,34 @@
+---
+id: get-storage-pools
+title: "Get Storage Pools"
+description: "This operation returns all Storage Pools."
+sidebar_label: "Get Storage Pools"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation returns all Storage Pools.","operationId":"Get Storage Pools","parameters":[{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/xml","type":"string"}},{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Storage Pool Operations"],"responses":{"200":{"description":"OK","content":{"application/xml":{"examples":{"Example 1":{"value":"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?><Api_GetStoragePoolListResp><storagePoolList numberOfNodes=\"1\" reserved1=\"1\" status=\"Online\" statusCode=\"0\" storagePoolType=\"1\" totalCapacity=\"214383292579\" totalFreeSpace=\"32480690176\"><storagePool _type_=\"28\" clientGroupId=\"6\" clientGroupName=\"ForAdminConsole\"/><storagePoolEntity _type_=\"160\" storagePoolId=\"6\" storagePoolName=\"ForAdminConsole\"/></storagePoolList><storagePoolList numberOfNodes=\"1\" reserved1=\"1\" status=\"Online\" statusCode=\"0\" storagePoolType=\"1\" totalCapacity=\"428755847741\" totalFreeSpace=\"64950642933\"><storagePool _type_=\"28\" clientGroupId=\"37\" clientGroupName=\"New Disk SP\"/><storagePoolEntity _type_=\"160\" storagePoolId=\"37\" storagePoolName=\"New Disk SP\"/></storagePoolList><storagePoolList numberOfNodes=\"1\" reserved1=\"1\" status=\"Online\" statusCode=\"0\" storagePoolType=\"1\" totalCapacity=\"214383292579\" totalFreeSpace=\"32480690176\"><storagePool _type_=\"28\" clientGroupId=\"22\" clientGroupName=\"newsp3\"/><storagePoolEntity _type_=\"160\" storagePoolId=\"22\" storagePoolName=\"newsp3\"/></storagePoolList><storagePoolList numberOfNodes=\"1\" reserved1=\"1\" status=\"Online\" statusCode=\"0\" storagePoolType=\"1\" totalCapacity=\"214383292579\" totalFreeSpace=\"32480690176\"><storagePool _type_=\"28\" clientGroupId=\"18\" clientGroupName=\"NewStoragePool\"/><storagePoolEntity _type_=\"160\" storagePoolId=\"18\" storagePoolName=\"NewStoragePool\"/></storagePoolList><storagePoolList numberOfNodes=\"1\" reserved1=\"1\" status=\"Online\" statusCode=\"0\" storagePoolType=\"1\" totalCapacity=\"214383292579\" totalFreeSpace=\"32480690176\"><storagePool _type_=\"28\" clientGroupId=\"20\" clientGroupName=\"NewStoragePool2\"/><storagePoolEntity _type_=\"160\" storagePoolId=\"20\" storagePoolName=\"NewStoragePool2\"/></storagePoolList></Api_GetStoragePoolListResp>"}}}}}},"method":"get","path":"/StoragePool","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get Storage Pools","description":{"content":"This operation returns all Storage Pools.","type":"text/plain"},"url":{"path":["StoragePool"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/xml"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/Storage/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get Storage Pools
+
+
+
+This operation returns all Storage Pools.
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/xml","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/xml"} value={"application/xml"}><SchemaTabs><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?><Api_GetStoragePoolListResp><storagePoolList numberOfNodes=\"1\" reserved1=\"1\" status=\"Online\" statusCode=\"0\" storagePoolType=\"1\" totalCapacity=\"214383292579\" totalFreeSpace=\"32480690176\"><storagePool _type_=\"28\" clientGroupId=\"6\" clientGroupName=\"ForAdminConsole\"/><storagePoolEntity _type_=\"160\" storagePoolId=\"6\" storagePoolName=\"ForAdminConsole\"/></storagePoolList><storagePoolList numberOfNodes=\"1\" reserved1=\"1\" status=\"Online\" statusCode=\"0\" storagePoolType=\"1\" totalCapacity=\"428755847741\" totalFreeSpace=\"64950642933\"><storagePool _type_=\"28\" clientGroupId=\"37\" clientGroupName=\"New Disk SP\"/><storagePoolEntity _type_=\"160\" storagePoolId=\"37\" storagePoolName=\"New Disk SP\"/></storagePoolList><storagePoolList numberOfNodes=\"1\" reserved1=\"1\" status=\"Online\" statusCode=\"0\" storagePoolType=\"1\" totalCapacity=\"214383292579\" totalFreeSpace=\"32480690176\"><storagePool _type_=\"28\" clientGroupId=\"22\" clientGroupName=\"newsp3\"/><storagePoolEntity _type_=\"160\" storagePoolId=\"22\" storagePoolName=\"newsp3\"/></storagePoolList><storagePoolList numberOfNodes=\"1\" reserved1=\"1\" status=\"Online\" statusCode=\"0\" storagePoolType=\"1\" totalCapacity=\"214383292579\" totalFreeSpace=\"32480690176\"><storagePool _type_=\"28\" clientGroupId=\"18\" clientGroupName=\"NewStoragePool\"/><storagePoolEntity _type_=\"160\" storagePoolId=\"18\" storagePoolName=\"NewStoragePool\"/></storagePoolList><storagePoolList numberOfNodes=\"1\" reserved1=\"1\" status=\"Online\" statusCode=\"0\" storagePoolType=\"1\" totalCapacity=\"214383292579\" totalFreeSpace=\"32480690176\"><storagePool _type_=\"28\" clientGroupId=\"20\" clientGroupName=\"NewStoragePool2\"/><storagePoolEntity _type_=\"160\" storagePoolId=\"20\" storagePoolName=\"NewStoragePool2\"/></storagePoolList></Api_GetStoragePoolListResp>"} language={"xml"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

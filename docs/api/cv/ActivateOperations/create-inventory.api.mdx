@@ -1,0 +1,34 @@
+---
+id: create-inventory
+title: "Create Inventory"
+description: "This operation creates a new Inventory."
+sidebar_label: "Create Inventory"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation creates a new Inventory.","operationId":"Create Inventory","parameters":[{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/xml","type":"string"}},{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Inventory Operations"],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"inventoryName":{"type":"string"},"analyticsEngineCloud":{"type":"object","properties":{"cloudId":{"type":"integer"},"cloudDisplayName":{"type":"string"}}}},"x-examples":{"Example 1":{"inventoryName":"Rest_Api_Inventory","analyticsEngineCloud":{"cloudId":2,"cloudDisplayName":"{{cloudDisplayName}}"}}}},"examples":{"Create Inventory":{"value":{"inventoryName":"Rest_Api_Inventory","analyticsEngineCloud":{"cloudId":0,"cloudDisplayName":"{{cloudDisplayName}}"}}}}}}},"responses":{"200":{"description":"OK","content":{"text/plain":{"examples":{"Example 1":{"value":"<Api_InventoryResponse>\n    <inventoryList inventoryName=\"Rest_Api_Inventory\" inventoryId=\"78\" />\n    <errorResp />\n</Api_InventoryResponse>"}}}}}},"method":"post","path":"/EDiscoveryClients/Inventories","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"inventoryName":"string","analyticsEngineCloud":{"cloudId":0,"cloudDisplayName":"string"}},"info":{"title":"Commvault Rest API - Public","contact":{},"version":"1.0","description":"## Welcome\n\nWelcome to Commvault's Rest APIs. You can explore our APIs in [Postman](https://getpostman.com) using the predefined requests we created\n\nThe current version of this documentation is **Commvault Platform Release 2022E**.\n\nYou can access LTS documentation here:\n\n[Feature Release 11.20](https://documenter.getpostman.com/view/2046098/UVR7KoPJ)\n\n[Feature Release 11.24](https://documenter.getpostman.com/view/2046098/UVR7KoPL)\n\nFor more V2 and Latest APIs, please visit your API Explorer page.  \n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=107350_1.htm)\n\n"},"postman":{"name":"Create Inventory","description":{"content":"This operation creates a new Inventory.","type":"text/plain"},"url":{"path":["EDiscoveryClients","Inventories"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/json"},{"key":"Accept","value":"text/plain"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/ActivateOperations/commvault-rest-api-public
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Create Inventory
+
+
+
+This operation creates a new Inventory.
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/xml","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"inventoryName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>analyticsEngineCloud</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"cloudId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"cloudDisplayName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"<Api_InventoryResponse>\n    <inventoryList inventoryName=\"Rest_Api_Inventory\" inventoryId=\"78\" />\n    <errorResp />\n</Api_InventoryResponse>"} language={"shell"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

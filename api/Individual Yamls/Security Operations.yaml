@@ -1,0 +1,323 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Security Operations
+paths:
+  /Security:
+    post:
+      summary: Update Entity Security Associations
+      tags:
+      - Security Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        warningCode:
+                          type: integer
+                        errorCode:
+                          type: integer
+                        warningMessage:
+                          type: string
+                x-examples:
+                  Example 1:
+                    response:
+                    - warningCode: 0
+                      errorCode: 0
+                      warningMessage: ''
+      operationId: get-Security
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                entityAssociated:
+                  type: object
+                  properties:
+                    entity:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          clientGroupId:
+                            type: integer
+                          _type_:
+                            type: integer
+                securityAssociations:
+                  type: object
+                  properties:
+                    associationsOperationType:
+                      type: string
+                    associations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          userOrGroup:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                groupId:
+                                  type: integer
+                                externalGroupName:
+                                  type: string
+                                userGroupName:
+                                  type: string
+                                userGroupId:
+                                  type: integer
+                          properties:
+                            type: object
+                            properties:
+                              role:
+                                type: object
+                                properties:
+                                  roleId:
+                                    type: integer
+              x-examples:
+                Example 1:
+                  entityAssociated:
+                    entity:
+                    - clientGroupId: 9
+                      _type_: 28
+                  securityAssociations:
+                    associationsOperationType: OVERWRITE
+                    associations:
+                    - userOrGroup:
+                      - groupId: 8
+                        externalGroupName: test\Tenant testadmin
+                      properties:
+                        role:
+                          roleId: 13
+                    - userOrGroup:
+                      - userGroupName: test\Tenant Users
+                        userGroupId: 0
+                      properties:
+                        role:
+                          roleId: 3
+            examples:
+              Update Security Association to a Plan:
+                value:
+                  entityAssociated:
+                    entity:
+                    - entityType: 158
+                      _type_: 150
+                      entityId: 10
+                  securityAssociations:
+                    associationsOperationType: ADD
+                    associations:
+                    - userOrGroup:
+                      - userName: RSmith
+                      properties:
+                        role:
+                          roleId: 3
+  /security/multicommcell:
+    post:
+      deprecated: false
+      description: |
+        This API adds service commcells to a new company
+      operationId: Add service commcells to new company
+      parameters:
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Add service commcells to new company
+      tags:
+      - Security Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                associations:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      entity:
+                        type: object
+                        properties:
+                          entityName:
+                            type: string
+                          entityId:
+                            type: integer
+                          entityType:
+                            type: integer
+                          _type_:
+                            type: integer
+                      properties:
+                        type: object
+                        properties:
+                          role:
+                            type: object
+                            properties:
+                              roleId:
+                                type: integer
+                              roleName:
+                                type: string
+                      userOrGroup:
+                        type: object
+                        properties:
+                          providerDomainName:
+                            type: string
+                          providerId:
+                            type: integer
+                          _type_:
+                            type: integer
+                associationsOperationType:
+                  type: integer
+                organizationId:
+                  type: integer
+              x-examples:
+                Example 1:
+                  associations:
+                  - entity:
+                      entityName: phantom
+                      entityId: 62
+                      entityType: 194
+                      _type_: 150
+                    properties:
+                      role:
+                        roleId: 3
+                        roleName: View
+                    userOrGroup:
+                      providerDomainName: fm_comp
+                      providerId: 103
+                      _type_: 61
+                  associationsOperationType: 1
+                  organizationId: 103
+            examples:
+              Add service commcells to a company:
+                value:
+                  associations:
+                  - entity:
+                      entityName: phantom
+                      entityId: 62
+                      entityType: 194
+                      _type_: 150
+                    properties:
+                      role:
+                        roleId: 3
+                        roleName: View
+                    userOrGroup:
+                      providerDomainName: fm_comp
+                      providerId: 103
+                      _type_: 61
+                  associationsOperationType: 1
+                  organizationId: 103
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  warningCode:
+                    type: integer
+                  errorCode:
+                    type: integer
+                  warningMessage:
+                    type: string
+                x-examples:
+                  Example 1:
+                    warningCode: 0
+                    errorCode: 0
+                    warningMessage: ''
+  /Security/TwoFactorAuth/Status:
+    get:
+      deprecated: false
+      operationId: TwoFactorAuthStatus
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: username
+        required: true
+        schema:
+          example: twofactoruser
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      summary: TwoFactorAuthStatus
+      tags:
+      - Security Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  twoFactorInfo:
+                    type: object
+                    properties:
+                      isTwoFactorAuthenticationEnabled:
+                        type: boolean
+                x-examples:
+                  Example 1:
+                    twoFactorInfo:
+                      isTwoFactorAuthenticationEnabled: true
+              examples:
+                Example 1:
+                  value:
+                    twoFactorInfo:
+                      isTwoFactorAuthenticationEnabled: true
+  /Security/TwoFactorAuth/pin:
+    get:
+      summary: Get TwoFactorAuthPin
+      tags:
+      - Security Operations
+      responses:
+        '200':
+          description: OK
+      operationId: get-Security-TwoFactorAuth-pin
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: username

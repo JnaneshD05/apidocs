@@ -1,0 +1,145 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Global Parameters
+paths:
+  /CommServ/GlobalParams:
+    post:
+      deprecated: false
+      description: |
+        This operation returns values for global parameters.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_global_parameters.htm)
+      operationId: Get value for a Global Parameter
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              globalParamsRequestList:
+              - CI_STATE_FAILED
+              - CI_STATE_SKIPPED
+              - AppMgrThreadIdleTimeout
+            schema:
+              allOf:
+              - example:
+                  globalParamsRequestList:
+                  - CI_STATE_FAILED
+                  - CI_STATE_SKIPPED
+                  - AppMgrThreadIdleTimeout
+                title: GlobalParameterRequest
+                properties:
+                  globalParamsRequestList:
+                    type: array
+                    items:
+                      type: string
+              type: object
+        description: ''
+        required: true
+      summary: Get value for a Global Parameter
+      tags:
+      - Global Parameters
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  globalParamsResultList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        value:
+                          type: string
+                x-examples:
+                  Example 1:
+                    globalParamsResultList:
+                    - name: AppMgrThreadIdleTimeout
+                      value: '7200'
+                    - name: CI_STATE_FAILED
+                      value: '2,16,1016,2016'
+                    - name: CI_STATE_SKIPPED
+                      value: '17'
+              examples:
+                Example 1:
+                  value:
+                    globalParamsResultList:
+                    - name: AppMgrThreadIdleTimeout
+                      value: '7200'
+                    - name: CI_STATE_FAILED
+                      value: '2,16,1016,2016'
+                    - name: CI_STATE_SKIPPED
+                      value: '17'
+  /setGlobalParam:
+    post:
+      deprecated: false
+      description: |
+        This operation sets a global parameter.
+      operationId: Set Global Parameter
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Set Global Parameter
+      tags:
+      - Global Parameters
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                value:
+                  type: string
+              x-examples:
+                Example 1:
+                  name: AppMgrInitThreadCount
+                  value: '10'
+            examples:
+              Example 1:
+                value: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorCode: 0

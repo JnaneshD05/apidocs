@@ -1,0 +1,40 @@
+---
+id: select-database-instance-sql-instance
+title: "Select Database Instance SQL Instance"
+description: "This API returns list of MSSQL instance."
+sidebar_label: "Select Database Instance SQL Instance"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["Azure SQL Server and Managed SQL"],"description":"This API returns list of MSSQL instance.\n\n#### Response Body\n\n| **Field** | **Description** | **Type** | **Notes** |\n| --- | --- | --- | --- |\n| sqlDiscoveredServer | sql server instance list | array |  |","operationId":"SelectDatabaseInstanceSQLInstance","parameters":[{"schema":{"type":"integer"},"in":"query","name":"regionId","description":"Id of the region","required":true},{"schema":{"type":"integer"},"in":"query","name":"cloudAccountId","description":"Id of the cloud account","required":true}],"responses":{"200":{"description":"OK","content":{"application/json;charset=utf-8":{"schema":[{"title":"SelectDatabaseInstanceSQLInstance","required":["sqlDiscoveredServer"],"type":"object","properties":{"sqlDiscoveredServer":{"type":"array","items":{"title":"SqlDiscoveredServer","required":["type","instanceName"],"type":"object","properties":{"type":{"type":"string"},"instanceName":{"type":"string"}},"example":{"type":"Azure Managed DataBase Engine","instanceName":"sqlami-eastus.0b6ca3d85c3b.database.windows.net"}},"description":""}},"example":{"sqlDiscoveredServer":[{"type":"Azure Managed DataBase Engine","instanceName":"sqlami-eastus.0b6ca3d85c3b.database.windows.net"}]}}],"examples":{"Select Database Instance MSSQL":{"value":{"sqlDiscoveredServer":[{"type":"Azure Managed DataBase Engine","instanceName":"sqlami-eastus.0b6ca3d85c3b.database.windows.net"}]}}}}}}},"deprecated":false,"method":"get","path":"/core/azuredb/mssql/instance","servers":[{"url":"https://api.metallic.io/api/v1","variables":{}}],"security":[{"bearer":[]}],"securitySchemes":{"bearer":{"type":"http","scheme":"bearer"}},"info":{"title":"Metallic REST API Reference","description":"This API documentation covers all the APIs exposed by metallic for all the partner customers as well as standalone customers.\n\n> Invoke Authentication - `/api/v1/authenticate` API using `username` and `password` provided by metallic to obtain `authToken`. All subsequent requests should pass `authToken` obtained as `Bearer token` as part of `Authorization` header.\n\n> Contact Metallic Customer support for any further assistance.\n\n## HTTP Codes\n\nFollowing are the generic HTTP codes returned by APIs. These HTTP codes are not documented again at each API level to improve the overall documentation readability.\n\n| **HTTP Error Code** | **Description** |\n| --- | --- |\n| 200 | OK - Success |\n| 201 | Created - Record created successfully |\n| 204 | Success No Content -Usually returned for DELETE operation response. |\n| 400 | Bad Request - Correct the request and resubmit. |\n| 401 | Unauthorized - Authentication Failed. User credentials are incorrect or authToken is incorrect/expired. |\n| 403 | Forbidden - Logged in user does not have permission to requested API. |\n| 404 | Not Found - No records found matching the request. |\n| 409 | Conflict - In case of business errors where resource can not be created/updated due to conflict. |\n| 429 | Too Many Requests - API invocation quota exceeded. |\n| 500 | Internal Server Error - Unexpected error from server. Something went wrong on server. |","contact":{},"version":"1.0"},"postman":{"name":"Select Database Instance SQL Instance","description":{"content":"This API returns list of MSSQL instance.\n\n#### Response Body\n\n| **Field** | **Description** | **Type** | **Notes** |\n| --- | --- | --- | --- |\n| sqlDiscoveredServer | sql server instance list | array |  |","type":"text/plain"},"url":{"path":["core","azuredb","mssql","instance"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"(Required) Id of the region","type":"text/plain"},"key":"regionId","value":""},{"disabled":false,"description":{"content":"(Required) Id of the cloud account","type":"text/plain"},"key":"cloudAccountId","value":""}],"variable":[]},"header":[{"key":"Accept","value":"application/json;charset=utf-8"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv2/Metallic/metallic-rest-api-reference
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Select Database Instance SQL Instance
+
+
+
+This API returns list of MSSQL instance.
+
+#### Response Body
+
+| **Field** | **Description** | **Type** | **Notes** |
+| --- | --- | --- | --- |
+| sqlDiscoveredServer | sql server instance list | array |  |
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"schema":{"type":"integer"},"in":"query","name":"regionId","description":"Id of the region","required":true}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"schema":{"type":"integer"},"in":"query","name":"cloudAccountId","description":"Id of the cloud account","required":true}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json;charset=utf-8"} value={"application/json;charset=utf-8"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}></ul></details></TabItem><TabItem label={" Select  Database  Instance  M S S Q L"} value={" Select  Database  Instance  M S S Q L"}><ResponseSamples responseExample={"{\n  \"sqlDiscoveredServer\": [\n    {\n      \"type\": \"Azure Managed DataBase Engine\",\n      \"instanceName\": \"sqlami-eastus.0b6ca3d85c3b.database.windows.net\"\n    }\n  ]\n}"} language={"shell"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

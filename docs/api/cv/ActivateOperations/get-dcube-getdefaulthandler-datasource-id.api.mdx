@@ -1,0 +1,35 @@
+---
+id: get-dcube-getdefaulthandler-datasource-id
+title: "Datasource Handler"
+description: "This operation retrieves the default handler of a datasource."
+sidebar_label: "Datasource Handler"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["Apps"],"responses":{"200":{"description":"OK"}},"operationId":"get-dcube-getdefaulthandler-datasourceId","description":"This operation retrieves the default handler of a datasource.\n","parameters":[{"schema":{"type":"string"},"in":"header","name":"AuthToken","required":true},{"schema":{"type":"string"},"name":"datasourceId","in":"path","required":true}],"method":"get","path":"/dcube/getdefaulthandler/{datasourceId}","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Commvault Rest API - Public","contact":{},"version":"1.0","description":"## Welcome\n\nWelcome to Commvault's Rest APIs. You can explore our APIs in [Postman](https://getpostman.com) using the predefined requests we created\n\nThe current version of this documentation is **Commvault Platform Release 2022E**.\n\nYou can access LTS documentation here:\n\n[Feature Release 11.20](https://documenter.getpostman.com/view/2046098/UVR7KoPJ)\n\n[Feature Release 11.24](https://documenter.getpostman.com/view/2046098/UVR7KoPL)\n\nFor more V2 and Latest APIs, please visit your API Explorer page.  \n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=107350_1.htm)\n\n"},"postman":{"name":"Datasource Handler","description":{"content":"This operation retrieves the default handler of a datasource.\n","type":"text/plain"},"url":{"path":["dcube","getdefaulthandler",":datasourceId"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"datasourceId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"AuthToken","value":""}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/ActivateOperations/commvault-rest-api-public
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Datasource Handler
+
+
+
+This operation retrieves the default handler of a datasource.
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"name":"datasourceId","in":"path","required":true}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"in":"header","name":"AuthToken","required":true}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

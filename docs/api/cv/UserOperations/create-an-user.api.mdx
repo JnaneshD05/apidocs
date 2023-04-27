@@ -1,0 +1,41 @@
+---
+id: create-an-user
+title: "Create User (Deprecated)"
+description: "This operation creates a user."
+sidebar_label: "Create User (Deprecated)"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":true,"description":"This operation creates a user.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_user.htm)\n","operationId":"Create an User","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["User Operations"],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{}},"examples":{"User":{"value":{"users":[{"description":"backup testadmin user","agePasswordDays":10,"password":"##########","email":"jdoe@company.com","fullName":"Jane Doe","enableUser":true,"associatedUserGroups":[{"userGroupName":"View"}],"userEntity":{"userName":"jdoe"}}]}}}}}},"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"processinginstructioninfo":{"type":"object","properties":{"attributes":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"value":{"type":"string"}}}}}},"response":{"type":"array","items":{"type":"object","properties":{"errorString":{"type":"string"},"errorCode":{"type":"integer"},"entity":{"type":"object","properties":{"userId":{"type":"integer"},"userName":{"type":"string"}}}}}}},"x-examples":{"Example 1":{"processinginstructioninfo":{"attributes":[{"name":"exitval","value":"0"}]},"response":[{"errorString":"Successful","errorCode":0,"entity":{"userId":8,"userName":"jdoe"}}]}}},"examples":{"Example 1":{"value":{"processinginstructioninfo":{"attributes":[{"name":"exitval","value":"0"}]},"response":[{"errorString":"Successful","errorCode":0,"entity":{"userId":8,"userName":"jdoe"}}]}}}}}}},"method":"post","path":"/User","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{},"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Create User (Deprecated)","description":{"content":"This operation creates a user.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_user.htm)\n","type":"text/plain"},"url":{"path":["User"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/json"},{"key":"Accept","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/UserOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Create User (Deprecated)
+
+:::caution deprecated
+
+This endpoint has been deprecated and may be removed in future versions of the API.
+
+:::
+
+This operation creates a user.
+
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_user.htm)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>processinginstructioninfo</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>attributes</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"value"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>response</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"errorString"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"errorCode"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>entity</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"userId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"userName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"processinginstructioninfo\": {\n    \"attributes\": [\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"response\": [\n    {\n      \"errorString\": \"string\",\n      \"errorCode\": 0,\n      \"entity\": {\n        \"userId\": 0,\n        \"userName\": \"string\"\n      }\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"{\n  \"processinginstructioninfo\": {\n    \"attributes\": [\n      {\n        \"name\": \"exitval\",\n        \"value\": \"0\"\n      }\n    ]\n  },\n  \"response\": [\n    {\n      \"errorString\": \"Successful\",\n      \"errorCode\": 0,\n      \"entity\": {\n        \"userId\": 8,\n        \"userName\": \"jdoe\"\n      }\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

@@ -1,0 +1,13 @@
+# Code Owners for root level, following rules will override this
+* @eng/ldap-groups/git-admins
+
+
+# Code Owners for frontend
+docs/frontend/ @eng/ldap-groups/git-admins
+
+# Code Owners for backend
+docs/backend/ @eng/ldap-groups/git-admins @riyer @bmehta @alakra 
+
+# Code Owners for backend sidebar
+backendSidebar.js @eng/ldap-groups/git-admins @riyer @bmehta @alakra 
+

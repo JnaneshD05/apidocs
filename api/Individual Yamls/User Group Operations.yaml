@@ -1,0 +1,851 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+  - url: 'http://{hostname}/webconsole/api'
+    variables:
+      hostname:
+        default: localhost
+        description: Webconsole
+tags:
+  - name: User Group Operations
+paths:
+  /UserGroup:
+    post:
+      deprecated: true
+      description: |
+        This operation creates a user group.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_user_group.htm)
+      operationId: Create an User Group
+      parameters:
+        - description: ''
+          in: header
+          name: Authtoken
+          required: true
+          schema:
+            example: '{{TOKEN}}'
+            type: string
+      summary: Create an User Group (Deprecated)
+      tags:
+        - User Group Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                groups:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      description:
+                        type: string
+                      enabled:
+                        type: boolean
+                      securityAssociations:
+                        type: object
+                        properties:
+                          associationsOperationType:
+                            type: integer
+                          associations:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                entities:
+                                  type: object
+                                  properties:
+                                    entity:
+                                      type: array
+                                      items:
+                                        type: object
+                                        properties:
+                                          clientName:
+                                            type: string
+                                properties:
+                                  type: object
+                                  properties:
+                                    role:
+                                      type: object
+                                      properties:
+                                        roleName:
+                                          type: string
+                      userGroupEntity:
+                        type: object
+                        properties:
+                          userGroupName:
+                            type: string
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            userName:
+                              type: string
+              x-examples:
+                Example 1:
+                  groups:
+                    - description: access to alerts only
+                      enabled: true
+                      securityAssociations:
+                        associationsOperationType: 2
+                        associations:
+                          - entities:
+                              entity:
+                                - clientName: firewalltestcs
+                                - clientName: IDCClient
+                            properties:
+                              role:
+                                roleName: View
+                      userGroupEntity:
+                        userGroupName: Testgroup
+                      users:
+                        - userName: testadmin
+            examples:
+              Create an User Group:
+                value:
+                  groups:
+                    - description: access to alerts only
+                      enabled: true
+                      securityAssociations:
+                        associationsOperationType: 2
+                        associations:
+                          - entities:
+                              entity:
+                                - clientName: firewalltestcs
+                                - clientName: IDCClient
+                            properties:
+                              role:
+                                roleName: View
+                      userGroupEntity:
+                        userGroupName: Testgroup
+                      users:
+                        - userName: testadmin
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorString:
+                          type: string
+                        errorCode:
+                          type: integer
+                        entity:
+                          type: object
+                          properties:
+                            userGroupName:
+                              type: string
+                            userGroupId:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                        - name: exitval
+                          value: '0'
+                    response:
+                      - errorString: Successful
+                        errorCode: 0
+                        entity:
+                          userGroupName: Testgroup
+                          userGroupId: 9
+              examples:
+                Create an User Group:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                        - name: exitval
+                          value: '0'
+                    response:
+                      - errorString: Successful
+                        errorCode: 0
+                        entity:
+                          userGroupName: Testgroup
+                          userGroupId: 9
+    get:
+      deprecated: true
+      description: |
+        This operation returns a list of user groups.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_user_group.htm)
+      operationId: User Group
+      parameters:
+        - description: ''
+          in: header
+          name: Authtoken
+          required: true
+          schema:
+            example: '{{TOKEN}}'
+            type: string
+      summary: Get User Group (Deprecated)
+      tags:
+        - User Group Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  userGroups:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        userGroupEntity:
+                          type: object
+                          properties:
+                            userGroupId:
+                              type: integer
+                            userGroupName:
+                              type: string
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                        - name: exitval
+                          value: '0'
+                    userGroups:
+                      - userGroupEntity:
+                          userGroupId: 1
+                          userGroupName: master
+                      - userGroupEntity:
+                          userGroupId: 3
+                          userGroupName: View All
+              examples:
+                User Group:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                        - name: exitval
+                          value: '0'
+                    userGroups:
+                      - userGroupEntity:
+                          userGroupId: 1
+                          userGroupName: master
+                      - userGroupEntity:
+                          userGroupId: 3
+                          userGroupName: View All
+  '/UserGroup/{UserGroupId}':
+    get:
+      description: |
+        This operation returns the properties associated with a user group.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_user_group_properties.htm)
+      operationId: Get Usergroup Details
+      parameters:
+        - description: ''
+          in: header
+          name: Authtoken
+          required: true
+          schema:
+            example: '{{TOKEN}}'
+            type: string
+        - description: ''
+          in: path
+          name: UserGroupId
+          required: true
+          schema:
+            type: string
+      summary: Get Usergroup Details (Deprecated)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  userGroups:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        description:
+                          type: string
+                        allAssociations:
+                          type: boolean
+                        enforceFSQuota:
+                          type: boolean
+                        enabled:
+                          type: boolean
+                        agePasswordDays:
+                          type: integer
+                        email:
+                          type: string
+                        edgeDriveQuotaLimitInGB:
+                          type: integer
+                        enforceEdgeDriveQuota:
+                          type: boolean
+                        quotaLimitInGB:
+                          type: integer
+                        preferenceMachineCentricClient:
+                          type: boolean
+                        allCapabilities:
+                          type: boolean
+                        securityAssociations:
+                          type: object
+                          properties:
+                            associations:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  entities:
+                                    type: object
+                                    properties:
+                                      entity:
+                                        type: array
+                                        items:
+                                          type: object
+                                          properties:
+                                            commCellName:
+                                              type: string
+                                            commCellId:
+                                              type: integer
+                                            _type_:
+                                              type: integer
+                                  properties:
+                                    type: object
+                                    properties:
+                                      isCreatorAssociation:
+                                        type: boolean
+                                      categoryPermission:
+                                        type: object
+                                        properties:
+                                          categoriesPermissionList:
+                                            type: array
+                                            items:
+                                              type: object
+                                              properties:
+                                                permissionId:
+                                                  type: integer
+                                                permissionName:
+                                                  type: string
+                                                _type_:
+                                                  type: integer
+                                                categoryId:
+                                                  type: integer
+                                      permissions:
+                                        type: array
+                                        items:
+                                          type: object
+                                          properties:
+                                            permissionId:
+                                              type: integer
+                                            permissionName:
+                                              type: string
+                                      role:
+                                        type: object
+                                        properties:
+                                          _type_:
+                                            type: integer
+                                          roleId:
+                                            type: integer
+                                          roleName:
+                                            type: string
+                        provider:
+                          type: object
+                          properties:
+                            providerId:
+                              type: integer
+                        userGroupEntity:
+                          type: object
+                          properties:
+                            userGroupId:
+                              type: integer
+                            userGroupName:
+                              type: string
+                        plan:
+                          type: object
+                          properties: {}
+                        users:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              userName:
+                                type: string
+                              userId:
+                                type: integer
+                        vcloudGroupProp:
+                          type: object
+                          properties: {}
+                        groupSecurity:
+                          type: object
+                          properties:
+                            ownerAssociations:
+                              type: object
+                              properties: {}
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                        - name: exitval
+                          value: '0'
+                    userGroups:
+                      - description: Administrative Group
+                        allAssociations: true
+                        enforceFSQuota: false
+                        enabled: true
+                        agePasswordDays: 0
+                        email: ''
+                        edgeDriveQuotaLimitInGB: 100
+                        enforceEdgeDriveQuota: false
+                        quotaLimitInGB: 100
+                        preferenceMachineCentricClient: true
+                        allCapabilities: true
+                        securityAssociations:
+                          associations:
+                            - entities:
+                                entity:
+                                  - commCellName: firewalltestcs
+                                    commCellId: 2
+                                    _type_: 1
+                              properties:
+                                isCreatorAssociation: true
+                                categoryPermission:
+                                  categoriesPermissionList:
+                                    - permissionId: 178
+                                      permissionName: VPN Management
+                                      _type_: 122
+                                      categoryId: 102
+                            - entities:
+                                entity:
+                                  - commCellName: firewalltestcs
+                                    commCellId: 2
+                                    _type_: 1
+                              properties:
+                                isCreatorAssociation: false
+                                categoryPermission:
+                                  categoriesPermissionList:
+                                    - permissionId: 179
+                                      permissionName: Create Client Group
+                                      _type_: 122
+                                      categoryId: 122
+                            - entities:
+                                entity:
+                                  - commCellName: firewalltestcs
+                                    commCellId: 2
+                                    _type_: 1
+                              properties:
+                                isCreatorAssociation: true
+                                permissions:
+                                  - permissionId: 178
+                                    permissionName: VPN Management
+                            - entities:
+                                entity:
+                                  - commCellName: firewalltestcs
+                                    commCellId: 2
+                                    _type_: 1
+                              properties:
+                                isCreatorAssociation: false
+                                permissions:
+                                  - permissionId: 179
+                                    permissionName: Create Client Group
+                            - entities:
+                                entity:
+                                  - commCellName: firewalltestcs
+                                    commCellId: 2
+                                    _type_: 1
+                              properties:
+                                isCreatorAssociation: true
+                                role:
+                                  _type_: 120
+                                  roleId: 1
+                                  roleName: Master
+                        provider:
+                          providerId: 0
+                        userGroupEntity:
+                          userGroupId: 1
+                          userGroupName: master
+                        plan: {}
+                        users:
+                          - userName: testadmin
+                            userId: 1
+                        vcloudGroupProp: {}
+                        groupSecurity:
+                          ownerAssociations: {}
+              examples:
+                Get Usergroup Details:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                        - name: exitval
+                          value: '0'
+                    userGroups:
+                      - description: Administrative Group
+                        allAssociations: true
+                        enforceFSQuota: false
+                        enabled: true
+                        agePasswordDays: 0
+                        email: ''
+                        edgeDriveQuotaLimitInGB: 100
+                        enforceEdgeDriveQuota: false
+                        quotaLimitInGB: 100
+                        preferenceMachineCentricClient: true
+                        allCapabilities: true
+                        securityAssociations:
+                          associations:
+                            - entities:
+                                entity:
+                                  - commCellName: firewalltestcs
+                                    commCellId: 2
+                                    _type_: 1
+                              properties:
+                                isCreatorAssociation: true
+                                categoryPermission:
+                                  categoriesPermissionList:
+                                    - permissionId: 178
+                                      permissionName: VPN Management
+                                      _type_: 122
+                                      categoryId: 102
+                            - entities:
+                                entity:
+                                  - commCellName: firewalltestcs
+                                    commCellId: 2
+                                    _type_: 1
+                              properties:
+                                isCreatorAssociation: false
+                                categoryPermission:
+                                  categoriesPermissionList:
+                                    - permissionId: 179
+                                      permissionName: Create Client Group
+                                      _type_: 122
+                                      categoryId: 122
+                            - entities:
+                                entity:
+                                  - commCellName: firewalltestcs
+                                    commCellId: 2
+                                    _type_: 1
+                              properties:
+                                isCreatorAssociation: true
+                                permissions:
+                                  - permissionId: 178
+                                    permissionName: VPN Management
+                            - entities:
+                                entity:
+                                  - commCellName: firewalltestcs
+                                    commCellId: 2
+                                    _type_: 1
+                              properties:
+                                isCreatorAssociation: false
+                                permissions:
+                                  - permissionId: 179
+                                    permissionName: Create Client Group
+                            - entities:
+                                entity:
+                                  - commCellName: firewalltestcs
+                                    commCellId: 2
+                                    _type_: 1
+                              properties:
+                                isCreatorAssociation: true
+                                role:
+                                  _type_: 120
+                                  roleId: 1
+                                  roleName: Master
+                        provider:
+                          providerId: 0
+                        userGroupEntity:
+                          userGroupId: 1
+                          userGroupName: master
+                        plan: {}
+                        users:
+                          - userName: testadmin
+                            userId: 1
+                        vcloudGroupProp: {}
+                        groupSecurity:
+                          ownerAssociations: {}
+      deprecated: true
+      tags:
+        - User Group Operations
+    post:
+      deprecated: true
+      description: |
+        This operation updates the properties associated with a user group.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_user_group_properties.htm)
+      operationId: User Group Properties - Adds User to User Group
+      parameters:
+        - description: ''
+          in: header
+          name: Authtoken
+          required: true
+          schema:
+            example: '{{TOKEN}}'
+            type: string
+        - description: ''
+          in: path
+          name: UserGroupId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                groups:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      description:
+                        type: string
+                      enabled:
+                        type: boolean
+                      usersOperationType:
+                        type: integer
+                      userGroupEntity:
+                        type: object
+                        properties:
+                          userGroupName:
+                            type: string
+                      users:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            userName:
+                              type: string
+              x-examples:
+                Example 1:
+                  groups:
+                    - description: alert management group
+                      enabled: true
+                      usersOperationType: 2
+                      userGroupEntity:
+                        userGroupName: Testgroup
+                      users:
+                        - userName: testadmin
+            examples:
+              User Group Properties - Adds User to User Group:
+                value:
+                  groups:
+                    - description: alert management group
+                      enabled: true
+                      usersOperationType: 2
+                      userGroupEntity:
+                        userGroupName: Testgroup
+                      users:
+                        - userName: testadmin
+        description: ''
+        required: true
+      summary: User Group Properties - Adds User to User Group (Deprecated)
+      tags:
+        - User Group Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorString:
+                          type: string
+                        errorCode:
+                          type: integer
+                        entity:
+                          type: object
+                          properties:
+                            userGroupName:
+                              type: string
+                            userGroupId:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                        - name: exitval
+                          value: '0'
+                    response:
+                      - errorString: Successful
+                        errorCode: 0
+                        entity:
+                          userGroupName: Testgroup
+                          userGroupId: 9
+              examples:
+                User Group Properties - This request deletes a security association.:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                        - name: exitval
+                          value: '0'
+                    response:
+                      - errorString: Successful
+                        errorCode: 0
+                        entity:
+                          userGroupName: Testgroup
+                          userGroupId: 9
+    delete:
+      summary: Delete User Group (Deprecated)
+      operationId: Delete User Group
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorString:
+                          type: string
+                        errorCode:
+                          type: integer
+                        entity:
+                          type: object
+                          properties:
+                            GUID:
+                              type: string
+                            userGroupName:
+                              type: string
+                            userGroupId:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                        - name: exitval
+                          value: '0'
+                    response:
+                      - errorString: Success
+                        errorCode: 0
+                        entity:
+                          GUID: 65F0EAC3-170B-4903-B2F3-3E4EE85EAE3E
+                          userGroupName: NewGroup
+                          userGroupId: 378
+              examples:
+                User Group Deletion without ownership transfer:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                        - name: exitval
+                          value: '0'
+                    response:
+                      - errorString: Success
+                        errorCode: 0
+                        entity:
+                          GUID: 65F0EAC3-170B-4903-B2F3-3E4EE85EAE3E
+                          userGroupName: NewGroup
+                          userGroupId: 378
+                User Group with ownership transfer to new user /UserGroup/383?newUserId=1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                        - name: exitval
+                          value: '0'
+                    response:
+                      - errorString: Success
+                        errorCode: 0
+                        entity:
+                          GUID: BA0A3FD7-C5BF-41A9-8688-79E50FFA4F79
+                          userGroupName: testing
+                          userGroupId: 383
+      description: |-
+        This operation deletes a user group.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/delete_user_group.htm)
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: newUserId
+        - schema:
+            type: string
+          in: query
+          name: newUserGroupId
+        - description: ''
+          in: path
+          name: UserGroupId
+          required: true
+          schema:
+            type: string
+      tags:
+        - User Group Operations
+      deprecated: true

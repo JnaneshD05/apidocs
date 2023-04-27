@@ -1,0 +1,35 @@
+---
+id: convert-xml-to-json-object
+title: "Convert XML to JSON"
+description: "This operation converts XML into equivalent JSON object."
+sidebar_label: "Convert XML to JSON"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation converts XML into equivalent JSON object.\n","operationId":"Convert XML to JSON Object","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"header","name":"Content-Type","required":true,"schema":{"enum":["application/xml"],"example":"application/xml","type":"string"}},{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/json","type":"string"}}],"tags":["Convert XML to JSON"],"responses":{"200":{"description":"OK"}},"method":"post","path":"/jsonobject","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Convert XML to JSON","description":{"content":"This operation converts XML into equivalent JSON object.\n","type":"text/plain"},"url":{"path":["jsonobject"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""}],"method":"POST"}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/ConvertXMLtoJson/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Convert XML to JSON
+
+
+
+This operation converts XML into equivalent JSON object.
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Content-Type","required":true,"schema":{"enum":["application/xml"],"example":"application/xml","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/json","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

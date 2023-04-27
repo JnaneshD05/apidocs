@@ -1,0 +1,52 @@
+---
+id: update-project-security
+title: "Update Project Security"
+description: "This operation will update the security configuration for a given project"
+sidebar_label: "Update Project Security"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation will update the security configuration for a given project\n\n<h2>Request Body</h2>\n<table width=\"488\">\n\n\n<tr>\n<td>Name</td>\n<td>Description</td>\n</tr>\n<tr>\n<td>categoriesPermissionOperationType</td>\n<td>\n<p>values:-Overwrite : 1-Add : 2-Delete : 3</p>\n</td>\n</tr>\n\n\n</table>","operationId":"Update Project Security","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Apps"],"requestBody":{"content":{"text/plain":{"examples":{"Remove Users":{"value":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<App_UpdateSecurityAssociationRequest> \n    <entityAssociated> \n        <entity clientId=\"{{projectId}}\" _type_=\"3\"/> \n    </entityAssociated> \n</App_UpdateSecurityAssociationRequest>   "},"Add User With View and Edit Permissions":{"value":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<App_UpdateSecurityAssociationRequest> \n    <entityAssociated> \n        <entity clientId=\"{{projectId}}\" _type_=\"3\"/> \n    </entityAssociated> \n    <securityAssociations associationsOperationType=\"1\"> \n        <associations> \n            <userOrGroup userId=\"0\" _type_=\"13\" userName=\"testadmin\"/> \n            <properties> \n                <categoryPermission categoriesPermissionOperationType=\"1\"> \n                    <categoriesPermissionList permissionId=\"31\" permissionName=\"View\" _type_=\"122\"/> \n                    <categoriesPermissionList permissionId=\"2\" permissionName=\"Agent Management\" _type_=\"122\"/> \n                </categoryPermission> \n            </properties> \n        </associations> \n    </securityAssociations> \n</App_UpdateSecurityAssociationRequest>   "},"Add Multiple Users":{"value":"<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<App_UpdateSecurityAssociationRequest> \n    <entityAssociated> \n        <entity clientId=\"{{projectId}}\" _type_=\"3\"/> \n    </entityAssociated> \n    <securityAssociations associationsOperationType=\"1\"> \n        <associations> \n            <userOrGroup userId=\"0\" _type_=\"13\" userName=\"testadmin\"/> \n            <properties> \n                <categoryPermission categoriesPermissionOperationType=\"1\"> \n                    <categoriesPermissionList permissionId=\"31\" permissionName=\"View\" _type_=\"122\"/> \n                    <categoriesPermissionList permissionId=\"2\" permissionName=\"Agent Management\" _type_=\"122\"/> \n                </categoryPermission> \n            </properties> \n        </associations> \n/t/t<associations> \n            <userOrGroup userId=\"0\" _type_=\"13\" userName=\"dm2\\TestCEO\"/> \n            <properties> \n                <categoryPermission categoriesPermissionOperationType=\"1\">                     \n                /t<categoriesPermissionList permissionId=\"31\" permissionName=\"View\" _type_=\"122\"/> \n                    <categoriesPermissionList permissionId=\"2\" permissionName=\"Agent Management\" _type_=\"122\"/> \n                </categoryPermission> \n            </properties> \n        </associations> \n    </securityAssociations> \n</App_UpdateSecurityAssociationRequest>   "}}}}},"responses":{"200":{"description":"OK","content":{"text/plain":{"examples":{"Example 1":{"value":"<App_GenericResponse>\n    <response />\n    <response warningCode=\"0\" errorCode=\"0\" warningMessage=\"\" />\n    <response warningCode=\"0\" errorCode=\"0\" warningMessage=\"\" />\n    <response warningCode=\"0\" errorCode=\"0\" warningMessage=\"\" />\n    <response warningCode=\"0\" errorCode=\"0\" warningMessage=\"\" />\n    <response warningCode=\"0\" errorCode=\"0\" warningMessage=\"\" />\n</App_GenericResponse>"}}}}}},"method":"post","path":"/EDiscoveryClients/Security","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Commvault Rest API - Public","contact":{},"version":"1.0","description":"## Welcome\n\nWelcome to Commvault's Rest APIs. You can explore our APIs in [Postman](https://getpostman.com) using the predefined requests we created\n\nThe current version of this documentation is **Commvault Platform Release 2022E**.\n\nYou can access LTS documentation here:\n\n[Feature Release 11.20](https://documenter.getpostman.com/view/2046098/UVR7KoPJ)\n\n[Feature Release 11.24](https://documenter.getpostman.com/view/2046098/UVR7KoPL)\n\nFor more V2 and Latest APIs, please visit your API Explorer page.  \n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=107350_1.htm)\n\n"},"postman":{"name":"Update Project Security","description":{"content":"This operation will update the security configuration for a given project\n\n<h2>Request Body</h2>\n<table width=\"488\">\n\n\n<tr>\n<td>Name</td>\n<td>Description</td>\n</tr>\n<tr>\n<td>categoriesPermissionOperationType</td>\n<td>\n<p>values:-Overwrite : 1-Add : 2-Delete : 3</p>\n</td>\n</tr>\n\n\n</table>","type":"text/plain"},"url":{"path":["EDiscoveryClients","Security"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"text/plain"},{"key":"Accept","value":"text/plain"}],"method":"POST","body":{"mode":"raw","raw":"\"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\"?>\\n<App_UpdateSecurityAssociationRequest> \\n    <entityAssociated> \\n        <entity clientId=\\\"{{projectId}}\\\" _type_=\\\"3\\\"/> \\n    </entityAssociated> \\n</App_UpdateSecurityAssociationRequest>   \""}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/ActivateOperations/commvault-rest-api-public
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Update Project Security
+
+
+
+This operation will update the security configuration for a given project
+
+<h2>Request Body</h2>
+<table width="488">
+
+
+<tr>
+<td>Name</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>categoriesPermissionOperationType</td>
+<td>
+<p>values:-Overwrite : 1-Add : 2-Delete : 3</p>
+</td>
+</tr>
+
+
+</table>
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"<App_GenericResponse>\n    <response />\n    <response warningCode=\"0\" errorCode=\"0\" warningMessage=\"\" />\n    <response warningCode=\"0\" errorCode=\"0\" warningMessage=\"\" />\n    <response warningCode=\"0\" errorCode=\"0\" warningMessage=\"\" />\n    <response warningCode=\"0\" errorCode=\"0\" warningMessage=\"\" />\n    <response warningCode=\"0\" errorCode=\"0\" warningMessage=\"\" />\n</App_GenericResponse>"} language={"shell"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

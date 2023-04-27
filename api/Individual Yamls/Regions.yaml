@@ -1,0 +1,1495 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables:
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Regions
+paths:
+  /Regions:
+    get:
+      deprecated: false
+      description: |-
+        <p>
+         This operation returns a list of Regions.
+        </p>
+      operationId: Get all Regions
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: propertyLevel
+        schema:
+          example: BasicProperties
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get all Regions (Deprecated)
+      tags:
+      - Regions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  regions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        regionType:
+                          type: integer
+                        regionEntity:
+                          type: object
+                          properties:
+                            regionId:
+                              type: integer
+                            displayName:
+                              type: string
+                            regionName:
+                              type: string
+                x-examples:
+                  Example 1:
+                    regions:
+                    - regionType: 0
+                      regionEntity:
+                        regionId: 1
+                        displayName: Africa
+                        regionName: Africa
+                    - regionType: 0
+                      regionEntity:
+                        regionId: 2
+                        displayName: Asia
+                        regionName: Asia
+                    - regionType: 0
+                      regionEntity:
+                        regionId: 3
+                        displayName: Australia
+                        regionName: Australia
+                    - regionType: 0
+                      regionEntity:
+                        regionId: 4
+                        displayName: Europe
+                        regionName: Europe
+                    - regionType: 0
+                      regionEntity:
+                        regionId: 5
+                        displayName: North America
+                        regionName: North America
+                    - regionType: 0
+                      regionEntity:
+                        regionId: 6
+                        displayName: South America
+                        regionName: South America
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 7
+                        displayName: Central US (Iowa)
+                        regionName: Central US
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 8
+                        displayName: East US 2 (Virginia)
+                        regionName: East US 2
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 9
+                        displayName: East US (Virginia)
+                        regionName: East US
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 10
+                        displayName: North Central US (Illinois)
+                        regionName: North Central US
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 11
+                        displayName: South Central US (Texas)
+                        regionName: South Central US
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 12
+                        displayName: West US 2 (Washington)
+                        regionName: West US 2
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 13
+                        displayName: West Central US (Wyoming)
+                        regionName: West Central US
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 14
+                        displayName: West US (California)
+                        regionName: West US
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 15
+                        displayName: US DoD Central (Iowa)
+                        regionName: US DoD Central
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 16
+                        displayName: US DoD East (Virginia)
+                        regionName: US DoD East
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 17
+                        displayName: US Gov Arizona
+                        regionName: US Gov Arizona
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 18
+                        displayName: US Gov Iowa
+                        regionName: US Gov Iowa
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 19
+                        displayName: US Gov Texas
+                        regionName: US Gov Texas
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 20
+                        displayName: US Gov Virginia
+                        regionName: US Gov Virginia
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 21
+                        displayName: Canada Central (Toronto)
+                        regionName: Canada Central
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 22
+                        displayName: Canada East (Qubec City)
+                        regionName: Canada East
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 23
+                        displayName: Brazil South (Sao Paulo State)
+                        regionName: Brazil South
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 24
+                        displayName: North Europe (Ireland)
+                        regionName: North Europe
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 25
+                        displayName: West Europe (Netherlands)
+                        regionName: West Europe
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 26
+                        displayName: France Central (Paris)
+                        regionName: France Central
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 27
+                        displayName: France South (Marseille)
+                        regionName: France South
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 28
+                        displayName: UK South (London)
+                        regionName: UK South
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 29
+                        displayName: UK West (Cardiff)
+                        regionName: UK West
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 30
+                        displayName: Germany Central (Frankfurt)
+                        regionName: Germany Central
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 31
+                        displayName: Germany Northeast (Magdeburg)
+                        regionName: Germany Northeast
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 32
+                        displayName: East Asia (Hong Kong)
+                        regionName: East Asia
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 33
+                        displayName: Southeast Asia (Singapore)
+                        regionName: Southeast Asia
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 34
+                        displayName: Australia Central (Canberra)
+                        regionName: Australia Central
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 35
+                        displayName: Australia Central 2(Canberra)
+                        regionName: Australia Central
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 36
+                        displayName: Australia East (New South Wales)
+                        regionName: Australia East
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 37
+                        displayName: Australia Southeast (Victoria)
+                        regionName: Australia Southeast
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 38
+                        displayName: China East (Shanghai)
+                        regionName: China East
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 39
+                        displayName: China North (Beijing)
+                        regionName: China North
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 40
+                        displayName: China East 2 (Shanghai)
+                        regionName: China East 2
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 41
+                        displayName: China North 2 (Beijing)
+                        regionName: China North 2
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 42
+                        displayName: Central India (Pune)
+                        regionName: Central India
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 43
+                        displayName: South India (Chennai)
+                        regionName: South India
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 44
+                        displayName: West India (Mumbai)
+                        regionName: West India
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 45
+                        displayName: 'Japan East (Tokyo, Saitama)'
+                        regionName: Japan East
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 46
+                        displayName: Japan West (Osaka)
+                        regionName: Japan West
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 47
+                        displayName: Korea Central (Seoul)
+                        regionName: Korea Central
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 48
+                        displayName: Korea South (Seoul)
+                        regionName: Korea South
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 49
+                        displayName: US East (Ohio) (us-east-2)
+                        regionName: us-east-2
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 50
+                        displayName: US East (N. Virginia) (us-east-1)
+                        regionName: us_east_1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 51
+                        displayName: US West (N. California) (us-west-1)
+                        regionName: us-west-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 52
+                        displayName: US West (Oregon) (us-west-2)
+                        regionName: us-west-2
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 53
+                        displayName: Asia Pacific (Mumbai) (ap-south-1)
+                        regionName: ap-south-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 54
+                        displayName: Asia Pacific (Osaka-Local) (ap-northeast-3)
+                        regionName: ap-northeast-3
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 55
+                        displayName: Asia Pacific (Seoul) (ap-northeast-2)
+                        regionName: ap-northeast-2
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 56
+                        displayName: Asia Pacific (Singapore) (ap-southeast-1)
+                        regionName: ap-southeast-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 57
+                        displayName: Asia Pacific (Sydney) (ap-southeast-2)
+                        regionName: ap-southeast-2
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 58
+                        displayName: Asia Pacific (Tokyo) (ap-northeast-1)
+                        regionName: ap-northeast-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 59
+                        displayName: Canada (Central) (ca-central-1)
+                        regionName: ca-central-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 60
+                        displayName: China (Beijing) (cn-north-1)
+                        regionName: cn-north-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 61
+                        displayName: China (Ningxia) (cn-northwest-1)
+                        regionName: cn-northwest-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 62
+                        displayName: EU (Frankfurt) (eu-central-1)
+                        regionName: eu-central-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 63
+                        displayName: EU (Ireland) (eu-west-1)
+                        regionName: eu-west-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 64
+                        displayName: EU (London) (eu-west-2)
+                        regionName: eu-west-2
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 65
+                        displayName: EU (Paris) (eu-west-3)
+                        regionName: eu-west-3
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 66
+                        displayName: South America (Sao Paulo) (sa-east-1)
+                        regionName: sa-east-1
+              examples:
+                Example 1:
+                  value:
+                    regions:
+                    - regionType: 0
+                      regionEntity:
+                        regionId: 1
+                        displayName: Africa
+                        regionName: Africa
+                    - regionType: 0
+                      regionEntity:
+                        regionId: 2
+                        displayName: Asia
+                        regionName: Asia
+                    - regionType: 0
+                      regionEntity:
+                        regionId: 3
+                        displayName: Australia
+                        regionName: Australia
+                    - regionType: 0
+                      regionEntity:
+                        regionId: 4
+                        displayName: Europe
+                        regionName: Europe
+                    - regionType: 0
+                      regionEntity:
+                        regionId: 5
+                        displayName: North America
+                        regionName: North America
+                    - regionType: 0
+                      regionEntity:
+                        regionId: 6
+                        displayName: South America
+                        regionName: South America
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 7
+                        displayName: Central US (Iowa)
+                        regionName: Central US
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 8
+                        displayName: East US 2 (Virginia)
+                        regionName: East US 2
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 9
+                        displayName: East US (Virginia)
+                        regionName: East US
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 10
+                        displayName: North Central US (Illinois)
+                        regionName: North Central US
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 11
+                        displayName: South Central US (Texas)
+                        regionName: South Central US
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 12
+                        displayName: West US 2 (Washington)
+                        regionName: West US 2
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 13
+                        displayName: West Central US (Wyoming)
+                        regionName: West Central US
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 14
+                        displayName: West US (California)
+                        regionName: West US
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 15
+                        displayName: US DoD Central (Iowa)
+                        regionName: US DoD Central
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 16
+                        displayName: US DoD East (Virginia)
+                        regionName: US DoD East
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 17
+                        displayName: US Gov Arizona
+                        regionName: US Gov Arizona
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 18
+                        displayName: US Gov Iowa
+                        regionName: US Gov Iowa
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 19
+                        displayName: US Gov Texas
+                        regionName: US Gov Texas
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 20
+                        displayName: US Gov Virginia
+                        regionName: US Gov Virginia
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 21
+                        displayName: Canada Central (Toronto)
+                        regionName: Canada Central
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 22
+                        displayName: Canada East (Qubec City)
+                        regionName: Canada East
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 23
+                        displayName: Brazil South (Sao Paulo State)
+                        regionName: Brazil South
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 24
+                        displayName: North Europe (Ireland)
+                        regionName: North Europe
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 25
+                        displayName: West Europe (Netherlands)
+                        regionName: West Europe
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 26
+                        displayName: France Central (Paris)
+                        regionName: France Central
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 27
+                        displayName: France South (Marseille)
+                        regionName: France South
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 28
+                        displayName: UK South (London)
+                        regionName: UK South
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 29
+                        displayName: UK West (Cardiff)
+                        regionName: UK West
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 30
+                        displayName: Germany Central (Frankfurt)
+                        regionName: Germany Central
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 31
+                        displayName: Germany Northeast (Magdeburg)
+                        regionName: Germany Northeast
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 32
+                        displayName: East Asia (Hong Kong)
+                        regionName: East Asia
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 33
+                        displayName: Southeast Asia (Singapore)
+                        regionName: Southeast Asia
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 34
+                        displayName: Australia Central (Canberra)
+                        regionName: Australia Central
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 35
+                        displayName: Australia Central 2(Canberra)
+                        regionName: Australia Central
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 36
+                        displayName: Australia East (New South Wales)
+                        regionName: Australia East
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 37
+                        displayName: Australia Southeast (Victoria)
+                        regionName: Australia Southeast
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 38
+                        displayName: China East (Shanghai)
+                        regionName: China East
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 39
+                        displayName: China North (Beijing)
+                        regionName: China North
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 40
+                        displayName: China East 2 (Shanghai)
+                        regionName: China East 2
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 41
+                        displayName: China North 2 (Beijing)
+                        regionName: China North 2
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 42
+                        displayName: Central India (Pune)
+                        regionName: Central India
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 43
+                        displayName: South India (Chennai)
+                        regionName: South India
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 44
+                        displayName: West India (Mumbai)
+                        regionName: West India
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 45
+                        displayName: 'Japan East (Tokyo, Saitama)'
+                        regionName: Japan East
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 46
+                        displayName: Japan West (Osaka)
+                        regionName: Japan West
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 47
+                        displayName: Korea Central (Seoul)
+                        regionName: Korea Central
+                    - regionType: 1
+                      regionEntity:
+                        regionId: 48
+                        displayName: Korea South (Seoul)
+                        regionName: Korea South
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 49
+                        displayName: US East (Ohio) (us-east-2)
+                        regionName: us-east-2
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 50
+                        displayName: US East (N. Virginia) (us-east-1)
+                        regionName: us_east_1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 51
+                        displayName: US West (N. California) (us-west-1)
+                        regionName: us-west-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 52
+                        displayName: US West (Oregon) (us-west-2)
+                        regionName: us-west-2
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 53
+                        displayName: Asia Pacific (Mumbai) (ap-south-1)
+                        regionName: ap-south-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 54
+                        displayName: Asia Pacific (Osaka-Local) (ap-northeast-3)
+                        regionName: ap-northeast-3
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 55
+                        displayName: Asia Pacific (Seoul) (ap-northeast-2)
+                        regionName: ap-northeast-2
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 56
+                        displayName: Asia Pacific (Singapore) (ap-southeast-1)
+                        regionName: ap-southeast-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 57
+                        displayName: Asia Pacific (Sydney) (ap-southeast-2)
+                        regionName: ap-southeast-2
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 58
+                        displayName: Asia Pacific (Tokyo) (ap-northeast-1)
+                        regionName: ap-northeast-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 59
+                        displayName: Canada (Central) (ca-central-1)
+                        regionName: ca-central-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 60
+                        displayName: China (Beijing) (cn-north-1)
+                        regionName: cn-north-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 61
+                        displayName: China (Ningxia) (cn-northwest-1)
+                        regionName: cn-northwest-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 62
+                        displayName: EU (Frankfurt) (eu-central-1)
+                        regionName: eu-central-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 63
+                        displayName: EU (Ireland) (eu-west-1)
+                        regionName: eu-west-1
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 64
+                        displayName: EU (London) (eu-west-2)
+                        regionName: eu-west-2
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 65
+                        displayName: EU (Paris) (eu-west-3)
+                        regionName: eu-west-3
+                    - regionType: 2
+                      regionEntity:
+                        regionId: 66
+                        displayName: South America (Sao Paulo) (sa-east-1)
+                        regionName: sa-east-1
+    post:
+      deprecated: false
+      description: |-
+        <p>
+         This operation creates a new region
+        </p>
+      operationId: Create a new Region
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              regionEntity:
+                regionName: region1
+              zones:
+                zone:
+                - city: Tinton Falls
+                  continent: ''
+                  country: usa
+                  latitude: 10
+                  longitude: 20
+                  state: NJ
+                  zoneEntity:
+                    zoneName: TintonFalls_Zone
+            schema:
+              allOf:
+              - example:
+                  regionEntity:
+                    regionName: region1
+                  zones:
+                    zone:
+                    - city: Tinton Falls
+                      continent: ''
+                      country: usa
+                      latitude: 10
+                      longitude: 20
+                      state: NJ
+                      zoneEntity:
+                        zoneName: TintonFalls_Zone
+                title: RegionsRequest
+                properties:
+                  regionEntity:
+                    example:
+                      regionName: region1
+                    title: RegionEntity2
+                    type: object
+                    properties:
+                      regionName:
+                        type: string
+                  zones:
+                    example:
+                      zone:
+                      - city: Tinton Falls
+                        continent: ''
+                        country: usa
+                        latitude: 10
+                        longitude: 20
+                        state: NJ
+                        zoneEntity:
+                          zoneName: TintonFalls_Zone
+                    title: Zones1
+                    type: object
+                    properties:
+                      zone:
+                        type: array
+                        items:
+                          example:
+                            city: Tinton Falls
+                            continent: ''
+                            country: usa
+                            latitude: 10
+                            longitude: 20
+                            state: NJ
+                            zoneEntity:
+                              zoneName: TintonFalls_Zone
+                          title: Zone1
+                          type: object
+                          properties:
+                            city:
+                              type: string
+                            continent:
+                              type: string
+                            country:
+                              type: string
+                            latitude:
+                              format: int32
+                              type: integer
+                            longitude:
+                              format: int32
+                              type: integer
+                            state:
+                              type: string
+                            zoneEntity:
+                              example:
+                                zoneName: TintonFalls_Zone
+                              title: ZoneEntity1
+                              type: object
+                              properties:
+                                zoneName:
+                                  type: string
+              type: object
+        description: ''
+        required: true
+      summary: Create a new Region (Deprecated)
+      tags:
+      - Regions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  regions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        regionEntity:
+                          type: object
+                          properties:
+                            regionId:
+                              type: integer
+                            regionName:
+                              type: string
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    regions:
+                    - regionEntity:
+                        regionId: 70
+                        regionName: region1
+                    error:
+                      errorMessage: Successful
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    regions:
+                    - regionEntity:
+                        regionId: 70
+                        regionName: region1
+                    error:
+                      errorMessage: Successful
+                      errorCode: 0
+  '/Regions/{regionId}':
+    delete:
+      deprecated: false
+      description: |2
+
+
+
+
+
+
+
+         This operation deletes a Region
+      operationId: Delete a Region
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: regionId
+        required: true
+        schema:
+          type: string
+      summary: Delete a Region (Deprecated)
+      tags:
+      - Regions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+    get:
+      deprecated: false
+      description: |2
+
+
+
+
+
+
+
+
+
+
+         Get Properties Details For A Region
+      operationId: Get Region Details
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: regionId
+        required: true
+        schema:
+          type: string
+      summary: Get Region Details (Deprecated)
+      tags:
+      - Regions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  regions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        regionType:
+                          type: integer
+                        regionEntity:
+                          type: object
+                          properties:
+                            regionId:
+                              type: integer
+                            displayName:
+                              type: string
+                            regionName:
+                              type: string
+                        regionPlans:
+                          type: object
+                          properties:
+                            numOfPlans:
+                              type: integer
+                        regionClients:
+                          type: object
+                          properties:
+                            numOfClients:
+                              type: integer
+                        zones:
+                          type: object
+                          properties:
+                            zone:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  continent:
+                                    type: string
+                                  country:
+                                    type: string
+                                  city:
+                                    type: string
+                                  latitude:
+                                    type: integer
+                                  state:
+                                    type: string
+                                  longitude:
+                                    type: integer
+                                  zoneEntity:
+                                    type: object
+                                    properties:
+                                      zoneId:
+                                        type: integer
+                                      zoneName:
+                                        type: string
+                x-examples:
+                  Example 1:
+                    regions:
+                    - regionType: 3
+                      regionEntity:
+                        regionId: 70
+                        displayName: region1
+                        regionName: region1
+                      regionPlans:
+                        numOfPlans: 0
+                      regionClients:
+                        numOfClients: 0
+                      zones:
+                        zone:
+                        - continent: ''
+                          country: usa
+                          city: Tinton Falls
+                          latitude: 10
+                          state: NJ
+                          longitude: 20
+                          zoneEntity:
+                            zoneId: 251
+                            zoneName: Tinton Falls_NJ_usa
+              examples:
+                Region Details:
+                  value:
+                    regions:
+                    - regionType: 3
+                      regionEntity:
+                        regionId: 70
+                        displayName: region1
+                        regionName: region1
+                      regionPlans:
+                        numOfPlans: 0
+                      regionClients:
+                        numOfClients: 0
+                      zones:
+                        zone:
+                        - continent: ''
+                          country: usa
+                          city: Tinton Falls
+                          latitude: 10
+                          state: NJ
+                          longitude: 20
+                          zoneEntity:
+                            zoneId: 251
+                            zoneName: Tinton Falls_NJ_usa
+    put:
+      deprecated: false
+      description: |2
+
+
+
+
+
+
+
+
+
+         This operation updates a region
+      operationId: Update Region
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: regionId
+        required: true
+        schema:
+          type: string
+      summary: Update a Region (Deprecated)
+      tags:
+      - Regions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  regions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        regionEntity:
+                          type: object
+                          properties:
+                            regionId:
+                              type: integer
+                            regionName:
+                              type: string
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    regions:
+                    - regionEntity:
+                        regionId: 70
+                        regionName: region1
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+              examples:
+                Regions - Add Zone:
+                  value:
+                    regions:
+                    - regionEntity:
+                        regionId: 70
+                        regionName: region1
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                regionEntity:
+                  type: object
+                  properties:
+                    regionName:
+                      type: string
+                zones:
+                  type: object
+                  properties:
+                    zone:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          continent:
+                            type: string
+                          country:
+                            type: string
+                          state:
+                            type: string
+                          city:
+                            type: string
+                          latitude:
+                            type: integer
+                          longitude:
+                            type: integer
+                          zoneEntity:
+                            type: object
+                            properties:
+                              zoneName:
+                                type: string
+              x-examples:
+                Example 1:
+                  regionEntity:
+                    regionName: region1
+                  zones:
+                    zone:
+                    - continent: ''
+                      country: usa
+                      state: NJ
+                      city: Ocean
+                      latitude: 10
+                      longitude: 20
+                      zoneEntity:
+                        zoneName: Ocean_Zone
+            examples:
+              Regions - Add Zone:
+                value:
+                  regionEntity:
+                    regionName: region1
+                  zones:
+                    zone:
+                    - continent: ''
+                      country: usa
+                      state: NJ
+                      city: Ocean
+                      latitude: 10
+                      longitude: 20
+                      zoneEntity:
+                        zoneName: Ocean_Zone
+  '/Regions/{regionId}/clients':
+    get:
+      deprecated: false
+      description: |-
+        <p>
+         Get Clients Associated To This Region
+        </p>
+      operationId: Get Clients of a region
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: regionId
+        required: true
+        schema:
+          type: string
+      summary: Get Clients of a region
+      tags:
+      - Regions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  regions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        regionType:
+                          type: integer
+                        regionEntity:
+                          type: object
+                          properties:
+                            regionId:
+                              type: integer
+                            displayName:
+                              type: string
+                            regionName:
+                              type: string
+                        regionPlans:
+                          type: object
+                          properties:
+                            numOfPlans:
+                              type: integer
+                        regionClients:
+                          type: object
+                          properties:
+                            numOfClients:
+                              type: integer
+                        zones:
+                          type: object
+                          properties:
+                            zone:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  continent:
+                                    type: string
+                                  country:
+                                    type: string
+                                  city:
+                                    type: string
+                                  latitude:
+                                    type: integer
+                                  state:
+                                    type: string
+                                  longitude:
+                                    type: integer
+                                  zoneEntity:
+                                    type: object
+                                    properties:
+                                      zoneId:
+                                        type: integer
+                                      zoneName:
+                                        type: string
+                x-examples:
+                  Example 1:
+                    regions:
+                    - regionType: 3
+                      regionEntity:
+                        regionId: 70
+                        displayName: region1
+                        regionName: region1
+                      regionPlans:
+                        numOfPlans: 0
+                      regionClients:
+                        numOfClients: 0
+                      zones:
+                        zone:
+                        - continent: ''
+                          country: usa
+                          city: Tinton Falls
+                          latitude: 10
+                          state: NJ
+                          longitude: 20
+                          zoneEntity:
+                            zoneId: 251
+                            zoneName: Tinton Falls_NJ_usa
+              examples:
+                Example 1:
+                  value:
+                    regions:
+                    - regionType: 3
+                      regionEntity:
+                        regionId: 70
+                        displayName: region1
+                        regionName: region1
+                      regionPlans:
+                        numOfPlans: 0
+                      regionClients:
+                        numOfClients: 0
+                      zones:
+                        zone:
+                        - continent: ''
+                          country: usa
+                          city: Tinton Falls
+                          latitude: 10
+                          state: NJ
+                          longitude: 20
+                          zoneEntity:
+                            zoneId: 251
+                            zoneName: Tinton Falls_NJ_usa
+  '/Regions/{regionId}/plans':
+    get:
+      deprecated: false
+      description: |-
+        <p>
+         Get Plans Associated To This Region
+        </p>
+      operationId: Get Plans of a region
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: regionId
+        required: true
+        schema:
+          type: string
+      summary: Get Plans of a region
+      tags:
+      - Regions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  regions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        regionType:
+                          type: integer
+                        regionEntity:
+                          type: object
+                          properties:
+                            regionId:
+                              type: integer
+                            displayName:
+                              type: string
+                            regionName:
+                              type: string
+                        regionPlans:
+                          type: object
+                          properties:
+                            numOfPlans:
+                              type: integer
+                        regionClients:
+                          type: object
+                          properties:
+                            numOfClients:
+                              type: integer
+                        zones:
+                          type: object
+                          properties:
+                            zone:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  continent:
+                                    type: string
+                                  country:
+                                    type: string
+                                  city:
+                                    type: string
+                                  latitude:
+                                    type: integer
+                                  state:
+                                    type: string
+                                  longitude:
+                                    type: integer
+                                  zoneEntity:
+                                    type: object
+                                    properties:
+                                      zoneId:
+                                        type: integer
+                                      zoneName:
+                                        type: string
+                x-examples:
+                  Example 1:
+                    regions:
+                    - regionType: 3
+                      regionEntity:
+                        regionId: 70
+                        displayName: region1
+                        regionName: region1
+                      regionPlans:
+                        numOfPlans: 0
+                      regionClients:
+                        numOfClients: 0
+                      zones:
+                        zone:
+                        - continent: ''
+                          country: usa
+                          city: Tinton Falls
+                          latitude: 10
+                          state: NJ
+                          longitude: 20
+                          zoneEntity:
+                            zoneId: 251
+                            zoneName: Tinton Falls_NJ_usa
+              examples:
+                Regions For Plans:
+                  value:
+                    regions:
+                    - regionType: 3
+                      regionEntity:
+                        regionId: 70
+                        displayName: region1
+                        regionName: region1
+                      regionPlans:
+                        numOfPlans: 0
+                      regionClients:
+                        numOfClients: 0
+                      zones:
+                        zone:
+                        - continent: ''
+                          country: usa
+                          city: Tinton Falls
+                          latitude: 10
+                          state: NJ
+                          longitude: 20
+                          zoneEntity:
+                            zoneId: 251
+                            zoneName: Tinton Falls_NJ_usa

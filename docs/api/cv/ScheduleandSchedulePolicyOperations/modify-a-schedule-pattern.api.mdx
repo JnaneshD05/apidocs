@@ -1,0 +1,37 @@
+---
+id: modify-a-schedule-pattern
+title: "Modify a Schedule Pattern"
+description: "This operation modifies the schedule pattern for a schedule policy."
+sidebar_label: "Modify a Schedule Pattern"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation modifies the schedule pattern for a schedule policy.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_schedule_policy_pattern_modify.htm)\n","operationId":"Modify a Schedule Pattern","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"path","name":"taskId","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"text/plain":{"example":"freq_type = \"1\"\nactive_start_date = \"1467158400\"\nactive_start_time = \"28880\"\nactive_end_date = \"1467158400\"\nactive_end_time = \"43200\"","schema":{"example":"freq_type = \"1\"\nactive_start_date = \"1467158400\"\nactive_start_time = \"28880\"\nactive_end_date = \"1467158400\"\nactive_end_time = \"43200\"","type":"string"}}},"description":"","required":true},"tags":["Schedule and Schedule Policy Operations"],"responses":{"200":{"description":"OK"}},"method":"post","path":"/Task/{taskId}/SubTask","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Modify a Schedule Pattern","description":{"content":"This operation modifies the schedule pattern for a schedule policy.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_schedule_policy_pattern_modify.htm)\n","type":"text/plain"},"url":{"path":["Task",":taskId","SubTask"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"taskId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"text/plain"}],"method":"POST","body":{"mode":"raw","raw":"\"\""}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/ScheduleandSchedulePolicyOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Modify a Schedule Pattern
+
+
+
+This operation modifies the schedule pattern for a schedule policy.
+
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_schedule_policy_pattern_modify.htm)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"taskId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"text/plain"} value={"text/plain-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong><strong style={{"fontSize":"var(--ifm-code-font-size)","color":"var(--openapi-required)"}}> required</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><li><div><strong>string</strong></div></li></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

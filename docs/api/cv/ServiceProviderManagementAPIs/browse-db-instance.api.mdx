@@ -1,0 +1,108 @@
+---
+id: browse-db-instance
+title: "Browse DB Instance"
+description: "Browse instance to get backed-up databases"
+sidebar_label: "Browse DB Instance"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"\nBrowse instance to get backed-up databases\n\n\n<h2>Request Parameters</h2>\n\n\n<table>\n<tr>\n<td>\n<p>Name</p>\n</td>\n<td>\n<p>Description</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>commcellId</p>\n</td>\n<td>\n<p>Id of commcell</p>\n</td>\n</tr>\n\n\n<tr>\n<td>\n<p>toTime</p>\n</td>\n<td>\n<p>unix timestamp</p>\n</td>\n</tr>\n\n\n<tr>\n<td>\n<p>fromTime</p>\n</td>\n<td>\n<p>unix timestamp</p>\n</td>\n</tr>\n\n\n<tr>\n<td>\n<p>jobId</p>\n</td>\n<td>\n<p>id for the job</p>\n</td>\n</tr>\n\n\n<tr>\n<td>\n<p>backupMethod</p>\n</td>\n<td>\n<p>Valid values are:</p>\n<ul>\n<li>VDI -0</li>\n<li>VSS - 1</li>\n<li>SNAP-2</li>\n<li>BLOCKSNAP - 5</li>\n</ul>\n</td>\n</tr>\n</table>\n\n\t\t\t\n\n","operationId":"Browse DB Instance","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"path","name":"clientId","required":true,"schema":{"type":"string"}},{"description":"","in":"path","name":"instanceId","required":true,"schema":{"type":"string"}}],"tags":["Sql"],"responses":{"200":{"description":"OK"}},"method":"get","path":"/Client/{clientId}/SQL/Instance/{instanceId}/Browse","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Browse DB Instance","description":{"content":"\nBrowse instance to get backed-up databases\n\n\n<h2>Request Parameters</h2>\n\n\n<table>\n<tr>\n<td>\n<p>Name</p>\n</td>\n<td>\n<p>Description</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>commcellId</p>\n</td>\n<td>\n<p>Id of commcell</p>\n</td>\n</tr>\n\n\n<tr>\n<td>\n<p>toTime</p>\n</td>\n<td>\n<p>unix timestamp</p>\n</td>\n</tr>\n\n\n<tr>\n<td>\n<p>fromTime</p>\n</td>\n<td>\n<p>unix timestamp</p>\n</td>\n</tr>\n\n\n<tr>\n<td>\n<p>jobId</p>\n</td>\n<td>\n<p>id for the job</p>\n</td>\n</tr>\n\n\n<tr>\n<td>\n<p>backupMethod</p>\n</td>\n<td>\n<p>Valid values are:</p>\n<ul>\n<li>VDI -0</li>\n<li>VSS - 1</li>\n<li>SNAP-2</li>\n<li>BLOCKSNAP - 5</li>\n</ul>\n</td>\n</tr>\n</table>\n\n\t\t\t\n\n","type":"text/plain"},"url":{"path":["Client",":clientId","SQL","Instance",":instanceId","Browse"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"clientId"},{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"instanceId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/ServiceProviderManagementAPIs/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Browse DB Instance
+
+
+
+
+Browse instance to get backed-up databases
+
+
+<h2>Request Parameters</h2>
+
+
+<table>
+<tr>
+<td>
+<p>Name</p>
+</td>
+<td>
+<p>Description</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>commcellId</p>
+</td>
+<td>
+<p>Id of commcell</p>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<p>toTime</p>
+</td>
+<td>
+<p>unix timestamp</p>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<p>fromTime</p>
+</td>
+<td>
+<p>unix timestamp</p>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<p>jobId</p>
+</td>
+<td>
+<p>id for the job</p>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<p>backupMethod</p>
+</td>
+<td>
+<p>Valid values are:</p>
+<ul>
+<li>VDI -0</li>
+<li>VSS - 1</li>
+<li>SNAP-2</li>
+<li>BLOCKSNAP - 5</li>
+</ul>
+</td>
+</tr>
+</table>
+
+			
+
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"clientId","required":true,"schema":{"type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"instanceId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

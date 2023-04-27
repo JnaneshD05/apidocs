@@ -1,0 +1,35 @@
+---
+id: delete-client-client-id
+title: "Delete Hypervisor"
+description: "This operations deletes a hypervisor."
+sidebar_label: "Delete Hypervisor"
+hide_title: true
+hide_table_of_contents: true
+api: {"operationId":"delete-client-clientId","responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"processinginstructioninfo":{"type":"object","properties":{"attributes":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"value":{"type":"string"}}}}}},"response":{"type":"object","properties":{"errorCode":{"type":"integer"},"entity":{"type":"object","properties":{"clientName":{"type":"string"},"clientId":{"type":"integer"},"_type_":{"type":"integer"}}}}}},"x-examples":{"Example 1":{"processinginstructioninfo":{"attributes":[{"name":"exitval","value":"0"}]},"response":{"errorCode":0,"entity":{"clientName":"vsa-vc65","clientId":673,"_type_":3}}}}},"examples":{"Example 1":{"value":{"processinginstructioninfo":{"attributes":[{"name":"exitval","value":"0"}]},"response":{"errorCode":0,"entity":{"clientName":"vsa-vc65","clientId":673,"_type_":3}}}}}}}}},"description":"This operations deletes a hypervisor.\n","tags":["Virtualization"],"parameters":[{"schema":{"type":"string"},"name":"clientId","in":"path","required":true}],"method":"delete","path":"/client/{clientId}","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Delete Hypervisor","description":{"content":"This operations deletes a hypervisor.\n","type":"text/plain"},"url":{"path":["client",":clientId"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"clientId"}]},"header":[{"key":"Accept","value":"application/json"}],"method":"DELETE"}}
+sidebar_class_name: "delete api-method"
+info_path: docs/api/cv/ServiceProviderManagementAPIs/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Delete Hypervisor
+
+
+
+This operations deletes a hypervisor.
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"schema":{"type":"string"},"name":"clientId","in":"path","required":true}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>processinginstructioninfo</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>attributes</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"value"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>response</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"errorCode"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>entity</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"clientName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"clientId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"_type_"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"processinginstructioninfo\": {\n    \"attributes\": [\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"response\": {\n    \"errorCode\": 0,\n    \"entity\": {\n      \"clientName\": \"string\",\n      \"clientId\": 0,\n      \"_type_\": 0\n    }\n  }\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"{\n  \"processinginstructioninfo\": {\n    \"attributes\": [\n      {\n        \"name\": \"exitval\",\n        \"value\": \"0\"\n      }\n    ]\n  },\n  \"response\": {\n    \"errorCode\": 0,\n    \"entity\": {\n      \"clientName\": \"vsa-vc65\",\n      \"clientId\": 673,\n      \"_type_\": 3\n    }\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

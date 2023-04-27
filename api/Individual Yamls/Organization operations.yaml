@@ -1,0 +1,2915 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables:
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Organization Operations
+paths:
+  /Organization:
+    get:
+      deprecated: false
+      description: |-
+        This operation returns a list of companies.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=92470.htm)
+      operationId: Get all Companies
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get all Companies (Deprecated)
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  providers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        serviceType:
+                          type: integer
+                        flags:
+                          type: integer
+                        description:
+                          type: string
+                        enabled:
+                          type: integer
+                        bTrustedHostUser:
+                          type: string
+                        useSecureLdap:
+                          type: integer
+                        connectName:
+                          type: string
+                        port:
+                          type: integer
+                        bLogin:
+                          type: string
+                        tppm:
+                          type: object
+                          properties:
+                            enable:
+                              type: boolean
+                            tppmType:
+                              type: integer
+                            proxyInformation:
+                              type: object
+                              properties:
+                                portNumber:
+                                  type: integer
+                                proxyEntity:
+                                  type: object
+                                  properties:
+                                    clientName:
+                                      type: string
+                                    clientId:
+                                      type: integer
+                                    _type_:
+                                      type: integer
+                        primaryContacts:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              fullName:
+                                type: string
+                              user:
+                                type: object
+                                properties:
+                                  userName:
+                                    type: string
+                                  userId:
+                                    type: integer
+                        resourceProvider:
+                          type: object
+                          properties:
+                            domainName:
+                              type: string
+                            id:
+                              type: integer
+                        shortName:
+                          type: object
+                          properties:
+                            domainName:
+                              type: string
+                            id:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    providers:
+                    - serviceType: 5
+                      flags: 0
+                      description: Test Company
+                      enabled: 1
+                      bTrustedHostUser: ''
+                      useSecureLdap: 0
+                      connectName: Test Company
+                      port: 0
+                      bLogin: ''
+                      tppm:
+                        enable: false
+                        tppmType: 4
+                        proxyInformation:
+                          portNumber: 0
+                          proxyEntity:
+                            clientName: '0'
+                            clientId: 0
+                            _type_: 3
+                      primaryContacts:
+                      - fullName: testadmin
+                        user:
+                          userName: test\testcompanyadmin
+                          userId: 130
+                      resourceProvider:
+                        domainName: Qinetix Commcell
+                        id: 0
+                      shortName:
+                        domainName: test
+                        id: 6
+              examples:
+                Example 1:
+                  value:
+                    providers:
+                    - serviceType: 5
+                      flags: 0
+                      description: Test Company
+                      enabled: 1
+                      bTrustedHostUser: ''
+                      useSecureLdap: 0
+                      connectName: Test Company
+                      port: 0
+                      bLogin: ''
+                      tppm:
+                        enable: false
+                        tppmType: 4
+                        proxyInformation:
+                          portNumber: 0
+                          proxyEntity:
+                            clientName: '0'
+                            clientId: 0
+                            _type_: 3
+                      primaryContacts:
+                      - fullName: testadmin
+                        user:
+                          userName: test\testcompanyadmin
+                          userId: 130
+                      resourceProvider:
+                        domainName: Qinetix Commcell
+                        id: 0
+                      shortName:
+                        domainName: test
+                        id: 6
+    post:
+      deprecated: false
+      description: |-
+        This operation creates a Company.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=92485.htm)
+      operationId: Create a Company
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Create a Company (Deprecated)
+      tags:
+      - Organization Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                organizationInfo:
+                  type: object
+                  properties:
+                    planDetails:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          plan:
+                            type: object
+                            properties:
+                              planName:
+                                type: string
+                              planId:
+                                type: integer
+                    organization:
+                      type: object
+                      properties:
+                        connectName:
+                          type: string
+                        emailDomainNames:
+                          type: array
+                          items:
+                            type: string
+                        shortName:
+                          type: object
+                          properties:
+                            domainName:
+                              type: string
+                    organizationProperties:
+                      type: object
+                      properties:
+                        primaryDomain:
+                          type: string
+                        primaryContacts:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              fullName:
+                                type: string
+                              email:
+                                type: string
+              x-examples:
+                Example 1:
+                  organizationInfo:
+                    planDetails:
+                    - plan:
+                        planName: Laptop plan
+                        planId: 1
+                    organization:
+                      connectName: test Company3
+                      emailDomainNames:
+                      - mail.com
+                      shortName:
+                        domainName: testalias3
+                    organizationProperties:
+                      primaryDomain: ''
+                      primaryContacts:
+                      - fullName: testadmin
+                        email: testmail3@mail.com
+            examples:
+              Create Organization Without Sending Invite Email:
+                value:
+                  organizationInfo:
+                    organization:
+                      connectName: autocvlt
+                      emailDomainNames:
+                      - commvault.com
+                      shortName:
+                        domainName: autocvlt
+                    organizationProperties:
+                      primaryDomain: ''
+                      primaryContacts:
+                      - fullName: fullName
+                        email: email@commvault.com
+                  sendEmail: false
+              Organization:
+                value:
+                  organizationInfo:
+                    planDetails:
+                    - plan:
+                        planName: Laptop plan
+                        planId: 1
+                    organization:
+                      connectName: test Company3
+                      emailDomainNames:
+                      - mail.com
+                      shortName:
+                        domainName: testalias3
+                    organizationProperties:
+                      primaryDomain: ''
+                      primaryContacts:
+                      - fullName: testadmin
+                        email: testmail3@mail.com
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: object
+                    properties:
+                      errorCode:
+                        type: integer
+                      entity:
+                        type: object
+                        properties:
+                          srmReportSet:
+                            type: integer
+                          type:
+                            type: integer
+                          srmReportType:
+                            type: integer
+                          clientSidePackage:
+                            type: boolean
+                          GUID:
+                            type: string
+                          _type_:
+                            type: integer
+                          providerId:
+                            type: integer
+                          providerDomainName:
+                            type: string
+                          consumeLicense:
+                            type: boolean
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                      errorCode: 0
+                      entity:
+                        srmReportSet: 0
+                        type: 0
+                        srmReportType: 0
+                        clientSidePackage: true
+                        GUID: 3146C5E7-F898-410D-8952-6D8B84BABBE5
+                        _type_: 61
+                        providerId: 18
+                        providerDomainName: testalias4
+                        consumeLicense: true
+              examples:
+                Example 1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                      errorCode: 0
+                      entity:
+                        srmReportSet: 0
+                        type: 0
+                        srmReportType: 0
+                        clientSidePackage: true
+                        GUID: 3146C5E7-F898-410D-8952-6D8B84BABBE5
+                        _type_: 61
+                        providerId: 18
+                        providerDomainName: testalias4
+                        consumeLicense: true
+    put:
+      deprecated: false
+      description: |-
+        This operation updates a Company.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=92489.htm)
+      operationId: Update Company Details
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: organizationId
+        required: true
+        schema:
+          example: '{{OrganizationId}}'
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Update Company Details (Deprecated)
+      tags:
+      - Organization Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                organizationInfo:
+                  type: object
+                  properties:
+                    organization:
+                      type: object
+                      properties:
+                        shortName:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                    organizationProperties:
+                      type: object
+                      properties:
+                        primaryDomain:
+                          type: string
+                        additionalDomainsOperationType:
+                          type: string
+                        additionalDomains:
+                          type: array
+                          items:
+                            type: string
+              x-examples:
+                Example 1:
+                  organizationInfo:
+                    organization:
+                      shortName:
+                        id: 180
+                    organizationProperties:
+                      primaryDomain: cv.com
+                      additionalDomainsOperationType: OVERWRITE
+                      additionalDomains:
+                      - cv1.com
+                      - cv2.com
+            examples:
+              Organization Details - Update Sender Email Settings:
+                value:
+                  organizationInfo:
+                    organization:
+                      shortName:
+                        id: 1
+                    organizationProperties:
+                      senderSmtp: email@domain.com
+                      senderName: user2
+              Update Organization - Deassociate Plan.:
+                value:
+                  organizationInfo:
+                    organization:
+                      serviceType: 5
+                      flags: 0
+                      description: test Company
+                      login: ''
+                      enabled: 1
+                      useSecureLdap: 0
+                      connectName: test Company
+                      port: 0
+                      tppm:
+                        enable: false
+                        tppmType: 4
+                        proxyInformation:
+                          portNumber: 0
+                          proxyEntity:
+                            clientName: '0'
+                            clientId: 0
+                            _type_: 3
+                      emailDomainNames:
+                      - mail.com
+                      resourceProvider:
+                        domainName: Qinetix Commcell
+                        id: 0
+                      shortName:
+                        domainName: testalias
+                        id: 16
+                    organizationProperties:
+                      physicalDeviceCount: 0
+                      authCode: ''
+                      deviceCount: 0
+                      orgCreationDateTime: 1507659390
+                      hypervisiorCount: 0
+                      totalMachineCount: 0
+                      enableAuthCodeGen: false
+                      miscMachineCount: 0
+                      serverCount: 0
+                      userCount: 1
+                      vmCount: 0
+                      primaryContacts:
+                      - fullName: testadmin
+                        user:
+                          _type_: 13
+                          userName: testalias\testmail2
+                          userId: 140
+              Update Organization Details - Overwrite Primary Contact:
+                value:
+                  organizationInfo:
+                    organization:
+                      shortName:
+                        id: 1
+                    organizationProperties:
+                      primaryContactsOperationType: OVERWRITE
+                      primaryContacts:
+                      - user:
+                          userId: 380
+              Update Organization - Associate Plan:
+                value:
+                  organizationInfo:
+                    organization:
+                      shortName:
+                        id: 180
+                    planDetails:
+                    - plan:
+                        planId: 8
+                    planDetailsOperationType: OVERWRITE
+                    organizationProperties:
+                      defaultPlansOperationType: OVERWRITE
+                      alwaysActivateWithDefaultPlan: false
+              Update Organization - general properties update:
+                value:
+                  organizationInfo:
+                    organization:
+                      shortName:
+                        id: 180
+                    organizationProperties:
+                      emailDomainNames:
+                      - cv.com.rename
+                      enableAuthCodeGen: true
+                      newAliasName: cv-new-alias
+                      useUPNForEmail: true
+                      canCreateCompanies: true
+                      showDLP: true
+                      enableAutoDiscovery: true
+                      autoClientOwnerAssignmentType: 1
+                      isJobStartTimeEnabled: true
+                      jobStartTime: 600
+                      infrastructureType: 2
+              Update Organization - primary and additional site settings:
+                value:
+                  organizationInfo:
+                    organization:
+                      shortName:
+                        id: 180
+                    organizationProperties:
+                      primaryDomain: cv.com
+                      additionalDomainsOperationType: OVERWRITE
+                      additionalDomains:
+                      - cv1.com
+                      - cv2.com
+              Update Organization - Add a Tenant operator for a company:
+                value:
+                  organizationInfo:
+                    organization:
+                      shortName:
+                        id: 180
+                        domainName: cvlt2081
+                    organizationProperties:
+                      operators:
+                      - user:
+                          userId: 1
+                          userName: testadmin
+                        role:
+                          roleId: 42
+                          roleName: Tenant Operator
+                      operatorsOperationType: OVERWRITE
+              Update Organization - Retire offline clients of a company:
+                value:
+                  organizationInfo:
+                    organization:
+                      shortName:
+                        id: 180
+                    organizationProperties:
+                      autoRetireDevices:
+                        retireDevicesAfterDays: 6
+                        forceDeleteDevicesAfterDays: 365
+              Update Organization - Configure file exceptions:
+                value:
+                  organizationInfo:
+                    organization:
+                      shortName:
+                        id: 180
+                    organizationProperties:
+                      globalFiltersInfo:
+                        globalFiltersInfoList:
+                        - globalFilters:
+                            opType: OVERWRITE
+                            filters:
+                            - 'C:/Sample'
+                          operatingSystemType: WINDOWS_GLOBAL_FILTER
+                        - globalFilters:
+                            opType: OVERWRITE
+                            filters:
+                            - /Sample/
+                          operatingSystemType: UNIX_GLOBAL_FILTER
+              Update Organization - Email settings of a company:
+                value:
+                  organizationInfo:
+                    organization:
+                      shortName:
+                        id: 180
+                    organizationProperties:
+                      senderSmtp: email@email.com
+                      senderName: Sample Name
+              Update Organization - Enable two factor authentication:
+                value:
+                  twoFactorAuthenticationInfo:
+                    mode: ENABLED_FOR_ALL
+              Update Organization - add user Group to the list of operators:
+                value:
+                  organizationInfo:
+                    organization:
+                      shortName:
+                        id: 562
+                    organizationProperties:
+                      operatorsOperationType: 1
+                      operators:
+                      - role:
+                          roleName: global-view
+                        userGroup:
+                          userGroupId: 634
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+  '/Organization/{OrganizationId}':
+    delete:
+      deprecated: false
+      description: |-
+        This operation deletes a Company.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=92483.htm)
+      operationId: Delete a Company
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: OrganizationId
+        required: true
+        schema:
+          type: string
+      summary: Delete a Company (Deprecated)
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: ''
+                    errorCode: 0
+    get:
+      deprecated: false
+      description: |-
+        This operation returns the details associated with a Company.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=92475.htm)
+      operationId: Get Company Details
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: OrganizationId
+        required: true
+        schema:
+          type: string
+      summary: Get Company Details (Deprecated)
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizationInfo:
+                    type: object
+                    properties:
+                      organization:
+                        type: object
+                        properties:
+                          serviceType:
+                            type: integer
+                          flags:
+                            type: integer
+                          description:
+                            type: string
+                          login:
+                            type: string
+                          enabled:
+                            type: integer
+                          useSecureLdap:
+                            type: integer
+                          connectName:
+                            type: string
+                          port:
+                            type: integer
+                          tppm:
+                            type: object
+                            properties:
+                              enable:
+                                type: boolean
+                              tppmType:
+                                type: integer
+                              proxyInformation:
+                                type: object
+                                properties:
+                                  portNumber:
+                                    type: integer
+                                  proxyEntity:
+                                    type: object
+                                    properties:
+                                      clientName:
+                                        type: string
+                                      clientId:
+                                        type: integer
+                                      _type_:
+                                        type: integer
+                          emailDomainNames:
+                            type: array
+                            items:
+                              type: string
+                          resourceProvider:
+                            type: object
+                            properties:
+                              domainName:
+                                type: string
+                              id:
+                                type: integer
+                          shortName:
+                            type: object
+                            properties:
+                              domainName:
+                                type: string
+                              id:
+                                type: integer
+                      organizationProperties:
+                        type: object
+                        properties:
+                          physicalDeviceCount:
+                            type: integer
+                          authCode:
+                            type: string
+                          deviceCount:
+                            type: integer
+                          orgCreationDateTime:
+                            type: integer
+                          hypervisiorCount:
+                            type: integer
+                          totalMachineCount:
+                            type: integer
+                          enableAuthCodeGen:
+                            type: boolean
+                          miscMachineCount:
+                            type: integer
+                          serverCount:
+                            type: integer
+                          userCount:
+                            type: integer
+                          vmCount:
+                            type: integer
+                          primaryContacts:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                fullName:
+                                  type: string
+                                user:
+                                  type: object
+                                  properties:
+                                    _type_:
+                                      type: integer
+                                    userName:
+                                      type: string
+                                    userId:
+                                      type: integer
+                x-examples:
+                  Example 1:
+                    organizationInfo:
+                      organization:
+                        serviceType: 5
+                        flags: 0
+                        description: test Company
+                        login: ''
+                        enabled: 1
+                        useSecureLdap: 0
+                        connectName: test Company
+                        port: 0
+                        tppm:
+                          enable: false
+                          tppmType: 4
+                          proxyInformation:
+                            portNumber: 0
+                            proxyEntity:
+                              clientName: '0'
+                              clientId: 0
+                              _type_: 3
+                        emailDomainNames:
+                        - mail.com
+                        resourceProvider:
+                          domainName: Qinetix Commcell
+                          id: 0
+                        shortName:
+                          domainName: testalias
+                          id: 16
+                      organizationProperties:
+                        physicalDeviceCount: 0
+                        authCode: ''
+                        deviceCount: 0
+                        orgCreationDateTime: 1507659390
+                        hypervisiorCount: 0
+                        totalMachineCount: 0
+                        enableAuthCodeGen: false
+                        miscMachineCount: 0
+                        serverCount: 0
+                        userCount: 1
+                        vmCount: 0
+                        primaryContacts:
+                        - fullName: testadmin
+                          user:
+                            _type_: 13
+                            userName: testalias\testmail2
+                            userId: 140
+              examples:
+                Example 1:
+                  value:
+                    organizationInfo:
+                      organization:
+                        serviceType: 5
+                        flags: 0
+                        description: test Company
+                        login: ''
+                        enabled: 1
+                        useSecureLdap: 0
+                        connectName: test Company
+                        port: 0
+                        tppm:
+                          enable: false
+                          tppmType: 4
+                          proxyInformation:
+                            portNumber: 0
+                            proxyEntity:
+                              clientName: '0'
+                              clientId: 0
+                              _type_: 3
+                        emailDomainNames:
+                        - mail.com
+                        resourceProvider:
+                          domainName: Qinetix Commcell
+                          id: 0
+                        shortName:
+                          domainName: testalias
+                          id: 16
+                      organizationProperties:
+                        physicalDeviceCount: 0
+                        authCode: ''
+                        deviceCount: 0
+                        orgCreationDateTime: 1507659390
+                        hypervisiorCount: 0
+                        totalMachineCount: 0
+                        enableAuthCodeGen: false
+                        miscMachineCount: 0
+                        serverCount: 0
+                        userCount: 1
+                        vmCount: 0
+                        primaryContacts:
+                        - fullName: testadmin
+                          user:
+                            _type_: 13
+                            userName: testalias\testmail2
+                            userId: 140
+  '/Organization/{OrganizationId}/AuthToken':
+    get:
+      deprecated: false
+      description: |-
+        This operation returns the authorization code for the Company.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=97097.htm)
+      operationId: Get Company Authorization Code
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: OrganizationId
+        required: true
+        schema:
+          type: string
+      summary: Get Company Authorization Code
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizationInfo:
+                    type: object
+                    properties:
+                      organization:
+                        type: object
+                        properties:
+                          connectName:
+                            type: string
+                          shortName:
+                            type: object
+                            properties:
+                              domainName:
+                                type: string
+                              id:
+                                type: integer
+                      organizationProperties:
+                        type: object
+                        properties:
+                          enableAuthCodeGen:
+                            type: boolean
+                          authCode:
+                            type: string
+                x-examples:
+                  Example 1:
+                    organizationInfo:
+                      organization:
+                        connectName: company001
+                        shortName:
+                          domainName: company001
+                          id: 6
+                      organizationProperties:
+                        enableAuthCodeGen: true
+                        authCode: CBABAB761
+              examples:
+                Example 1:
+                  value:
+                    organizationInfo:
+                      organization:
+                        connectName: company001
+                        shortName:
+                          domainName: company001
+                          id: 6
+                      organizationProperties:
+                        enableAuthCodeGen: true
+                        authCode: CBABAB761
+  '/Organization/{OrganizationId}/AuthToken/Action/disable':
+    put:
+      deprecated: false
+      description: |-
+        This operation disables the need for an authorization code when clients are installed for the Company.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=97099.htm)
+      operationId: Disable Authorization Code
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: OrganizationId
+        required: true
+        schema:
+          type: string
+      summary: Disable Authorization Code
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizationInfo:
+                    type: object
+                    properties:
+                      organization:
+                        type: object
+                        properties:
+                          serviceType:
+                            type: integer
+                          flags:
+                            type: integer
+                          description:
+                            type: string
+                          login:
+                            type: string
+                          enabled:
+                            type: integer
+                          useSecureLdap:
+                            type: integer
+                          connectName:
+                            type: string
+                          port:
+                            type: integer
+                          tppm:
+                            type: object
+                            properties:
+                              enable:
+                                type: boolean
+                              tppmType:
+                                type: integer
+                              proxyInformation:
+                                type: object
+                                properties:
+                                  portNumber:
+                                    type: integer
+                                  proxyEntity:
+                                    type: object
+                                    properties:
+                                      clientName:
+                                        type: string
+                                      clientId:
+                                        type: integer
+                                      _type_:
+                                        type: integer
+                          emailDomainNames:
+                            type: array
+                            items:
+                              type: string
+                          resourceProvider:
+                            type: object
+                            properties:
+                              domainName:
+                                type: string
+                              id:
+                                type: integer
+                          shortName:
+                            type: object
+                            properties:
+                              domainName:
+                                type: string
+                              id:
+                                type: integer
+                      organizationProperties:
+                        type: object
+                        properties:
+                          physicalDeviceCount:
+                            type: integer
+                          authCode:
+                            type: string
+                          deviceCount:
+                            type: integer
+                          orgCreationDateTime:
+                            type: integer
+                          hypervisiorCount:
+                            type: integer
+                          totalMachineCount:
+                            type: integer
+                          enableAuthCodeGen:
+                            type: boolean
+                          miscMachineCount:
+                            type: integer
+                          serverCount:
+                            type: integer
+                          userCount:
+                            type: integer
+                          vmCount:
+                            type: integer
+                          primaryContacts:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                fullName:
+                                  type: string
+                                user:
+                                  type: object
+                                  properties:
+                                    _type_:
+                                      type: integer
+                                    userName:
+                                      type: string
+                                    userId:
+                                      type: integer
+                x-examples:
+                  Example 1:
+                    organizationInfo:
+                      organization:
+                        serviceType: 5
+                        flags: 0
+                        description: test Company
+                        login: ''
+                        enabled: 1
+                        useSecureLdap: 0
+                        connectName: test Company
+                        port: 0
+                        tppm:
+                          enable: false
+                          tppmType: 4
+                          proxyInformation:
+                            portNumber: 0
+                            proxyEntity:
+                              clientName: '0'
+                              clientId: 0
+                              _type_: 3
+                        emailDomainNames:
+                        - mail.com
+                        resourceProvider:
+                          domainName: Qinetix Commcell
+                          id: 0
+                        shortName:
+                          domainName: testalias
+                          id: 16
+                      organizationProperties:
+                        physicalDeviceCount: 0
+                        authCode: ''
+                        deviceCount: 0
+                        orgCreationDateTime: 1507659390
+                        hypervisiorCount: 0
+                        totalMachineCount: 0
+                        enableAuthCodeGen: false
+                        miscMachineCount: 0
+                        serverCount: 0
+                        userCount: 1
+                        vmCount: 0
+                        primaryContacts:
+                        - fullName: testadmin
+                          user:
+                            _type_: 13
+                            userName: testalias\testmail2
+                            userId: 140
+              examples:
+                Example 1:
+                  value:
+                    organizationInfo:
+                      organization:
+                        serviceType: 5
+                        flags: 0
+                        description: test Company
+                        login: ''
+                        enabled: 1
+                        useSecureLdap: 0
+                        connectName: test Company
+                        port: 0
+                        tppm:
+                          enable: false
+                          tppmType: 4
+                          proxyInformation:
+                            portNumber: 0
+                            proxyEntity:
+                              clientName: '0'
+                              clientId: 0
+                              _type_: 3
+                        emailDomainNames:
+                        - mail.com
+                        resourceProvider:
+                          domainName: Qinetix Commcell
+                          id: 0
+                        shortName:
+                          domainName: testalias
+                          id: 16
+                      organizationProperties:
+                        physicalDeviceCount: 0
+                        authCode: ''
+                        deviceCount: 0
+                        orgCreationDateTime: 1507659390
+                        hypervisiorCount: 0
+                        totalMachineCount: 0
+                        enableAuthCodeGen: false
+                        miscMachineCount: 0
+                        serverCount: 0
+                        userCount: 1
+                        vmCount: 0
+                        primaryContacts:
+                        - fullName: testadmin
+                          user:
+                            _type_: 13
+                            userName: testalias\testmail2
+                            userId: 140
+  '/Organization/{OrganizationId}/EmailCustomization':
+    get:
+      deprecated: false
+      description: |-
+        This operation returns the email message header and footer configured for the Company.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=98507_1.htm)
+      operationId: Get Company Email Header and Footer
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: OrganizationId
+        required: true
+        schema:
+          type: string
+      summary: Get Company Email Header and Footer
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  masterEmailTemplate:
+                    type: string
+                  companySettings:
+                    type: object
+                    properties:
+                      footerTemplate:
+                        type: string
+                      headerTemplate:
+                        type: string
+                  defaultSettings:
+                    type: object
+                    properties:
+                      footerTemplate:
+                        type: string
+                      headerTemplate:
+                        type: string
+                x-examples:
+                  Example 1:
+                    masterEmailTemplate: '<!doctype html><html><head/><body><div style="width: 600px;padding: 0;margin: 0 auto;text-align: center;text-align:-moz-center; text-align:-webkit-center;border:0;"><table border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff" width="600" style="color: #666;background: #ffffff;width: 600px;border:0;"><tbody><tr><td width="100%" valign="middle" bgcolor="#ffffff" style="color: #666666;background: #ffffff;vertical-align: middle;font-size: 1em;line-height: 1.2em; text-align: left;font-family: Helvetica, Arial, sans-serif;">[CONTENT_EMAIL]</td></tr></tbody> </table></div></body></html>'
+                    companySettings:
+                      footerTemplate: |
+                        <p>Contact your administrator at admins@mycompany.com.</p>
+                      headerTemplate: |
+                        <p>My Company</p>
+                    defaultSettings:
+                      footerTemplate: ''
+                      headerTemplate: ''
+              examples:
+                Example 1:
+                  value:
+                    masterEmailTemplate: '<!doctype html><html><head/><body><div style="width: 600px;padding: 0;margin: 0 auto;text-align: center;text-align:-moz-center; text-align:-webkit-center;border:0;"><table border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff" width="600" style="color: #666;background: #ffffff;width: 600px;border:0;"><tbody><tr><td width="100%" valign="middle" bgcolor="#ffffff" style="color: #666666;background: #ffffff;vertical-align: middle;font-size: 1em;line-height: 1.2em; text-align: left;font-family: Helvetica, Arial, sans-serif;">[CONTENT_EMAIL]</td></tr></tbody> </table></div></body></html>'
+                    companySettings:
+                      footerTemplate: |
+                        <p>Contact your administrator at admins@mycompany.com.</p>
+                      headerTemplate: |
+                        <p>My Company</p>
+                    defaultSettings:
+                      footerTemplate: ''
+                      headerTemplate: ''
+    put:
+      deprecated: false
+      description: |-
+        This operation updates the email message header and footer configured for the Company.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=98533_1.htm)
+      operationId: Update Company Email Header and Footer
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: OrganizationId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              headerTemplate: |
+                <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAuIgAALiIBquLdkgAAAAd0SU1FB9wLExYuHwLwZI8AAAMZSURBVDhPpZT9TwxwHMf5H8T8wESeZZKkHbq6yConQpJZo2Se5qGteUjZKMlduc3CPMTuRtfD8nDSwz2Xy446V1LpjiMPp9PdPMT44eW6JvOQX3y3z/b94fN97fP+fD7v70iPx8OI/z0DkOHitfMtj1910el4yhuna9i8EX8D1HU0kHrjHGJFOVOrogm7LCWmsI0tpxvRWa1/wH6B9Pa52KbNZZxqHsvri0lXPybpVi3xVeUkVJhZWHaBsVULSdPtx+V+NwQbgri9stbrdjHRIGC+XkCi+iTZ9/rZr//Aztsu4lSHiGyIJUgvZGxdKIm6nbg9bh9oCHLlUQVj1MHMMyxms0FOnuUTud7IafKQqXGRZjrKKksUkc2RzDZG4lcTQklr2U9In7uPkOurmFotYrXxOKc6oajjG5LWjxw3f+ZgwxMy7EmsNW4ivDaeOdoI/DXhzLkTxzuvLF8lnTYHQYo9xKmLSDFdJL/DSWH7F6TWfgpanEhenOBIr5jtDjGxpkTmqkUEaL2yVPN51NMxCGl6aGOFUk9E/SE2auVsM1aQb/lI/oOv5LVqkLwXk+VcQao9hthWEcENEQTUiBhVEoW+2zQIufewi+TSHtbcURFrzCLNrOBwk4ucxn4yDEZ2P4knvTuate3RCO8vIdAoZOKtZYw+IMXY1jwIsTt6WHnWSnJ1O4G6KARmARuaCsio9bBD9Zp1ZSriFBcJVycQbBIyRRtOwIVsxqXfxGZ/MQhxu92kyeq9u9BNoCqZmd4Jhd2NJl4jY2O5jST5S8RnHAQr9zLFEEZA3VIm5F5jWWaF7+3QiBvNbQhPtCAsVzBJs5jJ+lBm1SwlpqSRmDNdCAutzCjdyiSdAH9FCn4ZEnSmtl/3ZKAimVzL7CI5/tVLmK5IRVBciUjWziJpCwvyLEw7nYN/cRZ+W6+Tf776z431echb2qXKWqZnSpl7rJkFkk5CCiwE5T1gxhEz4/dpGJ9Synmlxpf7w3d/NaDN/hyZoo6EbCVhe5WE7r6G+MBVpJdrvI189m8D/u7ogab19rp8MXAf7sv4DsuZPMsmG/YnAAAAAElFTkSuQmCC/></p>
+            schema:
+              allOf:
+              - example:
+                  headerTemplate: |
+                    <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAA7bUf6AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAAuIgAALiIBquLdkgAAAAd0SU1FB9wLExYuHwLwZI8AAAMZSURBVDhPpZT9TwxwHMf5H8T8wESeZZKkHbq6yConQpJZo2Se5qGteUjZKMlduc3CPMTuRtfD8nDSwz2Xy446V1LpjiMPp9PdPMT44eW6JvOQX3y3z/b94fN97fP+fD7v70iPx8OI/z0DkOHitfMtj1910el4yhuna9i8EX8D1HU0kHrjHGJFOVOrogm7LCWmsI0tpxvRWa1/wH6B9Pa52KbNZZxqHsvri0lXPybpVi3xVeUkVJhZWHaBsVULSdPtx+V+NwQbgri9stbrdjHRIGC+XkCi+iTZ9/rZr//Aztsu4lSHiGyIJUgvZGxdKIm6nbg9bh9oCHLlUQVj1MHMMyxms0FOnuUTud7IafKQqXGRZjrKKksUkc2RzDZG4lcTQklr2U9In7uPkOurmFotYrXxOKc6oajjG5LWjxw3f+ZgwxMy7EmsNW4ivDaeOdoI/DXhzLkTxzuvLF8lnTYHQYo9xKmLSDFdJL/DSWH7F6TWfgpanEhenOBIr5jtDjGxpkTmqkUEaL2yVPN51NMxCGl6aGOFUk9E/SE2auVsM1aQb/lI/oOv5LVqkLwXk+VcQao9hthWEcENEQTUiBhVEoW+2zQIufewi+TSHtbcURFrzCLNrOBwk4ucxn4yDEZ2P4knvTuate3RCO8vIdAoZOKtZYw+IMXY1jwIsTt6WHnWSnJ1O4G6KARmARuaCsio9bBD9Zp1ZSriFBcJVycQbBIyRRtOwIVsxqXfxGZ/MQhxu92kyeq9u9BNoCqZmd4Jhd2NJl4jY2O5jST5S8RnHAQr9zLFEEZA3VIm5F5jWWaF7+3QiBvNbQhPtCAsVzBJs5jJ+lBm1SwlpqSRmDNdCAutzCjdyiSdAH9FCn4ZEnSmtl/3ZKAimVzL7CI5/tVLmK5IRVBciUjWziJpCwvyLEw7nYN/cRZ+W6+Tf776z431echb2qXKWqZnSpl7rJkFkk5CCiwE5T1gxhEz4/dpGJ9Synmlxpf7w3d/NaDN/hyZoo6EbCVhe5WE7r6G+MBVpJdrvI189m8D/u7ogab19rp8MXAf7sv4DsuZPMsmG/YnAAAAAElFTkSuQmCC/></p>
+                title: CompanyEmailHeaderandFooterRequest
+                properties:
+                  headerTemplate:
+                    type: string
+              type: object
+        description: ''
+        required: true
+      summary: Update Company Email Header and Footer
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: ''
+                    errorCode: 0
+  '/Organization/{OrganizationId}/defaultplan':
+    get:
+      deprecated: false
+      description: |-
+        This operation returns the default plan for the Company.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=97048.htm)
+      operationId: Get Company Default Plan
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: OrganizationId
+        required: true
+        schema:
+          type: string
+      summary: Get Company Default Plan
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  organizationInfo:
+                    type: object
+                    properties:
+                      organization:
+                        type: object
+                        properties:
+                          connectName:
+                            type: string
+                          shortName:
+                            type: object
+                            properties:
+                              domainName:
+                                type: string
+                              id:
+                                type: integer
+                      organizationProperties:
+                        type: object
+                        properties:
+                          defaultPlans:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                subtype:
+                                  type: integer
+                                plan:
+                                  type: object
+                                  properties:
+                                    planName:
+                                      type: string
+                                    planId:
+                                      type: integer
+                x-examples:
+                  Example 1:
+                    organizationInfo:
+                      organization:
+                        connectName: company001
+                        shortName:
+                          domainName: company001
+                          id: 6
+                      organizationProperties:
+                        defaultPlans:
+                        - subtype: 33554437
+                          plan:
+                            planName: Server plan
+                            planId: 2
+              examples:
+                Example 1:
+                  value:
+                    organizationInfo:
+                      organization:
+                        connectName: company001
+                        shortName:
+                          domainName: company001
+                          id: 6
+                      organizationProperties:
+                        defaultPlans:
+                        - subtype: 33554437
+                          plan:
+                            planName: Server plan
+                            planId: 2
+  '/Organization/{organizationId}/action/activate':
+    post:
+      deprecated: false
+      description: This operation activates an Organization.
+      operationId: Organization Activate
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          enum:
+          - application/json
+          example: application/json
+          type: string
+      - description: ''
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          type: string
+      summary: Organization Activate
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: object
+                    properties:
+                      errorCode:
+                        type: integer
+                      entity:
+                        type: object
+                        properties:
+                          GUID:
+                            type: string
+                          _type_:
+                            type: integer
+                          providerId:
+                            type: integer
+                          providerDomainName:
+                            type: string
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                      errorCode: 0
+                      entity:
+                        GUID: ''
+                        _type_: 61
+                        providerId: 4
+                        providerDomainName: GDPR
+              examples:
+                Example 1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                      errorCode: 0
+                      entity:
+                        GUID: ''
+                        _type_: 61
+                        providerId: 4
+                        providerDomainName: GDPR
+  '/Organization/{organizationId}/action/deactivate':
+    post:
+      deprecated: false
+      description: This operation deactivates an Organization.
+      operationId: Organization Deactivate
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              deactivateOptions:
+                disableBackup: true
+                disableLogin: true
+                disableRestore: true
+            schema:
+              allOf:
+              - example:
+                  deactivateOptions:
+                    disableBackup: true
+                    disableLogin: true
+                    disableRestore: true
+                title: OrganizationDeactivateRequest
+                properties:
+                  deactivateOptions:
+                    example:
+                      disableBackup: false
+                      disableLogin: false
+                      disableRestore: false
+                    title: DeactivateOptions
+                    type: object
+                    required:
+                    - disableBackup
+                    - disableLogin
+                    - disableRestore
+                    properties:
+                      disableBackup:
+                        type: boolean
+                      disableLogin:
+                        type: boolean
+                      disableRestore:
+                        type: boolean
+                required:
+                - deactivateOptions
+              type: object
+        description: ''
+        required: true
+      summary: Organization Deactivate
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: object
+                    properties:
+                      errorCode:
+                        type: integer
+                      entity:
+                        type: object
+                        properties:
+                          GUID:
+                            type: string
+                          _type_:
+                            type: integer
+                          providerId:
+                            type: integer
+                          providerDomainName:
+                            type: string
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                      errorCode: 0
+                      entity:
+                        GUID: ''
+                        _type_: 61
+                        providerId: 4
+                        providerDomainName: GDPR
+              examples:
+                Organization Deactivate:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                      errorCode: 0
+                      entity:
+                        GUID: ''
+                        _type_: 61
+                        providerId: 4
+                        providerDomainName: GDPR
+  ? '/Subclient/byName(clientName=''{clientName}'',appName=''{appName}'',instanceName=''DefaultInstanceName'',backupsetName=''defaultBackupSet'',subclientName=''{subclientName}'')/Offboard'
+  : post:
+      deprecated: false
+      description: |-
+        This operation offboards a subclient.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=114115.htm)
+      operationId: Subclient Offboard
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Subclient Offboard
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                  entity:
+                    type: object
+                    properties:
+                      subclientId:
+                        type: integer
+                      applicationId:
+                        type: integer
+                      clientName:
+                        type: string
+                      backupsetId:
+                        type: integer
+                      instanceId:
+                        type: integer
+                      clientId:
+                        type: integer
+                      subclientName:
+                        type: string
+                x-examples:
+                  Example 1:
+                    errorMessage: Successfully offboarded
+                    errorCode: 0
+                    entity:
+                      subclientId: 63
+                      applicationId: 33
+                      clientName: dm2perf3
+                      backupsetId: 3
+                      instanceId: 1
+                      clientId: 2
+                      subclientName: backedup_test
+              examples:
+                'Subclient Offboard - With ID  /Subclient/{{subclientId}}/Offboard':
+                  value:
+                    errorMessage: Successfully offboarded
+                    errorCode: 0
+                    entity:
+                      subclientId: 63
+                      applicationId: 33
+                      clientName: dm2perf3
+                      backupsetId: 3
+                      instanceId: 1
+                      clientId: 2
+                      subclientName: backedup_test
+                Subclient Offboard - With Subclient Name:
+                  value:
+                    errorMessage: Successfully offboarded
+                    errorCode: 0
+                    entity:
+                      subclientId: 63
+                      applicationId: 33
+                      clientName: dm2perf3
+                      backupsetId: 3
+                      instanceId: 1
+                      clientId: 2
+                      subclientName: backedup_test
+    parameters:
+    - schema:
+        type: string
+      name: clientName
+      in: path
+      required: true
+    - schema:
+        type: string
+      name: subclientName
+      in: path
+      required: true
+    - schema:
+        type: string
+        example: Windows File System
+      name: appName
+      in: path
+      required: true
+  ? '/Subclient/byName(clientName=''{clientName}'',appName={appName}'',instanceName=''DefaultInstanceName'',backupsetName=''defaultBackupSet'',subclientName=''{subclientName}'')/Onboard'
+  : post:
+      deprecated: false
+      description: |-
+        This operation onboards a subclient.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=114080.htm)
+      operationId: Subclient Onboard
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Subclient Onboard
+      tags:
+      - Organization Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                StoragePool:
+                  type: string
+                serviceLevel:
+                  type: string
+                ForceReplace:
+                  type: boolean
+                role:
+                  type: object
+                  properties:
+                    roleName:
+                      type: string
+                CycleDay:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      day:
+                        type: integer
+                      time:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            startTime:
+                              type: string
+                            endTime:
+                              type: string
+                user:
+                  type: object
+                  properties:
+                    userName:
+                      type: string
+              x-examples:
+                Example 1:
+                  StoragePool: SP_Admin
+                  serviceLevel: Economy
+                  ForceReplace: true
+                  role:
+                    roleName: Client Admins
+                  CycleDay:
+                  - day: 3
+                    time:
+                    - startTime: 12AM
+                      endTime: 12AM
+                  - day: 4
+                    time:
+                    - startTime: 8AM
+                      endTime: 3PM
+                    - startTime: 6PM
+                      endTime: 9PM
+                  user:
+                    userName: tapicompany\tapicompany
+            examples:
+              'Subclient Onboard - With Subclient ID ':
+                value:
+                  StoragePool: SP_Admin
+                  serviceLevel: Economy
+                  ForceReplace: true
+                  role:
+                    roleName: Client Admins
+                  CycleDay:
+                  - day: 3
+                    time:
+                    - startTime: 12AM
+                      endTime: 12AM
+                  - day: 4
+                    time:
+                    - startTime: 8AM
+                      endTime: 3PM
+                    - startTime: 6PM
+                      endTime: 9PM
+                  user:
+                    userName: tapicompany\tapicompany
+              Example 1:
+                value:
+                  StoragePool: SP_Admin
+                  serviceLevel: Economy
+                  ForceReplace: true
+                  role:
+                    roleName: Client Admins
+                  CycleDay:
+                  - day: 3
+                    time:
+                    - startTime: 12AM
+                      endTime: 12AM
+                  - day: 4
+                    time:
+                    - startTime: 8AM
+                      endTime: 3PM
+                    - startTime: 6PM
+                      endTime: 9PM
+                  user:
+                    userName: tapicompany\tapicompany
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                  entity:
+                    type: object
+                    properties:
+                      subclientId:
+                        type: integer
+                      userId:
+                        type: integer
+                      subclientName:
+                        type: string
+                      userName:
+                        type: string
+                x-examples:
+                  Example 1:
+                    errorMessage: OnBoarding Subclient is successful
+                    errorCode: 0
+                    entity:
+                      subclientId: 63
+                      userId: 1251
+                      subclientName: backedup_test
+                      userName: tapicompany\tapicompany
+              examples:
+                Subclient Onboard - With Subclient Name:
+                  value:
+                    errorMessage: OnBoarding Subclient is successful
+                    errorCode: 0
+                    entity:
+                      subclientId: 63
+                      userId: 1251
+                      subclientName: backedup_test
+                      userName: tapicompany\tapicompany
+    parameters:
+    - schema:
+        type: string
+      name: clientName
+      in: path
+      required: true
+    - schema:
+        type: string
+        example: Windows File Sys
+      name: appName
+      in: path
+      required: true
+    - schema:
+        type: string
+      name: subclientName
+      in: path
+      required: true
+  /Tenant/Offboard:
+    post:
+      deprecated: false
+      description: |-
+        This operation identifies all the users belonging to the tenant and offboards the subclients and VM clients for all the users one by one.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=114117.htm)
+      operationId: Tenant Offboard
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              tenantHostName: tapicompany
+            schema:
+              allOf:
+              - example:
+                  tenantHostName: tapicompany
+                title: TenantOffboardRequest
+                properties:
+                  tenantHostName:
+                    type: string
+              type: object
+        description: ''
+        required: true
+      summary: Tenant Offboard
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: 'Successfully offboarded tenant 12 '
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: 'Successfully offboarded tenant 12 '
+                    errorCode: 0
+  /User/Offboard:
+    post:
+      deprecated: false
+      description: |-
+        This operation identifies all the subclients and Virtual Machine clients that are associated with a user and offboards them for the specific user.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=114732.htm)
+      operationId: User Offboard
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              userName: tapicompany/tapicompany
+            schema:
+              allOf:
+              - example:
+                  userName: tapicompany/tapicompany
+                title: UserOffboardRequest
+                properties:
+                  userName:
+                    type: string
+                required:
+                - userName
+              type: object
+        description: ''
+        required: true
+      summary: User Offboard
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: Successfully offboarded user 1251
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: Successfully offboarded user 1251
+                    errorCode: 0
+  '/VM/{vmGuid}/Offboard':
+    parameters:
+    - in: path
+      name: vmGuid
+      required: true
+      schema:
+        type: string
+    post:
+      deprecated: false
+      description: |-
+        This operation offboards a VM client based on GUID of the VM client.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=114116.htm)
+      operationId: Perform VMClient Offboard
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: vmGuid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              vmName: HMLMV2RegVM1VM1
+            schema:
+              allOf:
+              - example:
+                  vmName: HMLMV2RegVM1VM1
+                title: VMClientOffboardRequest
+                properties:
+                  vmName:
+                    type: string
+              type: object
+        description: ''
+        required: true
+      summary: Perform VMClient Offboard
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: Successfully offboarded the vm client HMLMV2RegVM1VM1
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: Successfully offboarded the vm client HMLMV2RegVM1VM1
+                    errorCode: 0
+  '/VM/{vmGuid}/Onboard':
+    parameters:
+    - in: path
+      name: vmGuid
+      required: true
+      schema:
+        type: string
+    post:
+      deprecated: false
+      description: |-
+        This operation onboards a virtual machine client based on the GUID of the client.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=114111.htm)
+      operationId: Perform VMClient Onboard
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: vmGuid
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              CycleDay:
+              - day: 3
+                time:
+                - endTime: 12AM
+                  startTime: 12AM
+              - day: 4
+                time:
+                - endTime: 3PM
+                  startTime: 8AM
+                - endTime: 9PM
+                  startTime: 6PM
+              ForceReplace: true
+              StoragePool: SP_Admin
+              role:
+                roleName: Client Admins
+              serviceLevel: Economy
+              user:
+                userName: tapicompany/tapicompany
+            schema:
+              allOf:
+              - example:
+                  CycleDay:
+                  - day: 3
+                    time:
+                    - endTime: 12AM
+                      startTime: 12AM
+                  - day: 4
+                    time:
+                    - endTime: 3PM
+                      startTime: 8AM
+                    - endTime: 9PM
+                      startTime: 6PM
+                  ForceReplace: true
+                  StoragePool: SP_Admin
+                  role:
+                    roleName: Client Admins
+                  serviceLevel: Economy
+                  user:
+                    userName: tapicompany/tapicompany
+                properties:
+                  CycleDay:
+                    description: ''
+                    items:
+                      example:
+                        day: 3
+                        time:
+                        - endTime: 12AM
+                          startTime: 12AM
+                      properties:
+                        day:
+                          format: int32
+                          type: integer
+                        time:
+                          description: ''
+                          items:
+                            example:
+                              endTime: 12AM
+                              startTime: 12AM
+                            properties:
+                              endTime:
+                                type: string
+                              startTime:
+                                type: string
+                            required:
+                            - startTime
+                            - endTime
+                            title: Time
+                            type: object
+                          type: array
+                      required:
+                      - day
+                      - time
+                      title: CycleDay
+                      type: object
+                    type: array
+                  ForceReplace:
+                    type: boolean
+                  StoragePool:
+                    type: string
+                  role:
+                    example:
+                      roleName: Client Admins
+                    properties:
+                      roleName:
+                        type: string
+                    required:
+                    - roleName
+                    title: Role
+                    type: object
+                  serviceLevel:
+                    type: string
+                  user:
+                    example:
+                      userName: tapicompany/tapicompany
+                    properties:
+                      userName:
+                        type: string
+                    required:
+                    - userName
+                    title: User4
+                    type: object
+                required:
+                - StoragePool
+                - serviceLevel
+                - ForceReplace
+                - role
+                - CycleDay
+                - user
+                title: VMClientOnboardRequest
+                type: object
+              - example:
+                  CycleDay:
+                  - day: 3
+                    time:
+                    - endTime: 12AM
+                      startTime: 12AM
+                  - day: 4
+                    time:
+                    - endTime: 3PM
+                      startTime: 8AM
+                    - endTime: 9PM
+                      startTime: 6PM
+                  ForceReplace: true
+                  StoragePool: SP_Admin
+                  role:
+                    roleName: Client Admins
+                  serviceLevel: Economy
+                  user:
+                    userName: tapicompany/tapicompany
+        description: ''
+        required: true
+      summary: Perform VMClient Onboard
+      tags:
+      - Organization Operations
+      responses:
+        '200':
+          description: OK
+  '/v2/Organization/{organizationId}/Customization':
+    put:
+      deprecated: false
+      description: |-
+        This operation updates Customization for Companies.
+
+        customizeCSS : CSS Script to Customize Command Center
+
+        isSameLogo : Use the same logo on the login page as well as on Command Center Header
+
+        <b>Note:</b> This API is available starting FR25
+
+
+
+
+        <h2>Request Body</h2>
+        <table>
+
+
+        <tr>
+        <td>Name</td>
+        <td>Description</td>
+        </tr>
+        <tr>
+        <td>
+        <p>organizationId</p>
+        </td>
+        <td>
+        <p>Organization ID [0 for Commcell]</p>
+        </td>
+        </tr>
+        <tr>
+        </tr>
+
+
+        </table>
+      operationId: Organization Customization
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          type: string
+      summary: Organization Customization
+      tags:
+      - Organization Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                organizationInfo:
+                  type: object
+                  properties:
+                    organization:
+                      type: object
+                      properties:
+                        shortName:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                    organizationProperties:
+                      type: object
+                      properties:
+                        customization:
+                          type: string
+              x-examples:
+                Example 1:
+                  organizationInfo:
+                    organization:
+                      shortName:
+                        id: 1
+                    organizationProperties:
+                      customization: '{"headerColor":"#DDE5ED","iconColor":"#0B2E44","navIconColor":"#eeeeee","headerTextColor":"#0B2E44","warningLoginBanner":"","customizeCSS":"","isSameLogo":false,"pageHeaderText":"#0B2E44","actionBtnBg":"#fa5775","linkText":"#4B8DCC","actionBtnText":"#eeeeee","navBg":"#0B2E44","loginAndBannerBg":"#000000"}'
+            examples:
+              Example 1:
+                value:
+                  organizationInfo:
+                    organization:
+                      shortName:
+                        id: 1
+                    organizationProperties:
+                      customization: '{"headerColor":"#DDE5ED","iconColor":"#0B2E44","navIconColor":"#eeeeee","headerTextColor":"#0B2E44","warningLoginBanner":"","customizeCSS":"","isSameLogo":false,"pageHeaderText":"#0B2E44","actionBtnBg":"#fa5775","linkText":"#4B8DCC","actionBtnText":"#eeeeee","navBg":"#0B2E44","loginAndBannerBg":"#000000"}'
+      responses:
+        '200':
+          description: OK
+  '/company/{companyId}/company-association':
+    put:
+      deprecated: false
+      description: |-
+        This operation will move the client/clientgroup to a company.
+        It can also add a client (that is not part of any company) to a company.
+      operationId: Migrate client/client group
+      parameters:
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: companyId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                entities:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      clientId:
+                        type: integer
+                      _type_:
+                        type: string
+                      clientGroupId:
+                        type: integer
+              x-examples:
+                Example 1:
+                  entities:
+                  - clientId: 3856
+                    _type_: CLIENT_ENTITY
+                  - clientGroupId: 226741
+                    _type_: CLIENT_GROUP_ENTITY
+            examples:
+              Migrate client/client group:
+                value:
+                  entities:
+                  - clientId: 3856
+                    _type_: CLIENT_ENTITY
+                  - clientGroupId: 226741
+                    _type_: CLIENT_GROUP_ENTITY
+              Change company for a client group:
+                value:
+                  entities:
+                  - clientGroupId: 226741
+                    _type_: CLIENT_GROUP_ENTITY
+              Change company for Office 365 application:
+                value:
+                  entities:
+                  - clientId: 924
+                    _type_: CLIENT_ENTITY
+        description: ''
+        required: true
+      summary: Migrate client/client group
+      tags:
+      - Client Migration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: ''
+                    errorCode: 0
+  '/company/{companyId}/migration-entities':
+    put:
+      deprecated: false
+      description: This operation checks the eligibility of a client/clientgroup to be moved to a company.
+      operationId: Check eligible client/client group
+      parameters:
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: companyId
+        required: true
+        schema:
+          type: string
+      summary: Check eligible client/client group
+      tags:
+      - Client Migration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                entities:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      clientId:
+                        type: integer
+                      _type_:
+                        type: string
+                      clientGroupId:
+                        type: integer
+              x-examples:
+                Example 1:
+                  entities:
+                  - clientId: 3856
+                    _type_: CLIENT_ENTITY
+                  - clientGroupId: 4
+                    _type_: CLIENT_GROUP_ENTITY
+                  - clientGroupId: 78
+                    _type_: CLIENT_GROUP_ENTITY
+            examples:
+              Check eligible client/client group:
+                value:
+                  entities:
+                  - clientId: 3856
+                    _type_: CLIENT_ENTITY
+                  - clientGroupId: 4
+                    _type_: CLIENT_GROUP_ENTITY
+                  - clientGroupId: 78
+                    _type_: CLIENT_GROUP_ENTITY
+              Check eligible client:
+                value:
+                  entities:
+                  - clientId: 3856
+                    _type_: CLIENT_ENTITY
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  notApplicableClients:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        statusMsg:
+                          type: string
+                        status:
+                          type: integer
+                        clients:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              clientId:
+                                type: integer
+                              clientName:
+                                type: string
+                              displayName:
+                                type: string
+                  applicableClients:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        clientId:
+                          type: integer
+                        clientName:
+                          type: string
+                        displayName:
+                          type: string
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    notApplicableClients:
+                    - statusMsg: Storage policy of the Media agent is not associated to the new company
+                      status: 7
+                      clients:
+                      - clientId: 1910
+                        clientName: firewalltestma
+                        displayName: firewalltestma
+                    applicableClients:
+                    - clientId: 19
+                      clientName: tempmac
+                      displayName: DN_tempmac_DN
+                    - clientId: 29
+                      clientName: SP13
+                      displayName: SP13-NetworkZoningComp3
+                    - clientId: 107
+                      clientName: lockdown
+                      displayName: DN_lockdown_DN
+                    - clientId: 2566
+                      clientName: centostemp_laptop
+                      displayName: centostemp_laptop
+                    - clientId: 3856
+                      clientName: abcde
+                      displayName: abcde
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+              examples:
+                Check eligible client/client group:
+                  value:
+                    notApplicableClients:
+                    - statusMsg: Storage policy of the Media agent is not associated to the new company
+                      status: 7
+                      clients:
+                      - clientId: 1910
+                        clientName: firewalltestma
+                        displayName: firewalltestma
+                    applicableClients:
+                    - clientId: 19
+                      clientName: tempmac
+                      displayName: DN_tempmac_DN
+                    - clientId: 29
+                      clientName: SP13
+                      displayName: SP13-NetworkZoningComp3
+                    - clientId: 107
+                      clientName: lockdown
+                      displayName: DN_lockdown_DN
+                    - clientId: 2566
+                      clientName: centostemp_laptop
+                      displayName: centostemp_laptop
+                    - clientId: 3856
+                      clientName: abcde
+                      displayName: abcde
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+                Example 1:
+                  value:
+                    applicableClients:
+                    - clientId: 3856
+                      clientName: abcde
+                      displayName: abcde
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+  /NavigationSettings:
+    get:
+      deprecated: false
+      description: This operation returns navigation settings.
+      operationId: Get Navigation Settings
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: organizationId
+        schema:
+          example: '{{organizationId}}'
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Navigation Settings
+      tags:
+      - Navigation Settings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  navSettings:
+                    type: object
+                    properties:
+                      globalSettings:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            deniedNavItems:
+                              type: string
+                            userRole:
+                              type: integer
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    navSettings:
+                      globalSettings:
+                      - deniedNavItems: 'office365V2,exchange,sharepoint,activeDirectory,gsuiteApps,ebsApps,cloudStorageApp,bigDataApps,archivingDataSourcesList'
+                        userRole: 0
+                      - deniedNavItems: 'office365V2,exchange,sharepoint,activeDirectory,gsuiteApps,ebsApps,cloudStorageApp,bigDataApps,archivingDataSourcesList,replicationGroups,lifeCyclePolicy,commCell,networkStore,snapArray,mediaAgent,license,accessControl,globalExceptions,maintenance,cvlivesync,serviceCommcells,syslogServer,metricsReporting,snmp,plugin,dataOptions,developerTools,webconsoleDownloadCenter,webconsoleAnalytics,webconsoleMonitoring,webconsoleStore'
+                        userRole: 1
+                      - deniedNavItems: 'hypervisors,vmGroups,office365V2,exchange,sharepoint,activeDirectory,gsuiteApps,ebsApps,cloudStorageApp,bigDataApps,archivingDataSourcesList,replicationGroups,lifeCyclePolicy,commCell,subscriptions,profile,networkStore,snapArray,mediaAgent,regions,license,customization,navigationPreferences,emailTemplates,accessControl,globalExceptions,maintenance,cvlivesync,serviceCommcells,syslogServer,operationWindow,metricsReporting,snmp,plugin,NetworkTopology,dataOptions,users,userGroups,roles,identityServers,keyManagement,credentialManager,developerTools,webconsoleDownloadCenter,webconsoleAnalytics,webconsoleMonitoring,webconsoleStore'
+                        userRole: 2
+                      - deniedNavItems: 'gettingStarted,office365V2,exchange,sharepoint,activeDirectory,gsuiteApps,ebsApps,cloudStorageApp,bigDataApps,archivingDataSourcesList,commCell,license,customization,navigationPreferences,emailTemplates,accessControl,globalExceptions,maintenance,cvlivesync,serviceCommcells,syslogServer,operationWindow,metricsReporting,snmp,plugin,dataOptions,identityServers,developerTools'
+                        userRole: 3
+                      - deniedNavItems: 'gettingStarted,hypervisors,vmGroups,office365V2,exchange,sharepoint,activeDirectory,gsuiteApps,ebsApps,cloudStorageApp,bigDataApps,archivingDataSourcesList,replicationGroups,lifeCyclePolicy,commCell,subscriptions,profile,networkStore,snapArray,mediaAgent,regions,license,customization,navigationPreferences,emailTemplates,accessControl,globalExceptions,maintenance,cvlivesync,serviceCommcells,syslogServer,operationWindow,metricsReporting,snmp,plugin,NetworkTopology,dataOptions,users,userGroups,roles,identityServers,keyManagement,credentialManager,developerTools,webconsoleDownloadCenter,webconsoleAnalytics,webconsoleMonitoring,webconsoleStore'
+                        userRole: 4
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+              examples:
+                Navigation Settings:
+                  value:
+                    navSettings:
+                      globalSettings:
+                      - deniedNavItems: 'office365V2,exchange,sharepoint,activeDirectory,gsuiteApps,ebsApps,cloudStorageApp,bigDataApps,archivingDataSourcesList'
+                        userRole: 0
+                      - deniedNavItems: 'office365V2,exchange,sharepoint,activeDirectory,gsuiteApps,ebsApps,cloudStorageApp,bigDataApps,archivingDataSourcesList,replicationGroups,lifeCyclePolicy,commCell,networkStore,snapArray,mediaAgent,license,accessControl,globalExceptions,maintenance,cvlivesync,serviceCommcells,syslogServer,metricsReporting,snmp,plugin,dataOptions,developerTools,webconsoleDownloadCenter,webconsoleAnalytics,webconsoleMonitoring,webconsoleStore'
+                        userRole: 1
+                      - deniedNavItems: 'hypervisors,vmGroups,office365V2,exchange,sharepoint,activeDirectory,gsuiteApps,ebsApps,cloudStorageApp,bigDataApps,archivingDataSourcesList,replicationGroups,lifeCyclePolicy,commCell,subscriptions,profile,networkStore,snapArray,mediaAgent,regions,license,customization,navigationPreferences,emailTemplates,accessControl,globalExceptions,maintenance,cvlivesync,serviceCommcells,syslogServer,operationWindow,metricsReporting,snmp,plugin,NetworkTopology,dataOptions,users,userGroups,roles,identityServers,keyManagement,credentialManager,developerTools,webconsoleDownloadCenter,webconsoleAnalytics,webconsoleMonitoring,webconsoleStore'
+                        userRole: 2
+                      - deniedNavItems: 'gettingStarted,office365V2,exchange,sharepoint,activeDirectory,gsuiteApps,ebsApps,cloudStorageApp,bigDataApps,archivingDataSourcesList,commCell,license,customization,navigationPreferences,emailTemplates,accessControl,globalExceptions,maintenance,cvlivesync,serviceCommcells,syslogServer,operationWindow,metricsReporting,snmp,plugin,dataOptions,identityServers,developerTools'
+                        userRole: 3
+                      - deniedNavItems: 'gettingStarted,hypervisors,vmGroups,office365V2,exchange,sharepoint,activeDirectory,gsuiteApps,ebsApps,cloudStorageApp,bigDataApps,archivingDataSourcesList,replicationGroups,lifeCyclePolicy,commCell,subscriptions,profile,networkStore,snapArray,mediaAgent,regions,license,customization,navigationPreferences,emailTemplates,accessControl,globalExceptions,maintenance,cvlivesync,serviceCommcells,syslogServer,operationWindow,metricsReporting,snmp,plugin,NetworkTopology,dataOptions,users,userGroups,roles,identityServers,keyManagement,credentialManager,developerTools,webconsoleDownloadCenter,webconsoleAnalytics,webconsoleMonitoring,webconsoleStore'
+                        userRole: 4
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+    post:
+      deprecated: false
+      description: |-
+        This operation updates navigation preferences
+
+        Oganization specific preferences to be done as MSP testadmin only. If done by Tenant testadmin, includeNavItems will not be supported.
+      operationId: Update Navigation Settings
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: organizationId
+        schema:
+          example: '{{organizationId}}'
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Update Navigation Settings
+      tags:
+      - Navigation Settings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                navSettings:
+                  type: object
+                  properties:
+                    companySettings:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          deniedNavItems:
+                            type: string
+                          includeNavItems:
+                            type: string
+                          userRole:
+                            type: integer
+              x-examples:
+                Example 1:
+                  navSettings:
+                    companySettings:
+                    - deniedNavItems: fsServersList
+                      includeNavItems: archiveFileServers
+                      userRole: 1
+                    - deniedNavItems: devices
+                      includeNavItems: archiveFileServers
+                      userRole: 2
+            examples:
+              Navigation Settings - Update Navigation Preferences for a Company:
+                value:
+                  navSettings:
+                    companySettings:
+                    - deniedNavItems: fsServersList
+                      includeNavItems: archiveFileServers
+                      userRole: 1
+                    - deniedNavItems: devices
+                      includeNavItems: archiveFileServers
+                      userRole: 2
+              Navigation Settings - Update Navigation Preferences of Initial Landing Page For a Company:
+                value:
+                  navSettings:
+                    companySettings:
+                    - defaultLandingPage: /reports
+                      userRole: 1
+                    - defaultLandingPage: /clientGroupDetails/all
+                      userRole: 2
+              'Navigation Settings - Update Navigation Preferences at both Company level and for Landing Page ':
+                value:
+                  navSettings:
+                    companySettings:
+                    - deniedNavItems: fsServersList
+                      defaultLandingPage: /reports
+                      userRole: 1
+                    - deniedNavItems: devices
+                      defaultLandingPage: /clientGroupDetails/all
+                      userRole: 2
+              Navigation Settings - Update Navigation Preferences at Commcell Level:
+                value:
+                  navSettings:
+                    globalSettings:
+                    - deniedNavItems: 'clusters,applicationGroups,applications,gitAppsAccounts,salesforceOrganizations,sharepoint,activeDirectory,gsuiteApps,epicServersList,cloudStorageApp,bigDataApps,archiveFileServers,activeJobs,reports'
+                      userRole: 0
+                    - deniedNavItems: 'gettingStarted,clusters,applicationGroups,applications,gitAppsAccounts,salesforceOrganizations,sharepoint,activeDirectory,gsuiteApps,epicServersList,cloudStorageApp,bigDataApps,archiveFileServers,activeJobs,triggeredAlerts,events,fileAnomaly,commCell,license,customization,navigationPreferences,emailTemplates,userSettings,accessControl,globalExceptions,maintenance,cvlivesync,serviceCommcells,syslogServer,operationWindow,metricsReporting,snmp,plugin,sendLogsSettings,dataOptions,identityServers,developerTools,customPackage'
+                      userRole: 3
+                    - deniedNavItems: 'clusters,applicationGroups,applications,gitAppsAccounts,salesforceOrganizations,sharepoint,activeDirectory,gsuiteApps,epicServersList,cloudStorageApp,bigDataApps,archiveFileServers,replicationGroups,lifeCyclePolicy,reports,storageHyperscale,storagePoolMetallic,distributedStorages,storagePoolDisk,storagePoolCloud,storageTape,commCell,networkStore,snapArray,mediaAgent,resourcePool,indexServers,license,userSettings,accessControl,globalExceptions,maintenance,cvlivesync,serviceCommcells,syslogServer,metricsReporting,snmp,plugin,sendLogsSettings,dataOptions,developerTools,formsNav,webconsoleAnalytics,webconsoleMonitoring,webconsoleStore'
+                      userRole: 1
+                    - deniedNavItems: 'gettingStarted,dashboard,hypervisors,vmGroups,dbDatabases,dbInstancesClone,clusters,applicationGroups,applications,gitAppsAccounts,salesforceOrganizations,sharepoint,activeDirectory,gsuiteApps,epicServersList,cloudStorageApp,bigDataApps,archiveFileServers,analytics,gdpr,caseManager,replicationGroups,lifeCyclePolicy,vsaReplicationMonitor,triggeredAlerts,events,fileAnomaly,storageHyperscale,storagePoolMetallic,distributedStorages,storagePoolDisk,storagePoolCloud,storageTape,commCell,subscriptions,profile,tagManager,networkStore,snapArray,mediaAgent,resourcePool,indexServers,regions,license,customization,navigationPreferences,emailTemplates,userSettings,accessControl,globalExceptions,maintenance,cvlivesync,serviceCommcells,syslogServer,operationWindow,metricsReporting,snmp,plugin,sendLogsSettings,NetworkTopology,dataOptions,users,userGroups,roles,identityServers,keyManagement,credentialManager,developerTools,formsNav,customPackage,webconsoleAnalytics,webconsoleMonitoring,webconsoleStore'
+                      userRole: 2
+                    - deniedNavItems: ',gettingStarted,dashboard,hypervisors,vmGroups,dbDatabases,dbInstancesClone,clusters,applicationGroups,applications,gitAppsAccounts,salesforceOrganizations,sharepoint,activeDirectory,gsuiteApps,epicServersList,cloudStorageApp,bigDataApps,archiveFileServers,replicationGroups,lifeCyclePolicy,vsaReplicationMonitor,reports,triggeredAlerts,events,fileAnomaly,storageHyperscale,storagePoolMetallic,distributedStorages,storagePoolDisk,storagePoolCloud,storageTape,commCell,subscriptions,profile,tagManager,networkStore,snapArray,mediaAgent,resourcePool,indexServers,regions,license,customization,navigationPreferences,emailTemplates,userSettings,accessControl,globalExceptions,maintenance,cvlivesync,serviceCommcells,syslogServer,operationWindow,metricsReporting,snmp,plugin,sendLogsSettings,NetworkTopology,dataOptions,users,userGroups,roles,identityServers,keyManagement,credentialManager,developerTools,formsNav,customPackage,webconsoleAnalytics,webconsoleMonitoring,webconsoleStore'
+                      userRole: 4
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: ''
+                    errorCode: 0

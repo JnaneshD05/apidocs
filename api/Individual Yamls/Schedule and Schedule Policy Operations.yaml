@@ -1,0 +1,2628 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Schedule and Schedule Policy Operations
+paths:
+  /SchedulePolicy:
+    get:
+      deprecated: false
+      description: |
+        This operation returns a list of schedule policies.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_schedule_policy.htm)
+      operationId: Get Schedule Policies
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Schedule Policies
+      tags:
+      - Schedule and Schedule Policy Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskDetail:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        task:
+                          type: object
+                          properties:
+                            GUID:
+                              type: string
+                            description:
+                              type: string
+                            ownerId:
+                              type: integer
+                            runUserId:
+                              type: integer
+                            taskType:
+                              type: integer
+                            ownerName:
+                              type: string
+                            policyType:
+                              type: integer
+                            associatedObjects:
+                              type: integer
+                            taskName:
+                              type: string
+                            alertId:
+                              type: integer
+                            taskId:
+                              type: integer
+                            taskFlags:
+                              type: object
+                              properties:
+                                isEdgeDrive:
+                                  type: boolean
+                                isEZOperation:
+                                  type: boolean
+                                forDDB:
+                                  type: boolean
+                                uninstalled:
+                                  type: boolean
+                                disabled:
+                                  type: boolean
+                            originalCC:
+                              type: object
+                              properties:
+                                commCellId:
+                                  type: integer
+                            task:
+                              type: object
+                              properties:
+                                taskName:
+                                  type: string
+                                taskId:
+                                  type: integer
+                        appGroup:
+                          type: object
+                          properties:
+                            appGroups:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  appGroupId:
+                                    type: integer
+                x-examples:
+                  Example 1:
+                    taskDetail:
+                    - task:
+                        GUID: 69173BC2-9642-4565-A875-B8D77DC11858
+                        description: System created schedule policy for All Agent Types
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 4
+                        ownerName: testadmin
+                        policyType: 0
+                        associatedObjects: 0
+                        taskName: System Created (All  Agent Types)
+                        alertId: 0
+                        taskId: 2
+                        taskFlags:
+                          isEdgeDrive: false
+                          isEZOperation: false
+                          forDDB: false
+                          uninstalled: false
+                          disabled: false
+                        originalCC:
+                          commCellId: 2
+                        task:
+                          taskName: System Created (All  Agent Types)
+                          taskId: 2
+                      appGroup: {}
+                    - task:
+                        GUID: 1D75891D-695D-4DAA-AD8F-235477F8BD9E
+                        description: ''
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 4
+                        ownerName: testadmin
+                        policyType: 1
+                        associatedObjects: 0
+                        taskName: System Created Autocopy schedule
+                        alertId: 0
+                        taskId: 9
+                        taskFlags:
+                          isEdgeDrive: false
+                          isEZOperation: false
+                          forDDB: false
+                          uninstalled: false
+                          disabled: false
+                        originalCC:
+                          commCellId: 2
+                        task:
+                          taskName: System Created Autocopy schedule
+                          taskId: 9
+                      appGroup: {}
+                    - task:
+                        GUID: EFDD89C1-08F5-4F20-AD73-C0CC16E3B14F
+                        description: System created schedule policy for DDB subclients
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 4
+                        ownerName: testadmin
+                        policyType: 0
+                        associatedObjects: 0
+                        taskName: System Created for DDB subclients
+                        alertId: 0
+                        taskId: 10
+                        taskFlags:
+                          isEdgeDrive: false
+                          isEZOperation: false
+                          forDDB: true
+                          uninstalled: false
+                          disabled: false
+                        originalCC:
+                          commCellId: 2
+                        task:
+                          taskName: System Created for DDB subclients
+                          taskId: 10
+                      appGroup: {}
+                    - task:
+                        GUID: 9BE7A700-FE5D-4392-B78B-481B4AFC4F89
+                        description: System created schedule policy for DDB Verification
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 4
+                        ownerName: testadmin
+                        policyType: 11
+                        associatedObjects: 0
+                        taskName: System Created DDB Verification schedule policy
+                        alertId: 0
+                        taskId: 13
+                        taskFlags:
+                          isEdgeDrive: false
+                          isEZOperation: false
+                          forDDB: false
+                          uninstalled: false
+                          disabled: false
+                        originalCC:
+                          commCellId: 2
+                        task:
+                          taskName: System Created DDB Verification schedule policy
+                          taskId: 13
+                      appGroup: {}
+                    - task:
+                        GUID: 5fa012f2-a6fc-4990-a847-e0d6de2617a0
+                        description: System created schedule policy for Edge Drive
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 4
+                        ownerName: testadmin
+                        policyType: 0
+                        associatedObjects: 2
+                        taskName: System Created for Edge Drive
+                        alertId: 0
+                        taskId: 30
+                        taskFlags:
+                          isEdgeDrive: true
+                          isEZOperation: false
+                          forDDB: false
+                          uninstalled: false
+                          disabled: false
+                        originalCC:
+                          commCellId: 2
+                        task:
+                          taskName: System Created for Edge Drive
+                          taskId: 30
+                      appGroup:
+                        appGroups:
+                        - appGroupId: 1
+                    - task:
+                        GUID: A5DE97A0-8B9F-4AF1-967A-8142A8DE441E
+                        description: System created schedule policy for IndexBackup subclients
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 4
+                        ownerName: testadmin
+                        policyType: 0
+                        associatedObjects: 0
+                        taskName: System Created for IndexBackup subclients
+                        alertId: 0
+                        taskId: 64
+                        taskFlags:
+                          isEdgeDrive: false
+                          isEZOperation: false
+                          forDDB: false
+                          uninstalled: false
+                          disabled: false
+                        originalCC:
+                          commCellId: 2
+                        task:
+                          taskName: System Created for IndexBackup subclients
+                          taskId: 64
+                      appGroup: {}
+                    - task:
+                        GUID: f231bfdb-9b68-464a-9a52-f6701ca216c2
+                        description: ''
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 4
+                        ownerName: testadmin
+                        policyType: 0
+                        associatedObjects: 8
+                        taskName: TestPolicy
+                        alertId: 0
+                        taskId: 151
+                        taskFlags:
+                          isEdgeDrive: false
+                          isEZOperation: false
+                          forDDB: false
+                          uninstalled: false
+                          disabled: false
+                        originalCC:
+                          commCellId: 2
+                        task:
+                          taskName: TestPolicy
+                          taskId: 151
+                      appGroup:
+                        appGroups:
+                        - appGroupId: 101
+                        - appGroupId: 1
+                        - appGroupId: 5
+  '/SchedulePolicy/{taskId}':
+    delete:
+      deprecated: false
+      description: |
+        This operation deletes a schedule policy.
+
+        [_More Details_](http://docs.commvault.com/commvault/v11/article?p=48866.htm)
+      operationId: Delete a Schedule Policy
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: taskId
+        required: true
+        schema:
+          type: string
+      summary: Delete a Schedule Policy
+      tags:
+      - Schedule and Schedule Policy Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: ''
+                    errorCode: 0
+    get:
+      deprecated: false
+      description: |
+        This operation returns the properties associated with a schedule policy.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_schedule_policy_properties.htm)
+      operationId: Get Schedule Policy Properties
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: taskId
+        required: true
+        schema:
+          type: string
+      summary: Get Schedule Policy Properties
+      tags:
+      - Schedule and Schedule Policy Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskInfo:
+                    type: object
+                    properties:
+                      associations:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            srmReportSet:
+                              type: integer
+                            srmTemplateId:
+                              type: integer
+                            subclientId:
+                              type: integer
+                            clientGroupId:
+                              type: integer
+                            storagePolicyId:
+                              type: integer
+                            copyId:
+                              type: integer
+                            applicationId:
+                              type: integer
+                            clientName:
+                              type: string
+                            displayName:
+                              type: string
+                            backupsetId:
+                              type: integer
+                            instanceId:
+                              type: integer
+                            sidbStoreId:
+                              type: integer
+                            clientId:
+                              type: integer
+                            srmTemplateName:
+                              type: string
+                            agentlessPolicyId:
+                              type: integer
+                            mediaAgentId:
+                              type: integer
+                            workflowId:
+                              type: integer
+                            _type_:
+                              type: integer
+                            trackingPolicyId:
+                              type: integer
+                            flags:
+                              type: object
+                              properties:
+                                exclude:
+                                  type: boolean
+                            backupsetName:
+                              type: string
+                            instanceName:
+                              type: string
+                            appName:
+                              type: string
+                      task:
+                        type: object
+                        properties:
+                          GUID:
+                            type: string
+                          description:
+                            type: string
+                          ownerId:
+                            type: integer
+                          runUserId:
+                            type: integer
+                          taskType:
+                            type: integer
+                          ownerName:
+                            type: string
+                          policyType:
+                            type: integer
+                          associatedObjects:
+                            type: integer
+                          taskName:
+                            type: string
+                          alertId:
+                            type: integer
+                          taskId:
+                            type: integer
+                          securityAssociations:
+                            type: object
+                            properties:
+                              ownerAssociations:
+                                type: object
+                                properties: {}
+                          taskFlags:
+                            type: object
+                            properties:
+                              isEdgeDrive:
+                                type: boolean
+                              isEZOperation:
+                                type: boolean
+                              forDDB:
+                                type: boolean
+                              uninstalled:
+                                type: boolean
+                              isSystem:
+                                type: boolean
+                              disabled:
+                                type: boolean
+                          originalCC:
+                            type: object
+                            properties:
+                              commCellId:
+                                type: integer
+                          taskSecurity:
+                            type: object
+                            properties:
+                              associatedUserGroups:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    userGroupId:
+                                      type: integer
+                                    _type_:
+                                      type: integer
+                                    userGroupName:
+                                      type: string
+                              ownerCapabilities:
+                                type: object
+                                properties: {}
+                          task:
+                            type: object
+                            properties:
+                              taskName:
+                                type: string
+                              taskId:
+                                type: integer
+                      appGroup:
+                        type: object
+                        properties:
+                          appGroups:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                appGroupId:
+                                  type: integer
+                      subTasks:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            subTask:
+                              type: object
+                              properties:
+                                subTaskOrder:
+                                  type: integer
+                                subTaskName:
+                                  type: string
+                                subTaskType:
+                                  type: integer
+                                flags:
+                                  type: integer
+                                operationType:
+                                  type: integer
+                                subTaskId:
+                                  type: integer
+                                subTask:
+                                  type: object
+                                  properties:
+                                    subtaskId:
+                                      type: integer
+                                    subtaskName:
+                                      type: string
+                            pattern:
+                              type: object
+                              properties:
+                                active_end_occurence:
+                                  type: integer
+                                freq_subday_interval:
+                                  type: integer
+                                freq_type:
+                                  type: integer
+                                patternId:
+                                  type: integer
+                                flags:
+                                  type: integer
+                                description:
+                                  type: string
+                                active_end_time:
+                                  type: integer
+                                active_end_date:
+                                  type: integer
+                                skipOccurence:
+                                  type: integer
+                                skipDayNumber:
+                                  type: integer
+                                active_start_time:
+                                  type: integer
+                                freq_restart_interval:
+                                  type: integer
+                                active_start_date:
+                                  type: integer
+                                freq_interval:
+                                  type: integer
+                                freq_relative_interval:
+                                  type: integer
+                                name:
+                                  type: string
+                                freq_recurrence_factor:
+                                  type: integer
+                                daysToRun:
+                                  type: object
+                                  properties:
+                                    week:
+                                      type: integer
+                                    Monday:
+                                      type: boolean
+                                    Thursday:
+                                      type: boolean
+                                    day:
+                                      type: integer
+                                calendar:
+                                  type: object
+                                  properties:
+                                    calendarName:
+                                      type: string
+                                    calendarId:
+                                      type: integer
+                                timeZone:
+                                  type: object
+                                  properties:
+                                    TimeZoneID:
+                                      type: integer
+                            options:
+                              type: object
+                              properties:
+                                backupOpts:
+                                  type: object
+                                  properties:
+                                    truncateLogsOnSource:
+                                      type: boolean
+                                    sybaseSkipFullafterLogBkp:
+                                      type: boolean
+                                    notSynthesizeFullFromPrevBackup:
+                                      type: boolean
+                                    backupLevel:
+                                      type: integer
+                                    incLevel:
+                                      type: integer
+                                    adHocBackup:
+                                      type: boolean
+                                    runIncrementalBackup:
+                                      type: boolean
+                                    runSILOBackup:
+                                      type: boolean
+                                    doNotTruncateLog:
+                                      type: boolean
+                                    vsaBackupOptions:
+                                      type: object
+                                      properties:
+                                        backupFailedVMsOnly:
+                                          type: boolean
+                                    cdrOptions:
+                                      type: object
+                                      properties:
+                                        incremental:
+                                          type: boolean
+                                        dataVerificationOnly:
+                                          type: boolean
+                                        full:
+                                          type: boolean
+                                    dataOpt:
+                                      type: object
+                                      properties:
+                                        useCatalogServer:
+                                          type: boolean
+                                        followMountPoints:
+                                          type: boolean
+                                        enforceTransactionLogUsage:
+                                          type: boolean
+                                        skipConsistencyCheck:
+                                          type: boolean
+                                        createNewIndex:
+                                          type: boolean
+                                        autoCopy:
+                                          type: boolean
+                                    mediaOpt:
+                                      type: object
+                                      properties: {}
+                                adminOpts:
+                                  type: object
+                                  properties:
+                                    contentIndexingOption:
+                                      type: object
+                                      properties:
+                                        subClientBasedAnalytics:
+                                          type: boolean
+                                commonOpts:
+                                  type: object
+                                  properties:
+                                    perfJobOpts:
+                                      type: object
+                                      properties: {}
+                x-examples:
+                  Example 1:
+                    taskInfo:
+                      associations:
+                      - srmReportSet: 0
+                        srmTemplateId: 0
+                        subclientId: 0
+                        clientGroupId: 0
+                        storagePolicyId: 0
+                        copyId: 0
+                        applicationId: 0
+                        clientName: firewalltestma
+                        displayName: firewalltestma
+                        backupsetId: 0
+                        instanceId: 0
+                        sidbStoreId: 0
+                        clientId: 9
+                        srmTemplateName: ''
+                        agentlessPolicyId: 0
+                        mediaAgentId: 0
+                        workflowId: 0
+                        _type_: 3
+                        trackingPolicyId: 0
+                        flags:
+                          exclude: false
+                      - srmReportSet: 0
+                        srmTemplateId: 0
+                        subclientId: 0
+                        clientGroupId: 0
+                        storagePolicyId: 0
+                        copyId: 0
+                        applicationId: 33
+                        clientName: firewalltestcs
+                        displayName: firewalltestcs
+                        backupsetId: 3
+                        instanceId: 1
+                        sidbStoreId: 0
+                        clientId: 2
+                        srmTemplateName: ''
+                        agentlessPolicyId: 0
+                        mediaAgentId: 0
+                        backupsetName: defaultBackupSet
+                        workflowId: 0
+                        instanceName: DefaultInstanceName
+                        _type_: 6
+                        trackingPolicyId: 0
+                        appName: File System
+                        flags:
+                          exclude: false
+                      - srmReportSet: 0
+                        srmTemplateId: 0
+                        subclientId: -32000
+                        clientGroupId: 0
+                        storagePolicyId: 0
+                        copyId: 0
+                        applicationId: 33
+                        clientName: firewalltestcs
+                        displayName: firewalltestcs
+                        backupsetId: 3
+                        instanceId: 1
+                        sidbStoreId: 0
+                        clientId: 2
+                        srmTemplateName: ''
+                        agentlessPolicyId: 0
+                        mediaAgentId: 0
+                        backupsetName: defaultBackupSet
+                        workflowId: 0
+                        instanceName: DefaultInstanceName
+                        _type_: 7
+                        trackingPolicyId: 0
+                        appName: File System
+                        flags:
+                          exclude: true
+                      task:
+                        GUID: f231bfdb-9b68-464a-9a52-f6701ca216c2
+                        description: ''
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 4
+                        ownerName: Administrator
+                        policyType: 0
+                        associatedObjects: 8
+                        taskName: TestPolicy
+                        alertId: 0
+                        taskId: 151
+                        securityAssociations:
+                          ownerAssociations: {}
+                        taskFlags:
+                          isEdgeDrive: false
+                          isEZOperation: false
+                          forDDB: false
+                          uninstalled: false
+                          isSystem: false
+                          disabled: false
+                        originalCC:
+                          commCellId: 2
+                        taskSecurity:
+                          associatedUserGroups:
+                          - userGroupId: 1
+                            _type_: 15
+                            userGroupName: master
+                          - userGroupId: 3
+                            _type_: 15
+                            userGroupName: View All
+                          ownerCapabilities: {}
+                        task:
+                          taskName: TestPolicy
+                          taskId: 151
+                      appGroup:
+                        appGroups:
+                        - appGroupId: 101
+                        - appGroupId: 1
+                        - appGroupId: 5
+                      subTasks:
+                      - subTask:
+                          subTaskOrder: 0
+                          subTaskName: Test Schedule
+                          subTaskType: 2
+                          flags: 0
+                          operationType: 2
+                          subTaskId: 152
+                          subTask:
+                            subtaskId: 152
+                            subtaskName: Test Schedule
+                        pattern:
+                          active_end_occurence: 0
+                          freq_subday_interval: 0
+                          freq_type: 8
+                          patternId: 20
+                          flags: 0
+                          description: 'Every week on Monday,Thursday at 12:00 AM  '
+                          active_end_time: 0
+                          active_end_date: 0
+                          skipOccurence: 0
+                          skipDayNumber: 0
+                          active_start_time: 0
+                          freq_restart_interval: 0
+                          active_start_date: 1496880000
+                          freq_interval: 18
+                          freq_relative_interval: 0
+                          name: ''
+                          freq_recurrence_factor: 1
+                          daysToRun:
+                            week: 0
+                            Monday: true
+                            Thursday: true
+                            day: 0
+                          calendar:
+                            calendarName: Standard
+                            calendarId: 1
+                          timeZone:
+                            TimeZoneID: 64
+                        options:
+                          backupOpts:
+                            truncateLogsOnSource: false
+                            sybaseSkipFullafterLogBkp: false
+                            notSynthesizeFullFromPrevBackup: false
+                            backupLevel: 2
+                            incLevel: 1
+                            adHocBackup: false
+                            runIncrementalBackup: true
+                            runSILOBackup: false
+                            doNotTruncateLog: false
+                            vsaBackupOptions:
+                              backupFailedVMsOnly: false
+                            cdrOptions:
+                              incremental: true
+                              dataVerificationOnly: false
+                              full: false
+                            dataOpt:
+                              useCatalogServer: true
+                              followMountPoints: true
+                              enforceTransactionLogUsage: false
+                              skipConsistencyCheck: false
+                              createNewIndex: false
+                              autoCopy: false
+                            mediaOpt: {}
+                          adminOpts:
+                            contentIndexingOption:
+                              subClientBasedAnalytics: false
+                          commonOpts:
+                            perfJobOpts: {}
+              examples:
+                Schedule Policy Properties:
+                  value:
+                    taskInfo:
+                      associations:
+                      - srmReportSet: 0
+                        srmTemplateId: 0
+                        subclientId: 0
+                        clientGroupId: 0
+                        storagePolicyId: 0
+                        copyId: 0
+                        applicationId: 0
+                        clientName: firewalltestma
+                        displayName: firewalltestma
+                        backupsetId: 0
+                        instanceId: 0
+                        sidbStoreId: 0
+                        clientId: 9
+                        srmTemplateName: ''
+                        agentlessPolicyId: 0
+                        mediaAgentId: 0
+                        workflowId: 0
+                        _type_: 3
+                        trackingPolicyId: 0
+                        flags:
+                          exclude: false
+                      - srmReportSet: 0
+                        srmTemplateId: 0
+                        subclientId: 0
+                        clientGroupId: 0
+                        storagePolicyId: 0
+                        copyId: 0
+                        applicationId: 33
+                        clientName: firewalltestcs
+                        displayName: firewalltestcs
+                        backupsetId: 3
+                        instanceId: 1
+                        sidbStoreId: 0
+                        clientId: 2
+                        srmTemplateName: ''
+                        agentlessPolicyId: 0
+                        mediaAgentId: 0
+                        backupsetName: defaultBackupSet
+                        workflowId: 0
+                        instanceName: DefaultInstanceName
+                        _type_: 6
+                        trackingPolicyId: 0
+                        appName: File System
+                        flags:
+                          exclude: false
+                      - srmReportSet: 0
+                        srmTemplateId: 0
+                        subclientId: -32000
+                        clientGroupId: 0
+                        storagePolicyId: 0
+                        copyId: 0
+                        applicationId: 33
+                        clientName: firewalltestcs
+                        displayName: firewalltestcs
+                        backupsetId: 3
+                        instanceId: 1
+                        sidbStoreId: 0
+                        clientId: 2
+                        srmTemplateName: ''
+                        agentlessPolicyId: 0
+                        mediaAgentId: 0
+                        backupsetName: defaultBackupSet
+                        workflowId: 0
+                        instanceName: DefaultInstanceName
+                        _type_: 7
+                        trackingPolicyId: 0
+                        appName: File System
+                        flags:
+                          exclude: true
+                      task:
+                        GUID: f231bfdb-9b68-464a-9a52-f6701ca216c2
+                        description: ''
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 4
+                        ownerName: Administrator
+                        policyType: 0
+                        associatedObjects: 8
+                        taskName: TestPolicy
+                        alertId: 0
+                        taskId: 151
+                        securityAssociations:
+                          ownerAssociations: {}
+                        taskFlags:
+                          isEdgeDrive: false
+                          isEZOperation: false
+                          forDDB: false
+                          uninstalled: false
+                          isSystem: false
+                          disabled: false
+                        originalCC:
+                          commCellId: 2
+                        taskSecurity:
+                          associatedUserGroups:
+                          - userGroupId: 1
+                            _type_: 15
+                            userGroupName: master
+                          - userGroupId: 3
+                            _type_: 15
+                            userGroupName: View All
+                          ownerCapabilities: {}
+                        task:
+                          taskName: TestPolicy
+                          taskId: 151
+                      appGroup:
+                        appGroups:
+                        - appGroupId: 101
+                        - appGroupId: 1
+                        - appGroupId: 5
+                      subTasks:
+                      - subTask:
+                          subTaskOrder: 0
+                          subTaskName: Test Schedule
+                          subTaskType: 2
+                          flags: 0
+                          operationType: 2
+                          subTaskId: 152
+                          subTask:
+                            subtaskId: 152
+                            subtaskName: Test Schedule
+                        pattern:
+                          active_end_occurence: 0
+                          freq_subday_interval: 0
+                          freq_type: 8
+                          patternId: 20
+                          flags: 0
+                          description: 'Every week on Monday,Thursday at 12:00 AM  '
+                          active_end_time: 0
+                          active_end_date: 0
+                          skipOccurence: 0
+                          skipDayNumber: 0
+                          active_start_time: 0
+                          freq_restart_interval: 0
+                          active_start_date: 1496880000
+                          freq_interval: 18
+                          freq_relative_interval: 0
+                          name: ''
+                          freq_recurrence_factor: 1
+                          daysToRun:
+                            week: 0
+                            Monday: true
+                            Thursday: true
+                            day: 0
+                          calendar:
+                            calendarName: Standard
+                            calendarId: 1
+                          timeZone:
+                            TimeZoneID: 64
+                        options:
+                          backupOpts:
+                            truncateLogsOnSource: false
+                            sybaseSkipFullafterLogBkp: false
+                            notSynthesizeFullFromPrevBackup: false
+                            backupLevel: 2
+                            incLevel: 1
+                            adHocBackup: false
+                            runIncrementalBackup: true
+                            runSILOBackup: false
+                            doNotTruncateLog: false
+                            vsaBackupOptions:
+                              backupFailedVMsOnly: false
+                            cdrOptions:
+                              incremental: true
+                              dataVerificationOnly: false
+                              full: false
+                            dataOpt:
+                              useCatalogServer: true
+                              followMountPoints: true
+                              enforceTransactionLogUsage: false
+                              skipConsistencyCheck: false
+                              createNewIndex: false
+                              autoCopy: false
+                            mediaOpt: {}
+                          adminOpts:
+                            contentIndexingOption:
+                              subClientBasedAnalytics: false
+                          commonOpts:
+                            perfJobOpts: {}
+  /Schedules:
+    get:
+      deprecated: false
+      description: |
+        This operation returns a list of schedules.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_schedules.htm)
+      operationId: Get all Schedules
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: clientId
+        schema:
+          example: '{{clientId}}'
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - schema:
+          type: string
+        in: query
+        name: storagepolicyId
+      summary: Get all Schedules
+      tags:
+      - Schedule and Schedule Policy Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskDetail:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        taskOperation:
+                          type: integer
+                        associations:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              srmReportSet:
+                                type: integer
+                              type:
+                                type: integer
+                              srmTemplateId:
+                                type: integer
+                              subclientId:
+                                type: integer
+                              clientGroupId:
+                                type: integer
+                              storagePolicyId:
+                                type: integer
+                              copyId:
+                                type: integer
+                              applicationId:
+                                type: integer
+                              backupsetId:
+                                type: integer
+                              instanceId:
+                                type: integer
+                              srmReportType:
+                                type: integer
+                              sidbStoreId:
+                                type: integer
+                              clientSidePackage:
+                                type: boolean
+                              clientId:
+                                type: integer
+                              sidbStoreName:
+                                type: string
+                              copyName:
+                                type: string
+                              agentlessPolicyId:
+                                type: integer
+                              mediaAgentId:
+                                type: integer
+                              _type_:
+                                type: integer
+                              appName:
+                                type: string
+                              consumeLicense:
+                                type: boolean
+                              flags:
+                                type: object
+                                properties:
+                                  exclude:
+                                    type: boolean
+                        task:
+                          type: object
+                          properties:
+                            GUID:
+                              type: string
+                            description:
+                              type: string
+                            ownerId:
+                              type: integer
+                            runUserId:
+                              type: integer
+                            taskType:
+                              type: integer
+                            ownerName:
+                              type: string
+                            policyType:
+                              type: integer
+                            taskName:
+                              type: string
+                            alertId:
+                              type: integer
+                            taskId:
+                              type: integer
+                            taskFlags:
+                              type: object
+                              properties:
+                                isEZOperation:
+                                  type: boolean
+                                uninstalled:
+                                  type: boolean
+                                disabled:
+                                  type: boolean
+                            originalCC:
+                              type: object
+                              properties:
+                                commCellId:
+                                  type: integer
+                        appGroup:
+                          type: object
+                          properties: {}
+                        subTasks:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              relativeTime:
+                                type: integer
+                              subTaskOperation:
+                                type: integer
+                              subTask:
+                                type: object
+                                properties:
+                                  subTaskOrder:
+                                    type: integer
+                                  subTaskType:
+                                    type: integer
+                                  flags:
+                                    type: integer
+                                  operationType:
+                                    type: integer
+                                  subTaskId:
+                                    type: integer
+                              pattern:
+                                type: object
+                                properties:
+                                  active_end_occurence:
+                                    type: integer
+                                  freq_subday_interval:
+                                    type: integer
+                                  freq_type:
+                                    type: integer
+                                  patternId:
+                                    type: integer
+                                  flags:
+                                    type: integer
+                                  description:
+                                    type: string
+                                  active_end_time:
+                                    type: integer
+                                  skipOccurence:
+                                    type: integer
+                                  skipDayNumber:
+                                    type: integer
+                                  active_start_time:
+                                    type: integer
+                                  freq_restart_interval:
+                                    type: integer
+                                  active_start_date:
+                                    type: integer
+                                  freq_interval:
+                                    type: integer
+                                  freq_relative_interval:
+                                    type: integer
+                                  freq_recurrence_factor:
+                                    type: integer
+                                  calendar:
+                                    type: object
+                                    properties:
+                                      calendarId:
+                                        type: integer
+                                  timeZone:
+                                    type: object
+                                    properties:
+                                      TimeZoneID:
+                                        type: integer
+                              options:
+                                type: object
+                                properties:
+                                  backupOpts:
+                                    type: object
+                                    properties:
+                                      mediaOpt:
+                                        type: object
+                                        properties:
+                                          auxcopyJobOption:
+                                            type: object
+                                            properties:
+                                              maxNumberOfStreams:
+                                                type: integer
+                                              useMaximumStreams:
+                                                type: boolean
+                                  adminOpts:
+                                    type: object
+                                    properties:
+                                      archiveCheckOption:
+                                        type: object
+                                        properties:
+                                          ddbVerificationLevel:
+                                            type: integer
+                                          jobsToVerify:
+                                            type: integer
+                                          allCopies:
+                                            type: boolean
+                                          backupLevel:
+                                            type: integer
+                x-examples:
+                  Example 1:
+                    taskDetail:
+                    - taskOperation: 1
+                      associations:
+                      - srmReportSet: 0
+                        type: 0
+                        srmTemplateId: 0
+                        subclientId: 0
+                        clientGroupId: 0
+                        storagePolicyId: 0
+                        copyId: 0
+                        applicationId: 0
+                        backupsetId: 0
+                        instanceId: 0
+                        srmReportType: 0
+                        sidbStoreId: 0
+                        clientSidePackage: true
+                        clientId: 0
+                        sidbStoreName: N/A
+                        copyName: DUMMY
+                        agentlessPolicyId: 0
+                        mediaAgentId: 0
+                        _type_: 155
+                        appName: Default Application Type Name
+                        consumeLicense: true
+                        flags:
+                          exclude: false
+                      task:
+                        GUID: 9BE7A700-FE5D-4392-B78B-481B4AFC4F89
+                        description: System created schedule policy for DDB Verification
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 4
+                        ownerName: testadmin
+                        policyType: 11
+                        taskName: System Created DDB Verification schedule policy
+                        alertId: 0
+                        taskId: 13
+                        taskFlags:
+                          isEZOperation: false
+                          uninstalled: false
+                          disabled: false
+                        originalCC:
+                          commCellId: 2
+                      appGroup: {}
+                      subTasks:
+                      - relativeTime: 32787
+                        subTaskOperation: 1
+                        subTask:
+                          subTaskOrder: 0
+                          subTaskType: 1
+                          flags: 4096
+                          operationType: 4007
+                          subTaskId: 14
+                        pattern:
+                          active_end_occurence: 0
+                          freq_subday_interval: 86400
+                          freq_type: 4
+                          patternId: 13
+                          flags: 0
+                          description: 'Every day at 11:00 AM and repeats every 24 hr(s) 0 min(s) until 12:00 AM'
+                          active_end_time: 86340
+                          skipOccurence: 0
+                          skipDayNumber: 0
+                          active_start_time: 39600
+                          freq_restart_interval: 0
+                          active_start_date: 1473897600
+                          freq_interval: 1
+                          freq_relative_interval: 0
+                          freq_recurrence_factor: 1
+                          calendar:
+                            calendarId: 1
+                          timeZone:
+                            TimeZoneID: 1000
+                        options:
+                          backupOpts:
+                            mediaOpt:
+                              auxcopyJobOption:
+                                maxNumberOfStreams: 0
+                                useMaximumStreams: true
+                          adminOpts:
+                            archiveCheckOption:
+                              ddbVerificationLevel: 3
+                              jobsToVerify: 0
+                              allCopies: true
+                              backupLevel: 2
+              examples:
+                Schedules - This request returns all of the schedules for a client.:
+                  value:
+                    taskDetail:
+                    - taskOperation: 1
+                      associations:
+                      - srmReportSet: 0
+                        type: 0
+                        srmTemplateId: 0
+                        subclientId: 0
+                        clientGroupId: 0
+                        storagePolicyId: 0
+                        copyId: 0
+                        applicationId: 0
+                        backupsetId: 0
+                        instanceId: 0
+                        srmReportType: 0
+                        sidbStoreId: 0
+                        clientSidePackage: true
+                        clientId: 0
+                        sidbStoreName: N/A
+                        copyName: DUMMY
+                        agentlessPolicyId: 0
+                        mediaAgentId: 0
+                        _type_: 155
+                        appName: Default Application Type Name
+                        consumeLicense: true
+                        flags:
+                          exclude: false
+                      task:
+                        GUID: 9BE7A700-FE5D-4392-B78B-481B4AFC4F89
+                        description: System created schedule policy for DDB Verification
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 4
+                        ownerName: testadmin
+                        policyType: 11
+                        taskName: System Created DDB Verification schedule policy
+                        alertId: 0
+                        taskId: 13
+                        taskFlags:
+                          isEZOperation: false
+                          uninstalled: false
+                          disabled: false
+                        originalCC:
+                          commCellId: 2
+                      appGroup: {}
+                      subTasks:
+                      - relativeTime: 32787
+                        subTaskOperation: 1
+                        subTask:
+                          subTaskOrder: 0
+                          subTaskType: 1
+                          flags: 4096
+                          operationType: 4007
+                          subTaskId: 14
+                        pattern:
+                          active_end_occurence: 0
+                          freq_subday_interval: 86400
+                          freq_type: 4
+                          patternId: 13
+                          flags: 0
+                          description: 'Every day at 11:00 AM and repeats every 24 hr(s) 0 min(s) until 12:00 AM'
+                          active_end_time: 86340
+                          skipOccurence: 0
+                          skipDayNumber: 0
+                          active_start_time: 39600
+                          freq_restart_interval: 0
+                          active_start_date: 1473897600
+                          freq_interval: 1
+                          freq_relative_interval: 0
+                          freq_recurrence_factor: 1
+                          calendar:
+                            calendarId: 1
+                          timeZone:
+                            TimeZoneID: 1000
+                        options:
+                          backupOpts:
+                            mediaOpt:
+                              auxcopyJobOption:
+                                maxNumberOfStreams: 0
+                                useMaximumStreams: true
+                          adminOpts:
+                            archiveCheckOption:
+                              ddbVerificationLevel: 3
+                              jobsToVerify: 0
+                              allCopies: true
+                              backupLevel: 2
+  '/Schedules/{taskId}':
+    get:
+      deprecated: false
+      description: |
+        This operation returns the properties associated with a schedule.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_schedule_properties.htm)
+      operationId: Get Schedules Properties
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: taskId
+        required: true
+        schema:
+          type: string
+      summary: Get Schedules Properties
+      tags:
+      - Schedule and Schedule Policy Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  taskInfo:
+                    type: object
+                    properties:
+                      task:
+                        type: object
+                        properties:
+                          GUID:
+                            type: string
+                          description:
+                            type: string
+                          ownerId:
+                            type: integer
+                          runUserId:
+                            type: integer
+                          taskType:
+                            type: integer
+                          ownerName:
+                            type: string
+                          policyType:
+                            type: integer
+                          associatedObjects:
+                            type: integer
+                          taskName:
+                            type: string
+                          alertId:
+                            type: integer
+                          taskId:
+                            type: integer
+                          securityAssociations:
+                            type: object
+                            properties:
+                              ownerAssociations:
+                                type: object
+                                properties: {}
+                          taskFlags:
+                            type: object
+                            properties:
+                              isEdgeDrive:
+                                type: boolean
+                              isEZOperation:
+                                type: boolean
+                              forDDB:
+                                type: boolean
+                              uninstalled:
+                                type: boolean
+                              isSystem:
+                                type: boolean
+                              disabled:
+                                type: boolean
+                          originalCC:
+                            type: object
+                            properties:
+                              commCellId:
+                                type: integer
+                          taskSecurity:
+                            type: object
+                            properties:
+                              associatedUserGroups:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    userGroupId:
+                                      type: integer
+                                    _type_:
+                                      type: integer
+                                    userGroupName:
+                                      type: string
+                              ownerCapabilities:
+                                type: object
+                                properties: {}
+                          task:
+                            type: object
+                            properties:
+                              taskName:
+                                type: string
+                              taskId:
+                                type: integer
+                      appGroup:
+                        type: object
+                        properties: {}
+                      subTasks:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            subTask:
+                              type: object
+                              properties:
+                                subTaskOrder:
+                                  type: integer
+                                subTaskName:
+                                  type: string
+                                subTaskType:
+                                  type: integer
+                                flags:
+                                  type: integer
+                                operationType:
+                                  type: integer
+                                subTaskId:
+                                  type: integer
+                                subTask:
+                                  type: object
+                                  properties:
+                                    subtaskId:
+                                      type: integer
+                                    subtaskName:
+                                      type: string
+                            pattern:
+                              type: object
+                              properties:
+                                active_end_occurence:
+                                  type: integer
+                                freq_subday_interval:
+                                  type: integer
+                                freq_type:
+                                  type: integer
+                                patternId:
+                                  type: integer
+                                flags:
+                                  type: integer
+                                description:
+                                  type: string
+                                active_end_time:
+                                  type: integer
+                                active_end_date:
+                                  type: integer
+                                skipOccurence:
+                                  type: integer
+                                skipDayNumber:
+                                  type: integer
+                                active_start_time:
+                                  type: integer
+                                freq_restart_interval:
+                                  type: integer
+                                active_start_date:
+                                  type: integer
+                                freq_interval:
+                                  type: integer
+                                freq_relative_interval:
+                                  type: integer
+                                name:
+                                  type: string
+                                freq_recurrence_factor:
+                                  type: integer
+                                daysToRun:
+                                  type: object
+                                  properties:
+                                    week:
+                                      type: integer
+                                    Tuesday:
+                                      type: boolean
+                                    day:
+                                      type: integer
+                                calendar:
+                                  type: object
+                                  properties:
+                                    calendarName:
+                                      type: string
+                                    calendarId:
+                                      type: integer
+                                timeZone:
+                                  type: object
+                                  properties:
+                                    TimeZoneID:
+                                      type: integer
+                            options:
+                              type: object
+                              properties:
+                                adminOpts:
+                                  type: object
+                                  properties:
+                                    updateOption:
+                                      type: object
+                                      properties:
+                                        commcellId:
+                                          type: integer
+                                        invokeLevel:
+                                          type: integer
+                                        removeIntersectingDiag:
+                                          type: boolean
+                                        rebootClient:
+                                          type: boolean
+                                        ignoreRunningJobs:
+                                          type: boolean
+                                        clientAndClientGroups:
+                                          type: array
+                                          items:
+                                            type: object
+                                            properties:
+                                              _type_:
+                                                type: integer
+                                              clientGroupId:
+                                                type: integer
+                                              clientGroupName:
+                                                type: string
+                                              flags:
+                                                type: object
+                                                properties:
+                                                  exclude:
+                                                    type: boolean
+                                        installUpdatesJobType:
+                                          type: object
+                                          properties:
+                                            upgradeClients:
+                                              type: boolean
+                                            undoUpdates:
+                                              type: boolean
+                                            installUpdates:
+                                              type: boolean
+                x-examples:
+                  Example 1:
+                    taskInfo:
+                      task:
+                        GUID: E85B33D0-1732-4ED3-A629-671254019459
+                        description: System Created Install Software
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 2
+                        ownerName: Administrator
+                        policyType: 0
+                        associatedObjects: 0
+                        taskName: ''
+                        alertId: 0
+                        taskId: 8
+                        securityAssociations:
+                          ownerAssociations: {}
+                        taskFlags:
+                          isEdgeDrive: false
+                          isEZOperation: false
+                          forDDB: false
+                          uninstalled: false
+                          isSystem: true
+                          disabled: true
+                        originalCC:
+                          commCellId: 2
+                        taskSecurity:
+                          associatedUserGroups:
+                          - userGroupId: 1
+                            _type_: 15
+                            userGroupName: master
+                          - userGroupId: 3
+                            _type_: 15
+                            userGroupName: View All
+                          ownerCapabilities: {}
+                        task:
+                          taskName: ''
+                          taskId: 8
+                      appGroup: {}
+                      subTasks:
+                      - subTask:
+                          subTaskOrder: 0
+                          subTaskName: System Created Install Software
+                          subTaskType: 1
+                          flags: 128
+                          operationType: 4020
+                          subTaskId: 9
+                          subTask:
+                            subtaskId: 9
+                            subtaskName: System Created Install Software
+                        pattern:
+                          active_end_occurence: 0
+                          freq_subday_interval: 0
+                          freq_type: 8
+                          patternId: 8
+                          flags: 0
+                          description: ''
+                          active_end_time: 0
+                          active_end_date: 0
+                          skipOccurence: 0
+                          skipDayNumber: 0
+                          active_start_time: 36000
+                          freq_restart_interval: 0
+                          active_start_date: 1436832000
+                          freq_interval: 4
+                          freq_relative_interval: 0
+                          name: ''
+                          freq_recurrence_factor: 1
+                          daysToRun:
+                            week: 0
+                            Tuesday: true
+                            day: 0
+                          calendar:
+                            calendarName: Standard
+                            calendarId: 1
+                          timeZone:
+                            TimeZoneID: 1000
+                        options:
+                          adminOpts:
+                            updateOption:
+                              commcellId: 2
+                              invokeLevel: 1
+                              removeIntersectingDiag: true
+                              rebootClient: false
+                              ignoreRunningJobs: true
+                              clientAndClientGroups:
+                              - _type_: 2
+                              - _type_: 27
+                              - clientGroupId: 4
+                                clientGroupName: Laptop Clients
+                                _type_: 28
+                                flags:
+                                  exclude: true
+                              installUpdatesJobType:
+                                upgradeClients: false
+                                undoUpdates: false
+                                installUpdates: true
+              examples:
+                Example 1:
+                  value:
+                    taskInfo:
+                      task:
+                        GUID: E85B33D0-1732-4ED3-A629-671254019459
+                        description: System Created Install Software
+                        ownerId: 1
+                        runUserId: 1
+                        taskType: 2
+                        ownerName: Administrator
+                        policyType: 0
+                        associatedObjects: 0
+                        taskName: ''
+                        alertId: 0
+                        taskId: 8
+                        securityAssociations:
+                          ownerAssociations: {}
+                        taskFlags:
+                          isEdgeDrive: false
+                          isEZOperation: false
+                          forDDB: false
+                          uninstalled: false
+                          isSystem: true
+                          disabled: true
+                        originalCC:
+                          commCellId: 2
+                        taskSecurity:
+                          associatedUserGroups:
+                          - userGroupId: 1
+                            _type_: 15
+                            userGroupName: master
+                          - userGroupId: 3
+                            _type_: 15
+                            userGroupName: View All
+                          ownerCapabilities: {}
+                        task:
+                          taskName: ''
+                          taskId: 8
+                      appGroup: {}
+                      subTasks:
+                      - subTask:
+                          subTaskOrder: 0
+                          subTaskName: System Created Install Software
+                          subTaskType: 1
+                          flags: 128
+                          operationType: 4020
+                          subTaskId: 9
+                          subTask:
+                            subtaskId: 9
+                            subtaskName: System Created Install Software
+                        pattern:
+                          active_end_occurence: 0
+                          freq_subday_interval: 0
+                          freq_type: 8
+                          patternId: 8
+                          flags: 0
+                          description: ''
+                          active_end_time: 0
+                          active_end_date: 0
+                          skipOccurence: 0
+                          skipDayNumber: 0
+                          active_start_time: 36000
+                          freq_restart_interval: 0
+                          active_start_date: 1436832000
+                          freq_interval: 4
+                          freq_relative_interval: 0
+                          name: ''
+                          freq_recurrence_factor: 1
+                          daysToRun:
+                            week: 0
+                            Tuesday: true
+                            day: 0
+                          calendar:
+                            calendarName: Standard
+                            calendarId: 1
+                          timeZone:
+                            TimeZoneID: 1000
+                        options:
+                          adminOpts:
+                            updateOption:
+                              commcellId: 2
+                              invokeLevel: 1
+                              removeIntersectingDiag: true
+                              rebootClient: false
+                              ignoreRunningJobs: true
+                              clientAndClientGroups:
+                              - _type_: 2
+                              - _type_: 27
+                              - clientGroupId: 4
+                                clientGroupName: Laptop Clients
+                                _type_: 28
+                                flags:
+                                  exclude: true
+                              installUpdatesJobType:
+                                upgradeClients: false
+                                undoUpdates: false
+                                installUpdates: true
+  /Task:
+    post:
+      deprecated: false
+      description: |
+        This operation creates a schedule policy.
+
+        [_More Details_](http://docs.commvault.com/commvault/v11/article?p=48814.htm)
+      operationId: Create a Schedule Policy
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Create a Schedule Policy
+      tags:
+      - Schedule and Schedule Policy Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                processinginstructioninfo:
+                  type: object
+                  properties: {}
+                taskInfo:
+                  type: object
+                  properties:
+                    associations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          clientName:
+                            type: string
+                          backupsetName:
+                            type: string
+                          instanceName:
+                            type: string
+                          appName:
+                            type: string
+                    task:
+                      type: object
+                      properties:
+                        taskType:
+                          type: integer
+                        policyType:
+                          type: integer
+                        taskName:
+                          type: string
+                    appGroup:
+                      type: object
+                      properties:
+                        appGroups:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              appGroupName:
+                                type: string
+                    subTasks:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          subTaskOperation:
+                            type: integer
+                          subTask:
+                            type: object
+                            properties:
+                              subTaskName:
+                                type: string
+                              subTaskType:
+                                type: integer
+                              operationType:
+                                type: integer
+                              subTaskId:
+                                type: integer
+                          pattern:
+                            type: object
+                            properties:
+                              active_end_occurence:
+                                type: integer
+                              freq_subday_interval:
+                                type: integer
+                              freq_type:
+                                type: integer
+                              description:
+                                type: string
+                              active_end_time:
+                                type: integer
+                              active_start_time:
+                                type: integer
+                              active_start_date:
+                                type: integer
+                              freq_interval:
+                                type: integer
+                              freq_recurrence_factor:
+                                type: integer
+                              timeZone:
+                                type: object
+                                properties:
+                                  TimeZoneName:
+                                    type: string
+                          options:
+                            type: object
+                            properties:
+                              backupOpts:
+                                type: object
+                                properties:
+                                  truncateLogsOnSource:
+                                    type: boolean
+                                  sybaseSkipFullafterLogBkp:
+                                    type: boolean
+                                  notSynthesizeFullFromPrevBackup:
+                                    type: boolean
+                                  backupLevel:
+                                    type: integer
+                                  incLevel:
+                                    type: integer
+                                  adHocBackup:
+                                    type: boolean
+                                  runIncrementalBackup:
+                                    type: boolean
+                                  doNotTruncateLog:
+                                    type: boolean
+                                  vsaBackupOptions:
+                                    type: object
+                                    properties:
+                                      backupFailedVMsOnly:
+                                        type: boolean
+                                  cdrOptions:
+                                    type: object
+                                    properties:
+                                      incremental:
+                                        type: boolean
+                                      dataVerificationOnly:
+                                        type: boolean
+                                      full:
+                                        type: boolean
+                                  dataOpt:
+                                    type: object
+                                    properties:
+                                      skipCatalogPhaseForSnapBackup:
+                                        type: boolean
+                                      useCatalogServer:
+                                        type: boolean
+                                      followMountPoints:
+                                        type: boolean
+                                      enforceTransactionLogUsage:
+                                        type: boolean
+                                      skipConsistencyCheck:
+                                        type: boolean
+                                      createNewIndex:
+                                        type: boolean
+                                      autoCopy:
+                                        type: boolean
+                                  mediaOpt:
+                                    type: object
+                                    properties: {}
+                              adminOpts:
+                                type: object
+                                properties:
+                                  contentIndexingOption:
+                                    type: object
+                                    properties:
+                                      subClientBasedAnalytics:
+                                        type: boolean
+                              commonOpts:
+                                type: object
+                                properties:
+                                  perfJobOpts:
+                                    type: object
+                                    properties: {}
+              x-examples:
+                Example 1:
+                  processinginstructioninfo: {}
+                  taskInfo:
+                    associations:
+                    - clientName: '{{clientName}}'
+                      backupsetName: defaultBackupSet
+                      instanceName: DefaultInstanceName
+                      appName: File System
+                    task:
+                      taskType: 4
+                      policyType: 0
+                      taskName: TestSP
+                    appGroup:
+                      appGroups:
+                      - appGroupName: Protected Files
+                      - appGroupName: Archived Files
+                    subTasks:
+                    - subTaskOperation: 1
+                      subTask:
+                        subTaskName: SchedPattern
+                        subTaskType: 2
+                        operationType: 2
+                        subTaskId: 1
+                      pattern:
+                        active_end_occurence: 0
+                        freq_subday_interval: 0
+                        freq_type: 4
+                        description: 'Every day at 21:00  starting 17 January, 2018 '
+                        active_end_time: 0
+                        active_start_time: 75600
+                        active_start_date: 1516185000
+                        freq_interval: 1
+                        freq_recurrence_factor: 1
+                        timeZone:
+                          TimeZoneName: '(UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi'
+                      options:
+                        backupOpts:
+                          truncateLogsOnSource: false
+                          sybaseSkipFullafterLogBkp: false
+                          notSynthesizeFullFromPrevBackup: false
+                          backupLevel: 1
+                          incLevel: 1
+                          adHocBackup: false
+                          runIncrementalBackup: false
+                          doNotTruncateLog: false
+                          vsaBackupOptions:
+                            backupFailedVMsOnly: false
+                          cdrOptions:
+                            incremental: false
+                            dataVerificationOnly: false
+                            full: true
+                          dataOpt:
+                            skipCatalogPhaseForSnapBackup: true
+                            useCatalogServer: true
+                            followMountPoints: true
+                            enforceTransactionLogUsage: false
+                            skipConsistencyCheck: false
+                            createNewIndex: true
+                            autoCopy: false
+                          mediaOpt: {}
+                        adminOpts:
+                          contentIndexingOption:
+                            subClientBasedAnalytics: false
+                        commonOpts:
+                          perfJobOpts: {}
+            examples:
+              Create Schedule Policy:
+                value:
+                  processinginstructioninfo: {}
+                  taskInfo:
+                    associations:
+                    - clientName: '{{clientName}}'
+                      backupsetName: defaultBackupSet
+                      instanceName: DefaultInstanceName
+                      appName: File System
+                    task:
+                      taskType: 4
+                      policyType: 0
+                      taskName: TestSP
+                    appGroup:
+                      appGroups:
+                      - appGroupName: Protected Files
+                      - appGroupName: Archived Files
+                    subTasks:
+                    - subTaskOperation: 1
+                      subTask:
+                        subTaskName: SchedPattern
+                        subTaskType: 2
+                        operationType: 2
+                        subTaskId: 1
+                      pattern:
+                        active_end_occurence: 0
+                        freq_subday_interval: 0
+                        freq_type: 4
+                        description: 'Every day at 21:00  starting 17 January, 2018 '
+                        active_end_time: 0
+                        active_start_time: 75600
+                        active_start_date: 1516185000
+                        freq_interval: 1
+                        freq_recurrence_factor: 1
+                        timeZone:
+                          TimeZoneName: '(UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi'
+                      options:
+                        backupOpts:
+                          truncateLogsOnSource: false
+                          sybaseSkipFullafterLogBkp: false
+                          notSynthesizeFullFromPrevBackup: false
+                          backupLevel: 1
+                          incLevel: 1
+                          adHocBackup: false
+                          runIncrementalBackup: false
+                          doNotTruncateLog: false
+                          vsaBackupOptions:
+                            backupFailedVMsOnly: false
+                          cdrOptions:
+                            incremental: false
+                            dataVerificationOnly: false
+                            full: true
+                          dataOpt:
+                            skipCatalogPhaseForSnapBackup: true
+                            useCatalogServer: true
+                            followMountPoints: true
+                            enforceTransactionLogUsage: false
+                            skipConsistencyCheck: false
+                            createNewIndex: true
+                            autoCopy: false
+                          mediaOpt: {}
+                        adminOpts:
+                          contentIndexingOption:
+                            subClientBasedAnalytics: false
+                        commonOpts:
+                          perfJobOpts: {}
+      responses:
+        '200':
+          description: OK
+    put:
+      deprecated: false
+      description: "This operation adds, excludes, or removes entity associations on a schedule policy.\n                                            #magic___^_^___line\n[All TimeZone Ids](http://documentation.commvault.com/commvault/v11/article?p=49485.htm)\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\">\n                                            #magic___^_^___line\n  <tr align=\"left\" valign=\"top\">\n   <td > \n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     __type__\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Type of the entities to be associated with\n    </p>\n    <p class=\"tabletext\">\n     Sample values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      17, Storage Policy Entity\n     </li>\n     <li class=\"listbullet\">\n      18, Storage Policy Copy Entity\n     </li>\n     <li class=\"listbullet\">\n      115, SIDB Store Entity\n     </li>\n    </ul>\n   </td>\n  </tr>\n                                            #magic___^_^___line\n</table>\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/put_schedule_policy_entity_assoc.htm)\n"
+      operationId: Update Schedule Policy Entity Associations
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Update Schedule Policy Entity Associations
+      tags:
+      - Schedule and Schedule Policy Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                taskInfo:
+                  type: object
+                  properties:
+                    taskOperation:
+                      type: integer
+                    task:
+                      type: object
+                      properties:
+                        taskName:
+                          type: string
+                        task:
+                          type: object
+                          properties:
+                            taskName:
+                              type: string
+                    subTasks:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          subTaskOperation:
+                            type: integer
+                          subTask:
+                            type: object
+                            properties:
+                              subTaskName:
+                                type: string
+                              subTask:
+                                type: object
+                                properties:
+                                  subtaskName:
+                                    type: string
+                          pattern:
+                            type: object
+                            properties:
+                              active_end_occurence:
+                                type: integer
+                              freq_subday_interval:
+                                type: integer
+                              freq_type:
+                                type: integer
+                              description:
+                                type: string
+                              active_end_time:
+                                type: integer
+                              active_start_time:
+                                type: integer
+                              active_start_date:
+                                type: integer
+                              freq_interval:
+                                type: integer
+                              tzId:
+                                type: integer
+                              freq_recurrence_factor:
+                                type: integer
+                              timeZone:
+                                type: object
+                                properties:
+                                  TimeZoneName:
+                                    type: string
+              x-examples:
+                Example 1:
+                  taskInfo:
+                    taskOperation: 5
+                    task:
+                      taskName: test
+                      task:
+                        taskName: test
+                    subTasks:
+                    - subTaskOperation: 5
+                      subTask:
+                        subTaskName: Incremental weekly
+                        subTask:
+                          subtaskName: Incremental weekly
+                      pattern:
+                        active_end_occurence: 0
+                        freq_subday_interval: 0
+                        freq_type: 4
+                        description: 'Every day at 9:00 PM  '
+                        active_end_time: 0
+                        active_start_time: 75600
+                        active_start_date: 1581379200
+                        freq_interval: 1
+                        tzId: 1001
+                        freq_recurrence_factor: 1
+                        timeZone:
+                          TimeZoneName: Client Time Zone
+            examples:
+              Update Schedule TimeZone:
+                value:
+                  taskInfo:
+                    taskOperation: 5
+                    task:
+                      taskName: test
+                      task:
+                        taskName: test
+                    subTasks:
+                    - subTaskOperation: 5
+                      subTask:
+                        subTaskName: Incremental weekly
+                        subTask:
+                          subtaskName: Incremental weekly
+                      pattern:
+                        active_end_occurence: 0
+                        freq_subday_interval: 0
+                        freq_type: 4
+                        description: 'Every day at 9:00 PM  '
+                        active_end_time: 0
+                        active_start_time: 75600
+                        active_start_date: 1581379200
+                        freq_interval: 1
+                        tzId: 1001
+                        freq_recurrence_factor: 1
+                        timeZone:
+                          TimeZoneName: Client Time Zone
+              Update Schedule Policy Agent Associations - This request removes the DB2 agent group association from the schedule policy.:
+                value:
+                  taskInfo:
+                    associations:
+                    - clientName: firewalltestcs
+                      backupsetName: defaultBackupSet
+                      appName: file system
+                    - clientName: firewalltestcs
+                      subclientName: DDBBackup
+                      backupsetName: defaultBackupSet
+                      appName: file system
+                      flags:
+                        exclude: true
+                    task:
+                      task:
+                        taskName: t2
+              ? Update Schedule Policy Agent Associations - This request associates the DB2 agent group and the SQL Server agent with the schedule policy.
+              : value:
+                  taskInfo:
+                    associations:
+                    - clientName: firewalltestcs
+                      backupsetName: defaultBackupSet
+                      appName: file system
+                    - clientName: firewalltestcs
+                      subclientName: DDBBackup
+                      backupsetName: defaultBackupSet
+                      appName: file system
+                      flags:
+                        exclude: true
+                    task:
+                      task:
+                        taskName: t2
+              Update Schedule Policy - Storage Policy Copy Entity Association:
+                value:
+                  taskInfo:
+                    taskOperation: 5
+                    associations:
+                    - storagePolicyId: 54
+                      copyId: 81
+                      copyName: Primary_Global
+                      storagePolicyName: DiskStoragePool
+                      _type_: 18
+                    task:
+                      task:
+                        taskName: TestSchedule
+              Update Schedule Policy - SIDB Store Entity Association:
+                value:
+                  taskInfo:
+                    taskOperation: 5
+                    associations:
+                    - storagePolicyId: 54
+                      copyId: 81
+                      sidbStoreId: 2
+                      copyName: Primary_Global
+                      storagePolicyName: DiskStoragePool
+                      _type_: 115
+                    task:
+                      task:
+                        taskName: TestSchedule
+      responses:
+        '200':
+          description: OK
+  '/Task/{taskId}/Agent':
+    delete:
+      deprecated: false
+      description: |
+        This operation adds or removes agent associations on a schedule policy.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/delete_schedule_policy_agent.htm)
+      operationId: Schedule Policy Agent
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: taskId
+        required: true
+        schema:
+          type: string
+      summary: Schedule Policy Agent
+      tags:
+      - Schedule and Schedule Policy Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0
+              examples:
+                Schedule Policy Agent:
+                  value:
+                    errorMessage: ''
+                    errorCode: 0
+  '/Task/{taskId}/Entity':
+    delete:
+      deprecated: false
+      description: |
+        This operation removes an entity association such as client group, client, agent, instance, backup set or subclient from the schedule policy.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/delete_schedule_policy_entity.htm)
+      operationId: Delete Schedule Policy Entity
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: taskId
+        required: true
+        schema:
+          type: string
+      summary: Delete Schedule Policy Entity
+      tags:
+      - Schedule and Schedule Policy Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: ''
+                    errorCode: 0
+  '/Task/{taskId}/Entity/Add':
+    post:
+      deprecated: false
+      description: "This operation adds an agent or agent group or entity to the schedule policy. \n                                            #magic___^_^___line\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_schedule_policy_agent_add.htm)\n"
+      operationId: Add Agent to Schedule Policy
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: taskId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          text/plain:
+            examples:
+              Example 1:
+                value: AgentGroupId=115
+              Example 2:
+                value: ClientId=2
+        description: ''
+        required: true
+      summary: Add Agent to Schedule Policy
+      tags:
+      - Schedule and Schedule Policy Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: ''
+                    errorCode: 0
+  '/Task/{taskId}/Entity/exclude':
+    post:
+      deprecated: false
+      description: |
+        This operation excludes a particular entity such as client,agent,instance,backup set or subclient from the schedule policy.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_schedule_policy_entity_exclude.htm)
+      operationId: Exclude Entity to Schedule Policy
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: taskId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          text/plain:
+            examples:
+              Example 1:
+                value: 'ClientId=2,3'
+        description: ''
+        required: true
+      summary: Exclude Entity to Schedule Policy
+      tags:
+      - Schedule and Schedule Policy Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: ''
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: ''
+                    errorCode: 0
+  '/Task/{taskId}/SubTask':
+    post:
+      deprecated: false
+      description: |
+        This operation modifies the schedule pattern for a schedule policy.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_schedule_policy_pattern_modify.htm)
+      operationId: Modify a Schedule Pattern
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: taskId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          text/plain:
+            example: |-
+              freq_type = "1"
+              active_start_date = "1467158400"
+              active_start_time = "28880"
+              active_end_date = "1467158400"
+              active_end_time = "43200"
+            schema:
+              example: |-
+                freq_type = "1"
+                active_start_date = "1467158400"
+                active_start_time = "28880"
+                active_end_date = "1467158400"
+                active_end_time = "43200"
+              type: string
+        description: ''
+        required: true
+      summary: Modify a Schedule Pattern
+      tags:
+      - Schedule and Schedule Policy Operations
+      responses:
+        '200':
+          description: OK

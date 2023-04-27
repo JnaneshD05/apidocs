@@ -1,0 +1,376 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Disaster Recovery Backup
+paths:
+  /Commcell/DRBackup/Options:
+    get:
+      deprecated: false
+      description: |
+        This operation returns DR backup options.
+      operationId: Get DR Backup Options
+      parameters:
+      - description: ''
+        in: header
+        name: authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get DR Backup Options
+      tags:
+      - Disaster Recovery Backup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  properties:
+                    type: object
+                    properties:
+                      DRDumpLocation:
+                        type: string
+                      UseLocalDrive:
+                        type: boolean
+                      isUserAccountEnabled:
+                        type: boolean
+                      uploadBackupMetadataToCloud:
+                        type: boolean
+                      UseNetworkShare:
+                        type: boolean
+                      DRNumFulls:
+                        type: integer
+                      uploadBackupMetadataToCloudLib:
+                        type: boolean
+                      userPassword:
+                        type: object
+                        properties:
+                          userName:
+                            type: string
+                      cloudLibrary:
+                        type: object
+                        properties:
+                          libraryName:
+                            type: string
+                          _type_:
+                            type: integer
+                          libraryId:
+                            type: integer
+                      pattern:
+                        type: object
+                        properties:
+                          active_end_occurence:
+                            type: integer
+                          freq_subday_interval:
+                            type: integer
+                          freq_type:
+                            type: integer
+                          patternId:
+                            type: integer
+                          flags:
+                            type: integer
+                          description:
+                            type: string
+                          active_end_time:
+                            type: integer
+                          active_end_date:
+                            type: integer
+                          skipOccurence:
+                            type: integer
+                          skipDayNumber:
+                            type: integer
+                          active_start_time:
+                            type: integer
+                          freq_restart_interval:
+                            type: integer
+                          active_start_date:
+                            type: integer
+                          freq_interval:
+                            type: integer
+                          freq_relative_interval:
+                            type: integer
+                          name:
+                            type: string
+                          freq_recurrence_factor:
+                            type: integer
+                          calendar:
+                            type: object
+                            properties:
+                              calendarName:
+                                type: string
+                              calendarId:
+                                type: integer
+                          timeZone:
+                            type: object
+                            properties:
+                              TimeZoneID:
+                                type: integer
+                x-examples:
+                  Example 1:
+                    properties:
+                      DRDumpLocation: 'E:/DRBackup'
+                      UseLocalDrive: true
+                      isUserAccountEnabled: false
+                      uploadBackupMetadataToCloud: false
+                      UseNetworkShare: false
+                      DRNumFulls: 5
+                      uploadBackupMetadataToCloudLib: false
+                      userPassword:
+                        userName: ''
+                      cloudLibrary:
+                        libraryName: ''
+                        _type_: 9
+                        libraryId: 0
+                      pattern:
+                        active_end_occurence: 0
+                        freq_subday_interval: 0
+                        freq_type: 4
+                        patternId: 3
+                        flags: 0
+                        description: ''
+                        active_end_time: 0
+                        active_end_date: 0
+                        skipOccurence: 0
+                        skipDayNumber: 0
+                        active_start_time: 36000
+                        freq_restart_interval: 0
+                        active_start_date: 1437091200
+                        freq_interval: 1
+                        freq_relative_interval: 0
+                        name: ''
+                        freq_recurrence_factor: 1
+                        calendar:
+                          calendarName: Standard
+                          calendarId: 1
+                        timeZone:
+                          TimeZoneID: 1000
+              examples:
+                DRBackup Options:
+                  value:
+                    properties:
+                      DRDumpLocation: 'E:/DRBackup'
+                      UseLocalDrive: true
+                      isUserAccountEnabled: false
+                      uploadBackupMetadataToCloud: false
+                      UseNetworkShare: false
+                      DRNumFulls: 5
+                      uploadBackupMetadataToCloudLib: false
+                      userPassword:
+                        userName: ''
+                      cloudLibrary:
+                        libraryName: ''
+                        _type_: 9
+                        libraryId: 0
+                      pattern:
+                        active_end_occurence: 0
+                        freq_subday_interval: 0
+                        freq_type: 4
+                        patternId: 3
+                        flags: 0
+                        description: ''
+                        active_end_time: 0
+                        active_end_date: 0
+                        skipOccurence: 0
+                        skipDayNumber: 0
+                        active_start_time: 36000
+                        freq_restart_interval: 0
+                        active_start_date: 1437091200
+                        freq_interval: 1
+                        freq_relative_interval: 0
+                        name: ''
+                        freq_recurrence_factor: 1
+                        calendar:
+                          calendarName: Standard
+                          calendarId: 1
+                        timeZone:
+                          TimeZoneID: 1000
+  /Commcell/DRBackup/Properties:
+    get:
+      deprecated: false
+      description: |
+        This operation returns DR backup properties.
+      operationId: Get DR Backup Properties
+      parameters:
+      - description: ''
+        in: header
+        name: authtoken
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get DR Backup Properties
+      tags:
+      - Disaster Recovery Backup
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  drBackupInfo:
+                    type: object
+                    properties:
+                      prePostProcessSettings:
+                        type: object
+                        properties:
+                          preScanProcess:
+                            type: string
+                          postBackupProcess:
+                            type: string
+                          postScanProcess:
+                            type: string
+                          runPostScanProcess:
+                            type: boolean
+                          preBackupProcess:
+                            type: string
+                          runPostBackupProcess:
+                            type: boolean
+                          impersonateUser:
+                            type: object
+                            properties:
+                              userName:
+                                type: string
+                      exportSettings:
+                        type: object
+                        properties:
+                          wildCardSetting:
+                            type: string
+                          uploadBackupMetadataToCloud:
+                            type: boolean
+                          backupMetadataFolder:
+                            type: string
+                          isUseVSS:
+                            type: boolean
+                          numberOfMetadata:
+                            type: integer
+                          uploadBackupMetadataToCloudLib:
+                            type: boolean
+                          cloudLibrary:
+                            type: object
+                            properties:
+                              libraryName:
+                                type: string
+                          networkUserAccount:
+                            type: object
+                            properties:
+                              userName:
+                                type: string
+                          storagePolicy:
+                            type: object
+                            properties:
+                              storagePolicyName:
+                                type: string
+                              storagePolicyId:
+                                type: integer
+                          cloudCredentials:
+                            type: object
+                            properties:
+                              userName:
+                                type: string
+                x-examples:
+                  Example 1:
+                    drBackupInfo:
+                      prePostProcessSettings:
+                        preScanProcess: ''
+                        postBackupProcess: ''
+                        postScanProcess: ''
+                        runPostScanProcess: false
+                        preBackupProcess: ''
+                        runPostBackupProcess: false
+                        impersonateUser:
+                          userName: ''
+                      exportSettings:
+                        wildCardSetting: ''
+                        uploadBackupMetadataToCloud: false
+                        backupMetadataFolder: 'E:/DRBackup'
+                        isUseVSS: true
+                        numberOfMetadata: 5
+                        uploadBackupMetadataToCloudLib: false
+                        cloudLibrary:
+                          libraryName: ''
+                        networkUserAccount:
+                          userName: ''
+                        storagePolicy:
+                          storagePolicyName: CommServeDR
+                          storagePolicyId: 2
+                        cloudCredentials:
+                          userName: ''
+              examples:
+                DRBackup Properties:
+                  value:
+                    drBackupInfo:
+                      prePostProcessSettings:
+                        preScanProcess: ''
+                        postBackupProcess: ''
+                        postScanProcess: ''
+                        runPostScanProcess: false
+                        preBackupProcess: ''
+                        runPostBackupProcess: false
+                        impersonateUser:
+                          userName: ''
+                      exportSettings:
+                        wildCardSetting: ''
+                        uploadBackupMetadataToCloud: false
+                        backupMetadataFolder: 'E:/DRBackup'
+                        isUseVSS: true
+                        numberOfMetadata: 5
+                        uploadBackupMetadataToCloudLib: false
+                        cloudLibrary:
+                          libraryName: ''
+                        networkUserAccount:
+                          userName: ''
+                        storagePolicy:
+                          storagePolicyName: CommServeDR
+                          storagePolicyId: 2
+                        cloudCredentials:
+                          userName: ''
+  /Commserve/DRBackup:
+    post:
+      summary: Disaster Recovery Backup
+      tags:
+      - Disaster Recovery Backup
+      responses:
+        '200':
+          description: OK
+      operationId: get-Commserve-DRBackup
+      description: |
+        This operation runs a disaster recovery backup job.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_disaster_recovery_backup.htm)
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                isCompressionEnabled:
+                  type: boolean
+                jobType:
+                  type: integer
+                backupType:
+                  type: integer
+              x-examples:
+                Example 1:
+                  isCompressionEnabled: false
+                  jobType: 1
+                  backupType: 1
+            examples:
+              Example 1:
+                value:
+                  isCompressionEnabled: false
+                  jobType: 1
+                  backupType: 1

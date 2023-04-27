@@ -1,0 +1,43 @@
+---
+id: users
+title: "Users"
+description: "Users"
+custom_edit_url: null
+---
+
+
+
+MSP User Management includes creating new users, querying user details, updating user roles, and updating user managed accounts.
+
+Following are the allowed values for user status:
+
+##### Account Status Enumeration
+
+| **Enumeration Value** | **Description** |
+| --- | --- |
+| provisioning | New user provisioning in progress |
+| updating | User updation in progress |
+| deleting | User deletion in progress |
+| active | User is in active state |
+| error_pending_investigation | Something went wrong while provisioning or updating user. Metallic team will investigate and correct the error. No action required from customer. |
+
+##### **Available Roles**
+
+| **Role ID** | **Role Name** | **Description** |
+| --- | --- | --- |
+| ROLE_MSP_ADMIN | Service Administrator | The Service Administrator manages all accounts and has all role permissions. This role has all permissions and is exclusive. User can either have this role or combination of below roles |
+| ROLE_ACCOUNT_CREATOR | Account Creator | Create and onboard new account. |
+| ROLE_ACCOUNT_MANAGER | Account Manager | View account details including usage and cost and manage subscribed services in the MSP  portal. Manage backup & recovery activities in the metallic hub. |
+| ROLE_PRICING_READER | Rate Card Read Only Access | View rate card details. |
+| ROLE_USER_ADMIN | User Management Full Access | Create and manage partner portal users. |
+| ROLE_USER_READER | User Management Read Only Access | View Partner Portal users including their roles and managed accounts. |
+
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
+      

@@ -1,0 +1,5220 @@
+[
+  {
+    "type": "doc",
+    "id": "api/cv/ActivateOperations/commvault-rest-api-public"
+  },
+  {
+    "type": "category",
+    "label": "AccessControl",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-access-control",
+        "label": "Get Access Control Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/put-access-control",
+        "label": "Modify Access Control",
+        "className": "api-method put"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Activate Operations",
+    "items": [
+      {
+        "type": "category",
+        "label": "Activate",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-activate-entity-audit-list",
+            "label": "Get Activate Entity Audit",
+            "className": "api-method get"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Apps",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/create-a-new-project",
+            "label": "Create a new Project",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/get-projects",
+            "label": "Get Projects",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/get-project-configuration",
+            "label": "Get Project Configuration",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/get-dcube-getdefaulthandler-datasource-id",
+            "label": "Datasource Handler",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/get-dcube-handler-datasource-handler-id",
+            "label": "Get Datasource Files",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/post-dcube-handler-datasource-handler-id",
+            "label": "Search Datasource",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/update-project-security",
+            "label": "Update Project Security",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/perform-datasource-file-action",
+            "label": "Perform Datasource File Action",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/delete-a-datasource",
+            "label": "Delete a Datasource",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/edit-datasource",
+            "label": "Edit Datasource",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/start-data-crawl",
+            "label": "Start Data Crawl",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/delete-a-project",
+            "label": "Delete a Project",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/add-data-source",
+            "label": "Add Data Source",
+            "className": "api-method post"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Entity Operations",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/get-all-entities",
+            "label": "Get all Entities",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/create-an-entity",
+            "label": "Create an Entity",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/delete-an-entity",
+            "label": "Delete an Entity",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/update-entity",
+            "label": "Update Entity",
+            "className": "api-method put"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Inventory Operations",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/get-all-index-servers",
+            "label": "Get all Index Servers",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/get-index-server-properteis",
+            "label": "Get Index Server Properties",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/get-inventories",
+            "label": "Get Inventories",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/create-inventory",
+            "label": "Create Inventory",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/add-assets-to-inventory",
+            "label": "Add Assets To Inventory",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/remove-asset-from-inventory",
+            "label": "Remove Asset From Inventory",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/delete-inventory",
+            "label": "Delete Inventory",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/inventory-details",
+            "label": "Inventory Details",
+            "className": "api-method get"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Request Operations",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/create-a-request-configuration",
+            "label": "Create a Request Configuration",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/get-get-commcell-profile-req",
+            "label": "Get Commcell Profile Requests",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/update-the-request-configuration",
+            "label": "Update the Request Configuration",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/post-dcube-federated-request-handler-id-request-handler-name",
+            "label": "Search Request Files",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/review-request",
+            "label": "Review Request",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/get-approval",
+            "label": "Get Approval",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ActivateOperations/delete-a-request",
+            "label": "Delete a Request",
+            "className": "api-method delete"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "AdditionalSettings",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/modify-global-settings",
+        "label": "ModifyGlobalSettings",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-global-settings",
+        "label": "GetGlobalSettings",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-entity-settings",
+        "label": "Get Entity Settings",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/modify-entity-settings",
+        "label": "Modify Entity Settings",
+        "className": "api-method put"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Agent Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-backup-agent",
+        "label": "Disable Backup Property for an Agent",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-restore-agent",
+        "label": "Disable restore property for an agent",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-backup-agent",
+        "label": "Enable Backup Property for an Agent",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-restore-agent",
+        "label": "Enable restore property for an agent",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-agent",
+        "label": "Used to delete an agent from a server",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AgentOperations/get-all-agents",
+        "label": "Get All Agents",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AgentOperations/update-agent-properties",
+        "label": "Update Agent Properties",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AgentOperations/get-get-id",
+        "label": "Get Agent Id",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Alert Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-alerts-triggered",
+        "label": "Get Alerts Triggered",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-triggered-alert-details",
+        "label": "Get Triggered Alert Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-triggered-alerts",
+        "label": "Delete Triggered Alert",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/pin-triggered-alerts",
+        "label": "PinTriggeredAlerts",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/unpin-triggered-alerts",
+        "label": "UnpinTriggeredAlerts",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/read-triggered-alerts",
+        "label": "ReadTriggeredAlerts",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/unread-triggered-alerts",
+        "label": "UnreadTriggeredAlerts",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/modify-triggered-alerts-notes",
+        "label": "ModifyTriggeredAlertsNotes",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-alert-definitions",
+        "label": "Delete Alert Definitions",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-alert-definitions-details",
+        "label": "Get Alert Definitions Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/edit-alert-definitions",
+        "label": "Edit Alert Definitions",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-alert-definitions",
+        "label": "Enable Alert Definitions",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-alert-definitions",
+        "label": "Disable Alert Definitions",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-multiple-triggeredalerts",
+        "label": "Delete Multiple Triggered Alerts",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AlertOperations/get-all-console-alerts",
+        "label": "Get All Console Alerts",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AlertOperations/get-console-alert-details",
+        "label": "Get Console Alert Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AlertOperations/update-console-alert-details",
+        "label": "Update Console Alert Details",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AlertOperations/get-all-alerts",
+        "label": "Get All Alerts",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AlertOperations/create-an-alert",
+        "label": "Create an Alert",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AlertOperations/delete-an-alert",
+        "label": "Delete an Alert",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AlertOperations/get-alert-rule-alert-id-2",
+        "label": "Get Alert Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AlertOperations/disable-an-alert",
+        "label": "Disable an Alert",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AlertOperations/enable-an-alert",
+        "label": "Enable an Alert",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AlertOperations/modify-an-alert",
+        "label": "Modify an Alert",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AlertOperations/disable-alert-notification",
+        "label": "Disable Alert Notification",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AlertOperations/enable-alert-notification",
+        "label": "Enable Alert Notification",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "ArchiveFileServers",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-archive-file-servers",
+        "label": "List of Archive file servers.",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Array Management",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/ArrayManagement/arrays",
+        "label": "Arrays",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ArrayManagement/add-storage-array",
+        "label": "Add storage array",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ArrayManagement/delete-storage-array",
+        "label": "Delete Storage Array",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ArrayManagement/get-storage-array-details",
+        "label": "Get storage array Details",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Authentication Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/AuthenticationOperations/login",
+        "label": "Login",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AuthenticationOperations/logout",
+        "label": "Logout",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AuthenticationOperations/renew-login-token",
+        "label": "RenewLoginToken",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AuthenticationOperations/send-pin-for-two-factor-authentication",
+        "label": "Send Pin for Two-Factor Authentication",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/AuthenticationOperations/get-security-two-factor-auth-status",
+        "label": "User Two-Factor Authentication Status",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Backup Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/BackupOperations/create-task-backup",
+        "label": "Create Task (Backup)",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/BackupOperations/post-backupset-backupset-id-action-backup",
+        "label": "Backup Set Backup",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/BackupOperations/post-subclient-subclient-id-action-backup",
+        "label": "Subclient Backup",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Backup Set Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/BackupSetOperations/get-all-backup-sets",
+        "label": "Get All Backup Sets",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/BackupSetOperations/create-backup-set",
+        "label": "Create Backup Set",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/BackupSetOperations/delete-a-backup-set",
+        "label": "Delete a Backup Set",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/BackupSetOperations/get-backupset-backupset-id-2",
+        "label": "Get Backup Set Properties",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/BackupSetOperations/post-backupset-backupset-id-2",
+        "label": "Modify Backup Set Properties",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/BackupSetOperations/trigger-backup-set-backup",
+        "label": "Trigger Backup Set Backup",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/BackupSetOperations/create-task-backup",
+        "label": "Create Task (Backup)",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/BackupSetOperations/post-backupset-backupset-id-action-backup",
+        "label": "Backup Set Backup",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/BackupSetOperations/get-get-id",
+        "label": "Get Backupset Id",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Client Group Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-server-groups",
+        "label": "Get Server Groups",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/create-server-groups",
+        "label": "Create a Server Group",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/server-groups-creation-preview",
+        "label": "Server Group Preview",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-server-group-id-details",
+        "label": "Get Server Group Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/update-server-group-association",
+        "label": "Update the server group",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-server-group",
+        "label": "Delete a ServerGroup",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-restore-server-group",
+        "label": "Disable Restore for servergroup",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-backup-server-group",
+        "label": "Disable backups for ServerGroup",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-data-aging-server-group",
+        "label": "Disable dataaging for ServerGroup",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-restore-server-group",
+        "label": "Enable restore for ServerGroup",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-backup-server-group",
+        "label": "Enable Backup for ServerGroup",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-data-aging-server-group",
+        "label": "Enable Data aging for Server Group",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-server-group-dc-plan",
+        "label": "Get ServerGroup DC Plan",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/put-server-group-dc-plan",
+        "label": "API to associate specific plan to servergroup",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-server-group-dc-plan",
+        "label": "Api to remove associated DC plan from server group",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientGroupOperations/get-client-group",
+        "label": "Get Client Group (Deprecated)",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientGroupOperations/post-client-group",
+        "label": "Create Client Group (Deprecated)",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientGroupOperations/delete-client-group",
+        "label": "Delete Client Group (Deprecated)",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientGroupOperations/get-client-group-properties",
+        "label": "Get Client Group Properties (Deprecated)",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientGroupOperations/update-client-group-properties",
+        "label": "Update Client Group Properties (Deprecated)",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Client Operations",
+    "items": [
+      {
+        "type": "category",
+        "label": "ServiceCommcells",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-service-commcells",
+            "label": "Returns a list of serviceCommcells",
+            "className": "api-method get"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "IdentityServers",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-saml-app",
+            "label": "Get SAML Server",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/update-saml-app",
+            "label": "Modify SAML App Details",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-saml-app",
+            "label": "Create SAML App",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-identity-servers",
+            "label": "Get Identity Servers",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-adldap-details",
+            "label": "Get AD/LDAP Details",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/update-adldap",
+            "label": "Update AD/LDAP",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-adldap",
+            "label": "Delete AD/LDAP",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-ldap",
+            "label": "Create AD/LDAP",
+            "className": "api-method post"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "IndexServers",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-index-servers",
+            "label": "Get Index Servers",
+            "className": "api-method get"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "1-Touch Recovery Points",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/ClientOperations/1-touch-recovery-points-using-client-id",
+            "label": "1-Touch Recovery Points using client Id",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ClientOperations/1-touch-recovery-points-using-client-name-backupset-name",
+            "label": "1-Touch Recovery Points using client name & backupset name",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ClientOperations/1-touch-recovery-points-using-client-name",
+            "label": "1-Touch Recovery Points using client name",
+            "className": "api-method get"
+          }
+        ]
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/get-client",
+        "label": "Get Client",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/get-clientid-usingname",
+        "label": "Get Client ID using name",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/get-clients-distributed-apps",
+        "label": "Get Clients - DistributedApps",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/get-client-client-id",
+        "label": "Get Client Properties",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/post-client-client-id",
+        "label": "Modify Client Properties",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/perform-client-browse",
+        "label": "Perform Client Browse",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/get-all-client-additional-settings",
+        "label": "Get All Client Additional Settings",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/get-clients-count",
+        "label": "Get Clients count",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/services-restart",
+        "label": "Services Restart",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/get-create-task",
+        "label": "Client Update Software",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/create-pseudo-client",
+        "label": "Create Pseudo Client",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/install-client-with-media-agent-package",
+        "label": "Install Client with Media Agent Package",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/modify-log-file-properties",
+        "label": "Modify Log File properties",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/client-check-readiness",
+        "label": "Client Check Readiness",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/retire-client",
+        "label": "Retire Client",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/retire-multiple-clients",
+        "label": "Retire Multiple Clients",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/get-index-servers",
+        "label": "Get Index Servers",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ClientOperations/retire-cluster-client",
+        "label": "Retire Cluster Client",
+        "className": "api-method delete"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Cloud Apps Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/CloudAppsOperations/get-all-proxy-clients",
+        "label": "Get All Proxy Clients",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/CloudAppsOperations/office-365-user-policy-association",
+        "label": "Office365 User Policy Association",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/CloudAppsOperations/get-client",
+        "label": "Cloud Apps Pseudo Clients",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Cloud Object Storage",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/CloudObjectStorage/get-cloud-object-storage-accounts",
+        "label": "Get Cloud Object Storage Accounts",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Commcell",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-restore-commcell",
+        "label": "Disable Restore for Commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-backup-commcell",
+        "label": "Disable Backups for Commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-restore-commcell",
+        "label": "Enable Restore for Commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-backup-commcell",
+        "label": "Enable Backup Property for Commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-scheduler-commcell",
+        "label": "Disable Schedule for Commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-data-aging-commcell",
+        "label": "Disable Data Aging for Commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-scheduler-commcell",
+        "label": "Enable Schedule for Commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-data-aging-commcell",
+        "label": "Enable Data Aging for Commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-ddb-commcell",
+        "label": "Disable DDB Property for commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-data-verification-commcell",
+        "label": "Disable Data Verifications for commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-ddb-commcell",
+        "label": "Enable DDB property for commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-all-job-activity",
+        "label": "Enable All Job activity in commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-all-job-activity-commcell",
+        "label": "Disable All Job Activity for commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-data-verification-commcell",
+        "label": "Enable Data Verification property for commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-auxillary-copy-commcell",
+        "label": "Disable Aux Copy Jobs for commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-content-indexing-commcell",
+        "label": "Disable Content Indexing for commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-auxillary-copy-commcell",
+        "label": "Enable Aux Copy Jobs for commcell",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-content-indexing-commcell",
+        "label": "Enable Content Indexing Property for commcell",
+        "className": "api-method put"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Control Panel Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/get-snmpv-3-configurations",
+        "label": "Get SNMPV3 Configurations",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/add-snmpv-3-configuration",
+        "label": "ADD SNMPV3 Configuration",
+        "className": "api-method post"
+      },
+      {
+        "type": "category",
+        "label": "Operation Window Operations",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-blackout-window",
+            "label": "Create a Blackout Window",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-blackout-windows",
+            "label": "Get Blackout Window",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-blackout-window-details",
+            "label": "Get Blackout Window Properties",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/modify-blackout-window",
+            "label": "Modify Blackout Window properties",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-v-4-blackout-windows",
+            "label": "Get Blackout Windows List",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-v-4-blackout-window",
+            "label": "Create new Blackout Window",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-v-4-blackout-window-details",
+            "label": "Get Blackout Window Details",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/modify-v-4-blackout-window",
+            "label": "Modify Blackout Window Details",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-blackout-window",
+            "label": "Delete Blackout Window",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ControlPanelOperations/create-an-operation-rule",
+            "label": "Create an Operation Rule",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ControlPanelOperations/update-operation-rules",
+            "label": "Update Operation Rules",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ControlPanelOperations/disable-ignore-higher-level-operation-window-rules-feature",
+            "label": "Disable ignore higher-level operation window rules feature",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ControlPanelOperations/enable-ignore-higher-level-operation-window-rules-feature",
+            "label": "Enable ignore higher-level operation window rules feature",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ControlPanelOperations/get-operation-rules",
+            "label": "Get Operation Rules",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ControlPanelOperations/delete-operation-rule",
+            "label": "Delete Operation Rule",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ControlPanelOperations/get-operation-window-details",
+            "label": "Get Operation Window Details",
+            "className": "api-method get"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Data Interface Pairs",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/ControlPanelOperations/get-di-ps-for-a-client",
+            "label": "Get DIPs for a client",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ControlPanelOperations/add-di-ps-between-two-clients",
+            "label": "Add DIP's between two clients",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ControlPanelOperations/get-host-interface-list-for-client",
+            "label": "Get Host Interface List for client",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ControlPanelOperations/get-v-2-commserv-data-interface-pairs",
+            "label": "DIPs between two entities",
+            "className": "api-method get"
+          }
+        ]
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/retrieve-commcell-activity-control",
+        "label": "Retrieve Commcell Activity Control",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/get-commserve-cache-details",
+        "label": "Get Commserve Cache Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/get-commserve-remote-cache-details",
+        "label": "Get Commserve Remote Cache Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/get-audit-trail-settings",
+        "label": "Get Audit Trail Settings",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/update-audit-trail-settings",
+        "label": "Update Audit Trail Settings",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/get-custom-calendars",
+        "label": "Get Custom Calendars",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/create-a-custom-calendar",
+        "label": "Create a Custom Calendar",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/cloud-metrics-reporting-configuration",
+        "label": "Cloud Metrics Reporting Configuration",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/update-cloud-metrics-reporting-configuration",
+        "label": "Update Cloud Metrics Reporting Configuration",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/get-http-proxy-server-details",
+        "label": "Get HTTP Proxy Server Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/create-a-http-proxy-server",
+        "label": "Create a HTTP Proxy Server",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/get-email-servers",
+        "label": "Get Email Servers",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/update-email-server",
+        "label": "Update Email Server",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/get-commcell-properties",
+        "label": "Get Commcell properties",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/update-commcell-activity-control",
+        "label": "Update Commcell Activity Control",
+        "className": "api-method put"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Convert XML to JSON",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/ConvertXMLtoJson/convert-xml-to-json-object",
+        "label": "Convert XML to JSON",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Credentials Manager",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/get-credentials",
+        "label": "Get Credentials",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/create-user-credential",
+        "label": "Create User Credential",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/update-credentials",
+        "label": "Update Credentials",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/delete-credentials",
+        "label": "Delete Credentials",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ControlPanelOperations/get-credentials-details",
+        "label": "Get Credentials Details",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "CSLiveSync",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/CSLiveSync/disable-cs-live-sync",
+        "label": "CSLiveSync",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Data Cube Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/export-data-step-1-submit-request",
+        "label": "Export Data - Step 1 - Submit Request",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/export-data-step-2-poll-request",
+        "label": "Export Data - Step 2 - Poll Request",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/export-data-step-3-download-file-stream",
+        "label": "Export Data - Step 3 - Download File Stream",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/datasources-for-client-with-mount-paths",
+        "label": "Datasources For Client With Mount Paths",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/datasources",
+        "label": "Datasources",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/view-crawl-history",
+        "label": "View Crawl History",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/view-jdbc-drivers",
+        "label": "View JDBC Drivers",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/view-crawling-status",
+        "label": "View Crawling Status",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/create-a-data-source",
+        "label": "Create a Data Source",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/delete-a-data-source",
+        "label": "Delete a Data Source",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/view-index-servers",
+        "label": "View Index Servers",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/view-registered-comm-serve-databases",
+        "label": "View Registered CommServe Databases",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/datasource-handler",
+        "label": "Datasource Handler",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/get-datasource-files",
+        "label": "Get Datasource Files",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/schedule-a-data-crawl",
+        "label": "Schedule a dataCrawl",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/retrieve-data",
+        "label": "Retrieve Data",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/start-crawl",
+        "label": "Start Crawl",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DataCubeOperations/stop-crawl",
+        "label": "Stop Crawl",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Disaster Recovery Backup",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/DisasterRecoveryBackup/get-dr-backup-options",
+        "label": "Get DR Backup Options",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DisasterRecoveryBackup/get-dr-backup-properties",
+        "label": "Get DR Backup Properties",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DisasterRecoveryBackup/get-commserve-dr-backup",
+        "label": "Disaster Recovery Backup",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "DistributedSystems",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-distributed-systems",
+        "label": "Get Distributed Systems",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Domain Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/DomainOperations/get-identity-servers",
+        "label": "Get Identity Servers",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DomainOperations/get-comm-cell-domain-controller",
+        "label": "Get Domain",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DomainOperations/post-comm-cell-domain-controller",
+        "label": "Update Domain",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/DomainOperations/delete-a-domain",
+        "label": "Delete a Domain",
+        "className": "api-method delete"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Ediscovery",
+    "items": [
+      {
+        "type": "category",
+        "label": "Compliance",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/Compliance/index-servers-and-search-engines",
+            "label": "Index Servers and Search Engines",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Compliance/add-export-to-exportset-container-for-selected-items",
+            "label": "Add Export To Exportset Container For Selected Items",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Compliance/download-file",
+            "label": "Download File",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Compliance/get-exportsets",
+            "label": "Get Exportsets",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Compliance/get-exports",
+            "label": "Get Exports",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Compliance/add-export-to-exportset-container-for-all-items",
+            "label": "Add Export To Exportset Container For All Items",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Compliance/verify-export-set",
+            "label": "Verify ExportSet",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Compliance/create-export-set",
+            "label": "Create ExportSet",
+            "className": "api-method post"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "EmailServer",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/configure-email-server",
+        "label": "Configure Email Server",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/update-email-server",
+        "label": "UpdateEmailServer",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-email-server",
+        "label": "GetEmailServer",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/send-test-mail-req",
+        "label": "SendTestMailReq",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Entity Tags",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/EntityTags/all-tags-details",
+        "label": "All Tags Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/EntityTags/delete-a-tag-or-multiple-tags",
+        "label": "Delete a Tag or multiple tags",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/EntityTags/get-all-tags",
+        "label": "Get all Tags",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/EntityTags/update-tags",
+        "label": "Update tags",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/EntityTags/list-of-tags",
+        "label": "List of Tags",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "EpicServers",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-epic-servers",
+        "label": "Return the list of epic servers.",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Failover Group Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/FailoverGroupOperations/get-failover-groups",
+        "label": "Get Failover Groups",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/FailoverGroupOperations/create-failover-group",
+        "label": "Create Failover Group",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/FailoverGroupOperations/update-failover-group",
+        "label": "Update Failover Group",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/FailoverGroupOperations/get-failover-groups-failover-group-id",
+        "label": "Get Failover Group Properties",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/FailoverGroupOperations/delete-failover-groups-failover-group-id",
+        "label": "Delete Failover Group",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/FailoverGroupOperations/get-failover-group-schedules",
+        "label": "Get Failover Group Schedules",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/FailoverGroupOperations/get-failover-group-clientlist",
+        "label": "Get Failover Group Clientlist",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/FailoverGroupOperations/get-failover-group-job-statistics",
+        "label": "Get Failover Group Job Statistics",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/FailoverGroupOperations/view-test-failover-v-ms",
+        "label": "View Test Failover VM's",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/FailoverGroupOperations/get-create-task",
+        "label": "Failover Tasks",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "File Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/FileOperations/download-a-file",
+        "label": "Download a File",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/FileOperations/preview-a-file",
+        "label": "Preview a File",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "File Operations For Shares",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/FileOperationsforshares/view-shared-files-and-folders",
+        "label": "View Shared Files and Folders",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/FileOperationsforshares/get-action-preview",
+        "label": "Preview a Shared File",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/FileOperationsforshares/get-stream-action-download",
+        "label": "Download a Shared File",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "FileServers",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-file-servers",
+        "label": "Get File Servers",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Filters for Search or List",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/FiltersforSearchorList/filter-based-on-file-name-or-type",
+        "label": "Filter Based on File Name or Type",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "GCPSpanner",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-gcp-spanner-instance-list",
+        "label": "To get the list of instances for GCP",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-gcp-spanner-databases",
+        "label": "Get database list for GCP",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-gcp-spanner-permissions",
+        "label": "Check permission on a project for a cloud account",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Global Parameters",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/GlobalParameters/get-value-for-a-global-parameter",
+        "label": "Get value for a Global Parameter",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/GlobalParameters/set-global-parameter",
+        "label": "Set Global Parameter",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "GlobalSearch",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-aggregate-on-entity",
+        "label": "Get Aggregate count of Entity",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "HybridFileStores",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-hybrid-file-store-share-status",
+        "label": "Get Hybrid File Store Share Status",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-hybrid-file-stores",
+        "label": "Get Hybrid File Stores",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Instance Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-databases",
+        "label": "Get all databases",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-instances",
+        "label": "Get DB Instances",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-restore-instance",
+        "label": "Disable Restore for an Instance",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-backup-instance",
+        "label": "Disable Backups for an Instance",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/exclude-sla-instance",
+        "label": "Exclude Instance from the SLA",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-restore-instance",
+        "label": "Enable restore for an Instance",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-backup-instance",
+        "label": "Enable Backups for an Instance",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/include-sla-instance",
+        "label": "Include Instance in SLA",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/InstanceOperations/add-instance",
+        "label": "Add Instance",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/InstanceOperations/get-instance",
+        "label": "Get Instance",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/InstanceOperations/get-instances-of-databases",
+        "label": "Get Instances of databases",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/InstanceOperations/get-instances-using-client-id",
+        "label": "Get Instances using clientId",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/InstanceOperations/get-instance-using-parameters",
+        "label": "Get Instance using parameters",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/InstanceOperations/modify-instance-using-name",
+        "label": "modify Instance using name",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/InstanceOperations/associate-plan-to-an-instance",
+        "label": "modify Instance using instance id",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/InstanceOperations/delete-an-instance",
+        "label": "Delete an Instance",
+        "className": "api-method delete"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "InstantClones",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-instant-clones",
+        "label": "Get all instant clones",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Job Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/JobOperations/get-commcell-events",
+        "label": "Get Commcell Events",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/JobOperations/get-list-of-jobs",
+        "label": "Get List of Jobs",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/JobOperations/get-job-summary-of-a-job",
+        "label": "Get Job Summary of a Job",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/JobOperations/get-job-advanced-details",
+        "label": "Get Job Advanced Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/JobOperations/get-failed-items-in-a-job",
+        "label": "Get Failed Items in a Job",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/JobOperations/get-job-task-details",
+        "label": "Get Job Task Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/JobOperations/resubmit-a-job",
+        "label": "Resubmit a Job",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/JobOperations/kill-a-job",
+        "label": "Kill a Job",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/JobOperations/suspend-a-a-job",
+        "label": "Suspend a Job",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/JobOperations/resume-a-job",
+        "label": "Resume a Job",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/JobOperations/get-job-details",
+        "label": "Get Job Details",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/JobOperations/get-backup-job-summary",
+        "label": "Get Backup Job Summary",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/JobOperations/multi-job-operation",
+        "label": "MultiJob Operation",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "KeyManagementServer",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-key-management-servers",
+        "label": "Get Key Management Servers",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-key-management-servers",
+        "label": "Delete Key Management Server",
+        "className": "api-method delete"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Kubernetes",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-kubernetes-modifiers",
+        "label": "Get Kubernetes Modifiers",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/create-a-kubernetes-modifier",
+        "label": "Create a Kubernetes Modifier",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-kubernetes-modifier",
+        "label": "Get Kubernetes Modifier",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/update-kubernetes-modifier",
+        "label": "Update Kubernetes Modifier",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-kubernetes-modifier",
+        "label": "Delete Kubernetes Modifier",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/test-kubernetes-modifier",
+        "label": "Test Kubernetes modifier",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Laptop Devices",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/LaptopDevices/get-laptop-devices",
+        "label": "Get Laptop Devices",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/LaptopDevices/get-laptop-device-properties",
+        "label": "Get Laptop Device Properties",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "License Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-license-info",
+        "label": "Get License Info",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/LicenseOperations/add-license",
+        "label": "Add License",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/LicenseOperations/reconfigure-license-to-commcell-entity",
+        "label": "Reconfigure License to commcell entity",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/LicenseOperations/release-license",
+        "label": "Release License",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/LicenseOperations/get-client-licenses",
+        "label": "Get Client Licenses",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "MediaAgent",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/install-media-agent",
+        "label": "Create a Media Agent",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-media-agents",
+        "label": "Get MediaAgents",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-media-agents-for-ddb",
+        "label": "Get MediaAgents for DDB",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-media-agent-details",
+        "label": "Get Media Agent Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/modify-media-agent",
+        "label": "Modify Media Agent Details",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-media-agent",
+        "label": "Delete Media Agent",
+        "className": "api-method delete"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Network Topology Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/NetworkTopologyOperations/configuring-one-way-network-communication-from-tenants",
+        "label": "Configuring Network Topology (Deprecated)",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/NetworkTopologyOperations/get-firewall-topology",
+        "label": "Get Network Topologies (Deprecated)",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/NetworkTopologyOperations/delete-network-topology",
+        "label": "Delete Network Topology (Deprecated)",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/NetworkTopologyOperations/get-network-topology-properties",
+        "label": "Get Network Topology properties (Deprecated)",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/NetworkTopologyOperations/update-network-topology",
+        "label": "Update Network Topology (Deprecated)",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/NetworkTopologyOperations/push-network-configuration",
+        "label": "Push Network Configuration",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-firewall-topology",
+        "label": "Get Network Topologies",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/post-firewall-topology",
+        "label": "Create a Network Topology",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-firewall-topology-details",
+        "label": "Get Network Topology Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/put-firewall-topology",
+        "label": "Modify Network Topology details",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-firewall-topology",
+        "label": "Delete a Network Topology",
+        "className": "api-method delete"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Offce 365",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/ServiceProviderManagementAPIs/get-office-365-entities",
+        "label": "Get Office365 Entities",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Organization Operations",
+    "items": [
+      {
+        "type": "category",
+        "label": "Navigation Settings",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/Organizationoperations/get-navigation-settings",
+            "label": "Get Navigation Settings",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Organizationoperations/update-navigation-settings",
+            "label": "Update Navigation Settings",
+            "className": "api-method post"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Client Migration",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/Organizationoperations/migrate-client-client-group",
+            "label": "Migrate client/client group",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Organizationoperations/check-eligible-client-client-group",
+            "label": "Check eligible client/client group",
+            "className": "api-method put"
+          }
+        ]
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/get-all-companies",
+        "label": "Get all Companies (Deprecated)",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/create-a-company",
+        "label": "Create a Company (Deprecated)",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/update-company-details",
+        "label": "Update Company Details (Deprecated)",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/delete-a-company",
+        "label": "Delete a Company (Deprecated)",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/get-company-details",
+        "label": "Get Company Details (Deprecated)",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/get-company-authorization-code",
+        "label": "Get Company Authorization Code",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/disable-authorization-code",
+        "label": "Disable Authorization Code",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/get-company-email-header-and-footer",
+        "label": "Get Company Email Header and Footer",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/update-company-email-header-and-footer",
+        "label": "Update Company Email Header and Footer",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/get-company-default-plan",
+        "label": "Get Company Default Plan",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/organization-activate",
+        "label": "Organization Activate",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/organization-deactivate",
+        "label": "Organization Deactivate",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/subclient-offboard",
+        "label": "Subclient Offboard",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/subclient-onboard",
+        "label": "Subclient Onboard",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/tenant-offboard",
+        "label": "Tenant Offboard",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/user-offboard",
+        "label": "User Offboard",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/perform-vm-client-offboard",
+        "label": "Perform VMClient Offboard",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/perform-vm-client-onboard",
+        "label": "Perform VMClient Onboard",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Organizationoperations/organization-customization",
+        "label": "Organization Customization",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-companies",
+        "label": "Get Companies",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/create-company",
+        "label": "Create a Company",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-company-details",
+        "label": "Get Company Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/modify-company",
+        "label": "Update the properties of existing company",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-company",
+        "label": "Delete a company",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/update-company-timezone-for-servers",
+        "label": "Update the company Timezone",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-servers-for-company",
+        "label": " API to get list of servers with no packages for a company",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-associations-for-company",
+        "label": "API to get list of association for a company",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-company-laptop-admins",
+        "label": "Get Company Laptop Admins",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/update-company-laptop-admins",
+        "label": "Update company laptop admins",
+        "className": "api-method put"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Plan Operations",
+    "items": [
+      {
+        "type": "category",
+        "label": "LaptopPlan",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-laptop-plan",
+            "label": "Create Laptop Plan",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-laptop-plan-by-id",
+            "label": "Get Laptop Plan details",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/modify-laptop-plan-by-id",
+            "label": " Modify existing laptop plan details",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-laptop-plan-by-id",
+            "label": "Delete existing laptop plan",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-laptop-backup-destinations",
+            "label": "Get LaptopPlan BackupDestinations",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-laptop-backup-destination",
+            "label": "Create a LaptopPlan BackupDestination",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/modify-laptop-backup-destination",
+            "label": "Update LaptopPlan BackupDestination",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-laptop-backup-destination",
+            "label": "Delete LaptopPlan BackupDestination",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-storage-region-for-laptop-plan",
+            "label": "Delete StorageRegion of LaptopPlan",
+            "className": "api-method delete"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "ServerPlan",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-server-plan",
+            "label": "Create Server Plan",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-plan-by-id",
+            "label": "Get Server Plan Details",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/modify-plan",
+            "label": "Update the server plan",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-plan",
+            "label": "Delete a Server Plan",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-backup-destinations",
+            "label": "Get Backup Destination of Server Plan",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-server-plan-backup-content",
+            "label": "Create Server Plan Backup Content",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-server-plan-rpo",
+            "label": "Get Server Plan RPO",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-server-plan-rpo",
+            "label": "Create Server Plan RPO",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/update-server-plan-rpo",
+            "label": "Update Server Plan RPO",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-backup-destination",
+            "label": "Create Backup Destination for Server Plan",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/modify-backup-destination",
+            "label": "Modify ServerPlan BackupDestination",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-backup-destination",
+            "label": "Delete ServerPlan BackupDestination",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-backup-destination-details",
+            "label": "Get Backup Destination details of ServerPlan",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/modify-backup-destination-details",
+            "label": "Update Backup Destination details of ServerPlan",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-source-copies-for-given-server-plan-region",
+            "label": "Gives a list of eligible source copies for given region id",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-storage-region",
+            "label": "Delete Server Plan Storage Region",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/enable-backup-on-plan",
+            "label": "Enable backup Schedule policies on server plan",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/disable-backup-on-plan",
+            "label": "Disable Backup Schedule policies on serverplan",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/backup-server-plan",
+            "label": "API to run backups on server plan associated entities",
+            "className": "api-method post"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "PlanRules",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-plan-rules",
+            "label": " Api to fetch plan rules list.",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-plan-rule",
+            "label": "Api to create plan rules",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/update-plan-rule",
+            "label": "Api to update existing plan rules",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-plan-rule-details",
+            "label": "Api to fetch plan rules details.",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-plan-rule",
+            "label": "Api to delete selected plan rule",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-plan-rule-associated-entities",
+            "label": "Get entities applicable for plan association",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/put-plan-rule-associated-entities",
+            "label": "Process list of entities against plan rules.",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/update-plan-rule-rank",
+            "label": "API to update rank for multiple rules at a time.",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/put-plan-rule-entities-associate",
+            "label": "Internal Server Error in case of any failure",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/put-plan-rule-entities-include",
+            "label": "API to include workloads to be applicable for plan rule evaluation.",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/put-plan-rule-entities-exclude",
+            "label": "API to exclude workloads from plan rule evaluation framework",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-plan-rule-entities-exclude",
+            "label": "API to get excluded workloads from plan rule evaluation framework",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-plan-rule-settings",
+            "label": "API to fetch plan rule execution settings",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/put-plan-rule-settings",
+            "label": "API to set plan rule execution settings",
+            "className": "api-method put"
+          }
+        ]
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/view-plans",
+        "label": "View Plans",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/plan-clients",
+        "label": "Plan Clients",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/get-eligible-plans",
+        "label": "Get Eligible Plans",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/associate-existing-schedule-policy-to-existing-plan",
+        "label": "Associate existing schedule policy to existing plan",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/disable-database-add-on",
+        "label": "Disable Database Add-on",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/enable-database-add-on",
+        "label": "Enable Database Add-on",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/disable-file-system-addon",
+        "label": "Disable FileSystem Addon",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/enable-file-system-addon",
+        "label": "Enable FileSystem Addon",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/disable-snap-addon",
+        "label": "Disable Snap Addon",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/enable-snap-addon",
+        "label": "Enable Snap Addon",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/get-plan-associations",
+        "label": "Get Plan Associations",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/update-plan-sla",
+        "label": "Update Plan SLA",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/plan-operations-info",
+        "label": "Plan Operations Information",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/get-plans",
+        "label": "Get Plans (Deprecated)",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/create-plan",
+        "label": "Create a Plan",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/get-plan-details",
+        "label": "Get Plan Details (Deprecated)",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/update-plan",
+        "label": "Update Plan",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/get-plan-access-policies",
+        "label": "Get Plan Access Policies",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/get-plan-alerts",
+        "label": "Get Plan Alerts",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/update-plan-alerts",
+        "label": "Update Plan Alerts",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/plan-features",
+        "label": "Plan Features",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/update-plan-options",
+        "label": "Update Plan Options",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/plan-storage-modify",
+        "label": "Plan Storage Modify",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/update-plan-users",
+        "label": "Update Plan Users",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/PlanOperations/plans-for-entity-id",
+        "label": "Plans For Entity Id",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-plan-ids",
+        "label": "Get List of Plans",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-plan-summary",
+        "label": "Get Plan Summary",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-plan-summary",
+        "label": "Get Plan Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-jobs-on-backup-destination",
+        "label": "Get Jobs of BackupDestination",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-clients-for-backup-destination",
+        "label": "Get Clients of Backup Destination",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/create-cdm-plan",
+        "label": "Create CDM Plan",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "QCommands",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/Qcommands/execute-q-command",
+        "label": "Execute QCommand",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Qcommands/execute-q-operation",
+        "label": "Execute QOperation",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Regions",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/Regions/get-all-regions",
+        "label": "Get all Regions (Deprecated)",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Regions/create-a-new-region",
+        "label": "Create a new Region (Deprecated)",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Regions/delete-a-region",
+        "label": "Delete a Region (Deprecated)",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Regions/get-region-details",
+        "label": "Get Region Details (Deprecated)",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Regions/update-region",
+        "label": "Update a Region (Deprecated)",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Regions/get-clients-of-a-region",
+        "label": "Get Clients of a region",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Regions/get-plans-of-a-region",
+        "label": "Get Plans of a region",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-regions",
+        "label": "Get Regions",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/create-region",
+        "label": "Create Region",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-region",
+        "label": "Delete Region",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-region-details",
+        "label": "Get Region Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/update-region",
+        "label": "Update Region",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-region-for-entity",
+        "label": "Get Region Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/set-region-for-entity",
+        "label": "Set Region for an entity",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-region-for-entities",
+        "label": "Get Region for entities",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Replication",
+    "items": [
+      {
+        "type": "category",
+        "label": "Replication Target",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/Replication/replication-targets",
+            "label": "Replication targets",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Replication/create-replication-target",
+            "label": "Create Replication target",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Replication/delete-replication-target",
+            "label": "Delete Replication target",
+            "className": "api-method delete"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Replication Groups",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/Replication/replication-group-details",
+            "label": "Replication Group Details",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Replication/delete-replication-group",
+            "label": "Delete Replication Group",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Replication/add-vm-to-replication-group",
+            "label": "Add VM to Replication Group",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Replication/test-failover-replication-group",
+            "label": "Test Failover - Replication Group",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Replication/get-replication-groups",
+            "label": "Get Replication Groups",
+            "className": "api-method get"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Replication Monitor",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/Replication/replicated-v-ms",
+            "label": "Replicated VMs",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Replication/replicated-vm",
+            "label": "Replicated VM",
+            "className": "api-method delete"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Reports",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/Reporting/get-sla-report",
+        "label": "Get SLA Report",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Reporting/get-chargeback-report",
+        "label": "Get Chargeback Report",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Reporting/report",
+        "label": "Report",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/Reporting/get-report-details",
+        "label": "Get Report Details",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Restore Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/RestoreOperations/get-client-hierarchy-available-backup",
+        "label": "Get Client Hierarchy Available backup",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/RestoreOperations/retrieve-to-client-restore",
+        "label": "Retrieve to Client (Restore)",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/RestoreOperations/perform-browse-on-backed-up-data",
+        "label": "Perform Browse on Backed up Data",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/RestoreOperations/perform-recall",
+        "label": "Perform Recall",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/RestoreOperations/create-task-restore",
+        "label": "Create Task (Restore)",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/RestoreOperations/get-sql-restore-options",
+        "label": "SQL RestoreOptions",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Role Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/RoleOperations/view-roles",
+        "label": "View Roles (Deprecated)",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/RoleOperations/create-a-role",
+        "label": "Create a Role (Deprecated)",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/RoleOperations/enabling-security-roles-for-tenant-use",
+        "label": "Update a Role (Deprecated)",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/RoleOperations/delete-role-role-id",
+        "label": "Delete Role (Deprecated)",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/RoleOperations/get-role-role-id",
+        "label": "View Role Properties (Deprecated)",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/create-new-role",
+        "label": "Create a Role",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-list-of-roles",
+        "label": "Get a list of all the roles",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-permission-response",
+        "label": "Get Permissions",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-role-details",
+        "label": "Get a details of the role whose role id has been provided",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/modify-role",
+        "label": "Update the Role",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-roles",
+        "label": "Delete a role",
+        "className": "api-method delete"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Schedule and Schedule Policy Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/modify-schedule-pattern",
+        "label": "Modify Schedule Pattern",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ScheduleandSchedulePolicyOperations/get-schedule-policies",
+        "label": "Get Schedule Policies",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ScheduleandSchedulePolicyOperations/delete-a-schedule-policy",
+        "label": "Delete a Schedule Policy",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ScheduleandSchedulePolicyOperations/get-schedule-policy-properties",
+        "label": "Get Schedule Policy Properties",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ScheduleandSchedulePolicyOperations/get-all-schedules",
+        "label": "Get all Schedules",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ScheduleandSchedulePolicyOperations/get-schedules-properties",
+        "label": "Get Schedules Properties",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ScheduleandSchedulePolicyOperations/create-a-schedule-policy",
+        "label": "Create a Schedule Policy",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ScheduleandSchedulePolicyOperations/update-schedule-policy-entity-associations",
+        "label": "Update Schedule Policy Entity Associations",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ScheduleandSchedulePolicyOperations/schedule-policy-agent",
+        "label": "Schedule Policy Agent",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ScheduleandSchedulePolicyOperations/delete-schedule-policy-entity",
+        "label": "Delete Schedule Policy Entity",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ScheduleandSchedulePolicyOperations/add-agent-to-schedule-policy",
+        "label": "Add Agent to Schedule Policy",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ScheduleandSchedulePolicyOperations/exclude-entity-to-schedule-policy",
+        "label": "Exclude Entity to Schedule Policy",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/ScheduleandSchedulePolicyOperations/modify-a-schedule-pattern",
+        "label": "Modify a Schedule Pattern",
+        "className": "api-method post"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "ScrubLogs",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-log-scrubbing",
+        "label": "Disable log scrubbing",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-log-scrubbing",
+        "label": "Enable Log Scrubbing",
+        "className": "api-method put"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Security Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/SecurityOperations/get-security",
+        "label": "Update Entity Security Associations",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SecurityOperations/add-service-commcells-to-new-company",
+        "label": "Add service commcells to new company",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SecurityOperations/two-factor-auth-status",
+        "label": "TwoFactorAuthStatus",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SecurityOperations/get-security-two-factor-auth-pin",
+        "label": "Get TwoFactorAuthPin",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Service Provider Management APIs",
+    "items": [
+      {
+        "type": "category",
+        "label": "Tenants",
+        "items": [
+          {
+            "type": "category",
+            "label": "Company",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-all-companies",
+                "label": "Get all Companies",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/create-a-company",
+                "label": "Create a Company",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/update-company-details",
+                "label": "Update Company Details",
+                "className": "api-method put"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/delete-a-company",
+                "label": "Delete a Company",
+                "className": "api-method delete"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-company-details",
+                "label": "Get Company Details",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-company-default-plan",
+                "label": "Get Company Default Plan",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/organization-activate",
+                "label": "Organization Activate",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/organization-deactivate",
+                "label": "Organization Deactivate",
+                "className": "api-method post"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Onboarding Types",
+        "items": [
+          {
+            "type": "category",
+            "label": "Sql",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-all-clients-with-sql-instances",
+                "label": "Get All Clients with SQL instances",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/browse-db-instance",
+                "label": "Browse DB Instance",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-first-backup-job-details",
+                "label": "Get First backup job details",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-latest-backup-job-details",
+                "label": "Get Latest backup job details",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-sql-database-configuration",
+                "label": "Get SQL Database Configuration",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-unconfigured-databases",
+                "label": "Get Unconfigured Databases",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-unconfigured-servers",
+                "label": "Get Unconfigured Servers",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-sql-restore-options",
+                "label": "Get SQL Restore Options",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-sql-client-and-instance-properties",
+                "label": "Get SQL client and instance properties",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-sql-db-filegroup-info",
+                "label": "Get SQL DB filegroup info",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-databases-on-the-client",
+                "label": "Get Databases on the client",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/create-sql-availability-group",
+                "label": "Create SQL Availability Group",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/sql-clones-and-recovery-points",
+                "label": "SQL clones and recovery points",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/details-of-sql-clone-recovery-point",
+                "label": "Details of SQL clone/recovery point",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-sql-databases-properties",
+                "label": "Get SQL databases properties",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-sql-instance-properties",
+                "label": "Get SQL instance properties",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/properties-of-a-database",
+                "label": "Properties of a database",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-db-backup-history",
+                "label": "Get DB backup history",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-backup-history-of-instance",
+                "label": "Get Backup history of instance",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-sql-instances",
+                "label": "Get SQL instances",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/availability-group-details",
+                "label": "Availability group details",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/sql-availability-groups",
+                "label": "SQL Availability Groups",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/start-backup-for-selected-d-bs",
+                "label": "Start backup for selected DBs",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/backup-selected-database",
+                "label": "Backup selected database",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/backup-all-the-subclients-in-the-instance",
+                "label": "Backup all the subclients in the instance",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/delete-clone",
+                "label": "Delete Clone",
+                "className": "api-method delete"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/database-restore-for-the-db",
+                "label": "Database restore for the DB",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/backup-job-for-the-database",
+                "label": "Backup job for the database",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/db-backup-job-with-jobid",
+                "label": "DBBackup job with jobid",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/restore-for-all-the-databases-configured-for-backup",
+                "label": "Restore for all the databases  configured for backup",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/mount-the-database",
+                "label": "Mount the database",
+                "className": "api-method post"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Oracle",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-instances",
+                "label": "Get Instances",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-instance",
+                "label": "Add Instance",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-instance-instance-id",
+                "label": "Delete Instance",
+                "className": "api-method delete"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Virtualization",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/update-plan-security",
+                "label": "Update Plan Security",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/delete-client-client-id",
+                "label": "Delete Hypervisor",
+                "className": "api-method delete"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/delete-subclient-subclient-id",
+                "label": "Delete VM Group",
+                "className": "api-method delete"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-create-task",
+                "label": "Add File server",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/create-hyper-v-virtualization-client",
+                "label": "Create Hyper-V Virtualization Client",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-client",
+                "label": "Hypervisors",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/post-subclient",
+                "label": "Add VM Group",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-subclient",
+                "label": "Get VMGroups",
+                "className": "api-method get"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Laptops",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-create-task",
+                "label": "Add File server",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-plan-0-clients",
+                "label": "DeActivate Device and Removes Plan Association",
+                "className": "api-method put"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "File Servers",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-create-task",
+                "label": "Add File server",
+                "className": "api-method post"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Reporting",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/ServiceProviderManagementAPIs/get-cr-reportsplusengine-reports-name-reportname",
+            "label": "Report Details",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ServiceProviderManagementAPIs/get-cr-reportsplusengine-datasets-data-set-id-data",
+            "label": "Run report by dataset",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ServiceProviderManagementAPIs/get-jobs",
+            "label": "Job Summary",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/ServiceProviderManagementAPIs/get-sla-report",
+            "label": "SLA Report",
+            "className": "api-method post"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Commvault Backup as a Service (Unmanaged IaaS)",
+        "items": [
+          {
+            "type": "category",
+            "label": "5 - Optional Configuration",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/enable-tenant-single-sign-on",
+                "label": "Enable tenant single-sign on",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/post-user",
+                "label": "Onboarding a tenant user",
+                "className": "api-method post"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "4 - Onboarding your hypervisor",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-recovery-enablers",
+                "label": "Get Recovery Enablers",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/update-plan-security",
+                "label": "Update Plan Security",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/configure-use-of-vsa-for-package-installation",
+                "label": "Configure use of vsa for package installation",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-client",
+                "label": "Hypervisors",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-subclient",
+                "label": "Get VMGroups",
+                "className": "api-method get"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "3 - Onboarding your first tenant",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/create-a-company",
+                "label": "Create a Company",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/push-network-configuration",
+                "label": "Push Network Configuration",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-organization-organization-id-auth-token",
+                "label": "Activating an authcode for client installation",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/post-login",
+                "label": "Tenant testadmin Login",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/create-group-msp-io-infrastructure",
+                "label": "Create Group MSP.IO - Infrastructure",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/configuring-one-way-network-communication-from-tenants",
+                "label": "Configuring Network Topology",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/post-role",
+                "label": "Enabling security roles for tenant use",
+                "className": "api-method post"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "2 - Configuring your Service Catalog",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-storage-pool",
+                "label": "Add storage",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/create-plan",
+                "label": "Plan",
+                "className": "api-method post"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "1 - Initial application setup",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-storage-pool",
+                "label": "Add storage",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/create-plan",
+                "label": "Plan",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-notified-of-critical-events",
+                "label": "Get notified of critical events",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/commserve-dr-backup",
+                "label": "Commserve DR backup",
+                "className": "api-method post"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "0 - Install Media Agent",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-get-id",
+                "label": "Media Agent Id",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-install-client",
+                "label": "Install Client with Media Agent Package",
+                "className": "api-method post"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Service Plans",
+        "items": [
+          {
+            "type": "category",
+            "label": "More Operations",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/update-plan-sla",
+                "label": "Update Plan SLA",
+                "className": "api-method put"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/update-plan-security",
+                "label": "Update Plan Security",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/view-plans",
+                "label": "View Plans",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-plan-access-policies",
+                "label": "Get Plan Access Policies",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-plan-alerts",
+                "label": "Get Plan Alerts",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/update-plan-alerts",
+                "label": "Update Plan Alerts",
+                "className": "api-method put"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/plan-features",
+                "label": "Plan Features",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/plan-storage-modify",
+                "label": "Plan Storage Modify",
+                "className": "api-method put"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/update-plan-users",
+                "label": "Update Plan Users",
+                "className": "api-method put"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/plans-for-entity-id",
+                "label": "Plans For Entity Id",
+                "className": "api-method get"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Associations",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-backupset-backupset-id",
+                "label": "Plan BackupSet",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-subclient-subclient-id",
+                "label": "Plan Subclient",
+                "className": "api-method post"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-plan-plan-id-clients",
+                "label": "Plan Clients - Associate Client to a Plan",
+                "className": "api-method put"
+              }
+            ]
+          },
+          {
+            "type": "category",
+            "label": "Core Operations",
+            "items": [
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/delete-a-plan",
+                "label": "Delete a Plan",
+                "className": "api-method delete"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-plan-details",
+                "label": "Get Plan Details",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/update-plan",
+                "label": "Update Plan",
+                "className": "api-method put"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/get-plans",
+                "label": "Get Plans",
+                "className": "api-method get"
+              },
+              {
+                "type": "doc",
+                "id": "api/cv/ServiceProviderManagementAPIs/create-plan",
+                "label": "Plan",
+                "className": "api-method post"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Solutions",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-solutions-id",
+        "label": "Get Solutions",
+        "className": "api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Storage",
+    "items": [
+      {
+        "type": "category",
+        "label": "ResourcePools",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-resource-pools",
+            "label": "Get Resource Pools",
+            "className": "api-method get"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "TapeStorage",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/return-list-of-tapes",
+            "label": "Get Tape Storage",
+            "className": "api-method get"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "DiskStorage",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-disk-storages",
+            "label": "Get Disk Storage",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-disk-storage",
+            "label": "Create a disk storage pool",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-disk-storage-details",
+            "label": "Get Disk Storage Details",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/modify-disk-storage",
+            "label": "Update Disk Storage Properties",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-disk-storage",
+            "label": "Delete Disk Storage",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-backup-location",
+            "label": "Create Backup Location",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-backup-location-details",
+            "label": "Get Backup location details",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/modify-backup-location",
+            "label": "Update Backup Location properties",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-backup-location",
+            "label": "Delete Backup Location",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/add-media-agent",
+            "label": "Add Media Agent to Disk Path",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-disk-access-path",
+            "label": "Delete Media Agent to Disk Path",
+            "className": "api-method delete"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Storage Resource Operations",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/enable-disable-ransomware-protection",
+            "label": "Enable / Disable Ransomware Protection",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/get-ddb-store-info",
+            "label": "Get DDB Store Info",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/get-controller-for-a-mount-path",
+            "label": "Get Controller for a mount path",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/add-controller-for-mount-path",
+            "label": "Add Controller for mount path",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/get-file-types-and-extensions",
+            "label": "Get File Types And Extensions",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/library",
+            "label": "Get Library",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/detect-tape-library",
+            "label": "Configure Library",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/get-library-details",
+            "label": "Get Library Details",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/reset-tape-library",
+            "label": "Reset Tape Library",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/lock-unlock-mm-configuration",
+            "label": "Lock / Unlock MM Configuration",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/get-all-media-agents",
+            "label": "Get All MediaAgents",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/get-media-agent-power-management",
+            "label": "Get MediaAgent Power Management",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/get-media-agent-for-library",
+            "label": "Get MediaAgent for Library",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/enable-tape-library",
+            "label": "Enable Tape Library",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/update-media-agent-properties",
+            "label": "Update Media Agent Properties",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/get-media-agents",
+            "label": "Get MediaAgents",
+            "className": "api-method get"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Storage Pool Operations",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/get-storage-pools",
+            "label": "Get Storage Pools",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/create-a-storage-pool",
+            "label": "Create a Storage Pool",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/delete-storage-pool",
+            "label": "Delete Storage Pool",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/storage-pool-details",
+            "label": "Storage Pool Details",
+            "className": "api-method get"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Storage Policy Operations",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/storage-policy-list-for-a-media-agent",
+            "label": "Storage Policy List for a MediaAgent",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/get-storage-policies",
+            "label": "Get Storage Policies",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/create-storage-policy",
+            "label": "Create Storage Policy",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/delete-a-storage-policy",
+            "label": "Delete a Storage Policy",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/get-storage-policy-details",
+            "label": "Get Storage Policy Details",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/update-a-storage-policy",
+            "label": "Update a Storage Policy",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/create-a-storage-policy-copy",
+            "label": "Create a Storage Policy Copy",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/delete-storage-policy-copy",
+            "label": "Delete Storage Policy Copy",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/get-storage-policy-copy-details",
+            "label": "Get Storage Policy Copy Details",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/update-storage-policy-copy-details",
+            "label": "Update Storage Policy Copy Details",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/get-storage-policy-copy-size",
+            "label": "Get Storage Policy Copy Size",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/Storage/storage-policy-search-engine-list",
+            "label": "Storage Policy Search Engine List",
+            "className": "api-method get"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Subclient Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/SubclientOperations/post-subclient",
+        "label": "Create Subclient",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SubclientOperations/get-subclient",
+        "label": "Get Subclient",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SubclientOperations/get-subclient-id",
+        "label": "Get Subclient Id",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SubclientOperations/subclient-email-policy-association",
+        "label": "Subclient Email Policy Association",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SubclientOperations/subclient-email-policy-association-copy",
+        "label": "Subclient Email Policy Association Copy",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SubclientOperations/subclient-browse",
+        "label": "Subclient Browse",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SubclientOperations/delete-a-subclient",
+        "label": "Delete a Subclient",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SubclientOperations/get-subclient-properties",
+        "label": "Get Subclient Properties",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SubclientOperations/update-subclient-properties",
+        "label": "Update Subclient Properties",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SubclientOperations/get-subclient-email-policy-association",
+        "label": "Subclient Email Policy Association",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SubclientOperations/perform-subclient-backup",
+        "label": "Perform Subclient Backup",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SubclientOperations/get-create-task",
+        "label": "Create Task (Backup)",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/disable-backup-subclient",
+        "label": "Disable Backup Property for subclient",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/enable-backup-subclient",
+        "label": "Enable Backup Property for a subclient",
+        "className": "api-method put"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Syslog Server",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-syslog-status",
+        "label": "Get Syslog Server Status",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/configure-syslog-status",
+        "label": "Configure Syslog Server",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SyslogServer/create-a-syslog-server",
+        "label": "Create a Syslog Server (Deprecated)",
+        "className": "menu__list-item--deprecated api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/SyslogServer/get-syslog-server-details",
+        "label": "Get Syslog Server Details (Deprecated)",
+        "className": "menu__list-item--deprecated api-method get"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "User Group Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/UserGroupOperations/create-an-user-group",
+        "label": "Create an User Group (Deprecated)",
+        "className": "menu__list-item--deprecated api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/UserGroupOperations/user-group",
+        "label": "Get User Group (Deprecated)",
+        "className": "menu__list-item--deprecated api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/UserGroupOperations/get-usergroup-details",
+        "label": "Get Usergroup Details (Deprecated)",
+        "className": "menu__list-item--deprecated api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/UserGroupOperations/user-group-properties-adds-user-to-user-group",
+        "label": "User Group Properties - Adds User to User Group (Deprecated)",
+        "className": "menu__list-item--deprecated api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/UserGroupOperations/delete-user-group",
+        "label": "Delete User Group (Deprecated)",
+        "className": "menu__list-item--deprecated api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-user-groups",
+        "label": "Get UserGroups",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/create-user-group",
+        "label": "Create User group",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-multiple-user-groups",
+        "label": "Delete user groups",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-user-group-details",
+        "label": "Get User Group Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/modify-user-group",
+        "label": "Update User Group Details",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-user-group",
+        "label": "Delete User Group",
+        "className": "api-method delete"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "User Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/UserOperations/disable-user",
+        "label": "Disable User",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/UserOperations/enable-user",
+        "label": "Enable User",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/UserOperations/sessions",
+        "label": "Sessions",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/UserOperations/get-sessions",
+        "label": "Get Session Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/UserOperations/get-users-and-user-groups",
+        "label": "Get Users and User Groups",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/UserOperations/create-an-user",
+        "label": "Create User (Deprecated)",
+        "className": "menu__list-item--deprecated api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/UserOperations/get-all-users",
+        "label": "Get all Users (Deprecated)",
+        "className": "menu__list-item--deprecated api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/UserOperations/get-user-properties",
+        "label": "Get User Properties (Deprecated)",
+        "className": "menu__list-item--deprecated api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/UserOperations/update-user-properties",
+        "label": "Update User Properties (Deprecated)",
+        "className": "menu__list-item--deprecated api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/UserOperations/delete-user-user-id",
+        "label": "Delete User (Deprecated)",
+        "className": "menu__list-item--deprecated api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-users",
+        "label": "Get Users",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/create-user",
+        "label": "Create an User",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-multiple-users",
+        "label": "Delete Multiple Users",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/get-user-details",
+        "label": "Get User Details",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/modify-user",
+        "label": "Update existing user",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/zAllV4APIs/delete-user",
+        "label": "Delete an User",
+        "className": "api-method delete"
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Virtualization Operations",
+    "items": [
+      {
+        "type": "category",
+        "label": "VM Group Operations",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-all-vm-groups",
+            "label": "Get VM Groups",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/update-vm-group",
+            "label": "Modify VM Group Details",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-vm-group",
+            "label": "Get VM Group Details",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-vm-group",
+            "label": "Delete VM Group",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/vm-group-backup",
+            "label": "Backup VM Group",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/vm-group-preview",
+            "label": "Preview VM Group",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/test-failover-vm-group-level",
+            "label": "Test Failover - VM Group Level",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/virtual-group-i-ds",
+            "label": "Virtual Group IDs",
+            "className": "menu__list-item--deprecated api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/get-virtual-group-id-properties",
+            "label": "Get Virtual Group ID Properties",
+            "className": "menu__list-item--deprecated api-method get"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "Hypervisor Operations",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-hypervisor",
+            "label": "Create a Hypervisor",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/list-hypervisors",
+            "label": "Get all Hypervisor",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-hypervisors",
+            "label": "Get Hypervisor Details",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/update-hypervisor",
+            "label": "Update the Hypervisor details",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-hypervisor",
+            "label": "Delete a Hypervisor",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/create-vm-group",
+            "label": "Create a VM Group",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/browse-hypervisor-inventory",
+            "label": "Browse the Inventory of your hypervisor by hypervisor ID",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/re-configure-hypervisor",
+            "label": "REconfigures and Renew License for  the hypervisor client",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/update-hypervisor-credentials",
+            "label": "Update Hypervisor Credentials",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/change-hypervisor-client-credentials",
+            "label": "Change Hypervisor Client Credentials",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/create-hyper-v-virtualization-client",
+            "label": "Create Hyper-V Virtualization Client",
+            "className": "menu__list-item--deprecated api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/verify-credentials",
+            "label": "Verify Credentials",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/get-virtualization-client-properties",
+            "label": "Get Virtualization Client properties",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/dc-refresh",
+            "label": "DC Refresh",
+            "className": "api-method get"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "VM Operations",
+        "items": [
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-virtual-machines",
+            "label": "Get Virtual Machines",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-vm-details",
+            "label": "Get Virtual Machine Details",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/delete-virtual-machine",
+            "label": "Delete a Virtual Machine",
+            "className": "api-method delete"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/modify-virtual-machine",
+            "label": "Modify Virtual Machine Details",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/virtual-machine-backup",
+            "label": "Backup Virtual Machines in VM Group",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/zAllV4APIs/get-access-nodes",
+            "label": "Get Access Nodes",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/update-subclient-virtual-machine-content",
+            "label": "Update Subclient Virtual Machine Content",
+            "className": "api-method put"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/get-all-virtualization-clients",
+            "label": "Get All Virtualization Clients",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/get-all-v-ms",
+            "label": "Get all VMs (Deprecated)",
+            "className": "menu__list-item--deprecated api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/perform-virtual-machine-browse",
+            "label": "Perform Virtual Machine Browse",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/get-virtual-server-agent-clients",
+            "label": "Get Virtual Server Agent Clients",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/get-datastore-browse-inventory",
+            "label": "Get Datastore Browse Inventory",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/perform-vm-browse-for-job",
+            "label": "Perform VMBrowse for job",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/vm-out-place-recover",
+            "label": "VM Out Place Recover",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/vm-file-in-place-recover",
+            "label": "VM File In Place Recover",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/get-vm-jobs",
+            "label": "Get VM Jobs",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/perform-vm-backup",
+            "label": "Perform VM Backup",
+            "className": "api-method post"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/get-disks-for-vm",
+            "label": "Get Disks for VM",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/get-vm-nics",
+            "label": "Get VM Nics",
+            "className": "api-method get"
+          },
+          {
+            "type": "doc",
+            "id": "api/cv/VirtualizationOperations/vsa-subclient-preview",
+            "label": "VSA Subclient Preview",
+            "className": "api-method post"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "category",
+    "label": "Workflow Operations",
+    "items": [
+      {
+        "type": "doc",
+        "id": "api/cv/WorkflowOperations/get-all-workflows",
+        "label": "Get all Workflows",
+        "className": "api-method get"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/WorkflowOperations/import-a-workflow-definition",
+        "label": "Import a Workflow Definition",
+        "className": "api-method put"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/WorkflowOperations/executing-a-workflow-as-a-job",
+        "label": "Executing a Workflow as a Job",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/WorkflowOperations/delete-a-workflow",
+        "label": "Delete a Workflow",
+        "className": "api-method delete"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/WorkflowOperations/deploying-a-workflow",
+        "label": "Deploying a Workflow",
+        "className": "api-method post"
+      },
+      {
+        "type": "doc",
+        "id": "api/cv/WorkflowOperations/workflow-definition",
+        "label": "Workflow Definition",
+        "className": "api-method get"
+      }
+    ]
+  }
+]

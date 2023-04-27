@@ -1,0 +1,74 @@
+---
+id: create-export-set
+title: "Create ExportSet"
+description: "This operation creates a new exportset."
+sidebar_label: "Create ExportSet"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation creates a new exportset.\n\n<h2>Request Parameters</h2>\n<table class=\"tableintopic\" border=\"0\" cellspacing=\"0\" cellpadding=\"2\">\n\n<tr align=\"left\" valign=\"top\">\n<td >\n<p class=\"tabletext\">Name</p>\n</td>\n<td >\n<p class=\"tabletext\">Description</p>\n</td>\n</tr>\n<tr align=\"left\" valign=\"top\">\n<td >\n<p class=\"tabletext\">entityType</p>\n</td>\n<td >\n<p class=\"tabletext\">Type of entity.</p>\n<p class=\"tabletext\">Valid values are:</p>\n<ul class=\"listbullet\">\n<li class=\"listbullet\">9502, QuerySet</li>\n<li class=\"listbullet\">9503, DownloadSet</li>\n</ul>\n</td>\n</tr>\n<tr>\n<td >\n<p class=\"tabletext\">operationType</p>\n</td>\n<td >\n<p class=\"tabletext\">Type of operation.</p>\n<p class=\"tabletext\">Valid values are:</p>\n<ul>\n<li class=\"tabletext\">1, ADD</li>\n<li class=\"tabletext\">2, DELETE</li>\n</ul>\n</td>\n</tr>\n\n</table>","operationId":"Create ExportSet","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Compliance"],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"entityType":{"type":"integer"},"operationType":{"type":"integer"},"userGuid":{"type":"string"},"fromSite":{"type":"integer"},"container":{"type":"object","properties":{"containerType":{"type":"integer"},"containerName":{"type":"string"},"containerOwnerType":{"type":"integer"},"comment":{"type":"string"}}}},"x-examples":{"Example 1":{"entityType":9503,"operationType":1,"userGuid":"786AC909-DF80-4A2B-9A13-9BDB5B41B175","fromSite":2,"container":{"containerType":9503,"containerName":"exchange_75FD5896-A402-40EE-A76E-689713DBB515_exportset","containerOwnerType":1,"comment":"Export set for client - containerName"}}}},"examples":{"Create ExportSet":{"value":{"entityType":9503,"operationType":1,"userGuid":"786AC909-DF80-4A2B-9A13-9BDB5B41B175","fromSite":2,"container":{"containerType":9503,"containerName":"exchange_75FD5896-A402-40EE-A76E-689713DBB515_exportset","containerOwnerType":1,"comment":"Export set for client - containerName"}}}}}}},"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"container":{"type":"object","properties":{"containerFullName":{"type":"string"},"containerType":{"type":"integer"},"containerName":{"type":"string"},"containerOwnerType":{"type":"integer"},"comment":{"type":"string"},"attribute":{"type":"integer"},"containerId":{"type":"integer"},"containerGuid":{"type":"string"}}}},"x-examples":{"Example 1":{"container":{"containerFullName":"exchange_75FD5896-A402-40EE-A76E-689713DBB515_exportset","containerType":9503,"containerName":"exchange_75FD5896-A402-40EE-A76E-689713DBB515_exportset","containerOwnerType":1,"comment":"Export set for client - containerName","attribute":0,"containerId":610,"containerGuid":"F83A4684-55A6-4374-8AAE-12B9B6C095D6"}}}},"examples":{"Create ExportSet":{"value":{"container":{"containerFullName":"exchange_75FD5896-A402-40EE-A76E-689713DBB515_exportset","containerType":9503,"containerName":"exchange_75FD5896-A402-40EE-A76E-689713DBB515_exportset","containerOwnerType":1,"comment":"Export set for client - containerName","attribute":0,"containerId":610,"containerGuid":"F83A4684-55A6-4374-8AAE-12B9B6C095D6"}}}}}}}},"method":"post","path":"/PerformContainerOperation","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"entityType":0,"operationType":0,"userGuid":"string","fromSite":0,"container":{"containerType":0,"containerName":"string","containerOwnerType":0,"comment":"string"}},"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Create ExportSet","description":{"content":"This operation creates a new exportset.\n\n<h2>Request Parameters</h2>\n<table class=\"tableintopic\" border=\"0\" cellspacing=\"0\" cellpadding=\"2\">\n\n<tr align=\"left\" valign=\"top\">\n<td >\n<p class=\"tabletext\">Name</p>\n</td>\n<td >\n<p class=\"tabletext\">Description</p>\n</td>\n</tr>\n<tr align=\"left\" valign=\"top\">\n<td >\n<p class=\"tabletext\">entityType</p>\n</td>\n<td >\n<p class=\"tabletext\">Type of entity.</p>\n<p class=\"tabletext\">Valid values are:</p>\n<ul class=\"listbullet\">\n<li class=\"listbullet\">9502, QuerySet</li>\n<li class=\"listbullet\">9503, DownloadSet</li>\n</ul>\n</td>\n</tr>\n<tr>\n<td >\n<p class=\"tabletext\">operationType</p>\n</td>\n<td >\n<p class=\"tabletext\">Type of operation.</p>\n<p class=\"tabletext\">Valid values are:</p>\n<ul>\n<li class=\"tabletext\">1, ADD</li>\n<li class=\"tabletext\">2, DELETE</li>\n</ul>\n</td>\n</tr>\n\n</table>","type":"text/plain"},"url":{"path":["PerformContainerOperation"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/json"},{"key":"Accept","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/Compliance/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Create ExportSet
+
+
+
+This operation creates a new exportset.
+
+<h2>Request Parameters</h2>
+<table class="tableintopic" border="0" cellspacing="0" cellpadding="2">
+
+<tr align="left" valign="top">
+<td >
+<p class="tabletext">Name</p>
+</td>
+<td >
+<p class="tabletext">Description</p>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td >
+<p class="tabletext">entityType</p>
+</td>
+<td >
+<p class="tabletext">Type of entity.</p>
+<p class="tabletext">Valid values are:</p>
+<ul class="listbullet">
+<li class="listbullet">9502, QuerySet</li>
+<li class="listbullet">9503, DownloadSet</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td >
+<p class="tabletext">operationType</p>
+</td>
+<td >
+<p class="tabletext">Type of operation.</p>
+<p class="tabletext">Valid values are:</p>
+<ul>
+<li class="tabletext">1, ADD</li>
+<li class="tabletext">2, DELETE</li>
+</ul>
+</td>
+</tr>
+
+</table>
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"entityType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"operationType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"userGuid"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"fromSite"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>container</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"containerType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"containerName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"containerOwnerType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"comment"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>container</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"containerFullName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"containerType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"containerName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"containerOwnerType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"comment"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"attribute"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"containerId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"containerGuid"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"container\": {\n    \"containerFullName\": \"string\",\n    \"containerType\": 0,\n    \"containerName\": \"string\",\n    \"containerOwnerType\": 0,\n    \"comment\": \"string\",\n    \"attribute\": 0,\n    \"containerId\": 0,\n    \"containerGuid\": \"string\"\n  }\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Create  Export Set"} value={" Create  Export Set"}><ResponseSamples responseExample={"{\n  \"container\": {\n    \"containerFullName\": \"exchange_75FD5896-A402-40EE-A76E-689713DBB515_exportset\",\n    \"containerType\": 9503,\n    \"containerName\": \"exchange_75FD5896-A402-40EE-A76E-689713DBB515_exportset\",\n    \"containerOwnerType\": 1,\n    \"comment\": \"Export set for client - containerName\",\n    \"attribute\": 0,\n    \"containerId\": 610,\n    \"containerGuid\": \"F83A4684-55A6-4374-8AAE-12B9B6C095D6\"\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

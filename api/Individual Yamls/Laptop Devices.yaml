@@ -1,0 +1,995 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Laptop Devices
+paths:
+  /Device:
+    get:
+      deprecated: false
+      description: |
+        This operation returns a list of laptop devices.
+      operationId: Get Laptop Devices
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Laptop Devices
+      tags:
+      - Laptop Devices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                  clientsFileSystem:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        clientStatus:
+                          type: integer
+                        isOwner:
+                          type: boolean
+                        totalBackupSize:
+                          type: integer
+                        backupSize:
+                          type: integer
+                        bShowActivateOption:
+                          type: boolean
+                        isUserCentricClient:
+                          type: boolean
+                        capabilities:
+                          type: integer
+                        isClientDeconfigured:
+                          type: integer
+                        subclientStatus:
+                          type: integer
+                        specialClientFlags:
+                          type: integer
+                        nextBackupTime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                        lastDataProtectedTime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                        lastSuccessBackupTime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                        lastBackupTime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                        clientOwners:
+                          type: object
+                          properties:
+                            owners:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  userId:
+                                    type: integer
+                                  _type_:
+                                    type: integer
+                                  userName:
+                                    type: string
+                        subClient:
+                          type: object
+                          properties:
+                            hostName:
+                              type: string
+                            clientName:
+                              type: string
+                            backupsetId:
+                              type: integer
+                            _type_:
+                              type: integer
+                            instanceId:
+                              type: integer
+                            subclientId:
+                              type: integer
+                            clientId:
+                              type: integer
+                            applicationId:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+                    clientsFileSystem:
+                    - clientStatus: 4096
+                      isOwner: true
+                      totalBackupSize: 0
+                      backupSize: 0
+                      bShowActivateOption: true
+                      isUserCentricClient: false
+                      capabilities: 0
+                      isClientDeconfigured: 0
+                      subclientStatus: 8
+                      specialClientFlags: 0
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 1519933763
+                      clientOwners:
+                        owners:
+                        - userId: 1
+                          _type_: 13
+                          userName: testadmin
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                        - userId: 5
+                          _type_: 13
+                          userName: commvault-nj/akollareddy
+                      subClient:
+                        hostName: macvm1
+                        clientName: macvm1
+                        backupsetId: 39
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 40
+                        clientId: 19
+                        applicationId: 63
+                    - clientStatus: 4096
+                      isOwner: true
+                      totalBackupSize: 0
+                      backupSize: 0
+                      bShowActivateOption: true
+                      isUserCentricClient: false
+                      capabilities: 0
+                      isClientDeconfigured: 0
+                      subclientStatus: 8
+                      specialClientFlags: 0
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 0
+                      clientOwners:
+                        owners:
+                        - userId: 1
+                          _type_: 13
+                          userName: testadmin
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                        - userId: 5
+                          _type_: 13
+                          userName: commvault-nj/akollareddy
+                      subClient:
+                        hostName: FSTEST.test.com
+                        clientName: fstest
+                        backupsetId: 59
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 60
+                        clientId: 28
+                        applicationId: 33
+                    - clientStatus: 4098
+                      isOwner: true
+                      totalBackupSize: 0
+                      backupSize: 0
+                      bShowActivateOption: true
+                      isUserCentricClient: false
+                      capabilities: 0
+                      isClientDeconfigured: 1
+                      subclientStatus: 10
+                      specialClientFlags: 2
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 0
+                      clientOwners:
+                        owners:
+                        - userId: 1
+                          _type_: 13
+                          userName: testadmin
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                      subClient:
+                        hostName: milano.test.com
+                        clientName: milano
+                        backupsetId: 62
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 63
+                        clientId: 29
+                        applicationId: 33
+                    - clientStatus: 4098
+                      isOwner: true
+                      totalBackupSize: 0
+                      backupSize: 0
+                      bShowActivateOption: true
+                      isUserCentricClient: false
+                      capabilities: 0
+                      isClientDeconfigured: 1
+                      subclientStatus: 10
+                      specialClientFlags: 2
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 0
+                      clientOwners:
+                        owners:
+                        - userId: 1
+                          _type_: 13
+                          userName: testadmin
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                        - userId: 5
+                          _type_: 13
+                          userName: commvault-nj/akollareddy
+                      subClient:
+                        hostName: Win2003.test.com
+                        clientName: win2003
+                        backupsetId: 66
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 70
+                        clientId: 30
+                        applicationId: 33
+                    - clientStatus: 4096
+                      isOwner: true
+                      totalBackupSize: 0
+                      backupSize: 0
+                      bShowActivateOption: true
+                      isUserCentricClient: false
+                      capabilities: 0
+                      isClientDeconfigured: 0
+                      subclientStatus: 8
+                      specialClientFlags: 0
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 1519933742
+                      clientOwners:
+                        owners:
+                        - userId: 1
+                          _type_: 13
+                          userName: testadmin
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                        - userId: 5
+                          _type_: 13
+                          userName: commvault-nj/akollareddy
+                      subClient:
+                        hostName: amith110.test.com
+                        clientName: amith110
+                        backupsetId: 69
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 73
+                        clientId: 31
+                        applicationId: 33
+                    - clientStatus: 4096
+                      isOwner: true
+                      totalBackupSize: 0
+                      backupSize: 0
+                      bShowActivateOption: true
+                      isUserCentricClient: false
+                      capabilities: 0
+                      isClientDeconfigured: 0
+                      subclientStatus: 8
+                      specialClientFlags: 0
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 0
+                      clientOwners:
+                        owners:
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                      subClient:
+                        hostName: milano.test.com
+                        clientName: milano_2
+                        backupsetId: 71
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 75
+                        clientId: 32
+                        applicationId: 33
+                    - clientStatus: 4096
+                      isOwner: true
+                      totalBackupSize: 0
+                      backupSize: 0
+                      bShowActivateOption: true
+                      isUserCentricClient: false
+                      capabilities: 0
+                      isClientDeconfigured: 0
+                      subclientStatus: 8
+                      specialClientFlags: 0
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 0
+                      clientOwners:
+                        owners:
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                      subClient:
+                        hostName: Win2003.test.com
+                        clientName: win2003_2
+                        backupsetId: 73
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 77
+                        clientId: 33
+                        applicationId: 33
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+                    clientsFileSystem:
+                    - clientStatus: 4096
+                      isOwner: true
+                      totalBackupSize: 0
+                      backupSize: 0
+                      bShowActivateOption: true
+                      isUserCentricClient: false
+                      capabilities: 0
+                      isClientDeconfigured: 0
+                      subclientStatus: 8
+                      specialClientFlags: 0
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 1519933763
+                      clientOwners:
+                        owners:
+                        - userId: 1
+                          _type_: 13
+                          userName: testadmin
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                        - userId: 5
+                          _type_: 13
+                          userName: commvault-nj/akollareddy
+                      subClient:
+                        hostName: macvm1
+                        clientName: macvm1
+                        backupsetId: 39
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 40
+                        clientId: 19
+                        applicationId: 63
+                    - clientStatus: 4096
+                      isOwner: true
+                      totalBackupSize: 0
+                      backupSize: 0
+                      bShowActivateOption: true
+                      isUserCentricClient: false
+                      capabilities: 0
+                      isClientDeconfigured: 0
+                      subclientStatus: 8
+                      specialClientFlags: 0
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 0
+                      clientOwners:
+                        owners:
+                        - userId: 1
+                          _type_: 13
+                          userName: testadmin
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                        - userId: 5
+                          _type_: 13
+                          userName: commvault-nj/akollareddy
+                      subClient:
+                        hostName: FSTEST.test.com
+                        clientName: fstest
+                        backupsetId: 59
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 60
+                        clientId: 28
+                        applicationId: 33
+                    - clientStatus: 4098
+                      isOwner: true
+                      totalBackupSize: 0
+                      backupSize: 0
+                      bShowActivateOption: true
+                      isUserCentricClient: false
+                      capabilities: 0
+                      isClientDeconfigured: 1
+                      subclientStatus: 10
+                      specialClientFlags: 2
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 0
+                      clientOwners:
+                        owners:
+                        - userId: 1
+                          _type_: 13
+                          userName: testadmin
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                      subClient:
+                        hostName: milano.test.com
+                        clientName: milano
+                        backupsetId: 62
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 63
+                        clientId: 29
+                        applicationId: 33
+                    - clientStatus: 4098
+                      isOwner: true
+                      totalBackupSize: 0
+                      backupSize: 0
+                      bShowActivateOption: true
+                      isUserCentricClient: false
+                      capabilities: 0
+                      isClientDeconfigured: 1
+                      subclientStatus: 10
+                      specialClientFlags: 2
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 0
+                      clientOwners:
+                        owners:
+                        - userId: 1
+                          _type_: 13
+                          userName: testadmin
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                        - userId: 5
+                          _type_: 13
+                          userName: commvault-nj/akollareddy
+                      subClient:
+                        hostName: Win2003.test.com
+                        clientName: win2003
+                        backupsetId: 66
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 70
+                        clientId: 30
+                        applicationId: 33
+                    - clientStatus: 4096
+                      isOwner: true
+                      totalBackupSize: 0
+                      backupSize: 0
+                      bShowActivateOption: true
+                      isUserCentricClient: false
+                      capabilities: 0
+                      isClientDeconfigured: 0
+                      subclientStatus: 8
+                      specialClientFlags: 0
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 1519933742
+                      clientOwners:
+                        owners:
+                        - userId: 1
+                          _type_: 13
+                          userName: testadmin
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                        - userId: 5
+                          _type_: 13
+                          userName: commvault-nj/akollareddy
+                      subClient:
+                        hostName: amith110.test.com
+                        clientName: amith110
+                        backupsetId: 69
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 73
+                        clientId: 31
+                        applicationId: 33
+                    - clientStatus: 4096
+                      isOwner: true
+                      totalBackupSize: 0
+                      backupSize: 0
+                      bShowActivateOption: true
+                      isUserCentricClient: false
+                      capabilities: 0
+                      isClientDeconfigured: 0
+                      subclientStatus: 8
+                      specialClientFlags: 0
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 0
+                      clientOwners:
+                        owners:
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                      subClient:
+                        hostName: milano.test.com
+                        clientName: milano_2
+                        backupsetId: 71
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 75
+                        clientId: 32
+                        applicationId: 33
+                    - clientStatus: 4096
+                      isOwner: true
+                      totalBackupSize: 0
+                      backupSize: 0
+                      bShowActivateOption: true
+                      isUserCentricClient: false
+                      capabilities: 0
+                      isClientDeconfigured: 0
+                      subclientStatus: 8
+                      specialClientFlags: 0
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 0
+                      clientOwners:
+                        owners:
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                      subClient:
+                        hostName: Win2003.test.com
+                        clientName: win2003_2
+                        backupsetId: 73
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 77
+                        clientId: 33
+                        applicationId: 33
+  '/Device/{deviceId}':
+    get:
+      deprecated: false
+      description: |
+        This operation returns the properties associated with a laptop device.
+      operationId: Get Laptop Device Properties
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: deviceId
+        required: true
+        schema:
+          type: string
+      summary: Get Laptop Device Properties
+      tags:
+      - Laptop Devices
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                  clientsFileSystem:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        clientStatus:
+                          type: integer
+                        isOwner:
+                          type: boolean
+                        isLocked:
+                          type: boolean
+                        totalBackupSize:
+                          type: integer
+                        backupSize:
+                          type: integer
+                        dirDelim:
+                          type: string
+                        bShowActivateOption:
+                          type: boolean
+                        isSyncAllowed:
+                          type: boolean
+                        isIndexingV2:
+                          type: boolean
+                        isUserCentricClient:
+                          type: boolean
+                        capabilities:
+                          type: integer
+                        isClientDeconfigured:
+                          type: integer
+                        subclientStatus:
+                          type: integer
+                        specialClientFlags:
+                          type: integer
+                        nextBackupTime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                        lastDataProtectedTime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                        lastSuccessBackupTime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                        lastBackupTime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                        lastOfflineTime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                        contents:
+                          type: object
+                          properties:
+                            content:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  modifyTime:
+                                    type: integer
+                                  createTime:
+                                    type: integer
+                                  valueType:
+                                    type: integer
+                                  value:
+                                    type: string
+                        clientOwners:
+                          type: object
+                          properties:
+                            owners:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  userId:
+                                    type: integer
+                                  _type_:
+                                    type: integer
+                                  userName:
+                                    type: string
+                        subClient:
+                          type: object
+                          properties:
+                            hostName:
+                              type: string
+                            clientName:
+                              type: string
+                            backupsetId:
+                              type: integer
+                            _type_:
+                              type: integer
+                            instanceId:
+                              type: integer
+                            subclientId:
+                              type: integer
+                            clientId:
+                              type: integer
+                            applicationId:
+                              type: integer
+                        lastOnlineTime:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            time:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+                    clientsFileSystem:
+                    - clientStatus: 4096
+                      isOwner: true
+                      isLocked: false
+                      totalBackupSize: 0
+                      backupSize: 0
+                      dirDelim: /
+                      bShowActivateOption: true
+                      isSyncAllowed: true
+                      isIndexingV2: true
+                      isUserCentricClient: false
+                      capabilities: 4328650366975
+                      isClientDeconfigured: 0
+                      subclientStatus: 8
+                      specialClientFlags: 0
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 1519933763
+                      lastOfflineTime:
+                        _type_: 55
+                        time: 0
+                      contents:
+                        content:
+                        - modifyTime: 0
+                          createTime: 1519933759
+                          valueType: 1
+                          value: /%Desktop%
+                      clientOwners:
+                        owners:
+                        - userId: 1
+                          _type_: 13
+                          userName: testadmin
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                        - userId: 5
+                          _type_: 13
+                          userName: commvault-nj/akollareddy
+                      subClient:
+                        hostName: macvm1
+                        clientName: macvm1
+                        backupsetId: 39
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 40
+                        clientId: 19
+                        applicationId: 63
+                      lastOnlineTime:
+                        _type_: 55
+                        time: 1519935885
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+                    clientsFileSystem:
+                    - clientStatus: 4096
+                      isOwner: true
+                      isLocked: false
+                      totalBackupSize: 0
+                      backupSize: 0
+                      dirDelim: /
+                      bShowActivateOption: true
+                      isSyncAllowed: true
+                      isIndexingV2: true
+                      isUserCentricClient: false
+                      capabilities: 4328650366975
+                      isClientDeconfigured: 0
+                      subclientStatus: 8
+                      specialClientFlags: 0
+                      nextBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastDataProtectedTime:
+                        _type_: 55
+                        time: 0
+                      lastSuccessBackupTime:
+                        _type_: 55
+                        time: 0
+                      lastBackupTime:
+                        _type_: 55
+                        time: 1519933763
+                      lastOfflineTime:
+                        _type_: 55
+                        time: 0
+                      contents:
+                        content:
+                        - modifyTime: 0
+                          createTime: 1519933759
+                          valueType: 1
+                          value: /%Desktop%
+                      clientOwners:
+                        owners:
+                        - userId: 1
+                          _type_: 13
+                          userName: testadmin
+                        - userId: 4
+                          _type_: 13
+                          userName: test\testuser
+                        - userId: 5
+                          _type_: 13
+                          userName: commvault-nj/akollareddy
+                      subClient:
+                        hostName: macvm1
+                        clientName: macvm1
+                        backupsetId: 39
+                        _type_: 7
+                        instanceId: 1
+                        subclientId: 40
+                        clientId: 19
+                        applicationId: 63
+                      lastOnlineTime:
+                        _type_: 55
+                        time: 1519935885

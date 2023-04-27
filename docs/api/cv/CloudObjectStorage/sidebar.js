@@ -1,0 +1,1 @@
+module.exports = [{"type":"doc","id":"api/cv/CloudObjectStorage/template"},{"type":"category","label":"Cloud Object Storage","link":{"type":"doc","id":"api/cv/CloudObjectStorage/cloud-object-storage"},"items":[{"type":"doc","id":"api/cv/CloudObjectStorage/get-cloud-object-storage-accounts","label":"Get Cloud Object Storage Accounts","className":"api-method get"}]}];

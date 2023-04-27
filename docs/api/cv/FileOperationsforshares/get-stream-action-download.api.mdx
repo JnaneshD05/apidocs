@@ -1,0 +1,64 @@
+---
+id: get-stream-action-download
+title: "Download a Shared File"
+description: "Downloading a folder is currently not supported using this operation."
+sidebar_label: "Download a Shared File"
+hide_title: true
+hide_table_of_contents: true
+api: {"tags":["File Operations For Shares"],"responses":{"200":{"description":"OK"}},"operationId":"get-stream-action-download","description":"Downloading a folder is currently not supported using this operation.\n<h2>Supported Error Codes</h2>\n<table>\n  <tr>\n    <th>Code</th>\n    <th>Status</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>400</td>\n    <td>Bad Request</td>\n    <td>The request is missing required parameters.</td>\n  </tr>\n  <tr>\n    <td>403</td>\n    <td>Forbidden</td>\n    <td>\n      Error cased due to one of the following reasons:\n      <ul>\n        <li>The user does not have access to the share</li>\n        <li>The file requested is not accessible inside the share</li>\n        <li>Download operation is not allowed. This can happen if you attempt to download a folder.</li>\n      </ul>\n    </td>\n  </tr>\n  <tr>\n    <td>404</td>\n    <td>Not Found</td>\n    <td>The specified file does not exist.</td>\n  </tr>\n</table>[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_share_download.htm)","method":"get","path":"/stream/action/download","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Download a Shared File","description":{"content":"Downloading a folder is currently not supported using this operation.\n<h2>Supported Error Codes</h2>\n<table>\n  <tr>\n    <th>Code</th>\n    <th>Status</th>\n    <th>Description</th>\n  </tr>\n  <tr>\n    <td>400</td>\n    <td>Bad Request</td>\n    <td>The request is missing required parameters.</td>\n  </tr>\n  <tr>\n    <td>403</td>\n    <td>Forbidden</td>\n    <td>\n      Error cased due to one of the following reasons:\n      <ul>\n        <li>The user does not have access to the share</li>\n        <li>The file requested is not accessible inside the share</li>\n        <li>Download operation is not allowed. This can happen if you attempt to download a folder.</li>\n      </ul>\n    </td>\n  </tr>\n  <tr>\n    <td>404</td>\n    <td>Not Found</td>\n    <td>The specified file does not exist.</td>\n  </tr>\n</table>[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_share_download.htm)","type":"text/plain"},"url":{"path":["stream","action","download"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/FileOperationsforshares/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Download a Shared File
+
+
+
+Downloading a folder is currently not supported using this operation.
+<h2>Supported Error Codes</h2>
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Status</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td>400</td>
+    <td>Bad Request</td>
+    <td>The request is missing required parameters.</td>
+  </tr>
+  <tr>
+    <td>403</td>
+    <td>Forbidden</td>
+    <td>
+      Error cased due to one of the following reasons:
+      <ul>
+        <li>The user does not have access to the share</li>
+        <li>The file requested is not accessible inside the share</li>
+        <li>Download operation is not allowed. This can happen if you attempt to download a folder.</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td>404</td>
+    <td>Not Found</td>
+    <td>The specified file does not exist.</td>
+  </tr>
+</table>[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_share_download.htm)
+
+<div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

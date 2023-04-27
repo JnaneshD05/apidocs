@@ -1,0 +1,375 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Agent
+- name: Agent Operations
+paths:
+  /Agent:
+    get:
+      deprecated: false
+      description: |
+        This operation returns a list of agents for a client.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_agent.htm)
+      operationId: Get All Agents
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: clientId
+        schema:
+          example: 2
+          format: int32
+          type: integer
+      - description: ''
+        in: header
+        name: Authtoken
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get All Agents
+      tags:
+      - Agent Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  agentProperties:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        AgentProperties:
+                          type: object
+                          properties:
+                            installDate:
+                              type: integer
+                            agentVersion:
+                              type: string
+                            isMarkedDeleted:
+                              type: boolean
+                        idaActivityControl:
+                          type: object
+                          properties:
+                            activityControlOptions:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  activityType:
+                                    type: integer
+                                  enableAfterADelay:
+                                    type: boolean
+                                  enableActivityType:
+                                    type: boolean
+                        idaEntity:
+                          type: object
+                          properties:
+                            clientId:
+                              type: integer
+                            clientName:
+                              type: string
+                            appName:
+                              type: string
+                            commCellId:
+                              type: integer
+                            applicationId:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    agentProperties:
+                    - AgentProperties:
+                        installDate: 1486138489
+                        agentVersion: 11(BUILD80)
+                        isMarkedDeleted: false
+                      idaActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      idaEntity:
+                        clientId: 2
+                        clientName: greenvalley
+                        appName: File System
+                        commCellId: 2
+                        applicationId: 33
+              examples:
+                Example 1:
+                  value:
+                    agentProperties:
+                    - AgentProperties:
+                        installDate: 1486138489
+                        agentVersion: 11(BUILD80)
+                        isMarkedDeleted: false
+                      idaActivityControl:
+                        activityControlOptions:
+                        - activityType: 1
+                          enableAfterADelay: false
+                          enableActivityType: true
+                        - activityType: 2
+                          enableAfterADelay: false
+                          enableActivityType: true
+                      idaEntity:
+                        clientId: 2
+                        clientName: greenvalley
+                        appName: File System
+                        commCellId: 2
+                        applicationId: 33
+    post:
+      deprecated: false
+      description: |
+        This operation updates the properties associated with an agent.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_agent_properties.htm)
+      operationId: Update Agent Properties
+      summary: Update Agent Properties
+      tags:
+      - Agent Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorCode:
+                          type: integer
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorCode: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                association:
+                  type: object
+                  properties:
+                    entity:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          clientName:
+                            type: string
+                          appName:
+                            type: string
+                agentProperties:
+                  type: object
+                  properties:
+                    idaActivityControl:
+                      type: object
+                      properties:
+                        activityControlOptions:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              activityType:
+                                type: integer
+                              enableAfterADelay:
+                                type: boolean
+                              enableActivityType:
+                                type: boolean
+              x-examples:
+                Example 1:
+                  association:
+                    entity:
+                    - clientName: '{{ClientName}}'
+                      appName: File System
+                  agentProperties:
+                    idaActivityControl:
+                      activityControlOptions:
+                      - activityType: 1
+                        enableAfterADelay: false
+                        enableActivityType: true
+            examples:
+              Example 1:
+                value:
+                  association:
+                    entity:
+                    - clientName: '{{ClientName}}'
+                      appName: File System
+                  agentProperties:
+                    idaActivityControl:
+                      activityControlOptions:
+                      - activityType: 1
+                        enableAfterADelay: false
+                        enableActivityType: true
+        description: ''
+  /GetId:
+    get:
+      summary: Get Agent Id
+      tags:
+      - Agent Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clientName:
+                    type: string
+                  clientId:
+                    type: integer
+                  _type_:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    clientName: yashdutch
+                    clientId: 18
+                    _type_: 3
+              examples:
+                GetId - With Client Name:
+                  value:
+                    clientName: yashdutch
+                    clientId: 18
+                    _type_: 3
+                GetId - With Agent Name:
+                  value:
+                    applicationId: 33
+                    clientName: dm2perf3
+                    clientId: 2
+                    _type_: 4
+                    appName: File System
+                GetId - With Backupset Name:
+                  value:
+                    applicationId: 33
+                    clientName: dm2perf3
+                    backupsetId: 3
+                    instanceId: 1
+                    clientId: 2
+                    backupsetName: defaultBackupSet
+                    _type_: 6
+                    appName: File System
+                GetId - With Subclient Name:
+                  value:
+                    subclientId: 2
+                    applicationId: 33
+                    clientName: dm2perf3
+                    backupsetId: 3
+                    instanceId: 1
+                    clientId: 2
+                    subclientName: default
+                    backupsetName: defaultBackupSet
+                    _type_: 7
+                    appName: File System
+      operationId: get-GetId
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: clientName
+      - schema:
+          type: string
+          example: File%20System
+        in: query
+        name: agent
+      - schema:
+          type: string
+        in: header
+        name: AuthToken
+      - schema:
+          type: string
+        in: query
+        name: backupset
+      - schema:
+          type: string
+        in: query
+        name: subclient
+      description: |-
+        This operation returns an Agent/Application Id
+        <h2>Request Parameters</h2>
+        <table>
+            <tr>
+              <td>
+                <p>Name</p>
+              </td>
+              <td>
+                <p>Description</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>clientName</p>
+              </td>
+              <td>
+                <p>Name of the client(URL Encoded)</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>agent</p>
+              </td>
+              <td>
+                <p>Name of the Agent(URL Encoded)</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>instanceName</p>
+              </td>
+              <td>
+                <p>Instance Name(URL Encoded)</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>backupset</p>
+              </td>
+              <td>
+                <p>Backupset Name(URL Encoded)</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>subclient</p>
+              </td>
+              <td>
+                <p>Subclient Name(URL Encoded)</p>
+              </td>
+            </tr>
+        </table>[_For all Agent Names_](http://documentation.commvault.com/commvault/v11/article?p=45467.htm#o99081)

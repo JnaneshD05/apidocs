@@ -1,0 +1,299 @@
+---
+id: update-subclient-properties
+title: "Update Subclient Properties"
+description: "                                        #magic___^_^___line"
+sidebar_label: "Update Subclient Properties"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n This operation updates the properties  associated with a subclient.\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\" >\n                                        #magic___^_^___line\n  <tr align=\"left\"  valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\"  valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     fsContentOperationType\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Operate on FS subclient content\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li>\n      OVERWRITE: 1\n     </li>\n     <li class=\"listbullet\">\n      ADD: 2\n     </li>\n     <li class=\"listbullet\">\n      DELETE: 3\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     fsExcludeFilterOperationType\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Operate on FS subclient exclude filters\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li>\n      OVERWRITE: 1\n     </li>\n     <li class=\"listbullet\">\n      ADD: 2\n     </li>\n     <li class=\"listbullet\">\n      DELETE: 3\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\"  valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     fsIncludeFilterOperationType\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Operate on FS subclient except filters\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li>\n      OVERWRITE: 1\n     </li>\n     <li class=\"listbullet\">\n      ADD: 2\n     </li>\n     <li class=\"listbullet\">\n      DELETE: 3\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\"  valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     includePolicyFilters\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Associate a backupset to subclient policy\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      1, true\n     </li>\n     <li class=\"listbullet\">\n      0, false\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     customSubclientFlag\n    </p>\n    <p class=\"tabletext\">\n     (Applicable only to/_IBM iSeries subclient)\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     This reveals whether the subclient is a custom one created by the user, or a subclient with preconfigured content\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      1, true\n     </li>\n     <li class=\"listbullet\">\n      0, false\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\"  valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     customSubclientContentFlag\n    </p>\n    <p class=\"tabletext\">\n     (Applicable only to IBM iSeries subclient)\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     This is a bit flag. Each of the following bits will denote the selected content\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <table width=\"371\">\n                                        #magic___^_^___line\n      <tr>\n       <td>\n        customSubclientContentFlag\n       </td>\n       <td>\n        Decimal Bit\n       </td>\n      </tr>\n      <tr>\n       <td >\n        Security Objects\n       </td>\n       <td >\n        1\n       </td>\n      </tr>\n      <tr>\n       <td >\n        Configuration Objects\n       </td>\n       <td >\n        2\n       </td>\n      </tr>\n      <tr>\n       <td>\n        IBM\n       </td>\n       <td >\n        4\n       </td>\n      </tr>\n      <tr>\n       <td>\n        ALLDLO\n       </td>\n       <td >\n        8\n       </td>\n      </tr>\n      <tr>\n       <td>\n        ALLUSER\n       </td>\n       <td>\n        16\n       </td>\n      </tr>\n      <tr>\n       <td>\n        Link\n       </td>\n       <td> \n        32\n       </td>\n      </tr>\n      <tr>\n       <td>\n        History Log\n       </td>\n       <td>\n        64\n       </td>\n      </tr>\n                                        #magic___^_^___line\n    </table>\n    <p class=\"tabletext\">\n     Valid Values for combination are:\n    </p>\n    <p class=\"tabletext\">\n     Link + History Log = 32 + 64 = 96\n    </p>\n    <p class=\"tabletext\">\n     ALLUSER + Link = 16 + 32 = 48\n    </p>\n   </td>\n  </tr>\n                                        #magic___^_^___line\n</table>\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=49184.htm)\n","operationId":"Update Subclient Properties","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"path","name":"subclientId","required":true,"schema":{"type":"string"}}],"tags":["Subclient Operations"],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"subClientProperties":{"type":"object","properties":{"fsIncludeFilterOperationType":{"type":"integer"},"fsExcludeFilterOperationType":{"type":"integer"},"fsContentOperationType":{"type":"integer"},"useLocalContent":{"type":"boolean"},"fsSubClientProp":{"type":"object","properties":{"useGlobalFilters":{"type":"integer"},"customSubclientContentFlags":{"type":"integer"},"backupSystemState":{"type":"boolean"},"customSubclientFlag":{"type":"boolean"},"openvmsBackupDate":{"type":"boolean"},"includePolicyFilters":{"type":"boolean"}}},"content":{"type":"array","items":{"type":"object","properties":{"path":{"type":"string"},"excludePath":{"type":"string"}}}}}}},"x-examples":{"Example 1":{"subClientProperties":{"fsIncludeFilterOperationType":4,"fsExcludeFilterOperationType":1,"fsContentOperationType":1,"useLocalContent":true,"fsSubClientProp":{"useGlobalFilters":2,"customSubclientContentFlags":0,"backupSystemState":true,"customSubclientFlag":true,"openvmsBackupDate":false,"includePolicyFilters":true},"content":[{"path":"/"},{"excludePath":"C:/Program Files"},{"excludePath":"C:/Program Files (x86)"}]}}}},"examples":{"Subclient Properties - Backup Content Derived From a Plan":{"value":{"subClientProperties":{"useLocalContent":false}}},"Subclient Properties - Disable Encryption":{"value":{"subClientProperties":{"commonProperties":{"encryptionFlag":"ENC_NONE"}}}},"Subclient Properties - Backup Content Override From a Plan":{"value":{"subClientProperties":{"fsIncludeFilterOperationType":4,"fsExcludeFilterOperationType":1,"fsContentOperationType":1,"useLocalContent":true,"fsSubClientProp":{"useGlobalFilters":2,"customSubclientContentFlags":0,"backupSystemState":true,"customSubclientFlag":true,"openvmsBackupDate":false,"includePolicyFilters":true},"content":[{"path":"/"},{"excludePath":"C:/Program Files"},{"excludePath":"C:/Program Files (x86)"}]}}},"Subclient Properties - Disable Extend Storage Policy Retention":{"value":{"subClientProperties":{"fsIncludeFilterOperationType":0,"fsExcludeFilterOperationType":0,"fsContentOperationType":0,"useLocalContent":true,"fsSubClientProp":{"useGlobalFilters":0,"customSubclientContentFlags":0,"backupSystemState":true,"customSubclientFlag":true,"openvmsBackupDate":true,"includePolicyFilters":true},"content":[{"path":"string","excludePath":"string"}]}}},"Subclient Properties - Disable Backup":{"value":{"subClientProperties":{"commonProperties":{"enableBackup":false}}}},"Subclient Properties - For MySQL":{"value":{"subClientProperties":{"commonProperties":{"isDefaultSubclient":false},"content":[{"mySQLContent":{"databaseName":"teliatesting"}},{"mySQLContent":{"databaseName":"sys"}}],"contentOperationType":"OVERWRITE","mySqlSubclientProp":{"numberOfBackupStreams":3,"numberOfTransactionLogStreams":1},"planEntity":{"planId":45}},"association":{"entity":[{"subclientId":30090,"applicationId":104,"backupsetId":9412,"instanceId":4615,"clientId":616,"subclientName":"sc1","backupsetName":"defaultDummyBackupSet"}]}}},"Subclient Properties - For Oracle":{"value":{"subClientProperties":{"commonProperties":{},"oracleSubclientProp":{"selectiveOnlineFull":true,"data":true,"backupMode":"ONLINE_DB","lightsOutScript":false,"enableTableBrowse":false,"backupArchiveLog":true,"archiveDelete":true,"archiveDeleteAll":false,"dataFilesPerBFS":8,"maxBackupSetSizeInKB":0,"archiveFilesPerBFS":32,"maxOpenFiles":8,"dataThresholdStreams":4,"sectionSizeInKB":0},"planEntity":{"planId":16}},"association":{"entity":[{"subclientId":30091,"applicationId":22,"clientName":"arcent3","displayName":"arcent3","flags":{},"backupsetId":10506,"commCellName":"dewcs","instanceId":5098,"subclientGUID":"A639716E-BE70-4549-8E2E-78A0B931D958","clientId":866,"subclientName":"sof","csGUID":"FEDC3CFF-8154-4CBA-8F5F-6B3D650FC842","entityInfo":{"companyId":0,"companyName":"","multiCommcellId":0},"backupsetName":"default","instanceName":"orcdb2","appName":"Oracle"}]}}},"Subclient Properties - For Sybase":{"value":{"subClientProperties":{"content":[{"sybaseContent":{"databaseName":"CV_2"}}],"contentOperationType":"OVERWRITE","sybaseSubclientProp":{"numberOfBackupStreams":4,"numberOfTransactionLogStreams":1},"planEntity":{"planId":16}},"association":{"entity":[{"subclientId":30093,"applicationId":5,"backupsetId":10594,"instanceId":5130,"clientId":569,"subclientName":"sc1","backupsetName":"defaultDummyBackupSet"}]}}},"Subclient Properties - For PostgreSQL":{"value":{"subClientProperties":{"commonProperties":{"isDefaultSubclient":false},"content":[{"postgreSQLContent":{"databaseName":"gk1"}},{"postgreSQLContent":{"databaseName":"postgres"}}],"contentOperationType":"OVERWRITE","postgreSQLSubclientProp":{"numberOfBackupStreams":2,"collectObjectListDuringBackup":false},"planEntity":{"planId":16}},"association":{"entity":[{"subclientId":30096,"applicationId":125,"backupsetId":9493,"instanceId":4650,"clientId":367,"subclientName":"sc1","backupsetName":"DumpBasedBackupSet"}]}}}}}}},"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"processinginstructioninfo":{"type":"object","properties":{"attributes":{"type":"array","items":{"type":"object","properties":{"name":{"type":"string"},"value":{"type":"string"}}}}}},"response":{"type":"array","items":{"type":"object","properties":{"warningCode":{"type":"integer"},"errorCode":{"type":"integer"},"warningMessage":{"type":"string"}}}}},"x-examples":{"Example 1":{"processinginstructioninfo":{"attributes":[{"name":"exitval","value":"0"}]},"response":[{"warningCode":0,"errorCode":0,"warningMessage":""}]}}},"examples":{"Example 1":{"value":{"processinginstructioninfo":{"attributes":[{"name":"exitval","value":"0"}]},"response":[{"warningCode":0,"errorCode":0,"warningMessage":""}]}}}}}}},"method":"post","path":"/Subclient/{subclientId}","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"subClientProperties":{"fsIncludeFilterOperationType":0,"fsExcludeFilterOperationType":0,"fsContentOperationType":0,"useLocalContent":true,"fsSubClientProp":{"useGlobalFilters":0,"customSubclientContentFlags":0,"backupSystemState":true,"customSubclientFlag":true,"openvmsBackupDate":true,"includePolicyFilters":true},"content":[{"path":"string","excludePath":"string"}]}},"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Update Subclient Properties","description":{"content":"                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n                                        #magic___^_^___line\n This operation updates the properties  associated with a subclient.\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\" >\n                                        #magic___^_^___line\n  <tr align=\"left\"  valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\"  valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     fsContentOperationType\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Operate on FS subclient content\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li>\n      OVERWRITE: 1\n     </li>\n     <li class=\"listbullet\">\n      ADD: 2\n     </li>\n     <li class=\"listbullet\">\n      DELETE: 3\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     fsExcludeFilterOperationType\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     Operate on FS subclient exclude filters\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li>\n      OVERWRITE: 1\n     </li>\n     <li class=\"listbullet\">\n      ADD: 2\n     </li>\n     <li class=\"listbullet\">\n      DELETE: 3\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\"  valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     fsIncludeFilterOperationType\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Operate on FS subclient except filters\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li>\n      OVERWRITE: 1\n     </li>\n     <li class=\"listbullet\">\n      ADD: 2\n     </li>\n     <li class=\"listbullet\">\n      DELETE: 3\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\"  valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     includePolicyFilters\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Associate a backupset to subclient policy\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      1, true\n     </li>\n     <li class=\"listbullet\">\n      0, false\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td >\n    <p class=\"tabletext\">\n     customSubclientFlag\n    </p>\n    <p class=\"tabletext\">\n     (Applicable only to/_IBM iSeries subclient)\n    </p>\n   </td>\n   <td >\n    <p class=\"tabletext\">\n     This reveals whether the subclient is a custom one created by the user, or a subclient with preconfigured content\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      1, true\n     </li>\n     <li class=\"listbullet\">\n      0, false\n     </li>\n    </ul>\n   </td>\n  </tr>\n  <tr align=\"left\"  valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     customSubclientContentFlag\n    </p>\n    <p class=\"tabletext\">\n     (Applicable only to IBM iSeries subclient)\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     This is a bit flag. Each of the following bits will denote the selected content\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <table width=\"371\">\n                                        #magic___^_^___line\n      <tr>\n       <td>\n        customSubclientContentFlag\n       </td>\n       <td>\n        Decimal Bit\n       </td>\n      </tr>\n      <tr>\n       <td >\n        Security Objects\n       </td>\n       <td >\n        1\n       </td>\n      </tr>\n      <tr>\n       <td >\n        Configuration Objects\n       </td>\n       <td >\n        2\n       </td>\n      </tr>\n      <tr>\n       <td>\n        IBM\n       </td>\n       <td >\n        4\n       </td>\n      </tr>\n      <tr>\n       <td>\n        ALLDLO\n       </td>\n       <td >\n        8\n       </td>\n      </tr>\n      <tr>\n       <td>\n        ALLUSER\n       </td>\n       <td>\n        16\n       </td>\n      </tr>\n      <tr>\n       <td>\n        Link\n       </td>\n       <td> \n        32\n       </td>\n      </tr>\n      <tr>\n       <td>\n        History Log\n       </td>\n       <td>\n        64\n       </td>\n      </tr>\n                                        #magic___^_^___line\n    </table>\n    <p class=\"tabletext\">\n     Valid Values for combination are:\n    </p>\n    <p class=\"tabletext\">\n     Link + History Log = 32 + 64 = 96\n    </p>\n    <p class=\"tabletext\">\n     ALLUSER + Link = 16 + 32 = 48\n    </p>\n   </td>\n  </tr>\n                                        #magic___^_^___line\n</table>\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=49184.htm)\n","type":"text/plain"},"url":{"path":["Subclient",":subclientId"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"subclientId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/json"},{"key":"Accept","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/SubclientOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Update Subclient Properties
+
+
+
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+                                        #magic___^_^___line
+ This operation updates the properties  associated with a subclient.
+<h2>
+ Request Parameters
+</h2>
+<table border="0" cellpadding="2" cellspacing="0" class="tableintopic" >
+                                        #magic___^_^___line
+  <tr align="left"  valign="top">
+   <td >
+    <p class="tabletext">
+     Name
+    </p>
+   </td>
+   <td >
+    <p class="tabletext">
+     Description
+    </p>
+   </td>
+  </tr>
+  <tr align="left"  valign="top">
+   <td>
+    <p class="tabletext">
+     fsContentOperationType
+    </p>
+   </td>
+   <td >
+    <p class="tabletext">
+     Operate on FS subclient content
+    </p>
+    <p class="tabletext">
+     Valid values are:
+    </p>
+    <ul class="listbullet">
+     <li>
+      OVERWRITE: 1
+     </li>
+     <li class="listbullet">
+      ADD: 2
+     </li>
+     <li class="listbullet">
+      DELETE: 3
+     </li>
+    </ul>
+   </td>
+  </tr>
+  <tr align="left" valign="top">
+   <td>
+    <p class="tabletext">
+     fsExcludeFilterOperationType
+    </p>
+   </td>
+   <td >
+    <p class="tabletext">
+     Operate on FS subclient exclude filters
+    </p>
+    <p class="tabletext">
+     Valid values are:
+    </p>
+    <ul class="listbullet">
+     <li>
+      OVERWRITE: 1
+     </li>
+     <li class="listbullet">
+      ADD: 2
+     </li>
+     <li class="listbullet">
+      DELETE: 3
+     </li>
+    </ul>
+   </td>
+  </tr>
+  <tr align="left"  valign="top">
+   <td>
+    <p class="tabletext">
+     fsIncludeFilterOperationType
+    </p>
+   </td>
+   <td>
+    <p class="tabletext">
+     Operate on FS subclient except filters
+    </p>
+    <p class="tabletext">
+     Valid values are:
+    </p>
+    <ul class="listbullet">
+     <li>
+      OVERWRITE: 1
+     </li>
+     <li class="listbullet">
+      ADD: 2
+     </li>
+     <li class="listbullet">
+      DELETE: 3
+     </li>
+    </ul>
+   </td>
+  </tr>
+  <tr align="left"  valign="top">
+   <td >
+    <p class="tabletext">
+     includePolicyFilters
+    </p>
+   </td>
+   <td>
+    <p class="tabletext">
+     Associate a backupset to subclient policy
+    </p>
+    <p class="tabletext">
+     Valid values are:
+    </p>
+    <ul class="listbullet">
+     <li class="listbullet">
+      1, true
+     </li>
+     <li class="listbullet">
+      0, false
+     </li>
+    </ul>
+   </td>
+  </tr>
+  <tr align="left" valign="top">
+   <td >
+    <p class="tabletext">
+     customSubclientFlag
+    </p>
+    <p class="tabletext">
+     (Applicable only to/_IBM iSeries subclient)
+    </p>
+   </td>
+   <td >
+    <p class="tabletext">
+     This reveals whether the subclient is a custom one created by the user, or a subclient with preconfigured content
+    </p>
+    <p class="tabletext">
+     Valid values are:
+    </p>
+    <ul class="listbullet">
+     <li class="listbullet">
+      1, true
+     </li>
+     <li class="listbullet">
+      0, false
+     </li>
+    </ul>
+   </td>
+  </tr>
+  <tr align="left"  valign="top">
+   <td>
+    <p class="tabletext">
+     customSubclientContentFlag
+    </p>
+    <p class="tabletext">
+     (Applicable only to IBM iSeries subclient)
+    </p>
+   </td>
+   <td>
+    <p class="tabletext">
+     This is a bit flag. Each of the following bits will denote the selected content
+    </p>
+    <p class="tabletext">
+     Valid values are:
+    </p>
+    <table width="371">
+                                        #magic___^_^___line
+      <tr>
+       <td>
+        customSubclientContentFlag
+       </td>
+       <td>
+        Decimal Bit
+       </td>
+      </tr>
+      <tr>
+       <td >
+        Security Objects
+       </td>
+       <td >
+        1
+       </td>
+      </tr>
+      <tr>
+       <td >
+        Configuration Objects
+       </td>
+       <td >
+        2
+       </td>
+      </tr>
+      <tr>
+       <td>
+        IBM
+       </td>
+       <td >
+        4
+       </td>
+      </tr>
+      <tr>
+       <td>
+        ALLDLO
+       </td>
+       <td >
+        8
+       </td>
+      </tr>
+      <tr>
+       <td>
+        ALLUSER
+       </td>
+       <td>
+        16
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Link
+       </td>
+       <td> 
+        32
+       </td>
+      </tr>
+      <tr>
+       <td>
+        History Log
+       </td>
+       <td>
+        64
+       </td>
+      </tr>
+                                        #magic___^_^___line
+    </table>
+    <p class="tabletext">
+     Valid Values for combination are:
+    </p>
+    <p class="tabletext">
+     Link + History Log = 32 + 64 = 96
+    </p>
+    <p class="tabletext">
+     ALLUSER + Link = 16 + 32 = 48
+    </p>
+   </td>
+  </tr>
+                                        #magic___^_^___line
+</table>
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=49184.htm)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"subclientId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>subClientProperties</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"fsIncludeFilterOperationType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"fsExcludeFilterOperationType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"fsContentOperationType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"useLocalContent"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>fsSubClientProp</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"useGlobalFilters"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"customSubclientContentFlags"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"backupSystemState"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"customSubclientFlag"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"openvmsBackupDate"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"includePolicyFilters"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"boolean"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>content</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"path"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"excludePath"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>processinginstructioninfo</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>attributes</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"value"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>response</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"warningCode"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"errorCode"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"warningMessage"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"processinginstructioninfo\": {\n    \"attributes\": [\n      {\n        \"name\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  },\n  \"response\": [\n    {\n      \"warningCode\": 0,\n      \"errorCode\": 0,\n      \"warningMessage\": \"string\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"{\n  \"processinginstructioninfo\": {\n    \"attributes\": [\n      {\n        \"name\": \"exitval\",\n        \"value\": \"0\"\n      }\n    ]\n  },\n  \"response\": [\n    {\n      \"warningCode\": 0,\n      \"errorCode\": 0,\n      \"warningMessage\": \"\"\n    }\n  ]\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

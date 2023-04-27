@@ -1,0 +1,36 @@
+---
+id: get-media-agent-for-library
+title: "Get MediaAgent for Library"
+description: "This operation returns the list of MediaAgents accessing a library."
+sidebar_label: "Get MediaAgent for Library"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation returns the list of MediaAgents accessing a library.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_mediaagent_for_library.htm)","operationId":"Get MediaAgent for Library","parameters":[{"description":"","explode":true,"in":"query","name":"LibraryId","required":true,"schema":{"example":5,"format":"int32","type":"integer"}},{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/json","type":"string"}},{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Storage Resource Operations"],"responses":{"200":{"description":"OK","content":{"application/xml":{"examples":{"Example 1":{"value":"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?><EVGui_GetMediaAgentListWCResp><mediaAgentList description=\"\" libraryType=\"0\" mediaAgentId=\"9\" mediaAgentName=\"firewalltestma\" osVersion=\"Windows Server 2012 R2 Datacenter\" platform=\"WinX64\" status=\"Ready\"/></EVGui_GetMediaAgentListWCResp>"}}}}}},"method":"get","path":"/MediaAgentForLibrary","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get MediaAgent for Library","description":{"content":"This operation returns the list of MediaAgents accessing a library.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_mediaagent_for_library.htm)","type":"text/plain"},"url":{"path":["MediaAgentForLibrary"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"LibraryId","value":""}],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/xml"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/Storage/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get MediaAgent for Library
+
+
+
+This operation returns the list of MediaAgents accessing a library.
+
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_mediaagent_for_library.htm)
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"LibraryId","required":true,"schema":{"example":5,"format":"int32","type":"integer"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Accept","required":true,"schema":{"example":"application/json","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/xml"} value={"application/xml"}><SchemaTabs><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?><EVGui_GetMediaAgentListWCResp><mediaAgentList description=\"\" libraryType=\"0\" mediaAgentId=\"9\" mediaAgentName=\"firewalltestma\" osVersion=\"Windows Server 2012 R2 Datacenter\" platform=\"WinX64\" status=\"Ready\"/></EVGui_GetMediaAgentListWCResp>"} language={"xml"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

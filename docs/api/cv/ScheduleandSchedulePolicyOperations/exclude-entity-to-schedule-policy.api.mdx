@@ -1,0 +1,37 @@
+---
+id: exclude-entity-to-schedule-policy
+title: "Exclude Entity to Schedule Policy"
+description: "This operation excludes a particular entity such as client,agent,instance,backup set or subclient from the schedule policy."
+sidebar_label: "Exclude Entity to Schedule Policy"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation excludes a particular entity such as client,agent,instance,backup set or subclient from the schedule policy.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_schedule_policy_entity_exclude.htm)\n","operationId":"Exclude Entity to Schedule Policy","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"path","name":"taskId","required":true,"schema":{"type":"string"}}],"requestBody":{"content":{"text/plain":{"examples":{"Example 1":{"value":"ClientId=2,3"}}}},"description":"","required":true},"tags":["Schedule and Schedule Policy Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"errorMessage":{"type":"string"},"errorCode":{"type":"integer"}},"x-examples":{"Example 1":{"errorMessage":"","errorCode":0}}},"examples":{"Example 1":{"value":{"errorMessage":"","errorCode":0}}}}}}},"method":"post","path":"/Task/{taskId}/Entity/exclude","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Exclude Entity to Schedule Policy","description":{"content":"This operation excludes a particular entity such as client,agent,instance,backup set or subclient from the schedule policy.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_schedule_policy_entity_exclude.htm)\n","type":"text/plain"},"url":{"path":["Task",":taskId","Entity","exclude"],"host":["{{baseUrl}}"],"query":[],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"taskId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"text/plain"},{"key":"Accept","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"ClientId=2,3\""}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/ScheduleandSchedulePolicyOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Exclude Entity to Schedule Policy
+
+
+
+This operation excludes a particular entity such as client,agent,instance,backup set or subclient from the schedule policy.
+
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_schedule_policy_entity_exclude.htm)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"taskId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"errorMessage"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"errorCode"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"errorMessage\": \"string\",\n  \"errorCode\": 0\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"{\n  \"errorMessage\": \"\",\n  \"errorCode\": 0\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

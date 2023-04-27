@@ -1,0 +1,4380 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Control Panel Operations
+- name: Data Interface Pairs
+- name: Operation Window Operations
+- name: SNMPV3 configuration
+- name: Credentials Manager
+paths:
+  /CommCell/ActivityControl:
+    get:
+      deprecated: false
+      description: |-
+        This operation is used to retrieve activity control status for commcell
+
+        <h2>Response Parameters</h2>
+        <table>
+
+
+        <tr>
+        <td>Name</td>
+        <td>Description</td>
+        </tr>
+        <tr>
+        <td>activityType</td>
+        <td>
+        <p>- Backup : 1- Restore : 2- Aux Copy : 4- Data Aging : 16- Scheduler : 256- DDB Activity : 2048- Data Verification : 8192</p>
+        </td>
+        </tr>
+
+
+        </table>
+      operationId: Retrieve Commcell Activity Control
+      parameters:
+      - description: ''
+        in: header
+        name: AuthToken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Retrieve Commcell Activity Control
+      tags:
+      - Control Panel Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  acObjects:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        reEnableTime:
+                          type: integer
+                        noSchedEnable:
+                          type: boolean
+                        reenableTimeZone:
+                          type: integer
+                        activityType:
+                          type: integer
+                        enabled:
+                          type: boolean
+                x-examples:
+                  Example 1:
+                    acObjects:
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 128
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 1
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 2
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 16
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 4
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 256
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 8192
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 1024
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 512
+                      enabled: false
+              examples:
+                Example 1:
+                  value:
+                    acObjects:
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 128
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 1
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 2
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 16
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 4
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 256
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 8192
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 1024
+                      enabled: false
+                    - reEnableTime: 0
+                      noSchedEnable: true
+                      reenableTimeZone: 0
+                      activityType: 512
+                      enabled: false
+  /CommServ/AddRemoveSoftware/CommserveSoftwareCache:
+    get:
+      deprecated: false
+      description: This operation returns the CommServe Cache details
+      operationId: Get Commserve Cache Details
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Commserve Cache Details
+      tags:
+      - Control Panel Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commserveSoftwareCache:
+                    type: object
+                    properties:
+                      storePatchlocation:
+                        type: string
+                      FTP_FTPproxyport:
+                        type: integer
+                      autoPatchFlag:
+                        type: integer
+                      cacheCurrentSpace:
+                        type: integer
+                      cacheFreeSpace:
+                        type: integer
+                      HTTPsiteLocation:
+                        type: string
+                      unixPatchusername:
+                        type: string
+                      downloadProtocol:
+                        type: string
+                      FTPoperationType:
+                        type: integer
+                      FTP_HTTPproxyport:
+                        type: integer
+                      FTP_HTTPproxyserver:
+                        type: string
+                      FTP_FTPproxyserver:
+                        type: string
+                      FTPsitelocation:
+                        type: string
+                      patchHttpuseToken:
+                        type: boolean
+                      patchHttpconfigURL:
+                        type: string
+                      FTP_FTPProxylocation:
+                        type: string
+                      cacheExpectedSpace:
+                        type: integer
+                      unixPatchlocation:
+                        type: string
+                      FTPsiteCredentials:
+                        type: object
+                        properties:
+                          userName:
+                            type: string
+                      FTP_HTTPproxyCredentials:
+                        type: object
+                        properties:
+                          userName:
+                            type: string
+                      storePatchCredentials:
+                        type: object
+                        properties:
+                          userName:
+                            type: string
+                      client:
+                        type: object
+                        properties:
+                          clientId:
+                            type: integer
+                          clientName:
+                            type: string
+                          _type_:
+                            type: integer
+                      FTP_FTPproxyCredentials:
+                        type: object
+                        properties:
+                          userName:
+                            type: string
+                      UaInfo:
+                        type: object
+                        properties:
+                          win32SP:
+                            type: string
+                          fbsdSP:
+                            type: string
+                          linuxSP:
+                            type: string
+                          deletePackageCache:
+                            type: boolean
+                          highestSP:
+                            type: string
+                          uaPackageCacheStatus:
+                            type: integer
+                          osfSP:
+                            type: string
+                          uaCachePath:
+                            type: string
+                          irixSP:
+                            type: string
+                          hpSP:
+                            type: string
+                          deleteUpdateCache:
+                            type: boolean
+                          unixTimeStampForUnix:
+                            type: integer
+                          swAgentOpType:
+                            type: integer
+                          dwnSP:
+                            type: string
+                          uaOpCode:
+                            type: integer
+                          aixSP:
+                            type: string
+                          uaUpdateCacheStatus:
+                            type: integer
+                          unixTimeStamp:
+                            type: integer
+                          unixTimeStampForWindows:
+                            type: integer
+                          defaultShareName:
+                            type: string
+                          winx64SP:
+                            type: string
+                          solarisSP:
+                            type: string
+                          shareName:
+                            type: string
+                          patchUAContentConfigs:
+                            type: object
+                            properties: {}
+                          uaImpersonate:
+                            type: object
+                            properties: {}
+                          uaName:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              id:
+                                type: integer
+                          client:
+                            type: object
+                            properties:
+                              _type_:
+                                type: integer
+                          cacheContents:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                version:
+                                  type: string
+                                softwareCacheServicePackDetails:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      servicePack:
+                                        type: string
+                                      additionalUpdates:
+                                        type: string
+                                      osName:
+                                        type: string
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    commserveSoftwareCache:
+                      storePatchlocation: 'F:/CV/SW'
+                      FTP_FTPproxyport: 21
+                      autoPatchFlag: 0
+                      cacheCurrentSpace: 0
+                      cacheFreeSpace: 1873734557696
+                      HTTPsiteLocation: eng-updates.test.cv.com
+                      unixPatchusername: ''
+                      downloadProtocol: HTTP
+                      FTPoperationType: 9
+                      FTP_HTTPproxyport: 8080
+                      FTP_HTTPproxyserver: ''
+                      FTP_FTPproxyserver: ''
+                      FTPsitelocation: ''
+                      patchHttpuseToken: false
+                      patchHttpconfigURL: 'http://eng-updates.test.cv.com'
+                      FTP_FTPProxylocation: ''
+                      cacheExpectedSpace: 0
+                      unixPatchlocation: ''
+                      FTPsiteCredentials:
+                        userName: ''
+                      FTP_HTTPproxyCredentials:
+                        userName: ''
+                      storePatchCredentials:
+                        userName: ''
+                      client:
+                        clientId: 0
+                        clientName: ''
+                        _type_: 3
+                      FTP_FTPproxyCredentials:
+                        userName: ''
+                      UaInfo:
+                        win32SP: ''
+                        fbsdSP: ''
+                        linuxSP: ''
+                        deletePackageCache: false
+                        highestSP: ''
+                        uaPackageCacheStatus: 1
+                        osfSP: ''
+                        uaCachePath: ''
+                        irixSP: ''
+                        hpSP: ''
+                        deleteUpdateCache: false
+                        unixTimeStampForUnix: 0
+                        swAgentOpType: 0
+                        dwnSP: ''
+                        uaOpCode: 0
+                        aixSP: ''
+                        uaUpdateCacheStatus: 1
+                        unixTimeStamp: 0
+                        unixTimeStampForWindows: 0
+                        defaultShareName: ''
+                        winx64SP: ''
+                        solarisSP: ''
+                        shareName: ''
+                        patchUAContentConfigs: {}
+                        uaImpersonate: {}
+                        uaName:
+                          name: ''
+                          id: 0
+                        client:
+                          _type_: 3
+                        cacheContents:
+                        - version: '11'
+                          softwareCacheServicePackDetails:
+                          - servicePack: '11.20'
+                            additionalUpdates: 'WinX64_11.0.0B80-SP20_SP20-HotFix-113, WinX64_11.0.0B80-SP20_SP20-HotFix-119, WinX64_11.0.0B80-SP20_SP20-HotFix-46, WinX64_11.0.0B80-SP20_SP20-HotFix-225, WinX64_11.0.0B80-SP20_SP20-HotFix-226, WinX64_11.0.0B80-SP20_SP20-HotFix-228, WinX64_11.0.0B80-SP20_SP20-HotFix-121, WinX64_11.0.0B80-SP20_SP20-HotFix-122, WinX64_11.0.0B80-SP20_SP20-HotFix-124, WinX64_11.0.0B80-SP20_SP20-HotFix-27, WinX64_11.0.0B80-SP20_SP20-HotFix-123, WinX64_11.0.0B80-SP20_SP20-HotFix-115, WinX64_11.0.0B80-SP20_SP20-HotFix-147, WinX64_11.0.0B80-SP20_SP20-HotFix-148, WinX64_11.0.0B80-SP20_SP20-HotFix-23, WinX64_11.0.0B80-SP20_SP20-HotFix-51, WinX64_11.0.0B80-SP20_SP20-HotFix-77, WinX64_11.0.0B80-SP20_SP20-HotFix-78, WinX64_11.0.0B80-SP20_SP20-HotFix-74, WinX64_11.0.0B80-SP20_SP20-HotFix-204, WinX64_11.0.0B80-SP20_SP20-HotFix-207, WinX64_11.0.0B80-SP20_SP20-HotFix-208, WinX64_11.0.0B80-SP20_SP20-HotFix-175, WinX64_11.0.0B80-SP20_SP20-HotFix-176, WinX64_11.0.0B80-SP20_SP20-HotFix-194, WinX64_11.0.0B80-SP20_SP20-HotFix-167, WinX64_11.0.0B80-SP20_SP20-HotFix-168, WinX64_11.0.0B80-SP20_SP20-HotFix-198, WinX64_11.0.0B80-SP20_SP20-HotFix-98, WinX64_11.0.0B80-SP20_SP20-HotFix-235, WinX64_11.0.0B80-SP20_SP20-HotFix-66, WinX64_11.0.0B80-SP20_SP20-HotFix-135, WinX64_11.0.0B80-SP20_SP20-HotFix-181, WinX64_11.0.0B80-SP20_SP20-HotFix-118, WinX64_11.0.0B80-SP20_SP20-HotFix-184, WinX64_11.0.0B80-SP20_SP20-HotFix-185, WinX64_11.0.0B80-SP20_SP20-HotFix-131, WinX64_11.0.0B80-SP20_SP20-HotFix-108, WinX64_11.0.0B80-SP20_SP20-HotFix-59, WinX64_11.0.0B80-SP20_SP20-HotFix-211, WinX64_11.0.0B80-SP20_SP20-HotFix-79, WinX64_11.0.0B80-SP20_SP20-HotFix-80, WinX64_11.0.0B80-SP20_SP20-HotFix-112, WinX64_11.0.0B80-SP20_SP20-HotFix-128, WinX64_11.0.0B80-SP20_SP20-HotFix-48, WinX64_11.0.0B80-SP20_SP20-HotFix-49, WinX64_11.0.0B80-SP20_SP20-HotFix-111, WinX64_11.0.0B80-SP20_SP20-HotFix-109, WinX64_11.0.0B80-SP20_SP20-HotFix-104, WinX64_11.0.0B80-SP20_SP20-HotFix-105, WinX64_11.0.0B80-SP20_SP20-HotFix-33, WinX64_11.0.0B80-SP20_SP20-HotFix-61, WinX64_11.0.0B80-SP20_SP20-HotFix-58, WinX64_11.0.0B80-SP20_SP20-HotFix-71, WinX64_11.0.0B80-SP20_SP20-HotFix-173, WinX64_11.0.0B80-SP20_SP20-HotFix-67, WinX64_11.0.0B80-SP20_SP20-HotFix-163, WinX64_11.0.0B80-SP20_SP20-HotFix-126, WinX64_11.0.0B80-SP20_SP20-HotFix-143, WinX64_11.0.0B80-SP20_SP20-HotFix-141, WinX64_11.0.0B80-SP20_SP20-HotFix-142, WinX64_11.0.0B80-SP20_SP20-HotFix-170, WinX64_11.0.0B80-SP20_SP20-HotFix-171, WinX64_11.0.0B80-SP20_SP20-HotFix-172, WinX64_11.0.0B80-SP20_SP20-HotFix-24, WinX64_11.0.0B80-SP20_SP20-HotFix-76, WinX64_11.0.0B80-SP20_SP20-HotFix-16, WinX64_11.0.0B80-SP20_SP20-HotFix-210, WinX64_11.0.0B80-SP20_SP20-HotFix-120, WinX64_11.0.0B80-SP20_SP20-HotFix-55, WinX64_11.0.0B80-SP20_SP20-HotFix-56, WinX64_11.0.0B80-SP20_SP20-HotFix-127, WinX64_11.0.0B80-SP20_SP20-HotFix-72, WinX64_11.0.0B80-SP20_SP20-HotFix-94, WinX64_11.0.0B80-SP20_SP20-HotFix-134, WinX64_11.0.0B80-SP20_SP20-HotFix-21, WinX64_11.0.0B80-SP20_SP20-HotFix-116, WinX64_11.0.0B80-SP20_SP20-HotFix-157, WinX64_11.0.0B80-SP20_SP20-HotFix-224, WinX64_11.0.0B80-SP20_SP20-HotFix-154, WinX64_11.0.0B80-SP20_SP20-HotFix-155, WinX64_11.0.0B80-SP20_SP20-HotFix-106, WinX64_11.0.0B80-SP20_SP20-HotFix-103, WinX64_11.0.0B80-SP20_SP20-HotFix-241, WinX64_11.0.0B80-SP20_SP20-HotFix-193, WinX64_11.0.0B80-SP20_SP20-HotFix-189, WinX64_11.0.0B80-SP20_SP20-HotFix-217, WinX64_11.0.0B80-SP20_SP20-HotFix-130, WinX64_11.0.0B80-SP20_SP20-HotFix-161, WinX64_11.0.0B80-SP20_SP20-HotFix-117, WinX64_11.0.0B80-SP20_SP20-HotFix-81, WinX64_11.0.0B80-SP20_SP20-HotFix-82, WinX64_11.0.0B80-SP20_SP20-HotFix-83, WinX64_11.0.0B80-SP20_SP20-HotFix-84, WinX64_11.0.0B80-SP20_SP20-HotFix-233, WinX64_11.0.0B80-SP20_SP20-HotFix-234, WinX64_11.0.0B80-SP20_SP20-HotFix-125, WinX64_11.0.0B80-SP20_SP20-HotFix-63, WinX64_11.0.0B80-SP20_SP20-HotFix-192, WinX64_11.0.0B80-SP20_SP20-HotFix-65, WinX64_11.0.0B80-SP20_SP20-HotFix-191, WinX64_11.0.0B80-SP20_SP20-HotFix-179, WinX64_11.0.0B80-SP20_SP20-HotFix-69, WinX64_11.0.0B80-SP20_SP20-HotFix-70, WinX64_11.0.0B80-SP20_SP20-HotFix-129, WinX64_11.0.0B80-SP20_SP20-HotFix-205, WinX64_11.0.0B80-SP20_SP20-HotFix-17, WinX64_11.0.0B80-SP20_SP20-HotFix-152, WinX64_11.0.0B80-SP20_SP20-HotFix-153, WinX64_11.0.0B80-SP20_SP20-HotFix-107, WinX64_11.0.0B80-SP20_SP20-HotFix-75, WinX64_11.0.0B80-SP20_SP20-HotFix-30, WinX64_11.0.0B80-SP20_SP20-HotFix-138, WinX64_11.0.0B80-SP20_SP20-HotFix-139, WinX64_11.0.0B80-SP20_SP20-HotFix-236, WinX64_11.0.0B80-SP20_SP20-HotFix-237, WinX64_11.0.0B80-SP20_SP20-HotFix-165, WinX64_11.0.0B80-SP20_SP20-HotFix-114, WinX64_11.0.0B80-SP20_SP20-HotFix-240, WinX64_11.0.0B80-SP20_SP20-HotFix-239, WinX64_11.0.0B80-SP20_SP20-HotFix-180, WinX64_11.0.0B80-SP20_SP20-HotFix-197, WinX64_11.0.0B80-SP20_SP20-HotFix-200, WinX64_11.0.0B80-SP20_SP20-HotFix-144, WinX64_11.0.0B80-SP20_SP20-HotFix-145, WinX64_11.0.0B80-SP20_SP20-HotFix-209, WinX64_11.0.0B80-SP20_SP20-HotFix-132, WinX64_11.0.0B80-SP20_SP20-HotFix-133, WinX64_11.0.0B80-SP20_SP20-HotFix-229, WinX64_11.0.0B80-SP20_SP20-HotFix-223, WinX64_11.0.0B80-SP20_SP20-HotFix-149, WinX64_11.0.0B80-SP20_SP20-HotFix-150, WinX64_11.0.0B80-SP20_SP20-HotFix-151, WinX64_11.0.0B80-SP20_SP20-HotFix-166, WinX64_11.0.0B80-SP20_SP20-HotFix-213, WinX64_11.0.0B80-SP20_SP20-HotFix-227, WinX64_11.0.0B80-SP20_SP20-HotFix-164, WinX64_11.0.0B80-SP20_SP20-HotFix-146, WinX64_11.0.0B80-SP20_SP20-HotFix-160, WinX64_11.0.0B80-SP20_SP20-HotFix-195, WinX64_11.0.0B80-SP20_SP20-HotFix-25, WinX64_11.0.0B80-SP20_SP20-HotFix-32, WinX64_11.0.0B80-SP20_SP20-HotFix-206, WinX64_11.0.0B80-SP20_SP20-HotFix-218, WinX64_11.0.0B80-SP20_SP20-HotFix-219, WinX64_11.0.0B80-SP20_SP20-HotFix-220, WinX64_11.0.0B80-SP20_SP20-HotFix-57, WinX64_11.0.0B80-SP20_SP20-HotFix-232, WinX64_11.0.0B80-SP20_SP20-HotFix-162, WinX64_11.0.0B80-SP20_SP20-HotFix-221, WinX64_11.0.0B80-SP20_SP20-HotFix-19, WinX64_11.0.0B80-SP20_SP20-HotFix-169, WinX64_11.0.0B80-SP20_SP20-HotFix-203, WinX64_11.0.0B80-SP20_SP20-HotFix-212, WinX64_11.0.0B80-SP20_SP20-HotFix-110, WinX64_11.0.0B80-SP20_SP20-HotFix-177, WinX64_11.0.0B80-SP20_SP20-HotFix-178, WinX64_11.0.0B80-SP20_SP20-HotFix-201, WinX64_11.0.0B80-SP20_SP20-HotFix-202, WinX64_11.0.0B80-SP20_SP20-HotFix-190, WinX64_11.0.0B80-SP20_SP20-HotFix-18, WinX64_11.0.0B80-SP20_SP20-HotFix-222, WinX64_11.0.0B80-SP20_SP20-HotFix-54, WinX64_11.0.0B80-SP20_SP20-HotFix-215, WinX64_11.0.0B80-SP20_SP20-HotFix-216, WinX64_11.0.0B80-SP20_SP20-HotFix-101, WinX64_11.0.0B80-SP20_SP20-HotFix-102, WinX64_11.0.0B80-SP20_SP20-HotFix-186, WinX64_11.0.0B80-SP20_SP20-HotFix-187, WinX64_11.0.0B80-SP20_SP20-HotFix-188, WinX64_11.0.0B80-SP20_SP20-HotFix-238, WinX64_11.0.0B80-SP20_SP20-HotFix-73, WinX64_11.0.0B80-SP20_SP20-HotFix-34, WinX64_11.0.0B80-SP20_SP20-HotFix-95, WinX64_11.0.0B80-SP20_SP20-HotFix-96, WinX64_11.0.0B80-SP20_SP20-HotFix-97, WinX64_11.0.0B80-SP20_SP20-HotFix-99, WinX64_11.0.0B80-SP20_SP20-HotFix-100, WinX64_11.0.0B80-SP20_SP20-HotFix-214, WinX64_11.0.0B80-SP20_SP20-HotFix-68, WinX64_11.0.0B80-SP20_SP20-HotFix-183, WinX64_11.0.0B80-SP20_SP20-HotFix-47, WinX64_11.0.0B80-SP20_SP20-HotFix-20, WinX64_11.0.0B80-SP20_SP20-HotFix-156, WinX64_11.0.0B80-SP20_SP20-HotFix-52, WinX64_11.0.0B80-SP20_SP20-HotFix-35, WinX64_11.0.0B80-SP20_SP20-HotFix-36, WinX64_11.0.0B80-SP20_SP20-HotFix-37, WinX64_11.0.0B80-SP20_SP20-HotFix-39, WinX64_11.0.0B80-SP20_SP20-HotFix-40, WinX64_11.0.0B80-SP20_SP20-HotFix-38, WinX64_11.0.0B80-SP20_SP20-HotFix-158, WinX64_11.0.0B80-SP20_SP20-HotFix-159, WinX64_11.0.0B80-SP20_SP20-HotFix-230, WinX64_11.0.0B80-SP20_SP20-HotFix-231, WinX64_11.0.0B80-SP20_SP20-HotFix-28, WinX64_11.0.0B80-SP20_SP20-HotFix-196, WinX64_11.0.0B80-SP20_SP20-HotFix-85, WinX64_11.0.0B80-SP20_SP20-HotFix-86, WinX64_11.0.0B80-SP20_SP20-HotFix-87, WinX64_11.0.0B80-SP20_SP20-HotFix-88, WinX64_11.0.0B80-SP20_SP20-HotFix-89, WinX64_11.0.0B80-SP20_SP20-HotFix-41, WinX64_11.0.0B80-SP20_SP20-HotFix-64, WinX64_11.0.0B80-SP20_SP20-HotFix-90, WinX64_11.0.0B80-SP20_SP20-HotFix-91, WinX64_11.0.0B80-SP20_SP20-HotFix-43, WinX64_11.0.0B80-SP20_SP20-HotFix-44, WinX64_11.0.0B80-SP20_SP20-HotFix-50, WinX64_11.0.0B80-SP20_SP20-HotFix-42, WinX64_11.0.0B80-SP20_SP20-HotFix-29, WinX64_11.0.0B80-SP20_SP20-HotFix-45, WinX64_11.0.0B80-SP20_SP20-HotFix-31, WinX64_11.0.0B80-SP20_SP20-HotFix-53, WinX64_11.0.0B80-SP20_SP20-HotFix-92, WinX64_11.0.0B80-SP20_SP20-HotFix-93, WinX64_11.0.0B80-SP20_SP20-HotFix-174'
+                            osName: WinX64
+                          - servicePack: '11.20'
+                            additionalUpdates: 'linux-x8664_11.0.0B80-SP20_SP20-HotFix-46, linux-x8664_11.0.0B80-SP20_SP20-HotFix-226, linux-x8664_11.0.0B80-SP20_SP20-HotFix-122, linux-x8664_11.0.0B80-SP20_SP20-HotFix-27, linux-x8664_11.0.0B80-SP20_SP20-HotFix-115, linux-x8664_11.0.0B80-SP20_SP20-HotFix-136, linux-x8664_11.0.0B80-SP20_SP20-HotFix-23, linux-x8664_11.0.0B80-SP20_SP20-HotFix-51, linux-x8664_11.0.0B80-SP20_SP20-HotFix-74, linux-x8664_11.0.0B80-SP20_SP20-HotFix-194, linux-x8664_11.0.0B80-SP20_SP20-HotFix-198, linux-x8664_11.0.0B80-SP20_SP20-HotFix-98, linux-x8664_11.0.0B80-SP20_SP20-HotFix-235, linux-x8664_11.0.0B80-SP20_SP20-HotFix-66, linux-x8664_11.0.0B80-SP20_SP20-HotFix-135, linux-x8664_11.0.0B80-SP20_SP20-HotFix-181, linux-x8664_11.0.0B80-SP20_SP20-HotFix-184, linux-x8664_11.0.0B80-SP20_SP20-HotFix-185, linux-x8664_11.0.0B80-SP20_SP20-HotFix-131, linux-x8664_11.0.0B80-SP20_SP20-HotFix-108, linux-x8664_11.0.0B80-SP20_SP20-HotFix-59, linux-x8664_11.0.0B80-SP20_SP20-HotFix-112, linux-x8664_11.0.0B80-SP20_SP20-HotFix-48, linux-x8664_11.0.0B80-SP20_SP20-HotFix-49, linux-x8664_11.0.0B80-SP20_SP20-HotFix-61, linux-x8664_11.0.0B80-SP20_SP20-HotFix-58, linux-x8664_11.0.0B80-SP20_SP20-HotFix-71, linux-x8664_11.0.0B80-SP20_SP20-HotFix-173, linux-x8664_11.0.0B80-SP20_SP20-HotFix-67, linux-x8664_11.0.0B80-SP20_SP20-HotFix-163, linux-x8664_11.0.0B80-SP20_SP20-HotFix-126, linux-x8664_11.0.0B80-SP20_SP20-HotFix-142, linux-x8664_11.0.0B80-SP20_SP20-HotFix-171, linux-x8664_11.0.0B80-SP20_SP20-HotFix-24, linux-x8664_11.0.0B80-SP20_SP20-HotFix-76, linux-x8664_11.0.0B80-SP20_SP20-HotFix-16, linux-x8664_11.0.0B80-SP20_SP20-HotFix-210, linux-x8664_11.0.0B80-SP20_SP20-HotFix-120, linux-x8664_11.0.0B80-SP20_SP20-HotFix-72, linux-x8664_11.0.0B80-SP20_SP20-HotFix-94, linux-x8664_11.0.0B80-SP20_SP20-HotFix-116, linux-x8664_11.0.0B80-SP20_SP20-HotFix-157, linux-x8664_11.0.0B80-SP20_SP20-HotFix-154, linux-x8664_11.0.0B80-SP20_SP20-HotFix-155, linux-x8664_11.0.0B80-SP20_SP20-HotFix-106, linux-x8664_11.0.0B80-SP20_SP20-HotFix-103, linux-x8664_11.0.0B80-SP20_SP20-HotFix-241, linux-x8664_11.0.0B80-SP20_SP20-HotFix-193, linux-x8664_11.0.0B80-SP20_SP20-HotFix-189, linux-x8664_11.0.0B80-SP20_SP20-HotFix-217, linux-x8664_11.0.0B80-SP20_SP20-HotFix-130, linux-x8664_11.0.0B80-SP20_SP20-HotFix-161, linux-x8664_11.0.0B80-SP20_SP20-HotFix-182, linux-x8664_11.0.0B80-SP20_SP20-HotFix-82, linux-x8664_11.0.0B80-SP20_SP20-HotFix-83, linux-x8664_11.0.0B80-SP20_SP20-HotFix-233, linux-x8664_11.0.0B80-SP20_SP20-HotFix-234, linux-x8664_11.0.0B80-SP20_SP20-HotFix-125, linux-x8664_11.0.0B80-SP20_SP20-HotFix-63, linux-x8664_11.0.0B80-SP20_SP20-HotFix-192, linux-x8664_11.0.0B80-SP20_SP20-HotFix-65, linux-x8664_11.0.0B80-SP20_SP20-HotFix-179, linux-x8664_11.0.0B80-SP20_SP20-HotFix-129, linux-x8664_11.0.0B80-SP20_SP20-HotFix-205, linux-x8664_11.0.0B80-SP20_SP20-HotFix-17, linux-x8664_11.0.0B80-SP20_SP20-HotFix-152, linux-x8664_11.0.0B80-SP20_SP20-HotFix-107, linux-x8664_11.0.0B80-SP20_SP20-HotFix-199, linux-x8664_11.0.0B80-SP20_SP20-HotFix-75, linux-x8664_11.0.0B80-SP20_SP20-HotFix-30, linux-x8664_11.0.0B80-SP20_SP20-HotFix-138, linux-x8664_11.0.0B80-SP20_SP20-HotFix-139, linux-x8664_11.0.0B80-SP20_SP20-HotFix-165, linux-x8664_11.0.0B80-SP20_SP20-HotFix-114, linux-x8664_11.0.0B80-SP20_SP20-HotFix-180, linux-x8664_11.0.0B80-SP20_SP20-HotFix-229, linux-x8664_11.0.0B80-SP20_SP20-HotFix-150, linux-x8664_11.0.0B80-SP20_SP20-HotFix-166, linux-x8664_11.0.0B80-SP20_SP20-HotFix-213, linux-x8664_11.0.0B80-SP20_SP20-HotFix-140, linux-x8664_11.0.0B80-SP20_SP20-HotFix-227, linux-x8664_11.0.0B80-SP20_SP20-HotFix-164, linux-x8664_11.0.0B80-SP20_SP20-HotFix-146, linux-x8664_11.0.0B80-SP20_SP20-HotFix-160, linux-x8664_11.0.0B80-SP20_SP20-HotFix-195, linux-x8664_11.0.0B80-SP20_SP20-HotFix-219, linux-x8664_11.0.0B80-SP20_SP20-HotFix-162, linux-x8664_11.0.0B80-SP20_SP20-HotFix-19, linux-x8664_11.0.0B80-SP20_SP20-HotFix-203, linux-x8664_11.0.0B80-SP20_SP20-HotFix-212, linux-x8664_11.0.0B80-SP20_SP20-HotFix-177, linux-x8664_11.0.0B80-SP20_SP20-HotFix-190, linux-x8664_11.0.0B80-SP20_SP20-HotFix-18, linux-x8664_11.0.0B80-SP20_SP20-HotFix-222, linux-x8664_11.0.0B80-SP20_SP20-HotFix-54, linux-x8664_11.0.0B80-SP20_SP20-HotFix-187, linux-x8664_11.0.0B80-SP20_SP20-HotFix-238, linux-x8664_11.0.0B80-SP20_SP20-HotFix-73, linux-x8664_11.0.0B80-SP20_SP20-HotFix-34, linux-x8664_11.0.0B80-SP20_SP20-HotFix-96, linux-x8664_11.0.0B80-SP20_SP20-HotFix-214, linux-x8664_11.0.0B80-SP20_SP20-HotFix-68, linux-x8664_11.0.0B80-SP20_SP20-HotFix-183, linux-x8664_11.0.0B80-SP20_SP20-HotFix-47, linux-x8664_11.0.0B80-SP20_SP20-HotFix-20, linux-x8664_11.0.0B80-SP20_SP20-HotFix-52, linux-x8664_11.0.0B80-SP20_SP20-HotFix-36, linux-x8664_11.0.0B80-SP20_SP20-HotFix-38, linux-x8664_11.0.0B80-SP20_SP20-HotFix-158, linux-x8664_11.0.0B80-SP20_SP20-HotFix-159, linux-x8664_11.0.0B80-SP20_SP20-HotFix-230, linux-x8664_11.0.0B80-SP20_SP20-HotFix-28, linux-x8664_11.0.0B80-SP20_SP20-HotFix-196, linux-x8664_11.0.0B80-SP20_SP20-HotFix-88, linux-x8664_11.0.0B80-SP20_SP20-HotFix-41, linux-x8664_11.0.0B80-SP20_SP20-HotFix-64, linux-x8664_11.0.0B80-SP20_SP20-HotFix-43, linux-x8664_11.0.0B80-SP20_SP20-HotFix-44, linux-x8664_11.0.0B80-SP20_SP20-HotFix-60, linux-x8664_11.0.0B80-SP20_SP20-HotFix-50, linux-x8664_11.0.0B80-SP20_SP20-HotFix-26, linux-x8664_11.0.0B80-SP20_SP20-HotFix-42, linux-x8664_11.0.0B80-SP20_SP20-HotFix-45, linux-x8664_11.0.0B80-SP20_SP20-HotFix-53, linux-x8664_11.0.0B80-SP20_SP20-HotFix-174'
+                            osName: linux-x8664
+                          - servicePack: '11.20'
+                            additionalUpdates: 'dwn-x8664_11.0.0B80-SP20_SP20-HotFix-226, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-136, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-181, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-184, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-71, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-163, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-142, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-76, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-152, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-75, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-165, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-229, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-177, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-73, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-28'
+                            osName: dwn-x8664
+                        - version: '10'
+                        - version: 9.0.0
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    commserveSoftwareCache:
+                      storePatchlocation: 'F:/CV/SW'
+                      FTP_FTPproxyport: 21
+                      autoPatchFlag: 0
+                      cacheCurrentSpace: 0
+                      cacheFreeSpace: 1873734557696
+                      HTTPsiteLocation: eng-updates.test.cv.com
+                      unixPatchusername: ''
+                      downloadProtocol: HTTP
+                      FTPoperationType: 9
+                      FTP_HTTPproxyport: 8080
+                      FTP_HTTPproxyserver: ''
+                      FTP_FTPproxyserver: ''
+                      FTPsitelocation: ''
+                      patchHttpuseToken: false
+                      patchHttpconfigURL: 'http://eng-updates.test.cv.com'
+                      FTP_FTPProxylocation: ''
+                      cacheExpectedSpace: 0
+                      unixPatchlocation: ''
+                      FTPsiteCredentials:
+                        userName: ''
+                      FTP_HTTPproxyCredentials:
+                        userName: ''
+                      storePatchCredentials:
+                        userName: ''
+                      client:
+                        clientId: 0
+                        clientName: ''
+                        _type_: 3
+                      FTP_FTPproxyCredentials:
+                        userName: ''
+                      UaInfo:
+                        win32SP: ''
+                        fbsdSP: ''
+                        linuxSP: ''
+                        deletePackageCache: false
+                        highestSP: ''
+                        uaPackageCacheStatus: 1
+                        osfSP: ''
+                        uaCachePath: ''
+                        irixSP: ''
+                        hpSP: ''
+                        deleteUpdateCache: false
+                        unixTimeStampForUnix: 0
+                        swAgentOpType: 0
+                        dwnSP: ''
+                        uaOpCode: 0
+                        aixSP: ''
+                        uaUpdateCacheStatus: 1
+                        unixTimeStamp: 0
+                        unixTimeStampForWindows: 0
+                        defaultShareName: ''
+                        winx64SP: ''
+                        solarisSP: ''
+                        shareName: ''
+                        patchUAContentConfigs: {}
+                        uaImpersonate: {}
+                        uaName:
+                          name: ''
+                          id: 0
+                        client:
+                          _type_: 3
+                        cacheContents:
+                        - version: '11'
+                          softwareCacheServicePackDetails:
+                          - servicePack: '11.20'
+                            additionalUpdates: 'WinX64_11.0.0B80-SP20_SP20-HotFix-113, WinX64_11.0.0B80-SP20_SP20-HotFix-119, WinX64_11.0.0B80-SP20_SP20-HotFix-46, WinX64_11.0.0B80-SP20_SP20-HotFix-225, WinX64_11.0.0B80-SP20_SP20-HotFix-226, WinX64_11.0.0B80-SP20_SP20-HotFix-228, WinX64_11.0.0B80-SP20_SP20-HotFix-121, WinX64_11.0.0B80-SP20_SP20-HotFix-122, WinX64_11.0.0B80-SP20_SP20-HotFix-124, WinX64_11.0.0B80-SP20_SP20-HotFix-27, WinX64_11.0.0B80-SP20_SP20-HotFix-123, WinX64_11.0.0B80-SP20_SP20-HotFix-115, WinX64_11.0.0B80-SP20_SP20-HotFix-147, WinX64_11.0.0B80-SP20_SP20-HotFix-148, WinX64_11.0.0B80-SP20_SP20-HotFix-23, WinX64_11.0.0B80-SP20_SP20-HotFix-51, WinX64_11.0.0B80-SP20_SP20-HotFix-77, WinX64_11.0.0B80-SP20_SP20-HotFix-78, WinX64_11.0.0B80-SP20_SP20-HotFix-74, WinX64_11.0.0B80-SP20_SP20-HotFix-204, WinX64_11.0.0B80-SP20_SP20-HotFix-207, WinX64_11.0.0B80-SP20_SP20-HotFix-208, WinX64_11.0.0B80-SP20_SP20-HotFix-175, WinX64_11.0.0B80-SP20_SP20-HotFix-176, WinX64_11.0.0B80-SP20_SP20-HotFix-194, WinX64_11.0.0B80-SP20_SP20-HotFix-167, WinX64_11.0.0B80-SP20_SP20-HotFix-168, WinX64_11.0.0B80-SP20_SP20-HotFix-198, WinX64_11.0.0B80-SP20_SP20-HotFix-98, WinX64_11.0.0B80-SP20_SP20-HotFix-235, WinX64_11.0.0B80-SP20_SP20-HotFix-66, WinX64_11.0.0B80-SP20_SP20-HotFix-135, WinX64_11.0.0B80-SP20_SP20-HotFix-181, WinX64_11.0.0B80-SP20_SP20-HotFix-118, WinX64_11.0.0B80-SP20_SP20-HotFix-184, WinX64_11.0.0B80-SP20_SP20-HotFix-185, WinX64_11.0.0B80-SP20_SP20-HotFix-131, WinX64_11.0.0B80-SP20_SP20-HotFix-108, WinX64_11.0.0B80-SP20_SP20-HotFix-59, WinX64_11.0.0B80-SP20_SP20-HotFix-211, WinX64_11.0.0B80-SP20_SP20-HotFix-79, WinX64_11.0.0B80-SP20_SP20-HotFix-80, WinX64_11.0.0B80-SP20_SP20-HotFix-112, WinX64_11.0.0B80-SP20_SP20-HotFix-128, WinX64_11.0.0B80-SP20_SP20-HotFix-48, WinX64_11.0.0B80-SP20_SP20-HotFix-49, WinX64_11.0.0B80-SP20_SP20-HotFix-111, WinX64_11.0.0B80-SP20_SP20-HotFix-109, WinX64_11.0.0B80-SP20_SP20-HotFix-104, WinX64_11.0.0B80-SP20_SP20-HotFix-105, WinX64_11.0.0B80-SP20_SP20-HotFix-33, WinX64_11.0.0B80-SP20_SP20-HotFix-61, WinX64_11.0.0B80-SP20_SP20-HotFix-58, WinX64_11.0.0B80-SP20_SP20-HotFix-71, WinX64_11.0.0B80-SP20_SP20-HotFix-173, WinX64_11.0.0B80-SP20_SP20-HotFix-67, WinX64_11.0.0B80-SP20_SP20-HotFix-163, WinX64_11.0.0B80-SP20_SP20-HotFix-126, WinX64_11.0.0B80-SP20_SP20-HotFix-143, WinX64_11.0.0B80-SP20_SP20-HotFix-141, WinX64_11.0.0B80-SP20_SP20-HotFix-142, WinX64_11.0.0B80-SP20_SP20-HotFix-170, WinX64_11.0.0B80-SP20_SP20-HotFix-171, WinX64_11.0.0B80-SP20_SP20-HotFix-172, WinX64_11.0.0B80-SP20_SP20-HotFix-24, WinX64_11.0.0B80-SP20_SP20-HotFix-76, WinX64_11.0.0B80-SP20_SP20-HotFix-16, WinX64_11.0.0B80-SP20_SP20-HotFix-210, WinX64_11.0.0B80-SP20_SP20-HotFix-120, WinX64_11.0.0B80-SP20_SP20-HotFix-55, WinX64_11.0.0B80-SP20_SP20-HotFix-56, WinX64_11.0.0B80-SP20_SP20-HotFix-127, WinX64_11.0.0B80-SP20_SP20-HotFix-72, WinX64_11.0.0B80-SP20_SP20-HotFix-94, WinX64_11.0.0B80-SP20_SP20-HotFix-134, WinX64_11.0.0B80-SP20_SP20-HotFix-21, WinX64_11.0.0B80-SP20_SP20-HotFix-116, WinX64_11.0.0B80-SP20_SP20-HotFix-157, WinX64_11.0.0B80-SP20_SP20-HotFix-224, WinX64_11.0.0B80-SP20_SP20-HotFix-154, WinX64_11.0.0B80-SP20_SP20-HotFix-155, WinX64_11.0.0B80-SP20_SP20-HotFix-106, WinX64_11.0.0B80-SP20_SP20-HotFix-103, WinX64_11.0.0B80-SP20_SP20-HotFix-241, WinX64_11.0.0B80-SP20_SP20-HotFix-193, WinX64_11.0.0B80-SP20_SP20-HotFix-189, WinX64_11.0.0B80-SP20_SP20-HotFix-217, WinX64_11.0.0B80-SP20_SP20-HotFix-130, WinX64_11.0.0B80-SP20_SP20-HotFix-161, WinX64_11.0.0B80-SP20_SP20-HotFix-117, WinX64_11.0.0B80-SP20_SP20-HotFix-81, WinX64_11.0.0B80-SP20_SP20-HotFix-82, WinX64_11.0.0B80-SP20_SP20-HotFix-83, WinX64_11.0.0B80-SP20_SP20-HotFix-84, WinX64_11.0.0B80-SP20_SP20-HotFix-233, WinX64_11.0.0B80-SP20_SP20-HotFix-234, WinX64_11.0.0B80-SP20_SP20-HotFix-125, WinX64_11.0.0B80-SP20_SP20-HotFix-63, WinX64_11.0.0B80-SP20_SP20-HotFix-192, WinX64_11.0.0B80-SP20_SP20-HotFix-65, WinX64_11.0.0B80-SP20_SP20-HotFix-191, WinX64_11.0.0B80-SP20_SP20-HotFix-179, WinX64_11.0.0B80-SP20_SP20-HotFix-69, WinX64_11.0.0B80-SP20_SP20-HotFix-70, WinX64_11.0.0B80-SP20_SP20-HotFix-129, WinX64_11.0.0B80-SP20_SP20-HotFix-205, WinX64_11.0.0B80-SP20_SP20-HotFix-17, WinX64_11.0.0B80-SP20_SP20-HotFix-152, WinX64_11.0.0B80-SP20_SP20-HotFix-153, WinX64_11.0.0B80-SP20_SP20-HotFix-107, WinX64_11.0.0B80-SP20_SP20-HotFix-75, WinX64_11.0.0B80-SP20_SP20-HotFix-30, WinX64_11.0.0B80-SP20_SP20-HotFix-138, WinX64_11.0.0B80-SP20_SP20-HotFix-139, WinX64_11.0.0B80-SP20_SP20-HotFix-236, WinX64_11.0.0B80-SP20_SP20-HotFix-237, WinX64_11.0.0B80-SP20_SP20-HotFix-165, WinX64_11.0.0B80-SP20_SP20-HotFix-114, WinX64_11.0.0B80-SP20_SP20-HotFix-240, WinX64_11.0.0B80-SP20_SP20-HotFix-239, WinX64_11.0.0B80-SP20_SP20-HotFix-180, WinX64_11.0.0B80-SP20_SP20-HotFix-197, WinX64_11.0.0B80-SP20_SP20-HotFix-200, WinX64_11.0.0B80-SP20_SP20-HotFix-144, WinX64_11.0.0B80-SP20_SP20-HotFix-145, WinX64_11.0.0B80-SP20_SP20-HotFix-209, WinX64_11.0.0B80-SP20_SP20-HotFix-132, WinX64_11.0.0B80-SP20_SP20-HotFix-133, WinX64_11.0.0B80-SP20_SP20-HotFix-229, WinX64_11.0.0B80-SP20_SP20-HotFix-223, WinX64_11.0.0B80-SP20_SP20-HotFix-149, WinX64_11.0.0B80-SP20_SP20-HotFix-150, WinX64_11.0.0B80-SP20_SP20-HotFix-151, WinX64_11.0.0B80-SP20_SP20-HotFix-166, WinX64_11.0.0B80-SP20_SP20-HotFix-213, WinX64_11.0.0B80-SP20_SP20-HotFix-227, WinX64_11.0.0B80-SP20_SP20-HotFix-164, WinX64_11.0.0B80-SP20_SP20-HotFix-146, WinX64_11.0.0B80-SP20_SP20-HotFix-160, WinX64_11.0.0B80-SP20_SP20-HotFix-195, WinX64_11.0.0B80-SP20_SP20-HotFix-25, WinX64_11.0.0B80-SP20_SP20-HotFix-32, WinX64_11.0.0B80-SP20_SP20-HotFix-206, WinX64_11.0.0B80-SP20_SP20-HotFix-218, WinX64_11.0.0B80-SP20_SP20-HotFix-219, WinX64_11.0.0B80-SP20_SP20-HotFix-220, WinX64_11.0.0B80-SP20_SP20-HotFix-57, WinX64_11.0.0B80-SP20_SP20-HotFix-232, WinX64_11.0.0B80-SP20_SP20-HotFix-162, WinX64_11.0.0B80-SP20_SP20-HotFix-221, WinX64_11.0.0B80-SP20_SP20-HotFix-19, WinX64_11.0.0B80-SP20_SP20-HotFix-169, WinX64_11.0.0B80-SP20_SP20-HotFix-203, WinX64_11.0.0B80-SP20_SP20-HotFix-212, WinX64_11.0.0B80-SP20_SP20-HotFix-110, WinX64_11.0.0B80-SP20_SP20-HotFix-177, WinX64_11.0.0B80-SP20_SP20-HotFix-178, WinX64_11.0.0B80-SP20_SP20-HotFix-201, WinX64_11.0.0B80-SP20_SP20-HotFix-202, WinX64_11.0.0B80-SP20_SP20-HotFix-190, WinX64_11.0.0B80-SP20_SP20-HotFix-18, WinX64_11.0.0B80-SP20_SP20-HotFix-222, WinX64_11.0.0B80-SP20_SP20-HotFix-54, WinX64_11.0.0B80-SP20_SP20-HotFix-215, WinX64_11.0.0B80-SP20_SP20-HotFix-216, WinX64_11.0.0B80-SP20_SP20-HotFix-101, WinX64_11.0.0B80-SP20_SP20-HotFix-102, WinX64_11.0.0B80-SP20_SP20-HotFix-186, WinX64_11.0.0B80-SP20_SP20-HotFix-187, WinX64_11.0.0B80-SP20_SP20-HotFix-188, WinX64_11.0.0B80-SP20_SP20-HotFix-238, WinX64_11.0.0B80-SP20_SP20-HotFix-73, WinX64_11.0.0B80-SP20_SP20-HotFix-34, WinX64_11.0.0B80-SP20_SP20-HotFix-95, WinX64_11.0.0B80-SP20_SP20-HotFix-96, WinX64_11.0.0B80-SP20_SP20-HotFix-97, WinX64_11.0.0B80-SP20_SP20-HotFix-99, WinX64_11.0.0B80-SP20_SP20-HotFix-100, WinX64_11.0.0B80-SP20_SP20-HotFix-214, WinX64_11.0.0B80-SP20_SP20-HotFix-68, WinX64_11.0.0B80-SP20_SP20-HotFix-183, WinX64_11.0.0B80-SP20_SP20-HotFix-47, WinX64_11.0.0B80-SP20_SP20-HotFix-20, WinX64_11.0.0B80-SP20_SP20-HotFix-156, WinX64_11.0.0B80-SP20_SP20-HotFix-52, WinX64_11.0.0B80-SP20_SP20-HotFix-35, WinX64_11.0.0B80-SP20_SP20-HotFix-36, WinX64_11.0.0B80-SP20_SP20-HotFix-37, WinX64_11.0.0B80-SP20_SP20-HotFix-39, WinX64_11.0.0B80-SP20_SP20-HotFix-40, WinX64_11.0.0B80-SP20_SP20-HotFix-38, WinX64_11.0.0B80-SP20_SP20-HotFix-158, WinX64_11.0.0B80-SP20_SP20-HotFix-159, WinX64_11.0.0B80-SP20_SP20-HotFix-230, WinX64_11.0.0B80-SP20_SP20-HotFix-231, WinX64_11.0.0B80-SP20_SP20-HotFix-28, WinX64_11.0.0B80-SP20_SP20-HotFix-196, WinX64_11.0.0B80-SP20_SP20-HotFix-85, WinX64_11.0.0B80-SP20_SP20-HotFix-86, WinX64_11.0.0B80-SP20_SP20-HotFix-87, WinX64_11.0.0B80-SP20_SP20-HotFix-88, WinX64_11.0.0B80-SP20_SP20-HotFix-89, WinX64_11.0.0B80-SP20_SP20-HotFix-41, WinX64_11.0.0B80-SP20_SP20-HotFix-64, WinX64_11.0.0B80-SP20_SP20-HotFix-90, WinX64_11.0.0B80-SP20_SP20-HotFix-91, WinX64_11.0.0B80-SP20_SP20-HotFix-43, WinX64_11.0.0B80-SP20_SP20-HotFix-44, WinX64_11.0.0B80-SP20_SP20-HotFix-50, WinX64_11.0.0B80-SP20_SP20-HotFix-42, WinX64_11.0.0B80-SP20_SP20-HotFix-29, WinX64_11.0.0B80-SP20_SP20-HotFix-45, WinX64_11.0.0B80-SP20_SP20-HotFix-31, WinX64_11.0.0B80-SP20_SP20-HotFix-53, WinX64_11.0.0B80-SP20_SP20-HotFix-92, WinX64_11.0.0B80-SP20_SP20-HotFix-93, WinX64_11.0.0B80-SP20_SP20-HotFix-174'
+                            osName: WinX64
+                          - servicePack: '11.20'
+                            additionalUpdates: 'linux-x8664_11.0.0B80-SP20_SP20-HotFix-46, linux-x8664_11.0.0B80-SP20_SP20-HotFix-226, linux-x8664_11.0.0B80-SP20_SP20-HotFix-122, linux-x8664_11.0.0B80-SP20_SP20-HotFix-27, linux-x8664_11.0.0B80-SP20_SP20-HotFix-115, linux-x8664_11.0.0B80-SP20_SP20-HotFix-136, linux-x8664_11.0.0B80-SP20_SP20-HotFix-23, linux-x8664_11.0.0B80-SP20_SP20-HotFix-51, linux-x8664_11.0.0B80-SP20_SP20-HotFix-74, linux-x8664_11.0.0B80-SP20_SP20-HotFix-194, linux-x8664_11.0.0B80-SP20_SP20-HotFix-198, linux-x8664_11.0.0B80-SP20_SP20-HotFix-98, linux-x8664_11.0.0B80-SP20_SP20-HotFix-235, linux-x8664_11.0.0B80-SP20_SP20-HotFix-66, linux-x8664_11.0.0B80-SP20_SP20-HotFix-135, linux-x8664_11.0.0B80-SP20_SP20-HotFix-181, linux-x8664_11.0.0B80-SP20_SP20-HotFix-184, linux-x8664_11.0.0B80-SP20_SP20-HotFix-185, linux-x8664_11.0.0B80-SP20_SP20-HotFix-131, linux-x8664_11.0.0B80-SP20_SP20-HotFix-108, linux-x8664_11.0.0B80-SP20_SP20-HotFix-59, linux-x8664_11.0.0B80-SP20_SP20-HotFix-112, linux-x8664_11.0.0B80-SP20_SP20-HotFix-48, linux-x8664_11.0.0B80-SP20_SP20-HotFix-49, linux-x8664_11.0.0B80-SP20_SP20-HotFix-61, linux-x8664_11.0.0B80-SP20_SP20-HotFix-58, linux-x8664_11.0.0B80-SP20_SP20-HotFix-71, linux-x8664_11.0.0B80-SP20_SP20-HotFix-173, linux-x8664_11.0.0B80-SP20_SP20-HotFix-67, linux-x8664_11.0.0B80-SP20_SP20-HotFix-163, linux-x8664_11.0.0B80-SP20_SP20-HotFix-126, linux-x8664_11.0.0B80-SP20_SP20-HotFix-142, linux-x8664_11.0.0B80-SP20_SP20-HotFix-171, linux-x8664_11.0.0B80-SP20_SP20-HotFix-24, linux-x8664_11.0.0B80-SP20_SP20-HotFix-76, linux-x8664_11.0.0B80-SP20_SP20-HotFix-16, linux-x8664_11.0.0B80-SP20_SP20-HotFix-210, linux-x8664_11.0.0B80-SP20_SP20-HotFix-120, linux-x8664_11.0.0B80-SP20_SP20-HotFix-72, linux-x8664_11.0.0B80-SP20_SP20-HotFix-94, linux-x8664_11.0.0B80-SP20_SP20-HotFix-116, linux-x8664_11.0.0B80-SP20_SP20-HotFix-157, linux-x8664_11.0.0B80-SP20_SP20-HotFix-154, linux-x8664_11.0.0B80-SP20_SP20-HotFix-155, linux-x8664_11.0.0B80-SP20_SP20-HotFix-106, linux-x8664_11.0.0B80-SP20_SP20-HotFix-103, linux-x8664_11.0.0B80-SP20_SP20-HotFix-241, linux-x8664_11.0.0B80-SP20_SP20-HotFix-193, linux-x8664_11.0.0B80-SP20_SP20-HotFix-189, linux-x8664_11.0.0B80-SP20_SP20-HotFix-217, linux-x8664_11.0.0B80-SP20_SP20-HotFix-130, linux-x8664_11.0.0B80-SP20_SP20-HotFix-161, linux-x8664_11.0.0B80-SP20_SP20-HotFix-182, linux-x8664_11.0.0B80-SP20_SP20-HotFix-82, linux-x8664_11.0.0B80-SP20_SP20-HotFix-83, linux-x8664_11.0.0B80-SP20_SP20-HotFix-233, linux-x8664_11.0.0B80-SP20_SP20-HotFix-234, linux-x8664_11.0.0B80-SP20_SP20-HotFix-125, linux-x8664_11.0.0B80-SP20_SP20-HotFix-63, linux-x8664_11.0.0B80-SP20_SP20-HotFix-192, linux-x8664_11.0.0B80-SP20_SP20-HotFix-65, linux-x8664_11.0.0B80-SP20_SP20-HotFix-179, linux-x8664_11.0.0B80-SP20_SP20-HotFix-129, linux-x8664_11.0.0B80-SP20_SP20-HotFix-205, linux-x8664_11.0.0B80-SP20_SP20-HotFix-17, linux-x8664_11.0.0B80-SP20_SP20-HotFix-152, linux-x8664_11.0.0B80-SP20_SP20-HotFix-107, linux-x8664_11.0.0B80-SP20_SP20-HotFix-199, linux-x8664_11.0.0B80-SP20_SP20-HotFix-75, linux-x8664_11.0.0B80-SP20_SP20-HotFix-30, linux-x8664_11.0.0B80-SP20_SP20-HotFix-138, linux-x8664_11.0.0B80-SP20_SP20-HotFix-139, linux-x8664_11.0.0B80-SP20_SP20-HotFix-165, linux-x8664_11.0.0B80-SP20_SP20-HotFix-114, linux-x8664_11.0.0B80-SP20_SP20-HotFix-180, linux-x8664_11.0.0B80-SP20_SP20-HotFix-229, linux-x8664_11.0.0B80-SP20_SP20-HotFix-150, linux-x8664_11.0.0B80-SP20_SP20-HotFix-166, linux-x8664_11.0.0B80-SP20_SP20-HotFix-213, linux-x8664_11.0.0B80-SP20_SP20-HotFix-140, linux-x8664_11.0.0B80-SP20_SP20-HotFix-227, linux-x8664_11.0.0B80-SP20_SP20-HotFix-164, linux-x8664_11.0.0B80-SP20_SP20-HotFix-146, linux-x8664_11.0.0B80-SP20_SP20-HotFix-160, linux-x8664_11.0.0B80-SP20_SP20-HotFix-195, linux-x8664_11.0.0B80-SP20_SP20-HotFix-219, linux-x8664_11.0.0B80-SP20_SP20-HotFix-162, linux-x8664_11.0.0B80-SP20_SP20-HotFix-19, linux-x8664_11.0.0B80-SP20_SP20-HotFix-203, linux-x8664_11.0.0B80-SP20_SP20-HotFix-212, linux-x8664_11.0.0B80-SP20_SP20-HotFix-177, linux-x8664_11.0.0B80-SP20_SP20-HotFix-190, linux-x8664_11.0.0B80-SP20_SP20-HotFix-18, linux-x8664_11.0.0B80-SP20_SP20-HotFix-222, linux-x8664_11.0.0B80-SP20_SP20-HotFix-54, linux-x8664_11.0.0B80-SP20_SP20-HotFix-187, linux-x8664_11.0.0B80-SP20_SP20-HotFix-238, linux-x8664_11.0.0B80-SP20_SP20-HotFix-73, linux-x8664_11.0.0B80-SP20_SP20-HotFix-34, linux-x8664_11.0.0B80-SP20_SP20-HotFix-96, linux-x8664_11.0.0B80-SP20_SP20-HotFix-214, linux-x8664_11.0.0B80-SP20_SP20-HotFix-68, linux-x8664_11.0.0B80-SP20_SP20-HotFix-183, linux-x8664_11.0.0B80-SP20_SP20-HotFix-47, linux-x8664_11.0.0B80-SP20_SP20-HotFix-20, linux-x8664_11.0.0B80-SP20_SP20-HotFix-52, linux-x8664_11.0.0B80-SP20_SP20-HotFix-36, linux-x8664_11.0.0B80-SP20_SP20-HotFix-38, linux-x8664_11.0.0B80-SP20_SP20-HotFix-158, linux-x8664_11.0.0B80-SP20_SP20-HotFix-159, linux-x8664_11.0.0B80-SP20_SP20-HotFix-230, linux-x8664_11.0.0B80-SP20_SP20-HotFix-28, linux-x8664_11.0.0B80-SP20_SP20-HotFix-196, linux-x8664_11.0.0B80-SP20_SP20-HotFix-88, linux-x8664_11.0.0B80-SP20_SP20-HotFix-41, linux-x8664_11.0.0B80-SP20_SP20-HotFix-64, linux-x8664_11.0.0B80-SP20_SP20-HotFix-43, linux-x8664_11.0.0B80-SP20_SP20-HotFix-44, linux-x8664_11.0.0B80-SP20_SP20-HotFix-60, linux-x8664_11.0.0B80-SP20_SP20-HotFix-50, linux-x8664_11.0.0B80-SP20_SP20-HotFix-26, linux-x8664_11.0.0B80-SP20_SP20-HotFix-42, linux-x8664_11.0.0B80-SP20_SP20-HotFix-45, linux-x8664_11.0.0B80-SP20_SP20-HotFix-53, linux-x8664_11.0.0B80-SP20_SP20-HotFix-174'
+                            osName: linux-x8664
+                          - servicePack: '11.20'
+                            additionalUpdates: 'dwn-x8664_11.0.0B80-SP20_SP20-HotFix-226, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-136, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-181, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-184, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-71, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-163, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-142, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-76, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-152, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-75, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-165, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-229, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-177, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-73, dwn-x8664_11.0.0B80-SP20_SP20-HotFix-28'
+                            osName: dwn-x8664
+                        - version: '10'
+                        - version: 9.0.0
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+  /CommServ/AddRemoveSoftware/RemoteSoftwareCache:
+    get:
+      deprecated: false
+      description: This operation returns the CommServe Remote Cache details
+      operationId: Get Commserve Remote Cache Details
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Commserve Remote Cache Details
+      tags:
+      - Control Panel Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  qualifiedClients:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        defaultShare:
+                          type: string
+                        cachePath:
+                          type: string
+                        clientName:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            id:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    qualifiedClients:
+                    - defaultShare: \\YashDutch.test.cv.com/SoftwareShare
+                      cachePath: 'C:/Program Files/Commvault/ContentStore/SoftwareCache'
+                      clientName:
+                        name: yashdutch
+                        id: 18
+                    - defaultShare: \\hulu.test.com/SoftwareShare
+                      cachePath: 'C:/Program Files/Commvault/ContentStore/SoftwareCache'
+                      clientName:
+                        name: hulu
+                        id: 181
+                    - defaultShare: \\CVDV3N287A.test.cv.com/SoftwareShare
+                      cachePath: 'C:/Program Files/Commvault/ContentStore/SoftwareCache'
+                      clientName:
+                        name: cvdv3n287a
+                        id: 807
+                    - defaultShare: \\CVDV3N285A.test.cv.com/SoftwareShare
+                      cachePath: 'C:/Program Files/Commvault/ContentStore/SoftwareCache'
+                      clientName:
+                        name: cvdv3n285a
+                        id: 808
+                    - defaultShare: \\CVDV3N288.test.cv.com/SoftwareShare
+                      cachePath: 'C:/Program Files/Commvault/ContentStore1/SoftwareCache'
+                      clientName:
+                        name: cvdv3n288
+                        id: 1430
+                    - defaultShare: \\172.19.100.76/SoftwareShare
+                      cachePath: /opt/commvault/SoftwareCache
+                      clientName:
+                        name: mac105
+                        id: 1708
+              examples:
+                Example 1:
+                  value:
+                    qualifiedClients:
+                    - defaultShare: \\YashDutch.test.cv.com/SoftwareShare
+                      cachePath: 'C:/Program Files/Commvault/ContentStore/SoftwareCache'
+                      clientName:
+                        name: yashdutch
+                        id: 18
+                    - defaultShare: \\hulu.test.com/SoftwareShare
+                      cachePath: 'C:/Program Files/Commvault/ContentStore/SoftwareCache'
+                      clientName:
+                        name: hulu
+                        id: 181
+                    - defaultShare: \\CVDV3N287A.test.cv.com/SoftwareShare
+                      cachePath: 'C:/Program Files/Commvault/ContentStore/SoftwareCache'
+                      clientName:
+                        name: cvdv3n287a
+                        id: 807
+                    - defaultShare: \\CVDV3N285A.test.cv.com/SoftwareShare
+                      cachePath: 'C:/Program Files/Commvault/ContentStore/SoftwareCache'
+                      clientName:
+                        name: cvdv3n285a
+                        id: 808
+                    - defaultShare: \\CVDV3N288.test.cv.com/SoftwareShare
+                      cachePath: 'C:/Program Files/Commvault/ContentStore1/SoftwareCache'
+                      clientName:
+                        name: cvdv3n288
+                        id: 1430
+                    - defaultShare: \\172.19.100.76/SoftwareShare
+                      cachePath: /opt/commvault/SoftwareCache
+                      clientName:
+                        name: mac105
+                        id: 1708
+  /CommServ/AuditTrail:
+    get:
+      deprecated: false
+      description: |-
+        This operation returns a list of the audit trail settings.
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_audit_trail.htm)
+      operationId: Get Audit Trail Settings
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Audit Trail Settings
+      tags:
+      - Control Panel Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  auditTrailInfo:
+                    type: object
+                    properties:
+                      retentionForCritical:
+                        type: integer
+                      retentionForLow:
+                        type: integer
+                      retentionForMedium:
+                        type: integer
+                      retentionForHigh:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    auditTrailInfo:
+                      retentionForCritical: 365
+                      retentionForLow: 120
+                      retentionForMedium: 240
+                      retentionForHigh: 365
+              examples:
+                Example 1:
+                  value:
+                    auditTrailInfo:
+                      retentionForCritical: 365
+                      retentionForLow: 120
+                      retentionForMedium: 240
+                      retentionForHigh: 365
+    post:
+      deprecated: false
+      description: |-
+        This operation updates the audit trail retention settings.
+        [_More Details_](https://documentation.commvault.com/commvault/v11/article?p=92226_1.htm)
+      operationId: Update Audit Trail Settings
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Update Audit Trail Settings
+      tags:
+      - Control Panel Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                auditTrailInfo:
+                  type: object
+                  properties:
+                    retentionForCritical:
+                      type: integer
+                    retentionForLow:
+                      type: integer
+                    retentionForMedium:
+                      type: integer
+                    retentionForHigh:
+                      type: integer
+              x-examples:
+                Example 1:
+                  auditTrailInfo:
+                    retentionForCritical: 365
+                    retentionForLow: 365
+                    retentionForMedium: 240
+                    retentionForHigh: 260
+            examples:
+              Example 1:
+                value:
+                  auditTrailInfo:
+                    retentionForCritical: 365
+                    retentionForLow: 365
+                    retentionForMedium: 240
+                    retentionForHigh: 260
+        description: ''
+  /CommServ/CustomCalendar:
+    get:
+      deprecated: false
+      description: |-
+        This operation returns a list of custom calendars.
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_custom_calendar.htm)
+      operationId: Get Custom Calendars
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Custom Calendars
+      tags:
+      - Control Panel Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customCalendar:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        defineCustomMonths:
+                          type: boolean
+                        isDefault:
+                          type: boolean
+                        calendarType:
+                          type: integer
+                        numberOfYears:
+                          type: integer
+                        beginYear:
+                          type: integer
+                        beginMonth:
+                          type: integer
+                        customCalendarEntity:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            customCalendarId:
+                              type: integer
+                            customCalendarName:
+                              type: string
+                        beginDate:
+                          type: integer
+                        customCalendarMonths:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              month:
+                                type: integer
+                              year:
+                                type: integer
+                              numberOfDays:
+                                type: integer
+                x-examples:
+                  Example 1:
+                    customCalendar:
+                    - defineCustomMonths: false
+                      isDefault: true
+                      calendarType: 1
+                      numberOfYears: 0
+                      beginYear: 0
+                      beginMonth: 1
+                      customCalendarEntity:
+                        _type_: 171
+                        customCalendarId: 1
+                        customCalendarName: Standard
+                    - beginDate: 1496289600
+                      defineCustomMonths: true
+                      isDefault: false
+                      calendarType: 3
+                      numberOfYears: 1
+                      beginYear: 2017
+                      beginMonth: 6
+                      customCalendarEntity:
+                        _type_: 171
+                        customCalendarId: 2
+                        customCalendarName: NewCalendar
+                      customCalendarMonths:
+                      - month: 6
+                        year: 2017
+                        numberOfDays: 30
+                      - month: 7
+                        year: 2017
+                        numberOfDays: 31
+                      - month: 8
+                        year: 2017
+                        numberOfDays: 31
+                      - month: 9
+                        year: 2017
+                        numberOfDays: 30
+                      - month: 10
+                        year: 2017
+                        numberOfDays: 31
+                      - month: 11
+                        year: 2017
+                        numberOfDays: 30
+                      - month: 12
+                        year: 2017
+                        numberOfDays: 31
+                      - month: 1
+                        year: 2018
+                        numberOfDays: 31
+                      - month: 2
+                        year: 2018
+                        numberOfDays: 28
+                      - month: 3
+                        year: 2018
+                        numberOfDays: 31
+                      - month: 4
+                        year: 2018
+                        numberOfDays: 30
+                      - month: 5
+                        year: 2018
+                        numberOfDays: 31
+              examples:
+                Example 1:
+                  value:
+                    customCalendar:
+                    - defineCustomMonths: false
+                      isDefault: true
+                      calendarType: 1
+                      numberOfYears: 0
+                      beginYear: 0
+                      beginMonth: 1
+                      customCalendarEntity:
+                        _type_: 171
+                        customCalendarId: 1
+                        customCalendarName: Standard
+                    - beginDate: 1496289600
+                      defineCustomMonths: true
+                      isDefault: false
+                      calendarType: 3
+                      numberOfYears: 1
+                      beginYear: 2017
+                      beginMonth: 6
+                      customCalendarEntity:
+                        _type_: 171
+                        customCalendarId: 2
+                        customCalendarName: NewCalendar
+                      customCalendarMonths:
+                      - month: 6
+                        year: 2017
+                        numberOfDays: 30
+                      - month: 7
+                        year: 2017
+                        numberOfDays: 31
+                      - month: 8
+                        year: 2017
+                        numberOfDays: 31
+                      - month: 9
+                        year: 2017
+                        numberOfDays: 30
+                      - month: 10
+                        year: 2017
+                        numberOfDays: 31
+                      - month: 11
+                        year: 2017
+                        numberOfDays: 30
+                      - month: 12
+                        year: 2017
+                        numberOfDays: 31
+                      - month: 1
+                        year: 2018
+                        numberOfDays: 31
+                      - month: 2
+                        year: 2018
+                        numberOfDays: 28
+                      - month: 3
+                        year: 2018
+                        numberOfDays: 31
+                      - month: 4
+                        year: 2018
+                        numberOfDays: 30
+                      - month: 5
+                        year: 2018
+                        numberOfDays: 31
+    post:
+      deprecated: false
+      description: |-
+        This operation creates a custom calendar.
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_custom_calendar.htm)
+      operationId: Create a Custom Calendar
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Create a Custom Calendar
+      tags:
+      - Control Panel Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customCalendarOperationType:
+                  type: integer
+                customCalendar:
+                  type: object
+                  properties:
+                    beginDate:
+                      type: integer
+                    defineCustomMonths:
+                      type: boolean
+                    isDefault:
+                      type: boolean
+                    numberOfYears:
+                      type: integer
+                    beginYear:
+                      type: integer
+                    beginMonth:
+                      type: integer
+                    customCalendarEntity:
+                      type: object
+                      properties:
+                        customCalendarName:
+                          type: string
+                    customCalendarMonths:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          month:
+                            type: integer
+                          year:
+                            type: integer
+                          numberOfDays:
+                            type: integer
+              x-examples:
+                Example 1:
+                  customCalendarOperationType: 1
+                  customCalendar:
+                    beginDate: 1483246800
+                    defineCustomMonths: true
+                    isDefault: false
+                    numberOfYears: 1
+                    beginYear: 2017
+                    beginMonth: 1
+                    customCalendarEntity:
+                      customCalendarName: New_fiscalYear
+                    customCalendarMonths:
+                    - month: 1
+                      year: 2017
+                      numberOfDays: 15
+            examples:
+              Example 1:
+                value:
+                  customCalendarOperationType: 1
+                  customCalendar:
+                    beginDate: 1483246800
+                    defineCustomMonths: true
+                    isDefault: false
+                    numberOfYears: 1
+                    beginYear: 2017
+                    beginMonth: 1
+                    customCalendarEntity:
+                      customCalendarName: New_fiscalYear
+                    customCalendarMonths:
+                    - month: 1
+                      year: 2017
+                      numberOfDays: 15
+      responses:
+        '200':
+          description: OK
+  /CommServ/MetricsReporting:
+    get:
+      deprecated: false
+      description: |-
+        This operation returns the configuration for Cloud Metrics Reporting.
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_metrics_reporting.htm)
+      operationId: Cloud Metrics Reporting Configuration
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Cloud Metrics Reporting Configuration
+      tags:
+      - Control Panel Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  config:
+                    type: object
+                    properties:
+                      uploadFrequency:
+                        type: integer
+                      lastCollectionTime:
+                        type: integer
+                      useProxyClient:
+                        type: boolean
+                      uploadNow:
+                        type: integer
+                      dataCollectionTime:
+                        type: integer
+                      metricsReportPackageInstalled:
+                        type: boolean
+                      tieringActive:
+                        type: boolean
+                      randomization:
+                        type: integer
+                      commcellDiagUsage:
+                        type: boolean
+                      nextUploadTime:
+                        type: integer
+                      scriptDownloadTime:
+                        type: integer
+                      lastUploadTime:
+                        type: integer
+                      clientGroupList:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            clientGroupId:
+                              type: integer
+                      cloud:
+                        type: object
+                        properties:
+                          uploadURL:
+                            type: string
+                          downloadURL:
+                            type: string
+                          serviceList:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                flags:
+                                  type: integer
+                                description:
+                                  type: string
+                                enabled:
+                                  type: boolean
+                                service:
+                                  type: object
+                                  properties:
+                                    name:
+                                      type: string
+                                    id:
+                                      type: integer
+                          uploadUser:
+                            type: object
+                            properties: {}
+                      HttpServerInfo:
+                        type: object
+                        properties:
+                          RestrictQuery:
+                            type: object
+                            properties:
+                              QueryIds:
+                                type: string
+                          ScrubCommCells:
+                            type: object
+                            properties:
+                              CCIDs:
+                                type: string
+                x-examples:
+                  Example 1:
+                    config:
+                      uploadFrequency: 7
+                      lastCollectionTime: 1520374169
+                      useProxyClient: false
+                      uploadNow: 0
+                      dataCollectionTime: 25200
+                      metricsReportPackageInstalled: false
+                      tieringActive: false
+                      randomization: 0
+                      commcellDiagUsage: true
+                      nextUploadTime: 1520938800
+                      scriptDownloadTime: 1520364049
+                      lastUploadTime: 1520374169
+                      clientGroupList:
+                      - _type_: 28
+                        clientGroupId: -1
+                      cloud:
+                        uploadURL: ''
+                        downloadURL: ''
+                        serviceList:
+                        - flags: 0
+                          description: ''
+                          enabled: false
+                          service:
+                            name: Health Check
+                            id: 1
+                        - flags: 3
+                          description: ''
+                          enabled: false
+                          service:
+                            name: Post Upgrade Check
+                            id: 2
+                        - flags: 0
+                          description: ''
+                          enabled: false
+                          service:
+                            name: Activity
+                            id: 3
+                        - flags: 1
+                          description: ''
+                          enabled: false
+                          service:
+                            name: Upgrade Readiness
+                            id: 4
+                        - flags: 0
+                          description: ''
+                          enabled: false
+                          service:
+                            name: Audit
+                            id: 5
+                        - flags: 0
+                          description: ''
+                          enabled: false
+                          service:
+                            name: Charge Back
+                            id: 6
+                        - flags: 1
+                          description: ''
+                          enabled: true
+                          service:
+                            name: Proactive Support
+                            id: 7
+                        - flags: 1
+                          description: ''
+                          enabled: false
+                          service:
+                            name: Cloud Assist
+                            id: 8
+                        uploadUser: {}
+                      HttpServerInfo:
+                        RestrictQuery:
+                          QueryIds: ''
+                        ScrubCommCells:
+                          CCIDs: ''
+    post:
+      deprecated: false
+      description: |-
+        This operation updates the configuration for Cloud Metrics Reporting.
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_metrics_reporting.htm)
+      operationId: Update Cloud Metrics Reporting Configuration
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Update Cloud Metrics Reporting Configuration
+      tags:
+      - Control Panel Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: Success
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: string
+                    errorCode: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                config:
+                  type: object
+                  properties:
+                    commcellDiagUsage:
+                      type: boolean
+                    clientGroupList:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          _type_:
+                            type: integer
+                          clientGroupId:
+                            type: integer
+                    cloud:
+                      type: object
+                      properties:
+                        serviceList:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              flags:
+                                type: integer
+                              description:
+                                type: string
+                              enabled:
+                                type: boolean
+                              service:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+              x-examples:
+                Example 1:
+                  config:
+                    commcellDiagUsage: true
+                    clientGroupList:
+                    - _type_: 28
+                      clientGroupId: -1
+                    cloud:
+                      serviceList:
+                      - flags: 0
+                        description: ''
+                        enabled: true
+                        service:
+                          id: 1
+                      - flags: 0
+                        description: ''
+                        enabled: false
+                        service:
+                          id: 3
+                      - flags: 0
+                        description: ''
+                        enabled: true
+                        service:
+                          id: 5
+                      - flags: 0
+                        description: ''
+                        enabled: true
+                        service:
+                          id: 6
+            examples:
+              Example 1:
+                value:
+                  config:
+                    commcellDiagUsage: true
+                    clientGroupList:
+                    - _type_: 28
+                      clientGroupId: -1
+                    cloud:
+                      serviceList:
+                      - flags: 0
+                        description: ''
+                        enabled: true
+                        service:
+                          id: 1
+                      - flags: 0
+                        description: ''
+                        enabled: false
+                        service:
+                          id: 3
+                      - flags: 0
+                        description: ''
+                        enabled: true
+                        service:
+                          id: 5
+                      - flags: 0
+                        description: ''
+                        enabled: true
+                        service:
+                          id: 6
+  /Commcell/InternetOptions/Proxy:
+    get:
+      deprecated: false
+      description: |-
+        This operation returns the details associated with an HTTP proxy server.
+
+         [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_http_proxy_server.htm)
+      operationId: Get HTTP Proxy Server Details
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get HTTP Proxy Server Details
+      tags:
+      - Control Panel Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  config:
+                    type: object
+                    properties:
+                      useInternetGatewayPublic:
+                        type: boolean
+                      useIgDownloadSoftware:
+                        type: boolean
+                      proxyPort:
+                        type: integer
+                      useProxyAuthentication:
+                        type: boolean
+                      useHttpProxy:
+                        type: boolean
+                      usePassiveFTPConnection:
+                        type: boolean
+                      softwareDownloadProtocolType:
+                        type: integer
+                      proxyServer:
+                        type: string
+                      proxyType:
+                        type: integer
+                      useInternetGatewayPrivate:
+                        type: boolean
+                      proxyCredentials:
+                        type: object
+                        properties: {}
+                      proxyClient:
+                        type: object
+                        properties:
+                          clientId:
+                            type: integer
+                          clientName:
+                            type: string
+                          _type_:
+                            type: integer
+                x-examples:
+                  Example 1:
+                    config:
+                      useInternetGatewayPublic: false
+                      useIgDownloadSoftware: false
+                      proxyPort: 1025
+                      useProxyAuthentication: false
+                      useHttpProxy: false
+                      usePassiveFTPConnection: false
+                      softwareDownloadProtocolType: 1
+                      proxyServer: ''
+                      proxyType: 1
+                      useInternetGatewayPrivate: false
+                      proxyCredentials: {}
+                      proxyClient:
+                        clientId: 1
+                        clientName: ''
+                        _type_: 3
+              examples:
+                HTTP Proxy Server:
+                  value:
+                    config:
+                      useInternetGatewayPublic: false
+                      useIgDownloadSoftware: false
+                      proxyPort: 1025
+                      useProxyAuthentication: false
+                      useHttpProxy: false
+                      usePassiveFTPConnection: false
+                      softwareDownloadProtocolType: 1
+                      proxyServer: ''
+                      proxyType: 1
+                      useInternetGatewayPrivate: false
+                      proxyCredentials: {}
+                      proxyClient:
+                        clientId: 1
+                        clientName: ''
+                        _type_: 3
+    post:
+      deprecated: false
+      description: |-
+        This operation creates an HTTP proxy server.
+
+         [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_http_proxy_server.htm)
+      operationId: Create a HTTP Proxy Server
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                config:
+                  type: object
+                  properties:
+                    proxyPort:
+                      type: integer
+                    useProxyAuthentication:
+                      type: boolean
+                    useHttpProxy:
+                      type: boolean
+                    proxyServer:
+                      type: string
+                    proxyType:
+                      type: integer
+                    proxyCredentials:
+                      type: object
+                      properties:
+                        password:
+                          type: string
+                        userName:
+                          type: string
+                    proxyClient:
+                      type: object
+                      properties:
+                        clientId:
+                          type: integer
+                        clientName:
+                          type: string
+                        type:
+                          type: integer
+                        _type_:
+                          type: integer
+              x-examples:
+                Example 1:
+                  config:
+                    proxyPort: 1025
+                    useProxyAuthentication: true
+                    useHttpProxy: true
+                    proxyServer: Proxy001
+                    proxyType: 1
+                    proxyCredentials:
+                      password: cGFzc3dvcmQxMjM=
+                      userName: proxy_admin
+                    proxyClient:
+                      clientId: 1
+                      clientName: ''
+                      type: 0
+                      _type_: 3
+            examples:
+              Example 1:
+                value:
+                  config:
+                    proxyPort: 1025
+                    useProxyAuthentication: true
+                    useHttpProxy: true
+                    proxyServer: Proxy001
+                    proxyType: 1
+                    proxyCredentials:
+                      password: cGFzc3dvcmQxMjM=
+                      userName: proxy_admin
+                    proxyClient:
+                      clientId: 1
+                      clientName: ''
+                      type: 0
+                      _type_: 3
+        description: ''
+        required: true
+      summary: Create a HTTP Proxy Server
+      tags:
+      - Control Panel Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: Success
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: Success
+                    errorCode: 0
+  /EmailServer:
+    get:
+      deprecated: false
+      description: |-
+        This operation returns the configuration for the email server.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_email_server.htm)
+      operationId: Get Email Servers
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Email Servers
+      tags:
+      - Control Panel Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  enableSSL:
+                    type: boolean
+                  smtpServer:
+                    type: string
+                  smtpPort:
+                    type: integer
+                  useAuthentication:
+                    type: boolean
+                  maxMailServerSize:
+                    type: integer
+                  userInfo:
+                    type: object
+                    properties:
+                      userName:
+                        type: string
+                  senderInfo:
+                    type: object
+                    properties:
+                      senderName:
+                        type: string
+                      senderAddress:
+                        type: string
+                x-examples:
+                  Example 1:
+                    enableSSL: false
+                    smtpServer: '########'
+                    smtpPort: 25
+                    useAuthentication: false
+                    maxMailServerSize: 0
+                    userInfo:
+                      userName: ''
+                    senderInfo:
+                      senderName: Yash
+                      senderAddress: Commvault@######
+              examples:
+                GET EmailServer:
+                  value:
+                    enableSSL: false
+                    smtpServer: '########'
+                    smtpPort: 25
+                    useAuthentication: false
+                    maxMailServerSize: 0
+                    userInfo:
+                      userName: ''
+                    senderInfo:
+                      senderName: Yash
+                      senderAddress: Commvault@######
+    post:
+      deprecated: false
+      description: |-
+        This operation updates the configuration for the email server.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_email_server.htm)
+      operationId: Update Email Server
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Update Email Server
+      tags:
+      - Control Panel Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorString:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorString: ''
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value: {}
+        '400':
+          description: Bad Request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                SMTPServerName:
+                  type: string
+                SMTPPort:
+                  type: integer
+                senderEmail:
+                  type: string
+                senderName:
+                  type: string
+                encryptionAlgorithm:
+                  type: string
+                useAuthentication:
+                  type: boolean
+                username:
+                  type: string
+                password:
+                  type: string
+              x-examples:
+                Example 1:
+                  SMTPServerName: in
+                  SMTPPort: -78561097
+                  senderEmail: proident fugiat
+                  senderName: Excepteur Ut cupidatat
+                  encryptionAlgorithm: NONE
+                  useAuthentication: false
+                  username: aute sit
+                  password: ipsum enim
+            examples:
+              Example 1:
+                value:
+                  SMTPServerName: in
+                  SMTPPort: -78561097
+                  senderEmail: proident fugiat
+                  senderName: Excepteur Ut cupidatat
+                  encryptionAlgorithm: NONE
+                  useAuthentication: false
+                  username: aute sit
+                  password: ipsum enim
+  /commcell/properties:
+    get:
+      deprecated: false
+      description: This operation returns commcell properties.
+      operationId: Get Commcell properties
+      parameters:
+      - description: ''
+        in: header
+        name: authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      summary: Get Commcell properties
+      tags:
+      - Control Panel Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  commCellInfo:
+                    type: object
+                    properties:
+                      commCellEntity:
+                        type: object
+                        properties:
+                          _type_:
+                            type: integer
+                          commCellName:
+                            type: string
+                          commCellId:
+                            type: integer
+                      generalInfo:
+                        type: object
+                        properties:
+                          hostName:
+                            type: string
+                          enableSharedLaptopUsage:
+                            type: boolean
+                          enableTwoFactorAuthentication:
+                            type: boolean
+                          networkErrorRetryCount:
+                            type: integer
+                          useUPNForEmail:
+                            type: boolean
+                          flags:
+                            type: integer
+                          description:
+                            type: string
+                          networkErrorRetryFreq:
+                            type: integer
+                          autoClientOwnerAssignmentType:
+                            type: integer
+                          networkErrorRetryFlag:
+                            type: boolean
+                          allowUsersToEnablePasskey:
+                            type: boolean
+                          autoClientOwnerAssignmentValue:
+                            type: string
+                          enablePrivacy:
+                            type: boolean
+                          twoFactorAuthenticationInfo:
+                            type: object
+                            properties:
+                              mode:
+                                type: integer
+                          manageInactiveDevices:
+                            type: object
+                            properties:
+                              deleteInactiveDevices:
+                                type: boolean
+                              noOfDaysToMarkClientAsInactive:
+                                type: integer
+                          autoRetireDevices:
+                            type: object
+                            properties:
+                              retireDevicesAfterDays:
+                                type: integer
+                              forceDeleteDevicesAfterDays:
+                                type: integer
+                x-examples:
+                  Example 1:
+                    commCellInfo:
+                      commCellEntity:
+                        _type_: 1
+                        commCellName: bdcsrvtest05
+                        commCellId: 2
+                      generalInfo:
+                        hostName: BDCSRVTEST05.test.com
+                        enableSharedLaptopUsage: false
+                        enableTwoFactorAuthentication: false
+                        networkErrorRetryCount: 1
+                        useUPNForEmail: false
+                        flags: 0
+                        description: ''
+                        networkErrorRetryFreq: 1
+                        autoClientOwnerAssignmentType: 0
+                        networkErrorRetryFlag: true
+                        allowUsersToEnablePasskey: false
+                        autoClientOwnerAssignmentValue: 'Administrators,testadmin,'
+                        enablePrivacy: false
+                        twoFactorAuthenticationInfo:
+                          mode: 0
+                        manageInactiveDevices:
+                          deleteInactiveDevices: false
+                          noOfDaysToMarkClientAsInactive: 0
+                        autoRetireDevices:
+                          retireDevicesAfterDays: 183
+                          forceDeleteDevicesAfterDays: -1
+              examples:
+                Example 1:
+                  value:
+                    commCellInfo:
+                      commCellEntity:
+                        _type_: 1
+                        commCellName: bdcsrvtest05
+                        commCellId: 2
+                      generalInfo:
+                        hostName: BDCSRVTEST05.test.com
+                        enableSharedLaptopUsage: false
+                        enableTwoFactorAuthentication: false
+                        networkErrorRetryCount: 1
+                        useUPNForEmail: false
+                        flags: 0
+                        description: ''
+                        networkErrorRetryFreq: 1
+                        autoClientOwnerAssignmentType: 0
+                        networkErrorRetryFlag: true
+                        allowUsersToEnablePasskey: false
+                        autoClientOwnerAssignmentValue: 'Administrators,testadmin,'
+                        enablePrivacy: false
+                        twoFactorAuthenticationInfo:
+                          mode: 0
+                        manageInactiveDevices:
+                          deleteInactiveDevices: false
+                          noOfDaysToMarkClientAsInactive: 0
+                        autoRetireDevices:
+                          retireDevicesAfterDays: 183
+                          forceDeleteDevicesAfterDays: -1
+    put:
+      deprecated: false
+      description: |-
+        This operation is used to update commcell activity control options.
+
+        <h2>Request Body</h2>
+
+        <table><tr><td>Name</td><td>Description</td></tr><tr><td>activityType</td><td><p>values:- Backup : 1- Restore : 2- Aux Copy : 4- Data Aging : 16- Scheduler : 256- DDB Activity : 2048- Data Verification : 8192</p></td></tr><tr><td>enableActivityType</td><td><p>values:- true- false</p></td></tr><tr><td>enableAfterADelay</td><td><p>values:- true : Enable a time delay to auto resume (then use the dateTime section - if not using this please delete that section)- false : Do not auto resume</p></td></tr><tr><td>dateTime.time</td><td>time in epoch format of when the activity must get auto enabled</td></tr><tr><td>dateTime.TimeZoneID</td><td>The time zone of the time specified above. List of IDs and their timezones are available <a href="https://documentation.commvault.com/2022e/essential/49485_rest_api_time_zone_ids_and_names.html">here</a></td></tr></table>
+      operationId: Update Commcell Activity Control
+      parameters:
+      - description: ''
+        in: header
+        name: AuthToken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Update Commcell Activity Control
+      tags:
+      - Control Panel Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                commCellInfo:
+                  type: object
+                  properties:
+                    commCellActivityControlInfo:
+                      type: object
+                      properties:
+                        activityControlOptions:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              activityType:
+                                type: integer
+                              enableAfterADelay:
+                                type: boolean
+                              enableActivityType:
+                                type: boolean
+                              dateTime:
+                                type: object
+                                properties:
+                                  TimeZoneID:
+                                    type: integer
+                                  time:
+                                    type: integer
+              x-examples:
+                Example 1:
+                  commCellInfo:
+                    commCellActivityControlInfo:
+                      activityControlOptions:
+                      - activityType: 128
+                        enableAfterADelay: true
+                        enableActivityType: false
+                        dateTime:
+                          TimeZoneID: 42
+                          time: 1623066600
+            examples:
+              Disable All Job Activity:
+                value:
+                  commCellInfo:
+                    commCellActivityControlInfo:
+                      activityControlOptions:
+                      - activityType: 128
+                        enableAfterADelay: true
+                        enableActivityType: false
+                        dateTime:
+                          TimeZoneID: 42
+                          time: 1623066600
+              Enable All Job Activity:
+                value:
+                  commCellInfo:
+                    commCellActivityControlInfo:
+                      activityControlOptions:
+                      - activityType: 128
+                        enableAfterADelay: false
+                        enableActivityType: true
+              Disable Data backup:
+                value:
+                  commCellInfo:
+                    commCellActivityControlInfo:
+                      activityControlOptions:
+                      - activityType: 1
+                        enableAfterADelay: true
+                        enableActivityType: false
+                        dateTime:
+                          TimeZoneID: 42
+                          time: 1623077640
+              Enable Data backup:
+                value:
+                  commCellInfo:
+                    commCellActivityControlInfo:
+                      activityControlOptions:
+                      - activityType: 1
+                        enableAfterADelay: false
+                        enableActivityType: true
+              Disable Data restore:
+                value:
+                  commCellInfo:
+                    commCellActivityControlInfo:
+                      activityControlOptions:
+                      - activityType: 2
+                        enableAfterADelay: true
+                        enableActivityType: false
+                        dateTime:
+                          TimeZoneID: 42
+                          time: 1623077880
+              Enable Data restore:
+                value:
+                  commCellInfo:
+                    commCellActivityControlInfo:
+                      activityControlOptions:
+                      - activityType: 2
+                        enableAfterADelay: false
+                        enableActivityType: true
+              Disable Scheduler:
+                value:
+                  commCellInfo:
+                    commCellActivityControlInfo:
+                      activityControlOptions:
+                      - activityType: 256
+                        enableAfterADelay: true
+                        enableActivityType: false
+                        dateTime:
+                          TimeZoneID: 42
+                          time: 1623067140
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  processinginstructioninfo:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            value:
+                              type: string
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        errorCode:
+                          type: integer
+                x-examples:
+                  Example 1:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    response:
+                    - errorCode: 0
+  /CommServ/DataInterfacePairs:
+    get:
+      deprecated: false
+      description: |
+        This operation returns list of data interface pairs on the client.
+      operationId: Get DIPs for a client
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: ClientId
+        schema:
+          example: '{{clientId}}'
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get DIPs for a client
+      tags:
+      - Data Interface Pairs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ArchPipeLineList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        destGroupId:
+                          type: integer
+                        srcGroupId:
+                          type: integer
+                        isActive:
+                          type: integer
+                        destGroupEntity:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                        destClientEntity:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                        client2:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            id:
+                              type: integer
+                        client1:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            id:
+                              type: integer
+                        srcClientEntity:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                        srcGroupEntity:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    ArchPipeLineList:
+                    - destGroupId: 0
+                      srcGroupId: 9035
+                      isActive: 1
+                      destGroupEntity:
+                        _type_: 28
+                      destClientEntity:
+                        _type_: 3
+                      client2:
+                        name: 1.2.236.192
+                        id: 758
+                      client1:
+                        name: 172.*
+                        id: 0
+                      srcClientEntity:
+                        _type_: 3
+                      srcGroupEntity:
+                        _type_: 28
+              examples:
+                Example 1:
+                  value:
+                    ArchPipeLineList:
+                    - destGroupId: 0
+                      srcGroupId: 9035
+                      isActive: 1
+                      destGroupEntity:
+                        _type_: 28
+                      destClientEntity:
+                        _type_: 3
+                      client2:
+                        name: 1.2.236.192
+                        id: 758
+                      client1:
+                        name: 172.*
+                        id: 0
+                      srcClientEntity:
+                        _type_: 3
+                      srcGroupEntity:
+                        _type_: 28
+    post:
+      deprecated: false
+      description: This operation adds a data interface pair between two clients.
+      operationId: Add DIP's between two clients
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Add DIP's between two clients
+      tags:
+      - Data Interface Pairs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                operationType:
+                  type: integer
+                ArchPipeLineList:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      destGroupId:
+                        type: integer
+                      srcGroupId:
+                        type: integer
+                      isActive:
+                        type: integer
+                      client2:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          id:
+                            type: integer
+                      client1:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          id:
+                            type: integer
+              x-examples:
+                Example 1:
+                  operationType: 3
+                  ArchPipeLineList:
+                  - destGroupId: 0
+                    srcGroupId: 9035
+                    isActive: 1
+                    client2:
+                      name: 1.2.236.192
+                      id: 758
+                    client1:
+                      name: 172.*
+                      id: 0
+                  - destGroupId: 0
+                    srcGroupId: 9035
+                    isActive: 1
+                    client2:
+                      name: 1.2.236.192
+                      id: 758
+                    client1:
+                      name: No Default Interface
+                      id: 0
+            examples:
+              ADD multiple DIPs between client group and client:
+                value:
+                  operationType: 3
+                  ArchPipeLineList:
+                  - destGroupId: 0
+                    srcGroupId: 9035
+                    isActive: 1
+                    client2:
+                      name: 1.2.236.192
+                      id: 758
+                    client1:
+                      name: 172.*
+                      id: 0
+                  - destGroupId: 0
+                    srcGroupId: 9035
+                    isActive: 1
+                    client2:
+                      name: 1.2.236.192
+                      id: 758
+                    client1:
+                      name: No Default Interface
+                      id: 0
+              Add multiple DIPs between two client groups:
+                value:
+                  operationType: 3
+                  ArchPipeLineList:
+                  - destGroupId: 9036
+                    srcGroupId: 9035
+                    isActive: 1
+                    client2:
+                      name: 192.168.100.14/24
+                      id: 0
+                    client1:
+                      name: 172.16.*
+                      id: 0
+                  - destGroupId: 9036
+                    srcGroupId: 9035
+                    isActive: 1
+                    client2:
+                      name: 10.*
+                      id: 0
+                    client1:
+                      name: '*.backup.com'
+                      id: 0
+              Update DIPs between two clients:
+                value:
+                  operationType: 3
+                  ArchPipeLineList:
+                  - destGroupId: 0
+                    srcGroupId: 0
+                    isActive: 1
+                    client2:
+                      name: 172.17.8.212
+                      id: 50
+                    client1:
+                      name: 1.2.236.195
+                      id: 820
+              Update DIPs between two client groups:
+                value:
+                  operationType: 0
+                  ArchPipeLineList:
+                  - destGroupId: 0
+                    srcGroupId: 0
+                    isActive: 0
+                    client2:
+                      name: string
+                      id: 0
+                    client1:
+                      name: string
+                      id: 0
+              Update DIPs between client group and client:
+                value:
+                  operationType: 3
+                  ArchPipeLineList:
+                  - destGroupId: 0
+                    srcGroupId: 9035
+                    isActive: 1
+                    destGroupEntity: {}
+                    destClientEntity: {}
+                    client2:
+                      name: 1.2.236.192
+                      id: 758
+                    client1:
+                      name: 172.*
+                      id: 0
+                    srcClientEntity: {}
+                    srcGroupEntity: {}
+                  - destGroupId: 0
+                    srcGroupId: 9035
+                    isActive: 1
+                    destGroupEntity: {}
+                    destClientEntity: {}
+                    client2:
+                      name: 1.2.236.192
+                      id: 758
+                    client1:
+                      name: '*.com'
+                      id: 0
+                    srcClientEntity: {}
+                    srcGroupEntity: {}
+              DELETE single DIP:
+                value:
+                  operationType: 2
+                  ArchPipeLineList:
+                  - destGroupId: 9038
+                    srcGroupId: 4965
+                    isActive: 1
+                    destGroupEntity: {}
+                    destClientEntity: {}
+                    client2:
+                      name: '*.*'
+                      id: 0
+                    client1:
+                      name: '*.*'
+                      id: 0
+                    srcClientEntity: {}
+                    srcGroupEntity: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  warningCode:
+                    type: integer
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                  warningMessage:
+                    type: string
+                x-examples:
+                  Example 1:
+                    warningCode: 0
+                    errorMessage: Successful
+                    errorCode: 0
+                    warningMessage: ''
+  /CommServ/DataInterfacePairs/HostInterfaces:
+    get:
+      deprecated: false
+      description: This opertion returns list of interfaces for a client.
+      operationId: Get Host Interface List for client
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: hostId
+        schema:
+          example: '{{clientId}}'
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+        required: true
+      summary: Get Host Interface List for client
+      tags:
+      - Data Interface Pairs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  interfaces:
+                    type: array
+                    items:
+                      type: string
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    interfaces:
+                    - 1.2.236.192
+                    - 1.2.236.195
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    interfaces:
+                    - 1.2.236.192
+                    - 1.2.236.195
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+  /CommServ/SNMPV3Configuration:
+    get:
+      deprecated: false
+      description: This operation returns SNMPV3 configuration list under control panel.
+      operationId: Get SNMPV3 Configurations
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get SNMPV3 Configurations
+      tags:
+      - SNMPV3 configuration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  snmv3InfoList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        hostName:
+                          type: string
+                        privacyAlgorithm:
+                          type: integer
+                        id:
+                          type: integer
+                        encryptAlgorithm:
+                          type: integer
+                        userAccount:
+                          type: object
+                          properties:
+                            userName:
+                              type: string
+                x-examples:
+                  Example 1:
+                    snmv3InfoList:
+                    - hostName: test
+                      privacyAlgorithm: 1
+                      id: 3
+                      encryptAlgorithm: 1
+                      userAccount:
+                        userName: testadmin
+                    - hostName: test4
+                      privacyAlgorithm: 0
+                      id: 8
+                      encryptAlgorithm: 0
+                      userAccount:
+                        userName: ''
+    post:
+      deprecated: false
+      description: This operation is used to add an SNMPV3 configuration under control panel.
+      operationId: ADD SNMPV3 Configuration
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - example:
+                  snmv3ConfigOperationType: 1
+                  snmv3Info:
+                    encryptAlgorithm: 0
+                    hostName: test5
+                    privacyAlgorithm: 0
+                    privacyCredentials: false
+                    userAccount:
+                      password: '##########'
+                      userName: testadmin
+                title: ADDSNMPV3ConfigurationRequest
+                properties:
+                  snmv3ConfigOperationType:
+                    format: int32
+                    type: integer
+                  snmv3Info:
+                    example:
+                      encryptAlgorithm: 0
+                      hostName: test5
+                      privacyAlgorithm: 0
+                      privacyCredentials: false
+                      userAccount:
+                        password: '##########'
+                        userName: testadmin
+                    title: Snmv3Info
+                    type: object
+                    properties:
+                      encryptAlgorithm:
+                        format: int32
+                        type: integer
+                      hostName:
+                        type: string
+                      privacyAlgorithm:
+                        format: int32
+                        type: integer
+                      privacyCredentials:
+                        type: boolean
+                      userAccount:
+                        example:
+                          password: '##########'
+                          userName: testadmin
+                        title: UserAccount1
+                        type: object
+                        properties:
+                          password:
+                            type: string
+                          userName:
+                            type: string
+              type: object
+            examples:
+              ' ADD SNMPV3 Configuration':
+                value:
+                  snmv3ConfigOperationType: 1
+                  snmv3Info:
+                    hostName: test5
+                    privacyCredentials: false
+                    privacyAlgorithm: 0
+                    encryptAlgorithm: 0
+                    userAccount:
+                      password: '##########'
+                      userName: testadmin
+              UPDATE SNMPV3 Configuration:
+                value:
+                  snmv3ConfigOperationType: 3
+                  snmv3Info:
+                    hostName: test5new
+                    id: 35
+                    privacyCredentials: false
+                    privacyAlgorithm: 2
+                    encryptAlgorithm: 0
+                    userAccount:
+                      password: '##########'
+                      userName: testadmin
+              DELETE SNMPV3 Configuration:
+                value:
+                  snmv3ConfigOperationType: 2
+                  snmv3Info:
+                    id: 35
+                    privacyCredentials: false
+                    privacyAlgorithm: 2
+                    encryptAlgorithm: 0
+                    userAccount: {}
+        description: ''
+        required: true
+      summary: ADD SNMPV3 Configuration
+      tags:
+      - SNMPV3 configuration
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  snmv3ConfigOperationType:
+                    type: integer
+                  snmv3Info:
+                    type: object
+                    properties:
+                      hostName:
+                        type: string
+                      privacyCredentials:
+                        type: boolean
+                      privacyAlgorithm:
+                        type: integer
+                      encryptAlgorithm:
+                        type: integer
+                      userAccount:
+                        type: object
+                        properties:
+                          password:
+                            type: string
+                          userName:
+                            type: string
+                x-examples:
+                  Example 1:
+                    snmv3ConfigOperationType: 1
+                    snmv3Info:
+                      hostName: test5
+                      privacyCredentials: false
+                      privacyAlgorithm: 0
+                      encryptAlgorithm: 0
+                      userAccount:
+                        password: '##########'
+                        userName: testadmin
+              examples:
+                Example 1:
+                  value:
+                    processinginstructioninfo:
+                      attributes:
+                      - name: exitval
+                        value: '0'
+                    host:
+                      name: test5
+                      id: 35
+  /OperationWindow:
+    post:
+      deprecated: false
+      description: |-
+        This operation creates an operation rule.
+
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_operation_rule.htm)
+      operationId: Create an Operation Rule
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Create an Operation Rule
+      tags:
+      - Operation Window Operations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                operationWindow:
+                  type: object
+                  properties:
+                    endDate:
+                      type: integer
+                    name:
+                      type: string
+                    startDate:
+                      type: integer
+                    operations:
+                      type: array
+                      items:
+                        type: integer
+                    dayTime:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          startTime:
+                            type: integer
+                          endTime:
+                            type: integer
+                          dayOfWeek:
+                            type: array
+                            items:
+                              type: integer
+                entity:
+                  type: object
+                  properties:
+                    clientGroupId:
+                      type: integer
+                    clientId:
+                      type: integer
+              x-examples:
+                Example 1:
+                  operationWindow:
+                    endDate: 0
+                    name: Test_1
+                    startDate: 0
+                    operations:
+                    - 1
+                    - 2
+                    dayTime:
+                    - startTime: 46800
+                      endTime: 50400
+                      dayOfWeek:
+                      - 1
+                      - 2
+                  entity:
+                    clientGroupId: 0
+                    clientId: 20
+            examples:
+              Example 1:
+                value:
+                  operationWindow:
+                    endDate: 0
+                    name: Test_1
+                    startDate: 0
+                    operations:
+                    - 1
+                    - 2
+                    dayTime:
+                    - startTime: 46800
+                      endTime: 50400
+                      dayOfWeek:
+                      - 1
+                      - 2
+                  entity:
+                    clientGroupId: 0
+                    clientId: 20
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorCode:
+                        type: integer
+                  operationWindow:
+                    type: object
+                    properties:
+                      endDate:
+                        type: integer
+                      name:
+                        type: string
+                      ruleId:
+                        type: integer
+                      startDate:
+                        type: integer
+                      operations:
+                        type: array
+                        items:
+                          type: integer
+                      dayTime:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            startTime:
+                              type: integer
+                            endTime:
+                              type: integer
+                            dayOfWeek:
+                              type: array
+                              items:
+                                type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorCode: 0
+                    operationWindow:
+                      endDate: 0
+                      name: Test_1
+                      ruleId: 1
+                      startDate: 0
+                      operations:
+                      - 1
+                      - 2
+                      dayTime:
+                      - startTime: 46800
+                        endTime: 50400
+                        dayOfWeek:
+                        - 1
+                        - 2
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      errorCode: 0
+                    operationWindow:
+                      endDate: 0
+                      name: Test_1
+                      ruleId: 1
+                      startDate: 0
+                      operations:
+                      - 1
+                      - 2
+                      dayTime:
+                      - startTime: 46800
+                        endTime: 50400
+                        dayOfWeek:
+                        - 1
+                        - 2
+    put:
+      deprecated: false
+      description: |-
+        This operation updates an operation rule.
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/put_operation_rule.htm)
+      operationId: Update Operation Rules
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Update Operation Rules
+      tags:
+      - Operation Window Operations
+      requestBody:
+        content:
+          application/xml:
+            examples:
+              Example 1:
+                value: "<Api_UpdateOperationWindowReq>\n<operationWindow name=\"change_operationRule123\" ruleId=\"10\" startDate=\"1520571600\" endDate=\"1520658000\" ruleEnabled=\"1\">\n\t <operations val=\"1\"/>\n\t <operations val=\"2\"/>\n\t <dayTime startTime=\"32400\" endTime=\"36000\">\n            <dayOfWeek val=\"1\"/>\n            <dayOfWeek val=\"2\"/>\n            <dayOfWeek val=\"3\"/>\n      </dayTime>\n    </operationWindow>\n</Api_UpdateOperationWindowReq>\n"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorCode:
+                        type: integer
+                  operationWindow:
+                    type: object
+                    properties:
+                      ruleEnabled:
+                        type: boolean
+                      endDate:
+                        type: integer
+                      name:
+                        type: string
+                      ruleId:
+                        type: integer
+                      startDate:
+                        type: integer
+                      operations:
+                        type: array
+                        items:
+                          type: integer
+                      dayTime:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            startTime:
+                              type: integer
+                            endTime:
+                              type: integer
+                            dayOfWeek:
+                              type: array
+                              items:
+                                type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorCode: 0
+                    operationWindow:
+                      ruleEnabled: true
+                      endDate: 1520658000
+                      name: change_operationRule123
+                      ruleId: 10
+                      startDate: 1520571600
+                      operations:
+                      - 1
+                      - 2
+                      dayTime:
+                      - startTime: 32400
+                        endTime: 36000
+                        dayOfWeek:
+                        - 1
+                        - 2
+                        - 3
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      errorCode: 0
+                    operationWindow:
+                      ruleEnabled: true
+                      endDate: 1520658000
+                      name: change_operationRule123
+                      ruleId: 10
+                      startDate: 1520571600
+                      operations:
+                      - 1
+                      - 2
+                      dayTime:
+                      - startTime: 32400
+                        endTime: 36000
+                        dayOfWeek:
+                        - 1
+                        - 2
+                        - 3
+  /OperationWindow/IgnoreHigherLevelRules/Action/Disable:
+    put:
+      deprecated: false
+      description: This API is used disable 'ignore operation window at higher levels'
+      operationId: Disable ignore higher-level operation window rules feature
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: clientId
+        schema:
+          example: '{{clientId}}'
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: appTypeId
+        schema:
+          example: '{{appId}}'
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: instanceId
+        schema:
+          example: '{{instanceId}}'
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: backupsetId
+        schema:
+          example: '{{backupsetId}}'
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: subclientId
+        schema:
+          example: '{{subclientId}}'
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Disable ignore higher-level operation window rules feature
+      tags:
+      - Operation Window Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      errorCode: 0
+  /OperationWindow/IgnoreHigherLevelRules/Action/Enable:
+    put:
+      deprecated: false
+      description: This API is used enable 'ignore operation window at higher levels'
+      operationId: Enable ignore higher-level operation window rules feature
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: clientId
+        schema:
+          example: '{{clientId}}'
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: appTypeId
+        schema:
+          example: '{{appId}}'
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: instanceId
+        schema:
+          example: '{{instanceId}}'
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: backupsetId
+        schema:
+          example: '{{backupsetId}}'
+          type: string
+      - description: ''
+        explode: true
+        in: query
+        name: subclientId
+        schema:
+          example: '{{subclientId}}'
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Enable ignore higher-level operation window rules feature
+      tags:
+      - Operation Window Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorCode: 0
+  /OperationWindow/OpWindowList:
+    get:
+      deprecated: false
+      description: |-
+        This operation returns a list of operation rules.
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_operation_rule.htm)
+      operationId: Get Operation Rules
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: clientId
+        schema:
+          example: '{{clientId}}'
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Operation Rules
+      tags:
+      - Operation Window Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorCode:
+                        type: integer
+                  operationWindow:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ruleEnabled:
+                          type: boolean
+                        endDate:
+                          type: integer
+                        level:
+                          type: integer
+                        name:
+                          type: string
+                        ruleId:
+                          type: integer
+                        startDate:
+                          type: integer
+                        operations:
+                          type: array
+                          items:
+                            type: integer
+                        dayTime:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              startTime:
+                                type: integer
+                              endTime:
+                                type: integer
+                              dayOfWeek:
+                                type: array
+                                items:
+                                  type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorCode: 0
+                    operationWindow:
+                    - ruleEnabled: true
+                      endDate: 1520312400
+                      level: 2
+                      name: ClientLevelwindow
+                      ruleId: 1
+                      startDate: 1520312400
+                      operations:
+                      - 1
+                      - 2
+                      dayTime:
+                      - startTime: 28800
+                        endTime: 64800
+                        dayOfWeek:
+                        - 6
+              examples:
+                'Example 1 /OperationWindow/OpWindowList?clientId={{clientId}}':
+                  value:
+                    error:
+                      errorCode: 0
+                    operationWindow:
+                    - ruleEnabled: true
+                      endDate: 1520312400
+                      level: 2
+                      name: ClientLevelwindow
+                      ruleId: 1
+                      startDate: 1520312400
+                      operations:
+                      - 1
+                      - 2
+                      dayTime:
+                      - startTime: 28800
+                        endTime: 64800
+                        dayOfWeek:
+                        - 6
+                'OperationWindow/OpWindowList?clientId={{clientId}}&appTypeId=33&backupsetId={{backupsetId}}&subclientId={{subclientId}}&':
+                  value:
+                    error:
+                      errorCode: 0
+                    operationWindow:
+                    - ruleEnabled: true
+                      endDate: 0
+                      level: 0
+                      name: string
+                      ruleId: 0
+                      startDate: 0
+                      operations:
+                      - 0
+                      dayTime:
+                      - startTime: 0
+                        endTime: 0
+                        dayOfWeek:
+                        - 0
+  '/OperationWindow/{ruleId}':
+    delete:
+      deprecated: false
+      description: |-
+        This operation deletes an operation rule.
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/delete_operation_rule.htm)
+      operationId: Delete Operation Rule
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: ruleId
+        required: true
+        schema:
+          type: string
+      summary: Delete Operation Rule
+      tags:
+      - Operation Window Operations
+      responses:
+        '200':
+          description: OK
+    get:
+      deprecated: false
+      description: This API is used to get information on the operation window by supplying the ruleId
+      operationId: Get Operation Window Details
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          enum:
+          - application/json
+          example: application/json
+          type: string
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      - description: ''
+        in: path
+        name: ruleId
+        required: true
+        schema:
+          type: string
+      summary: Get Operation Window Details
+      tags:
+      - Operation Window Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorCode:
+                        type: integer
+                  operationWindow:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ruleEnabled:
+                          type: boolean
+                        doNotSubmitJob:
+                          type: boolean
+                        endDate:
+                          type: integer
+                        level:
+                          type: integer
+                        name:
+                          type: string
+                        ruleId:
+                          type: integer
+                        startDate:
+                          type: integer
+                        operations:
+                          type: array
+                          items:
+                            type: integer
+                        company:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                            providerId:
+                              type: integer
+                            providerDomainName:
+                              type: string
+                        entity:
+                          type: object
+                          properties:
+                            schedulePolicyId:
+                              type: integer
+                            subclientId:
+                              type: integer
+                            clientGroupId:
+                              type: integer
+                            applicationId:
+                              type: integer
+                            clientName:
+                              type: string
+                            backupsetId:
+                              type: integer
+                            commCellName:
+                              type: string
+                            instanceId:
+                              type: integer
+                            schedulePolicyName:
+                              type: string
+                            clientId:
+                              type: integer
+                            subclientName:
+                              type: string
+                            backupsetName:
+                              type: string
+                            instanceName:
+                              type: string
+                            clientGroupName:
+                              type: string
+                            _type_:
+                              type: integer
+                            appName:
+                              type: string
+                        dayTime:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              startTime:
+                                type: integer
+                              endTime:
+                                type: integer
+                              dayOfWeek:
+                                type: array
+                                items:
+                                  type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorCode: 0
+                    operationWindow:
+                    - ruleEnabled: true
+                      doNotSubmitJob: false
+                      endDate: 1521691200
+                      level: 7
+                      name: ''
+                      ruleId: 1
+                      startDate: 1520485200
+                      operations:
+                      - 1
+                      - 2
+                      company:
+                        _type_: 61
+                        providerId: 0
+                        providerDomainName: ''
+                      entity:
+                        schedulePolicyId: 0
+                        subclientId: 0
+                        clientGroupId: 0
+                        applicationId: 0
+                        clientName: ''
+                        backupsetId: 0
+                        commCellName: orange
+                        instanceId: 0
+                        schedulePolicyName: ''
+                        clientId: 2
+                        subclientName: ''
+                        backupsetName: ''
+                        instanceName: ''
+                        clientGroupName: ''
+                        _type_: 0
+                        appName: ''
+                      dayTime:
+                      - startTime: 46800
+                        endTime: 50400
+                        dayOfWeek:
+                        - 1
+                        - 2
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      errorCode: 0
+                    operationWindow:
+                    - ruleEnabled: true
+                      doNotSubmitJob: false
+                      endDate: 1521691200
+                      level: 7
+                      name: ''
+                      ruleId: 1
+                      startDate: 1520485200
+                      operations:
+                      - 1
+                      - 2
+                      company:
+                        _type_: 61
+                        providerId: 0
+                        providerDomainName: ''
+                      entity:
+                        schedulePolicyId: 0
+                        subclientId: 0
+                        clientGroupId: 0
+                        applicationId: 0
+                        clientName: ''
+                        backupsetId: 0
+                        commCellName: orange
+                        instanceId: 0
+                        schedulePolicyName: ''
+                        clientId: 2
+                        subclientName: ''
+                        backupsetName: ''
+                        instanceName: ''
+                        clientGroupName: ''
+                        _type_: 0
+                        appName: ''
+                      dayTime:
+                      - startTime: 46800
+                        endTime: 50400
+                        dayOfWeek:
+                        - 1
+                        - 2
+  /CommCell/Credentials:
+    get:
+      deprecated: false
+      description: This operation is used to get all user credentials under credentials manager in control panel.
+      operationId: Get Credentials
+      parameters:
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get Credentials
+      tags:
+      - Credentials Manager
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  credentialRecordInfo:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        recordType:
+                          type: integer
+                        description:
+                          type: string
+                        credentialRecord:
+                          type: object
+                          properties:
+                            credentialId:
+                              type: integer
+                            credentialName:
+                              type: string
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    credentialRecordInfo:
+                    - recordType: 2
+                      description: test unix
+                      credentialRecord:
+                        credentialId: 2
+                        credentialName: Test2
+                    - recordType: 1
+                      description: Test credential manager
+                      credentialRecord:
+                        credentialId: 3
+                        credentialName: Test
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    credentialRecordInfo:
+                    - recordType: 2
+                      description: test unix
+                      credentialRecord:
+                        credentialId: 2
+                        credentialName: Test2
+                    - recordType: 1
+                      description: Test credential manager
+                      credentialRecord:
+                        credentialId: 3
+                        credentialName: Test
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+    post:
+      deprecated: false
+      description: This operation is used to create a user credential under credentials manager in control panel.
+      operationId: Create User Credential
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Create User Credential
+      tags:
+      - Credentials Manager
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  records:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        recordType:
+                          type: integer
+                        credentialRecord:
+                          type: object
+                          properties:
+                            credentialId:
+                              type: integer
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    records:
+                    - recordType: 1
+                      credentialRecord:
+                        credentialId: 5
+                    error:
+                      errorMessage: Successful!
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    records:
+                    - recordType: 1
+                      credentialRecord:
+                        credentialId: 5
+                    error:
+                      errorMessage: Successful!
+                      errorCode: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                credentialRecordInfo:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      recordType:
+                        type: integer
+                      description:
+                        type: string
+                      additionalInformation:
+                        type: object
+                        properties:
+                          dbName:
+                            type: string
+                          connectString:
+                            type: string
+                          azureCredInfo:
+                            type: object
+                            properties:
+                              environment:
+                                type: string
+                              tenantId:
+                                type: string
+                              applicationId:
+                                type: string
+                              subscriptionId:
+                                type: string
+                      securityAssociations:
+                        type: object
+                        properties:
+                          associationsOperationType:
+                            type: integer
+                          associations:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                userOrGroup:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      entityTypeName:
+                                        type: string
+                                      userGroupName:
+                                        type: string
+                                      userGroupId:
+                                        type: integer
+                      credentialRecord:
+                        type: object
+                        properties:
+                          credentialName:
+                            type: string
+                      record:
+                        type: object
+                        properties:
+                          password:
+                            type: string
+                          userName:
+                            type: string
+                      createAs:
+                        type: object
+                        properties:
+                          user:
+                            type: object
+                            properties: {}
+                          userGroup:
+                            type: object
+                            properties:
+                              userGroupId:
+                                type: integer
+                              userGroupName:
+                                type: string
+              x-examples:
+                Example 1:
+                  credentialRecordInfo:
+                  - recordType: 1
+                    description: Test credential manager
+                    additionalInformation:
+                      dbName: ''
+                      connectString: ''
+                      azureCredInfo:
+                        environment: ''
+                        tenantId: ''
+                        applicationId: ''
+                        subscriptionId: ''
+                    securityAssociations:
+                      associationsOperationType: 1
+                      associations:
+                      - userOrGroup:
+                        - entityTypeName: USERGROUP_ENTITY
+                          userGroupName: master
+                          userGroupId: 1
+                    credentialRecord:
+                      credentialName: Test
+                    record:
+                      password: WFhYWFhYWFg=
+                      userName: administrator
+                    createAs:
+                      user: {}
+                      userGroup:
+                        userGroupId: 1
+                        userGroupName: master
+            examples:
+              Credentials:
+                value:
+                  credentialRecordInfo:
+                  - recordType: 1
+                    description: Test credential manager
+                    additionalInformation:
+                      dbName: ''
+                      connectString: ''
+                      azureCredInfo:
+                        environment: ''
+                        tenantId: ''
+                        applicationId: ''
+                        subscriptionId: ''
+                    securityAssociations:
+                      associationsOperationType: 1
+                      associations:
+                      - userOrGroup:
+                        - entityTypeName: USERGROUP_ENTITY
+                          userGroupName: master
+                          userGroupId: 1
+                    credentialRecord:
+                      credentialName: Test
+                    record:
+                      password: WFhYWFhYWFg=
+                      userName: administrator
+                    createAs:
+                      user: {}
+                      userGroup:
+                        userGroupId: 1
+                        userGroupName: master
+    put:
+      deprecated: false
+      description: This operation is used to update an existing user credential under credentials manager in control panel.
+      operationId: Update Credentials
+      parameters:
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Update Credentials
+      tags:
+      - Credentials Manager
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                credentialRecordInfo:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      credentialRecord:
+                        type: object
+                        properties:
+                          credentialId:
+                            type: integer
+                          credentialName:
+                            type: string
+                      createAs:
+                        type: object
+                        properties:
+                          user:
+                            type: object
+                            properties:
+                              user:
+                                type: object
+                                properties:
+                                  userId:
+                                    type: integer
+                                  userName:
+                                    type: string
+                      record:
+                        type: object
+                        properties:
+                          userName:
+                            type: string
+                          password:
+                            type: string
+                      recordType:
+                        type: string
+                      description:
+                        type: string
+              x-examples:
+                Example 1:
+                  credentialRecordInfo:
+                  - credentialRecord:
+                      credentialId: 5
+                      credentialName: devemc_yashvipuser
+                    createAs:
+                      user:
+                        user:
+                          userId: 1
+                          userName: testadmin
+                    record:
+                      userName: devemc\yashvipuser
+                      password: QWRtaW4hMTI=
+                    recordType: WINDOWSACCOUNT
+                    description: dev emc yash vip user
+            examples:
+              Example 1:
+                value:
+                  credentialRecordInfo:
+                  - credentialRecord:
+                      credentialId: 5
+                      credentialName: devemc_yashvipuser
+                    createAs:
+                      user:
+                        user:
+                          userId: 1
+                          userName: testadmin
+                    record:
+                      userName: devemc/yashvipuser
+                      password: QWRtaW4hMTI=
+                    recordType: WINDOWSACCOUNT
+                    description: dev emc yash vip user
+  /CommCell/Credentials/action/delete:
+    post:
+      deprecated: false
+      description: This operation is used to delete an existing user credential under credentials manager in control panel
+      operationId: Delete Credentials
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - example:
+                  credentialRecordInfo:
+                  - credentialRecord:
+                      credentialName: '{{credentialName}}'
+                    description: ''
+                    recordType: 1
+                title: DeleteCredentialsRequest
+                type: object
+                properties:
+                  credentialRecordInfo:
+                    type: array
+                    items:
+                      example:
+                        credentialRecord:
+                          credentialName: '{{credentialName}}'
+                        description: ''
+                        recordType: 1
+                      title: CredentialRecordInfo6
+                      type: object
+                      properties:
+                        credentialRecord:
+                          example:
+                            credentialName: devemc_yashvipuser
+                          title: CredentialRecord4
+                          type: object
+                          properties:
+                            credentialName:
+                              type: string
+                        description:
+                          type: string
+                        recordType:
+                          format: int32
+                          type: integer
+              - example:
+                  credentialRecordInfo:
+                  - credentialRecord:
+                      credentialName: '{{credentialName}}'
+                    description: ''
+                    recordType: 1
+            examples:
+              Example 1:
+                value:
+                  credentialRecordInfo:
+                  - recordType: 1
+                    description: ''
+                    credentialRecord:
+                      credentialId: 5
+        description: ''
+        required: true
+      summary: Delete Credentials
+      tags:
+      - Credentials Manager
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorMessage: Successful!
+                      errorCode: 0
+  '/CommCell/Credentials/{credentialName}':
+    get:
+      deprecated: false
+      description: This operation is used to get details of a particular user credential under credentials manager in control panel.
+      operationId: Get Credentials Details
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: propertyLevel
+        schema:
+          example: 30
+          format: int32
+          type: integer
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: credentialName
+        required: true
+        schema:
+          type: string
+      summary: Get Credentials Details
+      tags:
+      - Credentials Manager
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  credentialRecordInfo:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        recordType:
+                          type: integer
+                        description:
+                          type: string
+                        createdTime:
+                          type: integer
+                        additionalInformation:
+                          type: object
+                          properties:
+                            dbName:
+                              type: string
+                            connectString:
+                              type: string
+                            azureCredInfo:
+                              type: object
+                              properties:
+                                environment:
+                                  type: string
+                                tenantId:
+                                  type: string
+                                applicationId:
+                                  type: string
+                                subscriptionId:
+                                  type: string
+                        securityAssociations:
+                          type: object
+                          properties:
+                            associations:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  userOrGroup:
+                                    type: array
+                                    items:
+                                      type: object
+                                      properties:
+                                        userId:
+                                          type: integer
+                                        _type_:
+                                          type: integer
+                                        userName:
+                                          type: string
+                                        userGroupName:
+                                          type: string
+                                        userGroupId:
+                                          type: integer
+                                  properties:
+                                    type: object
+                                    properties:
+                                      isCreatorAssociation:
+                                        type: boolean
+                                      categoryPermission:
+                                        type: object
+                                        properties: {}
+                            ownerAssociations:
+                              type: object
+                              properties: {}
+                        credentialRecord:
+                          type: object
+                          properties:
+                            credentialId:
+                              type: integer
+                            credentialName:
+                              type: string
+                        record:
+                          type: object
+                          properties:
+                            userName:
+                              type: string
+                        flags:
+                          type: object
+                          properties:
+                            hasAzureKeyVaultAccess:
+                              type: boolean
+                            isWorkflowRecord:
+                              type: boolean
+                            hasAzureKeyVaultStorageAccess:
+                              type: boolean
+                            hasAzureRSVAccess:
+                              type: boolean
+                        createAs:
+                          type: object
+                          properties:
+                            userGroup:
+                              type: object
+                              properties:
+                                userGroupId:
+                                  type: integer
+                                _type_:
+                                  type: integer
+                                userGroupName:
+                                  type: string
+                  error:
+                    type: object
+                    properties:
+                      errorMessage:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    credentialRecordInfo:
+                    - recordType: 2
+                      description: test unix
+                      createdTime: 1539691717
+                      additionalInformation:
+                        dbName: ''
+                        connectString: ''
+                        azureCredInfo:
+                          environment: ''
+                          tenantId: ''
+                          applicationId: ''
+                          subscriptionId: ''
+                      securityAssociations:
+                        associations:
+                        - userOrGroup:
+                          - userId: 1
+                            _type_: 13
+                            userName: testadmin
+                          properties:
+                            isCreatorAssociation: true
+                            categoryPermission: {}
+                        ownerAssociations: {}
+                      credentialRecord:
+                        credentialId: 2
+                        credentialName: Test2
+                      record:
+                        userName: root
+                      flags:
+                        hasAzureKeyVaultAccess: false
+                        isWorkflowRecord: false
+                        hasAzureKeyVaultStorageAccess: false
+                        hasAzureRSVAccess: false
+                      createAs:
+                        userGroup:
+                          userGroupId: 1
+                          _type_: 15
+                          userGroupName: master
+                    - recordType: 1
+                      description: Test credential manager
+                      createdTime: 1539751050
+                      additionalInformation:
+                        dbName: ''
+                        connectString: ''
+                        azureCredInfo:
+                          environment: ''
+                          tenantId: ''
+                          applicationId: ''
+                          subscriptionId: ''
+                      securityAssociations:
+                        associations:
+                        - userOrGroup:
+                          - userGroupName: master
+                            userGroupId: 1
+                            _type_: 15
+                          properties:
+                            isCreatorAssociation: true
+                            categoryPermission: {}
+                        ownerAssociations: {}
+                      credentialRecord:
+                        credentialId: 3
+                        credentialName: Test
+                      record:
+                        userName: administrator
+                      flags:
+                        hasAzureKeyVaultAccess: false
+                        isWorkflowRecord: false
+                        hasAzureKeyVaultStorageAccess: false
+                        hasAzureRSVAccess: false
+                      createAs:
+                        userGroup:
+                          userGroupId: 1
+                          _type_: 15
+                          userGroupName: master
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    credentialRecordInfo:
+                    - recordType: 2
+                      description: test unix
+                      createdTime: 1539691717
+                      additionalInformation:
+                        dbName: ''
+                        connectString: ''
+                        azureCredInfo:
+                          environment: ''
+                          tenantId: ''
+                          applicationId: ''
+                          subscriptionId: ''
+                      securityAssociations:
+                        associations:
+                        - userOrGroup:
+                          - userId: 1
+                            _type_: 13
+                            userName: testadmin
+                          properties:
+                            isCreatorAssociation: true
+                            categoryPermission: {}
+                        ownerAssociations: {}
+                      credentialRecord:
+                        credentialId: 2
+                        credentialName: Test2
+                      record:
+                        userName: root
+                      flags:
+                        hasAzureKeyVaultAccess: false
+                        isWorkflowRecord: false
+                        hasAzureKeyVaultStorageAccess: false
+                        hasAzureRSVAccess: false
+                      createAs:
+                        userGroup:
+                          userGroupId: 1
+                          _type_: 15
+                          userGroupName: master
+                    - recordType: 1
+                      description: Test credential manager
+                      createdTime: 1539751050
+                      additionalInformation:
+                        dbName: ''
+                        connectString: ''
+                        azureCredInfo:
+                          environment: ''
+                          tenantId: ''
+                          applicationId: ''
+                          subscriptionId: ''
+                      securityAssociations:
+                        associations:
+                        - userOrGroup:
+                          - userGroupName: master
+                            userGroupId: 1
+                            _type_: 15
+                          properties:
+                            isCreatorAssociation: true
+                            categoryPermission: {}
+                        ownerAssociations: {}
+                      credentialRecord:
+                        credentialId: 3
+                        credentialName: Test
+                      record:
+                        userName: administrator
+                      flags:
+                        hasAzureKeyVaultAccess: false
+                        isWorkflowRecord: false
+                        hasAzureKeyVaultStorageAccess: false
+                        hasAzureRSVAccess: false
+                      createAs:
+                        userGroup:
+                          userGroupId: 1
+                          _type_: 15
+                          userGroupName: master
+                    error:
+                      errorMessage: ''
+                      errorCode: 0
+  /v2/Commserv/DataInterfacePairs:
+    get:
+      summary: DIPs between two entities
+      tags:
+      - Data Interface Pairs
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ArchPipeLineList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        destGroupId:
+                          type: integer
+                        srcGroupId:
+                          type: integer
+                        isActive:
+                          type: integer
+                        destGroupEntity:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                        destClientEntity:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                        client2:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            id:
+                              type: integer
+                        client1:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            id:
+                              type: integer
+                        srcClientEntity:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                        srcGroupEntity:
+                          type: object
+                          properties:
+                            _type_:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    ArchPipeLineList:
+                    - destGroupId: 9036
+                      srcGroupId: 9035
+                      isActive: 1
+                      destGroupEntity:
+                        _type_: 28
+                      destClientEntity:
+                        _type_: 3
+                      client2:
+                        name: 192.168.100.14/24
+                        id: 0
+                      client1:
+                        name: 172.16.*
+                        id: 0
+                      srcClientEntity:
+                        _type_: 3
+                      srcGroupEntity:
+                        _type_: 28
+                    - destGroupId: 9036
+                      srcGroupId: 9035
+                      isActive: 1
+                      destGroupEntity:
+                        _type_: 28
+                      destClientEntity:
+                        _type_: 3
+                      client2:
+                        name: 10.*
+                        id: 0
+                      client1:
+                        name: '*.backup.com'
+                        id: 0
+                      srcClientEntity:
+                        _type_: 3
+                      srcGroupEntity:
+                        _type_: 28
+              examples:
+                DIPs between two client groups:
+                  value:
+                    ArchPipeLineList:
+                    - destGroupId: 9036
+                      srcGroupId: 9035
+                      isActive: 1
+                      destGroupEntity:
+                        _type_: 28
+                      destClientEntity:
+                        _type_: 3
+                      client2:
+                        name: 192.168.100.14/24
+                        id: 0
+                      client1:
+                        name: 172.16.*
+                        id: 0
+                      srcClientEntity:
+                        _type_: 3
+                      srcGroupEntity:
+                        _type_: 28
+                    - destGroupId: 9036
+                      srcGroupId: 9035
+                      isActive: 1
+                      destGroupEntity:
+                        _type_: 28
+                      destClientEntity:
+                        _type_: 3
+                      client2:
+                        name: 10.*
+                        id: 0
+                      client1:
+                        name: '*.backup.com'
+                        id: 0
+                      srcClientEntity:
+                        _type_: 3
+                      srcGroupEntity:
+                        _type_: 28
+                DIPs between two clients:
+                  value:
+                    ArchPipeLineList:
+                    - destGroupId: 0
+                      srcGroupId: 0
+                      isActive: 1
+                      destGroupEntity:
+                        _type_: 28
+                      destClientEntity:
+                        _type_: 3
+                      client2:
+                        name: 172.17.8.212
+                        id: 50
+                      client1:
+                        name: 1.2.236.195
+                        id: 820
+                      srcClientEntity:
+                        _type_: 3
+                      srcGroupEntity:
+                        _type_: 28
+      operationId: get-v2-Commserv-DataInterfacePairs
+      description: |
+        This operation returns data interface pairs configured between two entities.
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: SourceClientGroupId
+      - schema:
+          type: string
+        in: query
+        name: DestClientId
+      - schema:
+          type: string
+        in: query
+        name: SourceClientId
+      - schema:
+          type: string
+        in: query
+        name: DestClientGroupId

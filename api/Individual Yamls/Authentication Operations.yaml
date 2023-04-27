@@ -1,0 +1,306 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Authentication Operations
+paths:
+  /Login:
+    post:
+      deprecated: false
+      operationId: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - example:
+                  commserver: ''
+                  domain: ''
+                  mode: 4
+                  password: '{{TenantPassword}}'
+                  username: '{{TenantUserName}}'
+                title: TenanttestadminLoginRequest
+                properties:
+                  commserver:
+                    type: string
+                  domain:
+                    type: string
+                  mode:
+                    format: int32
+                    type: integer
+                  password:
+                    type: string
+                  username:
+                    type: string
+              type: object
+            examples: {}
+        description: ''
+        required: true
+      summary: Login
+      tags:
+      - Authentication Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  aliasName:
+                    type: string
+                  userGUID:
+                    type: string
+                  loginAttempts:
+                    type: integer
+                  remainingLockTime:
+                    type: integer
+                  smtpAddress:
+                    type: string
+                  userName:
+                    type: string
+                  providerType:
+                    type: integer
+                  ccn:
+                    type: integer
+                  token:
+                    type: string
+                  capability:
+                    type: integer
+                  forcePasswordChange:
+                    type: boolean
+                  isAccountLocked:
+                    type: boolean
+                  ownerOrganization:
+                    type: object
+                    properties:
+                      providerId:
+                        type: integer
+                      providerDomainName:
+                        type: string
+                  providerOrganization:
+                    type: object
+                    properties:
+                      providerId:
+                        type: integer
+                      providerDomainName:
+                        type: string
+                  errList:
+                    type: array
+                    items:
+                      type: object
+                      properties: {}
+                x-examples:
+                  Example 1:
+                    aliasName: '1'
+                    userGUID: AC3E5333-4585-4EFD-B566-4654C5C88C27
+                    loginAttempts: 0
+                    remainingLockTime: 0
+                    smtpAddress: email@domain.com
+                    userName: testadmin
+                    providerType: 1
+                    ccn: 0
+                    token: QSDK 354b928c06e9c9ead0f91de3f9a8534165c18aebdedd58555dc4a05a8813546ae24e85e5fa007a302f41dd2ee7b082d038516df700704207b35bc5051252b56029f430b833df5ec832598a50198a4b0cd753db404664f618a17290a71d32c6ab13b92fdd54bdf1239a306296e4f0f83c51de072bb839a2a6ba38cc6551c01ba78f4746128621aaa580790b2324ad0a3ccabc5285194e61eb0fc38c7a0bf38f5a658a612e14ad6a5614ec2ec1c7c2a3284345898545ac461ef6dc52ba1e040a2d69415dd91c8215b3f4421e6e1a2e4a13b35d37f4dd3532bf6155e2198087a74dd6f3044a08effc2b64fca3361d669ec73a36f3dea045f007255131a64c083a45b353cd188f3963698fd81d5befba4f249859e3d77b4f802dc46311b39a328f1ea
+                    capability: 4328650366975
+                    forcePasswordChange: false
+                    isAccountLocked: false
+                    ownerOrganization:
+                      providerId: 0
+                      providerDomainName: Qinetix Commcell
+                    providerOrganization:
+                      providerId: 0
+                      providerDomainName: Qinetix Commcell
+                    errList: []
+              examples:
+                Example 1:
+                  value:
+                    aliasName: '1'
+                    userGUID: AC3E5333-4585-4EFD-B566-4654C5C88C27
+                    loginAttempts: 0
+                    remainingLockTime: 0
+                    smtpAddress: email@domain.com
+                    userName: testadmin
+                    providerType: 1
+                    ccn: 0
+                    token: 'QSDK '
+                    capability: 4328650366975
+                    forcePasswordChange: false
+                    isAccountLocked: false
+                    ownerOrganization:
+                      providerId: 0
+                      providerDomainName: Qinetix Commcell
+                    providerOrganization:
+                      providerId: 0
+                      providerDomainName: Qinetix Commcell
+                    errList: []
+  /Logout:
+    post:
+      deprecated: false
+      description: |
+        This operation ends the current session.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_logout.htm)
+      operationId: Logout
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Logout
+      tags:
+      - Authentication Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              examples:
+                Example 1:
+                  value: User logged out
+  /RenewLoginToken:
+    post:
+      deprecated: false
+      description: |
+        This operation renews and returns a new session token by providing the expired token
+
+        ## Request Body
+
+        | **Name** | **Description** |
+        | --- | --- |
+        | sessionId | Authtoken which needs to be renewed |
+        | deviceId | Device name from where login API was called.
+
+
+        **Note:** Same deviceId must be passed in POST /Login API during login |
+      operationId: RenewLoginToken
+      parameters:
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              deviceId: '{{LoggedInDeviceName}}'
+              sessionId: '{{ExpiredTOKEN}}'
+            schema:
+              allOf:
+              - example:
+                  deviceId: '{{LoggedInDeviceName}}'
+                  sessionId: '{{ExpiredTOKEN}}'
+                title: RenewLoginTokenRequest
+                properties:
+                  deviceId:
+                    type: string
+                  sessionId:
+                    type: string
+              type: object
+        description: ''
+        required: true
+      summary: RenewLoginToken
+      tags:
+      - Authentication Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  error:
+                    type: object
+                    properties: {}
+                x-examples:
+                  Example 1:
+                    token: QSDK 3ed372820ac3eb62ac3ed7ff10b287b05318b70d86513f7e55bc431ca1bc3402e31aea50c00ce90cbfafa1d34952ea813b631720983ea679c64ae5357e0d20ca9f3285d6d0700b28d6c3f13ac7185e5e99ad9906ef794fe4eeb1d3fea4354dab924e2b9bcf2b5efb1903c54457182b1086040e03d6105a42924f15b3fb26a81ddcac7f19e23f3a277fb2cc95d69727ee7dcc903f07568581a2d332f222d32b126f946abf931bd82471fd85135b19a18a16b35b56d24b0efb4d1bbd7332f1703300e86836dfdcea1d1c586f7b46bb71502cf249a5a5a4568d5726f29c187f182d3072e39efed60416bee7a355f525011af2850f48e4dc6e74e74cf5748eb664bfa0cdb97e24c70365d07d122b829d82111
+                    error: {}
+              examples:
+                Example 1:
+                  value:
+                    token: 'QSDK '
+                    error: {}
+  /Security/TwoFactorAuth/Pin:
+    get:
+      deprecated: false
+      description: |
+        Sends an email with the pin for two-factor authentication to the email address for the username in the request.
+      operationId: Send Pin for Two-Factor Authentication
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: username
+        schema:
+          example: '{{Username}}'
+          type: string
+      - description: ''
+        in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/json
+          type: string
+      summary: Send Pin for Two-Factor Authentication
+      tags:
+      - Authentication Operations
+      responses:
+        '200':
+          description: OK
+  /Security/TwoFactorAuth/Status:
+    get:
+      summary: User Two-Factor Authentication Status
+      tags:
+      - Authentication Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  twoFactorInfo:
+                    type: object
+                    properties:
+                      isTwoFactorAuthenticationEnabled:
+                        type: boolean
+                      userEmail:
+                        type: string
+                x-examples:
+                  Example 1:
+                    twoFactorInfo:
+                      isTwoFactorAuthenticationEnabled: false
+                      userEmail: jrana@commvault.com
+              examples:
+                Two-Factor Authentication Status of a User:
+                  value:
+                    twoFactorInfo:
+                      isTwoFactorAuthenticationEnabled: false
+                      userEmail: jrana@commvault.com
+      operationId: get-Security-TwoFactorAuth-Status
+      parameters:
+      - schema:
+          type: string
+        in: query
+        name: username
+      description: |
+        Returns information about a user's two-factor authentication settings.

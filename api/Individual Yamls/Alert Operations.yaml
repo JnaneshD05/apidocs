@@ -1,0 +1,2295 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+tags:
+- name: Alert Operations
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+paths:
+  /Alert:
+    get:
+      deprecated: false
+      description: |
+        This operation returns a list of console alerts.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_alert_console.htm)
+      operationId: Get All Console Alerts
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: pageNo
+        schema:
+          example: 1
+          format: int32
+          type: integer
+      - description: ''
+        explode: true
+        in: query
+        name: pageCount
+        schema:
+          example: 200
+          format: int32
+          type: integer
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get All Console Alerts
+      tags:
+      - Alert Operations
+      responses:
+        '200':
+          description: OK
+  '/Alert/{liveFeedId}':
+    get:
+      deprecated: false
+      description: |
+        This operation returns more details about a console alert.
+      operationId: Get Console Alert Details
+      parameters:
+      - description: ''
+        in: path
+        name: liveFeedId
+        required: true
+        schema:
+          type: string
+      summary: Get Console Alert Details
+      tags:
+      - Alert Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalNoOfAlerts:
+                    type: integer
+                  numberOfNewAlert:
+                    type: integer
+                  feedsList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        severity:
+                          type: integer
+                        alertType:
+                          type: string
+                        notes:
+                          type: string
+                        escalationLevel:
+                          type: integer
+                        ntNotificationId:
+                          type: integer
+                        jobId:
+                          type: integer
+                        messageFormatType:
+                          type: integer
+                        alertName:
+                          type: string
+                        alertcriteria:
+                          type: string
+                        liveFeedId:
+                          type: integer
+                        status:
+                          type: integer
+                        detectedTime:
+                          type: object
+                          properties:
+                            time:
+                              type: integer
+                            timeValue:
+                              type: string
+                        client:
+                          type: object
+                          properties:
+                            clientId:
+                              type: integer
+                            clientName:
+                              type: string
+    post:
+      deprecated: false
+      description: |
+        This operation updates the status of a console alert.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=45732.htm)
+      operationId: Update Console Alert Details
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: liveFeedId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            examples:
+              Example 1:
+                value:
+                  updateFeedsList:
+                  - liveFeedId: 0
+                    status: 0
+            schema:
+              properties:
+                updateFeedsList:
+                  items:
+                    properties:
+                      liveFeedId:
+                        type: integer
+                      status:
+                        type: integer
+                    type: object
+                  type: array
+              type: object
+        description: ''
+        required: true
+      summary: Update Console Alert Details
+      tags:
+      - Alert Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  numberOfNewAlert:
+                    type: integer
+                  feedsList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        notes:
+                          type: string
+                        liveFeedId:
+                          type: integer
+                        status:
+                          type: integer
+                x-examples:
+                  Example 1:
+                    numberOfNewAlert: 14
+                    feedsList:
+                    - notes: ''
+                      liveFeedId: 1861
+                      status: 4
+              examples:
+                Example 1:
+                  value:
+                    numberOfNewAlert: 14
+                    feedsList:
+                    - notes: ''
+                      liveFeedId: 1861
+                      status: 4
+  /AlertRule:
+    get:
+      deprecated: false
+      description: |
+        This operation returns a list of alerts.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_alert.htm)
+      operationId: Get All Alerts
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Get All Alerts
+      tags:
+      - Alert Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  myReceiveTotal:
+                    type: integer
+                  myCreatedTotal:
+                    type: integer
+                  alertList:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        notifType:
+                          type: integer
+                        description:
+                          type: string
+                        createdTime:
+                          type: integer
+                        status:
+                          type: integer
+                        creator:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            id:
+                              type: integer
+                        alertType:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            id:
+                              type: integer
+                        alert:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            id:
+                              type: integer
+                        alertCategory:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            id:
+                              type: integer
+                x-examples:
+                  Example 1:
+                    myReceiveTotal: 37
+                    myCreatedTotal: 37
+                    alertList:
+                    - notifType: 131073
+                      description: Default alert for Ransomware event
+                      createdTime: 1478290901
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Ransomware Alert
+                        id: 1
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: Default alert for no successful index backup in the last 30 days
+                      createdTime: 1478290902
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Index backup status
+                        id: 6
+                      alert:
+                        name: No Index Backup in last 30 days
+                        id: 2
+                      alertCategory:
+                        name: Custom Rules
+                        id: 9
+                    - notifType: 139265
+                      description: Default alert for error status of index
+                      createdTime: 1478290902
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Index State
+                        id: 7
+                      alert:
+                        name: Index State
+                        id: 3
+                      alertCategory:
+                        name: Custom Rules
+                        id: 9
+                    - notifType: 131073
+                      description: Default alert for Tape OML Mismatch
+                      createdTime: 1478290902
+                      status: 2049
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Tape OML Mismatch Alert
+                        id: 4
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 131073
+                      description: Default Alert for Client Groups Exceeding Assigned License Limits
+                      createdTime: 1478290902
+                      status: 2049
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Client Group License Usage Check
+                        id: 8
+                      alert:
+                        name: Client Groups Exceeding Assigned License Limits
+                        id: 5
+                      alertCategory:
+                        name: Custom Rules
+                        id: 9
+                    - notifType: 393217
+                      description: Alert for no successful backup in the last 4 days
+                      createdTime: 1478290904
+                      status: 2192
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Data Protection
+                        id: 3
+                      alert:
+                        name: No backup for last 4 days
+                        id: 6
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 131073
+                      description: Alert when Recovery Job fails
+                      createdTime: 1478290904
+                      status: 2192
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Data Recovery
+                        id: 4
+                      alert:
+                        name: Restore Job failed
+                        id: 7
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 131073
+                      description: Alert for edge drive quota validation
+                      createdTime: 1478290905
+                      status: 2192
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Users
+                        id: 70
+                      alert:
+                        name: Edge drive quota alert
+                        id: 8
+                      alertCategory:
+                        name: Configuration
+                        id: 2
+                    - notifType: 131073
+                      description: Default alert for Subclient Association Limits for Deduplication events
+                      createdTime: 1478290908
+                      status: 2049
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: 'Subclient Association Limits for Deduplication '
+                        id: 9
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 131073
+                      description: 'Default alert for Deduplication Database Limits '
+                      createdTime: 1478290908
+                      status: 2049
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Deduplication Database Threshold
+                        id: 10
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: Content Indexing alert for document count
+                      createdTime: 1478807698
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Content Indexing - Document Count Alert
+                        id: 11
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: Content Indexing alert for low disk threshold space
+                      createdTime: 1478807698
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Content Indexing - Low Disk Space
+                        id: 12
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: Analytics alert for low disk space
+                      createdTime: 1478807698
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Analytics - Low Disk Space
+                        id: 13
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: 'Default alert for aux Copy fallen behind '
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Auxiliary Copy
+                        id: 2
+                      alert:
+                        name: Aux copy fallen behind
+                        id: 14
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default alert for aux Copy job delayed
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Auxiliary Copy
+                        id: 2
+                      alert:
+                        name: Aux copy job delayed
+                        id: 15
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default alert for aux Copy job failed
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Auxiliary Copy
+                        id: 2
+                      alert:
+                        name: Aux copy job Failed
+                        id: 16
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default alert for client disk space low
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Clients
+                        id: 10
+                      alert:
+                        name: Low disk space on client
+                        id: 17
+                      alertCategory:
+                        name: Configuration
+                        id: 2
+                    - notifType: 139265
+                      description: Default alert for data aging job failure
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Data Aging
+                        id: 1
+                      alert:
+                        name: Data aging job failed
+                        id: 18
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default Decrease in data size alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Data Protection
+                        id: 3
+                      alert:
+                        name: Decrease in data size
+                        id: 19
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default Increase in data size Alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Data Protection
+                        id: 3
+                      alert:
+                        name: Increase in data size
+                        id: 20
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default backup job failed Alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Data Protection
+                        id: 3
+                      alert:
+                        name: Backup job failed
+                        id: 21
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default Dedup DB reconstruction Job failed alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: DeDup DB Reconstruction
+                        id: 55
+                      alert:
+                        name: Dedup DB reconstruction job failed
+                        id: 22
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default Device went offline alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Device Status
+                        id: 21
+                      alert:
+                        name: Device went offline
+                        id: 23
+                      alertCategory:
+                        name: Media Management
+                        id: 3
+                    - notifType: 139265
+                      description: Default DR Backup Job Failure Alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Disaster Recovery Backup
+                        id: 5
+                      alert:
+                        name: Disaster recovery job failed
+                        id: 24
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default Insufficient Storage on library alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Library Management
+                        id: 17
+                      alert:
+                        name: Insufficient storage on library
+                        id: 25
+                      alertCategory:
+                        name: Media Management
+                        id: 3
+                    - notifType: 139265
+                      description: Default Library Maintenance Required alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Library Management
+                        id: 17
+                      alert:
+                        name: Library maintenance required
+                        id: 26
+                      alertCategory:
+                        name: Media Management
+                        id: 3
+                    - notifType: 139265
+                      description: Default Media mount and usage error alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Library Management
+                        id: 17
+                      alert:
+                        name: Media mount and usage error
+                        id: 27
+                      alertCategory:
+                        name: Media Management
+                        id: 3
+                    - notifType: 139265
+                      description: Default MA Disk space low alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: MediaAgents
+                        id: 13
+                      alert:
+                        name: Disk space low on media agent
+                        id: 28
+                      alertCategory:
+                        name: Configuration
+                        id: 2
+                    - notifType: 139265
+                      description: Default License Consumption Alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: License
+                        id: 60
+                      alert:
+                        name: License consumed exceeds 80%
+                        id: 29
+                      alertCategory:
+                        name: Configuration
+                        id: 2
+                    - notifType: 139265
+                      description: Default License Expiration alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: License
+                        id: 60
+                      alert:
+                        name: License expires within 7 days
+                        id: 30
+                      alertCategory:
+                        name: Configuration
+                        id: 2
+                    - notifType: 139265
+                      description: ''
+                      createdTime: 1488399906
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Data Protection
+                        id: 3
+                      alert:
+                        name: No backup for last 7 days
+                        id: 31
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default alert for updates available for download
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Updates Available to Download
+                        id: 24
+                      alert:
+                        name: Updates available for download
+                        id: 32
+                      alertCategory:
+                        name: Software Updates
+                        id: 5
+                    - notifType: 139265
+                      description: Default alert for no recent DDB backup
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: No recent DDB backup
+                        id: 33
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: Alert for service down or unreachable.
+                      createdTime: 1492632034
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Service unreachable
+                        id: 35
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: Alert for service state changed to running.
+                      createdTime: 1492632034
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Service up and running
+                        id: 36
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: ''
+                      createdTime: 1493653078
+                      status: 0
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Clients
+                        id: 10
+                      alert:
+                        name: 63490301-48e2-4a86-b5b4-ab84e34da706
+                        id: 38
+                      alertCategory:
+                        name: Configuration
+                        id: 2
+                    - notifType: 131073
+                      description: Default alert for dirty volumes on client
+                      createdTime: 1494532423
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: 'Dirty volumes on client '
+                        id: 39
+                      alertCategory:
+                        name: Operation
+                        id: 8
+              examples:
+                Example 1:
+                  value:
+                    myReceiveTotal: 37
+                    myCreatedTotal: 37
+                    alertList:
+                    - notifType: 131073
+                      description: Default alert for Ransomware event
+                      createdTime: 1478290901
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Ransomware Alert
+                        id: 1
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: Default alert for no successful index backup in the last 30 days
+                      createdTime: 1478290902
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Index backup status
+                        id: 6
+                      alert:
+                        name: No Index Backup in last 30 days
+                        id: 2
+                      alertCategory:
+                        name: Custom Rules
+                        id: 9
+                    - notifType: 139265
+                      description: Default alert for error status of index
+                      createdTime: 1478290902
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Index State
+                        id: 7
+                      alert:
+                        name: Index State
+                        id: 3
+                      alertCategory:
+                        name: Custom Rules
+                        id: 9
+                    - notifType: 131073
+                      description: Default alert for Tape OML Mismatch
+                      createdTime: 1478290902
+                      status: 2049
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Tape OML Mismatch Alert
+                        id: 4
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 131073
+                      description: Default Alert for Client Groups Exceeding Assigned License Limits
+                      createdTime: 1478290902
+                      status: 2049
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Client Group License Usage Check
+                        id: 8
+                      alert:
+                        name: Client Groups Exceeding Assigned License Limits
+                        id: 5
+                      alertCategory:
+                        name: Custom Rules
+                        id: 9
+                    - notifType: 393217
+                      description: Alert for no successful backup in the last 4 days
+                      createdTime: 1478290904
+                      status: 2192
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Data Protection
+                        id: 3
+                      alert:
+                        name: No backup for last 4 days
+                        id: 6
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 131073
+                      description: Alert when Recovery Job fails
+                      createdTime: 1478290904
+                      status: 2192
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Data Recovery
+                        id: 4
+                      alert:
+                        name: Restore Job failed
+                        id: 7
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 131073
+                      description: Alert for edge drive quota validation
+                      createdTime: 1478290905
+                      status: 2192
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Users
+                        id: 70
+                      alert:
+                        name: Edge drive quota alert
+                        id: 8
+                      alertCategory:
+                        name: Configuration
+                        id: 2
+                    - notifType: 131073
+                      description: Default alert for Subclient Association Limits for Deduplication events
+                      createdTime: 1478290908
+                      status: 2049
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: 'Subclient Association Limits for Deduplication '
+                        id: 9
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 131073
+                      description: 'Default alert for Deduplication Database Limits '
+                      createdTime: 1478290908
+                      status: 2049
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Deduplication Database Threshold
+                        id: 10
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: Content Indexing alert for document count
+                      createdTime: 1478807698
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Content Indexing - Document Count Alert
+                        id: 11
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: Content Indexing alert for low disk threshold space
+                      createdTime: 1478807698
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Content Indexing - Low Disk Space
+                        id: 12
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: Analytics alert for low disk space
+                      createdTime: 1478807698
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Analytics - Low Disk Space
+                        id: 13
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: 'Default alert for aux Copy fallen behind '
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Auxiliary Copy
+                        id: 2
+                      alert:
+                        name: Aux copy fallen behind
+                        id: 14
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default alert for aux Copy job delayed
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Auxiliary Copy
+                        id: 2
+                      alert:
+                        name: Aux copy job delayed
+                        id: 15
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default alert for aux Copy job failed
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Auxiliary Copy
+                        id: 2
+                      alert:
+                        name: Aux copy job Failed
+                        id: 16
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default alert for client disk space low
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Clients
+                        id: 10
+                      alert:
+                        name: Low disk space on client
+                        id: 17
+                      alertCategory:
+                        name: Configuration
+                        id: 2
+                    - notifType: 139265
+                      description: Default alert for data aging job failure
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Data Aging
+                        id: 1
+                      alert:
+                        name: Data aging job failed
+                        id: 18
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default Decrease in data size alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Data Protection
+                        id: 3
+                      alert:
+                        name: Decrease in data size
+                        id: 19
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default Increase in data size Alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Data Protection
+                        id: 3
+                      alert:
+                        name: Increase in data size
+                        id: 20
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default backup job failed Alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Data Protection
+                        id: 3
+                      alert:
+                        name: Backup job failed
+                        id: 21
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default Dedup DB reconstruction Job failed alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: DeDup DB Reconstruction
+                        id: 55
+                      alert:
+                        name: Dedup DB reconstruction job failed
+                        id: 22
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default Device went offline alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Device Status
+                        id: 21
+                      alert:
+                        name: Device went offline
+                        id: 23
+                      alertCategory:
+                        name: Media Management
+                        id: 3
+                    - notifType: 139265
+                      description: Default DR Backup Job Failure Alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Disaster Recovery Backup
+                        id: 5
+                      alert:
+                        name: Disaster recovery job failed
+                        id: 24
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default Insufficient Storage on library alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Library Management
+                        id: 17
+                      alert:
+                        name: Insufficient storage on library
+                        id: 25
+                      alertCategory:
+                        name: Media Management
+                        id: 3
+                    - notifType: 139265
+                      description: Default Library Maintenance Required alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Library Management
+                        id: 17
+                      alert:
+                        name: Library maintenance required
+                        id: 26
+                      alertCategory:
+                        name: Media Management
+                        id: 3
+                    - notifType: 139265
+                      description: Default Media mount and usage error alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Library Management
+                        id: 17
+                      alert:
+                        name: Media mount and usage error
+                        id: 27
+                      alertCategory:
+                        name: Media Management
+                        id: 3
+                    - notifType: 139265
+                      description: Default MA Disk space low alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: MediaAgents
+                        id: 13
+                      alert:
+                        name: Disk space low on media agent
+                        id: 28
+                      alertCategory:
+                        name: Configuration
+                        id: 2
+                    - notifType: 139265
+                      description: Default License Consumption Alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: License
+                        id: 60
+                      alert:
+                        name: License consumed exceeds 80%
+                        id: 29
+                      alertCategory:
+                        name: Configuration
+                        id: 2
+                    - notifType: 139265
+                      description: Default License Expiration alert
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: License
+                        id: 60
+                      alert:
+                        name: License expires within 7 days
+                        id: 30
+                      alertCategory:
+                        name: Configuration
+                        id: 2
+                    - notifType: 139265
+                      description: ''
+                      createdTime: 1488399906
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Data Protection
+                        id: 3
+                      alert:
+                        name: No backup for last 7 days
+                        id: 31
+                      alertCategory:
+                        name: Job Management
+                        id: 1
+                    - notifType: 139265
+                      description: Default alert for updates available for download
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Updates Available to Download
+                        id: 24
+                      alert:
+                        name: Updates available for download
+                        id: 32
+                      alertCategory:
+                        name: Software Updates
+                        id: 5
+                    - notifType: 139265
+                      description: Default alert for no recent DDB backup
+                      createdTime: 1478807699
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: No recent DDB backup
+                        id: 33
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: Alert for service down or unreachable.
+                      createdTime: 1492632034
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Service unreachable
+                        id: 35
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: Alert for service state changed to running.
+                      createdTime: 1492632034
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: Service up and running
+                        id: 36
+                      alertCategory:
+                        name: Operation
+                        id: 8
+                    - notifType: 139265
+                      description: ''
+                      createdTime: 1493653078
+                      status: 0
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Clients
+                        id: 10
+                      alert:
+                        name: 63490301-48e2-4a86-b5b4-ab84e34da706
+                        id: 38
+                      alertCategory:
+                        name: Configuration
+                        id: 2
+                    - notifType: 131073
+                      description: Default alert for dirty volumes on client
+                      createdTime: 1494532423
+                      status: 2048
+                      creator:
+                        name: testadmin
+                        id: 1
+                      alertType:
+                        name: Event Viewer Events
+                        id: 58
+                      alert:
+                        name: 'Dirty volumes on client '
+                        id: 39
+                      alertCategory:
+                        name: Operation
+                        id: 8
+    post:
+      deprecated: false
+      description: |
+        This operation creates an alert.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_alert.htm)
+      operationId: Create an Alert
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Create an Alert
+      tags:
+      - Alert Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  alertEntity:
+                    type: object
+                    properties:
+                      alertId:
+                        type: integer
+                  errorResp:
+                    type: object
+                    properties:
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    alertEntity:
+                      alertId: 42
+                    errorResp:
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    alertEntity:
+                      alertId: 42
+                    errorResp:
+                      errorCode: 0
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                alertDetail:
+                  type: object
+                  properties:
+                    alertType:
+                      type: integer
+                    notifTypeListOperationType:
+                      type: integer
+                    alertSeverity:
+                      type: integer
+                    notifType:
+                      type: array
+                      items:
+                        type: integer
+                    criteria:
+                      type: object
+                      properties:
+                        criteria:
+                          type: integer
+                    EntityList:
+                      type: object
+                      properties:
+                        associationsOperationType:
+                          type: integer
+                        associations:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              clientId:
+                                type: integer
+                              _type_:
+                                type: integer
+                    userList:
+                      type: object
+                      properties:
+                        userListOperationType:
+                          type: integer
+                        userList:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              _type_:
+                                type: integer
+                              userId:
+                                type: integer
+                    alertrule:
+                      type: object
+                      properties:
+                        alertName:
+                          type: string
+              x-examples:
+                Example 1:
+                  alertDetail:
+                    alertType: 10
+                    notifTypeListOperationType: 0
+                    alertSeverity: 0
+                    notifType:
+                    - 1
+                    - 8192
+                    criteria:
+                      criteria: 16
+                    EntityList:
+                      associationsOperationType: 0
+                      associations:
+                      - clientId: 2
+                        _type_: 3
+                    userList:
+                      userListOperationType: 0
+                      userList:
+                      - _type_: 13
+                        userId: 1
+                    alertrule:
+                      alertName: '{{$guid}}'
+            examples:
+              Example 1:
+                value:
+                  alertDetail:
+                    alertType: 10
+                    notifTypeListOperationType: 0
+                    alertSeverity: 0
+                    notifType:
+                    - 1
+                    - 8192
+                    criteria:
+                      criteria: 16
+                    EntityList:
+                      associationsOperationType: 0
+                      associations:
+                      - clientId: 2
+                        _type_: 3
+                    userList:
+                      userListOperationType: 0
+                      userList:
+                      - _type_: 13
+                        userId: 1
+                    alertrule:
+                      alertName: '{{$guid}}'
+        description: ''
+  '/AlertRule/{alertId2}':
+    delete:
+      deprecated: false
+      description: |
+        This operation deletes an alert.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/delete_alert.htm)
+      operationId: Delete an Alert
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: alertId2
+        required: true
+        schema:
+          type: string
+      summary: Delete an Alert
+      tags:
+      - Alert Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: 'Successfully deleted the alert : d57f9a30-70ec-4224-970f-07af6ac73c4d'
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: 'Successfully deleted the alert : d57f9a30-70ec-4224-970f-07af6ac73c4d'
+                    errorCode: 0
+    get:
+      summary: Get Alert Details
+      operationId: get-AlertRule-alertId2
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  alertDetail:
+                    type: object
+                    properties:
+                      alertSeverity:
+                        type: integer
+                      eventCriteriaXML:
+                        type: string
+                      escalationSeverity:
+                        type: integer
+                      checkForEventParams:
+                        type: integer
+                      customQueryDetailsXml:
+                        type: string
+                      alertTokenRuleGroupXml:
+                        type: string
+                      xmlEntityList:
+                        type: string
+                      periodicNotificationInterval:
+                        type: integer
+                      securityAssociations:
+                        type: object
+                        properties:
+                          ownerAssociations:
+                            type: object
+                            properties: {}
+                      criteria:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            reportId:
+                              type: integer
+                            criteriaId:
+                              type: integer
+                            esclationLevel:
+                              type: integer
+                            persistTimeSeconds:
+                              type: integer
+                            reportingOptions:
+                              type: integer
+                            delayTimeSeconds:
+                              type: integer
+                            value:
+                              type: string
+                            taskId:
+                              type: integer
+                      locale:
+                        type: object
+                        properties:
+                          localeName:
+                            type: string
+                          localeID:
+                            type: integer
+                      alert:
+                        type: object
+                        properties:
+                          notifType:
+                            type: integer
+                          GUID:
+                            type: string
+                          description:
+                            type: string
+                          createdTime:
+                            type: integer
+                          origCCId:
+                            type: integer
+                          escNotifType:
+                            type: integer
+                          status:
+                            type: integer
+                          creator:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              id:
+                                type: integer
+                          alertType:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              id:
+                                type: integer
+                          alert:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              id:
+                                type: integer
+                          alertCategory:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              id:
+                                type: integer
+                      userGroupList:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id2:
+                              type: integer
+                            id1:
+                              type: integer
+                            name:
+                              type: string
+                      criteriasSelected:
+                        type: array
+                        items:
+                          type: integer
+                      reportingParams:
+                        type: object
+                        properties:
+                          persistTimeSeconds:
+                            type: integer
+                          reportingOptions:
+                            type: integer
+                          delayTimeSeconds:
+                            type: integer
+                      appTypeFilters:
+                        type: object
+                        properties: {}
+                      regularNotifications:
+                        type: array
+                        items:
+                          type: integer
+                      notifMsgs:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            notifOptions:
+                              type: integer
+                            notifType:
+                              type: integer
+                            esclationLevel:
+                              type: integer
+                            notifMessage:
+                              type: string
+                            messageFormat:
+                              type: integer
+                            notifMessageHtml:
+                              type: string
+                            localeId:
+                              type: integer
+                            saveAlertToDisk:
+                              type: object
+                              properties:
+                                password:
+                                  type: string
+                                alertLocation:
+                                  type: string
+                                cvpassword:
+                                  type: string
+                                useNetworkShare:
+                                  type: integer
+                                loginName:
+                                  type: string
+                                impersonateUser:
+                                  type: integer
+                            feeds:
+                              type: object
+                              properties:
+                                seperateIndex:
+                                  type: boolean
+                                baseLocation:
+                                  type: string
+                                selectedChannel:
+                                  type: string
+                                rssFeedLocation:
+                                  type: string
+                            entity:
+                              type: object
+                              properties:
+                                srmReportSet:
+                                  type: integer
+                                type:
+                                  type: integer
+                                srmReportType:
+                                  type: integer
+                                clientSidePackage:
+                                  type: boolean
+                                _type_:
+                                  type: integer
+                                consumeLicense:
+                                  type: boolean
+                      alertProperties:
+                        type: object
+                        properties: {}
+                x-examples:
+                  Example 1:
+                    alertDetail:
+                      alertSeverity: 0
+                      eventCriteriaXML: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n          #magic___^_^___line\n<LogMonitoring_ConditionsList criteriaName=\"(Event Code equals to 7:211|7:212)\" opBetweenConditions=\"0\">\n          #magic___^_^___line\n  <conditions operation=\"0\" value1=\"7:211|7:212\" value2=\"\" isregex=\"1\" isCaseSensitive=\"0\" isInclusive=\"0\" matchWholeWord=\"0\">\n          #magic___^_^___line\n    <column _type_=\"87\" columnId=\"6\" columnName=\"Event Code\" />\n          #magic___^_^___line\n  </conditions>  \n          #magic___^_^___line\n</LogMonitoring_ConditionsList>"
+                      escalationSeverity: 0
+                      checkForEventParams: 0
+                      customQueryDetailsXml: ''
+                      alertTokenRuleGroupXml: ''
+                      xmlEntityList: <?xml version='1.0' encoding='utf-8' ?><CVGui_CommCellTreeNode><clients includeAll="0"/><clientGroups includeAll="0"/><libraries includeAll="0"/><mediaAgents includeAll="0"/><storagePolcies includeAll="0"/><trackingPolicies includeAll="0"/><trackingSchedules/><trackingJobs/><criterias includeAll="0"/><workflows includeAll="0"/><associations _type_="2"/><commcells includeAll="0"/></CVGui_CommCellTreeNode>
+                      periodicNotificationInterval: 0
+                      securityAssociations:
+                        ownerAssociations: {}
+                      criteria:
+                      - reportId: 0
+                        criteriaId: 62
+                        esclationLevel: 1
+                        persistTimeSeconds: 0
+                        reportingOptions: 0
+                        delayTimeSeconds: 0
+                        value: '(Event Code equals to 7:211|7:212)'
+                        taskId: 0
+                      locale:
+                        localeName: ''
+                        localeID: 0
+                      alert:
+                        notifType: 131073
+                        GUID: A5EDDD29-667A-49CD-918B-D8DFBBA2B662
+                        description: ''
+                        createdTime: 0
+                        origCCId: 2
+                        escNotifType: 0
+                        status: 2048
+                        creator:
+                          name: ''
+                          id: 0
+                        alertType:
+                          name: Event Viewer Events
+                          id: 58
+                        alert:
+                          name: Ransomware Alert
+                          id: 1
+                        alertCategory:
+                          name: Operation
+                          id: 8
+                      userGroupList:
+                      - id2: 1
+                        id1: 1
+                        name: master
+                      criteriasSelected:
+                      - 62
+                      reportingParams:
+                        persistTimeSeconds: 0
+                        reportingOptions: 0
+                        delayTimeSeconds: 0
+                      appTypeFilters: {}
+                      regularNotifications:
+                      - 1
+                      - 131072
+                      notifMsgs:
+                      - notifOptions: 2
+                        notifType: 1
+                        esclationLevel: 1
+                        notifMessage: '<SUBJECT BEGIN> Alert: <ALERT NAME> Type: <ALERT CATEGORY - ALERT TYPE> <IS ESCALATED?> <SUBJECT END> MsgNewLine_ Alert: <ALERT NAME> MsgNewLine_ Type: <ALERT CATEGORY - ALERT TYPE> MsgNewLine_MsgTab_ Detected Criteria: <DETECTED CRITERIA> MsgNewLine_MsgTab_ Detected Time: <TIME> MsgNewLine_MsgTab_ CommCell: <COMMCELL NAME> MsgNewLine_ MsgNewLine_ MsgTab_ Event ID: <EVENT ID> MsgNewLine_MsgTab_ Monitoring Criteria: <MONITORING CRITERIA STRING> MsgNewLine_MsgTab_ Severity: <EVENT SEVERITY> MsgNewLine_MsgTab_ Job ID: <JOB ID> MsgNewLine_MsgTab_ Event Date: <EVENT DATE> MsgNewLine_MsgTab_ Program: <EVENT PROGRAM> MsgNewLine_MsgTab_ Client: <CLIENT NAME> MsgNewLine_MsgTab_ Description: <DESCRIPTION> MsgNewLine_MsgTab_'
+                        messageFormat: 1
+                        notifMessageHtml: '<SUBJECT BEGIN> Alert: <ALERT NAME> Type: <ALERT CATEGORY - ALERT TYPE> <IS ESCALATED?> <SUBJECT END><table cellspacing="0" style="border-bottom-color: #dedede; border-left-width: 0px; border-right-color: #dedede; border-left-style: solid; border-right-style: solid; border-top-style: solid; border-right-width: 0px; border-bottom-width: 0px; border-bottom-style: solid; border-top-color: #dedede; border-left-color: #dedede; border-top-width: 0px" width="600" align="center" border="1" cellpadding="0">  <tr>  <td>  <center>  <table cellspacing="0" id="contentTbl" width="600" align="center" border="0" cellpadding="0">  <tr style="background-color: #666666">  <td valign="middle" align="left">  <div style="margin-bottom: 4px; margin-top: 4px; margin-left: 10px">  <font color="#EEEEEE" size="6" face="Helvetica,sans-serif">&lt;ALERT NAME&gt; </font>  </div>  </td>  </tr>  <tr>  <td valign="middle" align="left" bgcolor="#DCDEDE" colspan="1">  <ul style="margin-bottom: 4px; margin-top: 4px">  <strong><font size="4" face="Helvetica,sans-serif">CommCell: </font><font color="#660000" size="4" face="Helvetica,sans-serif">&lt;COMMCELL NAME&gt;</font></strong>  </ul>  <ul style="margin-bottom: 4px; margin-top: 4px">  <strong><font size="4" face="Helvetica,sans-serif">Type: </font><font color="#660000" size="4" face="Helvetica,sans-serif">&lt;ALERT CATEGORY - ALERT TYPE&gt;</font></strong>  </ul>  <ul style="margin-bottom: 4px; margin-top: 4px">  <strong><font size="4" face="Helvetica,sans-serif">Detected Criteria: </font><font color="#660000" size="4" face="Helvetica,sans-serif">&lt;DETECTED CRITERIA&gt;</font></strong>  </ul>  <ul style="margin-bottom: 4px; margin-top: 4px">  <strong><font size="4" face="Helvetica,sans-serif">Detected Time: </font><font color="#660000" size="4" face="Helvetica,sans-serif">&lt;TIME&gt;</font></strong>  </ul>  </td>  </tr>  <tr>  <td width="100%" align="left" colspan="1">  <ul>  <li style="margin-bottom: 4px; margin-top: 4px">  <font color="#000000" size="3" face="Helvetica,sans-serif">Event ID: &lt;EVENT ID&gt; </font> </li>  <li style="margin-bottom: 4px; margin-top: 4px">  <font color="#000000" size="3" face="Helvetica,sans-serif">Monitoring Criteria: &lt;MONITORING CRITERIA STRING&gt; </font> </li>  <li style="margin-bottom: 4px; margin-top: 4px">  <font color="#000000" size="3" face="Helvetica,sans-serif">Severity: &lt;EVENT SEVERITY&gt; </font> </li>  <li style="margin-bottom: 4px; margin-top: 4px">  <font color="#000000" size="3" face="Helvetica,sans-serif">Job ID: &lt;JOB ID&gt; </font> </li>  <li style="margin-bottom: 4px; margin-top: 4px">  <font color="#000000" size="3" face="Helvetica,sans-serif">Event Date: &lt;EVENT DATE&gt; </font> </li>  <li style="margin-bottom: 4px; margin-top: 4px">  <font color="#000000" size="3" face="Helvetica,sans-serif">Program: &lt;EVENT PROGRAM&gt; </font> </li>  <li style="margin-bottom: 4px; margin-top: 4px">  <font color="#000000" size="3" face="Helvetica,sans-serif">Client: &lt;CLIENT NAME&gt; </font> </li>  <li style="margin-bottom: 4px; margin-top: 4px">  <font color="#000000" size="3" face="Helvetica,sans-serif">Description: &lt;DESCRIPTION&gt; </font> </li>  </ul>  </td>  </tr>  <tr style="background-color: #666666">  <td align="left" colspan="1">     </td>  </tr>  </table>  </center>  </td>  </tr>  </table>'
+                        localeId: 0
+                        saveAlertToDisk:
+                          password: ''
+                          alertLocation: ''
+                          cvpassword: ''
+                          useNetworkShare: 0
+                          loginName: ''
+                          impersonateUser: 0
+                        feeds:
+                          seperateIndex: false
+                          baseLocation: ''
+                          selectedChannel: ''
+                          rssFeedLocation: ''
+                        entity:
+                          srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          _type_: 0
+                          consumeLicense: true
+                      - notifOptions: 0
+                        notifType: 131072
+                        esclationLevel: 1
+                        notifMessage: '<SUBJECT BEGIN> Alert: <ALERT NAME> Type: <ALERT CATEGORY - ALERT TYPE> <IS ESCALATED?> <SUBJECT END> MsgNewLine_ Alert: <ALERT NAME> MsgNewLine_ Type: <ALERT CATEGORY - ALERT TYPE> MsgNewLine_MsgTab_ Detected Criteria: <DETECTED CRITERIA> MsgNewLine_MsgTab_ Detected Time: <TIME> MsgNewLine_MsgTab_ CommCell: <COMMCELL NAME> MsgNewLine_MsgTab_ User: <USER NAME> MsgNewLine_ MsgNewLine_ MsgTab_ Event ID: <EVENT ID> MsgNewLine_MsgTab_ Monitoring Criteria: <MONITORING CRITERIA STRING> MsgNewLine_MsgTab_ Severity: <EVENT SEVERITY> MsgNewLine_MsgTab_ Job ID: <JOB ID> MsgNewLine_MsgTab_ Event Date: <EVENT DATE> MsgNewLine_MsgTab_ Program: <EVENT PROGRAM> MsgNewLine_MsgTab_ Client: <CLIENT NAME> MsgNewLine_MsgTab_ Description: <DESCRIPTION> MsgNewLine_MsgTab_ '
+                        messageFormat: 0
+                        notifMessageHtml: ''
+                        localeId: 0
+                        saveAlertToDisk:
+                          password: ''
+                          alertLocation: ''
+                          cvpassword: ''
+                          useNetworkShare: 0
+                          loginName: ''
+                          impersonateUser: 0
+                        feeds:
+                          seperateIndex: false
+                          baseLocation: ''
+                          selectedChannel: ''
+                          rssFeedLocation: ''
+                        entity:
+                          srmReportSet: 0
+                          type: 0
+                          srmReportType: 0
+                          clientSidePackage: true
+                          _type_: 0
+                          consumeLicense: true
+                      alertProperties: {}
+      parameters:
+      - schema:
+          type: string
+        in: header
+        name: AuthToken
+        required: true
+      description: |
+        This operation returns the details associated with an alert.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_alert_details.htm)
+      tags:
+      - Alert Operations
+    parameters:
+    - schema:
+        type: string
+      name: alertId2
+      in: path
+      required: true
+  '/AlertRule/{alertId2}/Action/Disable':
+    post:
+      deprecated: false
+      description: |
+        This operation disables an alert.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_alert_disable.htm)
+      operationId: Disable an Alert
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: alertId2
+        required: true
+        schema:
+          type: string
+      summary: Disable an Alert
+      tags:
+      - Alert Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: 'Successfully disabled the alert : d57f9a30-70ec-4224-970f-07af6ac73c4d'
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: 'Successfully disabled the alert : d57f9a30-70ec-4224-970f-07af6ac73c4d'
+                    errorCode: 0
+  '/AlertRule/{alertId2}/Action/Enable':
+    post:
+      deprecated: false
+      description: |
+        This operation enables an alert.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_alert_enable.htm)
+      operationId: Enable an Alert
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: alertId2
+        required: true
+        schema:
+          type: string
+      summary: Enable an Alert
+      tags:
+      - Alert Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: 'Successfully enabled the alert : d57f9a30-70ec-4224-970f-07af6ac73c4d'
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: 'Successfully enabled the alert : d57f9a30-70ec-4224-970f-07af6ac73c4d'
+                    errorCode: 0
+  '/AlertRule/{alertId2}/Action/Modify':
+    post:
+      deprecated: false
+      description: |
+        This operation updates an alert.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_alert_modify.htm)
+      operationId: Modify an Alert
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: alertId2
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              alertDetail:
+                alertDetail:
+                  regNonGalaxyUserList:
+                    nonGalaxyUserList:
+                    - AddedUser@testing.com
+                    nonGalaxyUserOperationType: 2
+            schema:
+              allOf:
+              - example:
+                  alertDetail:
+                    alertDetail:
+                      regNonGalaxyUserList:
+                        nonGalaxyUserList:
+                        - AddedUser@testing.com
+                        nonGalaxyUserOperationType: 2
+                properties:
+                  alertDetail:
+                    example:
+                      alertDetail:
+                        regNonGalaxyUserList:
+                          nonGalaxyUserList:
+                          - AddedUser@testing.com
+                          nonGalaxyUserOperationType: 2
+                    properties:
+                      alertDetail:
+                        example:
+                          regNonGalaxyUserList:
+                            nonGalaxyUserList:
+                            - AddedUser@testing.com
+                            nonGalaxyUserOperationType: 2
+                        properties:
+                          regNonGalaxyUserList:
+                            example:
+                              nonGalaxyUserList:
+                              - AddedUser@testing.com
+                              nonGalaxyUserOperationType: 2
+                            properties:
+                              nonGalaxyUserList:
+                                description: ''
+                                items:
+                                  type: string
+                                type: array
+                              nonGalaxyUserOperationType:
+                                format: int32
+                                type: integer
+                            required:
+                            - nonGalaxyUserOperationType
+                            - nonGalaxyUserList
+                            title: RegNonGalaxyUserList
+                            type: object
+                        required:
+                        - regNonGalaxyUserList
+                        title: AlertDetail3
+                        type: object
+                    required:
+                    - alertDetail
+                    title: AlertDetail2
+                    type: object
+                required:
+                - alertDetail
+                title: AlertModifyRequest
+                type: object
+              - example:
+                  alertDetail:
+                    alertDetail:
+                      regNonGalaxyUserList:
+                        nonGalaxyUserList:
+                        - AddedUser@testing.com
+                        nonGalaxyUserOperationType: 2
+        description: ''
+        required: true
+      summary: Modify an Alert
+      tags:
+      - Alert Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorMessage:
+                    type: string
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorMessage: AlertRule modified successfully
+                    errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    errorMessage: AlertRule modified successfully
+                    errorCode: 0
+  '/AlertRule/{alertId2}/notificationType/1/Action/Disable':
+    post:
+      deprecated: false
+      description: |
+        This operation removes a notification type from an alert. Alerts must have at least one notification type, so disabling the only remaining notification type is not allowed.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_alert_notification_type_disable.htm)
+      operationId: Disable Alert Notification
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: alertId2
+        required: true
+        schema:
+          type: string
+      summary: Disable Alert Notification
+      tags:
+      - Alert Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorCode: 0
+  '/AlertRule/{alertId2}/notificationType/1/Action/Enable':
+    post:
+      deprecated: false
+      description: |
+        This operation adds a notification type to an alert.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_alert_notification_type_enable.htm)
+      operationId: Enable Alert Notification
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: path
+        name: alertId2
+        required: true
+        schema:
+          type: string
+      summary: Enable Alert Notification
+      tags:
+      - Alert Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errorCode:
+                    type: integer
+                x-examples:
+                  Example 1:
+                    errorCode: 0

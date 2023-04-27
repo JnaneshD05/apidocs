@@ -1,0 +1,32 @@
+image: git.commvault.com:5005/eng/dev-ops/dev-ops-base/debian-base:REL_11_0_0_BRANCH
+
+workflow:
+  rules:
+    - if: '$CI_MERGE_REQUEST_IID && $CI_MERGE_REQUEST_PROJECT_PATH == "Jnaneshd/webdocs_latest" '
+    - if: '$CI_COMMIT_BRANCH && $CI_PROJECT_PATH == "Jnaneshd/webdocs_latest" '
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - ./build.sh
+  artifacts:
+    paths:
+      - build
+
+pages:
+  stage: deploy
+  script:
+    - ./deploy.sh
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: '$CI_COMMIT_BRANCH'
+
+
+
+

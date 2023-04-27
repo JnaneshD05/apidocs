@@ -1,0 +1,84 @@
+---
+id: add-controller-for-mount-path
+title: "Add Controller for mount path"
+description: "This operation Adds a controller for a mount path."
+sidebar_label: "Add Controller for mount path"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation Adds a controller for a mount path.\n\n<h2>Request Parameters</h2>\n<table>\n\n<tr>\n<td>\n<p class=\"tabletext\">Name</p>\n</td>\n<td>\n<p class=\"tabletext\">Description</p>\n</td>\n</tr>\n<tr>\n<td>\n<p class=\"tabletext\">accessType</p>\n</td>\n<td>\n<p class=\"tabletext\">Device Controller Access Type.</p>\n<p class=\"tabletext\">Valid values are:</p>\n<ul class=\"listbullet\">\n<li class=\"listbullet\">14, Read/Write</li>\n<li class=\"listbullet\">12, Read</li>\n</ul>\n</td>\n</tr>\n<tr>\n<td>\n<p class=\"tabletext\">opType</p>\n</td>\n<td>\n<p class=\"tabletext\">Operation Type.</p>\n<p class=\"tabletext\">Valid values are:</p>\n<ul class=\"listbullet\">\n<li class=\"listbullet\">1,Add</li>\n<li class=\"listbullet\">2, Edit</li>\n<li class=\"listbullet\">3,Delete</li>\n</ul>\n</td>\n</tr>\n<tr align=\"left\" valign=\"top\">\n<td>\n<p class=\"tabletext\">numWriters</p>\n</td>\n<td>\n<p class=\"tabletext\">Maximum allowed writers</p>\n<p class=\"tabletext\">-1 is for Max allowed writers</p>\n</td>\n</tr>\n\n</table>","operationId":"Add Controller for mount path","parameters":[{"description":"","explode":true,"in":"query","name":"Action","required":true,"schema":{"example":"addController","type":"string"}},{"description":"","in":"header","name":"Authtoken","schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["Storage Resource Operations"],"requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"mountpathId":{"type":"integer"},"infoList":{"type":"array","items":{"type":"object","properties":{"numWriters":{"type":"integer"},"opType":{"type":"integer"},"protocolType":{"type":"integer"},"deviceId":{"type":"integer"},"enabled":{"type":"integer"},"accessType":{"type":"integer"},"path":{"type":"string"},"deviceControllerId":{"type":"integer"},"mediaAgent":{"type":"object","properties":{"name":{"type":"string"},"id":{"type":"integer"}}}}}}},"x-examples":{"Example 1":{"mountpathId":390,"infoList":[{"numWriters":-1,"opType":1,"protocolType":104,"deviceId":104,"enabled":1,"accessType":6,"path":"","deviceControllerId":0,"mediaAgent":{"name":"sogo8_2","id":1816}}]}}},"examples":{"Add DeviceController":{"value":{"mountpathId":390,"infoList":[{"numWriters":-1,"opType":1,"protocolType":104,"deviceId":104,"enabled":1,"accessType":6,"path":"","deviceControllerId":0,"mediaAgent":{"name":"sogo8_2","id":1816}}]}}}}}},"responses":{"200":{"description":"OK"}},"method":"post","path":"/DriveController","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"jsonRequestBodyExample":{"mountpathId":0,"infoList":[{"numWriters":0,"opType":0,"protocolType":0,"deviceId":0,"enabled":0,"accessType":0,"path":"string","deviceControllerId":0,"mediaAgent":{"name":"string","id":0}}]},"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Add Controller for mount path","description":{"content":"This operation Adds a controller for a mount path.\n\n<h2>Request Parameters</h2>\n<table>\n\n<tr>\n<td>\n<p class=\"tabletext\">Name</p>\n</td>\n<td>\n<p class=\"tabletext\">Description</p>\n</td>\n</tr>\n<tr>\n<td>\n<p class=\"tabletext\">accessType</p>\n</td>\n<td>\n<p class=\"tabletext\">Device Controller Access Type.</p>\n<p class=\"tabletext\">Valid values are:</p>\n<ul class=\"listbullet\">\n<li class=\"listbullet\">14, Read/Write</li>\n<li class=\"listbullet\">12, Read</li>\n</ul>\n</td>\n</tr>\n<tr>\n<td>\n<p class=\"tabletext\">opType</p>\n</td>\n<td>\n<p class=\"tabletext\">Operation Type.</p>\n<p class=\"tabletext\">Valid values are:</p>\n<ul class=\"listbullet\">\n<li class=\"listbullet\">1,Add</li>\n<li class=\"listbullet\">2, Edit</li>\n<li class=\"listbullet\">3,Delete</li>\n</ul>\n</td>\n</tr>\n<tr align=\"left\" valign=\"top\">\n<td>\n<p class=\"tabletext\">numWriters</p>\n</td>\n<td>\n<p class=\"tabletext\">Maximum allowed writers</p>\n<p class=\"tabletext\">-1 is for Max allowed writers</p>\n</td>\n</tr>\n\n</table>","type":"text/plain"},"url":{"path":["DriveController"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Action","value":""}],"variable":[]},"header":[{"disabled":false,"description":{"content":"","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"application/json"}],"method":"POST","body":{"mode":"raw","raw":"\"\"","options":{"raw":{"language":"json"}}}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/Storage/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Add Controller for mount path
+
+
+
+This operation Adds a controller for a mount path.
+
+<h2>Request Parameters</h2>
+<table>
+
+<tr>
+<td>
+<p class="tabletext">Name</p>
+</td>
+<td>
+<p class="tabletext">Description</p>
+</td>
+</tr>
+<tr>
+<td>
+<p class="tabletext">accessType</p>
+</td>
+<td>
+<p class="tabletext">Device Controller Access Type.</p>
+<p class="tabletext">Valid values are:</p>
+<ul class="listbullet">
+<li class="listbullet">14, Read/Write</li>
+<li class="listbullet">12, Read</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>
+<p class="tabletext">opType</p>
+</td>
+<td>
+<p class="tabletext">Operation Type.</p>
+<p class="tabletext">Valid values are:</p>
+<ul class="listbullet">
+<li class="listbullet">1,Add</li>
+<li class="listbullet">2, Edit</li>
+<li class="listbullet">3,Delete</li>
+</ul>
+</td>
+</tr>
+<tr align="left" valign="top">
+<td>
+<p class="tabletext">numWriters</p>
+</td>
+<td>
+<p class="tabletext">Maximum allowed writers</p>
+<p class="tabletext">-1 is for Max allowed writers</p>
+</td>
+</tr>
+
+</table>
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"Action","required":true,"schema":{"example":"addController","type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><MimeTabs><TabItem label={"application/json"} value={"application/json-schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Request Body</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"mountpathId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>infoList</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"numWriters"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"opType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"protocolType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"deviceId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"enabled"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"accessType"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"path"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"deviceControllerId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>mediaAgent</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"name"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"id"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></ul></details></TabItem></MimeTabs><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

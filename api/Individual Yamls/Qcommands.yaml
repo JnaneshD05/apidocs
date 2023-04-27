@@ -1,0 +1,811 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: QCommands
+paths:
+  /ExecuteQCommand:
+    post:
+      deprecated: false
+      description: "Commvault REST APIs support sending QCommands as a request.\n <ul> \n  <li>QCommands: \n   <ul> \n    <li>For a list of available CommServe QCommands, see <a href=\"http://documentation.commvault.com/commvault/v11/article?p=products/commserve/cli_config.htm\" data-internal=\"true\">Command Line Interface - CommServe QCommands</a>.</li> \n    <li>For a list of MediaAgent QCommands, see <a href=\"http://documentation.commvault.com/commvault/v11/article?p=products/media_agent/cli_config.htm\" data-internal=\"true\">Command Line Interface - MediaAgent - QCommands</a>.</li> \n   </ul></li> \n  <li>QCommands using XML files (qoperation execute): \n   <ul> \n    <li>For a list of CommServe XML files, see <a href=\"http://documentation.commvault.com/commvault/v11/article?p=products/commserve/cli_config_user_xml_files.htm\" data-internal=\"true\">CommServe XML Files on the Command Line</a>.</li> \n    <li>For a list of MediaAgent XML files, see <a href=\"http://documentation.commvault.com/commvault/v11/article?p=products/media_agent/cli_config_xml.htm\" data-internal=\"true\">Command Line Interface - MediaAgent - XML Files</a>.</li> \n    <li>Other areas of the application offer XML files, for example, <a target=\"_blank\" href=\"http://documentation.commvault.com/commvault/v11/article?p=products/vs_vmware/c_vmw_cli_config.htm\" data-internal=\"false\">Command Line Configuration - Virtual Server Agent for VMware</a>. Go to the command line documentation for the specific agent to view the available XML files.</li> \n    <li>For information on creating XML files using Save As Script, see <a href=\"http://documentation.commvault.com/commvault/v11/article?p=features/cli/c_cli_save_as_script.htm\" data-internal=\"true\">Save as Script Overview</a>.</li> \n   </ul> </li> \n  <li>QScripts (qoperation execscript): for a list of available QScripts, see <a href=\"http://documentation.commvault.com/commvault/v11/article?p=features/cli/qscripts.htm\" data-internal=\"true\">Command Line Operations Using QScripts</a>.</li> \n </ul> \n    #magic___^_^___line\n [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/post_execute_qcommand.htm)"
+      operationId: Execute QCommand
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      - description: ''
+        in: header
+        name: Content-Type
+        required: true
+        schema:
+          enum:
+          - application/x-www-form-urlencoded
+          example: application/x-www-form-urlencoded
+          type: string
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              type: object
+              properties:
+                command:
+                  example: qoperation execute
+                  type: string
+                inputRequestXML:
+                  example: <TMMsg_InstallPackageListReq includeOnlyInstalledPackages="1" installOSType="100" requestForUninstall="1"><clientEntity clientId="2"/></TMMsg_InstallPackageListReq>
+                  type: string
+            examples:
+              Example 1:
+                value:
+                  command: qoperation execute
+                  inputRequestXML: <TMMsg_InstallPackageListReq includeOnlyInstalledPackages="1" installOSType="100" requestForUninstall="1"><clientEntity clientId="2"/></TMMsg_InstallPackageListReq>
+        required: false
+      summary: Execute QCommand
+      tags:
+      - QCommands
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  installPackageInfo:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        displayName:
+                          type: string
+                        isPackageAlreadyInstalled:
+                          type: boolean
+                        parentPath:
+                          type: string
+                        packageId:
+                          type: integer
+                        description:
+                          type: string
+                        packageName:
+                          type: string
+                        requiredPackageIds:
+                          type: array
+                          items:
+                            type: integer
+                  excludePackages:
+                    type: array
+                    items:
+                      type: integer
+                x-examples:
+                  Example 1:
+                    installPackageInfo:
+                    - displayName: MediaAgent
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 51
+                      description: Administers the data protection and recovery operations between the client programs and the storage resources.
+                      packageName: MediaAgent
+                      requiredPackageIds:
+                      - 381
+                      - 554
+                      - 504
+                      - 252
+                      - 257
+                      - 755
+                    - displayName: Index Store
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 55
+                      description: Supports various features for analyzing clients in the CommCell environment.
+                      packageName: Index Store
+                      requiredPackageIds:
+                      - 733
+                    - displayName: Commcell Console
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 701
+                      description: User Interface to administer the activities of a CommCell.
+                      packageName: Commcell Console
+                      requiredPackageIds:
+                      - 21
+                      - 20
+                    - displayName: Command Center
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 726
+                      packageName: Command Center
+                      requiredPackageIds:
+                      - 732
+                    - displayName: File System Core
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 1
+                      description: Common software base providing basic core functionalities.
+                      packageName: File System Core
+                      requiredPackageIds:
+                      - 758
+                      - 504
+                      - 727
+                      - 713
+                      - 354
+                      - 257
+                      - 554
+                      - 751
+                      - 734
+                      - 55
+                      - 252
+                      - 352
+                      - 24
+                      - 732
+                      - 715
+                      - 952
+                      - 356
+                      - 259
+                      - 202
+                      - 382
+                      - 451
+                      - 551
+                      - 363
+                      - 957
+                      - 703
+                      - 729
+                      - 204
+                      - 755
+                      - 353
+                      - 707
+                      - 453
+                      - 733
+                      - 719
+                      - 151
+                      - 54
+                      - 702
+                      - 351
+                      - 23
+                      - 360
+                      - 263
+                      - 954
+                      - 726
+                      - 21
+                      - 455
+                      - 201
+                      - 358
+                      - 752
+                      - 730
+                      - 25
+                      - 362
+                      - 51
+                      - 725
+                      - 20
+                      - 160
+                      - 711
+                      - 203
+                      - 754
+                      - 255
+                      - 158
+                      - 452
+                      - 355
+                      - 101
+                      - 552
+                      - 381
+                    - displayName: File System
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 702
+                      description: Provides backup and recovery operations of the File System data.
+                      packageName: File System
+                      requiredPackageIds:
+                      - 202
+                      - 727
+                      - 755
+                      - 24
+                      - 703
+                      - 252
+                      - 957
+                      - 734
+                      - 551
+                      - 354
+                      - 382
+                      - 356
+                      - 453
+                      - 707
+                      - 358
+                      - 21
+                      - 726
+                      - 363
+                      - 351
+                      - 451
+                      - 353
+                      - 201
+                      - 455
+                      - 158
+                      - 101
+                      - 552
+                      - 355
+                      - 203
+                      - 360
+                      - 23
+                      - 151
+                      - 713
+                      - 362
+                      - 730
+                      - 504
+                      - 381
+                      - 732
+                      - 452
+                      - 255
+                      - 352
+                      - 554
+                      - 257
+                      - 20
+                      - 51
+                    - displayName: VSS Provider
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 453
+                      description: Provider for Volume Shadow Services.
+                      packageName: VSS Provider
+                      requiredPackageIds:
+                      - 755
+                    - displayName: VSS Hardware Provider
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 455
+                      packageName: VSS Hardware Provider
+                    - displayName: Virtual Server
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 713
+                      description: Provides backup and recovery for guest machines in the VMware ESX Server and Microsoft System Center Virtual Machine Manager.
+                      packageName: VirtualServer Agent
+                    - displayName: Web Server
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 252
+                      description: Provides multi-purpose flexible search capabilities for indexed data.
+                      packageName: Web Server
+                    - displayName: Content Extractor
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 259
+                      packageName: Content Extractor
+                      requiredPackageIds:
+                      - 257
+                      - 729
+                      - 733
+                    - displayName: Content Analyzer
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 729
+                      packageName: Content Analyzer
+                    - displayName: Commserve DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 801
+                      packageName: Commserve DB
+                    - displayName: DM2 Web services DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 803
+                      packageName: DM2 Web services DB
+                      requiredPackageIds:
+                      - 252
+                    - displayName: Workflow Engine DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 808
+                      packageName: Workflow Engine DB
+                      requiredPackageIds:
+                      - 23
+                    - displayName: Metrics Reporting DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 809
+                      packageName: Metrics Reporting DB
+                      requiredPackageIds:
+                      - 20
+                      - 727
+                      - 21
+                    - displayName: Commserve History DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 810
+                      packageName: Commserve History DB
+                    - displayName: Commserve ResourceMgr DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 811
+                      packageName: Commserve ResourceMgr DB
+                    - displayName: Commserve Audit DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 812
+                      packageName: Commserve Audit DB
+                    - displayName: Commserve Cache DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 813
+                      packageName: Commserve Cache DB
+                    - displayName: Commserve Template DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 814
+                      packageName: Commserve Template DB
+                    - displayName: Commserve AppStudio DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 815
+                      packageName: Commserve AppStudio DB
+                    - displayName: MongoDB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 952
+                      packageName: MongoDB
+                      requiredPackageIds:
+                      - 252
+                    - displayName: CommServe
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 20
+                      description: Centralized Server to initiate and administer the operations of the CommCell.
+                      packageName: CommServe
+                      requiredPackageIds:
+                      - 21
+                    - displayName: Work Flow
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 23
+                      packageName: Workflow Engine
+                    - displayName: Metrics Reporting
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 727
+                      packageName: Metrics Reporting
+                      requiredPackageIds:
+                      - 21
+                      - 20
+                    - displayName: High Availability Computing
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 725
+                      packageName: High Availability Computing
+                      requiredPackageIds:
+                      - 24
+                      - 733
+                    - displayName: Storage Accelerator
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 54
+                      description: Administers the data protection and recovery operations between the client programs and the storage resources.
+                      packageName: MediaAgent Core
+                      requiredPackageIds:
+                      - 263
+                      - 733
+                      - 51
+                      - 381
+                      - 554
+                      - 252
+                      - 257
+                      - 504
+                      - 755
+                    - displayName: Message Queue
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 954
+                      packageName: Message Queue
+                      requiredPackageIds:
+                      - 729
+                      - 252
+                    excludePackages:
+                    - 6001
+                    - 6002
+                    - 6003
+                    - 6004
+                    - 6005
+                    - 6006
+              examples:
+                Example 1:
+                  value:
+                    installPackageInfo:
+                    - displayName: MediaAgent
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 51
+                      description: Administers the data protection and recovery operations between the client programs and the storage resources.
+                      packageName: MediaAgent
+                      requiredPackageIds:
+                      - 381
+                      - 554
+                      - 504
+                      - 252
+                      - 257
+                      - 755
+                    - displayName: Index Store
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 55
+                      description: Supports various features for analyzing clients in the CommCell environment.
+                      packageName: Index Store
+                      requiredPackageIds:
+                      - 733
+                    - displayName: Commcell Console
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 701
+                      description: User Interface to administer the activities of a CommCell.
+                      packageName: Commcell Console
+                      requiredPackageIds:
+                      - 21
+                      - 20
+                    - displayName: Command Center
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 726
+                      packageName: Command Center
+                      requiredPackageIds:
+                      - 732
+                    - displayName: File System Core
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 1
+                      description: Common software base providing basic core functionalities.
+                      packageName: File System Core
+                      requiredPackageIds:
+                      - 758
+                      - 504
+                      - 727
+                      - 713
+                      - 354
+                      - 257
+                      - 554
+                      - 751
+                      - 734
+                      - 55
+                      - 252
+                      - 352
+                      - 24
+                      - 732
+                      - 715
+                      - 952
+                      - 356
+                      - 259
+                      - 202
+                      - 382
+                      - 451
+                      - 551
+                      - 363
+                      - 957
+                      - 703
+                      - 729
+                      - 204
+                      - 755
+                      - 353
+                      - 707
+                      - 453
+                      - 733
+                      - 719
+                      - 151
+                      - 54
+                      - 702
+                      - 351
+                      - 23
+                      - 360
+                      - 263
+                      - 954
+                      - 726
+                      - 21
+                      - 455
+                      - 201
+                      - 358
+                      - 752
+                      - 730
+                      - 25
+                      - 362
+                      - 51
+                      - 725
+                      - 20
+                      - 160
+                      - 711
+                      - 203
+                      - 754
+                      - 255
+                      - 158
+                      - 452
+                      - 355
+                      - 101
+                      - 552
+                      - 381
+                    - displayName: File System
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 702
+                      description: Provides backup and recovery operations of the File System data.
+                      packageName: File System
+                      requiredPackageIds:
+                      - 202
+                      - 727
+                      - 755
+                      - 24
+                      - 703
+                      - 252
+                      - 957
+                      - 734
+                      - 551
+                      - 354
+                      - 382
+                      - 356
+                      - 453
+                      - 707
+                      - 358
+                      - 21
+                      - 726
+                      - 363
+                      - 351
+                      - 451
+                      - 353
+                      - 201
+                      - 455
+                      - 158
+                      - 101
+                      - 552
+                      - 355
+                      - 203
+                      - 360
+                      - 23
+                      - 151
+                      - 713
+                      - 362
+                      - 730
+                      - 504
+                      - 381
+                      - 732
+                      - 452
+                      - 255
+                      - 352
+                      - 554
+                      - 257
+                      - 20
+                      - 51
+                    - displayName: VSS Provider
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 453
+                      description: Provider for Volume Shadow Services.
+                      packageName: VSS Provider
+                      requiredPackageIds:
+                      - 755
+                    - displayName: VSS Hardware Provider
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 455
+                      packageName: VSS Hardware Provider
+                    - displayName: Virtual Server
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 713
+                      description: Provides backup and recovery for guest machines in the VMware ESX Server and Microsoft System Center Virtual Machine Manager.
+                      packageName: VirtualServer Agent
+                    - displayName: Web Server
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 252
+                      description: Provides multi-purpose flexible search capabilities for indexed data.
+                      packageName: Web Server
+                    - displayName: Content Extractor
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 259
+                      packageName: Content Extractor
+                      requiredPackageIds:
+                      - 257
+                      - 729
+                      - 733
+                    - displayName: Content Analyzer
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 729
+                      packageName: Content Analyzer
+                    - displayName: Commserve DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 801
+                      packageName: Commserve DB
+                    - displayName: DM2 Web services DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 803
+                      packageName: DM2 Web services DB
+                      requiredPackageIds:
+                      - 252
+                    - displayName: Workflow Engine DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 808
+                      packageName: Workflow Engine DB
+                      requiredPackageIds:
+                      - 23
+                    - displayName: Metrics Reporting DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 809
+                      packageName: Metrics Reporting DB
+                      requiredPackageIds:
+                      - 20
+                      - 727
+                      - 21
+                    - displayName: Commserve History DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 810
+                      packageName: Commserve History DB
+                    - displayName: Commserve ResourceMgr DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 811
+                      packageName: Commserve ResourceMgr DB
+                    - displayName: Commserve Audit DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 812
+                      packageName: Commserve Audit DB
+                    - displayName: Commserve Cache DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 813
+                      packageName: Commserve Cache DB
+                    - displayName: Commserve Template DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 814
+                      packageName: Commserve Template DB
+                    - displayName: Commserve AppStudio DB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 815
+                      packageName: Commserve AppStudio DB
+                    - displayName: MongoDB
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 952
+                      packageName: MongoDB
+                      requiredPackageIds:
+                      - 252
+                    - displayName: CommServe
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 20
+                      description: Centralized Server to initiate and administer the operations of the CommCell.
+                      packageName: CommServe
+                      requiredPackageIds:
+                      - 21
+                    - displayName: Work Flow
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 23
+                      packageName: Workflow Engine
+                    - displayName: Metrics Reporting
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 727
+                      packageName: Metrics Reporting
+                      requiredPackageIds:
+                      - 21
+                      - 20
+                    - displayName: High Availability Computing
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 725
+                      packageName: High Availability Computing
+                      requiredPackageIds:
+                      - 24
+                      - 733
+                    - displayName: Storage Accelerator
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 54
+                      description: Administers the data protection and recovery operations between the client programs and the storage resources.
+                      packageName: MediaAgent Core
+                      requiredPackageIds:
+                      - 263
+                      - 733
+                      - 51
+                      - 381
+                      - 554
+                      - 252
+                      - 257
+                      - 504
+                      - 755
+                    - displayName: Message Queue
+                      isPackageAlreadyInstalled: true
+                      parentPath: Packages/Windows
+                      packageId: 954
+                      packageName: Message Queue
+                      requiredPackageIds:
+                      - 729
+                      - 252
+                    excludePackages:
+                    - 6001
+                    - 6002
+                    - 6003
+                    - 6004
+                    - 6005
+                    - 6006
+  '/QCommand/qoperation execute -clientName ''{clientName}''':
+    post:
+      deprecated: false
+      description: "Commvault REST APIs support sending QCommands as a request. \n[_More Details_](https://documentation.commvault.com/commvault/v11/article?p=48597.htm)"
+      operationId: Execute QOperation
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Execute QOperation
+      tags:
+      - QCommands
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: object
+                    properties:
+                      errorString:
+                        type: string
+                      errorCode:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    error:
+                      errorString: ''
+                      errorCode: 0
+              examples:
+                Example 1:
+                  value:
+                    error:
+                      errorString: ''
+                      errorCode: 0
+      requestBody:
+        content:
+          application/xml:
+            examples:
+              Example 1:
+                value: <EVGui_OracleInstanceDiscoveryReq> <clientName> <clientName/> </clientName> </EVGui_OracleInstanceDiscoveryReq>
+            schema:
+              type: object
+              properties:
+                EVGui_OracleInstanceDiscoveryReq:
+                  type: object
+                  properties:
+                    clientName:
+                      type: object
+                      properties:
+                        clientName:
+                          type: string
+        description: XML payload for QCommands
+    parameters:
+    - schema:
+        type: string
+      name: clientName
+      in: path
+      required: true

@@ -1,0 +1,37 @@
+---
+id: perform-virtual-machine-browse
+title: "Perform Virtual Machine Browse"
+description: "This operation browses virtual machines."
+sidebar_label: "Perform Virtual Machine Browse"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation browses virtual machines.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_virtual_machine_browse.htm)\n","operationId":"Perform Virtual Machine Browse","parameters":[{"description":"","explode":true,"in":"query","name":"PseudoClientId","schema":{"example":"{{vclientId}}","type":"string"}},{"description":"","explode":true,"in":"query","name":"inventoryPath","schema":{"example":"/none:VMs","type":"string"}},{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["VM Operations"],"responses":{"200":{"description":"OK"}},"method":"get","path":"/VMBrowse","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Perform Virtual Machine Browse","description":{"content":"This operation browses virtual machines.\n\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_virtual_machine_browse.htm)\n","type":"text/plain"},"url":{"path":["VMBrowse"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"key":"PseudoClientId","value":""},{"disabled":false,"key":"inventoryPath","value":""}],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/VirtualizationOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Perform Virtual Machine Browse
+
+
+
+This operation browses virtual machines.
+
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_virtual_machine_browse.htm)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"PseudoClientId","schema":{"example":"{{vclientId}}","type":"string"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"inventoryPath","schema":{"example":"/none:VMs","type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div></div></TabItem></ApiTabs></div>
+      

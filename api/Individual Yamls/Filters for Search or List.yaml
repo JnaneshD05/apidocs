@@ -1,0 +1,529 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: Template
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: Filters for Search or List
+paths:
+  /performSearch:
+    post:
+      deprecated: false
+      description: |-
+        Add this filter to display the search or browse results that match a specific keyword name or file type.
+
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=60036.htm)
+        <p>
+        </p>
+        <h2>
+         Request Parameters
+        </h2>
+        <table border="0" cellpadding="2" cellspacing="0" class="tableintopic">
+
+          <tr align="left" valign="top">
+           <td>
+            <p class="tabletext">
+             Name
+            </p>
+           </td>
+           <td>
+            <p class="tabletext">
+             Description
+            </p>
+           </td>
+          </tr>
+          <tr align="left" valign="top">
+           <td>
+            <p class="tabletext">
+             Mode
+            </p>
+           </td>
+           <td>
+            <p class="tabletext">
+             Valid values are:
+            </p>
+            <ul class="listbullet">
+             <li class="listbullet">
+              1, EndUser
+             </li>
+             <li class="listbullet">
+              2, Compliance
+             </li>
+             <li>
+              3, testadmin
+             </li>
+             <li>
+              4, WebConsole
+             </li>
+            </ul>
+           </td>
+          </tr>
+          <tr align="left" valign="top">
+           <td>
+            <p class="tabletext">
+             Data_Type
+            </p>
+           </td>
+           <td>
+            <p class="tabletext">
+             Data Type Values
+            </p>
+            <p class="tabletext">
+             Valid values are:
+            </p>
+            <ul class="listbullet">
+             <li class="listbullet">
+              1, File
+             </li>
+             <li class="listbullet">
+              2, Email
+             </li>
+             <li>
+              3, Sharepoint
+             </li>
+             <li>
+              4, Folder
+             </li>
+             <li>
+              5, Mailbox
+             </li>
+            </ul>
+           </td>
+          </tr>
+
+        </table>
+      operationId: Filter Based on File Name or Type
+      parameters:
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Filter Based on File Name or Type
+      tags:
+      - Filters for Search or List
+      requestBody:
+        content:
+          application/xml:
+            examples:
+              File Filter:
+                value: |-
+                  <DM2ContentIndexing_CVSearchReq mode="Compliance">
+                      <advSearchGrp>
+                          <commonFilter>
+                              <filter>
+                                  <filters  field="DATA_TYPE">
+                                      <fieldValues>
+                                          <values val="1" />
+                                      </fieldValues>
+                                  </filters>
+                              </filter>
+                          </commonFilter>
+                          <cvSearchKeyword keyword="" />
+                          <cvSearchCondition />
+                      </advSearchGrp>
+                      <searchProcessingInfo resultOffset="0" pageSize="1" sampleSize="1">
+                      </searchProcessingInfo>
+                  </DM2ContentIndexing_CVSearchReq>
+              File Search With Health Care Data:
+                value: "<DM2ContentIndexing_CVSearchReq mode=\"Compliance\">\n    <advSearchGrp>\n        <commonFilter>\n            <filter>\n                <filters  field=\"DATA_TYPE\">\n                    <fieldValues>\n                        <values val=\"1\" />\n                    </fieldValues>\n                </filters>\n            </filter>\n        </commonFilter>\n        <cvSearchKeyword keyword=\"dicom_val_patientname:PATIENT2\" />\n        <cvSearchCondition />\n    </advSearchGrp>\n    <searchProcessingInfo resultOffset=\"0\" pageSize=\"5\">\n\t\t<queryParams param=\"RESPONSE_FIELD_LIST\" value=\"CONTENTID,MODIFIEDTIME,SITE_NAME,PATIENT_NAME,PATIENT_SEX,STUDY_ID,STUDY_DESCRIPTION,SERIES_NUMBER,BIRTH_DATE,MODALITY_VALUE,CONTENT_DATE,CONTENT_TIME,STUDY_DATE_UTC,SERIES_DATE_UTC,ACQUISITION_DATE_UTC,WINDOW_WIDTH,WINDOW_CENTER,MANUFACTURER_MODEL,SLICE_THICKNESS,SLICE_LOCATION,SITE_NAME_STRING,STUDY_ID_STRING,SERIES_NUMBER_STRING,PATIENT_NAME_STRING,ACCESSION_NUMBER_STRING,ACCESSION_NUMBER_SORT,PATIENT_FIRST_NAME,PATIENT_LAST_NAME,PATIENT_ID,STUDY_DATE,SERIES_DESCRIPTION,SERIES_TIME,PATIENT_DATA_LEVEL,\"/>\n\t\t        <queryParams param=\"SORTFIELD\" value=\"modifiedTime\"/>\n\t\t        <queryParams param=\"SORT_STYLE\" value=\"DESCENDING\"/>\n    </searchProcessingInfo>\n</DM2ContentIndexing_CVSearchReq>"
+              Email Filter:
+                value: |-
+                  <DM2ContentIndexing_CVSearchReq mode="Compliance">
+                      <advSearchGrp>
+                          <commonFilter>
+                              <filter>
+                                  <filters  field="DATA_TYPE">
+                                      <fieldValues>
+                                          <values val="2" />
+                                      </fieldValues>
+                                  </filters>
+                              </filter>
+                          </commonFilter>
+                          <cvSearchKeyword keyword="" />
+                          <cvSearchCondition />
+                      </advSearchGrp>
+                      <searchProcessingInfo resultOffset="0" pageSize="1" sampleSize="1">
+                      </searchProcessingInfo>
+                  </DM2ContentIndexing_CVSearchReq>
+              Email Search Filters:
+                value: |-
+                  <DM2ContentIndexing_CVSearchReq mode="Compliance">
+                      <advSearchGrp>
+                          <emailFilter interGroupOP="0" interGroupOPStr="OR">
+                              <filter interFilterOP="2" interFilterOPStr="OR">
+                                  <shareFolder>
+                                      <flags include="0" deleted="0" exclude="0" disabled="0" includeAll="0" />
+                                  </shareFolder>
+                                  <filters field="EMAIL_TO" intraFieldOpStr="OR">
+                                      <fieldValues>
+                                          <values val="*@commvault.com" />
+                                      </fieldValues>
+                                  </filters>
+                                  <filters field="EMAIL_FROM" intraFieldOpStr="OR">
+                                      <fieldValues>
+                                          <values val="*@CommVault.com" />
+                                      </fieldValues>
+                                  </filters>
+                              </filter>
+                          </emailFilter>
+                          <commonFilter>
+                              <filter>
+                                  <filters  field="DATA_TYPE">
+                                      <fieldValues>
+                                          <values val="2" />
+                                      </fieldValues>
+                                  </filters>
+                              </filter>
+                          </commonFilter>
+                          <cvSearchKeyword keyword="" />
+                          <cvSearchCondition />
+                      </advSearchGrp>
+                      <searchProcessingInfo resultOffset="0" pageSize="1">
+                          <queryParams param="RESPONSE_FIELD_LIST" value="FAST_URL,DATA_TYPE"/>
+                      </searchProcessingInfo>
+                  </DM2ContentIndexing_CVSearchReq>
+              Filter With Attachment Presence Along With Get Attachment Name:
+                value: "<DM2ContentIndexing_CVSearchReq mode=\"Compliance\">\n    <advSearchGrp>\n        <emailFilter interGroupOP=\"0\" interGroupOPStr=\"OR\">\n            <filter interFilterOP=\"2\" interFilterOPStr=\"OR\">\n                <shareFolder>\n                    <flags include=\"0\" deleted=\"0\" exclude=\"0\" disabled=\"0\" includeAll=\"0\" />\n                </shareFolder>\n                <filters field=\"HAS_ATTACHMENT\" intraFieldOpStr=\"OR\">\n                    <fieldValues>\n                        <values val=\"true\" />\n                    </fieldValues>\n                </filters>\n            </filter>\n        </emailFilter>\n        <commonFilter>\n            <filter>\n                <filters  field=\"DATA_TYPE\">\n                    <fieldValues>\n                        <values val=\"2\" />\n                    </fieldValues>\n                </filters>\n            </filter>\n        </commonFilter>\n        <cvSearchKeyword keyword=\"*\" />\n        <cvSearchCondition />\n    </advSearchGrp>\n    <searchProcessingInfo resultOffset=\"0\" pageSize=\"1\">\n    \t       <queryParams param=\"RESPONSE_FIELD_LIST\" value=\"CONTENTID,SIZEINKB,CUSTODIAN,CVOWNER,MODIFIEDTIME,CISTATE,CI_STATUS,DATA_TYPE,FOLDER,EMAIL_SUBJECT,EMAIL_TO,TO_DISPLAY,EMAIL_SMTPTO,EMAIL_CC,CC_DISPLAY,EMAIL_SMTPCC,EMAIL_BCC,BCC_DISPLAY,EMAIL_SMTPBCC,EMAIL_FROM,FROM_DISPLAY,EMAIL_SMTPFROM,EMAIL_MSGFLAGS,EMAIL_CATEGORY,EMAIL_IMPORTANCE,EMAIL_PRIORITY,EMAIL_SENSITIVITY,HAS_ATTACHMENT,HAS_ANY_ATTACHMENT,EMAIL_ATTACHMENTS,EMAIL_CONVINDEX,EMAIL_CONVTOPIC,EMAIL_ATTACHMENTNAME\"/>\n    </searchProcessingInfo>\n</DM2ContentIndexing_CVSearchReq>"
+              Filter With Attachment Presence and Get Attachment Name Only:
+                value: "<DM2ContentIndexing_CVSearchReq mode=\"Compliance\">\n    <advSearchGrp>\n        <emailFilter interGroupOP=\"0\" interGroupOPStr=\"OR\">\n            <filter interFilterOP=\"2\" interFilterOPStr=\"OR\">\n                <shareFolder>\n                    <flags include=\"0\" deleted=\"0\" exclude=\"0\" disabled=\"0\" includeAll=\"0\" />\n                </shareFolder>\n                <filters field=\"HAS_ATTACHMENT\" intraFieldOpStr=\"OR\">\n                    <fieldValues>\n                        <values val=\"true\" />\n                    </fieldValues>\n                </filters>\n            </filter>\n        </emailFilter>\n        <commonFilter>\n            <filter>\n                <filters  field=\"DATA_TYPE\">\n                    <fieldValues>\n                        <values val=\"2\" />\n                    </fieldValues>\n                </filters>\n            </filter>\n        </commonFilter>\n        <cvSearchKeyword keyword=\"\" />\n        <cvSearchCondition />\n    </advSearchGrp>\n    <searchProcessingInfo resultOffset=\"0\" pageSize=\"1\">\n    \t<queryParams param=\"RESPONSE_FIELD_LIST\" value=\"EMAIL_ATTACHMENTNAME\"/>\n    </searchProcessingInfo>\n</DM2ContentIndexing_CVSearchReq>"
+              Filters With Attachment Presence And Data Modifited Time Range Along With Returning Attachment Name And Sorting By Date Modified:
+                value: "<DM2ContentIndexing_CVSearchReq mode=\"Compliance\">\n    <advSearchGrp>\n        <emailFilter interGroupOP=\"0\" interGroupOPStr=\"OR\">\n            <filter interFilterOP=\"2\" interFilterOPStr=\"OR\">\n                <shareFolder>\n                    <flags include=\"0\" deleted=\"0\" exclude=\"0\" disabled=\"0\" includeAll=\"0\" />\n                </shareFolder>\n                <filters field=\"HAS_ATTACHMENT\" intraFieldOpStr=\"OR\">\n                    <fieldValues>\n                        <values val=\"true\" />\n                    </fieldValues>\n                </filters>\n                <filters field=\"MODIFIEDTIME\" intraFieldOpStr=\"OR\">\n                    <fieldValues>\n                        <values val=\"1460215446\" />\n                        <values val=\"1523287446\" />\n                    </fieldValues>\n                </filters>\n            </filter>\n        </emailFilter>\n        <commonFilter>\n            <filter>\n                <filters  field=\"DATA_TYPE\">\n                    <fieldValues>\n                        <values val=\"2\" />\n                    </fieldValues>\n                </filters>\n            </filter>\n        </commonFilter>\n        <cvSearchKeyword keyword=\"*\" />\n        <cvSearchCondition />\n    </advSearchGrp>\n    <searchProcessingInfo resultOffset=\"0\" pageSize=\"1\" sampleSize=\"1\">\n    \t       <queryParams param=\"RESPONSE_FIELD_LIST\" value=\"CONTENTID,SIZEINKB,CUSTODIAN,CVOWNER,MODIFIEDTIME,CISTATE,CI_STATUS,DATA_TYPE,FOLDER,EMAIL_SUBJECT,EMAIL_TO,TO_DISPLAY,EMAIL_SMTPTO,EMAIL_CC,CC_DISPLAY,EMAIL_SMTPCC,EMAIL_BCC,BCC_DISPLAY,EMAIL_SMTPBCC,EMAIL_FROM,FROM_DISPLAY,EMAIL_SMTPFROM,EMAIL_MSGFLAGS,EMAIL_CATEGORY,EMAIL_IMPORTANCE,EMAIL_PRIORITY,EMAIL_SENSITIVITY,HAS_ATTACHMENT,HAS_ANY_ATTACHMENT,EMAIL_ATTACHMENTS,EMAIL_CONVINDEX,EMAIL_CONVTOPIC,EMAIL_ATTACHMENTNAME\"/>\n        <queryParams param=\"SORTFIELD\" value=\"modifiedTime\"/>\n        <queryParams param=\"SORT_STYLE\" value=\"DESCENDING\"/>\n    </searchProcessingInfo>\n</DM2ContentIndexing_CVSearchReq>"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  queryId:
+                    type: string
+                  currCIEngineType:
+                    type: integer
+                  engineid:
+                    type: string
+                  rawQuery:
+                    type: string
+                  searchResult:
+                    type: object
+                    properties:
+                      resultItem:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            modifiedTime:
+                              type: integer
+                            fileName:
+                              type: string
+                            viewsourceurl:
+                              type: string
+                            folderPathHTML:
+                              type: string
+                            ciJobId:
+                              type: integer
+                            folderPath:
+                              type: string
+                            appId:
+                              type: integer
+                            cloudId:
+                              type: integer
+                            refcopyAppType:
+                              type: integer
+                            sizeKB:
+                              type: integer
+                            dataType:
+                              type: integer
+                            turboGuid:
+                              type: string
+                            jobId:
+                              type: integer
+                            MIMEType:
+                              type: string
+                            accessTime:
+                              type: integer
+                            clientName:
+                              type: string
+                            fileNameHTML:
+                              type: string
+                            aFileOffset:
+                              type: integer
+                            aFileId:
+                              type: integer
+                            appType:
+                              type: integer
+                            aFileLength:
+                              type: integer
+                            clientId:
+                              type: integer
+                            commcellNo:
+                              type: integer
+                            filePath:
+                              type: string
+                            documentId:
+                              type: string
+                            backupTime:
+                              type: integer
+                            appSpecific:
+                              type: object
+                              properties:
+                                appSpecificFlags:
+                                  type: object
+                                  properties:
+                                    deleted:
+                                      type: boolean
+                                    stub:
+                                      type: boolean
+                                azureADItem:
+                                  type: object
+                                  properties:
+                                    userData:
+                                      type: object
+                                      properties: {}
+                                    commonData:
+                                      type: object
+                                      properties: {}
+                                    tenantData:
+                                      type: object
+                                      properties: {}
+                                    domainData:
+                                      type: object
+                                      properties: {}
+                                    groupData:
+                                      type: object
+                                      properties: {}
+                                eMail:
+                                  type: object
+                                  properties:
+                                    subject:
+                                      type: string
+                                    importance:
+                                      type: integer
+                                    subjectHTML:
+                                      type: string
+                            tags:
+                              type: object
+                              properties: {}
+                            customProperties:
+                              type: object
+                              properties:
+                                nameValues:
+                                  type: array
+                                  items:
+                                    type: object
+                                    properties:
+                                      name:
+                                        type: string
+                                      value:
+                                        type: string
+                                      values:
+                                        type: array
+                                        items:
+                                          type: string
+                  facetResults:
+                    type: object
+                    properties:
+                      facetResult:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            stringParameter:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  custom:
+                                    type: boolean
+                                  count:
+                                    type: integer
+                                  name:
+                                    type: string
+                                  selected:
+                                    type: boolean
+                            rangeParameter:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  custom:
+                                    type: boolean
+                                  count:
+                                    type: integer
+                                  start:
+                                    type: integer
+                                  end:
+                                    type: integer
+                                  selected:
+                                    type: boolean
+                  proccessingInfo:
+                    type: object
+                    properties:
+                      totalSize:
+                        type: integer
+                      totalHits:
+                        type: integer
+                x-examples:
+                  Example 1:
+                    queryId: 03973e97-9e7f-457d-8f15-3addf96b2f40
+                    currCIEngineType: 3
+                    engineid: ''
+                    rawQuery: ''
+                    searchResult:
+                      resultItem:
+                      - modifiedTime: 1350507753
+                        fileName: HealthSafetyRecords.png
+                        viewsourceurl: 'http://ss-vm1.idx.company.com:27000/viewsourceservlet?docid=5a337282decfd016f9dae168999fd5e8&juniper=query.ANY(*)&returntype=xml&nodes=ss-vm1.idx.company.com:27000/solr,ss-vm1.idx.company.com:28000/solr'
+                        folderPathHTML: \\share\dataset\DM2_Test_Team\Test cases\Release 10.0 features\Upgrade from 9.0 to 10.0\Other CommCell Components\Content Director\Tag Set
+                        ciJobId: 4317
+                        folderPath: \\share\dataset\DM2_Test_Team\Test cases\Release 10.0 features\Upgrade from 9.0 to 10.0\Other CommCell Components\Content Director\Tag Set
+                        appId: 127
+                        cloudId: 12
+                        refcopyAppType: 0
+                        sizeKB: 16449
+                        dataType: 1
+                        turboGuid: 2e573e25ddbf6677b3836315ef0ef5b1
+                        jobId: 1102
+                        MIMEType: image/png
+                        accessTime: 1406330026
+                        clientName: s-solr-11
+                        fileNameHTML: HealthSafetyRecords.png
+                        aFileOffset: 5422956
+                        aFileId: 528
+                        appType: 33
+                        aFileLength: 5505249
+                        clientId: 3
+                        commcellNo: 154881853
+                        filePath: UNC-NT_share\dataset\DM2_Test_Team\Test cases\Release 10.0 features\Upgrade from 9.0 to 10.0\Other CommCell Components\Content Director\Tag Set\HealthSafetyRecords.png
+                        documentId: 5a337282decfd016f9dae168999fd5e8
+                        backupTime: 1492442062
+                        appSpecific:
+                          appSpecificFlags:
+                            deleted: false
+                            stub: false
+                          azureADItem:
+                            userData: {}
+                            commonData: {}
+                            tenantData: {}
+                            domainData: {}
+                            groupData: {}
+                          eMail:
+                            subject: HealthSafetyRecords.png
+                            importance: 1
+                            subjectHTML: HealthSafetyRecords.png
+                        tags: {}
+                        customProperties:
+                          nameValues:
+                          - name: EXT_NAME
+                            value: png
+                            values:
+                            - png
+                    facetResults:
+                      facetResult:
+                      - name: EXT_NAME
+                        stringParameter:
+                        - custom: false
+                          count: 4098
+                          name: txt
+                          selected: false
+                        - custom: false
+                          count: 387
+                          name: xls
+                          selected: false
+                        - custom: false
+                          count: 351
+                          name: htm
+                          selected: false
+                        - custom: false
+                          count: 342
+                          name: pdf
+                          selected: false
+                      - name: CLIENTID
+                        stringParameter:
+                        - displayName: s-solr-11
+                          custom: false
+                          count: 5590
+                          name: '3'
+                          selected: false
+                        - displayName: ss-vm1
+                          custom: false
+                          count: 414
+                          name: '6'
+                          selected: false
+                        - displayName: A_CI
+                          custom: false
+                          count: 240
+                          name: '328'
+                          selected: false
+                        - displayName: s-sna-11
+                          custom: false
+                          count: 5
+                          name: '2'
+                          selected: false
+                      - name: HAS_ATTACHMENT
+                        stringParameter:
+                        - custom: false
+                          count: 47
+                          name: 'false'
+                          selected: false
+                        - custom: false
+                          count: 34
+                          name: 'true'
+                          selected: false
+                      - name: DATA_TYPE
+                        stringParameter:
+                        - custom: false
+                          count: 6249
+                          name: '1'
+                          selected: false
+                      - name: MODIFIEDTIME
+                        dateParameter:
+                        - gapInDays: 364
+                          custom: false
+                          count: 480
+                          startUnixDate: 1518480000
+                          selected: false
+                          endUnixDate: 1550015999
+                        - gapInDays: 17574
+                          custom: false
+                          count: 5769
+                          startUnixDate: 0
+                          selected: false
+                          endUnixDate: 1518479999
+                      - name: SIZEINKB
+                        rangeParameter:
+                        - custom: false
+                          count: 5218
+                          start: 0
+                          end: 1048576
+                          selected: false
+                        - custom: false
+                          count: 967
+                          start: 1048576
+                          end: 5242880
+                          selected: false
+                        - custom: false
+                          count: 25
+                          start: 5242880
+                          end: 10485760
+                          selected: false
+                        - custom: false
+                          count: 39
+                          start: 10485760
+                          end: 9007199254740992
+                          selected: false
+                    proccessingInfo:
+                      totalSize: 0
+                      totalHits: 6249

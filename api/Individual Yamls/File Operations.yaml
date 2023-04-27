@@ -1,0 +1,259 @@
+openapi: 3.0.0
+info:
+  title: Template
+  contact: {}
+  version: '1.0'
+  description: "Template"
+servers:
+- url: 'http://{hostname}/webconsole/api'
+  variables: 
+    hostname:
+      default: localhost
+      description: "Webconsole"
+tags:
+- name: File Operations
+paths:
+  /stream/action/download:
+    get:
+      deprecated: false
+      description: |
+        This operation downloads a backed up file on your laptop computer.
+        <b>
+         Note:
+        </b>
+        Downloading a folder is currently not supported using this operation.
+        <h2>
+         Supported Error Codes
+        </h2>
+        <table width="100%">
+
+          <tr>
+           <th width="20%">
+            Code
+           </th>
+           <th width="20%">
+            Status
+           </th>
+           <th width="60%">
+            Description
+           </th>
+          </tr>
+          <tr>
+           <td>
+            400
+           </td>
+           <td>
+            Bad Request
+           </td>
+           <td>
+            The request is missing required parameters.
+           </td>
+          </tr>
+          <tr>
+           <td>
+            403
+           </td>
+           <td>
+            Forbidden
+           </td>
+           <td>
+            Download operation is not allowed. This can happen if you attempt to download a folder.
+           </td>
+          </tr>
+          <tr>
+           <td>
+            404
+           </td>
+           <td>
+            Not Found
+           </td>
+           <td>
+            The specified file does not exist.
+           </td>
+          </tr>
+
+        </table>
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_download.htm)
+      operationId: Download a File
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: appid
+        required: true
+        schema:
+          example: 25
+          format: int32
+          type: integer
+      - description: ''
+        explode: true
+        in: query
+        name: path
+        required: true
+        schema:
+          example: 'C:/sample.txt'
+          type: string
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Download a File
+      tags:
+      - File Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              examples:
+                Example 1:
+                  value: Sample text file.
+
+  /action/preview:
+    get:
+      deprecated: false
+      description: |
+        This operation allows you to preview a backed up file on your laptop computer.
+
+        Preview is currently supported for all images and Microsoft Office file types.
+        <p>
+         By default, you can preview files that have a maximum file size limit of 10 MB. For instructions on changing the file size limit, see
+         <a href="http://documentation.commvault.com/commvault/v11/article?p=products/web_console/t_wcnsl_admin_preview_size.htm">
+          Changing the File Size Limit for Preview
+         </a>
+         .
+        </p>
+        <h2>
+         Supported Error Codes
+        </h2>
+        <table width="100%">
+
+          <tr>
+           <th width="20%">
+            Code
+           </th>
+           <th width="20%">
+            Status
+           </th>
+           <th width="60%">
+            Description
+           </th>
+          </tr>
+          <tr>
+           <td>
+            400
+           </td>
+           <td>
+            Bad Request
+           </td>
+           <td>
+            The request is missing required parameters or the file name has some unacceptable characters.
+           </td>
+          </tr>
+          <tr>
+           <td>
+            204
+           </td>
+           <td>
+            No Content
+           </td>
+           <td>
+            Preview is not available for the file.
+           </td>
+          </tr>
+          <tr>
+           <td>
+            403
+           </td>
+           <td>
+            Forbidden
+           </td>
+           <td>
+            User does not have permissions to preview or the preview is requested for a folder or an unsupported file type.
+           </td>
+          </tr>
+          <tr>
+           <td>
+            404
+           </td>
+           <td>
+            Not Found
+           </td>
+           <td>
+            The specified file does not exist.
+           </td>
+          </tr>
+
+        </table>
+        [_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_preview.htm)
+      operationId: Preview a File
+      parameters:
+      - description: ''
+        explode: true
+        in: query
+        name: appid
+        schema:
+          example: 25
+          format: int32
+          type: integer
+      - description: ''
+        explode: true
+        in: query
+        name: path
+        schema:
+          example: 'C:/sample.txt'
+          type: string
+      - in: header
+        name: Accept
+        required: true
+        schema:
+          example: application/xml
+          type: string
+        description: application/xml
+      - description: ''
+        in: header
+        name: Authtoken
+        required: true
+        schema:
+          example: '{{TOKEN}}'
+          type: string
+      summary: Preview a File
+      tags:
+      - File Operations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+            text/html:
+              examples:
+                Example 1:
+                  value: |
+                    <html xmlns="http://www.w3.org/1999/xhtml">
+
+                    <head>
+
+                    <meta name="X-Parsed-By" content="org.apache.tika.parser.DefaultParser"/>
+
+                    <meta name="X-Parsed-By" content="org.apache.tika.parser.txt.TXTParser"/>
+
+                    <meta name="Content-Encoding" content="ISO-8859-1"/>
+
+                    <meta name="ext_name" content="tmp"/>
+
+                    <meta name="Content-Type" content="text/plain; charset=ISO-8859-1"/>
+
+
+                    </head>
+
+                    <body background="" >
+                    <pre>Sample text file.</pre>
+                    </body>
+                    </html>
+

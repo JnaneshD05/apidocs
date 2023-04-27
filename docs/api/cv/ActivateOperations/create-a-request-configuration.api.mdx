@@ -1,0 +1,63 @@
+---
+id: create-a-request-configuration
+title: "Create a Request Configuration"
+description: "This operation creates a request"
+sidebar_label: "Create a Request Configuration"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation creates a request\n\n<h2>Request Body</h2>\n<table width=\"441\">\n\n<tr>\n<td>Name</td>\n<td>Description</td>\n</tr>\n<tr>\n<td>entity</td>\n<td>--</td>\n</tr>\n<tr>\n<td>operation</td>\n<td>--</td>\n</tr>\n<tr>\n<td>summary</td>\n<td>Desired name of request</td>\n</tr>\n<tr>\n<td>type</td>\n<td>\n<p>Type of request</p>\n<p>values:- \"delete\"- \"export\"</p>\n</td>\n</tr>\n\n</table>","operationId":"Create a Request Configuration","parameters":[{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"requestBody":{"content":{"text/plain":{"examples":{"Create Request - Delete":{"value":"<WebReport_EDiscoveryCreateTaskReq> \n    <taskReq entity=\"1\" operation=\"1\"> \n        <tasks> \n            <taskInfo summary=\"TestRequest1\"/> \n            <taskProps attrName=\"email\" attrVal=\"testemail@test.com\"/> \n            <taskProps attrName=\"entities\" attrVal=\"[{&quot;entity_ssn&quot;:[&quot;111-11-1111&quot;]}]\"/> \n            <taskProps attrName=\"type\" attrVal=\"delete\"/> \n            <taskProps attrName=\"DeleteFromBackup\" attrVal=\"false\"/> \n            <taskProps attrName=\"EnableRelevantDoc\" attrVal=\"true\"/> \n        </tasks> \n    </taskReq> \n</WebReport_EDiscoveryCreateTaskReq>   "},"Create Request - Export":{"value":"<WebReport_EDiscoveryCreateTaskReq> \n    <taskReq entity=\"1\" operation=\"1\"> \n        <tasks> \n            <taskInfo summary=\"TestRequest\" startDate=\"1561995546\" internalTask=\"1\"/> \n            <taskProps attrName=\"email\" attrVal=\"testemail@email.com\"/> \n            <taskProps attrName=\"entities\" attrVal=\"[{&quot;entity_ssn&quot;:[&quot;111-11-1111&quot;]}]\"/> \n            <taskProps attrName=\"type\" attrVal=\"export\"/> \n            <taskProps attrName=\"DeleteFromBackup\" attrVal=\"false\"/> \n            <taskProps attrName=\"EnableRelevantDoc\" attrVal=\"true\"/> \n        </tasks> \n    </taskReq> \n</WebReport_EDiscoveryCreateTaskReq>   "}}}},"description":"","required":true},"tags":["Request Operations"],"responses":{"200":{"description":"OK","content":{"text/plain":{"examples":{"Create Request":{"value":"<WebReport_CommcellProfileResp>\n    <msg errorMessage=\"Successful\" errorCode=\"0\" />\n    <tasks>\n        <taskInfo summary=\"TestRequest1\" dueDate=\"0\" description=\"\" url=\"\" taskType=\"9515\" taskId=\"132\" status=\"1\" />\n    </tasks>\n</WebReport_CommcellProfileResp>"}}}}}},"method":"post","path":"/EDiscoveryClient/CreateTask","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Commvault Rest API - Public","contact":{},"version":"1.0","description":"## Welcome\n\nWelcome to Commvault's Rest APIs. You can explore our APIs in [Postman](https://getpostman.com) using the predefined requests we created\n\nThe current version of this documentation is **Commvault Platform Release 2022E**.\n\nYou can access LTS documentation here:\n\n[Feature Release 11.20](https://documenter.getpostman.com/view/2046098/UVR7KoPJ)\n\n[Feature Release 11.24](https://documenter.getpostman.com/view/2046098/UVR7KoPL)\n\nFor more V2 and Latest APIs, please visit your API Explorer page.  \n[*More Details*](http://documentation.commvault.com/commvault/v11/article?p=107350_1.htm)\n\n"},"postman":{"name":"Create a Request Configuration","description":{"content":"This operation creates a request\n\n<h2>Request Body</h2>\n<table width=\"441\">\n\n<tr>\n<td>Name</td>\n<td>Description</td>\n</tr>\n<tr>\n<td>entity</td>\n<td>--</td>\n</tr>\n<tr>\n<td>operation</td>\n<td>--</td>\n</tr>\n<tr>\n<td>summary</td>\n<td>Desired name of request</td>\n</tr>\n<tr>\n<td>type</td>\n<td>\n<p>Type of request</p>\n<p>values:- \"delete\"- \"export\"</p>\n</td>\n</tr>\n\n</table>","type":"text/plain"},"url":{"path":["EDiscoveryClient","CreateTask"],"host":["{{baseUrl}}"],"query":[],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Content-Type","value":"text/plain"},{"key":"Accept","value":"text/plain"}],"method":"POST","body":{"mode":"raw","raw":"\"<WebReport_EDiscoveryCreateTaskReq> \\n    <taskReq entity=\\\"1\\\" operation=\\\"1\\\"> \\n        <tasks> \\n            <taskInfo summary=\\\"TestRequest1\\\"/> \\n            <taskProps attrName=\\\"email\\\" attrVal=\\\"testemail@test.com\\\"/> \\n            <taskProps attrName=\\\"entities\\\" attrVal=\\\"[{&quot;entity_ssn&quot;:[&quot;111-11-1111&quot;]}]\\\"/> \\n            <taskProps attrName=\\\"type\\\" attrVal=\\\"delete\\\"/> \\n            <taskProps attrName=\\\"DeleteFromBackup\\\" attrVal=\\\"false\\\"/> \\n            <taskProps attrName=\\\"EnableRelevantDoc\\\" attrVal=\\\"true\\\"/> \\n        </tasks> \\n    </taskReq> \\n</WebReport_EDiscoveryCreateTaskReq>   \""}}}
+sidebar_class_name: "post api-method"
+info_path: docs/api/cv/ActivateOperations/commvault-rest-api-public
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Create a Request Configuration
+
+
+
+This operation creates a request
+
+<h2>Request Body</h2>
+<table width="441">
+
+<tr>
+<td>Name</td>
+<td>Description</td>
+</tr>
+<tr>
+<td>entity</td>
+<td>--</td>
+</tr>
+<tr>
+<td>operation</td>
+<td>--</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>Desired name of request</td>
+</tr>
+<tr>
+<td>type</td>
+<td>
+<p>Type of request</p>
+<p>values:- "delete"- "export"</p>
+</td>
+</tr>
+
+</table>
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={" Create  Request"} value={" Create  Request"}><ResponseSamples responseExample={"<WebReport_CommcellProfileResp>\n    <msg errorMessage=\"Successful\" errorCode=\"0\" />\n    <tasks>\n        <taskInfo summary=\"TestRequest1\" dueDate=\"0\" description=\"\" url=\"\" taskType=\"9515\" taskId=\"132\" status=\"1\" />\n    </tasks>\n</WebReport_CommcellProfileResp>"} language={"shell"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

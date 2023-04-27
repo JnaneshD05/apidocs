@@ -1,0 +1,91 @@
+---
+id: download-a-file
+title: "Download a File"
+description: "This operation downloads a backed up file on your laptop computer."
+sidebar_label: "Download a File"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation downloads a backed up file on your laptop computer.\n<b>\n Note:\n</b>\nDownloading a folder is currently not supported using this operation.\n<h2>\n Supported Error Codes\n</h2>\n<table width=\"100%\">\n\n  <tr>\n   <th width=\"20%\">\n    Code\n   </th>\n   <th width=\"20%\">\n    Status\n   </th>\n   <th width=\"60%\">\n    Description\n   </th>\n  </tr>\n  <tr>\n   <td>\n    400\n   </td>\n   <td>\n    Bad Request\n   </td>\n   <td>\n    The request is missing required parameters.\n   </td>\n  </tr>\n  <tr>\n   <td>\n    403\n   </td>\n   <td>\n    Forbidden\n   </td>\n   <td>\n    Download operation is not allowed. This can happen if you attempt to download a folder.\n   </td>\n  </tr>\n  <tr>\n   <td>\n    404\n   </td>\n   <td>\n    Not Found\n   </td>\n   <td>\n    The specified file does not exist.\n   </td>\n  </tr>\n\n</table>\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_download.htm)\n","operationId":"Download a File","parameters":[{"description":"","explode":true,"in":"query","name":"appid","required":true,"schema":{"example":25,"format":"int32","type":"integer"}},{"description":"","explode":true,"in":"query","name":"path","required":true,"schema":{"example":"C:/sample.txt","type":"string"}},{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}],"tags":["File Operations"],"responses":{"200":{"description":"OK","content":{"text/plain":{"examples":{"Example 1":{"value":"Sample text file."}}}}}},"method":"get","path":"/stream/action/download","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Download a File","description":{"content":"This operation downloads a backed up file on your laptop computer.\n<b>\n Note:\n</b>\nDownloading a folder is currently not supported using this operation.\n<h2>\n Supported Error Codes\n</h2>\n<table width=\"100%\">\n\n  <tr>\n   <th width=\"20%\">\n    Code\n   </th>\n   <th width=\"20%\">\n    Status\n   </th>\n   <th width=\"60%\">\n    Description\n   </th>\n  </tr>\n  <tr>\n   <td>\n    400\n   </td>\n   <td>\n    Bad Request\n   </td>\n   <td>\n    The request is missing required parameters.\n   </td>\n  </tr>\n  <tr>\n   <td>\n    403\n   </td>\n   <td>\n    Forbidden\n   </td>\n   <td>\n    Download operation is not allowed. This can happen if you attempt to download a folder.\n   </td>\n  </tr>\n  <tr>\n   <td>\n    404\n   </td>\n   <td>\n    Not Found\n   </td>\n   <td>\n    The specified file does not exist.\n   </td>\n  </tr>\n\n</table>\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_download.htm)\n","type":"text/plain"},"url":{"path":["stream","action","download"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"appid","value":""},{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"path","value":""}],"variable":[]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"text/plain"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/FileOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Download a File
+
+
+
+This operation downloads a backed up file on your laptop computer.
+<b>
+ Note:
+</b>
+Downloading a folder is currently not supported using this operation.
+<h2>
+ Supported Error Codes
+</h2>
+<table width="100%">
+
+  <tr>
+   <th width="20%">
+    Code
+   </th>
+   <th width="20%">
+    Status
+   </th>
+   <th width="60%">
+    Description
+   </th>
+  </tr>
+  <tr>
+   <td>
+    400
+   </td>
+   <td>
+    Bad Request
+   </td>
+   <td>
+    The request is missing required parameters.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    403
+   </td>
+   <td>
+    Forbidden
+   </td>
+   <td>
+    Download operation is not allowed. This can happen if you attempt to download a folder.
+   </td>
+  </tr>
+  <tr>
+   <td>
+    404
+   </td>
+   <td>
+    Not Found
+   </td>
+   <td>
+    The specified file does not exist.
+   </td>
+  </tr>
+
+</table>
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_file_download.htm)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"appid","required":true,"schema":{"example":25,"format":"int32","type":"integer"}}}></ParamsItem><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"path","required":true,"schema":{"example":"C:/sample.txt","type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"text/plain"} value={"text/plain"}><SchemaTabs><TabItem label={" Example 1"} value={" Example 1"}><ResponseSamples responseExample={"Sample text file."} language={"shell"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      

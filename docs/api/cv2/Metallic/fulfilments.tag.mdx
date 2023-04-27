@@ -1,0 +1,30 @@
+---
+id: fulfilments
+title: "Fulfilments"
+description: "Fulfilments"
+custom_edit_url: null
+---
+
+
+
+Fulfillment management includes submitting fulfillment request and getting fulfillment details.
+
+Fulfilment status returned by fulfillment APIs have one of the following values:
+
+#### Fulfillment Status Enumeration
+
+| **Enumeration Value** | **Description** |
+| --- | --- |
+| in_progress | Fulfillment provisioning is in progress. |
+| complete | Fulfillment provisioning is complete. |
+| error_pending_investigation | Fulfillment encountered an issue during provisioning. In this case, no action is needed from partner side. Metallic team will be actively working on resolving this issue and pushing through the fulfillment provisioning. |
+
+
+
+```mdx-code-block
+import DocCardList from '@theme/DocCardList';
+import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+
+<DocCardList items={useCurrentSidebarCategory().items}/>
+```
+      

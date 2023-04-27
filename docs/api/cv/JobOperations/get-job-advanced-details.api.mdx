@@ -1,0 +1,95 @@
+---
+id: get-job-advanced-details
+title: "Get Job Advanced Details"
+description: "This operation returns the details for a specific job."
+sidebar_label: "Get Job Advanced Details"
+hide_title: true
+hide_table_of_contents: true
+api: {"deprecated":false,"description":"This operation returns the details for a specific job.\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\">\n\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     infoType\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     The option to return additional job information.\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      1, RetentionInfo\n     </li>\n     <li class=\"listbullet\">\n      2, reference copy information for reference copy jobs\n     </li>\n     <li class=\"listbullet\">\n      4, DASH copy information for auxiliary copy jobs where the\n      <span class=\"uilabel\">\n       Scalable Resource Allocation\n      </span>\n      check box is selected\n     </li>\n     <li>\n      8, administrative information for auxiliary copy jobs where the\n      <span class=\"uilabel\">\n       Scalable Resource Allocation\n      </span>\n      check box is selected\n     </li>\n     <li>\n      16, backup information for Microsoft Exchange Server and Microsoft SQL Server agent jobs\n     </li>\n    </ul>\n   </td>\n  </tr>\n\n</table>\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_job_summary.htm)\n","operationId":"Get Job Advanced Details","parameters":[{"description":"","explode":true,"in":"query","name":"infoType","required":true,"schema":{"example":1,"format":"int32","type":"integer"}},{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}},{"description":"","in":"path","name":"jobId","required":true,"schema":{"type":"string"}}],"tags":["Job Operations"],"responses":{"200":{"description":"OK","content":{"application/json":{"schema":{"type":"object","properties":{"jobRetention":{"type":"object","properties":{"storagePolicyRetentionInfoList":{"type":"array","items":{"type":"object","properties":{"storagePolicyName":{"type":"string"},"storagePolicyId":{"type":"integer"},"copyRetentionInfoList":{"type":"array","items":{"type":"object","properties":{"storagePolicyCopyName":{"type":"string"},"retentionDays":{"type":"integer"},"retentionRules":{"type":"integer"},"storagePolicyCopyId":{"type":"integer"},"manuallyPinned":{"type":"integer"}}}}}}}}}},"x-examples":{"Example 1":{"jobRetention":{"storagePolicyRetentionInfoList":[{"storagePolicyName":"SP_DutchCI","storagePolicyId":33,"copyRetentionInfoList":[{"storagePolicyCopyName":"Primary","retentionDays":1583884860,"retentionRules":0,"storagePolicyCopyId":34,"manuallyPinned":1}]}]}}}},"examples":{"Job Advanced Details - Retention Info":{"value":{"jobRetention":{"storagePolicyRetentionInfoList":[{"storagePolicyName":"SP_DutchCI","storagePolicyId":33,"copyRetentionInfoList":[{"storagePolicyCopyName":"Primary","retentionDays":1583884860,"retentionRules":0,"storagePolicyCopyId":34,"manuallyPinned":1}]}]}}}}}}}},"method":"get","path":"/Job/{jobId}/AdvancedDetails","servers":[{"url":"http://{hostname}/webconsole/api","variables":{"hostname":{"default":"localhost","description":"Webconsole"}}}],"info":{"title":"Template","contact":{},"version":"1.0","description":"Template"},"postman":{"name":"Get Job Advanced Details","description":{"content":"This operation returns the details for a specific job.\n<h2>\n Request Parameters\n</h2>\n<table border=\"0\" cellpadding=\"2\" cellspacing=\"0\" class=\"tableintopic\">\n\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     Name\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     Description\n    </p>\n   </td>\n  </tr>\n  <tr align=\"left\" valign=\"top\">\n   <td>\n    <p class=\"tabletext\">\n     infoType\n    </p>\n   </td>\n   <td>\n    <p class=\"tabletext\">\n     The option to return additional job information.\n    </p>\n    <p class=\"tabletext\">\n     Valid values are:\n    </p>\n    <ul class=\"listbullet\">\n     <li class=\"listbullet\">\n      1, RetentionInfo\n     </li>\n     <li class=\"listbullet\">\n      2, reference copy information for reference copy jobs\n     </li>\n     <li class=\"listbullet\">\n      4, DASH copy information for auxiliary copy jobs where the\n      <span class=\"uilabel\">\n       Scalable Resource Allocation\n      </span>\n      check box is selected\n     </li>\n     <li>\n      8, administrative information for auxiliary copy jobs where the\n      <span class=\"uilabel\">\n       Scalable Resource Allocation\n      </span>\n      check box is selected\n     </li>\n     <li>\n      16, backup information for Microsoft Exchange Server and Microsoft SQL Server agent jobs\n     </li>\n    </ul>\n   </td>\n  </tr>\n\n</table>\n[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_job_summary.htm)\n","type":"text/plain"},"url":{"path":["Job",":jobId","AdvancedDetails"],"host":["{{baseUrl}}"],"query":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"infoType","value":""}],"variable":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"type":"any","value":"","key":"jobId"}]},"header":[{"disabled":false,"description":{"content":"(Required) ","type":"text/plain"},"key":"Authtoken","value":""},{"key":"Accept","value":"application/json"}],"method":"GET"}}
+sidebar_class_name: "get api-method"
+info_path: docs/api/cv/JobOperations/template
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import TabItem from "@theme/TabItem";
+
+## Get Job Advanced Details
+
+
+
+This operation returns the details for a specific job.
+<h2>
+ Request Parameters
+</h2>
+<table border="0" cellpadding="2" cellspacing="0" class="tableintopic">
+
+  <tr align="left" valign="top">
+   <td>
+    <p class="tabletext">
+     Name
+    </p>
+   </td>
+   <td>
+    <p class="tabletext">
+     Description
+    </p>
+   </td>
+  </tr>
+  <tr align="left" valign="top">
+   <td>
+    <p class="tabletext">
+     infoType
+    </p>
+   </td>
+   <td>
+    <p class="tabletext">
+     The option to return additional job information.
+    </p>
+    <p class="tabletext">
+     Valid values are:
+    </p>
+    <ul class="listbullet">
+     <li class="listbullet">
+      1, RetentionInfo
+     </li>
+     <li class="listbullet">
+      2, reference copy information for reference copy jobs
+     </li>
+     <li class="listbullet">
+      4, DASH copy information for auxiliary copy jobs where the
+      <span class="uilabel">
+       Scalable Resource Allocation
+      </span>
+      check box is selected
+     </li>
+     <li>
+      8, administrative information for auxiliary copy jobs where the
+      <span class="uilabel">
+       Scalable Resource Allocation
+      </span>
+      check box is selected
+     </li>
+     <li>
+      16, backup information for Microsoft Exchange Server and Microsoft SQL Server agent jobs
+     </li>
+    </ul>
+   </td>
+  </tr>
+
+</table>
+[_More Details_](http://documentation.commvault.com/commvault/v11/article?p=features/rest_api/operations/get_job_summary.htm)
+
+
+<details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Path Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"path","name":"jobId","required":true,"schema":{"type":"string"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Query Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","explode":true,"in":"query","name":"infoType","required":true,"schema":{"example":1,"format":"int32","type":"integer"}}}></ParamsItem></ul></div></details><details style={{"marginBottom":"1rem"}} data-collapsed={false} open={true}><summary style={{}}><strong>Header Parameters</strong></summary><div><ul><ParamsItem className={"paramsItem"} param={{"description":"","in":"header","name":"Authtoken","required":true,"schema":{"example":"{{TOKEN}}","type":"string"}}}></ParamsItem></ul></div></details><div><ApiTabs><TabItem label={"200"} value={"200"}><div>
+
+OK
+
+</div><div><MimeTabs schemaType={"response"}><TabItem label={"application/json"} value={"application/json"}><SchemaTabs><TabItem label={"Schema"} value={"Schema"}><details style={{}} data-collapsed={false} open={true}><summary style={{"textAlign":"left"}}><strong>Schema</strong></summary><div style={{"textAlign":"left","marginLeft":"1rem"}}></div><ul style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>jobRetention</strong><span style={{"opacity":"0.6"}}> object</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>storagePolicyRetentionInfoList</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"storagePolicyName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"storagePolicyId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={true} className={"schemaItem"}><details style={{}}><summary style={{}}><strong>copyRetentionInfoList</strong><span style={{"opacity":"0.6"}}> object[]</span></summary><div style={{"marginLeft":"1rem"}}><SchemaItem collapsible={false} name={"storagePolicyCopyName"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"string"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"retentionDays"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"retentionRules"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"storagePolicyCopyId"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem><SchemaItem collapsible={false} name={"manuallyPinned"} required={false} deprecated={undefined} schemaDescription={undefined} schemaName={"integer"} qualifierMessage={undefined} defaultValue={undefined}></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></div></details></SchemaItem></ul></details></TabItem><TabItem label={"Example (from schema)"} value={"Example (from schema)"}><ResponseSamples responseExample={"{\n  \"jobRetention\": {\n    \"storagePolicyRetentionInfoList\": [\n      {\n        \"storagePolicyName\": \"string\",\n        \"storagePolicyId\": 0,\n        \"copyRetentionInfoList\": [\n          {\n            \"storagePolicyCopyName\": \"string\",\n            \"retentionDays\": 0,\n            \"retentionRules\": 0,\n            \"storagePolicyCopyId\": 0,\n            \"manuallyPinned\": 0\n          }\n        ]\n      }\n    ]\n  }\n}"} language={"json"}></ResponseSamples></TabItem><TabItem label={" Job  Advanced  Details -  Retention  Info"} value={" Job  Advanced  Details -  Retention  Info"}><ResponseSamples responseExample={"{\n  \"jobRetention\": {\n    \"storagePolicyRetentionInfoList\": [\n      {\n        \"storagePolicyName\": \"SP_DutchCI\",\n        \"storagePolicyId\": 33,\n        \"copyRetentionInfoList\": [\n          {\n            \"storagePolicyCopyName\": \"Primary\",\n            \"retentionDays\": 1583884860,\n            \"retentionRules\": 0,\n            \"storagePolicyCopyId\": 34,\n            \"manuallyPinned\": 1\n          }\n        ]\n      }\n    ]\n  }\n}"} language={"json"}></ResponseSamples></TabItem></SchemaTabs></TabItem></MimeTabs></div></TabItem></ApiTabs></div>
+      
