@@ -35,7 +35,7 @@ module.exports = {
           },
           {
             label: 'Metallic',
-            href: '/docs/api/cv2/metallic-rest-api-reference',
+            href: '/docs/api/cv2/Metallic/metallic-rest-api-reference',
             id: 'MetallicDropdownOption'
           }]
         },
